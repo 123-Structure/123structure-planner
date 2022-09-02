@@ -1,24 +1,29 @@
 {
   "name": "123structure-planner",
+  "description": "Planner module for 123 Structure company",
+  "author": {
+    "name": "Baptiste LECHAT",
+    "email": "b.lechat@123structure.fr",
+    "url": "https://www.123structure.fr/"
+  },
   "private": true,
   "version": "0.0.0",
   "type": "commonjs",
   "main": "app/index.js",
-  "description": "Planner module for 123 Structure company",
   "license": "MIT",
   "scripts": {
-    "dev": "concurrently -k \"vite\" \"yarn run electron:dev\"",
+    "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "start": "npm run build && npm run electron:start",
-    "electron:dev": "cross-env IS_DEV=true electron-forge start",
-    "electron:package": "electron-forge package",
-    "electron:build": "electron-forge make"
+    "electron:dev": "concurrently -k \"vite\" \"cross-env IS_DEV=true electron-forge start\"",
+    "electron:build": "electron-forge make",
+    "electron:package": "electron-forge package"
   },
   "dependencies": {
     "electron-squirrel-startup": "^1.0.0",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "xlsx": "https://cdn.sheetjs.com/xlsx-0.18.10/xlsx-0.18.10.tgz"
   },
   "devDependencies": {
     "@electron-forge/cli": "^6.0.0-beta.65",

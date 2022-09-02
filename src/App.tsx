@@ -3,6 +3,8 @@ import reactLogo from "./assets/react.svg";
 import electronLogo from "./assets/electron.svg";
 import "./App.css";
 
+import ReadXlsxFile from "./components/ReadXlsxFile";
+
 function App() {
   const [count, setCount] = useState(0);
 
@@ -16,7 +18,11 @@ function App() {
           <img src={reactLogo} className="logo react" alt="React logo" />
         </a>
         <a href="https://www.electronjs.org/" target="_blank">
-          <img src={electronLogo} className="logo electron" alt="Electron logo" />
+          <img
+            src={electronLogo}
+            className="logo electron"
+            alt="Electron logo"
+          />
         </a>
       </div>
       <h1>Vite + ReactTS + Electron</h1>
@@ -28,8 +34,9 @@ function App() {
           Edit <code>src/App.tsx</code> and save to test HMR
         </p>
       </div>
+      <ReadXlsxFile />
       <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
+        Click on logos to learn more
       </p>
     </div>
   );
