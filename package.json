@@ -20,7 +20,13 @@
     "electron:package": "electron-forge package"
   },
   "dependencies": {
+    "@emotion/react": "^11.10.4",
+    "@mantine/core": "^5.2.5",
+    "@mantine/dates": "^5.2.5",
+    "@mantine/hooks": "^5.2.5",
+    "dayjs": "^1.11.5",
     "electron-squirrel-startup": "^1.0.0",
+    "mantine-data-grid": "^0.0.17",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "xlsx": "https://cdn.sheetjs.com/xlsx-0.18.10/xlsx-0.18.10.tgz"
