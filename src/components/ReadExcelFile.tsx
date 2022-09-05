@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { read, utils } from "xlsx";
-import ExcelTable from "./ExcelTable";
+import ExcelDataGrid from "./dataGrid/ExcelDataGrid";
 
 export interface IProject {
   DOSSIER: string;
@@ -78,7 +78,6 @@ const ReadExcelFile = () => {
             element.AGENCE = "Autre";
             break;
         }
-        console.log(element);
         projects.push(element);
       }
       e.target.value = "";
@@ -93,7 +92,7 @@ const ReadExcelFile = () => {
         accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"
       />
       <h2>{project?.length !== undefined ? project?.length : 0} Affaire(s)</h2>
-      <ExcelTable project={project} />
+      <ExcelDataGrid project={project} />
     </>
   );
 };

@@ -24,6 +24,7 @@
     "@mantine/core": "^5.2.5",
     "@mantine/dates": "^5.2.5",
     "@mantine/hooks": "^5.2.5",
+    "@tabler/icons": "^1.92.0",
     "dayjs": "^1.11.5",
     "electron-squirrel-startup": "^1.0.0",
     "mantine-data-grid": "^0.0.17",

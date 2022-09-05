@@ -896,6 +896,11 @@
   dependencies:
     defer-to-connect "^2.0.0"
 
+"@tabler/icons@^1.92.0":
+  version "1.92.0"
+  resolved "https://registry.yarnpkg.com/@tabler/icons/-/icons-1.92.0.tgz#e068938db61d5f932d317a8fd18acd5c0204496e"
+  integrity sha512-eZP5jYvNPtZKiWj1Bn2C+zjvGXhQoormXAyE3TH7ihCxXBHMzKF/ZLYhU3rnMC/+NjuLDBifKc6dmwoh7s62vQ==
+
 "@tanstack/react-table@^8.3.3":
   version "8.5.13"
   resolved "https://registry.yarnpkg.com/@tanstack/react-table/-/react-table-8.5.13.tgz#a394c4db1cbcd63eb0c5fa2244a963da28f246c4"
