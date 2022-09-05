@@ -1,47 +1,24 @@
 import React, { useState } from "react";
 import { read, utils } from "xlsx";
+import { IProject } from "../utils/interface/IProject";
+import { ProjectParameters } from "../utils/ProjectParameters";
 import ExcelDataGrid from "./dataGrid/ExcelDataGrid";
-
-export interface IProject {
-  DOSSIER: string;
-  AFFAIRE: string;
-  CLIENT: string;
-  ARCHITECTE: string;
-  "AGENCE LIVREE": boolean;
-  RESSOURCES: string;
-  SOL: string;
-  LIVRAISON: string;
-  "LIVR. (tri)": string;
-  LIVRTRI: string;
-  "TEMPS PREVU": string;
-  "TEMPS REALISE": string;
-  "TEMPS RESTANT": string;
-  "HONOS (EUR HT)": string;
-  [key: string]: string | boolean;
-}
+import ExcelDataGridSettings from "./dataGrid/ExcelDataGridSettings";
 
 const ReadExcelFile = () => {
   const [project, setProject] = useState<IProject[]>();
-
-  const keys = [
+  const [showParams, setShowParams] = useState<string[]>([
     "DOSSIER",
     "AFFAIRE",
     "CLIENT",
     "ARCHITECTE",
-    "AGENCE LIVREE",
     "RESSOURCES",
-    "SOL",
-    "LIVRAISON",
-    "LIVR. (tri)",
-    "TEMPS PREVU",
-    "TEMPS REALISE",
-    "TEMPS RESTANT",
-    "HONOS (EUR HT)",
-  ];
+  ]);
+
+  console.log(showParams);
 
   const getData = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const projects = [];
-    const input = document.querySelector("input");
     if (e.currentTarget.files === null) {
       return console.log("Fichier manquant...");
     } else {
@@ -53,12 +30,12 @@ const ReadExcelFile = () => {
       for (let i = 0; i < data.length; i++) {
         const element = data[i];
 
-        for (let j = 0; j < keys.length; j++) {
-          if (element[keys[j]] === undefined) {
-            element[keys[j]] = "";
+        for (let j = 0; j < ProjectParameters.length; j++) {
+          if (element[ProjectParameters[j]] === undefined) {
+            element[ProjectParameters[j]] = "";
           }
 
-          if (keys[j] === "LIVR. (tri)") {
+          if (ProjectParameters[j] === "LIVR. (tri)") {
             element.LIVRTRI = element["LIVR. (tri)"];
           }
         }
@@ -91,8 +68,9 @@ const ReadExcelFile = () => {
         onChange={getData}
         accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"
       />
+      <ExcelDataGridSettings showParams={showParams} setShowParams={setShowParams} />
       <h2>{project?.length !== undefined ? project?.length : 0} Affaire(s)</h2>
-      <ExcelDataGrid project={project} />
+      <ExcelDataGrid project={project} showParams={showParams} />
     </>
   );
 };

@@ -1,20 +1,23 @@
-import { IProject } from "../ReadExcelFile";
 import {
   DataGrid,
   booleanFilterFn,
   highlightFilterValue,
 } from "mantine-data-grid";
-import { Modal } from "@mantine/core";
+import { Modal, useMantineTheme } from "@mantine/core";
 import { useState } from "react";
 import { booleanFilter, numberFilter, stringFilter } from "./LocaleFilter";
+import { IProject } from "../../utils/interface/IProject";
 
 interface IExcelTableProps {
   project: IProject[] | undefined;
+  showParams: string[];
 }
 
 const ExcelDataGrid = (props: IExcelTableProps) => {
   const [showMoreInfo, setShowMoreInfo] = useState(false);
   const [currentProject, setCurrentProject] = useState<IProject>();
+
+  const theme = useMantineTheme();
 
   const handleRowClick = (id: number) => {
     setShowMoreInfo(true);
@@ -32,7 +35,7 @@ const ExcelDataGrid = (props: IExcelTableProps) => {
         opened={showMoreInfo}
         onClose={() => setShowMoreInfo(false)}
       >
-        <p>
+        <p style={{ color: theme.colors.yellow[9] }}>
           {currentProject?.DOSSIER} - {currentProject?.AFFAIRE}
         </p>
       </Modal>

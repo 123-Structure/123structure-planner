@@ -1,30 +1,11 @@
 import { MantineProvider } from "@mantine/core";
 import "./App.css";
 import ReadExcelFile from "./components/ReadExcelFile";
+import theme from "./utils/style/MantineTheme";
 
 function App() {
   return (
-    <MantineProvider
-      withGlobalStyles
-      withNormalizeCSS
-      theme={{
-        colors: {
-          brand: [
-            "#FFF9DB",
-            "#FFF3BF",
-            "#FFEC99",
-            "#FFE066",
-            "#FFD43B",
-            "#FCC419",
-            "#FAB005",
-            "#F59F00",
-            "#F08C00",
-            "#E67700",
-          ],
-        },
-        primaryColor: "brand",
-      }}
-    >
+    <MantineProvider withGlobalStyles withNormalizeCSS theme={theme}>
       <ReadExcelFile />
     </MantineProvider>
   );
