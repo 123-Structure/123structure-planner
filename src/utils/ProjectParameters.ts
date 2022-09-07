@@ -1,4 +1,5 @@
 export const ProjectParameters = [
+  "AGENCE",
   "DOSSIER",
   "AFFAIRE",
   "CLIENT",

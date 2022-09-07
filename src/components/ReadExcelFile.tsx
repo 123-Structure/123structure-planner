@@ -8,14 +8,11 @@ import ExcelDataGridSettings from "./dataGrid/ExcelDataGridSettings";
 const ReadExcelFile = () => {
   const [project, setProject] = useState<IProject[]>();
   const [showParams, setShowParams] = useState<string[]>([
+    "AGENCE",
     "DOSSIER",
     "AFFAIRE",
-    "CLIENT",
-    "ARCHITECTE",
     "RESSOURCES",
   ]);
-
-  console.log(showParams);
 
   const getData = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const projects = [];
@@ -68,7 +65,10 @@ const ReadExcelFile = () => {
         onChange={getData}
         accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"
       />
-      <ExcelDataGridSettings showParams={showParams} setShowParams={setShowParams} />
+      <ExcelDataGridSettings
+        showParams={showParams}
+        setShowParams={setShowParams}
+      />
       <h2>{project?.length !== undefined ? project?.length : 0} Affaire(s)</h2>
       <ExcelDataGrid project={project} showParams={showParams} />
     </>
