@@ -156,7 +156,14 @@ const ExcelDataGrid = (props: IExcelTableProps) => {
         });
       }
     }
-    setColumns(matchParams);
+    setColumns(
+      matchParams.sort(function (a, b) {
+        return (
+          ProjectParameters.indexOf(a.accessorKey) -
+          ProjectParameters.indexOf(b.accessorKey)
+        );
+      })
+    );
   }, [props.showParams]);
 
   return (
