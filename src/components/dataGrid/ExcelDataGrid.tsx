@@ -1,13 +1,11 @@
-import {
-  DataGrid,
-  highlightFilterValue,
-} from "mantine-data-grid";
+import { DataGrid, highlightFilterValue } from "mantine-data-grid";
 import { Modal, useMantineTheme } from "@mantine/core";
 import { useEffect, useState } from "react";
 import { booleanFilter, numberFilter, stringFilter } from "./LocaleFilter";
 import { IProject } from "../../utils/interface/IProject";
 import { ColumnDef } from "@tanstack/react-table";
 import { ProjectParameters } from "../../utils/ProjectParameters";
+import "../../utils/style/ExceDataGrid.css";
 
 interface IExcelTableProps {
   project: IProject[] | undefined;
@@ -27,8 +25,6 @@ const ExcelDataGrid = (props: IExcelTableProps) => {
       setCurrentProject(props.project[id]);
     }
   };
-
-  console.log(columns);
 
   useEffect(() => {
     const matchParams = [];
@@ -203,7 +199,6 @@ const ExcelDataGrid = (props: IExcelTableProps) => {
           onClick: () => handleRowClick(parseInt(row.id)),
         })}
         columns={columns}
-        
       />
     </>
   );
