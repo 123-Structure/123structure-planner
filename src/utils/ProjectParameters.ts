@@ -1,0 +1,16 @@
+export const ProjectParameters = [
+  "AGENCE",
+  "DOSSIER",
+  "AFFAIRE",
+  "CLIENT",
+  "ARCHITECTE",
+  "AGENCE LIVREE",
+  "RESSOURCES",
+  "SOL",
+  "LIVRAISON",
+  "LIVR. (tri)",
+  "TEMPS PREVU",
+  "TEMPS REALISE",
+  "TEMPS RESTANT",
+  "HONOS (EUR HT)",
+];
