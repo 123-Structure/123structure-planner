@@ -1,5 +1,13 @@
-import { Input, Modal } from "@mantine/core";
+import { Input, NumberInput, Modal, useMantineTheme } from "@mantine/core";
+import { DatePicker } from "@mantine/dates";
 import { Dispatch, SetStateAction, useState } from "react";
+import "dayjs/locale/fr";
+import {
+  IconCalculator,
+  IconCalendar,
+  IconId,
+  IconPencil,
+} from "@tabler/icons";
 
 interface IProjectCardProps {
   showMoreInfo: boolean;
@@ -7,6 +15,8 @@ interface IProjectCardProps {
 }
 
 const MoreInfoModal = (props: IProjectCardProps) => {
+  const theme = useMantineTheme();
+
   return (
     <Modal
       centered
@@ -14,7 +24,9 @@ const MoreInfoModal = (props: IProjectCardProps) => {
       overlayBlur={3}
       opened={props.showMoreInfo}
       onClose={() => props.setShowMoreInfo(false)}
-      size="lg"
+      size="calc(window.screen.width-25%)"
+      withCloseButton={false}
+      padding={"xl"}
     >
       <p>
         <b>N° 123 : </b>22.07.449L
@@ -29,7 +41,11 @@ const MoreInfoModal = (props: IProjectCardProps) => {
         }}
       >
         <b>N° SST : </b>
-        <Input placeholder="00.00.000A" style={{ width: "25%" }}></Input>
+        <Input
+          placeholder="00.00.000A"
+          style={{ width: "25%" }}
+          icon={<IconId color={theme.colors.yellow[6]} />}
+        />
       </div>
       <p>
         <b>Nom : </b>Propriété Mme GUYON (Clavier Giraud)
@@ -42,14 +58,35 @@ const MoreInfoModal = (props: IProjectCardProps) => {
           display: "flex",
           flexDirection: "row",
           gap: "8px",
+          justifyContent: "center",
         }}
       >
         <b>H ING : </b>
-        <input style={{ width: "10%" }} type="number" name="H ING" id="h_ing" />
+        <NumberInput
+          id={"h_ing"}
+          defaultValue={0}
+          step={0.5}
+          precision={2}
+          min={0}
+          icon={<IconCalculator color={theme.colors.yellow[6]} />}
+        />
         <b>H DES : </b>
-        <input style={{ width: "10%" }} type="number" name="H DES" id="h_des" />
+        <NumberInput
+          id={"h_des"}
+          defaultValue={0}
+          step={0.5}
+          precision={2}
+          min={0}
+          icon={<IconPencil color={theme.colors.yellow[6]} />}
+        />
         <b>RENDU : </b>
-        <input type="date" name="" id="" />
+        <DatePicker
+          locale="fr"
+          excludeDate={(date) => date.getDay() === 0 || date.getDay() === 6}
+          inputFormat="MM/DD/YYYY"
+          defaultValue={new Date()}
+          icon={<IconCalendar color={theme.colors.yellow[6]} />}
+        />
       </div>
     </Modal>
   );

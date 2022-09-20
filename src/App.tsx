@@ -17,7 +17,7 @@ function App() {
         {[...Array(11)].map(() => (
           <div
             style={{
-              width: window.innerWidth / 11,
+              width: window.screen.width / 11,
               backgroundColor: `rgb(${Math.random() * 255},${
                 Math.random() * 255
               },${Math.random() * 255})`,
