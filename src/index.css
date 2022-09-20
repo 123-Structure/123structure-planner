@@ -18,9 +18,4 @@
 body {
   margin: 0;
   padding: 0;
-  display: flex;
-  align-items: flex-start;
-  justify-content: flex-start;
-  min-width: 320px;
-  min-height: 100vh;
 }

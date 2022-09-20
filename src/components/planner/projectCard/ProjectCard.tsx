@@ -16,6 +16,7 @@ const ProjectCard = () => {
       />
       <div
         style={{
+          height: "60px",
           backgroundColor: "white",
           padding: "4px 4px 8px 4px",
           borderRadius: "4px",
@@ -28,9 +29,9 @@ const ProjectCard = () => {
             margin: 0,
           }}
         >
-          22.07.449L - GUYON
+          00.00.000A - DUPONT
         </p>
-        <b>jj/mm/aaaa</b>
+        <p style={{ fontWeight: "bold", margin: "0" }}>jj/mm/aaaa</p>
       </div>
     </>
   );
