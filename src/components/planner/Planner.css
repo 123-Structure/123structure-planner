@@ -39,6 +39,7 @@
   grid-column: 1 / span 11;
   grid-auto-flow: column;
   grid-template-columns: repeat(11, 1fr);
+  column-gap: 4px;
 }
 
 .ressource {
