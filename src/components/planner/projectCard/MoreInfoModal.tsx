@@ -8,10 +8,12 @@ import {
   IconId,
   IconPencil,
 } from "@tabler/icons";
+import { IProject } from "../../../utils/interface/IProject";
 
 interface IProjectCardProps {
   showMoreInfo: boolean;
   setShowMoreInfo: Dispatch<SetStateAction<boolean>>;
+  project: IProject;
 }
 
 const MoreInfoModal = (props: IProjectCardProps) => {
@@ -29,7 +31,8 @@ const MoreInfoModal = (props: IProjectCardProps) => {
       padding={"xl"}
     >
       <p>
-        <b>N° 123 : </b>22.07.449L
+        <b>N° 123 : </b>
+        {props.project.DOSSIER}
       </p>
       <div
         className="sst"
@@ -48,10 +51,12 @@ const MoreInfoModal = (props: IProjectCardProps) => {
         />
       </div>
       <p>
-        <b>Nom : </b>Propriété Mme GUYON (Clavier Giraud)
+        <b>Nom : </b>
+        {props.project.AFFAIRE}
       </p>
       <p>
-        <b>Client : </b>BigMat
+        <b>Client : </b>
+        {props.project.CLIENT !== "" ? props.project.CLIENT : "-"}
       </p>
       <div
         style={{

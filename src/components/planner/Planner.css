@@ -15,6 +15,7 @@
   grid-auto-flow: column;
   grid-template-columns: repeat(11, 1fr);
   grid-template-rows: repeat(5, 1fr);
+  /* grid-template-rows: minmax(60px, auto); */
   column-gap: 4px;
 }
 
@@ -38,6 +39,7 @@
   display: grid;
   grid-column: 1 / span 11;
   grid-auto-flow: column;
+  grid-template-rows: minmax(100px, auto);
   grid-template-columns: repeat(11, 1fr);
   column-gap: 4px;
 }
