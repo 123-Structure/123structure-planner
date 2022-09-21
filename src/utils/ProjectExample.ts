@@ -2,7 +2,7 @@ import { IProject } from "./interface/IProject";
 
 export const ProjectExample: IProject[] = [
   {
-    DOSSIER: "22.01.609U",
+    DOSSIER: "00.00.000A",
     AFFAIRE: "(PT) test IGC",
     "AGENCE LIVREE": false,
     RESSOURCES: "Vanessa LAFRECHOUX",
@@ -12,14 +12,15 @@ export const ProjectExample: IProject[] = [
     ARCHITECTE: "",
     SOL: "",
     LIVRAISON: "",
-    LIVRTRI: "0000-00-00",
+    LIVRTRI: "00.00.000A",
     "TEMPS PREVU": "",
     "TEMPS REALISE": "",
     "TEMPS RESTANT": "",
     "HONOS (EUR HT)": "",
+    STATE: "mustBeAssign",
   },
   {
-    DOSSIER: "22.01.609U",
+    DOSSIER: "00.00.000A",
     AFFAIRE: "(PT) Maisons Alpes Savoie",
     "AGENCE LIVREE": false,
     RESSOURCES: "Vanessa LAFRECHOUX",
@@ -34,9 +35,10 @@ export const ProjectExample: IProject[] = [
     "TEMPS REALISE": "",
     "TEMPS RESTANT": "",
     "HONOS (EUR HT)": "",
+    STATE: "mustBeAssign",
   },
   {
-    DOSSIER: "22.01.609U",
+    DOSSIER: "00.00.000A",
     AFFAIRE: "Propriété AZERTY",
     "AGENCE LIVREE": false,
     RESSOURCES: "Vanessa LAFRECHOUX",
@@ -51,6 +53,7 @@ export const ProjectExample: IProject[] = [
     "TEMPS REALISE": "",
     "TEMPS RESTANT": "",
     "HONOS (EUR HT)": "",
+    STATE: "mustBeAssign",
   },
   {
     DOSSIER: "22.01.609U",
@@ -68,6 +71,7 @@ export const ProjectExample: IProject[] = [
     "TEMPS REALISE": "",
     "TEMPS RESTANT": "",
     "HONOS (EUR HT)": "",
+    STATE: "mustBeAssign",
   },
   {
     DOSSIER: "22.05.139Y",
@@ -85,6 +89,7 @@ export const ProjectExample: IProject[] = [
     "TEMPS PREVU": "",
     "TEMPS REALISE": "",
     "TEMPS RESTANT": "",
+    STATE: "mustBeAssign",
   },
   {
     DOSSIER: "22.01.089L",
@@ -102,6 +107,7 @@ export const ProjectExample: IProject[] = [
     LIVRTRI: "0000-00-00",
     "TEMPS PREVU": "",
     "TEMPS RESTANT": "",
+    STATE: "mustBeAssign",
   },
   {
     DOSSIER: "22.01.109L",
@@ -119,6 +125,7 @@ export const ProjectExample: IProject[] = [
     "TEMPS REALISE": "",
     "TEMPS RESTANT": "",
     "HONOS (EUR HT)": "",
+    STATE: "mustBeAssign",
   },
   {
     DOSSIER: "22.01.013L",
@@ -137,6 +144,7 @@ export const ProjectExample: IProject[] = [
     LIVRTRI: "0000-00-00",
     "TEMPS PREVU": "",
     "TEMPS RESTANT": "",
+    STATE: "mustBeAssign",
   },
   {
     DOSSIER: "22.01.199L",
@@ -154,6 +162,7 @@ export const ProjectExample: IProject[] = [
     "TEMPS REALISE": "",
     "TEMPS RESTANT": "",
     "HONOS (EUR HT)": "",
+    STATE: "mustBeAssign",
   },
   {
     DOSSIER: "22.01.209L",
@@ -171,5 +180,6 @@ export const ProjectExample: IProject[] = [
     "TEMPS REALISE": "",
     "TEMPS RESTANT": "",
     "HONOS (EUR HT)": "",
+    STATE: "mustBeAssign",
   },
 ];

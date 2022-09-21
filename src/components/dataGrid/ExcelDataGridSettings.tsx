@@ -1,7 +1,7 @@
 import { Checkbox, ActionIcon, Modal } from "@mantine/core";
 import { IconSettings } from "@tabler/icons";
 import { Dispatch, SetStateAction, useState } from "react";
-import { ProjectParameters } from "../../utils/ProjectParameters";
+import { ProjectParameters } from "../../utils/constant/ProjectParameters";
 
 interface IExcelDataGridSettingsProps {
   showParams: string[];

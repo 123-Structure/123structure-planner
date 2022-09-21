@@ -1,6 +1,9 @@
 import { useState } from "react";
+import { projectNameReducer } from "../../../utils/function/projectNameReducer";
 import { IProject } from "../../../utils/interface/IProject";
 import MoreInfoModal from "./MoreInfoModal";
+import { useDrag } from "react-dnd";
+import { ItemTypes } from "../../../utils/constant/ItemTypes";
 
 interface IProjectCardProps {
   project: IProject;
@@ -9,52 +12,18 @@ interface IProjectCardProps {
 const ProjectCard = (props: IProjectCardProps) => {
   const [showMoreInfo, setShowMoreInfo] = useState(false);
 
+  const [{ isDragging }, drag] = useDrag({
+    type: ItemTypes.CARD,
+    item: {
+      id: props.project.DOSSIER,
+    },
+    collect: (monitor) => ({
+      isDragging: !!monitor.isDragging(),
+    }),
+  });
+
   const handleShowMoreInfoModal = () => {
     setShowMoreInfo(true);
-  };
-
-  const projectName = () => {
-    const { DOSSIER, AFFAIRE } = props.project;
-
-    if (AFFAIRE.includes("SCI")) {
-      const newAFFAIRE = AFFAIRE.split("SCI")[1].split("(")[0].split(" - ")[0];
-      return `${DOSSIER} - ${newAFFAIRE}`;
-    } else if (AFFAIRE.includes("M. et Mme")) {
-      const newAFFAIRE = AFFAIRE.split("M. et Mme")[1]
-        .split("(")[0]
-        .split(" - ")[0];
-      return `${DOSSIER} - ${newAFFAIRE}`;
-    } else if (AFFAIRE.includes("M.")) {
-      const newAFFAIRE = AFFAIRE.split("M.")[1]
-        .split("(")[0]
-        .split(" - ")[0]
-        .split(" et ")[0];
-      return `${DOSSIER} - ${newAFFAIRE}`;
-    } else if (AFFAIRE.includes("Mme")) {
-      const newAFFAIRE = AFFAIRE.split("Mme")[1].split("(")[0].split(" - ")[0];
-      return `${DOSSIER} - ${newAFFAIRE}`;
-    } else if (
-      AFFAIRE.includes("CONSTRUCTION") ||
-      AFFAIRE.includes("Construction")
-    ) {
-      const newAFFAIRE = "CONSTRUCTION";
-      return `${DOSSIER} - ${newAFFAIRE}`;
-    } else if (AFFAIRE.includes("EXTENSION") || AFFAIRE.includes("Extension")) {
-      const newAFFAIRE = AFFAIRE.split("Extension")[1]
-        .split("(")[0]
-        .split(" - ")[0];
-      return `${DOSSIER} - ${newAFFAIRE}`;
-    } else if (AFFAIRE.includes("PROPRIETE") || AFFAIRE.includes("Propriété")) {
-      const newAFFAIRE = AFFAIRE.split("Propriété")[1]
-        .split("(")[0]
-        .split(" - ")[0];
-      return `${DOSSIER} - ${newAFFAIRE}`;
-    } else if (AFFAIRE.includes("PT") || AFFAIRE.includes("pt")) {
-      const newAFFAIRE = "POUTRE";
-      return `${DOSSIER} - ${newAFFAIRE}`;
-    }
-
-    return `${DOSSIER} - ${AFFAIRE.split("(")[0].split(" - ")[0]}`;
   };
 
   return (
@@ -65,6 +34,7 @@ const ProjectCard = (props: IProjectCardProps) => {
         project={props.project}
       />
       <div
+        ref={drag}
         style={{
           height: "60px",
           backgroundColor: "white",
@@ -72,6 +42,7 @@ const ProjectCard = (props: IProjectCardProps) => {
           borderRadius: "4px",
           marginBottom: "2px",
           userSelect: "none",
+          opacity: isDragging ? "0.5" : 1,
         }}
         onDoubleClick={handleShowMoreInfoModal}
       >
@@ -80,7 +51,7 @@ const ProjectCard = (props: IProjectCardProps) => {
             margin: 0,
           }}
         >
-          {projectName()}
+          {projectNameReducer(props.project)}
         </p>
         <p style={{ fontWeight: "bold", margin: "0" }}>jj/mm/aaaa</p>
       </div>

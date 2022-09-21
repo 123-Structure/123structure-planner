@@ -1,4 +1,4 @@
-import { IRessource } from "./interface/IRessource";
+import { IRessource } from "../interface/IRessource";
 
 export const RessourceList: IRessource[] = [
   {

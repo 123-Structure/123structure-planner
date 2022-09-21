@@ -1,16 +1,32 @@
-import ProjectCard from "./ProjectCard";
+import { useDrop } from "react-dnd";
+import { ItemTypes } from "../../../utils/constant/ItemTypes";
+import { useState } from "react";
+import { IProject } from "../../../utils/interface/IProject";
 
 interface IRowPropos {
   ressource: string;
 }
 
 const Row = (props: IRowPropos) => {
+  const [{ isOver }, drop] = useDrop({
+    accept: ItemTypes.CARD,
+    collect: (monitor) => ({
+      isOver: !!monitor.isOver(),
+    }),
+  });
+
   return (
     <div className="row">
       <div className="ressource">
         <p>{props.ressource}</p>
       </div>
-      <div className="newEntry"></div>
+      <div
+        ref={drop}
+        style={{
+          filter: isOver ? "brightness(0.75)" : "",
+        }}
+        className="newEntry"
+      ></div>
       <div className="invocing"></div>
       <div className="correction"></div>
       <div className="mustBeFix"></div>

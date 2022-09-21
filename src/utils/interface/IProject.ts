@@ -13,5 +13,6 @@ export interface IProject {
   "TEMPS REALISE": string;
   "TEMPS RESTANT": string;
   "HONOS (EUR HT)": string;
+  STATE: string;
   [key: string]: string | boolean;
 }

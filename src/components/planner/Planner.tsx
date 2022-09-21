@@ -1,15 +1,15 @@
 import { useState } from "react";
 import ProjectCard from "./projectCard/ProjectCard";
-import "./Planner.css";
+import "../../utils/style/Planner.css";
 import Row from "./projectCard/Row";
-import { RessourceList } from "../../utils/RessourceData";
+import { RessourceList } from "../../utils/constant/RessourceData";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 import { IProject } from "../../utils/interface/IProject";
 import { ProjectExample } from "../../utils/ProjectExample";
 
 const Planner = () => {
-  const [project, setProject] = useState<IProject[]>(
+  const [projects, setProjects] = useState<IProject[]>(
     ProjectExample.filter((p) => {
       return p.CLIENT !== "I.G.C.";
     })
@@ -19,9 +19,11 @@ const Planner = () => {
     <DndProvider backend={HTML5Backend}>
       <div className="grid">
         <div className="mustBeAssign">
-          {project.map((project, index) => (
-            <ProjectCard key={index} project={project} />
-          ))}
+          {projects
+            .filter((project) => project.STATE === "mustBeAssign")
+            .map((filteredProjects, index) => (
+              <ProjectCard key={index} project={filteredProjects} />
+            ))}
         </div>
         <div className="title">
           <p>Ressource</p>

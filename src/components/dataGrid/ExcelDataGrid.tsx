@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { booleanFilter, numberFilter, stringFilter } from "./LocaleFilter";
 import { IProject } from "../../utils/interface/IProject";
 import { ColumnDef } from "@tanstack/react-table";
-import { ProjectParameters } from "../../utils/ProjectParameters";
+import { ProjectParameters } from "../../utils/constant/ProjectParameters";
 import "../../utils/style/ExceDataGrid.css";
 
 interface IExcelTableProps {
