@@ -2,6 +2,7 @@ import { useDrop } from "react-dnd";
 import { ItemTypes } from "../../utils/constant/ItemTypes";
 import { IProject } from "../../utils/interface/IProject";
 import ProjectCard from "./projectCard/ProjectCard";
+import { Tooltip } from "@mantine/core";
 
 interface IWeekProps {
   id: string;
@@ -30,22 +31,34 @@ const Week = (props: IWeekProps) => {
   });
 
   return (
-    <div
-      className="week"
-      id={props.id}
-      ref={drop}
-      style={{
-        backgroundColor: isOver ? "#ffcc00" : "",
-        filter: isOver ? "brightness(115%)" : "",
-      }}
+    <Tooltip
+      label={`${props.id.replace("w", "n°")} - ${props.rowId}`}
+      position="bottom-end"
+      color="gray"
+      transition="slide-up"
+      transitionDuration={300}
+      openDelay={1000}
+      style={{ fontWeight: "bold" }}
+      withArrow
+      arrowSize={8}
     >
-      {props.projects
-        .filter((project) => project.ETAT.includes(props.id))
-        .filter((project) => project.ETAT.includes(props.rowId))
-        .map((filteredProjects, index) => (
-          <ProjectCard key={index} project={filteredProjects} />
-        ))}
-    </div>
+      <div
+        className="week"
+        id={props.id}
+        ref={drop}
+        style={{
+          backgroundColor: isOver ? "#ffcc00" : "",
+          filter: isOver ? "brightness(115%)" : "",
+        }}
+      >
+        {props.projects
+          .filter((project) => project.ETAT.includes(props.id))
+          .filter((project) => project.ETAT.includes(props.rowId))
+          .map((filteredProjects, index) => (
+            <ProjectCard key={index} project={filteredProjects} />
+          ))}
+      </div>
+    </Tooltip>
   );
 };
 

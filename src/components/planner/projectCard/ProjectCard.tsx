@@ -4,6 +4,7 @@ import { IProject } from "../../../utils/interface/IProject";
 import MoreInfoModal from "./MoreInfoModal";
 import { useDrag } from "react-dnd";
 import { ItemTypes } from "../../../utils/constant/ItemTypes";
+import { Tooltip } from "@mantine/core";
 
 interface IProjectCardProps {
   project: IProject;
@@ -33,28 +34,39 @@ const ProjectCard = (props: IProjectCardProps) => {
         setShowMoreInfo={setShowMoreInfo}
         project={props.project}
       />
-      <div
-        ref={drag}
-        style={{
-          height: "60px",
-          backgroundColor: "white",
-          padding: "4px 4px 8px 4px",
-          borderRadius: "4px",
-          userSelect: "none",
-          opacity: isDragging ? "0.5" : 1,
-          outline: "1px solid black"
-        }}
-        onDoubleClick={handleShowMoreInfoModal}
+      <Tooltip
+        label={`${props.project.DOSSIER} - ${props.project.AFFAIRE}`}
+        color="yellow"
+        transition="slide-up"
+        transitionDuration={300}
+        openDelay={1000}
+        style={{ color: "black", fontWeight: "bold" }}
+        withArrow
+        arrowSize={8}
       >
-        <p
+        <div
+          ref={drag}
           style={{
-            margin: 0,
+            height: "60px",
+            backgroundColor: "white",
+            padding: "4px 4px 8px 4px",
+            borderRadius: "4px",
+            userSelect: "none",
+            opacity: isDragging ? "0.5" : 1,
+            outline: "1px solid black",
           }}
+          onDoubleClick={handleShowMoreInfoModal}
         >
-          {projectNameReducer(props.project)}
-        </p>
-        <p style={{ fontWeight: "bold", margin: "0" }}>jj/mm/aaaa</p>
-      </div>
+          <p
+            style={{
+              margin: 0,
+            }}
+          >
+            {projectNameReducer(props.project)}
+          </p>
+          <p style={{ fontWeight: "bold", margin: "0" }}>jj/mm/aaaa</p>
+        </div>
+      </Tooltip>
     </>
   );
 };

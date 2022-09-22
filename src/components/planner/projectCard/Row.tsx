@@ -4,7 +4,7 @@ import { IProject } from "../../../utils/interface/IProject";
 import Week from "../Week";
 
 interface IRowPropos {
-  rowId: string;
+  id: string;
   ressource: string;
   projects: IProject[];
   setProjects: React.Dispatch<React.SetStateAction<IProject[]>>;
@@ -20,37 +20,37 @@ const Row = (props: IRowPropos) => {
       <div className="correction"></div>
       <div className="mustBeFix"></div>
       <Week
-        rowId={props.rowId}
+        rowId={props.id}
         id={"w1"}
         projects={props.projects}
         setProjects={props.setProjects}
       />
       <Week
-        rowId={props.rowId}
+        rowId={props.id}
         id={"w2"}
         projects={props.projects}
         setProjects={props.setProjects}
       />
       <Week
-        rowId={props.rowId}
+        rowId={props.id}
         id={"w3"}
         projects={props.projects}
         setProjects={props.setProjects}
       />
       <Week
-        rowId={props.rowId}
+        rowId={props.id}
         id={"w4"}
         projects={props.projects}
         setProjects={props.setProjects}
       />
       <Week
-        rowId={props.rowId}
+        rowId={props.id}
         id={"w5"}
         projects={props.projects}
         setProjects={props.setProjects}
       />
       <Week
-        rowId={props.rowId}
+        rowId={props.id}
         id={"w6"}
         projects={props.projects}
         setProjects={props.setProjects}

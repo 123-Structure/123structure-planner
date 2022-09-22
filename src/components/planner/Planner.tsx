@@ -48,7 +48,7 @@ const Planner = () => {
         {RessourceList.map((ressource, index) => (
           <Row
             key={index}
-            rowId={`${ressource.firstName[0]}.${ressource.lastName}`}
+            id={`${ressource.firstName[0]}.${ressource.lastName}`}
             ressource={`${ressource.firstName} ${ressource.lastName}`}
             projects={projects}
             setProjects={setProjects}
