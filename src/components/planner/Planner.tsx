@@ -20,28 +20,38 @@ const Planner = () => {
       <div className="grid">
         <div className="mustBeAssign">
           {projects
-            .filter((project) => project.STATE === "mustBeAssign")
+            .filter((project) => project.ETAT === "mustBeAssign")
             .map((filteredProjects, index) => (
               <ProjectCard key={index} project={filteredProjects} />
             ))}
         </div>
         <div className="title">
-          <p>Ressource</p>
           <p>Nouvelle Entrée</p>
+          <p>Ressource</p>
           <p>Facturation</p>
           <p>Correction</p>
           <p>Reprise</p>
-          <p>S00 - 00/00/00 au 00/00/00</p>
-          <p>S00 - 00/00/00 au 00/00/00</p>
-          <p>S00 - 00/00/00 au 00/00/00</p>
-          <p>S00 - 00/00/00 au 00/00/00</p>
-          <p>S00 - 00/00/00 au 00/00/00</p>
-          <p>S00 - 00/00/00 au 00/00/00</p>
+          <p>S01 - 00/00/00 au 00/00/00</p>
+          <p>S02 - 00/00/00 au 00/00/00</p>
+          <p>S03 - 00/00/00 au 00/00/00</p>
+          <p>S04 - 00/00/00 au 00/00/00</p>
+          <p>S05 - 00/00/00 au 00/00/00</p>
+          <p>S06 - 00/00/00 au 00/00/00</p>
+        </div>
+        <div className="newEntry">
+          {projects
+            .filter((project) => project.ETAT?.includes("newEntry"))
+            .map((project) => (
+              <ProjectCard key={project.DOSSIER} project={project} />
+            ))}
         </div>
         {RessourceList.map((ressource, index) => (
           <Row
             key={index}
+            rowId={`${ressource.firstName[0]}.${ressource.lastName}`}
             ressource={`${ressource.firstName} ${ressource.lastName}`}
+            projects={projects}
+            setProjects={setProjects}
           />
         ))}
       </div>

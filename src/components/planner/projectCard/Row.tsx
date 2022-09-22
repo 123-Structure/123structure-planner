@@ -1,41 +1,60 @@
 import { useDrop } from "react-dnd";
 import { ItemTypes } from "../../../utils/constant/ItemTypes";
-import { useState } from "react";
 import { IProject } from "../../../utils/interface/IProject";
+import Week from "../Week";
 
 interface IRowPropos {
+  rowId: string;
   ressource: string;
+  projects: IProject[];
+  setProjects: React.Dispatch<React.SetStateAction<IProject[]>>;
 }
 
 const Row = (props: IRowPropos) => {
-  const [{ isOver }, drop] = useDrop({
-    accept: ItemTypes.CARD,
-    collect: (monitor) => ({
-      isOver: !!monitor.isOver(),
-    }),
-  });
-
   return (
     <div className="row">
       <div className="ressource">
         <p>{props.ressource}</p>
       </div>
-      <div
-        ref={drop}
-        style={{
-          filter: isOver ? "brightness(0.75)" : "",
-        }}
-        className="newEntry"
-      ></div>
-      <div className="invocing"></div>
+      <div className="invoicing"></div>
       <div className="correction"></div>
       <div className="mustBeFix"></div>
-      <div className="week" id="w1"></div>
-      <div className="week" id="w2"></div>
-      <div className="week" id="w3"></div>
-      <div className="week" id="w4"></div>
-      <div className="week" id="w5"></div>
-      <div className="week" id="w6"></div>
+      <Week
+        rowId={props.rowId}
+        id={"w1"}
+        projects={props.projects}
+        setProjects={props.setProjects}
+      />
+      <Week
+        rowId={props.rowId}
+        id={"w2"}
+        projects={props.projects}
+        setProjects={props.setProjects}
+      />
+      <Week
+        rowId={props.rowId}
+        id={"w3"}
+        projects={props.projects}
+        setProjects={props.setProjects}
+      />
+      <Week
+        rowId={props.rowId}
+        id={"w4"}
+        projects={props.projects}
+        setProjects={props.setProjects}
+      />
+      <Week
+        rowId={props.rowId}
+        id={"w5"}
+        projects={props.projects}
+        setProjects={props.setProjects}
+      />
+      <Week
+        rowId={props.rowId}
+        id={"w6"}
+        projects={props.projects}
+        setProjects={props.setProjects}
+      />
     </div>
   );
 };

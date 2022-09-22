@@ -40,9 +40,9 @@ const ProjectCard = (props: IProjectCardProps) => {
           backgroundColor: "white",
           padding: "4px 4px 8px 4px",
           borderRadius: "4px",
-          marginBottom: "2px",
           userSelect: "none",
           opacity: isDragging ? "0.5" : 1,
+          outline: "1px solid black"
         }}
         onDoubleClick={handleShowMoreInfoModal}
       >
