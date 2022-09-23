@@ -1,9 +1,9 @@
 import { useState } from "react";
-import { projectNameReducer } from "../../../utils/function/projectNameReducer";
-import { IProject } from "../../../utils/interface/IProject";
+import { projectNameReducer } from "../../../../utils/projectNameReducer";
+import { IProject } from "../../../../data/interfaces/IProject";
 import MoreInfoModal from "./MoreInfoModal";
 import { useDrag } from "react-dnd";
-import { ItemTypes } from "../../../utils/constant/ItemTypes";
+import { ItemTypes } from "../../../../data/constants/ItemTypes";
 import { Tooltip } from "@mantine/core";
 
 interface IProjectCardProps {

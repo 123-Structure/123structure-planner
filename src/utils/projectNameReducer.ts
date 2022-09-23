@@ -1,4 +1,4 @@
-import { IProject } from "../interface/IProject";
+import { IProject } from "../data/interfaces/IProject";
 
 export const projectNameReducer = (projects: IProject) => {
   const { DOSSIER, AFFAIRE } = projects;

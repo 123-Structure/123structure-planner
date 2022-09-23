@@ -8,7 +8,7 @@ import {
   IconId,
   IconPencil,
 } from "@tabler/icons";
-import { IProject } from "../../../utils/interface/IProject";
+import { IProject } from "../../../../data/interfaces/IProject";
 
 interface IProjectCardProps {
   showMoreInfo: boolean;

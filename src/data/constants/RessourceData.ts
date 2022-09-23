@@ -1,6 +1,6 @@
-import { IRessource } from "../interface/IRessource";
+import { IRessource } from "../interfaces/IRessource";
 
-export const RessourceList: IRessource[] = [
+export const RessourceData: IRessource[] = [
   {
     firstName: "Thomas",
     lastName: "GALLET",

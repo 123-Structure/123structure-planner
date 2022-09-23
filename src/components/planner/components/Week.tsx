@@ -1,7 +1,7 @@
 import { useDrop } from "react-dnd";
-import { ItemTypes } from "../../utils/constant/ItemTypes";
-import { IProject } from "../../utils/interface/IProject";
-import ProjectCard from "./projectCard/ProjectCard";
+import { ItemTypes } from "../../../data/constants/ItemTypes";
+import { IProject } from "../../../data/interfaces/IProject";
+import ProjectCard from "./ProjectCard/ProjectCard";
 import { Tooltip } from "@mantine/core";
 
 interface IWeekProps {

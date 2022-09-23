@@ -1,12 +1,12 @@
 import { useState } from "react";
-import ProjectCard from "./projectCard/ProjectCard";
-import "../../utils/style/Planner.css";
-import Row from "./projectCard/Row";
-import { RessourceList } from "../../utils/constant/RessourceData";
+import ProjectCard from "./components/ProjectCard/ProjectCard";
+import "../../assets/style/Planner.css";
+import Row from "./components/Row";
+import { RessourceData } from "../../data/constants/RessourceData";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
-import { IProject } from "../../utils/interface/IProject";
-import { ProjectExample } from "../../utils/ProjectExample";
+import { IProject } from "../../data/interfaces/IProject";
+import { ProjectExample } from "../../data/ProjectExample";
 
 const Planner = () => {
   const [projects, setProjects] = useState<IProject[]>(
@@ -45,7 +45,7 @@ const Planner = () => {
               <ProjectCard key={project.DOSSIER} project={project} />
             ))}
         </div>
-        {RessourceList.map((ressource, index) => (
+        {RessourceData.map((ressource, index) => (
           <Row
             key={index}
             id={`${ressource.firstName[0]}.${ressource.lastName}`}

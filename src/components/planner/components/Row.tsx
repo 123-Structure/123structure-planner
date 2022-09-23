@@ -1,7 +1,7 @@
 import { useDrop } from "react-dnd";
-import { ItemTypes } from "../../../utils/constant/ItemTypes";
-import { IProject } from "../../../utils/interface/IProject";
-import Week from "../Week";
+import { ItemTypes } from "../../../data/constants/ItemTypes";
+import { IProject } from "../../../data/interfaces/IProject";
+import Week from "./Week";
 
 interface IRowPropos {
   id: string;

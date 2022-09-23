@@ -2,8 +2,8 @@ import { Dispatch, SetStateAction, useState } from "react";
 import { FileButton, ActionIcon } from "@mantine/core";
 import { IconFileDatabase } from "@tabler/icons";
 import { read, utils } from "xlsx";
-import { ProjectParameters } from "../utils/ProjectParameters";
-import { IProject } from "../utils/interface/IProject";
+import { ProjectParameters } from "../../../data/constants/ProjectParameters";
+import { IProject } from "../../../data/interfaces/IProject";
 
 interface ILoadExcelFileButton {
   project: IProject[] | undefined;
