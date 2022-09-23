@@ -1,4 +1,6 @@
+import { useMantineTheme } from "@mantine/core";
 import { useDrop } from "react-dnd";
+import theme from "../../../assets/style/MantineTheme";
 import { ItemTypes } from "../../../data/constants/ItemTypes";
 import { IProject } from "../../../data/interfaces/IProject";
 import Week from "./Week";
@@ -11,14 +13,36 @@ interface IRowPropos {
 }
 
 const Row = (props: IRowPropos) => {
+  const theme = useMantineTheme();
+
   return (
     <div className="row">
-      <div className="ressource">
+      <div
+        className="ressource"
+        style={{
+          backgroundColor: theme.colors.gray[2],
+        }}
+      >
         <p>{props.ressource}</p>
       </div>
-      <div className="invoicing"></div>
-      <div className="correction"></div>
-      <div className="mustBeFix"></div>
+      <div
+        className="invoicing"
+        style={{
+          backgroundColor: theme.colors.lime[1],
+        }}
+      ></div>
+      <div
+        className="correction"
+        style={{
+          backgroundColor: theme.colors.blue[1],
+        }}
+      ></div>
+      <div
+        className="mustBeFix"
+        style={{
+          backgroundColor: theme.colors.red[1],
+        }}
+      ></div>
       <Week
         rowId={props.id}
         id={"w1"}

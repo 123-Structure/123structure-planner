@@ -50,7 +50,6 @@ const ProjectCard = (props: IProjectCardProps) => {
             height: "60px",
             backgroundColor: "white",
             padding: "4px 4px 8px 4px",
-            borderRadius: "4px",
             userSelect: "none",
             opacity: isDragging ? "0.5" : 1,
             outline: "1px solid black",

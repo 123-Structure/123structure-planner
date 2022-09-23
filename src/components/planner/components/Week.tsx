@@ -2,7 +2,7 @@ import { useDrop } from "react-dnd";
 import { ItemTypes } from "../../../data/constants/ItemTypes";
 import { IProject } from "../../../data/interfaces/IProject";
 import ProjectCard from "./ProjectCard/ProjectCard";
-import { Tooltip } from "@mantine/core";
+import { Tooltip, useMantineTheme } from "@mantine/core";
 
 interface IWeekProps {
   id: string;
@@ -12,6 +12,8 @@ interface IWeekProps {
 }
 
 const Week = (props: IWeekProps) => {
+  const theme = useMantineTheme();
+
   const updateProject = (itemId: any) => {
     const newProjects = [...props.projects];
 
@@ -47,8 +49,9 @@ const Week = (props: IWeekProps) => {
         id={props.id}
         ref={drop}
         style={{
-          backgroundColor: isOver ? "#ffcc00" : "",
-          filter: isOver ? "brightness(115%)" : "",
+          backgroundColor: isOver
+            ? theme.colors.yellow[3]
+            : theme.colors.yellow[0],
         }}
       >
         {props.projects
