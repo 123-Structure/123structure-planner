@@ -2,17 +2,17 @@ import { useMantineTheme } from "@mantine/core";
 import { showNotification } from "@mantine/notifications";
 import React from "react";
 import { useDrop } from "react-dnd";
-import { ItemTypes } from "../../../data/constants/ItemTypes";
-import { IProject } from "../../../data/interfaces/IProject";
-import ProjectCard from "./ProjectCard/ProjectCard";
+import { ItemTypes } from "../../../../data/constants/ItemTypes";
+import { IProject } from "../../../../data/interfaces/IProject";
+import ProjectCard from "../ProjectCard/ProjectCard";
 
-interface IInvoicing {
+interface IInvoicingProps {
   rowId: string;
   projects: IProject[];
   setProjects: React.Dispatch<React.SetStateAction<IProject[]>>;
 }
 
-const Invoicing = (props: IInvoicing) => {
+const Invoicing = (props: IInvoicingProps) => {
   const theme = useMantineTheme();
 
   const [{ isOver }, drop] = useDrop({

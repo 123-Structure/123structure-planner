@@ -1,7 +1,7 @@
 import { useDrop } from "react-dnd";
-import { ItemTypes } from "../../../data/constants/ItemTypes";
-import { IProject } from "../../../data/interfaces/IProject";
-import ProjectCard from "./ProjectCard/ProjectCard";
+import { ItemTypes } from "../../../../data/constants/ItemTypes";
+import { IProject } from "../../../../data/interfaces/IProject";
+import ProjectCard from "../ProjectCard/ProjectCard";
 import { Tooltip, useMantineTheme } from "@mantine/core";
 import { showNotification } from "@mantine/notifications";
 

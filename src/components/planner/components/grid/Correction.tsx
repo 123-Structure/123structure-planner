@@ -2,17 +2,17 @@ import { useMantineTheme } from "@mantine/core";
 import { showNotification } from "@mantine/notifications";
 import React from "react";
 import { useDrop } from "react-dnd";
-import { ItemTypes } from "../../../data/constants/ItemTypes";
-import { IProject } from "../../../data/interfaces/IProject";
-import ProjectCard from "./ProjectCard/ProjectCard";
+import { ItemTypes } from "../../../../data/constants/ItemTypes";
+import { IProject } from "../../../../data/interfaces/IProject";
+import ProjectCard from "../ProjectCard/ProjectCard";
 
-interface ICorrection {
+interface ICorrectionProps {
   rowId: string;
   projects: IProject[];
   setProjects: React.Dispatch<React.SetStateAction<IProject[]>>;
 }
 
-const Correction = (props: ICorrection) => {
+const Correction = (props: ICorrectionProps) => {
   const theme = useMantineTheme();
 
   const [{ isOver }, drop] = useDrop({

@@ -5,12 +5,12 @@ import { read, utils } from "xlsx";
 import { ProjectParameters } from "../../../data/constants/ProjectParameters";
 import { IProject } from "../../../data/interfaces/IProject";
 
-interface ILoadExcelFileButton {
+interface ILoadExcelFileButtonProps {
   project: IProject[] | undefined;
   setProject: Dispatch<SetStateAction<IProject[] | undefined>>;
 }
 
-const LoadExcelFileButton = (props: ILoadExcelFileButton) => {
+const LoadExcelFileButton = (props: ILoadExcelFileButtonProps) => {
   const [file, setFile] = useState<File | null>(null);
 
   const getData = async (excelFile: File | null) => {

@@ -1,18 +1,18 @@
 import { useMantineTheme } from "@mantine/core";
-import { IProject } from "../../../data/interfaces/IProject";
+import { IProject } from "../../../../data/interfaces/IProject";
 import Correction from "./Correction";
 import Invoicing from "./Invoicing";
 import MustBeFix from "./MustBeFix";
 import Week from "./Week";
 
-interface IRowPropos {
+interface IRowProps {
   id: string;
   ressource: string;
   projects: IProject[];
   setProjects: React.Dispatch<React.SetStateAction<IProject[]>>;
 }
 
-const Row = (props: IRowPropos) => {
+const Row = (props: IRowProps) => {
   const theme = useMantineTheme();
 
   return (

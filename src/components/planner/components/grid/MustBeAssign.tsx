@@ -1,16 +1,16 @@
 import { Tooltip, useMantineTheme } from "@mantine/core";
 import { showNotification } from "@mantine/notifications";
 import { useDrop } from "react-dnd";
-import { ItemTypes } from "../../../data/constants/ItemTypes";
-import { IProject } from "../../../data/interfaces/IProject";
-import ProjectCard from "./ProjectCard/ProjectCard";
+import { ItemTypes } from "../../../../data/constants/ItemTypes";
+import { IProject } from "../../../../data/interfaces/IProject";
+import ProjectCard from "../ProjectCard/ProjectCard";
 
-interface INewEntry {
+interface INewEntryProps {
   projects: IProject[];
   setProjects: React.Dispatch<React.SetStateAction<IProject[]>>;
 }
 
-const MustBeAssign = (props: INewEntry) => {
+const MustBeAssign = (props: INewEntryProps) => {
   const theme = useMantineTheme();
 
   const [{ isOver }, drop] = useDrop({

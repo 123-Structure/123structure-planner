@@ -2,17 +2,17 @@ import { useMantineTheme } from "@mantine/core";
 import { showNotification } from "@mantine/notifications";
 import React from "react";
 import { useDrop } from "react-dnd";
-import { ItemTypes } from "../../../data/constants/ItemTypes";
-import { IProject } from "../../../data/interfaces/IProject";
-import ProjectCard from "./ProjectCard/ProjectCard";
+import { ItemTypes } from "../../../../data/constants/ItemTypes";
+import { IProject } from "../../../../data/interfaces/IProject";
+import ProjectCard from "../ProjectCard/ProjectCard";
 
-interface IMustBeFix {
+interface IMustBeFixProps {
   rowId: string;
   projects: IProject[];
   setProjects: React.Dispatch<React.SetStateAction<IProject[]>>;
 }
 
-const MustBeFix = (props: IMustBeFix) => {
+const MustBeFix = (props: IMustBeFixProps) => {
   const theme = useMantineTheme();
 
   const [{ isOver }, drop] = useDrop({
