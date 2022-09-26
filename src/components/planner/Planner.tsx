@@ -7,32 +7,22 @@ import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 import { IProject } from "../../data/interfaces/IProject";
 import { ProjectExample } from "../../data/ProjectExample";
-import { useMantineTheme } from "@mantine/core";
+import { Tooltip, useMantineTheme } from "@mantine/core";
+import MustBeAssign from "./components/MustBeAssign";
 
 const Planner = () => {
   const theme = useMantineTheme();
 
   const [projects, setProjects] = useState<IProject[]>(
     ProjectExample.filter((p) => {
-      return p.CLIENT !== "I.G.C.";
+      return p.CLIENT !== "I.G.C." || !p.AFFAIRE.includes("(PT)");
     })
   );
 
   return (
     <DndProvider backend={HTML5Backend}>
       <div className="grid">
-        <div
-          className="mustBeAssign"
-          style={{
-            backgroundColor: theme.colors.yellow[0],
-          }}
-        >
-          {projects
-            .filter((project) => project.ETAT === "mustBeAssign")
-            .map((filteredProjects, index) => (
-              <ProjectCard key={index} project={filteredProjects} />
-            ))}
-        </div>
+        <MustBeAssign projects={projects} setProjects={setProjects} />
         <div
           className="title"
           style={{

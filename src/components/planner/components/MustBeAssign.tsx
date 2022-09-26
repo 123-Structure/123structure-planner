@@ -1,19 +1,25 @@
+import { Tooltip, useMantineTheme } from "@mantine/core";
+import { showNotification } from "@mantine/notifications";
 import { useDrop } from "react-dnd";
 import { ItemTypes } from "../../../data/constants/ItemTypes";
 import { IProject } from "../../../data/interfaces/IProject";
 import ProjectCard from "./ProjectCard/ProjectCard";
-import { Tooltip, useMantineTheme } from "@mantine/core";
-import { showNotification } from "@mantine/notifications";
 
-interface IWeekProps {
-  id: string;
-  rowId: string;
+interface INewEntry {
   projects: IProject[];
   setProjects: React.Dispatch<React.SetStateAction<IProject[]>>;
 }
 
-const Week = (props: IWeekProps) => {
+const MustBeAssign = (props: INewEntry) => {
   const theme = useMantineTheme();
+
+  const [{ isOver }, drop] = useDrop({
+    accept: ItemTypes.CARD,
+    drop: (item: any, monitor) => updateProject(item.id, "mustBeAssign"),
+    collect: (monitor) => ({
+      isOver: !!monitor.isOver(),
+    }),
+  });
 
   const updateProject = (itemId: any, newValue: string) => {
     const newProjects = [...props.projects];
@@ -21,13 +27,14 @@ const Week = (props: IWeekProps) => {
     const changedProject = newProjects.filter(
       (project) =>
         project.DOSSIER === itemId &&
-        (project.ETAT.includes("w") || project.ETAT.includes("mustBeAssign"))
+        (project.ETAT === "newEntry" || project.ETAT === "mustBeAssign")
     );
 
     if (changedProject.length === 0) {
       showNotification({
         title: "⛔ Action impossible",
-        message: "Ce projet ne peut pas être déplacé dans une semaine",
+        message:
+          'Ce projet ne peut pas être déplacé dans les "Projets à attribuer"',
         color: "red",
       });
     } else {
@@ -36,19 +43,10 @@ const Week = (props: IWeekProps) => {
     }
   };
 
-  const [{ isOver }, drop] = useDrop({
-    accept: ItemTypes.CARD,
-    drop: (item: any, monitor) =>
-      updateProject(item.id, `${props.id} ${props.rowId}`),
-    collect: (monitor) => ({
-      isOver: !!monitor.isOver(),
-    }),
-  });
-
   return (
     <Tooltip
-      label={`${props.id.replace("w", "n°")} - ${props.rowId}`}
-      position="bottom-end"
+      label={"Projet(s) à attribuer"}
+      position="bottom-start"
       color="gray"
       transition="slide-up"
       transitionDuration={300}
@@ -58,20 +56,16 @@ const Week = (props: IWeekProps) => {
       arrowSize={8}
     >
       <div
-        className="week"
-        id={props.id}
+        className="mustBeAssign"
         ref={drop}
         style={{
           backgroundColor: isOver
             ? theme.colors.yellow[3]
-            : parseInt(props.id[1]) % 2 === 0
-            ? theme.colors.gray[4]
-            : "white",
+            : theme.colors.yellow[0],
         }}
       >
         {props.projects
-          .filter((project) => project.ETAT.includes(props.id))
-          .filter((project) => project.ETAT.includes(props.rowId))
+          .filter((project) => project.ETAT === "mustBeAssign")
           .map((filteredProjects, index) => (
             <ProjectCard key={index} project={filteredProjects} />
           ))}
@@ -80,4 +74,4 @@ const Week = (props: IWeekProps) => {
   );
 };
 
-export default Week;
+export default MustBeAssign;
