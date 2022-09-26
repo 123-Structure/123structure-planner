@@ -1,11 +1,11 @@
 import { DataGrid, highlightFilterValue } from "mantine-data-grid";
 import { Modal, useMantineTheme } from "@mantine/core";
 import { useEffect, useState } from "react";
-import { booleanFilter, numberFilter, stringFilter } from "./LocaleFilter";
-import { IProject } from "../../utils/interface/IProject";
+import { booleanFilter, numberFilter, stringFilter } from "../../../utils/mantineDataGridLocaleFilter";
+import { IProject } from "../../../data/interfaces/IProject";
 import { ColumnDef } from "@tanstack/react-table";
-import { ProjectParameters } from "../../utils/ProjectParameters";
-import "../../utils/style/ExceDataGrid.css";
+import { ProjectParameters } from "../../../data/constants/ProjectParameters";
+import "../../../assets/style/ExceDataGrid.css";
 
 interface IExcelTableProps {
   project: IProject[] | undefined;

@@ -1,9 +1,9 @@
 import { Group } from "@mantine/core";
 import React, { useState } from "react";
-import { IProject } from "../utils/interface/IProject";
-import ExcelDataGrid from "./dataGrid/ExcelDataGrid";
-import ExcelDataGridSettings from "./dataGrid/ExcelDataGridSettings";
-import LoadExcelFileButton from "./LoadExcelFileButton";
+import { IProject } from "../../data/interfaces/IProject";
+import ExcelDataGrid from "./components/ExcelDataGrid";
+import ExcelDataGridSettings from "./components/ExcelDataGridSettings";
+import LoadExcelFileButton from "./components/LoadExcelFileButton";
 
 const ReadExcelFile = () => {
   const [project, setProject] = useState<IProject[]>();
