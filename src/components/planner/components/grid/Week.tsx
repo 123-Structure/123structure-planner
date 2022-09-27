@@ -1,22 +1,25 @@
 import { useDrop } from "react-dnd";
 import { ItemTypes } from "../../../../data/constants/ItemTypes";
-import { IProject } from "../../../../data/interfaces/IProject";
 import ProjectCard from "../ProjectCard/ProjectCard";
 import { Tooltip, useMantineTheme } from "@mantine/core";
 import { showNotification } from "@mantine/notifications";
+import {
+  useProject,
+  useUpdateProject,
+} from "../../../../context/ProjectContext";
 
 interface IWeekProps {
   id: string;
   rowId: string;
-  projects: IProject[];
-  setProjects: React.Dispatch<React.SetStateAction<IProject[]>>;
 }
 
 const Week = (props: IWeekProps) => {
   const theme = useMantineTheme();
+  const projects = useProject();
+  const setProjects = useUpdateProject();
 
   const updateProject = (itemId: any, newValue: string) => {
-    const newProjects = [...props.projects];
+    const newProjects = [...projects];
 
     const changedProject = newProjects.filter(
       (project) =>
@@ -32,7 +35,7 @@ const Week = (props: IWeekProps) => {
       });
     } else {
       changedProject[0].ETAT = newValue;
-      props.setProjects(newProjects);
+      setProjects(newProjects);
     }
   };
 
@@ -69,7 +72,7 @@ const Week = (props: IWeekProps) => {
             : "white",
         }}
       >
-        {props.projects
+        {projects
           .filter((project) => project.ETAT.includes(props.id))
           .filter((project) => project.ETAT.includes(props.rowId))
           .map((filteredProjects, index) => (

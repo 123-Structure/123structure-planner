@@ -1,19 +1,21 @@
 import { useMantineTheme } from "@mantine/core";
 import { showNotification } from "@mantine/notifications";
-import React from "react";
 import { useDrop } from "react-dnd";
+import {
+  useProject,
+  useUpdateProject,
+} from "../../../../context/ProjectContext";
 import { ItemTypes } from "../../../../data/constants/ItemTypes";
-import { IProject } from "../../../../data/interfaces/IProject";
 import ProjectCard from "../ProjectCard/ProjectCard";
 
 interface ICorrectionProps {
   rowId: string;
-  projects: IProject[];
-  setProjects: React.Dispatch<React.SetStateAction<IProject[]>>;
 }
 
 const Correction = (props: ICorrectionProps) => {
   const theme = useMantineTheme();
+  const projects = useProject();
+  const setProjects = useUpdateProject();
 
   const [{ isOver }, drop] = useDrop({
     accept: ItemTypes.CARD,
@@ -25,7 +27,7 @@ const Correction = (props: ICorrectionProps) => {
   });
 
   const updateProject = (itemId: any, newValue: string) => {
-    const newProjects = [...props.projects];
+    const newProjects = [...projects];
 
     const changedProject = newProjects.filter(
       (project) =>
@@ -44,7 +46,7 @@ const Correction = (props: ICorrectionProps) => {
       });
     } else {
       changedProject[0].ETAT = newValue;
-      props.setProjects(newProjects);
+      setProjects(newProjects);
     }
   };
 
@@ -56,7 +58,7 @@ const Correction = (props: ICorrectionProps) => {
         backgroundColor: isOver ? theme.colors.yellow[3] : theme.colors.red[1],
       }}
     >
-      {props.projects
+      {projects
         .filter((project) => project.ETAT.includes("correction"))
         .filter((project) => project.ETAT.includes(props.rowId))
         .map((filteredProjects, index) => (

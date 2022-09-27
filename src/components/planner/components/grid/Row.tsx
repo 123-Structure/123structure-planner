@@ -1,5 +1,4 @@
 import { useMantineTheme } from "@mantine/core";
-import { IProject } from "../../../../data/interfaces/IProject";
 import Correction from "./Correction";
 import Invoicing from "./Invoicing";
 import MustBeFix from "./MustBeFix";
@@ -8,8 +7,6 @@ import Week from "./Week";
 interface IRowProps {
   id: string;
   ressource: string;
-  projects: IProject[];
-  setProjects: React.Dispatch<React.SetStateAction<IProject[]>>;
 }
 
 const Row = (props: IRowProps) => {
@@ -25,57 +22,15 @@ const Row = (props: IRowProps) => {
       >
         <p>{props.ressource}</p>
       </div>
-      <Invoicing
-        rowId={props.id}
-        projects={props.projects}
-        setProjects={props.setProjects}
-      />
-      <Correction
-        rowId={props.id}
-        projects={props.projects}
-        setProjects={props.setProjects}
-      />
-      <MustBeFix
-        rowId={props.id}
-        projects={props.projects}
-        setProjects={props.setProjects}
-      />
-      <Week
-        rowId={props.id}
-        id={"w1"}
-        projects={props.projects}
-        setProjects={props.setProjects}
-      />
-      <Week
-        rowId={props.id}
-        id={"w2"}
-        projects={props.projects}
-        setProjects={props.setProjects}
-      />
-      <Week
-        rowId={props.id}
-        id={"w3"}
-        projects={props.projects}
-        setProjects={props.setProjects}
-      />
-      <Week
-        rowId={props.id}
-        id={"w4"}
-        projects={props.projects}
-        setProjects={props.setProjects}
-      />
-      <Week
-        rowId={props.id}
-        id={"w5"}
-        projects={props.projects}
-        setProjects={props.setProjects}
-      />
-      <Week
-        rowId={props.id}
-        id={"w6"}
-        projects={props.projects}
-        setProjects={props.setProjects}
-      />
+      <Invoicing rowId={props.id} />
+      <Correction rowId={props.id} />
+      <MustBeFix rowId={props.id} />
+      <Week rowId={props.id} id={"w1"} />
+      <Week rowId={props.id} id={"w2"} />
+      <Week rowId={props.id} id={"w3"} />
+      <Week rowId={props.id} id={"w4"} />
+      <Week rowId={props.id} id={"w5"} />
+      <Week rowId={props.id} id={"w6"} />
     </div>
   );
 };

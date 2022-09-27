@@ -2,18 +2,22 @@ import { useMantineTheme } from "@mantine/core";
 import { showNotification } from "@mantine/notifications";
 import React from "react";
 import { useDrop } from "react-dnd";
+import {
+  useProject,
+  useUpdateProject,
+} from "../../../../context/ProjectContext";
 import { ItemTypes } from "../../../../data/constants/ItemTypes";
-import { IProject } from "../../../../data/interfaces/IProject";
 import ProjectCard from "../ProjectCard/ProjectCard";
 
 interface IInvoicingProps {
   rowId: string;
-  projects: IProject[];
-  setProjects: React.Dispatch<React.SetStateAction<IProject[]>>;
 }
 
 const Invoicing = (props: IInvoicingProps) => {
   const theme = useMantineTheme();
+
+  const projects = useProject();
+  const setProjects = useUpdateProject();
 
   const [{ isOver }, drop] = useDrop({
     accept: ItemTypes.CARD,
@@ -25,7 +29,7 @@ const Invoicing = (props: IInvoicingProps) => {
   });
 
   const updateProject = (itemId: any, newValue: string) => {
-    const newProjects = [...props.projects];
+    const newProjects = [...projects];
 
     const changedProject = newProjects.filter(
       (project) =>
@@ -42,7 +46,7 @@ const Invoicing = (props: IInvoicingProps) => {
       });
     } else {
       changedProject[0].ETAT = newValue;
-      props.setProjects(newProjects);
+      setProjects(newProjects);
     }
   };
 
@@ -54,7 +58,7 @@ const Invoicing = (props: IInvoicingProps) => {
         backgroundColor: isOver ? theme.colors.yellow[3] : theme.colors.lime[1],
       }}
     >
-      {props.projects
+      {projects
         .filter((project) => project.ETAT.includes("invoicing"))
         .filter((project) => project.ETAT.includes(props.rowId))
         .map((filteredProjects, index) => (

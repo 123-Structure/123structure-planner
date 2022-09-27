@@ -27,7 +27,6 @@ const MoreInfoModal = (props: IProjectCardProps) => {
       opened={props.showMoreInfo}
       onClose={() => props.setShowMoreInfo(false)}
       size="calc(window.screen.width-25%)"
-      withCloseButton={false}
       padding={"xl"}
     >
       <p>
