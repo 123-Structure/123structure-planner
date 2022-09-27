@@ -1,17 +1,14 @@
 import { Tooltip, useMantineTheme } from "@mantine/core";
 import { showNotification } from "@mantine/notifications";
 import { useDrop } from "react-dnd";
-import { ItemTypes } from "../../../data/constants/ItemTypes";
-import { IProject } from "../../../data/interfaces/IProject";
-import ProjectCard from "./ProjectCard/ProjectCard";
+import { useProject, useUpdateProject } from "../../../../context/ProjectContext";
+import { ItemTypes } from "../../../../data/constants/ItemTypes";
+import ProjectCard from "../ProjectCard/ProjectCard";
 
-interface INewEntry {
-  projects: IProject[];
-  setProjects: React.Dispatch<React.SetStateAction<IProject[]>>;
-}
-
-const MustBeAssign = (props: INewEntry) => {
+const MustBeAssign = () => {
   const theme = useMantineTheme();
+  const projects = useProject();
+  const setProjects = useUpdateProject();
 
   const [{ isOver }, drop] = useDrop({
     accept: ItemTypes.CARD,
@@ -22,7 +19,7 @@ const MustBeAssign = (props: INewEntry) => {
   });
 
   const updateProject = (itemId: any, newValue: string) => {
-    const newProjects = [...props.projects];
+    const newProjects = [...projects];
 
     const changedProject = newProjects.filter(
       (project) =>
@@ -39,7 +36,7 @@ const MustBeAssign = (props: INewEntry) => {
       });
     } else {
       changedProject[0].ETAT = newValue;
-      props.setProjects(newProjects);
+      setProjects(newProjects);
     }
   };
 
@@ -64,7 +61,7 @@ const MustBeAssign = (props: INewEntry) => {
             : theme.colors.yellow[0],
         }}
       >
-        {props.projects
+        {projects
           .filter((project) => project.ETAT === "mustBeAssign")
           .map((filteredProjects, index) => (
             <ProjectCard key={index} project={filteredProjects} />

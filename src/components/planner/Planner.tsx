@@ -1,28 +1,22 @@
-import { useState } from "react";
 import ProjectCard from "./components/ProjectCard/ProjectCard";
 import "../../assets/style/Planner.css";
-import Row from "./components/Row";
+import Row from "./components/grid/Row";
 import { RessourceData } from "../../data/constants/RessourceData";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
-import { IProject } from "../../data/interfaces/IProject";
-import { ProjectExample } from "../../data/ProjectExample";
-import { Tooltip, useMantineTheme } from "@mantine/core";
-import MustBeAssign from "./components/MustBeAssign";
+import { useMantineTheme } from "@mantine/core";
+import MustBeAssign from "./components/grid/MustBeAssign";
+import { useProject, useUpdateProject } from "../../context/ProjectContext";
 
 const Planner = () => {
   const theme = useMantineTheme();
-
-  const [projects, setProjects] = useState<IProject[]>(
-    ProjectExample.filter((p) => {
-      return p.CLIENT !== "I.G.C." || !p.AFFAIRE.includes("(PT)");
-    })
-  );
+  const projects = useProject();
+  const setProjects = useUpdateProject();
 
   return (
     <DndProvider backend={HTML5Backend}>
       <div className="grid">
-        <MustBeAssign projects={projects} setProjects={setProjects} />
+        <MustBeAssign />
         <div
           className="title"
           style={{
@@ -58,8 +52,6 @@ const Planner = () => {
             key={index}
             id={`${ressource.firstName[0]}.${ressource.lastName}`}
             ressource={`${ressource.firstName} ${ressource.lastName}`}
-            projects={projects}
-            setProjects={setProjects}
           />
         ))}
       </div>

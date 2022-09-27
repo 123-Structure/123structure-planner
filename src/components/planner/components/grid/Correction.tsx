@@ -1,61 +1,65 @@
 import { useMantineTheme } from "@mantine/core";
 import { showNotification } from "@mantine/notifications";
-import React from "react";
 import { useDrop } from "react-dnd";
-import { ItemTypes } from "../../../data/constants/ItemTypes";
-import { IProject } from "../../../data/interfaces/IProject";
-import ProjectCard from "./ProjectCard/ProjectCard";
+import {
+  useProject,
+  useUpdateProject,
+} from "../../../../context/ProjectContext";
+import { ItemTypes } from "../../../../data/constants/ItemTypes";
+import ProjectCard from "../ProjectCard/ProjectCard";
 
-interface IInvoicing {
+interface ICorrectionProps {
   rowId: string;
-  projects: IProject[];
-  setProjects: React.Dispatch<React.SetStateAction<IProject[]>>;
 }
 
-const Invoicing = (props: IInvoicing) => {
+const Correction = (props: ICorrectionProps) => {
   const theme = useMantineTheme();
+  const projects = useProject();
+  const setProjects = useUpdateProject();
 
   const [{ isOver }, drop] = useDrop({
     accept: ItemTypes.CARD,
     drop: (item: any, monitor) =>
-      updateProject(item.id, `invoicing ${props.rowId}`),
+      updateProject(item.id, `correction ${props.rowId}`),
     collect: (monitor) => ({
       isOver: !!monitor.isOver(),
     }),
   });
 
   const updateProject = (itemId: any, newValue: string) => {
-    const newProjects = [...props.projects];
+    const newProjects = [...projects];
 
     const changedProject = newProjects.filter(
       (project) =>
         project.DOSSIER === itemId &&
         (project.ETAT.includes("correction") ||
-          project.ETAT.includes("invoicing"))
+          project.ETAT.includes("mustBeFix") ||
+          project.ETAT.includes("invoicing") ||
+          project.ETAT.includes("w"))
     );
 
     if (changedProject.length === 0) {
       showNotification({
         title: "⛔ Action impossible",
-        message: 'Ce projet ne peut pas être déplacé dans "Facturation"',
+        message: 'Ce projet ne peut pas être déplacé dans "Correction"',
         color: "red",
       });
     } else {
       changedProject[0].ETAT = newValue;
-      props.setProjects(newProjects);
+      setProjects(newProjects);
     }
   };
 
   return (
     <div
-      className="invoicing"
+      className="correction"
       ref={drop}
       style={{
-        backgroundColor: isOver ? theme.colors.yellow[3] : theme.colors.lime[1],
+        backgroundColor: isOver ? theme.colors.yellow[3] : theme.colors.red[1],
       }}
     >
-      {props.projects
-        .filter((project) => project.ETAT.includes("invoicing"))
+      {projects
+        .filter((project) => project.ETAT.includes("correction"))
         .filter((project) => project.ETAT.includes(props.rowId))
         .map((filteredProjects, index) => (
           <ProjectCard key={index} project={filteredProjects} />
@@ -64,4 +68,4 @@ const Invoicing = (props: IInvoicing) => {
   );
 };
 
-export default Invoicing;
+export default Correction;

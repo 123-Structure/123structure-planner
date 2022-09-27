@@ -1,7 +1,11 @@
 import { DataGrid, highlightFilterValue } from "mantine-data-grid";
-import { Modal, useMantineTheme } from "@mantine/core";
+import { useMantineTheme } from "@mantine/core";
 import { useEffect, useState } from "react";
-import { booleanFilter, numberFilter, stringFilter } from "../../../utils/mantineDataGridLocaleFilter";
+import {
+  booleanFilter,
+  numberFilter,
+  stringFilter,
+} from "../../../utils/mantineDataGridLocaleFilter";
 import { IProject } from "../../../data/interfaces/IProject";
 import { ColumnDef } from "@tanstack/react-table";
 import { ProjectParameters } from "../../../data/constants/ProjectParameters";
@@ -163,44 +167,31 @@ const ExcelDataGrid = (props: IExcelTableProps) => {
   }, [props.showParams]);
 
   return (
-    <>
-      <Modal
-        centered
-        overlayOpacity={0.55}
-        overlayBlur={3}
-        opened={showMoreInfo}
-        onClose={() => setShowMoreInfo(false)}
-      >
-        <p style={{ color: theme.colors.yellow[9] }}>
-          {currentProject?.DOSSIER} - {currentProject?.AFFAIRE}
-        </p>
-      </Modal>
-      <DataGrid
-        data={props.project !== undefined ? props.project : []}
-        striped
-        highlightOnHover
-        // noFlexLayout
-        withGlobalFilter
-        withPagination
-        withColumnFilters
-        withSorting
-        // withColumnResizing
-        locale={{
-          globalSearch: "Rechercher...",
-          pageSize: "Résultats par page:",
-          pagination: (firstRowNum, lastRowNum, maxRows) => (
-            <>
-              Affichage <b>{firstRowNum}</b> - <b>{lastRowNum}</b> sur{" "}
-              <b>{maxRows}</b> résultats
-            </>
-          ),
-        }}
-        onRow={(row) => ({
-          onClick: () => handleRowClick(parseInt(row.id)),
-        })}
-        columns={columns}
-      />
-    </>
+    <DataGrid
+      data={props.project !== undefined ? props.project : []}
+      striped
+      highlightOnHover
+      // noFlexLayout
+      withGlobalFilter
+      withPagination
+      withColumnFilters
+      withSorting
+      // withColumnResizing
+      locale={{
+        globalSearch: "Rechercher...",
+        pageSize: "Résultats par page:",
+        pagination: (firstRowNum, lastRowNum, maxRows) => (
+          <>
+            Affichage <b>{firstRowNum}</b> - <b>{lastRowNum}</b> sur{" "}
+            <b>{maxRows}</b> résultats
+          </>
+        ),
+      }}
+      onRow={(row) => ({
+        onClick: () => handleRowClick(parseInt(row.id)),
+      })}
+      columns={columns}
+    />
   );
 };
 
