@@ -18,9 +18,10 @@ export const ProjectExample: IProject[] = [
     "TEMPS RESTANT": "",
     "HONOS (EUR HT)": "",
     ETAT: "newEntry",
+    RENDU: "27/09/2022",
   },
   {
-    DOSSIER: "00.00.000B",
+    DOSSIER: "00.03.000B",
     AFFAIRE: "(PT) Maisons Alpes Savoie",
     "AGENCE LIVREE": false,
     RESSOURCES: "Vanessa LAFRECHOUX",
@@ -36,6 +37,7 @@ export const ProjectExample: IProject[] = [
     "TEMPS RESTANT": "",
     "HONOS (EUR HT)": "",
     ETAT: "newEntry",
+    RENDU: "27/09/2022",
   },
   {
     DOSSIER: "00.00.000A",
@@ -54,6 +56,7 @@ export const ProjectExample: IProject[] = [
     "TEMPS RESTANT": "",
     "HONOS (EUR HT)": "",
     ETAT: "newEntry",
+    RENDU: "27/09/2022",
   },
   {
     DOSSIER: "22.01.609U",
@@ -72,6 +75,7 @@ export const ProjectExample: IProject[] = [
     "TEMPS RESTANT": "",
     "HONOS (EUR HT)": "",
     ETAT: "newEntry",
+    RENDU: "27/09/2022",
   },
   {
     DOSSIER: "22.05.139Y",
@@ -90,6 +94,7 @@ export const ProjectExample: IProject[] = [
     "TEMPS REALISE": "",
     "TEMPS RESTANT": "",
     ETAT: "newEntry",
+    RENDU: "27/09/2022",
   },
   {
     DOSSIER: "22.01.089L",
@@ -108,6 +113,7 @@ export const ProjectExample: IProject[] = [
     "TEMPS PREVU": "",
     "TEMPS RESTANT": "",
     ETAT: "newEntry",
+    RENDU: "27/09/2022",
   },
   {
     DOSSIER: "22.01.109L",
@@ -126,6 +132,7 @@ export const ProjectExample: IProject[] = [
     "TEMPS RESTANT": "",
     "HONOS (EUR HT)": "",
     ETAT: "mustBeAssign",
+    RENDU: "27/09/2022",
   },
   {
     DOSSIER: "22.01.013L",
@@ -145,6 +152,7 @@ export const ProjectExample: IProject[] = [
     "TEMPS PREVU": "",
     "TEMPS RESTANT": "",
     ETAT: "mustBeAssign",
+    RENDU: "27/09/2022",
   },
   {
     DOSSIER: "22.01.199L",
@@ -163,6 +171,7 @@ export const ProjectExample: IProject[] = [
     "TEMPS RESTANT": "",
     "HONOS (EUR HT)": "",
     ETAT: "w3 B.LECHAT",
+    RENDU: "27/09/2022",
   },
   {
     DOSSIER: "22.01.209L",
@@ -181,5 +190,6 @@ export const ProjectExample: IProject[] = [
     "TEMPS RESTANT": "",
     "HONOS (EUR HT)": "",
     ETAT: "invoicing B.LECHAT",
+    RENDU: "27/09/2022",
   },
 ];

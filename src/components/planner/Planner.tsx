@@ -7,6 +7,7 @@ import { HTML5Backend } from "react-dnd-html5-backend";
 import { useMantineTheme } from "@mantine/core";
 import MustBeAssign from "./components/grid/MustBeAssign";
 import { useProject, useUpdateProject } from "../../context/ProjectContext";
+import Title from "./components/grid/Title";
 
 const Planner = () => {
   const theme = useMantineTheme();
@@ -17,24 +18,7 @@ const Planner = () => {
     <DndProvider backend={HTML5Backend}>
       <div className="grid">
         <MustBeAssign />
-        <div
-          className="title"
-          style={{
-            backgroundColor: theme.colors.yellow[5],
-          }}
-        >
-          <p>Nouvelle Entrée</p>
-          <p>Ressource</p>
-          <p>Facturation</p>
-          <p>Correction</p>
-          <p>Reprise</p>
-          <p>S01 - 00/00/00 au 00/00/00</p>
-          <p>S02 - 00/00/00 au 00/00/00</p>
-          <p>S03 - 00/00/00 au 00/00/00</p>
-          <p>S04 - 00/00/00 au 00/00/00</p>
-          <p>S05 - 00/00/00 au 00/00/00</p>
-          <p>S06 - 00/00/00 au 00/00/00</p>
-        </div>
+        <Title />
         <div
           className="newEntry"
           style={{

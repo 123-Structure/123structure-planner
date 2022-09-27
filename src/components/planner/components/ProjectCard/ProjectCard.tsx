@@ -4,7 +4,9 @@ import { IProject } from "../../../../data/interfaces/IProject";
 import MoreInfoModal from "./MoreInfoModal";
 import { useDrag } from "react-dnd";
 import { ItemTypes } from "../../../../data/constants/ItemTypes";
-import { Tooltip } from "@mantine/core";
+import { Badge, Tooltip } from "@mantine/core";
+import { FolderColors } from "../../../../data/constants/FolderColors";
+
 
 interface IProjectCardProps {
   project: IProject;
@@ -25,6 +27,16 @@ const ProjectCard = (props: IProjectCardProps) => {
 
   const handleShowMoreInfoModal = () => {
     setShowMoreInfo(true);
+  };
+
+  const getMonthColor = (m: string) => {
+    for (let i = 0; i < FolderColors.length; i++) {
+      const month = FolderColors[i];
+      if (m === month.id) {
+        return month.hexColor;
+      }
+    }
+    return "white";
   };
 
   return (
@@ -48,7 +60,7 @@ const ProjectCard = (props: IProjectCardProps) => {
           ref={drag}
           style={{
             height: "60px",
-            backgroundColor: "white",
+            backgroundColor: getMonthColor(props.project.DOSSIER.split(".")[1]),
             padding: "4px 4px 8px 4px",
             userSelect: "none",
             opacity: isDragging ? "0.5" : 1,
@@ -63,7 +75,9 @@ const ProjectCard = (props: IProjectCardProps) => {
           >
             {projectNameReducer(props.project)}
           </p>
-          <p style={{ fontWeight: "bold", margin: "0" }}>jj/mm/aaaa</p>
+          <Badge color="dark" size="lg" variant="filled">
+            {props.project.RENDU}
+          </Badge>
         </div>
       </Tooltip>
     </>
