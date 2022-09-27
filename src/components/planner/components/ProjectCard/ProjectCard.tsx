@@ -6,7 +6,10 @@ import { useDrag } from "react-dnd";
 import { ItemTypes } from "../../../../data/constants/ItemTypes";
 import { Badge, Tooltip } from "@mantine/core";
 import { FolderColors } from "../../../../data/constants/FolderColors";
+import dayjs from "dayjs";
+import CustomParseFormat from "dayjs/plugin/CustomParseFormat";
 
+dayjs.extend(CustomParseFormat);
 
 interface IProjectCardProps {
   project: IProject;
@@ -33,10 +36,26 @@ const ProjectCard = (props: IProjectCardProps) => {
     for (let i = 0; i < FolderColors.length; i++) {
       const month = FolderColors[i];
       if (m === month.id) {
-        return month.hexColor;
+        return [month.BgColor, month.FontColor];
       }
     }
     return "white";
+  };
+
+  const getRemainingTimeColor = (d: string) => {
+    const rendu = dayjs(d, "DD-MM-YYYY");
+    const today = dayjs("27/09/2022", "DD-MM-YYYY");
+    const diff = rendu.diff(today, "day");
+    if (diff > 9) {
+      return "green";
+    }
+    if (diff <= 9 && diff > 3) {
+      return "orange";
+    }
+    if (diff <= 3) {
+      return "red";
+    }
+    return "dark";
   };
 
   return (
@@ -59,23 +78,35 @@ const ProjectCard = (props: IProjectCardProps) => {
         <div
           ref={drag}
           style={{
-            height: "60px",
-            backgroundColor: getMonthColor(props.project.DOSSIER.split(".")[1]),
-            padding: "4px 4px 8px 4px",
+            height: "64px",
+            backgroundColor: getMonthColor(
+              props.project.DOSSIER.split(".")[1]
+            )[0],
+            padding: "2px 4px 6px 6px",
             userSelect: "none",
             opacity: isDragging ? "0.5" : 1,
             outline: "1px solid black",
+            color: getMonthColor(props.project.DOSSIER.split(".")[1])[1],
+            fontWeight: "bold",
           }}
           onDoubleClick={handleShowMoreInfoModal}
         >
           <p
             style={{
-              margin: 0,
+              margin: "0 0 4px 0",
             }}
           >
             {projectNameReducer(props.project)}
           </p>
-          <Badge color="dark" size="lg" variant="filled">
+
+          <Badge
+            color={getRemainingTimeColor(props.project.RENDU)}
+            size="lg"
+            variant="filled"
+            style={{
+              outline: "2px solid white",
+            }}
+          >
             {props.project.RENDU}
           </Badge>
         </div>

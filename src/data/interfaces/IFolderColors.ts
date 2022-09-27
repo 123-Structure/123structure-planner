@@ -1,5 +1,6 @@
 export interface IFolderColors {
   id: string;
   name: string;
-  hexColor: string;
+  BgColor: string;
+  FontColor: string;
 }
