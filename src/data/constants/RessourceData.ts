@@ -6,35 +6,39 @@ export const RessourceData: IRessource[] = [
     lastName: "GALLET",
   },
   {
-    firstName: "Florian",
-    lastName: "GALLOT",
-  },
-  {
     firstName: "Josse",
     lastName: "JANSENS",
   },
   {
-    firstName: "Léo",
-    lastName: "LAVENAN",
-  },
-  {
-    firstName: "Baptiste",
-    lastName: "LECHAT",
+    firstName: "Jolann",
+    lastName: "TREHIOU",
   },
   {
     firstName: "Eudes",
     lastName: "MARCHAND",
   },
   {
+    firstName: "Baptiste",
+    lastName: "LECHAT",
+  },
+  {
+    firstName: "Matthieu",
+    lastName: "LECHAT",
+  },
+  {
+    firstName: "Léo",
+    lastName: "LAVENAN",
+  },
+  {
     firstName: "Guillaume",
     lastName: "NESME",
   },
   {
-    firstName: "Alexandre",
-    lastName: "ROUSSE",
+    firstName: "Florian",
+    lastName: "GALLOT",
   },
   {
-    firstName: "Jolann",
-    lastName: "TREHIOU",
+    firstName: "Alexandre",
+    lastName: "ROUSSE",
   },
 ];

@@ -7,6 +7,7 @@ import {
   useUpdateProject,
 } from "../../../../context/ProjectContext";
 import { ItemTypes } from "../../../../data/constants/ItemTypes";
+import { sortProjects } from "../../../../utils/sortProjects";
 import ProjectCard from "../ProjectCard/ProjectCard";
 
 interface IMustBeFixProps {
@@ -60,8 +61,9 @@ const MustBeFix = (props: IMustBeFixProps) => {
           : theme.colors.orange[1],
       }}
     >
-      {projects
-        .filter((project) => project.ETAT.includes("mustBeFix"))
+      {sortProjects(
+        projects.filter((project) => project.ETAT.includes("mustBeFix"))
+      )
         .filter((project) => project.ETAT.includes(props.rowId))
         .map((filteredProjects, index) => (
           <ProjectCard key={index} project={filteredProjects} />

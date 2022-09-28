@@ -1,8 +1,12 @@
 import { Tooltip, useMantineTheme } from "@mantine/core";
 import { showNotification } from "@mantine/notifications";
 import { useDrop } from "react-dnd";
-import { useProject, useUpdateProject } from "../../../../context/ProjectContext";
+import {
+  useProject,
+  useUpdateProject,
+} from "../../../../context/ProjectContext";
 import { ItemTypes } from "../../../../data/constants/ItemTypes";
+import { sortProjects } from "../../../../utils/sortProjects";
 import ProjectCard from "../ProjectCard/ProjectCard";
 
 const MustBeAssign = () => {
@@ -61,11 +65,11 @@ const MustBeAssign = () => {
             : theme.colors.yellow[0],
         }}
       >
-        {projects
-          .filter((project) => project.ETAT === "mustBeAssign")
-          .map((filteredProjects, index) => (
-            <ProjectCard key={index} project={filteredProjects} />
-          ))}
+        {sortProjects(
+          projects.filter((project) => project.ETAT === "mustBeAssign")
+        ).map((filteredProjects, index) => (
+          <ProjectCard key={index} project={filteredProjects} />
+        ))}
       </div>
     </Tooltip>
   );

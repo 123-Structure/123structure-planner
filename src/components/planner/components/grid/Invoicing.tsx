@@ -7,6 +7,7 @@ import {
   useUpdateProject,
 } from "../../../../context/ProjectContext";
 import { ItemTypes } from "../../../../data/constants/ItemTypes";
+import { sortProjects } from "../../../../utils/sortProjects";
 import ProjectCard from "../ProjectCard/ProjectCard";
 
 interface IInvoicingProps {
@@ -58,8 +59,9 @@ const Invoicing = (props: IInvoicingProps) => {
         backgroundColor: isOver ? theme.colors.yellow[3] : theme.colors.lime[1],
       }}
     >
-      {projects
-        .filter((project) => project.ETAT.includes("invoicing"))
+      {sortProjects(
+        projects.filter((project) => project.ETAT.includes("invoicing"))
+      )
         .filter((project) => project.ETAT.includes(props.rowId))
         .map((filteredProjects, index) => (
           <ProjectCard key={index} project={filteredProjects} />

@@ -83,7 +83,6 @@ const ProjectCard = (props: IProjectCardProps) => {
               props.project.DOSSIER.split(".")[1]
             )[0],
             padding: "2px 4px 6px 6px",
-            userSelect: "none",
             opacity: isDragging ? "0.5" : 1,
             outline: "1px solid black",
             color: getMonthColor(props.project.DOSSIER.split(".")[1])[1],

@@ -7,7 +7,7 @@ import {
   useProject,
   useUpdateProject,
 } from "../../../../context/ProjectContext";
-
+import { sortProjects } from "../../../../utils/sortProjects";
 
 interface IWeekProps {
   id: string;
@@ -25,7 +25,8 @@ const Week = (props: IWeekProps) => {
     const changedProject = newProjects.filter(
       (project) =>
         project.DOSSIER === itemId &&
-        (project.ETAT.includes("w") || project.ETAT.includes("mustBeAssign"))
+        (project.ETAT.includes("w") || project.ETAT.includes("mustBeAssign")) &&
+        !project.ETAT.includes("new")
     );
 
     if (changedProject.length === 0) {
@@ -73,8 +74,9 @@ const Week = (props: IWeekProps) => {
             : "white",
         }}
       >
-        {projects
-          .filter((project) => project.ETAT.includes(props.id))
+        {sortProjects(
+          projects.filter((project) => project.ETAT.includes(props.id))
+        )
           .filter((project) => project.ETAT.includes(props.rowId))
           .map((filteredProjects, index) => (
             <ProjectCard key={index} project={filteredProjects} />
