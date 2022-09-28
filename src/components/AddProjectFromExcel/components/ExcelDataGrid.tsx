@@ -1,5 +1,5 @@
 import { DataGrid, highlightFilterValue } from "mantine-data-grid";
-import { useMantineTheme } from "@mantine/core";
+import { createStyles, useMantineTheme } from "@mantine/core";
 import { useEffect, useState } from "react";
 import {
   booleanFilter,
@@ -10,25 +10,27 @@ import { IProject } from "../../../data/interfaces/IProject";
 import { ColumnDef } from "@tanstack/react-table";
 import { ProjectParameters } from "../../../data/constants/ProjectParameters";
 import "../../../assets/style/ExceDataGrid.css";
+import theme from "../../../assets/style/MantineTheme";
 
 interface IExcelTableProps {
   project: IProject[] | undefined;
   showParams: string[];
 }
 
+const useStyles = createStyles((theme) => ({
+  newProject: {
+    backgroundColor: theme.colors.green[1],
+  },
+  alreadyExistProject: {
+    backgroundColor: theme.colors.red[1],
+  },
+}));
+
 const ExcelDataGrid = (props: IExcelTableProps) => {
-  const [showMoreInfo, setShowMoreInfo] = useState(false);
-  const [currentProject, setCurrentProject] = useState<IProject>();
   const [columns, setColumns] = useState<ColumnDef<IProject, unknown>[]>([]);
 
   const theme = useMantineTheme();
-
-  const handleRowClick = (id: number) => {
-    setShowMoreInfo(true);
-    if (props.project !== undefined) {
-      setCurrentProject(props.project[id]);
-    }
-  };
+  const { classes } = useStyles();
 
   useEffect(() => {
     const matchParams = [];
@@ -169,7 +171,7 @@ const ExcelDataGrid = (props: IExcelTableProps) => {
   return (
     <DataGrid
       data={props.project !== undefined ? props.project : []}
-      striped
+      // striped
       highlightOnHover
       // noFlexLayout
       withGlobalFilter
@@ -177,6 +179,14 @@ const ExcelDataGrid = (props: IExcelTableProps) => {
       withColumnFilters
       withSorting
       // withColumnResizing
+      styles={{
+        th: {
+          backgroundColor: "white",
+        },
+        tr: {
+          backgroundColor: theme.colors.green[0],
+        },
+      }}
       locale={{
         globalSearch: "Rechercher...",
         pageSize: "Résultats par page:",
@@ -188,7 +198,10 @@ const ExcelDataGrid = (props: IExcelTableProps) => {
         ),
       }}
       onRow={(row) => ({
-        onClick: () => handleRowClick(parseInt(row.id)),
+        className:
+          parseInt(row.id) % 2 === 0
+            ? classes.newProject
+            : classes.alreadyExistProject,
       })}
       columns={columns}
     />
