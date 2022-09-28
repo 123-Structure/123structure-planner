@@ -14,5 +14,6 @@ export interface IProject {
   "TEMPS RESTANT": string;
   "HONOS (EUR HT)": string;
   ETAT: string;
+  RENDU: string;
   [key: string]: string | boolean;
 }
