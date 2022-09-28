@@ -26,9 +26,7 @@ const MustBeAssign = () => {
     const newProjects = [...projects];
 
     const changedProject = newProjects.filter(
-      (project) =>
-        project.DOSSIER === itemId &&
-        (project.ETAT === "newEntry" || project.ETAT === "mustBeAssign")
+      (project) => project.DOSSIER === itemId && project.ETAT === "mustBeAssign"
     );
 
     if (changedProject.length === 0) {

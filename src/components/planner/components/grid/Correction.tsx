@@ -36,7 +36,8 @@ const Correction = (props: ICorrectionProps) => {
         (project.ETAT.includes("correction") ||
           project.ETAT.includes("mustBeFix") ||
           project.ETAT.includes("invoicing") ||
-          project.ETAT.includes("w"))
+          project.ETAT.includes("w")) &&
+        !project.ETAT.includes("newEntry")
     );
 
     if (changedProject.length === 0) {
