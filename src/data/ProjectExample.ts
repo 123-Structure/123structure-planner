@@ -17,7 +17,7 @@ export const ProjectExample: IProject[] = [
     "TEMPS REALISE": "",
     "TEMPS RESTANT": "",
     "HONOS (EUR HT)": "",
-    ETAT: "mustBeAssign",
+    ETAT: "invoicing B.LECHAT",
     RENDU: "19/10/2022",
   },
   {
@@ -36,7 +36,7 @@ export const ProjectExample: IProject[] = [
     "TEMPS REALISE": "",
     "TEMPS RESTANT": "",
     "HONOS (EUR HT)": "",
-    ETAT: "newEntry",
+    ETAT: "mustBeAssign",
     RENDU: "05/10/2022",
   },
   {

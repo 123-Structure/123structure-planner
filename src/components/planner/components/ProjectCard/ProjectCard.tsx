@@ -4,10 +4,15 @@ import { IProject } from "../../../../data/interfaces/IProject";
 import MoreInfoModal from "./MoreInfoModal";
 import { useDrag } from "react-dnd";
 import { ItemTypes } from "../../../../data/constants/ItemTypes";
-import { Badge, Tooltip } from "@mantine/core";
+import { Badge, Checkbox, Chip, Tooltip, useMantineTheme } from "@mantine/core";
 import { FolderColors } from "../../../../data/constants/FolderColors";
 import dayjs from "dayjs";
 import CustomParseFormat from "dayjs/plugin/CustomParseFormat";
+import theme from "../../../../assets/style/MantineTheme";
+import {
+  useProject,
+  useUpdateProject,
+} from "../../../../context/ProjectContext";
 
 dayjs.extend(CustomParseFormat);
 
@@ -17,6 +22,10 @@ interface IProjectCardProps {
 
 const ProjectCard = (props: IProjectCardProps) => {
   const [showMoreInfo, setShowMoreInfo] = useState(false);
+  const [isInvoiced, setIsInvoiced] = useState(false);
+  const theme = useMantineTheme();
+  const projects = useProject();
+  const setProjects = useUpdateProject();
 
   const [{ isDragging }, drag] = useDrag({
     type: ItemTypes.CARD,
@@ -58,6 +67,29 @@ const ProjectCard = (props: IProjectCardProps) => {
     return "dark";
   };
 
+  const updateProject = (itemId: any, newValue: string) => {
+    const newProjects = [...projects];
+
+    const changedProject = newProjects.filter(
+      (project) => project.DOSSIER === itemId
+    );
+
+    changedProject[0].ETAT = newValue;
+    setProjects(newProjects);
+  };
+
+  const handleInvoiceChange = () => {
+    setIsInvoiced(!isInvoiced);
+    updateProject(
+      props.project.DOSSIER,
+      `invoicing ${props.project.ETAT.split(" ")[1]} ${
+        isInvoiced ? "" : "isInvoiced"
+      }`
+    );
+  };
+
+  console.log(props.project.ETAT);
+
   return (
     <>
       <MoreInfoModal
@@ -78,7 +110,7 @@ const ProjectCard = (props: IProjectCardProps) => {
         <div
           ref={drag}
           style={{
-            height: "64px",
+            height: "66px",
             backgroundColor: getMonthColor(
               props.project.DOSSIER.split(".")[1]
             )[0],
@@ -97,17 +129,58 @@ const ProjectCard = (props: IProjectCardProps) => {
           >
             {projectNameReducer(props.project)}
           </p>
-
-          <Badge
-            color={getRemainingTimeColor(props.project.RENDU)}
-            size="lg"
-            variant="filled"
+          <div
             style={{
-              outline: "2px solid white",
+              display: "flex",
+              justifyContent: "flex-start",
+              alignItems: "center",
+              gap: "16px",
             }}
           >
-            {props.project.RENDU}
-          </Badge>
+            <Badge
+              color={getRemainingTimeColor(props.project.RENDU)}
+              size="lg"
+              variant="filled"
+              style={{
+                outline: "2px solid white",
+              }}
+            >
+              {props.project.RENDU}
+            </Badge>
+            <div
+              style={{
+                backgroundColor: !props.project.ETAT.includes("invoicing")
+                  ? "white"
+                  : isInvoiced
+                  ? theme.colors.green[1]
+                  : theme.colors.red[1],
+                borderRadius: "14px",
+                padding: "4px 12px",
+              }}
+            >
+              <Checkbox
+                checked={isInvoiced}
+                onChange={handleInvoiceChange}
+                label={
+                  <p
+                    style={{
+                      color: !props.project.ETAT.includes("invoicing")
+                        ? theme.colors.gray[6]
+                        : isInvoiced
+                        ? theme.colors.green[7]
+                        : theme.colors.red[7],
+                      margin: 0,
+                    }}
+                  >
+                    {isInvoiced ? "F" : "NF"}
+                  </p>
+                }
+                color={"green"}
+                disabled={!props.project.ETAT.includes("invoicing")}
+                indeterminate={!props.project.ETAT.includes("invoicing")}
+              />
+            </div>
+          </div>
         </div>
       </Tooltip>
     </>

@@ -2,7 +2,7 @@
   /* background-color: antiquewhite; */
   display: grid;
   grid-template-columns: repeat(11, minmax(224px, auto));
-  grid-template-rows: 328px 50px repeat(10, minmax(64px, auto));
+  grid-template-rows: 328px 50px repeat(10, minmax(66px, auto));
   column-gap: 4px;
   grid-auto-flow: column;
   min-width: 1920px;
