@@ -105,6 +105,9 @@ const ManageUsersModal = (props: IManageUsersModalProps) => {
       <td>
         <Checkbox />
       </td>
+      <td>
+        <Checkbox />
+      </td>
     </tr>
   ));
 
@@ -124,6 +127,7 @@ const ManageUsersModal = (props: IManageUsersModalProps) => {
             <tr>
               <th>Utilisateur</th>
               <th>Rôle</th>
+              <th>Agence</th>
               <th>Nouvelle entrée</th>
               <th>A Attribuer</th>
               <th>Facturation</th>

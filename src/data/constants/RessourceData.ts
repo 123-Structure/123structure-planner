@@ -79,40 +79,4 @@ export const RessourceData: IRessource[] = [
     role: undefined,
     company: undefined,
   },
-  {
-    firstName: "John",
-    lastName: "DOE",
-    role: undefined,
-    company: undefined,
-  },
-  {
-    firstName: "John",
-    lastName: "DOE",
-    role: undefined,
-    company: undefined,
-  },
-  {
-    firstName: "John",
-    lastName: "DOE",
-    role: undefined,
-    company: undefined,
-  },
-  {
-    firstName: "John",
-    lastName: "DOE",
-    role: undefined,
-    company: undefined,
-  },
-  {
-    firstName: "John",
-    lastName: "DOE",
-    role: undefined,
-    company: undefined,
-  },
-  {
-    firstName: "John",
-    lastName: "DOE",
-    role: undefined,
-    company: undefined,
-  },
 ];
