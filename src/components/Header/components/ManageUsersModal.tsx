@@ -14,10 +14,12 @@ import {
   IconCrown,
   IconMathSymbols,
   IconPencil,
+  IconSettings,
   IconUserExclamation,
 } from "@tabler/icons";
-import { Dispatch, SetStateAction } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 import { RessourceData } from "../../../data/constants/RessourceData";
+import { IRessource } from "../../../data/interfaces/IRessource";
 
 interface IManageUsersModalProps {
   openManageUser: boolean;
@@ -26,6 +28,26 @@ interface IManageUsersModalProps {
 
 const ManageUsersModal = (props: IManageUsersModalProps) => {
   const rolesData = ["Dessinateur", "Ingénieur", "Administrateur"];
+
+  const defaultValue = (role: string | undefined) => {
+    return {
+      mustBeAssign: role === "Administrateur",
+      newEntry: role === "Administrateur",
+      invoicing: role === "Administrateur",
+      correction:
+        role === "Administrateur" ||
+        role === "Dessinateur" ||
+        role === "Ingénieur",
+      mustBeFix:
+        role === "Administrateur" ||
+        role === "Dessinateur" ||
+        role === "Ingénieur",
+      week:
+        role === "Administrateur" ||
+        role === "Dessinateur" ||
+        role === "Ingénieur",
+    };
+  };
 
   const companyColor = (company: string | undefined) => {
     if (company !== undefined) {
@@ -50,6 +72,21 @@ const ManageUsersModal = (props: IManageUsersModalProps) => {
     } else {
       return "dark";
     }
+  };
+
+  const handleChangeRole = (e: string | null, user: IRessource) => {
+    const changedUser = RessourceData.filter(
+      (ressource) =>
+        ressource.firstName === user.firstName &&
+        ressource.lastName === user.lastName &&
+        ressource.company === user.company &&
+        ressource.role === user.role
+    );
+    changedUser[0].role = e as
+      | "Dessinateur"
+      | "Ingénieur"
+      | "Administrateur"
+      | undefined;
   };
 
   const rows = RessourceData.map((user) => (
@@ -83,6 +120,7 @@ const ManageUsersModal = (props: IManageUsersModalProps) => {
           defaultValue={user.role}
           variant="unstyled"
           placeholder="Rôle non défini"
+          onChange={(e) => handleChangeRole(e, user)}
         />
       </td>
       <td>
@@ -91,22 +129,22 @@ const ManageUsersModal = (props: IManageUsersModalProps) => {
         </Badge>
       </td>
       <td>
-        <Checkbox />
+        <Checkbox checked={defaultValue(user.role).newEntry} />
       </td>
       <td>
-        <Checkbox />
+        <Checkbox checked={defaultValue(user.role).mustBeAssign} />
       </td>
       <td>
-        <Checkbox />
+        <Checkbox checked={defaultValue(user.role).invoicing} />
       </td>
       <td>
-        <Checkbox />
+        <Checkbox checked={defaultValue(user.role).correction} />
       </td>
       <td>
-        <Checkbox />
+        <Checkbox checked={defaultValue(user.role).mustBeFix} />
       </td>
       <td>
-        <Checkbox />
+        <Checkbox checked={defaultValue(user.role).week} />
       </td>
     </tr>
   ));
@@ -120,6 +158,23 @@ const ManageUsersModal = (props: IManageUsersModalProps) => {
       onClose={() => props.setOpenManageUser(false)}
       size="calc(window.screen.width-25%)"
       padding={"xl"}
+      title={
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <IconSettings
+            size={24}
+            color="black"
+            style={{ marginRight: "8px" }}
+          />
+          <h2 style={{ margin: 0 }}>Réglage des utilisateurs</h2>
+        </div>
+      }
     >
       <ScrollArea style={{ height: "900px" }} offsetScrollbars>
         <Table sx={{ minWidth: 800 }} verticalSpacing="sm">
