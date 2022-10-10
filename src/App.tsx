@@ -5,17 +5,20 @@ import Planner from "./components/Planner/Planner";
 import theme from "./assets/style/MantineTheme";
 import ProjectProvider from "./context/ProjectContext";
 import Header from "./components/Header/Header";
-import AuthProvider, { useAuth, useUpdateAuth } from "./context/AuthContext";
+import RessourceProvider from "./context/RessourceContext";
+import AuthProvider from "./context/AuthContext";
 
 function App() {
   return (
     <MantineProvider withGlobalStyles withNormalizeCSS theme={theme}>
       <NotificationsProvider>
         <ProjectProvider>
-          <AuthProvider>
-            <Header />
-            <Planner />
-          </AuthProvider>
+          <RessourceProvider>
+            <AuthProvider>
+              <Header />
+              <Planner />
+            </AuthProvider>
+          </RessourceProvider>
         </ProjectProvider>
       </NotificationsProvider>
     </MantineProvider>

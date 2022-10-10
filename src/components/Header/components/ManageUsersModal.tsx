@@ -10,6 +10,7 @@ import {
   Table,
   Text,
 } from "@mantine/core";
+import { useMediaQuery } from "@mantine/hooks";
 import {
   IconCrown,
   IconMathSymbols,
@@ -18,7 +19,10 @@ import {
   IconUserExclamation,
 } from "@tabler/icons";
 import { Dispatch, SetStateAction, useState } from "react";
-import { RessourceData } from "../../../data/constants/RessourceData";
+import {
+  useRessources,
+  useUpdateRessources,
+} from "../../../context/RessourceContext";
 import { IRessource } from "../../../data/interfaces/IRessource";
 
 interface IManageUsersModalProps {
@@ -27,6 +31,10 @@ interface IManageUsersModalProps {
 }
 
 const ManageUsersModal = (props: IManageUsersModalProps) => {
+  const ressources = useRessources();
+  const setRessources = useUpdateRessources();
+
+  const isSmallScreen = useMediaQuery("(max-width: 1300px)");
   const rolesData = ["Dessinateur", "Ingénieur", "Administrateur"];
 
   const defaultValue = (role: string | undefined) => {
@@ -74,22 +82,27 @@ const ManageUsersModal = (props: IManageUsersModalProps) => {
     }
   };
 
-  const handleChangeRole = (e: string | null, user: IRessource) => {
-    const changedUser = RessourceData.filter(
+  const handleChangeRole = (newRole: string | null, user: IRessource) => {
+    const newRessources = [...ressources];
+
+    const changedUser = newRessources.filter(
       (ressource) =>
         ressource.firstName === user.firstName &&
         ressource.lastName === user.lastName &&
         ressource.company === user.company &&
         ressource.role === user.role
     );
-    changedUser[0].role = e as
+
+    changedUser[0].role = newRole as
       | "Dessinateur"
       | "Ingénieur"
       | "Administrateur"
       | undefined;
+
+    setRessources(newRessources);
   };
 
-  const rows = RessourceData.map((user) => (
+  const rows = ressources.map((user) => (
     <tr key={`${user.firstName}_${user.lastName}`}>
       <td>
         <Group spacing="sm">
@@ -120,7 +133,7 @@ const ManageUsersModal = (props: IManageUsersModalProps) => {
           defaultValue={user.role}
           variant="unstyled"
           placeholder="Rôle non défini"
-          onChange={(e) => handleChangeRole(e, user)}
+          onChange={(newRole) => handleChangeRole(newRole, user)}
         />
       </td>
       <td>
@@ -152,6 +165,7 @@ const ManageUsersModal = (props: IManageUsersModalProps) => {
   return (
     <Modal
       centered
+      fullScreen={isSmallScreen}
       overlayOpacity={0.55}
       overlayBlur={3}
       opened={props.openManageUser}
@@ -177,7 +191,7 @@ const ManageUsersModal = (props: IManageUsersModalProps) => {
       }
     >
       <ScrollArea style={{ height: "900px" }} offsetScrollbars>
-        <Table sx={{ minWidth: 800 }} verticalSpacing="sm">
+        <Table sx={{ minWidth: 1250 }} verticalSpacing="sm">
           <thead>
             <tr>
               <th>Utilisateur</th>
