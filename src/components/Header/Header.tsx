@@ -1,6 +1,6 @@
 import AddProjectFromExcel from "../AddProjectFromExcel/AddProjectFromExcel";
 import logo from "../../assets/img/logo.png";
-import ManageUsers from "../Planner/ManageUsers/ManageUsers";
+import ManageUsers from "./components/ManageUsers";
 import Login from "./components/Login";
 import "../../assets/style/Header.css";
 

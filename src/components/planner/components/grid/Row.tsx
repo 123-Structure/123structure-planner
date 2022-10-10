@@ -7,6 +7,7 @@ import Week from "./Week";
 interface IRowProps {
   id: string;
   ressource: string;
+  role: string | undefined;
 }
 
 const Row = (props: IRowProps) => {
@@ -20,7 +21,13 @@ const Row = (props: IRowProps) => {
           backgroundColor: theme.colors.gray[2],
         }}
       >
-        <p>{props.ressource}</p>
+        <p
+          style={{
+            color: props.role === "Ingénieur" ? "red" : "black",
+          }}
+        >
+          {props.ressource}
+        </p>
       </div>
       <Invoicing rowId={props.id} />
       <Correction rowId={props.id} />

@@ -8,15 +8,13 @@ import Header from "./components/Header/Header";
 import AuthProvider, { useAuth, useUpdateAuth } from "./context/AuthContext";
 
 function App() {
-  const auth = useAuth();
-  console.log(auth);
   return (
     <MantineProvider withGlobalStyles withNormalizeCSS theme={theme}>
       <NotificationsProvider>
         <ProjectProvider>
           <AuthProvider>
             <Header />
-            {auth ? <Planner /> : <></>}
+            <Planner />
           </AuthProvider>
         </ProjectProvider>
       </NotificationsProvider>
