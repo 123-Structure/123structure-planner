@@ -8,7 +8,7 @@ import ExcelDataGridSettings from "./ExcelDataGridSettings";
 interface IExcelDataGridModalProps {
   showModal: boolean;
   setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
-  project: IProject[];
+  project: IProject[] | undefined;
   setProject: React.Dispatch<React.SetStateAction<IProject[] | undefined>>;
 }
 

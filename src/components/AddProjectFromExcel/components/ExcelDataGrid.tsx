@@ -2,7 +2,6 @@ import { DataGrid, highlightFilterValue } from "mantine-data-grid";
 import { createStyles, useMantineTheme } from "@mantine/core";
 import { useEffect, useState } from "react";
 import {
-  booleanFilter,
   numberFilter,
   stringFilter,
 } from "../../../utils/mantineDataGridLocaleFilter";
@@ -10,7 +9,6 @@ import { IProject } from "../../../data/interfaces/IProject";
 import { ColumnDef } from "@tanstack/react-table";
 import { ProjectParameters } from "../../../data/constants/ProjectParameters";
 import "../../../assets/style/ExceDataGrid.css";
-import theme from "../../../assets/style/MantineTheme";
 
 interface IExcelTableProps {
   project: IProject[] | undefined;
@@ -59,7 +57,7 @@ const ExcelDataGrid = (props: IExcelTableProps) => {
           accessorKey: "AFFAIRE",
           header: "Affaire",
           filterFn: stringFilter,
-          size: 300,
+          size: 350,
           cell: highlightFilterValue,
         });
       }
@@ -68,91 +66,14 @@ const ExcelDataGrid = (props: IExcelTableProps) => {
           accessorKey: "CLIENT",
           header: "Client",
           filterFn: stringFilter,
-          size: 150,
+          size: 200,
           cell: highlightFilterValue,
         });
       }
       if (param === ProjectParameters[4]) {
         matchParams.push({
-          accessorKey: "ARCHITECTE",
-          header: "Architecte",
-          filterFn: stringFilter,
-          size: 150,
-          cell: highlightFilterValue,
-        });
-      }
-      if (param === ProjectParameters[5]) {
-        matchParams.push({
-          accessorKey: "AGENCE LIVREE",
-          header: "Agence Livrée",
-          filterFn: booleanFilter,
-          size: 150,
-        });
-      }
-      if (param === ProjectParameters[6]) {
-        matchParams.push({
-          accessorKey: "RESSOURCES",
-          header: "Ressources",
-          filterFn: stringFilter,
-          size: 350,
-          cell: highlightFilterValue,
-        });
-      }
-      if (param === ProjectParameters[7]) {
-        matchParams.push({
-          accessorKey: "SOL",
-          header: "Etude de sol",
-          filterFn: stringFilter,
-          size: 150,
-          cell: highlightFilterValue,
-        });
-      }
-      if (param === ProjectParameters[8]) {
-        matchParams.push({
-          accessorKey: "LIVRAISON",
-          header: "Livraison",
-          filterFn: stringFilter,
-          size: 150,
-          cell: highlightFilterValue,
-        });
-      }
-      if (param === ProjectParameters[9]) {
-        matchParams.push({
-          accessorKey: "LIVRTRI",
-          header: "LIVR. (tri)",
-          filterFn: stringFilter,
-          size: 150,
-          cell: highlightFilterValue,
-        });
-      }
-      if (param === ProjectParameters[10]) {
-        matchParams.push({
-          accessorKey: "TEMPS PREVU",
-          header: "Temps prévu",
-          filterFn: numberFilter,
-          size: 150,
-        });
-      }
-      if (param === ProjectParameters[11]) {
-        matchParams.push({
-          accessorKey: "TEMPS REALISE",
-          header: "Temps réalisé",
-          filterFn: numberFilter,
-          size: 150,
-        });
-      }
-      if (param === ProjectParameters[12]) {
-        matchParams.push({
-          accessorKey: "TEMPS RESTANT",
-          header: "Temps restant",
-          filterFn: numberFilter,
-          size: 150,
-        });
-      }
-      if (param === ProjectParameters[13]) {
-        matchParams.push({
-          accessorKey: "HONOS (EUR HT)",
-          header: "Honoraires (€ HT)",
+          accessorKey: "MONTANT DEVIS (EUR HT)",
+          header: "Montant du devis (€ HT)",
           filterFn: numberFilter,
           size: 175,
         });
@@ -171,14 +92,11 @@ const ExcelDataGrid = (props: IExcelTableProps) => {
   return (
     <DataGrid
       data={props.project !== undefined ? props.project : []}
-      // striped
       highlightOnHover
-      // noFlexLayout
       withGlobalFilter
       withPagination
       withColumnFilters
       withSorting
-      // withColumnResizing
       styles={{
         th: {
           backgroundColor: "white",
