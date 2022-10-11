@@ -1,4 +1,5 @@
 import { useMantineTheme } from "@mantine/core";
+import { TRole } from "../../../../data/types/TRole";
 import Correction from "./Correction";
 import Invoicing from "./Invoicing";
 import MustBeFix from "./MustBeFix";
@@ -7,7 +8,7 @@ import Week from "./Week";
 interface IRowProps {
   id: string;
   ressource: string;
-  role: string | undefined;
+  role: TRole[];
 }
 
 const Row = (props: IRowProps) => {
@@ -23,7 +24,7 @@ const Row = (props: IRowProps) => {
       >
         <p
           style={{
-            color: props.role === "Ingénieur" ? "red" : "black",
+            color: props.role?.includes("Ingénieur") ? "red" : "black",
           }}
         >
           {props.ressource}

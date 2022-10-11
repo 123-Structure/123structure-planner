@@ -20,7 +20,9 @@ const Planner = () => {
           style={{
             gridTemplateRows: `328px 50px repeat(${
               ressources.filter(
-                (ressource) => ressource.role !== "Administrateur"
+                (ressource) =>
+                  ressource.role.sort()[0] !== "Administrateur" ||
+                  ressource.role.length > 1
               ).length
             }, minmax(66px, auto))`,
           }}
@@ -28,16 +30,20 @@ const Planner = () => {
           <MustBeAssign />
           <Title />
           <NewEntry />
-          {ressources.filter(
-            (ressource) => ressource.role !== "Administrateur"
-          ).map((ressource, index) => (
-            <Row
-              key={index}
-              id={`${ressource.firstName[0]}.${ressource.lastName}`}
-              ressource={`${ressource.firstName} ${ressource.lastName}`}
-              role={ressource.role}
-            />
-          ))}
+          {ressources
+            .filter(
+              (ressource) =>
+                ressource.role.sort()[0] !== "Administrateur" ||
+                ressource.role.length > 1
+            )
+            .map((ressource, index) => (
+              <Row
+                key={index}
+                id={`${ressource.firstName[0]}.${ressource.lastName}`}
+                ressource={`${ressource.firstName} ${ressource.lastName}`}
+                role={ressource.role}
+              />
+            ))}
         </div>
       </DndProvider>
     );
