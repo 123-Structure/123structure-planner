@@ -8,6 +8,8 @@ import {
   useUpdateProject,
 } from "../../../../context/ProjectContext";
 import { sortProjects } from "../../../../utils/sortProjects";
+import dayjs from "dayjs";
+import IsoWeek from "dayjs/plugin/IsoWeek";
 
 interface IWeekProps {
   id: string;
@@ -18,6 +20,12 @@ const Week = (props: IWeekProps) => {
   const theme = useMantineTheme();
   const projects = useProject();
   const setProjects = useUpdateProject();
+
+  const weekNumber = (weekIndex: number) => {
+    return dayjs().isoWeek() + weekIndex > 52
+      ? dayjs().isoWeek() + weekIndex - 52
+      : dayjs().isoWeek() + weekIndex;
+  };
 
   const updateProject = (itemId: any, newValue: string) => {
     const newProjects = [...projects];
@@ -52,7 +60,7 @@ const Week = (props: IWeekProps) => {
 
   return (
     <Tooltip
-      label={`${props.id.replace("w", "n°")} - ${props.rowId}`}
+      label={`n°${weekNumber(parseInt(props.id[1])-1)} - ${props.rowId}`}
       position="bottom-end"
       color="gray"
       transition="slide-up"

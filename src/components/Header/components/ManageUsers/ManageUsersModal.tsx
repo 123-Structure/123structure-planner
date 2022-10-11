@@ -25,8 +25,8 @@ import {
 import { companyColor } from "../../../../utils/companyColor";
 import { defaultAccessRight } from "../../../../utils/defaultAccessRight";
 import AddUser from "./AddUser";
-import MultiFixerSelect from "./MultiFixerSelect";
-import MultiRoleSelect from "./MultiRoleSelect";
+import MultiFixerSelect from "./MultiSelect/MultiFixerSelect";
+import MultiRoleSelect from "./MultiSelect/MultiRoleSelect";
 
 interface IManageUsersModalProps {
   openManageUser: boolean;

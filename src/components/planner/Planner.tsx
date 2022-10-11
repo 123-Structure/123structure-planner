@@ -40,8 +40,7 @@ const Planner = () => {
               <Row
                 key={index}
                 id={`${ressource.firstName[0]}.${ressource.lastName}`}
-                ressource={`${ressource.firstName} ${ressource.lastName}`}
-                role={ressource.role}
+                ressource={ressource}
               />
             ))}
         </div>

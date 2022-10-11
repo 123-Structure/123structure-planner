@@ -4,9 +4,9 @@ import { forwardRef } from "react";
 import {
   useRessources,
   useUpdateRessources,
-} from "../../../../context/RessourceContext";
-import { IRessource } from "../../../../data/interfaces/IRessource";
-import { companyColor } from "../../../../utils/companyColor";
+} from "../../../../../context/RessourceContext";
+import { IRessource } from "../../../../../data/interfaces/IRessource";
+import { companyColor } from "../../../../../utils/companyColor";
 
 interface IMultiFixerSelectProps {
   user: IRessource;

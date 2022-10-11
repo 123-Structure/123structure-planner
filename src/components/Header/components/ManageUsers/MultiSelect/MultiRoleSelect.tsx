@@ -16,10 +16,10 @@ import React, { forwardRef } from "react";
 import {
   useRessources,
   useUpdateRessources,
-} from "../../../../context/RessourceContext";
-import { IRessource } from "../../../../data/interfaces/IRessource";
-import { TRole } from "../../../../data/types/TRole";
-import { companyColor } from "../../../../utils/companyColor";
+} from "../../../../../context/RessourceContext";
+import { IRessource } from "../../../../../data/interfaces/IRessource";
+import { TRole } from "../../../../../data/types/TRole";
+import { companyColor } from "../../../../../utils/companyColor";
 
 interface IMultiRoleSelectProps {
   user: IRessource;
