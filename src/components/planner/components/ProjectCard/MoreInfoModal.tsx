@@ -1,6 +1,6 @@
 import { Input, NumberInput, Modal, useMantineTheme } from "@mantine/core";
 import { DatePicker } from "@mantine/dates";
-import { Dispatch, SetStateAction, useState } from "react";
+import { Dispatch, SetStateAction } from "react";
 import "dayjs/locale/fr";
 import {
   IconCalculator,

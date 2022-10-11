@@ -1,5 +1,4 @@
 import { DataGrid, highlightFilterValue } from "mantine-data-grid";
-import { useMantineTheme } from "@mantine/core";
 import { useEffect, useState } from "react";
 import {
   booleanFilter,
@@ -21,7 +20,6 @@ const ExcelDataGrid = (props: IExcelTableProps) => {
   const [currentProject, setCurrentProject] = useState<IProject>();
   const [columns, setColumns] = useState<ColumnDef<IProject, unknown>[]>([]);
 
-  const theme = useMantineTheme();
 
   const handleRowClick = (id: number) => {
     setShowMoreInfo(true);

@@ -8,7 +8,6 @@ import { Badge, Checkbox, Chip, Tooltip, useMantineTheme } from "@mantine/core";
 import { FolderColors } from "../../../../data/constants/FolderColors";
 import dayjs from "dayjs";
 import CustomParseFormat from "dayjs/plugin/CustomParseFormat";
-import theme from "../../../../assets/style/MantineTheme";
 import {
   useProject,
   useUpdateProject,
@@ -87,8 +86,6 @@ const ProjectCard = (props: IProjectCardProps) => {
       }`
     );
   };
-
-  console.log(props.project.ETAT);
 
   return (
     <>

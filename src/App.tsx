@@ -4,15 +4,21 @@ import "./App.css";
 import Planner from "./components/Planner/Planner";
 import theme from "./assets/style/MantineTheme";
 import ProjectProvider from "./context/ProjectContext";
-import AddProjectFromExcel from "./components/AddProjectFromExcel/AddProjectFromExcel";
+import Header from "./components/Header/Header";
+import RessourceProvider from "./context/RessourceContext";
+import AuthProvider from "./context/AuthContext";
 
 function App() {
   return (
     <MantineProvider withGlobalStyles withNormalizeCSS theme={theme}>
       <NotificationsProvider>
         <ProjectProvider>
-          <AddProjectFromExcel />
-          <Planner />
+          <RessourceProvider>
+            <AuthProvider>
+              <Header />
+              <Planner />
+            </AuthProvider>
+          </RessourceProvider>
         </ProjectProvider>
       </NotificationsProvider>
     </MantineProvider>

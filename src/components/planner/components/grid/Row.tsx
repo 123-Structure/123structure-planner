@@ -1,27 +1,19 @@
-import { useMantineTheme } from "@mantine/core";
+import { IRessource } from "../../../../data/interfaces/IRessource";
 import Correction from "./Correction";
 import Invoicing from "./Invoicing";
 import MustBeFix from "./MustBeFix";
+import Ressource from "./Ressource";
 import Week from "./Week";
 
 interface IRowProps {
   id: string;
-  ressource: string;
+  ressource: IRessource;
 }
 
 const Row = (props: IRowProps) => {
-  const theme = useMantineTheme();
-
   return (
     <div className="row">
-      <div
-        className="ressource"
-        style={{
-          backgroundColor: theme.colors.gray[2],
-        }}
-      >
-        <p>{props.ressource}</p>
-      </div>
+      <Ressource ressource={props.ressource} />
       <Invoicing rowId={props.id} />
       <Correction rowId={props.id} />
       <MustBeFix rowId={props.id} />

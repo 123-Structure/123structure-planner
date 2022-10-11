@@ -6,6 +6,7 @@
   column-gap: 4px;
   grid-auto-flow: column;
   min-width: 1920px;
+  padding: 0 1rem 1rem 1rem;
 }
 
 .mustBeAssign {
