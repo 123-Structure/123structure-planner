@@ -83,6 +83,28 @@ export const RessourceData: IRessource[] = [
     ],
   },
   {
+    firstName: "Matthieu",
+    lastName: "LECHAT",
+    role: ["Dessinateur"],
+    company: "Clisson",
+    fixer: [
+      {
+        firstName: "Vanessa",
+        lastName: "LAFRECHOUX",
+        role: ["Administrateur", "Correcteur"],
+        company: "Global",
+        fixer: undefined,
+      },
+      {
+        firstName: "Eudes",
+        lastName: "MARCHAND",
+        role: ["Dessinateur", "Correcteur"],
+        company: "Clisson",
+        fixer: undefined,
+      },
+    ],
+  },
+  {
     firstName: "Baptiste",
     lastName: "LECHAT",
     role: ["Administrateur", "Dessinateur"],
@@ -105,26 +127,18 @@ export const RessourceData: IRessource[] = [
     ],
   },
   {
-    firstName: "Matthieu",
-    lastName: "LECHAT",
-    role: ["Dessinateur"],
-    company: "Clisson",
-    fixer: [
-      {
-        firstName: "Vanessa",
-        lastName: "LAFRECHOUX",
-        role: ["Administrateur", "Correcteur"],
-        company: "Global",
-        fixer: undefined,
-      },
-      {
-        firstName: "Eudes",
-        lastName: "MARCHAND",
-        role: ["Dessinateur", "Correcteur"],
-        company: "Clisson",
-        fixer: undefined,
-      },
-    ],
+    firstName: "Marie-Annie",
+    lastName: "PERROT",
+    role: ["Administrateur"],
+    company: "Global",
+    fixer: undefined,
+  },
+  {
+    firstName: "Vanessa",
+    lastName: "LAFRECHOUX",
+    role: ["Administrateur", "Correcteur"],
+    company: "Global",
+    fixer: undefined,
   },
   {
     firstName: "Léo",
@@ -151,7 +165,7 @@ export const RessourceData: IRessource[] = [
   {
     firstName: "Guillaume",
     lastName: "NESME",
-    role: ["Dessinateur"],
+    role: ["Dessinateur", "Correcteur"],
     company: "Villefranche-sur-Saône",
     fixer: [
       {
@@ -190,6 +204,13 @@ export const RessourceData: IRessource[] = [
         company: "Clisson",
         fixer: undefined,
       },
+      {
+        firstName: "Guillaume",
+        lastName: "NESME",
+        role: ["Dessinateur", "Correcteur"],
+        company: "Villefranche-sur-Saône",
+        fixer: undefined,
+      },
     ],
   },
   {
@@ -213,19 +234,5 @@ export const RessourceData: IRessource[] = [
         fixer: undefined,
       },
     ],
-  },
-  {
-    firstName: "Marie-Annie",
-    lastName: "PERROT",
-    role: ["Administrateur"],
-    company: "Global",
-    fixer: undefined,
-  },
-  {
-    firstName: "Vanessa",
-    lastName: "LAFRECHOUX",
-    role: ["Administrateur", "Correcteur"],
-    company: "Global",
-    fixer: undefined,
   },
 ];
