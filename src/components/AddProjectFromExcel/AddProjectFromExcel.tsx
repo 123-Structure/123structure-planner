@@ -4,12 +4,12 @@ import { IconFilePlus } from "@tabler/icons";
 import { read, utils } from "xlsx";
 import { ProjectParameters } from "../../data/constants/ProjectParameters";
 import { IProject } from "../../data/interfaces/IProject";
-import ExcelDataGridModal from "./components/ExcelDataGridModal";
+import ExcelDataGridModal from "./components/ExcelGridModal/ExcelGridModal";
 
 const AddProjectFromExcel = () => {
   const [file, setFile] = useState<File | null>(null);
 
-  const [project, setProject] = useState<IProject[]>();
+  const [importProject, setImportProject] = useState<IProject[]>();
 
   const [showModal, setShowModal] = useState(false);
   const resetRef = useRef<() => void>(null);
@@ -57,7 +57,7 @@ const AddProjectFromExcel = () => {
       setFile(null);
       resetRef.current?.();
       setShowModal(true);
-      setProject(projects);
+      setImportProject(projects);
     }
   };
 
@@ -77,8 +77,8 @@ const AddProjectFromExcel = () => {
       <ExcelDataGridModal
         showModal={showModal}
         setShowModal={setShowModal}
-        project={project}
-        setProject={setProject}
+        importProject={importProject}
+        setImportProject={setImportProject}
       />
     </>
   );

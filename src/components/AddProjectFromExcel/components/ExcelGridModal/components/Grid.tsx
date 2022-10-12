@@ -4,14 +4,15 @@ import { useEffect, useState } from "react";
 import {
   numberFilter,
   stringFilter,
-} from "../../../utils/mantineDataGridLocaleFilter";
-import { IProject } from "../../../data/interfaces/IProject";
+} from "../../../../../utils/mantineDataGridLocaleFilter";
+import { IProject } from "../../../../../data/interfaces/IProject";
 import { ColumnDef } from "@tanstack/react-table";
-import { ProjectParameters } from "../../../data/constants/ProjectParameters";
-import "../../../assets/style/ExceDataGrid.css";
+import { ProjectParameters } from "../../../../../data/constants/ProjectParameters";
+import "../../../../../assets/style/ExcelGrid.css";
+import { useProject } from "../../../../../context/ProjectContext";
 
 interface IExcelTableProps {
-  project: IProject[] | undefined;
+  importProject: IProject[] | undefined;
   showParams: string[];
 }
 
@@ -24,11 +25,20 @@ const useStyles = createStyles((theme) => ({
   },
 }));
 
-const ExcelDataGrid = (props: IExcelTableProps) => {
+const Grid = (props: IExcelTableProps) => {
   const [columns, setColumns] = useState<ColumnDef<IProject, unknown>[]>([]);
 
+  const projects = useProject();
   const theme = useMantineTheme();
   const { classes } = useStyles();
+
+  const isNewProject = (currentProject: IProject | undefined): boolean => {
+    if (currentProject !== undefined) {
+      const projectID = projects.map((project) => project.DOSSIER);
+      return !projectID.includes(currentProject.DOSSIER);
+    }
+    return false;
+  };
 
   useEffect(() => {
     const matchParams = [];
@@ -91,7 +101,7 @@ const ExcelDataGrid = (props: IExcelTableProps) => {
 
   return (
     <DataGrid
-      data={props.project !== undefined ? props.project : []}
+      data={props.importProject !== undefined ? props.importProject : []}
       highlightOnHover
       withGlobalFilter
       withPagination
@@ -116,14 +126,17 @@ const ExcelDataGrid = (props: IExcelTableProps) => {
         ),
       }}
       onRow={(row) => ({
-        className:
-          parseInt(row.id) % 2 === 0
-            ? classes.newProject
-            : classes.alreadyExistProject,
+        className: isNewProject(
+          props.importProject !== undefined
+            ? props.importProject[parseInt(row.id)]
+            : undefined
+        )
+          ? classes.newProject
+          : classes.alreadyExistProject,
       })}
       columns={columns}
     />
   );
 };
 
-export default ExcelDataGrid;
+export default Grid;
