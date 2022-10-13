@@ -3,5 +3,6 @@ export const ProjectParameters = [
   "DOSSIER",
   "AFFAIRE",
   "CLIENT",
+  "PHASE",
   "MONTANT DEVIS (EUR HT)",
 ];

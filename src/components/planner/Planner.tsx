@@ -37,11 +37,7 @@ const Planner = () => {
                 ressource.role.length > 1
             )
             .map((ressource, index) => (
-              <Row
-                key={index}
-                id={`${ressource.firstName[0]}.${ressource.lastName}`}
-                ressource={ressource}
-              />
+              <Row key={index} id={`${ressource._id}`} ressource={ressource} />
             ))}
         </div>
       </DndProvider>

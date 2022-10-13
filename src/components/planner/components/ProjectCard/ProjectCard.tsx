@@ -50,18 +50,20 @@ const ProjectCard = (props: IProjectCardProps) => {
     return "white";
   };
 
-  const getRemainingTimeColor = (d: string) => {
-    const rendu = dayjs(d, "DD-MM-YYYY");
-    const today = dayjs("27/09/2022", "DD-MM-YYYY");
-    const diff = rendu.diff(today, "day");
-    if (diff > 9) {
-      return "green";
-    }
-    if (diff <= 9 && diff > 3) {
-      return "orange";
-    }
-    if (diff <= 3) {
-      return "red";
+  const getRemainingTimeColor = (d: string | undefined) => {
+    if (d !== undefined) {
+      const rendu = dayjs(d, "DD-MM-YYYY");
+      const today = dayjs("27/09/2022", "DD-MM-YYYY");
+      const diff = rendu.diff(today, "day");
+      if (diff > 9) {
+        return "green";
+      }
+      if (diff <= 9 && diff > 3) {
+        return "orange";
+      }
+      if (diff <= 3) {
+        return "red";
+      }
     }
     return "dark";
   };
@@ -142,7 +144,9 @@ const ProjectCard = (props: IProjectCardProps) => {
                 outline: "2px solid white",
               }}
             >
-              {props.project.RENDU}
+              {props.project.RENDU !== undefined
+                ? props.project.RENDU
+                : "Non défini"}
             </Badge>
             <div
               style={{

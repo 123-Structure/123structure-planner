@@ -4,10 +4,10 @@ import {
   booleanFilter,
   numberFilter,
   stringFilter,
-} from "../../../utils/mantineDataGridLocaleFilter";
-import { IProject } from "../../../data/interfaces/IProject";
+} from "../../../../../utils/mantineDataGridLocaleFilter";
+import { IProject } from "../../../../../data/interfaces/IProject";
 import { ColumnDef } from "@tanstack/react-table";
-import { ProjectParameters } from "../../../data/constants/ProjectParameters";
+import { ProjectParameters } from "../../../../../data/constants/ProjectParameters";
 import "../../../assets/style/ExceDataGrid.css";
 
 interface IExcelTableProps {
@@ -19,7 +19,6 @@ const ExcelDataGrid = (props: IExcelTableProps) => {
   const [showMoreInfo, setShowMoreInfo] = useState(false);
   const [currentProject, setCurrentProject] = useState<IProject>();
   const [columns, setColumns] = useState<ColumnDef<IProject, unknown>[]>([]);
-
 
   const handleRowClick = (id: number) => {
     setShowMoreInfo(true);

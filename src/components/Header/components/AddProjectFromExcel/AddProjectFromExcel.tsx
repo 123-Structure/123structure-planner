@@ -2,20 +2,27 @@ import { useState, useRef } from "react";
 import { FileButton, ActionIcon, Modal, Button } from "@mantine/core";
 import { IconFilePlus } from "@tabler/icons";
 import { read, utils } from "xlsx";
-import { ProjectParameters } from "../../data/constants/ProjectParameters";
-import { IProject } from "../../data/interfaces/IProject";
-import ExcelDataGridModal from "./components/ExcelGridModal/ExcelGridModal";
+import { IProject } from "../../../../data/interfaces/IProject";
+import { ProjectParameters } from "../../../../data/constants/ProjectParameters";
+import ExcelGridModal from "./components/ExcelGridModal/ExcelGridModal";
+import { useProject } from "../../../../context/ProjectContext";
 
 const AddProjectFromExcel = () => {
   const [file, setFile] = useState<File | null>(null);
-
   const [importProject, setImportProject] = useState<IProject[]>();
-
   const [showModal, setShowModal] = useState(false);
+
+  const [newProject, setNewProject] = useState<IProject[]>([]);
+  const [duplicatedProjectID, setDuplicatedProjectID] = useState<string[]>([]);
+
+  const projects = useProject();
+
   const resetRef = useRef<() => void>(null);
 
+  console.log(newProject);
+
   const getData = async (excelFile: File | null) => {
-    const projects = [];
+    const importProjectList = [];
     if (excelFile === null) {
       return console.log("Fichier manquant...");
     } else {
@@ -52,12 +59,36 @@ const AddProjectFromExcel = () => {
             element.AGENCE = "Autre";
             break;
         }
-        projects.push(element);
+        importProjectList.push(element);
       }
       setFile(null);
       resetRef.current?.();
       setShowModal(true);
-      setImportProject(projects);
+      setImportProject(importProjectList);
+
+      const projectID = projects.map((project) => project.DOSSIER);
+      const newProjectList = importProjectList.filter(
+        (p) => !projectID.includes(p.DOSSIER)
+      );
+
+      newProjectList.map((p) => (p.PHASE = "EXE"));
+
+      const duplicatedProject = newProjectList
+        ?.map((p) => p.DOSSIER)
+        .filter((e, i, a) => a.indexOf(e) !== i);
+
+      newProjectList
+        .filter((p) => duplicatedProject.includes(p.DOSSIER))
+        .map((p) => (p.PHASE = undefined));
+
+      const alreadyExistProject = importProjectList.filter((p) =>
+        projectID.includes(p.DOSSIER)
+      );
+
+      alreadyExistProject.map((p) => (p.PHASE = "ETUDE DE SOL"));
+
+      setNewProject(newProjectList);
+      setDuplicatedProjectID(duplicatedProject);
     }
   };
 
@@ -74,11 +105,15 @@ const AddProjectFromExcel = () => {
           </ActionIcon>
         )}
       </FileButton>
-      <ExcelDataGridModal
+      <ExcelGridModal
         showModal={showModal}
         setShowModal={setShowModal}
         importProject={importProject}
         setImportProject={setImportProject}
+        newProject={newProject}
+        setNewProject={setNewProject}
+        duplicatedProjectID={duplicatedProjectID}
+        setDuplicatedProjectID={setDuplicatedProjectID}
       />
     </>
   );

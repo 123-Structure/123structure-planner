@@ -5,14 +5,14 @@ import { useEffect, useState } from "react";
 import {
   useProject,
   useUpdateProject,
-} from "../../../../../context/ProjectContext";
-import { IProject } from "../../../../../data/interfaces/IProject";
+} from "../../../../../../../context/ProjectContext";
+import { IProject } from "../../../../../../../data/interfaces/IProject";
 
 interface IValidateButton {
   importProject: IProject[] | undefined;
   handleModalClose: () => void;
   newProjectLength: number | undefined;
-  setNewProjectLength: React.Dispatch<React.SetStateAction<number | undefined>>;
+  duplicatedProjectLength: number | undefined;
 }
 
 const ValidateButton = (props: IValidateButton) => {
@@ -21,7 +21,6 @@ const ValidateButton = (props: IValidateButton) => {
 
   const addNewProject = () => {
     const newProjects = [...projects];
-    let newProjectLength = 0;
     const projectID = projects.map((project) => project.DOSSIER);
 
     props.importProject?.forEach((p) => {
@@ -53,36 +52,19 @@ const ValidateButton = (props: IValidateButton) => {
               : "",
           LIVRTRI:
             p.LIVRTRI === undefined ? "" : p.LIVRTRI !== "" ? p.LIVRTRI : "",
-          "TEMPS PREVU":
-            p["TEMPS PREVU"] === undefined
-              ? ""
-              : p["TEMPS PREVU"] !== ""
-              ? p["TEMPS PREVU"]
-              : "",
+          "TEMPS PREVU": p["TEMPS PREVU"] === undefined ? "" : p["TEMPS PREVU"],
           "TEMPS REALISE":
-            p["TEMPS REALISE"] === undefined
-              ? ""
-              : p["TEMPS REALISE"] !== ""
-              ? p["TEMPS REALISE"]
-              : "",
+            p["TEMPS REALISE"] === undefined ? "" : p["TEMPS REALISE"],
           "TEMPS RESTANT":
-            p["TEMPS RESTANT"] === undefined
-              ? ""
-              : p["TEMPS RESTANT"] !== ""
-              ? p["TEMPS RESTANT"]
-              : "",
+            p["TEMPS RESTANT"] === undefined ? "" : p["TEMPS RESTANT"],
+
           "MONTANT DEVIS (EUR HT)":
             p["MONTANT DEVIS (EUR HT)"] === undefined
               ? ""
-              : p["MONTANT DEVIS (EUR HT)"] !== ""
-              ? p["MONTANT DEVIS (EUR HT)"]
-              : "",
-          ETAT:
-            p.ETAT === undefined
-              ? "newEntry"
-              : p.ETAT !== ""
-              ? p.ETAT
-              : "newEntry",
+              : p["MONTANT DEVIS (EUR HT)"],
+          ETAT: p.ETAT === undefined ? "newEntry" : p.ETAT,
+          RENDU: undefined,
+          PHASE: p.PHASE === undefined ? "EXE" : p.PHASE,
         };
 
         newProjects.push(newProject);
@@ -107,20 +89,13 @@ const ValidateButton = (props: IValidateButton) => {
     });
   };
 
-  useEffect(() => {
-    const projectID = projects.map((project) => project.DOSSIER);
-
-    props.setNewProjectLength(
-      props.importProject?.filter((p) => !projectID.includes(p.DOSSIER)).length
-    );
-  }, []);
-
   return (
     <div style={{ marginBottom: "16px" }}>
       <Button
         color="green"
         style={{ marginRight: "16px" }}
         onClick={addNewProject}
+        disabled={props.duplicatedProjectLength !== 0}
       >
         <IconCheck size={24} style={{ marginRight: "8px" }} />
         {`Charger ${props.newProjectLength} nouveau(x) projet(s)`}

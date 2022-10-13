@@ -1,3 +1,5 @@
+import { TPhase } from "../types/TPhase";
+
 export interface IProject {
   DOSSIER: string;
   AFFAIRE: string;
@@ -12,6 +14,7 @@ export interface IProject {
   "TEMPS RESTANT": string;
   "MONTANT DEVIS (EUR HT)": string;
   ETAT: string;
-  RENDU: string;
-  [key: string]: string | boolean;
+  RENDU: string | undefined;
+  PHASE: TPhase;
+  [key: string]: string | boolean | undefined;
 }
