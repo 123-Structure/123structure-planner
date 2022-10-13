@@ -3,7 +3,7 @@ import { IconFilePlus } from "@tabler/icons";
 import { useState } from "react";
 import { IProject } from "../../../../data/interfaces/IProject";
 import ExcelSettings from "./components/ModalSettingsButton";
-import ModalTitle from "../../../ModalTitle";
+import ModalTitle from "../../../utils/ModalTitle";
 import ValidateButton from "./components/ValidateButton";
 import Grid from "./components/Grid";
 
