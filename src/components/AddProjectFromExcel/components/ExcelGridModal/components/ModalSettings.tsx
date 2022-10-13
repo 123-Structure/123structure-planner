@@ -1,14 +1,14 @@
 import { Checkbox, ActionIcon, Modal } from "@mantine/core";
 import { IconSettings } from "@tabler/icons";
 import { Dispatch, SetStateAction, useState } from "react";
-import { ProjectParameters } from "../../../data/constants/ProjectParameters";
+import { ProjectParameters } from "../../../../../data/constants/ProjectParameters";
 
 interface IExcelDataGridSettingsProps {
   showParams: string[];
   setShowParams: Dispatch<SetStateAction<string[]>>;
 }
 
-const ExcelDataGridSettings = (props: IExcelDataGridSettingsProps) => {
+const ModalSettings = (props: IExcelDataGridSettingsProps) => {
   const [openSettings, setOpenSettings] = useState(false);
 
   const handleSettingsClick = () => {
@@ -49,4 +49,4 @@ const ExcelDataGridSettings = (props: IExcelDataGridSettingsProps) => {
   );
 };
 
-export default ExcelDataGridSettings;
+export default ModalSettings;

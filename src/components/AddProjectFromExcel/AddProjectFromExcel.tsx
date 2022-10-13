@@ -1,25 +1,17 @@
 import { useState, useRef } from "react";
-import { FileButton, ActionIcon, Modal } from "@mantine/core";
-import { IconFilePlus, IconTableImport } from "@tabler/icons";
+import { FileButton, ActionIcon, Modal, Button } from "@mantine/core";
+import { IconFilePlus } from "@tabler/icons";
 import { read, utils } from "xlsx";
 import { ProjectParameters } from "../../data/constants/ProjectParameters";
 import { IProject } from "../../data/interfaces/IProject";
-import ExcelDataGrid from "./components/ExcelDataGrid";
-import ExcelDataGridSettings from "./components/ExcelDataGridSettings";
+import ExcelDataGridModal from "./components/ExcelGridModal/ExcelGridModal";
 
 const AddProjectFromExcel = () => {
   const [file, setFile] = useState<File | null>(null);
 
-  const [project, setProject] = useState<IProject[]>();
-  const [showParams, setShowParams] = useState<string[]>([
-    "AGENCE",
-    "DOSSIER",
-    "AFFAIRE",
-    "RESSOURCES",
-  ]);
+  const [importProject, setImportProject] = useState<IProject[]>();
 
   const [showModal, setShowModal] = useState(false);
-
   const resetRef = useRef<() => void>(null);
 
   const getData = async (excelFile: File | null) => {
@@ -65,13 +57,8 @@ const AddProjectFromExcel = () => {
       setFile(null);
       resetRef.current?.();
       setShowModal(true);
-      setProject(projects);
+      setImportProject(projects);
     }
-  };
-
-  const handleModalClose = () => {
-    setShowModal(false);
-    setProject([]);
   };
 
   return (
@@ -87,47 +74,12 @@ const AddProjectFromExcel = () => {
           </ActionIcon>
         )}
       </FileButton>
-      <Modal
-        centered
-        overlayOpacity={0.55}
-        overlayBlur={3}
-        opened={showModal}
-        onClose={handleModalClose}
-        size="calc(100vw - 500px)"
-        padding={"xl"}
-        title={
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-            }}
-          >
-            <IconTableImport size={32} style={{ marginRight: "8px" }} />
-            <h2 style={{ margin: 0 }}>
-              Importer des nouveaux projets depuis un fichier Excel
-            </h2>
-          </div>
-        }
-      >
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "flex-start",
-            marginBottom: "16px",
-          }}
-        >
-          <h2 style={{ margin: "0 16px 0 0" }}>
-            {project?.length !== undefined ? project?.length : 0} Affaire(s)
-          </h2>
-          <ExcelDataGridSettings
-            showParams={showParams}
-            setShowParams={setShowParams}
-          />
-        </div>
-        <ExcelDataGrid project={project} showParams={showParams} />
-      </Modal>
+      <ExcelDataGridModal
+        showModal={showModal}
+        setShowModal={setShowModal}
+        importProject={importProject}
+        setImportProject={setImportProject}
+      />
     </>
   );
 };
