@@ -6,6 +6,7 @@ import {
   useUpdateProject,
 } from "../../../../context/ProjectContext";
 import { ItemTypes } from "../../../../data/constants/ItemTypes";
+import { sortProjects } from "../../../../utils/sortProjects";
 import ProjectCard from "../ProjectCard/ProjectCard";
 
 interface ICorrectionProps {
@@ -35,7 +36,8 @@ const Correction = (props: ICorrectionProps) => {
         (project.ETAT.includes("correction") ||
           project.ETAT.includes("mustBeFix") ||
           project.ETAT.includes("invoicing") ||
-          project.ETAT.includes("w"))
+          project.ETAT.includes("w")) &&
+        !project.ETAT.includes("newEntry")
     );
 
     if (changedProject.length === 0) {
@@ -58,8 +60,9 @@ const Correction = (props: ICorrectionProps) => {
         backgroundColor: isOver ? theme.colors.yellow[3] : theme.colors.red[1],
       }}
     >
-      {projects
-        .filter((project) => project.ETAT.includes("correction"))
+      {sortProjects(
+        projects.filter((project) => project.ETAT.includes("correction"))
+      )
         .filter((project) => project.ETAT.includes(props.rowId))
         .map((filteredProjects, index) => (
           <ProjectCard key={index} project={filteredProjects} />

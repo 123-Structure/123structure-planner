@@ -2,10 +2,11 @@
   /* background-color: antiquewhite; */
   display: grid;
   grid-template-columns: repeat(11, minmax(224px, auto));
-  grid-template-rows: 328px 50px repeat(9, minmax(60px, auto));
+  grid-template-rows: 328px 50px repeat(10, minmax(66px, auto));
   column-gap: 4px;
   grid-auto-flow: column;
   min-width: 1920px;
+  padding: 0 1rem 1rem 1rem;
 }
 
 .mustBeAssign {
@@ -17,7 +18,7 @@
   grid-template-rows: repeat(5, 1fr);
   column-gap: 4px;
   outline: 1px solid black;
-  }
+}
 
 .title {
   /* background-color: white; */
@@ -69,7 +70,7 @@
 
 .newEntry {
   /* background-color: antiquewhite; */
-  grid-row: 3 / span 9;
+  grid-row: 3 / span 10;
   outline: 1px solid black;
 }
 

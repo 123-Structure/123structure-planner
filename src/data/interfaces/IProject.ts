@@ -12,5 +12,6 @@ export interface IProject {
   "TEMPS RESTANT": string;
   "MONTANT DEVIS (EUR HT)": string;
   ETAT: string;
+  RENDU: string;
   [key: string]: string | boolean;
 }
