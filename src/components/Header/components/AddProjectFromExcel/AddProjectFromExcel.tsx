@@ -9,7 +9,7 @@ import { useProject } from "../../../../context/ProjectContext";
 
 const AddProjectFromExcel = () => {
   const [file, setFile] = useState<File | null>(null);
-  const [importProject, setImportProject] = useState<IProject[]>();
+  const [importProject, setImportProject] = useState<IProject[]>([]);
   const [showModal, setShowModal] = useState(false);
 
   const [newProject, setNewProject] = useState<IProject[]>([]);
@@ -18,8 +18,6 @@ const AddProjectFromExcel = () => {
   const projects = useProject();
 
   const resetRef = useRef<() => void>(null);
-
-  console.log(newProject);
 
   const getData = async (excelFile: File | null) => {
     const importProjectList = [];
@@ -61,10 +59,6 @@ const AddProjectFromExcel = () => {
         }
         importProjectList.push(element);
       }
-      setFile(null);
-      resetRef.current?.();
-      setShowModal(true);
-      setImportProject(importProjectList);
 
       const projectID = projects.map((project) => project.DOSSIER);
       const newProjectList = importProjectList.filter(
@@ -85,10 +79,20 @@ const AddProjectFromExcel = () => {
         projectID.includes(p.DOSSIER)
       );
 
-      alreadyExistProject.map((p) => (p.PHASE = "ETUDE DE SOL"));
+      alreadyExistProject.map(
+        (exist) =>
+          (exist.PHASE = projects.filter(
+            (p) => p.DOSSIER === exist.DOSSIER
+          )[0].PHASE)
+      );
 
       setNewProject(newProjectList);
       setDuplicatedProjectID(duplicatedProject);
+
+      setFile(null);
+      resetRef.current?.();
+      setShowModal(true);
+      setImportProject(importProjectList);
     }
   };
 

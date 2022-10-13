@@ -13,7 +13,8 @@ import { useProject } from "../../../../../../../context/ProjectContext";
 import DuplicatedProjectModal from "./DuplicatedProjectModal";
 
 interface IExcelTableProps {
-  importProject: IProject[] | undefined;
+  importProject: IProject[];
+  setImportProject: React.Dispatch<React.SetStateAction<IProject[]>>;
   showParams: string[];
   duplicatedProjectID: string[];
   newProject: IProject[];
@@ -35,6 +36,8 @@ const useStyles = createStyles((theme) => ({
 const Grid = (props: IExcelTableProps) => {
   const [columns, setColumns] = useState<ColumnDef<IProject, unknown>[]>([]);
   const [duplicatedProject, setDuplicatedProject] = useState<IProject>();
+  const [duplicatedProjectRowID, setduplicatedProjectRowID] =
+    useState<number>(0);
 
   const [showDuplicatedProjectModal, setShowDuplicatedProjectModal] =
     useState(false);
@@ -66,6 +69,7 @@ const Grid = (props: IExcelTableProps) => {
       if (
         props.duplicatedProjectID.includes(props.importProject[rowID].DOSSIER)
       ) {
+        setduplicatedProjectRowID(rowID);
         setDuplicatedProject(props.importProject[rowID]);
         setShowDuplicatedProjectModal(true);
       }
@@ -180,9 +184,10 @@ const Grid = (props: IExcelTableProps) => {
       <DuplicatedProjectModal
         showDuplicatedProjectModal={showDuplicatedProjectModal}
         setShowDuplicatedProjectModal={setShowDuplicatedProjectModal}
-        newProject={props.newProject}
-        setNewProject={props.setNewProject}
         duplicatedProject={duplicatedProject}
+        importProject={props.importProject}
+        setImportProject={props.setImportProject}
+        duplicatedProjectRowID={duplicatedProjectRowID}
       />
     </>
   );

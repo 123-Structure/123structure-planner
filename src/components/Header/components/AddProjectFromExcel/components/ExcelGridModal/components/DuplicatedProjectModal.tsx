@@ -8,9 +8,10 @@ import ModalTitle from "../../../../../../utils/ModalTitle";
 interface IDuplicatedProjectModal {
   showDuplicatedProjectModal: boolean;
   setShowDuplicatedProjectModal: React.Dispatch<React.SetStateAction<boolean>>;
-  newProject: IProject[];
-  setNewProject: React.Dispatch<React.SetStateAction<IProject[]>>;
   duplicatedProject: IProject | undefined;
+  importProject: IProject[];
+  setImportProject: React.Dispatch<React.SetStateAction<IProject[]>>;
+  duplicatedProjectRowID: number;
 }
 
 const DuplicatedProjectModal = (props: IDuplicatedProjectModal) => {
@@ -19,15 +20,13 @@ const DuplicatedProjectModal = (props: IDuplicatedProjectModal) => {
   const data = ["DIAG", "AVP", "EXE", "ETUDE DE SOL"];
 
   const handleUpdateDuplicatedProject = () => {
-    const project = [...props.newProject];
-    
-    const changedProject = project.filter(
-      (p) => p.DOSSIER === props.duplicatedProject?.DOSSIER
-    )[0];
+    const project = [...props.importProject];
+    const changedProject: IProject = project[props.duplicatedProjectRowID];
     changedProject.PHASE = value as TPhase;
 
-    props.setNewProject(project);
+    props.setImportProject(project);
     props.setShowDuplicatedProjectModal(false);
+    setValue(null);
   };
 
   return (
@@ -43,8 +42,16 @@ const DuplicatedProjectModal = (props: IDuplicatedProjectModal) => {
       }
     >
       <p>{`${props.duplicatedProject?.DOSSIER} - ${props.duplicatedProject?.AFFAIRE}`}</p>
+      <p>
+        {`Phase actuelle : ${
+          props.duplicatedProject?.PHASE !== undefined
+            ? props.duplicatedProject?.PHASE
+            : "-"
+        }`}
+      </p>
       <Select
         style={{ marginBottom: "16px" }}
+        label="Sélectionner une phase à attribuer puis valider"
         data={data}
         value={value}
         onChange={setValue}
