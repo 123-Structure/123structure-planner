@@ -45,8 +45,6 @@ const MultiFixerSelect = (props: IMultiFixerSelectProps) => {
       });
     });
 
-    console.log(newFixerList, changedUser[0]);
-
     changedUser[0].fixer = newFixerList;
 
     setRessources(newRessources);

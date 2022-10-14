@@ -11,9 +11,7 @@ interface IExcelDataGridModalProps {
   showModal: boolean;
   setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
   importProject: IProject[];
-  setImportProject: React.Dispatch<
-    React.SetStateAction<IProject[]>
-  >;
+  setImportProject: React.Dispatch<React.SetStateAction<IProject[]>>;
 
   newProject: IProject[];
   setNewProject: React.Dispatch<React.SetStateAction<IProject[]>>;
@@ -72,6 +70,7 @@ const ExcelGridModal = (props: IExcelDataGridModalProps) => {
         setImportProject={props.setImportProject}
         showParams={showParams}
         duplicatedProjectID={props.duplicatedProjectID}
+        setDuplicatedProjectID={props.setDuplicatedProjectID}
         newProject={props.newProject}
         setNewProject={props.setNewProject}
       />

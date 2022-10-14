@@ -66,7 +66,6 @@ const ValidateButton = (props: IValidateButton) => {
           RENDU: undefined,
           PHASE: p.PHASE === undefined ? "EXE" : p.PHASE,
         };
-
         newProjects.push(newProject);
       }
     });

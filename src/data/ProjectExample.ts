@@ -17,8 +17,8 @@ export const ProjectExample: IProject[] = [
     LIVRAISON: "",
     SOL: "",
     ETAT: "mustBeAssign",
-    RENDU: undefined,
-    PHASE: "AVP",
+    RENDU: "20/10/2022",
+    PHASE: "ETUDE DE SOL",
   },
   {
     DOSSIER: "21.10.149L",

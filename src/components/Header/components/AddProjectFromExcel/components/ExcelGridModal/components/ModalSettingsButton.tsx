@@ -37,9 +37,13 @@ const ModalSettingsButton = (props: IExcelSettings) => {
         <Badge color={"green"} style={{ margin: "0 0 8px 0" }} fullWidth>
           {props.newProjectLength} nouveau(x) projet(s)
         </Badge>
-        <Badge color={"blue"} style={{ margin: "0 0 8px 0" }} fullWidth>
-          dont {props.duplicatedProjectLength} projet(s) dupliqué(s)
-        </Badge>
+        {props.duplicatedProjectLength !== 0 ? (
+          <Badge color={"blue"} style={{ margin: "0 0 8px 0" }} fullWidth>
+            dont {props.duplicatedProjectLength} projet(s) à completer
+          </Badge>
+        ) : (
+          <></>
+        )}
         <Badge color={"red"} fullWidth>
           {props.newProjectLength !== undefined &&
           props.projectLength !== undefined

@@ -17,6 +17,7 @@ interface IExcelTableProps {
   setImportProject: React.Dispatch<React.SetStateAction<IProject[]>>;
   showParams: string[];
   duplicatedProjectID: string[];
+  setDuplicatedProjectID: React.Dispatch<React.SetStateAction<string[]>>;
   newProject: IProject[];
   setNewProject: React.Dispatch<React.SetStateAction<IProject[]>>;
 }
@@ -35,8 +36,9 @@ const useStyles = createStyles((theme) => ({
 
 const Grid = (props: IExcelTableProps) => {
   const [columns, setColumns] = useState<ColumnDef<IProject, unknown>[]>([]);
-  const [duplicatedProject, setDuplicatedProject] = useState<IProject>();
-  const [duplicatedProjectRowID, setduplicatedProjectRowID] =
+  const [currentDuplicatedProject, setCurrentDuplicatedProject] =
+    useState<IProject>();
+  const [duplicatedProjectRowID, setDuplicatedProjectRowID] =
     useState<number>(0);
 
   const [showDuplicatedProjectModal, setShowDuplicatedProjectModal] =
@@ -51,7 +53,10 @@ const Grid = (props: IExcelTableProps) => {
 
       if (!projectID.includes(currentProject.DOSSIER)) {
         if (props.duplicatedProjectID !== undefined) {
-          if (props.duplicatedProjectID?.includes(currentProject.DOSSIER)) {
+          if (
+            props.duplicatedProjectID?.includes(currentProject.DOSSIER) &&
+            currentProject.PHASE === undefined
+          ) {
             return "duplicatedProject";
           } else {
             return "newProject";
@@ -69,8 +74,8 @@ const Grid = (props: IExcelTableProps) => {
       if (
         props.duplicatedProjectID.includes(props.importProject[rowID].DOSSIER)
       ) {
-        setduplicatedProjectRowID(rowID);
-        setDuplicatedProject(props.importProject[rowID]);
+        setDuplicatedProjectRowID(rowID);
+        setCurrentDuplicatedProject(props.importProject[rowID]);
         setShowDuplicatedProjectModal(true);
       }
     }
@@ -184,10 +189,12 @@ const Grid = (props: IExcelTableProps) => {
       <DuplicatedProjectModal
         showDuplicatedProjectModal={showDuplicatedProjectModal}
         setShowDuplicatedProjectModal={setShowDuplicatedProjectModal}
-        duplicatedProject={duplicatedProject}
+        currentDuplicatedProject={currentDuplicatedProject}
         importProject={props.importProject}
         setImportProject={props.setImportProject}
         duplicatedProjectRowID={duplicatedProjectRowID}
+        duplicatedProjectID={props.duplicatedProjectID}
+        setDuplicatedProjectID={props.setDuplicatedProjectID}
       />
     </>
   );

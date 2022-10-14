@@ -8,10 +8,12 @@ import ModalTitle from "../../../../../../utils/ModalTitle";
 interface IDuplicatedProjectModal {
   showDuplicatedProjectModal: boolean;
   setShowDuplicatedProjectModal: React.Dispatch<React.SetStateAction<boolean>>;
-  duplicatedProject: IProject | undefined;
+  currentDuplicatedProject: IProject | undefined;
   importProject: IProject[];
   setImportProject: React.Dispatch<React.SetStateAction<IProject[]>>;
   duplicatedProjectRowID: number;
+  duplicatedProjectID: string[];
+  setDuplicatedProjectID: React.Dispatch<React.SetStateAction<string[]>>;
 }
 
 const DuplicatedProjectModal = (props: IDuplicatedProjectModal) => {
@@ -23,7 +25,17 @@ const DuplicatedProjectModal = (props: IDuplicatedProjectModal) => {
     const project = [...props.importProject];
     const changedProject: IProject = project[props.duplicatedProjectRowID];
     changedProject.PHASE = value as TPhase;
-
+    if (
+      props.importProject
+        .filter((p) => p.DOSSIER === props.currentDuplicatedProject?.DOSSIER)
+        .filter((p) => p.PHASE === undefined).length === 0
+    ) {
+      props.setDuplicatedProjectID(
+        props.duplicatedProjectID.filter(
+          (id) => id !== props.currentDuplicatedProject?.DOSSIER
+        )
+      );
+    }
     props.setImportProject(project);
     props.setShowDuplicatedProjectModal(false);
     setValue(null);
@@ -41,11 +53,11 @@ const DuplicatedProjectModal = (props: IDuplicatedProjectModal) => {
         <ModalTitle icon={<IconCopy size={24} />} title="Projet dupliqué" />
       }
     >
-      <p>{`${props.duplicatedProject?.DOSSIER} - ${props.duplicatedProject?.AFFAIRE}`}</p>
+      <p>{`${props.currentDuplicatedProject?.DOSSIER} - ${props.currentDuplicatedProject?.AFFAIRE}`}</p>
       <p>
         {`Phase actuelle : ${
-          props.duplicatedProject?.PHASE !== undefined
-            ? props.duplicatedProject?.PHASE
+          props.currentDuplicatedProject?.PHASE !== undefined
+            ? props.currentDuplicatedProject?.PHASE
             : "-"
         }`}
       </p>
