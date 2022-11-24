@@ -1,5 +1,6 @@
 import express, { Express, NextFunction, Request, Response } from "express";
 import dotenv from "dotenv";
+import mongoose from "mongoose";
 import projectsRouter from "./routes/projects";
 
 dotenv.config();
@@ -7,6 +8,7 @@ dotenv.config();
 // Express App
 const app: Express = express();
 const port = process.env.PORT;
+const mongoURI = process.env.MONGODB_URI as string;
 
 // Middleware
 app.use(express.json());
@@ -22,7 +24,14 @@ app.get("/", (req: Request, res: Response) => {
 
 app.use("/api/projects", projectsRouter);
 
-// Listen requests
-app.listen(port, () => {
-  console.log(`⚡️[server]: Server is running at https://localhost:${port}`);
-});
+// Connect to database
+mongoose
+  .connect(mongoURI)
+  .then(() => {
+    // Listen requests
+    app.listen(port, () => {
+      console.log("📂[mongodb]: Connected to database");
+      console.log(`⚡️[server]: Server is running at http://localhost:${port}`);
+    });
+  })
+  .catch((error) => console.log(error));
