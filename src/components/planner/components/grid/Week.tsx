@@ -60,7 +60,9 @@ const Week = (props: IWeekProps) => {
 
   return (
     <Tooltip
-      label={`n°${weekNumber(parseInt(props.id[1])-1)} - ${props.rowId}`}
+      label={`n°${weekNumber(
+        parseInt(props.id[1]) - 1
+      )} - ${props.rowId.toUpperCase()}`}
       position="bottom-end"
       color="gray"
       transition="slide-up"

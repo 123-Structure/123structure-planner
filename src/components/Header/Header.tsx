@@ -1,4 +1,4 @@
-import AddProjectFromExcel from "../AddProjectFromExcel/AddProjectFromExcel";
+import AddProjectFromExcel from "./components/AddProjectFromExcel/AddProjectFromExcel";
 import logo from "../../assets/img/logo.png";
 import ManageUsers from "./components/ManageUsers/ManageUsers";
 import Login from "./components/Login";

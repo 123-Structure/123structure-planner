@@ -5,10 +5,12 @@ import "dayjs/locale/fr";
 import {
   IconCalculator,
   IconCalendar,
+  IconFolder,
   IconId,
   IconPencil,
 } from "@tabler/icons";
 import { IProject } from "../../../../data/interfaces/IProject";
+import ModalTitle from "../../../utils/ModalTitle";
 
 interface IProjectCardProps {
   showMoreInfo: boolean;
@@ -28,6 +30,12 @@ const MoreInfoModal = (props: IProjectCardProps) => {
       onClose={() => props.setShowMoreInfo(false)}
       size="calc(window.screen.width-25%)"
       padding={"xl"}
+      title={
+        <ModalTitle
+          icon={<IconFolder size={24} />}
+          title={`${props.project.DOSSIER} - ${props.project.AFFAIRE}`}
+        />
+      }
     >
       <p>
         <b>N° 123 : </b>

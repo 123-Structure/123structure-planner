@@ -1,19 +1,23 @@
 import { Modal } from "@mantine/core";
 import { IconFilePlus } from "@tabler/icons";
 import { useState } from "react";
-import { IProject } from "../../../../data/interfaces/IProject";
+import { IProject } from "../../../../../../data/interfaces/IProject";
 import ExcelSettings from "./components/ModalSettingsButton";
-import ModalTitle from "../../../utils/ModalTitle";
+import ModalTitle from "../../../../../utils/ModalTitle";
 import ValidateButton from "./components/ValidateButton";
 import Grid from "./components/Grid";
 
 interface IExcelDataGridModalProps {
   showModal: boolean;
   setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
-  importProject: IProject[] | undefined;
-  setImportProject: React.Dispatch<
-    React.SetStateAction<IProject[] | undefined>
-  >;
+  importProject: IProject[];
+  setImportProject: React.Dispatch<React.SetStateAction<IProject[]>>;
+
+  newProject: IProject[];
+  setNewProject: React.Dispatch<React.SetStateAction<IProject[]>>;
+
+  duplicatedProjectID: string[];
+  setDuplicatedProjectID: React.Dispatch<React.SetStateAction<string[]>>;
 }
 
 const ExcelGridModal = (props: IExcelDataGridModalProps) => {
@@ -21,12 +25,10 @@ const ExcelGridModal = (props: IExcelDataGridModalProps) => {
     "AGENCE",
     "DOSSIER",
     "AFFAIRE",
-    "RESSOURCES",
+    "CLIENT",
+    "PHASE",
+    "MONTANT DEVIS (EUR HT)",
   ]);
-
-  const [newProjectLength, setNewProjectLength] = useState<number | undefined>(
-    0
-  );
 
   const handleModalClose = () => {
     props.setShowModal(false);
@@ -53,15 +55,25 @@ const ExcelGridModal = (props: IExcelDataGridModalProps) => {
         projectLength={props.importProject?.length}
         showParams={showParams}
         setShowParams={setShowParams}
-        newProjectLength={newProjectLength}
+        newProjectLength={props.newProject.length}
+        duplicatedProjectLength={props.duplicatedProjectID.length}
       />
       <ValidateButton
         importProject={props.importProject}
         handleModalClose={handleModalClose}
-        newProjectLength={newProjectLength}
-        setNewProjectLength={setNewProjectLength}
+        newProjectLength={props.newProject.length}
+        duplicatedProjectLength={props.duplicatedProjectID.length}
       />
-      <Grid importProject={props.importProject} showParams={showParams} />
+
+      <Grid
+        importProject={props.importProject}
+        setImportProject={props.setImportProject}
+        showParams={showParams}
+        duplicatedProjectID={props.duplicatedProjectID}
+        setDuplicatedProjectID={props.setDuplicatedProjectID}
+        newProject={props.newProject}
+        setNewProject={props.setNewProject}
+      />
     </Modal>
   );
 };

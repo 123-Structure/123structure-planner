@@ -18,12 +18,10 @@ import {
   IconUserExclamation,
 } from "@tabler/icons";
 import { Dispatch, SetStateAction } from "react";
-import {
-  useRessources,
-  useUpdateRessources,
-} from "../../../../context/RessourceContext";
-import { companyColor } from "../../../../utils/companyColor";
-import { defaultAccessRight } from "../../../../utils/defaultAccessRight";
+import { useRessources } from "../../../../../context/RessourceContext";
+import { companyColor } from "../../../../../utils/companyColor";
+import { defaultAccessRight } from "../../../../../utils/defaultAccessRight";
+import ModalTitle from "../../../../utils/ModalTitle";
 import AddUser from "./AddUser";
 import MultiFixerSelect from "./MultiSelect/MultiFixerSelect";
 import MultiRoleSelect from "./MultiSelect/MultiRoleSelect";
@@ -129,21 +127,10 @@ const ManageUsersModal = (props: IManageUsersModalProps) => {
       size="calc(window.screen.width-25%)"
       padding={"xl"}
       title={
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "row",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          <IconSettings
-            size={24}
-            color="black"
-            style={{ marginRight: "8px" }}
-          />
-          <h2 style={{ margin: 0 }}>Réglage des utilisateurs</h2>
-        </div>
+        <ModalTitle
+          icon={<IconSettings size={24} />}
+          title="Réglage des utilisateurs"
+        />
       }
     >
       {/* <AddUser /> */}

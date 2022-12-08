@@ -37,7 +37,6 @@ const Login = () => {
   const handleSubmit = () => {
     setAuth(true);
     if (validateEmail(email) && validatePassword(password)) {
-      console.log(login);
       setLogin(initialState);
       setErrorEmail("");
       setErrorPassword("");

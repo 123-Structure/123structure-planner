@@ -6,6 +6,7 @@ interface IExcelSettings {
   showParams: string[];
   setShowParams: React.Dispatch<React.SetStateAction<string[]>>;
   newProjectLength: number | undefined;
+  duplicatedProjectLength: number | undefined;
 }
 
 const ModalSettingsButton = (props: IExcelSettings) => {
@@ -36,6 +37,13 @@ const ModalSettingsButton = (props: IExcelSettings) => {
         <Badge color={"green"} style={{ margin: "0 0 8px 0" }} fullWidth>
           {props.newProjectLength} nouveau(x) projet(s)
         </Badge>
+        {props.duplicatedProjectLength !== 0 ? (
+          <Badge color={"blue"} style={{ margin: "0 0 8px 0" }} fullWidth>
+            dont {props.duplicatedProjectLength} projet(s) à completer
+          </Badge>
+        ) : (
+          <></>
+        )}
         <Badge color={"red"} fullWidth>
           {props.newProjectLength !== undefined &&
           props.projectLength !== undefined

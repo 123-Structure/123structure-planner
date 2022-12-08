@@ -6,9 +6,9 @@ import {
   IconUserExclamation,
 } from "@tabler/icons";
 import { useState } from "react";
-import { IRessource } from "../../../../data/interfaces/IRessource";
-import { companyColor } from "../../../../utils/companyColor";
-import { defaultAccessRight } from "../../../../utils/defaultAccessRight";
+import { IRessource } from "../../../../../data/interfaces/IRessource";
+import { companyColor } from "../../../../../utils/companyColor";
+import { defaultAccessRight } from "../../../../../utils/defaultAccessRight";
 
 const AddUser = () => {
   const [user, setUser] = useState<IRessource>({

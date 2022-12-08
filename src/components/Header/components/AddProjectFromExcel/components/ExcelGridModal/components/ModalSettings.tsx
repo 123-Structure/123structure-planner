@@ -1,7 +1,8 @@
 import { Checkbox, ActionIcon, Modal } from "@mantine/core";
 import { IconSettings } from "@tabler/icons";
 import { Dispatch, SetStateAction, useState } from "react";
-import { ProjectParameters } from "../../../../../data/constants/ProjectParameters";
+import { ProjectParameters } from "../../../../../../../data/constants/ProjectParameters";
+import ModalTitle from "../../../../../../utils/ModalTitle";
 
 interface IExcelDataGridSettingsProps {
   showParams: string[];
@@ -23,7 +24,13 @@ const ModalSettings = (props: IExcelDataGridSettingsProps) => {
         overlayBlur={3}
         opened={openSettings}
         onClose={() => setOpenSettings(false)}
-        title="Paramètre du tableau"
+        padding={"xl"}
+        title={
+          <ModalTitle
+            icon={<IconSettings size={24} />}
+            title="Paramètre du tableau"
+          />
+        }
       >
         <Checkbox.Group
           orientation="vertical"

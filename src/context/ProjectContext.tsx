@@ -27,7 +27,10 @@ export const useUpdateProject = () => {
 const ProjectProvider = (props: IProjectContextProps) => {
   const [projects, setProjects] = useState<IProject[]>(
     ProjectExample.filter((p) => {
-      return p.CLIENT !== "I.G.C." || !p.AFFAIRE.includes("(PT)");
+      return (
+        (p.CLIENT !== "I.G.C." || !p.AFFAIRE.includes("(PT)")) &&
+        (p.PHASE === "AVP" || p.PHASE === "EXE")
+      );
     })
   );
 

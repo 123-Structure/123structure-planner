@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { ActionIcon } from "@mantine/core";
 import { IconSettings } from "@tabler/icons";
-import ManageUsersModal from "./ManageUsersModal";
+import ManageUsersModal from "./components/ManageUsersModal";
 
 const ManageUsers = () => {
   const [openManageUser, setOpenManageUser] = useState(false);
