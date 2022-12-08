@@ -12,6 +12,7 @@ import {
   useProject,
   useUpdateProject,
 } from "../../../../context/ProjectContext";
+import truncateString from "../../../../utils/truncateString";
 
 dayjs.extend(CustomParseFormat);
 
@@ -126,7 +127,7 @@ const ProjectCard = (props: IProjectCardProps) => {
               margin: "0 0 4px 0",
             }}
           >
-            {projectNameReducer(props.project)}
+            {truncateString(projectNameReducer(props.project))}
           </p>
           <div
             style={{
