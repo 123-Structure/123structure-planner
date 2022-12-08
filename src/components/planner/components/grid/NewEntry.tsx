@@ -11,7 +11,7 @@ import ProjectCard from "../ProjectCard/ProjectCard";
 const NewEntry = () => {
   const theme = useMantineTheme();
   const projects = useProject();
-  const ressources = useRessources()
+  const ressources = useRessources();
 
   const updateProject = (itemId: any, newValue: string) => {
     const newProjects = [...projects];
@@ -46,11 +46,7 @@ const NewEntry = () => {
         backgroundColor: isOver
           ? theme.colors.yellow[3]
           : theme.colors.yellow[0],
-        gridRow: `3 / span ${
-          ressources.filter(
-            (ressource) => ressource.role !== "Administrateur"
-          ).length
-        }`,
+        gridRow: `3 / span ${ressources.length}`,
       }}
     >
       {sortProjects(

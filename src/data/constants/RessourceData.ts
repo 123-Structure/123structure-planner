@@ -120,6 +120,31 @@ export const RessourceData: IRessource[] = [
     ],
   },
   {
+    firstName: "Rodolphe",
+    lastName: "MICHAUD",
+    role: ["Dessinateur"],
+    company: "Clisson",
+    _id: "r.michaud",
+    fixer: [
+      {
+        firstName: "Vanessa",
+        lastName: "LAFRECHOUX",
+        role: ["Administrateur", "Correcteur"],
+        company: "Global",
+        _id: "v.lafrechoux",
+        fixer: undefined,
+      },
+      {
+        firstName: "Eudes",
+        lastName: "MARCHAND",
+        role: ["Dessinateur", "Correcteur"],
+        company: "Clisson",
+        _id: "e.marchand",
+        fixer: undefined,
+      },
+    ],
+  },
+  {
     firstName: "Baptiste",
     lastName: "LECHAT",
     role: ["Administrateur", "Dessinateur"],
