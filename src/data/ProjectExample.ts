@@ -19,6 +19,8 @@ export const ProjectExample: IProject[] = [
     ETAT: "mustBeAssign",
     RENDU: "20/10/2022",
     PHASE: "ETUDE DE SOL",
+    H_DESSIN: 0,
+    H_INGENIEUR: 0,
   },
   {
     DOSSIER: "21.10.149L",
@@ -37,6 +39,8 @@ export const ProjectExample: IProject[] = [
     ETAT: "mustBeAssign",
     RENDU: undefined,
     PHASE: "EXE",
+    H_DESSIN: 0,
+    H_INGENIEUR: 0,
   },
   {
     DOSSIER: "22.01.219L",
@@ -55,6 +59,8 @@ export const ProjectExample: IProject[] = [
     ETAT: "mustBeAssign",
     RENDU: undefined,
     PHASE: "EXE",
+    H_DESSIN: 0,
+    H_INGENIEUR: 0,
   },
   {
     DOSSIER: "22.01.229L",
@@ -73,6 +79,8 @@ export const ProjectExample: IProject[] = [
     ETAT: "mustBeAssign",
     RENDU: undefined,
     PHASE: "EXE",
+    H_DESSIN: 0,
+    H_INGENIEUR: 0,
   },
   {
     DOSSIER: "22.03.043L",
@@ -92,6 +100,8 @@ export const ProjectExample: IProject[] = [
     ETAT: "mustBeAssign",
     RENDU: undefined,
     PHASE: "EXE",
+    H_DESSIN: 0,
+    H_INGENIEUR: 0,
   },
   {
     DOSSIER: "22.04.339L",
@@ -110,6 +120,8 @@ export const ProjectExample: IProject[] = [
     ETAT: "mustBeAssign",
     RENDU: undefined,
     PHASE: "EXE",
+    H_DESSIN: 0,
+    H_INGENIEUR: 0,
   },
   {
     DOSSIER: "22.04.469L",
@@ -128,6 +140,8 @@ export const ProjectExample: IProject[] = [
     ETAT: "mustBeAssign",
     RENDU: undefined,
     PHASE: "EXE",
+    H_DESSIN: 0,
+    H_INGENIEUR: 0,
   },
   {
     DOSSIER: "22.05.039L",
@@ -146,6 +160,8 @@ export const ProjectExample: IProject[] = [
     ETAT: "mustBeAssign",
     RENDU: undefined,
     PHASE: "EXE",
+    H_DESSIN: 0,
+    H_INGENIEUR: 0,
   },
   {
     DOSSIER: "22.05.209L",
@@ -164,6 +180,8 @@ export const ProjectExample: IProject[] = [
     ETAT: "mustBeAssign",
     RENDU: undefined,
     PHASE: "EXE",
+    H_DESSIN: 0,
+    H_INGENIEUR: 0,
   },
   {
     DOSSIER: "22.06.329L",
@@ -182,6 +200,8 @@ export const ProjectExample: IProject[] = [
     ETAT: "mustBeAssign",
     RENDU: undefined,
     PHASE: "EXE",
+    H_DESSIN: 0,
+    H_INGENIEUR: 0,
   },
   {
     DOSSIER: "22.06.479L",
@@ -200,6 +220,8 @@ export const ProjectExample: IProject[] = [
     ETAT: "mustBeAssign",
     RENDU: undefined,
     PHASE: "EXE",
+    H_DESSIN: 0,
+    H_INGENIEUR: 0,
   },
 
   {
@@ -219,6 +241,8 @@ export const ProjectExample: IProject[] = [
     ETAT: "mustBeAssign",
     RENDU: undefined,
     PHASE: "EXE",
+    H_DESSIN: 0,
+    H_INGENIEUR: 0,
   },
   {
     DOSSIER: "22.08.129L",
@@ -237,6 +261,8 @@ export const ProjectExample: IProject[] = [
     ETAT: "mustBeAssign",
     RENDU: undefined,
     PHASE: "EXE",
+    H_DESSIN: 0,
+    H_INGENIEUR: 0,
   },
   {
     DOSSIER: "22.09.379L",
@@ -255,6 +281,8 @@ export const ProjectExample: IProject[] = [
     ETAT: "mustBeAssign",
     RENDU: undefined,
     PHASE: "EXE",
+    H_DESSIN: 0,
+    H_INGENIEUR: 0,
   },
   {
     DOSSIER: "22.09.409L",
@@ -273,6 +301,8 @@ export const ProjectExample: IProject[] = [
     ETAT: "mustBeAssign",
     RENDU: undefined,
     PHASE: "EXE",
+    H_DESSIN: 0,
+    H_INGENIEUR: 0,
   },
   {
     DOSSIER: "22.09.449L",
@@ -291,6 +321,8 @@ export const ProjectExample: IProject[] = [
     ETAT: "mustBeAssign",
     RENDU: undefined,
     PHASE: "EXE",
+    H_DESSIN: 0,
+    H_INGENIEUR: 0,
   },
   {
     DOSSIER: "22.09.469L",
@@ -309,6 +341,8 @@ export const ProjectExample: IProject[] = [
     ETAT: "mustBeAssign",
     RENDU: undefined,
     PHASE: "EXE",
+    H_DESSIN: 0,
+    H_INGENIEUR: 0,
   },
   {
     DOSSIER: "22.09.053L",
@@ -327,6 +361,8 @@ export const ProjectExample: IProject[] = [
     ETAT: "mustBeAssign",
     RENDU: undefined,
     PHASE: "EXE",
+    H_DESSIN: 0,
+    H_INGENIEUR: 0,
   },
   {
     DOSSIER: "22.09.519L",
@@ -345,6 +381,8 @@ export const ProjectExample: IProject[] = [
     ETAT: "mustBeAssign",
     RENDU: undefined,
     PHASE: "EXE",
+    H_DESSIN: 0,
+    H_INGENIEUR: 0,
   },
   {
     DOSSIER: "22.10.029L",
@@ -363,5 +401,7 @@ export const ProjectExample: IProject[] = [
     ETAT: "mustBeAssign",
     RENDU: undefined,
     PHASE: "EXE",
+    H_DESSIN: 100,
+    H_INGENIEUR: 50,
   },
 ];

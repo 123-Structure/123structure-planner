@@ -19,12 +19,12 @@ const Row = (props: IRowProps) => {
       <Correction rowId={props.id} />
       <MustBeFix rowId={props.id} />
       <div className="loadRate">
-        <LoadRate id={"loadRate1"} />
-        <LoadRate id={"loadRate2"} />
-        <LoadRate id={"loadRate3"} />
-        <LoadRate id={"loadRate4"} />
-        <LoadRate id={"loadRate5"} />
-        <LoadRate id={"loadRate6"} />
+        <LoadRate rowId={props.id} id={"loadRate1"} />
+        <LoadRate rowId={props.id} id={"loadRate2"} />
+        <LoadRate rowId={props.id} id={"loadRate3"} />
+        <LoadRate rowId={props.id} id={"loadRate4"} />
+        <LoadRate rowId={props.id} id={"loadRate5"} />
+        <LoadRate rowId={props.id} id={"loadRate6"} />
       </div>
       <Week rowId={props.id} id={"w1"} />
       <Week rowId={props.id} id={"w2"} />

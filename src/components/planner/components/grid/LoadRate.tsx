@@ -1,13 +1,16 @@
 import { useMantineTheme } from "@mantine/core";
-import { IconCalculator } from "@tabler/icons";
+import { IconClock } from "@tabler/icons";
 import React from "react";
+import { useProject } from "../../../../context/ProjectContext";
 
 interface ILoadRateProps {
   id: string;
+  rowId: string;
 }
 
 const LoadRate = (props: ILoadRateProps) => {
   const theme = useMantineTheme();
+  const projects = useProject();
 
   return (
     <div
@@ -19,8 +22,13 @@ const LoadRate = (props: ILoadRateProps) => {
             : "white",
       }}
     >
-      <IconCalculator />
-      {props.id}
+      <IconClock style={{ marginRight: "4px" }} />
+      {projects
+        .filter((project) =>
+          project.ETAT.includes("w" + props.id.charAt(props.id.length - 1))
+        )
+        .filter((project) => project.ETAT.includes(props.rowId))
+        .reduce((acc, p) => acc + p.H_DESSIN, 0) + "h"}
     </div>
   );
 };

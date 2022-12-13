@@ -16,5 +16,7 @@ export interface IProject {
   ETAT: string;
   RENDU: string | undefined;
   PHASE: TPhase;
-  [key: string]: string | boolean | undefined;
+  H_DESSIN: number;
+  H_INGENIEUR: number;
+  [key: string]: string | boolean | number | undefined;
 }
