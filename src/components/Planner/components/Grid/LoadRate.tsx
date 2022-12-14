@@ -1,5 +1,10 @@
 import { useMantineTheme } from "@mantine/core";
-import { IconClock } from "@tabler/icons";
+import {
+  IconCalculator,
+  IconCalendar,
+  IconClock,
+  IconPencil,
+} from "@tabler/icons";
 import React from "react";
 import { useProject } from "../../../../context/ProjectContext";
 import { useRessources } from "../../../../context/RessourceContext";
@@ -26,8 +31,24 @@ const LoadRate = (props: ILoadRateProps) => {
       .filter((project) => project.ETAT.includes(props.rowId));
 
     return (
-      projectAssignToCurrentRessource.reduce((acc, p) => acc + p.H_DESSIN, 0) +
-      "h"
+      <>
+        <IconClock style={{ marginRight: "4px" }} />
+        {projectAssignToCurrentRessource.reduce(
+          (acc, p) => acc + p.H_DESSIN + p.H_INGENIEUR,
+          0
+        ) + "h ("}
+        <IconCalculator style={{ marginRight: "4px" }} />
+        {projectAssignToCurrentRessource.reduce(
+          (acc, p) => acc + p.H_INGENIEUR,
+          0
+        ) + "h -"}
+        <IconPencil style={{ margin: "0 4px" }} />
+        {projectAssignToCurrentRessource.reduce(
+          (acc, p) => acc + p.H_DESSIN,
+          0
+        ) + "h"}
+        {")"}
+      </>
     );
   };
 
@@ -41,7 +62,6 @@ const LoadRate = (props: ILoadRateProps) => {
             : "white",
       }}
     >
-      <IconClock style={{ marginRight: "4px" }} />
       {totalHours()}
     </div>
   );

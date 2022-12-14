@@ -27,6 +27,7 @@ const MoreInfoModal = (props: IProjectCardProps) => {
   const [engineeringTime, setEngineeringTime] = useState(
     props.project.H_INGENIEUR
   );
+  const [renderingDate, setRenderingDate] = useState(new Date());
 
   const totalTime = (drawTime: number, engineeringTime: number) => {
     return `${(drawTime + engineeringTime).toFixed(2).toString()}h`;
@@ -35,6 +36,7 @@ const MoreInfoModal = (props: IProjectCardProps) => {
   const handleSubmit = () => {
     props.project.H_DESSIN = drawTime;
     props.project.H_INGENIEUR = engineeringTime;
+    props.project.RENDU = renderingDate.toLocaleDateString("fr");
     props.setShowMoreInfo(false);
   };
 
@@ -135,6 +137,8 @@ const MoreInfoModal = (props: IProjectCardProps) => {
             excludeDate={(date) => date.getDay() === 0 || date.getDay() === 6}
             inputFormat="DD/MM/YYYY"
             defaultValue={new Date()}
+            value={renderingDate}
+            onChange={(val: Date) => setRenderingDate(val)}
             icon={<IconCalendar color={theme.colors.yellow[6]} />}
           />
         </div>
