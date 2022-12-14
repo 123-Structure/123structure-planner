@@ -1,12 +1,11 @@
-import { Button } from "@mantine/core";
 import { showNotification } from "@mantine/notifications";
 import { IconCheck, IconX } from "@tabler/icons";
-import { useEffect, useState } from "react";
 import {
   useProject,
   useUpdateProject,
 } from "../../../../../../../context/ProjectContext";
 import { IProject } from "../../../../../../../data/interfaces/IProject";
+import CustomButton from "../../../../../../utils/CustomButton";
 
 interface IValidateButton {
   importProject: IProject[] | undefined;
@@ -65,6 +64,8 @@ const ValidateButton = (props: IValidateButton) => {
           ETAT: p.ETAT === undefined ? "newEntry" : p.ETAT,
           RENDU: undefined,
           PHASE: p.PHASE === undefined ? "EXE" : p.PHASE,
+          H_DESSIN: 0,
+          H_INGENIEUR: 0,
         };
         newProjects.push(newProject);
       }
@@ -89,20 +90,27 @@ const ValidateButton = (props: IValidateButton) => {
   };
 
   return (
-    <div style={{ marginBottom: "16px" }}>
-      <Button
+    <div
+      style={{
+        marginBottom: "16px",
+        display: "flex",
+        flexDirection: "row",
+        gap: "16px",
+      }}
+    >
+      <CustomButton
         color="green"
-        style={{ marginRight: "16px" }}
-        onClick={addNewProject}
         disabled={props.duplicatedProjectLength !== 0}
-      >
-        <IconCheck size={24} style={{ marginRight: "8px" }} />
-        {`Charger ${props.newProjectLength} nouveau(x) projet(s)`}
-      </Button>
-      <Button color="red" onClick={cancelUpdate}>
-        <IconX size={24} style={{ marginRight: "8px" }} />
-        Annuler le chargement de nouveaux projets
-      </Button>
+        handleClick={addNewProject}
+        icon={<IconCheck />}
+        label={`Charger ${props.newProjectLength} nouveau(x) projet(s)`}
+      />
+      <CustomButton
+        color="red"
+        handleClick={cancelUpdate}
+        icon={<IconX />}
+        label={"Annuler le chargement de nouveaux projets"}
+      />
     </div>
   );
 };

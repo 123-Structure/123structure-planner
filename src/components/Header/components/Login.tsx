@@ -1,8 +1,9 @@
 import { useState } from "react";
-import { Button, PasswordInput, TextInput } from "@mantine/core";
-import { IconAt, IconLock } from "@tabler/icons";
+import { PasswordInput, TextInput } from "@mantine/core";
+import { IconAt, IconLock, IconLogin } from "@tabler/icons";
 import { showNotification } from "@mantine/notifications";
 import { useAuth, useUpdateAuth } from "../../../context/AuthContext";
+import CustomButton from "../../utils/CustomButton";
 
 interface ILogin {
   email: string;
@@ -35,8 +36,8 @@ const Login = () => {
   };
 
   const handleSubmit = () => {
-    setAuth(true);
     if (validateEmail(email) && validatePassword(password)) {
+      setAuth(true);
       setLogin(initialState);
       setErrorEmail("");
       setErrorPassword("");
@@ -78,14 +79,11 @@ const Login = () => {
           error={errorPassword}
         />
       </div>
-      <Button
-        style={{
-          color: "black",
-        }}
-        onClick={handleSubmit}
-      >
-        Se connecter
-      </Button>
+      <CustomButton
+        handleClick={handleSubmit}
+        icon={<IconLogin />}
+        label={"Se Connecter"}
+      />
     </div>
   );
 };

@@ -1,8 +1,9 @@
-import { Button, Modal, Select } from "@mantine/core";
-import { IconCopy } from "@tabler/icons";
+import { Modal, Select } from "@mantine/core";
+import { IconCheck, IconCopy } from "@tabler/icons";
 import React, { useState } from "react";
 import { IProject } from "../../../../../../../data/interfaces/IProject";
 import { TPhase } from "../../../../../../../data/types/TPhase";
+import CustomButton from "../../../../../../utils/CustomButton";
 import ModalTitle from "../../../../../../utils/ModalTitle";
 
 interface IDuplicatedProjectModal {
@@ -68,12 +69,11 @@ const DuplicatedProjectModal = (props: IDuplicatedProjectModal) => {
         value={value}
         onChange={setValue}
       ></Select>
-      <Button
-        style={{ color: "black" }}
-        onClick={handleUpdateDuplicatedProject}
-      >
-        Valider
-      </Button>
+      <CustomButton
+        handleClick={handleUpdateDuplicatedProject}
+        icon={<IconCheck/>}
+        label={"Valider"}
+      />
     </Modal>
   );
 };
