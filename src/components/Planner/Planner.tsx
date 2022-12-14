@@ -1,10 +1,10 @@
 import "../../assets/style/Planner.css";
-import Row from "./components/_Grid/Row";
+import Row from "./components/Grid/Row";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
-import MustBeAssign from "./components/_Grid/MustBeAssign";
-import Title from "./components/_Grid/Title";
-import NewEntry from "./components/_Grid/NewEntry";
+import MustBeAssign from "./components/Grid/MustBeAssign";
+import Title from "./components/Grid/Title";
+import NewEntry from "./components/Grid/NewEntry";
 import { useAuth } from "../../context/AuthContext";
 import { useRessources } from "../../context/RessourceContext";
 

@@ -8,7 +8,7 @@ import {
 } from "../../../../context/ProjectContext";
 import { ItemTypes } from "../../../../data/constants/ItemTypes";
 import { sortProjects } from "../../../../utils/sortProjects";
-import ProjectCard from "../_ProjectCard/ProjectCard";
+import ProjectCard from "../ProjectCard/ProjectCard";
 
 interface IInvoicingProps {
   rowId: string;
