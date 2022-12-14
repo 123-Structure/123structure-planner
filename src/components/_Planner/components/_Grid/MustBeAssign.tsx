@@ -7,7 +7,7 @@ import {
 } from "../../../../context/ProjectContext";
 import { ItemTypes } from "../../../../data/constants/ItemTypes";
 import { sortProjects } from "../../../../utils/sortProjects";
-import ProjectCard from "../ProjectCard/ProjectCard";
+import ProjectCard from "../_ProjectCard/ProjectCard";
 
 const MustBeAssign = () => {
   const theme = useMantineTheme();

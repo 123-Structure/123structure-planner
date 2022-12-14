@@ -1,6 +1,5 @@
 import { useMantineTheme } from "@mantine/core";
 import { showNotification } from "@mantine/notifications";
-import React from "react";
 import { useDrop } from "react-dnd";
 import {
   useProject,
@@ -8,13 +7,13 @@ import {
 } from "../../../../context/ProjectContext";
 import { ItemTypes } from "../../../../data/constants/ItemTypes";
 import { sortProjects } from "../../../../utils/sortProjects";
-import ProjectCard from "../ProjectCard/ProjectCard";
+import ProjectCard from "../_ProjectCard/ProjectCard";
 
-interface IMustBeFixProps {
+interface ICorrectionProps {
   rowId: string;
 }
 
-const MustBeFix = (props: IMustBeFixProps) => {
+const Correction = (props: ICorrectionProps) => {
   const theme = useMantineTheme();
   const projects = useProject();
   const setProjects = useUpdateProject();
@@ -22,7 +21,7 @@ const MustBeFix = (props: IMustBeFixProps) => {
   const [{ isOver }, drop] = useDrop({
     accept: ItemTypes.CARD,
     drop: (item: any, monitor) =>
-      updateProject(item.id, `mustBeFix ${props.rowId}`),
+      updateProject(item.id, `correction ${props.rowId}`),
     collect: (monitor) => ({
       isOver: !!monitor.isOver(),
     }),
@@ -35,14 +34,16 @@ const MustBeFix = (props: IMustBeFixProps) => {
       (project) =>
         project.DOSSIER === itemId &&
         (project.ETAT.includes("correction") ||
+          project.ETAT.includes("mustBeFix") ||
           project.ETAT.includes("invoicing") ||
-          project.ETAT.includes("mustBeFix"))
+          project.ETAT.includes("w")) &&
+        !project.ETAT.includes("newEntry")
     );
 
     if (changedProject.length === 0) {
       showNotification({
         title: "⛔ Action impossible",
-        message: 'Ce projet ne peut pas être déplacé dans "Reprise"',
+        message: 'Ce projet ne peut pas être déplacé dans "Correction"',
         color: "red",
       });
     } else {
@@ -53,16 +54,14 @@ const MustBeFix = (props: IMustBeFixProps) => {
 
   return (
     <div
-      className="mustBeFix"
+      className="correction"
       ref={drop}
       style={{
-        backgroundColor: isOver
-          ? theme.colors.yellow[3]
-          : theme.colors.orange[1],
+        backgroundColor: isOver ? theme.colors.yellow[3] : theme.colors.red[1],
       }}
     >
       {sortProjects(
-        projects.filter((project) => project.ETAT.includes("mustBeFix"))
+        projects.filter((project) => project.ETAT.includes("correction"))
       )
         .filter((project) => project.ETAT.includes(props.rowId))
         .map((filteredProjects, index) => (
@@ -72,4 +71,4 @@ const MustBeFix = (props: IMustBeFixProps) => {
   );
 };
 
-export default MustBeFix;
+export default Correction;

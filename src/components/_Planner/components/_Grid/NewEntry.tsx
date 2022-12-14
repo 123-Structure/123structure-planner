@@ -6,7 +6,7 @@ import { useProject } from "../../../../context/ProjectContext";
 import { useRessources } from "../../../../context/RessourceContext";
 import { ItemTypes } from "../../../../data/constants/ItemTypes";
 import { sortProjects } from "../../../../utils/sortProjects";
-import ProjectCard from "../ProjectCard/ProjectCard";
+import ProjectCard from "../_ProjectCard/ProjectCard";
 
 const NewEntry = () => {
   const theme = useMantineTheme();
