@@ -8,7 +8,7 @@ dotenv.config();
 // Express App
 const app: Express = express();
 const port = process.env.PORT;
-const mongoURI = process.env.MONGODB_URI as string;
+const MONGODB_URI = process.env.MONGODB_URI as string;
 
 // Middleware
 app.use(express.json());
@@ -26,7 +26,7 @@ app.use("/api/projects", projectsRouter);
 
 // Connect to database
 mongoose
-  .connect(mongoURI)
+  .connect(MONGODB_URI)
   .then(() => {
     // Listen requests
     app.listen(port, () => {
@@ -34,4 +34,6 @@ mongoose
       console.log(`⚡️[server]: Server is running at http://localhost:${port}`);
     });
   })
-  .catch((error) => console.log(error));
+  .catch((error) => {
+    console.log(error.message);
+  });
