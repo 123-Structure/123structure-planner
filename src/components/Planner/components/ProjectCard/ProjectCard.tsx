@@ -54,7 +54,7 @@ const ProjectCard = (props: IProjectCardProps) => {
   const getRemainingTimeColor = (d: string | undefined) => {
     if (d !== undefined) {
       const rendu = dayjs(d, "DD-MM-YYYY");
-      const today = dayjs("27/09/2022", "DD-MM-YYYY");
+      const today = dayjs(new Date().toLocaleDateString("fr"), "DD-MM-YYYY");
       const diff = rendu.diff(today, "day");
       if (diff > 9) {
         return "green";
