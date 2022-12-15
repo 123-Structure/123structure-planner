@@ -1,4 +1,10 @@
-import { Input, NumberInput, Modal, useMantineTheme } from "@mantine/core";
+import {
+  Input,
+  NumberInput,
+  Modal,
+  useMantineTheme,
+  Indicator,
+} from "@mantine/core";
 import { DatePicker } from "@mantine/dates";
 import { Dispatch, SetStateAction, useState } from "react";
 import "dayjs/locale/fr";
@@ -27,6 +33,7 @@ const MoreInfoModal = (props: IProjectCardProps) => {
   const [engineeringTime, setEngineeringTime] = useState(
     props.project.H_INGENIEUR
   );
+  const [renderingDate, setRenderingDate] = useState(new Date());
 
   const totalTime = (drawTime: number, engineeringTime: number) => {
     return `${(drawTime + engineeringTime).toFixed(2).toString()}h`;
@@ -35,6 +42,7 @@ const MoreInfoModal = (props: IProjectCardProps) => {
   const handleSubmit = () => {
     props.project.H_DESSIN = drawTime;
     props.project.H_INGENIEUR = engineeringTime;
+    props.project.RENDU = renderingDate.toLocaleDateString("fr");
     props.setShowMoreInfo(false);
   };
 
@@ -75,7 +83,6 @@ const MoreInfoModal = (props: IProjectCardProps) => {
             <b>N° de dossier : </b>
             {props.project.DOSSIER}
           </p>
-
           <p>
             <b>Nom : </b>
             {props.project.AFFAIRE}
@@ -83,6 +90,14 @@ const MoreInfoModal = (props: IProjectCardProps) => {
           <p>
             <b>Client : </b>
             {props.project.CLIENT !== "" ? props.project.CLIENT : "-"}
+          </p>
+          <p>
+            <b>Honoraire : </b>
+            {`${
+              props.project["MONTANT DEVIS (EUR HT)"] !== ""
+                ? props.project["MONTANT DEVIS (EUR HT)"]
+                : "-"
+            }€`}
           </p>
           <Input.Wrapper label="N° Sous-traitance">
             <Input
@@ -130,11 +145,28 @@ const MoreInfoModal = (props: IProjectCardProps) => {
             {totalTime(drawTime, engineeringTime)}
           </p>
           <DatePicker
+            allowFreeInput
             label={"Date de rendu"}
             locale="fr"
             excludeDate={(date) => date.getDay() === 0 || date.getDay() === 6}
             inputFormat="DD/MM/YYYY"
-            defaultValue={new Date()}
+            // defaultValue={new Date()}
+            value={renderingDate}
+            onChange={(val: Date) => setRenderingDate(val)}
+            renderDay={(date) => {
+              const day = date.toLocaleDateString("fr");
+              const today = new Date().toLocaleDateString("fr");
+              return (
+                <Indicator
+                  size={6}
+                  color="red"
+                  offset={8}
+                  disabled={day !== today}
+                >
+                  <div>{date.getDate()}</div>
+                </Indicator>
+              );
+            }}
             icon={<IconCalendar color={theme.colors.yellow[6]} />}
           />
         </div>
