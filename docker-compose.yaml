@@ -1,0 +1,41 @@
+version: "3.8"
+services:
+  123str_planner_api:
+    build: ./api
+    container_name: 123str_planner_api
+    ports:
+      - "8000:8000"
+    depends_on:
+      - 123str_planner_mongodb
+    networks:
+      - 123str_planner
+
+  123str_planner_frontend:
+    build: ./frontend
+    container_name: 123str_planner_frontend
+    stdin_open: true
+    ports:
+      - "5173:5173"
+    networks:
+      - 123str_planner
+
+  123str_planner_mongodb:
+    image: mongo
+    container_name: 123str_planner_mongodb
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_INITDB_ROOT_USERNAME}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_INITDB_ROOT_PASSWORD}
+    ports:
+      - "27017:27017"
+    networks:
+      - 123str_planner
+    volumes:
+      - mongo-data:/data/db
+
+networks:
+  123str_planner:
+    driver: bridge
+
+volumes:
+  mongo-data:
+    driver: local

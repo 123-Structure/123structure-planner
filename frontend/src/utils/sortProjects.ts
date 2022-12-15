@@ -1,6 +1,6 @@
 import { IProject } from "../data/interfaces/IProject";
 import dayjs from "dayjs";
-import CustomParseFormat from "dayjs/plugin/CustomParseFormat";
+import CustomParseFormat from "dayjs/plugin/customParseFormat.js";
 
 dayjs.extend(CustomParseFormat);
 
