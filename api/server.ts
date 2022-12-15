@@ -1,7 +1,7 @@
 import express, { Express, NextFunction, Request, Response } from "express";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
-import projectsRouter from "./routes/projects";
+import projectsRouter from "./routes/projects.route";
 
 dotenv.config();
 
@@ -13,7 +13,7 @@ const MONGODB_URI = process.env.MONGODB_URI as string;
 // Middleware
 app.use(express.json());
 app.use((req: Request, res: Response, next: NextFunction) => {
-  console.log(req.path, req.method);
+  console.log(req.method, req.path);
   next();
 });
 
