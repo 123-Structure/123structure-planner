@@ -11,6 +11,11 @@ export const projectNameReducer = (projects: IProject) => {
       .split("(")[0]
       .split(" - ")[0];
     return `${DOSSIER} - ${newAFFAIRE}`;
+  } else if (AFFAIRE.includes("M. ET MME")) {
+    const newAFFAIRE = AFFAIRE.split("M. ET MME")[1]
+      .split("(")[0]
+      .split(" - ")[0];
+    return `${DOSSIER} - ${newAFFAIRE}`;
   } else if (AFFAIRE.includes("M.")) {
     const newAFFAIRE = AFFAIRE.split("M.")[1]
       .split("(")[0]
@@ -38,6 +43,9 @@ export const projectNameReducer = (projects: IProject) => {
     return `${DOSSIER} - ${newAFFAIRE}`;
   } else if (AFFAIRE.includes("PT") || AFFAIRE.includes("pt")) {
     const newAFFAIRE = "POUTRE";
+    return `${DOSSIER} - ${newAFFAIRE}`;
+  } else if (AFFAIRE.includes("CONSTRUCTION DE")) {
+    const newAFFAIRE = AFFAIRE.split("CONSTRUCTION DE ")[1];
     return `${DOSSIER} - ${newAFFAIRE}`;
   }
 

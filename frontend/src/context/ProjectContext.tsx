@@ -13,7 +13,7 @@ const ProjectUpdateContext = createContext<
   Dispatch<SetStateAction<IProject[]>>
 >(() => []);
 
-interface IProjectContext {
+interface IProjectContextProps {
   children: React.ReactNode;
 }
 
@@ -24,10 +24,13 @@ export const useUpdateProject = () => {
   return useContext(ProjectUpdateContext);
 };
 
-const ProjectProvider = (props: IProjectContext) => {
+const ProjectProvider = (props: IProjectContextProps) => {
   const [projects, setProjects] = useState<IProject[]>(
     ProjectExample.filter((p) => {
-      return p.CLIENT !== "I.G.C." || !p.AFFAIRE.includes("(PT)");
+      return (
+        (p.CLIENT !== "I.G.C." || !p.AFFAIRE.includes("(PT)")) &&
+        (p.PHASE === "AVP" || p.PHASE === "EXE")
+      );
     })
   );
 
