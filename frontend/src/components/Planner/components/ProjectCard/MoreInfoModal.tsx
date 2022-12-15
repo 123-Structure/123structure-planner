@@ -1,14 +1,24 @@
-import { Input, NumberInput, Modal, useMantineTheme } from "@mantine/core";
+import {
+  Input,
+  NumberInput,
+  Modal,
+  useMantineTheme,
+  Indicator,
+} from "@mantine/core";
 import { DatePicker } from "@mantine/dates";
 import { Dispatch, SetStateAction, useState } from "react";
 import "dayjs/locale/fr";
 import {
   IconCalculator,
   IconCalendar,
+  IconDeviceFloppy,
+  IconFolder,
   IconId,
   IconPencil,
 } from "@tabler/icons";
 import { IProject } from "../../../../data/interfaces/IProject";
+import ModalTitle from "../../../utils/ModalTitle";
+import CustomButton from "../../../utils/CustomButton";
 
 interface IProjectCardProps {
   showMoreInfo: boolean;
@@ -19,6 +29,23 @@ interface IProjectCardProps {
 const MoreInfoModal = (props: IProjectCardProps) => {
   const theme = useMantineTheme();
 
+  const [drawTime, setDrawTime] = useState(props.project.H_DESSIN);
+  const [engineeringTime, setEngineeringTime] = useState(
+    props.project.H_INGENIEUR
+  );
+  const [renderingDate, setRenderingDate] = useState(new Date());
+
+  const totalTime = (drawTime: number, engineeringTime: number) => {
+    return `${(drawTime + engineeringTime).toFixed(2).toString()}h`;
+  };
+
+  const handleSubmit = () => {
+    props.project.H_DESSIN = drawTime;
+    props.project.H_INGENIEUR = engineeringTime;
+    props.project.RENDU = renderingDate.toLocaleDateString("fr");
+    props.setShowMoreInfo(false);
+  };
+
   return (
     <Modal
       centered
@@ -28,68 +55,129 @@ const MoreInfoModal = (props: IProjectCardProps) => {
       onClose={() => props.setShowMoreInfo(false)}
       size="calc(window.screen.width-25%)"
       padding={"xl"}
+      title={
+        <ModalTitle
+          icon={<IconFolder size={24} />}
+          title={`${props.project.DOSSIER} - ${props.project.AFFAIRE}`}
+        />
+      }
     >
-      <p>
-        <b>N° 123 : </b>
-        {props.project.DOSSIER}
-      </p>
       <div
-        className="sst"
+        className="container"
         style={{
-          display: "flex",
+          display: "grid",
+          gridTemplateColumns: "60% 40%",
           flexDirection: "row",
-          alignItems: "center",
-          gap: "8px",
+          marginBottom: "16px",
         }}
       >
-        <b>N° SST : </b>
-        <Input
-          placeholder="00.00.000A"
-          style={{ width: "25%" }}
-          icon={<IconId color={theme.colors.yellow[6]} />}
-        />
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "flex-start",
+            alignItems: "flex-start",
+          }}
+        >
+          <p>
+            <b>N° de dossier : </b>
+            {props.project.DOSSIER}
+          </p>
+          <p>
+            <b>Nom : </b>
+            {props.project.AFFAIRE}
+          </p>
+          <p>
+            <b>Client : </b>
+            {props.project.CLIENT !== "" ? props.project.CLIENT : "-"}
+          </p>
+          <p>
+            <b>Honoraire : </b>
+            {`${
+              props.project["MONTANT DEVIS (EUR HT)"] !== ""
+                ? props.project["MONTANT DEVIS (EUR HT)"]
+                : "-"
+            }€`}
+          </p>
+          <Input.Wrapper label="N° Sous-traitance">
+            <Input
+              placeholder="00.00.000A"
+              style={{ width: "100%" }}
+              icon={<IconId color={theme.colors.yellow[6]} />}
+            />
+          </Input.Wrapper>
+        </div>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "flex-start",
+            alignItems: "flex-end",
+            gap: "8px",
+            paddingLeft: "16px",
+            borderLeft: "1px solid black",
+          }}
+        >
+          <NumberInput
+            id={"h_ing"}
+            label={'Temps "Ingenieur"'}
+            defaultValue={0}
+            step={0.5}
+            precision={2}
+            min={0}
+            icon={<IconCalculator color={theme.colors.yellow[6]} />}
+            value={engineeringTime}
+            onChange={(val: number) => setEngineeringTime(val)}
+          />
+          <NumberInput
+            id={"h_des"}
+            label={'Temps "Dessin"'}
+            defaultValue={0}
+            step={0.5}
+            precision={2}
+            min={0}
+            icon={<IconPencil color={theme.colors.yellow[6]} />}
+            value={drawTime}
+            onChange={(val: number) => setDrawTime(val)}
+          />
+          <p>
+            <b>Temps total : </b>
+            {totalTime(drawTime, engineeringTime)}
+          </p>
+          <DatePicker
+            allowFreeInput
+            label={"Date de rendu"}
+            locale="fr"
+            excludeDate={(date) => date.getDay() === 0 || date.getDay() === 6}
+            inputFormat="DD/MM/YYYY"
+            // defaultValue={new Date()}
+            value={renderingDate}
+            onChange={(val: Date) => setRenderingDate(val)}
+            renderDay={(date) => {
+              const day = date.toLocaleDateString("fr");
+              const today = new Date().toLocaleDateString("fr");
+              return (
+                <Indicator
+                  size={6}
+                  color="red"
+                  offset={8}
+                  disabled={day !== today}
+                >
+                  <div>{date.getDate()}</div>
+                </Indicator>
+              );
+            }}
+            icon={<IconCalendar color={theme.colors.yellow[6]} />}
+          />
+        </div>
       </div>
-      <p>
-        <b>Nom : </b>
-        {props.project.AFFAIRE}
-      </p>
-      <p>
-        <b>Client : </b>
-        {props.project.CLIENT !== "" ? props.project.CLIENT : "-"}
-      </p>
       <div
-        style={{
-          display: "flex",
-          flexDirection: "row",
-          gap: "8px",
-          justifyContent: "center",
-        }}
+        style={{ width: "100%", display: "flex", justifyContent: "flex-end" }}
       >
-        <b>H ING : </b>
-        <NumberInput
-          id={"h_ing"}
-          defaultValue={0}
-          step={0.5}
-          precision={2}
-          min={0}
-          icon={<IconCalculator color={theme.colors.yellow[6]} />}
-        />
-        <b>H DES : </b>
-        <NumberInput
-          id={"h_des"}
-          defaultValue={0}
-          step={0.5}
-          precision={2}
-          min={0}
-          icon={<IconPencil color={theme.colors.yellow[6]} />}
-        />
-        <b>RENDU : </b>
-        <DatePicker
-          locale="fr"
-          excludeDate={(date) => date.getDay() === 0 || date.getDay() === 6}
-          inputFormat="MM/DD/YYYY"
-          defaultValue={new Date()}
-          icon={<IconCalendar color={theme.colors.yellow[6]} />}
+        <CustomButton
+          handleClick={handleSubmit}
+          icon={<IconDeviceFloppy />}
+          label={"Enregistrer"}
         />
       </div>
     </Modal>

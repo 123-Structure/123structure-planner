@@ -1,6 +1,6 @@
 import { useMantineTheme } from "@mantine/core";
 import dayjs from "dayjs";
-import IsoWeek from "dayjs/plugin/isoWeek.js";
+import IsoWeek from "dayjs/plugin/IsoWeek";
 
 dayjs.extend(IsoWeek);
 const Title = () => {

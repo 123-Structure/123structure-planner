@@ -7,12 +7,7 @@ import { ItemTypes } from "../../../../data/constants/ItemTypes";
 import { Badge, Checkbox, Chip, Tooltip, useMantineTheme } from "@mantine/core";
 import { FolderColors } from "../../../../data/constants/FolderColors";
 import dayjs from "dayjs";
-<<<<<<<< HEAD:frontend/src/components/Planner/components/ProjectCard/ProjectCard.tsx
-import CustomParseFormat from "dayjs/plugin/customParseFormat.js";
-import theme from "../../../../assets/style/MantineTheme";
-========
 import CustomParseFormat from "dayjs/plugin/CustomParseFormat";
->>>>>>>> 2405eedcf9a19a892b125cf23c16f6ee4b78959e:src/components/Planner/components/ProjectCard/ProjectCard.tsx
 import {
   useProject,
   useUpdateProject,
