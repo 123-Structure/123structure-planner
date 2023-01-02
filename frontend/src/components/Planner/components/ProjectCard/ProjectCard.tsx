@@ -7,7 +7,7 @@ import { ItemTypes } from "../../../../data/constants/ItemTypes";
 import { Badge, Checkbox, Chip, Tooltip, useMantineTheme } from "@mantine/core";
 import { FolderColors } from "../../../../data/constants/FolderColors";
 import dayjs from "dayjs";
-import CustomParseFormat from "dayjs/plugin/CustomParseFormat";
+import CustomParseFormat from "dayjs/plugin/customParseFormat.js";
 import {
   useProject,
   useUpdateProject,
