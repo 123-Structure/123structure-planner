@@ -2,7 +2,7 @@ import { Checkbox, ActionIcon, Modal } from "@mantine/core";
 import { IconSettings } from "@tabler/icons";
 import { Dispatch, SetStateAction, useState } from "react";
 import { ProjectParameters } from "../../../../../../../data/constants/ProjectParameters";
-import ModalTitle from "../../../../../../utils/ModalTitle";
+import CustomTitle from "../../../../../../utils/CustomTitle";
 
 interface IExcelDataGridSettingsProps {
   showParams: string[];
@@ -26,7 +26,7 @@ const ModalSettings = (props: IExcelDataGridSettingsProps) => {
         onClose={() => setOpenSettings(false)}
         padding={"xl"}
         title={
-          <ModalTitle
+          <CustomTitle
             icon={<IconSettings size={24} />}
             title="Paramètre du tableau"
           />

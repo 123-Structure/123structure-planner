@@ -3,7 +3,7 @@ interface IModalTilte {
   title: string;
 }
 
-const ModalTitle = (props: IModalTilte) => {
+const CustomTitle = (props: IModalTilte) => {
   return (
     <div
       style={{
@@ -18,4 +18,4 @@ const ModalTitle = (props: IModalTilte) => {
   );
 };
 
-export default ModalTitle;
+export default CustomTitle;

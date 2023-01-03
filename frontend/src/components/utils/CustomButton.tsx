@@ -24,7 +24,7 @@ const CustomButton = (props: ICustomButton) => {
       onClick={props.handleClick}
     >
       <>
-        <div style={{ marginRight: "4px" }}>{props.icon}</div>
+        <div style={{ marginRight: "8px" }}>{props.icon}</div>
         {props.label}
       </>
     </Button>

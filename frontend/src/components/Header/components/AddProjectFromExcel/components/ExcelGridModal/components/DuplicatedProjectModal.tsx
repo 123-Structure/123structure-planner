@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { IProject } from "../../../../../../../data/interfaces/IProject";
 import { TPhase } from "../../../../../../../data/types/TPhase";
 import CustomButton from "../../../../../../utils/CustomButton";
-import ModalTitle from "../../../../../../utils/ModalTitle";
+import CustomTitle from "../../../../../../utils/CustomTitle";
 
 interface IDuplicatedProjectModal {
   showDuplicatedProjectModal: boolean;
@@ -51,7 +51,7 @@ const DuplicatedProjectModal = (props: IDuplicatedProjectModal) => {
       onClose={() => props.setShowDuplicatedProjectModal(false)}
       padding={"xl"}
       title={
-        <ModalTitle icon={<IconCopy size={24} />} title="Projet dupliqué" />
+        <CustomTitle icon={<IconCopy size={24} />} title="Projet dupliqué" />
       }
     >
       <p>{`${props.currentDuplicatedProject?.DOSSIER} - ${props.currentDuplicatedProject?.AFFAIRE}`}</p>
@@ -71,7 +71,7 @@ const DuplicatedProjectModal = (props: IDuplicatedProjectModal) => {
       ></Select>
       <CustomButton
         handleClick={handleUpdateDuplicatedProject}
-        icon={<IconCheck/>}
+        icon={<IconCheck />}
         label={"Valider"}
       />
     </Modal>

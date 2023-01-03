@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { projectNameReducer } from "../../../../utils/projectNameReducer";
 import { IProject } from "../../../../data/interfaces/IProject";
-import MoreInfoModal from "./MoreInfoModal";
+import MoreInfoModal from "./ProjectCardSettingsModal";
 import { useDrag } from "react-dnd";
 import { ItemTypes } from "../../../../data/constants/ItemTypes";
 import { Badge, Checkbox, Chip, Tooltip, useMantineTheme } from "@mantine/core";
