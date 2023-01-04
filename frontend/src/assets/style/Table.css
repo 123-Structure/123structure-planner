@@ -5,34 +5,24 @@
   min-width: 400px;
   border-radius: 5px 5px 0 0;
   overflow: hidden;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.15); */
 }
 
-.progress-table > thead > tr {
+.progress-table-title {
   background-color: #009879;
-  color: #ffffff;
+  color: #000000;
   text-align: left;
   font-weight: bold;
 }
 
-.progress-table th,
-.progress-table td {
-  padding: 12px 15px;
+.progress-table-data {
+  padding: 12px;
 }
 
-.progress-table  tbody  tr {
+.progress-table tbody tr {
   border-bottom: 1px solid #dddddd;
 }
 
 .progress-table > tbody > tr:nth-of-type(even) {
   background-color: #f3f3f3;
-}
-
-.progress-table tbody tr:last-of-type {
-  border-bottom: 2px solid #009879;
-}
-
-.progress-table tbody tr.active-row {
-  font-weight: bold;
-  color: #009879;
 }

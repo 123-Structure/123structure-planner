@@ -47,8 +47,13 @@ const Honoraire = (props: IHonoraireProps) => {
 
   const rows = avancements.map((avancement, index) =>
     editProgress ? (
-      <tr key={avancement._id}>
-        <td>
+      <tr
+        key={avancement._id}
+        className={`${
+          index === avancements.length - 1 ? "progress-table-lastRow" : ""
+        }`}
+      >
+        <td className="progress-table-data">
           <DatePicker
             allowFreeInput
             dropdownPosition={undefined}
@@ -74,7 +79,7 @@ const Honoraire = (props: IHonoraireProps) => {
             icon={<IconCalendar color={theme.colors.yellow[6]} />}
           />
         </td>
-        <td>
+        <td className="progress-table-data">
           <NumberInput
             defaultValue={parseFloat(avancement.amount)}
             step={100}
@@ -85,9 +90,9 @@ const Honoraire = (props: IHonoraireProps) => {
             onChange={(val: number) => (avancement.amount = val.toString())}
           />
         </td>
-        <td>...</td>
-        <td>...</td>
-        <td>...</td>
+        <td className="progress-table-data">...</td>
+        <td className="progress-table-data">...</td>
+        <td className="progress-table-data">...</td>
       </tr>
     ) : (
       <tr
@@ -95,15 +100,20 @@ const Honoraire = (props: IHonoraireProps) => {
         style={{
           backgroundColor:
             index === avancements.length - 1 ? theme.colors.yellow[1] : "",
+          borderBottomStyle: "solid",
+          borderBottomWidth: "2px",
+          borderBottomColor:
+            index === avancements.length - 1 ? theme.colors.yellow[5] : "",
+          fontWeight: index === avancements.length - 1 ? "bold" : "normal",
         }}
       >
-        <td style={{ width: "15%" }}>
+        <td className="progress-table-data" style={{ width: "15%" }}>
           {avancement.date.toLocaleDateString("fr")}
         </td>
-        <td style={{ width: "15%" }}>
+        <td className="progress-table-data" style={{ width: "15%" }}>
           {parseFloat(avancement.amount).toFixed(2).toString()}
         </td>
-        <td>
+        <td className="progress-table-data">
           {index > 0
             ? avancements
                 .slice(0, index + 1)
@@ -111,14 +121,14 @@ const Honoraire = (props: IHonoraireProps) => {
                 .toFixed(2)
             : parseFloat(avancement.amount).toFixed(2)}
         </td>
-        <td>
+        <td className="progress-table-data">
           {(
             (parseFloat(avancement.amount) /
               parseFloat(props.project["MONTANT DEVIS (EUR HT)"])) *
             100
           ).toFixed(2)}
         </td>
-        <td>
+        <td className="progress-table-data">
           {index > 0
             ? avancements
                 .slice(0, index + 1)
@@ -227,7 +237,7 @@ const Honoraire = (props: IHonoraireProps) => {
           flexDirection: "row",
           alignItems: "flex-end",
           gap: "8px",
-          marginBottom: "8px",
+          marginBottom: "20px",
         }}
       >
         <DatePicker
@@ -287,12 +297,26 @@ const Honoraire = (props: IHonoraireProps) => {
           />
           <table className="progress-table">
             <thead>
-              <tr>
-                <th>Avancement</th>
-                <th>Montant (€)</th>
-                <th>Cumul de l'avancement (€)</th>
-                <th>Pourcentage de l'avancement (%)</th>
-                <th>Cumul de l'avancement (%)</th>
+              <tr
+                className="progress-table-title"
+                style={{
+                  backgroundColor: theme.colors.yellow[3],
+                  borderBottomStyle: "solid",
+                  borderBottomWidth: "2px",
+                  borderBottomColor: theme.colors.yellow[5],
+                }}
+              >
+                <th className="progress-table-data">Avancement</th>
+                <th className="progress-table-data">Montant (€)</th>
+                <th className="progress-table-data">
+                  Cumul de l'avancement (€)
+                </th>
+                <th className="progress-table-data">
+                  Pourcentage de l'avancement (%)
+                </th>
+                <th className="progress-table-data">
+                  Cumul de l'avancement (%)
+                </th>
               </tr>
             </thead>
             <tbody>{rows}</tbody>
