@@ -1,7 +1,9 @@
 import {
   ActionIcon,
+  Checkbox,
   Indicator,
   NumberInput,
+  Switch,
   Table,
   useMantineTheme,
 } from "@mantine/core";
@@ -12,6 +14,7 @@ import {
   IconCirclePlus,
   IconCurrencyEuro,
   IconPencil,
+  IconTrash,
   IconWallet,
   IconX,
 } from "@tabler/icons";
@@ -33,25 +36,50 @@ const Honoraire = (props: IHonoraireProps) => {
     parseFloat(props.project["MONTANT DEVIS (EUR HT)"])
   );
 
-  const [avancement, setAvancement] = useState<IAvancement[]>(
+  const [avancements, setAvancements] = useState<IAvancement[]>(
     props.project.AVANCEMENT
   );
   const [newProgressDate, setNewProgressDate] = useState(new Date());
   const [newProgressAmount, setNewProgressAmount] = useState(0);
+  const [editProgress, setEditProgress] = useState(false);
 
-  const rows = avancement.map((avancement) => (
-    <tr key={avancement._id}>
-      <td>{avancement.date.toLocaleDateString("fr")}</td>
-      <td>{avancement.amount}</td>
-      <td>
-        {(
-          (parseFloat(avancement.amount) /
-            parseFloat(props.project["MONTANT DEVIS (EUR HT)"])) *
-          100
-        ).toFixed(2)}
-      </td>
-    </tr>
-  ));
+  const rows = avancements.map((avancement) =>
+    editProgress ? (
+      <tr key={avancement._id}>
+        <td>{avancement.date.toLocaleDateString("fr")}</td>
+        <td>
+          <NumberInput
+            defaultValue={invoiceAmount}
+            step={100}
+            precision={2}
+            min={0}
+            icon={<IconCurrencyEuro color={theme.colors.yellow[6]} />}
+            value={parseFloat(props.project["MONTANT DEVIS (EUR HT)"])}
+            onChange={(val: number) => setInvoiceAmount(val)}
+          />
+        </td>
+        <td>
+          {(
+            (parseFloat(avancement.amount) /
+              parseFloat(props.project["MONTANT DEVIS (EUR HT)"])) *
+            100
+          ).toFixed(2)}
+        </td>
+      </tr>
+    ) : (
+      <tr key={avancement._id}>
+        <td>{avancement.date.toLocaleDateString("fr")}</td>
+        <td>{avancement.amount}</td>
+        <td>
+          {(
+            (parseFloat(avancement.amount) /
+              parseFloat(props.project["MONTANT DEVIS (EUR HT)"])) *
+            100
+          ).toFixed(2)}
+        </td>
+      </tr>
+    )
+  );
 
   const toggleEditInvoiceAmount = () => {
     setEditInvoiceAmount(!editInvoiceAmount);
@@ -63,7 +91,7 @@ const Honoraire = (props: IHonoraireProps) => {
   };
 
   const addRow = (newAvancement: IAvancement) => {
-    setAvancement([...avancement, newAvancement]);
+    setAvancements([...avancements, newAvancement]);
     props.project.AVANCEMENT.push(newAvancement);
   };
 
@@ -111,14 +139,14 @@ const Honoraire = (props: IHonoraireProps) => {
               {...props}
               onClick={handleInvoiceAmountChange}
             >
-              <IconCheck size={16} color="black" />
+              <IconCheck size={20} color="black" />
             </ActionIcon>
             <ActionIcon
               color={"red"}
               {...props}
               onClick={toggleEditInvoiceAmount}
             >
-              <IconX size={16} color="black" />
+              <IconX size={20} color="black" />
             </ActionIcon>
           </div>
         ) : (
@@ -127,7 +155,7 @@ const Honoraire = (props: IHonoraireProps) => {
             {...props}
             onClick={toggleEditInvoiceAmount}
           >
-            <IconPencil size={16} color="black" />
+            <IconPencil size={20} color="black" />
           </ActionIcon>
         )}
       </div>
@@ -191,17 +219,25 @@ const Honoraire = (props: IHonoraireProps) => {
           icon={<IconCirclePlus />}
         ></CustomButton>
       </div>
-      {avancement.length > 0 ? (
-        <Table striped>
-          <thead>
-            <tr>
-              <th>Avancement</th>
-              <th>Montant (€)</th>
-              <th>Pourcentage facturé (%)</th>
-            </tr>
-          </thead>
-          <tbody>{rows}</tbody>
-        </Table>
+      {avancements.length > 0 ? (
+        <>
+          <Switch
+            checked={editProgress}
+            onChange={(event) => setEditProgress(event.currentTarget.checked)}
+            label={"Modifier les avancements enregistrés"}
+          />
+
+          <Table striped>
+            <thead>
+              <tr>
+                <th>Avancement</th>
+                <th>Montant (€)</th>
+                <th>Pourcentage facturé (%)</th>
+              </tr>
+            </thead>
+            <tbody>{rows}</tbody>
+          </Table>
+        </>
       ) : (
         <></>
       )}
