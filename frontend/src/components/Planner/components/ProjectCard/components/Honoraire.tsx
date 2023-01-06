@@ -295,6 +295,13 @@ const Honoraire = (props: IHonoraireProps) => {
             onChange={(event) => setEditProgress(event.currentTarget.checked)}
             label={"Modifier les avancements enregistrés"}
           />
+          <b>{`Reste à facturer : ${(
+            parseFloat(props.project["MONTANT DEVIS (EUR HT)"]) -
+            props.project.AVANCEMENT.reduce(
+              (acc, p) => acc + parseFloat(p.amount),
+              0
+            )
+          ).toFixed(2)}€`}</b>
           <table className="progress-table">
             <thead>
               <tr

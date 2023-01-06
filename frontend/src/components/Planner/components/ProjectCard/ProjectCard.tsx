@@ -78,6 +78,8 @@ const ProjectCard = (props: IProjectCardProps) => {
 
     changedProject[0].ETAT = newValue;
     setProjects(newProjects);
+
+    console.log(newValue);
   };
 
   const handleInvoiceChange = () => {
@@ -85,7 +87,18 @@ const ProjectCard = (props: IProjectCardProps) => {
     updateProject(
       props.project.DOSSIER,
       `invoicing ${props.project.ETAT.split(" ")[1]} ${
-        isInvoiced ? "" : "isInvoiced"
+        parseFloat(props.project["MONTANT DEVIS (EUR HT)"]) -
+          props.project.AVANCEMENT.reduce(
+            (acc, p) => acc + parseFloat(p.amount),
+            0
+          ) ===
+          0 && !isInvoiced
+          ? "isInvoiced"
+          : props.project.AVANCEMENT.length > 0 && !isInvoiced
+          ? "partialInvoiced"
+          : !isInvoiced
+          ? "isInvoiced"
+          : ""
       }`
     );
   };
@@ -153,6 +166,15 @@ const ProjectCard = (props: IProjectCardProps) => {
               style={{
                 backgroundColor: !props.project.ETAT.includes("invoicing")
                   ? "white"
+                  : parseFloat(props.project["MONTANT DEVIS (EUR HT)"]) -
+                      props.project.AVANCEMENT.reduce(
+                        (acc, p) => acc + parseFloat(p.amount),
+                        0
+                      ) ===
+                      0 && isInvoiced
+                  ? theme.colors.green[1]
+                  : props.project.AVANCEMENT.length > 0 && isInvoiced
+                  ? theme.colors.orange[1]
                   : isInvoiced
                   ? theme.colors.green[1]
                   : theme.colors.red[1],
@@ -168,16 +190,47 @@ const ProjectCard = (props: IProjectCardProps) => {
                     style={{
                       color: !props.project.ETAT.includes("invoicing")
                         ? theme.colors.gray[6]
+                        : parseFloat(props.project["MONTANT DEVIS (EUR HT)"]) -
+                            props.project.AVANCEMENT.reduce(
+                              (acc, p) => acc + parseFloat(p.amount),
+                              0
+                            ) ===
+                            0 && isInvoiced
+                        ? theme.colors.green[7]
+                        : props.project.AVANCEMENT.length > 0 && isInvoiced
+                        ? theme.colors.orange[7]
                         : isInvoiced
                         ? theme.colors.green[7]
                         : theme.colors.red[7],
                       margin: 0,
                     }}
                   >
-                    {isInvoiced ? "F" : "NF"}
+                    {parseFloat(props.project["MONTANT DEVIS (EUR HT)"]) -
+                      props.project.AVANCEMENT.reduce(
+                        (acc, p) => acc + parseFloat(p.amount),
+                        0
+                      ) ===
+                      0 && isInvoiced
+                      ? "F"
+                      : props.project.AVANCEMENT.length > 0 && isInvoiced
+                      ? "PF"
+                      : isInvoiced
+                      ? "F"
+                      : "NF"}
                   </p>
                 }
-                color={"green"}
+                color={
+                  parseFloat(props.project["MONTANT DEVIS (EUR HT)"]) -
+                    props.project.AVANCEMENT.reduce(
+                      (acc, p) => acc + parseFloat(p.amount),
+                      0
+                    ) ===
+                    0 && isInvoiced
+                    ? "green"
+                    : props.project.AVANCEMENT.length > 0 && isInvoiced
+                    ? "orange"
+                    : "green"
+                }
                 disabled={!props.project.ETAT.includes("invoicing")}
                 indeterminate={!props.project.ETAT.includes("invoicing")}
               />
