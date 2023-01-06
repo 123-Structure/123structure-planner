@@ -7,6 +7,7 @@ interface ICustomButton {
   color?: string;
   label: string;
   disabled?: boolean;
+  extraStyle?: React.CSSProperties;
 }
 
 const CustomButton = (props: ICustomButton) => {
@@ -15,6 +16,7 @@ const CustomButton = (props: ICustomButton) => {
       color={props.color}
       disabled={props.disabled}
       style={{
+        ...props.extraStyle,
         color: props.disabled
           ? "#b2b9c1"
           : props.color != undefined
@@ -23,10 +25,8 @@ const CustomButton = (props: ICustomButton) => {
       }}
       onClick={props.handleClick}
     >
-      <>
-        <div style={{ marginRight: "8px" }}>{props.icon}</div>
-        {props.label}
-      </>
+      <div style={{ marginRight: "8px" }}>{props.icon}</div>
+      {props.label}
     </Button>
   );
 };

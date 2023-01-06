@@ -241,6 +241,18 @@ const Honoraire = (props: IHonoraireProps) => {
         }}
       >
         <DatePicker
+          error={
+            newProgressAmount < 0 ||
+            parseFloat(props.project["MONTANT DEVIS (EUR HT)"]) -
+              (newProgressAmount +
+                props.project.AVANCEMENT.reduce(
+                  (acc, p) => acc + parseFloat(p.amount),
+                  0
+                )) <
+              0
+              ? "-"
+              : ""
+          }
           style={{ width: "35%" }}
           allowFreeInput
           label={"Date"}
@@ -266,6 +278,19 @@ const Honoraire = (props: IHonoraireProps) => {
           icon={<IconCalendar color={theme.colors.yellow[6]} />}
         />
         <NumberInput
+          error={
+            newProgressAmount < 0
+              ? "Valeur négative"
+              : parseFloat(props.project["MONTANT DEVIS (EUR HT)"]) -
+                  (newProgressAmount +
+                    props.project.AVANCEMENT.reduce(
+                      (acc, p) => acc + parseFloat(p.amount),
+                      0
+                    )) <
+                0
+              ? "Montant trop élevé"
+              : ""
+          }
           style={{ width: "30%" }}
           label={"Montant"}
           defaultValue={0}
@@ -277,6 +302,29 @@ const Honoraire = (props: IHonoraireProps) => {
           onChange={(val: number) => setNewProgressAmount(val)}
         />
         <CustomButton
+          disabled={
+            newProgressAmount < 0 ||
+            parseFloat(props.project["MONTANT DEVIS (EUR HT)"]) -
+              (newProgressAmount +
+                props.project.AVANCEMENT.reduce(
+                  (acc, p) => acc + parseFloat(p.amount),
+                  0
+                )) <
+              0
+          }
+          extraStyle={{
+            marginBottom:
+              newProgressAmount < 0 ||
+              parseFloat(props.project["MONTANT DEVIS (EUR HT)"]) -
+                (newProgressAmount +
+                  props.project.AVANCEMENT.reduce(
+                    (acc, p) => acc + parseFloat(p.amount),
+                    0
+                  )) <
+                0
+                ? "20px"
+                : "",
+          }}
           handleClick={() =>
             addRow({
               _id: Math.random(),
@@ -290,18 +338,21 @@ const Honoraire = (props: IHonoraireProps) => {
       </div>
       {avancements.length > 0 ? (
         <>
+          <p style={{ margin: "0 0 16px 0" }}>
+            <b>Reste à facturer : </b>
+            {`${(
+              parseFloat(props.project["MONTANT DEVIS (EUR HT)"]) -
+              props.project.AVANCEMENT.reduce(
+                (acc, p) => acc + parseFloat(p.amount),
+                0
+              )
+            ).toFixed(2)}€`}
+          </p>
           <Switch
             checked={editProgress}
             onChange={(event) => setEditProgress(event.currentTarget.checked)}
             label={"Modifier les avancements enregistrés"}
           />
-          <b>{`Reste à facturer : ${(
-            parseFloat(props.project["MONTANT DEVIS (EUR HT)"]) -
-            props.project.AVANCEMENT.reduce(
-              (acc, p) => acc + parseFloat(p.amount),
-              0
-            )
-          ).toFixed(2)}€`}</b>
           <table className="progress-table">
             <thead>
               <tr
