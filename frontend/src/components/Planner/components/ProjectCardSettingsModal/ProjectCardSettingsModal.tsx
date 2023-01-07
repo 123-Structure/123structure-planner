@@ -6,7 +6,7 @@ import { IProject } from "../../../../data/interfaces/IProject";
 import CustomTitle from "../../../utils/CustomTitle";
 import CustomButton from "../../../utils/CustomButton";
 import General from "./components/General";
-import Planification from "./components/Planification";
+import Planification from "./components/Planification/Planification";
 import Honoraire from "./components/Honoraire";
 import RenderingDateBadge from "../../../utils/RenderingDateBadge";
 import InvoicingStateSwitch from "../../../utils/InvoicingStateSwitch";
@@ -20,6 +20,9 @@ interface IProjectCardProps {
 }
 
 const ProjectCardSettingsModal = (props: IProjectCardProps) => {
+  const [subcontracting, setSubcontracting] = useState(
+    props.project["SOUS TRAITANCE"]
+  );
   const [drawTime, setDrawTime] = useState(props.project.H_DESSIN);
   const [engineeringTime, setEngineeringTime] = useState(
     props.project.H_INGENIEUR
@@ -30,6 +33,7 @@ const ProjectCardSettingsModal = (props: IProjectCardProps) => {
     props.project.H_DESSIN = drawTime;
     props.project.H_INGENIEUR = engineeringTime;
     props.project.RENDU = renderingDate.toLocaleDateString("fr");
+    props.project["SOUS TRAITANCE"] = subcontracting;
     props.setShowMoreInfo(false);
   };
 
@@ -80,7 +84,11 @@ const ProjectCardSettingsModal = (props: IProjectCardProps) => {
             paddingRight: "16px",
           }}
         >
-          <General project={props.project} />
+          <General
+            project={props.project}
+            subcontracting={subcontracting}
+            setSubcontracting={setSubcontracting}
+          />
           <Honoraire project={props.project} />
         </div>
         <div

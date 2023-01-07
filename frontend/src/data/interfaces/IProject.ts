@@ -3,6 +3,7 @@ import { IAvancement } from "./IAvancement";
 
 export interface IProject {
   DOSSIER: string;
+  "SOUS TRAITANCE": string;
   AFFAIRE: string;
   CLIENT: string;
   RESSOURCES: string;
@@ -14,6 +15,7 @@ export interface IProject {
   "TEMPS REALISE": string;
   "TEMPS RESTANT": string;
   "MONTANT DEVIS (EUR HT)": string;
+  AGENCE: string;
   ETAT: string;
   RENDU: string | undefined;
   PHASE: TPhase;

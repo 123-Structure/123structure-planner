@@ -1,10 +1,12 @@
-import { Input, useMantineTheme } from "@mantine/core";
+import { TextInput, useMantineTheme } from "@mantine/core";
 import { IconFileDescription, IconId } from "@tabler/icons";
 import { IProject } from "../../../../../data/interfaces/IProject";
 import CustomTitle from "../../../../utils/CustomTitle";
 
 interface IGeneralProps {
   project: IProject;
+  subcontracting: string;
+  setSubcontracting: React.Dispatch<React.SetStateAction<string>>;
 }
 
 const General = (props: IGeneralProps) => {
@@ -28,13 +30,18 @@ const General = (props: IGeneralProps) => {
         <b>Client : </b>
         {props.project.CLIENT !== "" ? props.project.CLIENT : "-"}
       </p>
-      <Input.Wrapper label="N° Sous-traitance" style={{ marginBottom: "16px" }}>
-        <Input
-          placeholder="00.00.000A"
-          style={{ width: "100%" }}
-          icon={<IconId color={theme.colors.yellow[6]} />}
-        />
-      </Input.Wrapper>
+      <p>
+        <b>Agence : </b>
+        {props.project.AGENCE !== "" ? props.project.AGENCE : "-"}
+      </p>
+      <TextInput
+        label="N° Sous-traitance"
+        style={{ marginBottom: "16px" }}
+        placeholder="00.00.000A"
+        icon={<IconId color={theme.colors.yellow[6]} />}
+        value={props.subcontracting}
+        onChange={(event) => props.setSubcontracting(event.currentTarget.value)}
+      ></TextInput>
     </>
   );
 };
