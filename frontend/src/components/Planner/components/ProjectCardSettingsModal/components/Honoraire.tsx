@@ -14,7 +14,6 @@ import {
   IconCirclePlus,
   IconCurrencyEuro,
   IconPencil,
-  IconTrash,
   IconWallet,
   IconX,
 } from "@tabler/icons";
@@ -163,6 +162,8 @@ const Honoraire = (props: IHonoraireProps) => {
   const addRow = (newAvancement: IAvancement) => {
     setAvancements([...avancements, newAvancement]);
     props.project.AVANCEMENT.push(newAvancement);
+    setNewProgressAmount(0);
+    setNewProgressDate(new Date());
   };
 
   return (
@@ -259,7 +260,7 @@ const Honoraire = (props: IHonoraireProps) => {
           locale="fr"
           excludeDate={(date) => date.getDay() === 0 || date.getDay() === 6}
           inputFormat="DD/MM/YYYY"
-          defaultValue={new Date()}
+          value={newProgressDate}
           onChange={(val: Date) => setNewProgressDate(val)}
           renderDay={(date) => {
             const day = date.toLocaleDateString("fr");

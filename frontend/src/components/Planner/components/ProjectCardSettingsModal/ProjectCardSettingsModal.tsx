@@ -8,14 +8,18 @@ import CustomButton from "../../../utils/CustomButton";
 import General from "./components/General";
 import Planification from "./components/Planification";
 import Honoraire from "./components/Honoraire";
+import RenderingDateBadge from "../../../utils/RenderingDateBadge";
+import InvoicingStateSwitch from "../../../utils/InvoicingStateSwitch";
 
 interface IProjectCardProps {
   showMoreInfo: boolean;
   setShowMoreInfo: Dispatch<SetStateAction<boolean>>;
   project: IProject;
+  isInvoiced: boolean;
+  setIsInvoiced: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const MoreInfoModal = (props: IProjectCardProps) => {
+const ProjectCardSettingsModal = (props: IProjectCardProps) => {
   const [drawTime, setDrawTime] = useState(props.project.H_DESSIN);
   const [engineeringTime, setEngineeringTime] = useState(
     props.project.H_INGENIEUR
@@ -39,10 +43,23 @@ const MoreInfoModal = (props: IProjectCardProps) => {
       size="calc(window.screen.width-25%)"
       padding={"xl"}
       title={
-        <CustomTitle
-          icon={<IconFolder size={24} />}
-          title={`${props.project.DOSSIER} - ${props.project.AFFAIRE}`}
-        />
+        <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
+          <CustomTitle
+            icon={<IconFolder size={24} />}
+            title={`${props.project.DOSSIER} - ${props.project.AFFAIRE}`}
+          />
+          <div style={{ display: "flex", gap: "8px" }}>
+            <RenderingDateBadge project={props.project} />
+            <InvoicingStateSwitch
+              project={props.project}
+              isInvoiced={props.isInvoiced}
+              setIsInvoiced={props.setIsInvoiced}
+              isInvoicedLabel={"Facturé"}
+              isNotInvoicedLabel={"Non Facturé"}
+              isPartialInvoicedLabel={"Partiellement Facturé"}
+            />
+          </div>
+        </div>
       }
     >
       <div
@@ -101,4 +118,4 @@ const MoreInfoModal = (props: IProjectCardProps) => {
   );
 };
 
-export default MoreInfoModal;
+export default ProjectCardSettingsModal;

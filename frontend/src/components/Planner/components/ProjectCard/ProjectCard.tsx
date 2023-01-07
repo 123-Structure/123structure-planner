@@ -1,20 +1,14 @@
 import { useState } from "react";
 import { projectNameReducer } from "../../../../utils/projectNameReducer";
 import { IProject } from "../../../../data/interfaces/IProject";
-import MoreInfoModal from "./ProjectCardSettingsModal";
+import ProjectCardSettingsModal from "../ProjectCardSettingsModal/ProjectCardSettingsModal";
 import { useDrag } from "react-dnd";
 import { ItemTypes } from "../../../../data/constants/ItemTypes";
-import { Badge, Checkbox, Chip, Tooltip, useMantineTheme } from "@mantine/core";
+import { Tooltip } from "@mantine/core";
 import { FolderColors } from "../../../../data/constants/FolderColors";
-import dayjs from "dayjs";
-import CustomParseFormat from "dayjs/plugin/customParseFormat.js";
-import {
-  useProject,
-  useUpdateProject,
-} from "../../../../context/ProjectContext";
 import truncateString from "../../../../utils/truncateString";
-
-dayjs.extend(CustomParseFormat);
+import RenderingDateBadge from "../../../utils/RenderingDateBadge";
+import InvoicingStateSwitch from "../../../utils/InvoicingStateSwitch";
 
 interface IProjectCardProps {
   project: IProject;
@@ -22,11 +16,10 @@ interface IProjectCardProps {
 
 const ProjectCard = (props: IProjectCardProps) => {
   const [showMoreInfo, setShowMoreInfo] = useState(false);
-  const [isInvoiced, setIsInvoiced] = useState(false);
-  const theme = useMantineTheme();
-  const projects = useProject();
-  const setProjects = useUpdateProject();
-
+  const [isInvoiced, setIsInvoiced] = useState(
+    props.project.ETAT.includes("isInvoiced") ||
+      props.project.ETAT.includes("partialInvoiced")
+  );
   const [{ isDragging }, drag] = useDrag({
     type: ItemTypes.CARD,
     item: {
@@ -51,64 +44,14 @@ const ProjectCard = (props: IProjectCardProps) => {
     return "white";
   };
 
-  const getRemainingTimeColor = (d: string | undefined) => {
-    if (d !== undefined) {
-      const rendu = dayjs(d, "DD-MM-YYYY");
-      const today = dayjs(new Date().toLocaleDateString("fr"), "DD-MM-YYYY");
-      const diff = rendu.diff(today, "day");
-      if (diff > 9) {
-        return "green";
-      }
-      if (diff <= 9 && diff > 3) {
-        return "orange";
-      }
-      if (diff <= 3) {
-        return "red";
-      }
-    }
-    return "dark";
-  };
-
-  const updateProject = (itemId: any, newValue: string) => {
-    const newProjects = [...projects];
-
-    const changedProject = newProjects.filter(
-      (project) => project.DOSSIER === itemId
-    );
-
-    changedProject[0].ETAT = newValue;
-    setProjects(newProjects);
-
-    console.log(newValue);
-  };
-
-  const handleInvoiceChange = () => {
-    setIsInvoiced(!isInvoiced);
-    updateProject(
-      props.project.DOSSIER,
-      `invoicing ${props.project.ETAT.split(" ")[1]} ${
-        parseFloat(props.project["MONTANT DEVIS (EUR HT)"]) -
-          props.project.AVANCEMENT.reduce(
-            (acc, p) => acc + parseFloat(p.amount),
-            0
-          ) ===
-          0 && !isInvoiced
-          ? "isInvoiced"
-          : props.project.AVANCEMENT.length > 0 && !isInvoiced
-          ? "partialInvoiced"
-          : !isInvoiced
-          ? "isInvoiced"
-          : ""
-      }`
-    );
-  };
-
   return (
     <>
-      <MoreInfoModal
+      <ProjectCardSettingsModal
         showMoreInfo={showMoreInfo}
         setShowMoreInfo={setShowMoreInfo}
         project={props.project}
+        isInvoiced={isInvoiced}
+        setIsInvoiced={setIsInvoiced}
       />
       <Tooltip
         label={`${props.project.DOSSIER} - ${props.project.AFFAIRE}`}
@@ -150,91 +93,15 @@ const ProjectCard = (props: IProjectCardProps) => {
               gap: "16px",
             }}
           >
-            <Badge
-              color={getRemainingTimeColor(props.project.RENDU)}
-              size="lg"
-              variant="filled"
-              style={{
-                outline: "2px solid white",
-              }}
-            >
-              {props.project.RENDU !== undefined
-                ? props.project.RENDU
-                : "Non défini"}
-            </Badge>
-            <div
-              style={{
-                backgroundColor: !props.project.ETAT.includes("invoicing")
-                  ? "white"
-                  : parseFloat(props.project["MONTANT DEVIS (EUR HT)"]) -
-                      props.project.AVANCEMENT.reduce(
-                        (acc, p) => acc + parseFloat(p.amount),
-                        0
-                      ) ===
-                      0 && isInvoiced
-                  ? theme.colors.green[1]
-                  : props.project.AVANCEMENT.length > 0 && isInvoiced
-                  ? theme.colors.orange[1]
-                  : isInvoiced
-                  ? theme.colors.green[1]
-                  : theme.colors.red[1],
-                borderRadius: "14px",
-                padding: "4px 12px",
-              }}
-            >
-              <Checkbox
-                checked={isInvoiced}
-                onChange={handleInvoiceChange}
-                label={
-                  <p
-                    style={{
-                      color: !props.project.ETAT.includes("invoicing")
-                        ? theme.colors.gray[6]
-                        : parseFloat(props.project["MONTANT DEVIS (EUR HT)"]) -
-                            props.project.AVANCEMENT.reduce(
-                              (acc, p) => acc + parseFloat(p.amount),
-                              0
-                            ) ===
-                            0 && isInvoiced
-                        ? theme.colors.green[7]
-                        : props.project.AVANCEMENT.length > 0 && isInvoiced
-                        ? theme.colors.orange[7]
-                        : isInvoiced
-                        ? theme.colors.green[7]
-                        : theme.colors.red[7],
-                      margin: 0,
-                    }}
-                  >
-                    {parseFloat(props.project["MONTANT DEVIS (EUR HT)"]) -
-                      props.project.AVANCEMENT.reduce(
-                        (acc, p) => acc + parseFloat(p.amount),
-                        0
-                      ) ===
-                      0 && isInvoiced
-                      ? "F"
-                      : props.project.AVANCEMENT.length > 0 && isInvoiced
-                      ? "PF"
-                      : isInvoiced
-                      ? "F"
-                      : "NF"}
-                  </p>
-                }
-                color={
-                  parseFloat(props.project["MONTANT DEVIS (EUR HT)"]) -
-                    props.project.AVANCEMENT.reduce(
-                      (acc, p) => acc + parseFloat(p.amount),
-                      0
-                    ) ===
-                    0 && isInvoiced
-                    ? "green"
-                    : props.project.AVANCEMENT.length > 0 && isInvoiced
-                    ? "orange"
-                    : "green"
-                }
-                disabled={!props.project.ETAT.includes("invoicing")}
-                indeterminate={!props.project.ETAT.includes("invoicing")}
-              />
-            </div>
+            <RenderingDateBadge project={props.project} />
+            <InvoicingStateSwitch
+              project={props.project}
+              isInvoiced={isInvoiced}
+              setIsInvoiced={setIsInvoiced}
+              isInvoicedLabel={"F"}
+              isNotInvoicedLabel={"NF"}
+              isPartialInvoicedLabel={"PF"}
+            />
           </div>
         </div>
       </Tooltip>
