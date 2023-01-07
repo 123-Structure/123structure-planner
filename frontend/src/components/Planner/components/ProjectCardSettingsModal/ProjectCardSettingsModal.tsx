@@ -39,7 +39,7 @@ const ProjectCardSettingsModal = (props: IProjectCardProps) => {
       overlayOpacity={0.55}
       overlayBlur={3}
       opened={props.showMoreInfo}
-      onClose={() => props.setShowMoreInfo(false)}
+      onClose={handleSubmit}
       size="calc(window.screen.width-25%)"
       padding={"xl"}
       title={

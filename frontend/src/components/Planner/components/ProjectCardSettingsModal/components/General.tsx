@@ -12,7 +12,10 @@ const General = (props: IGeneralProps) => {
 
   return (
     <>
-      <CustomTitle icon={<IconFileDescription size={24} />} title={"Général :"} />
+      <CustomTitle
+        icon={<IconFileDescription size={24} />}
+        title={"Général :"}
+      />
       <p>
         <b>N° de dossier : </b>
         {props.project.DOSSIER}
