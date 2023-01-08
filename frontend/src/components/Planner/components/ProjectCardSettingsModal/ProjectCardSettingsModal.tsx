@@ -10,6 +10,7 @@ import Planification from "./components/Planification/Planification";
 import Honoraire from "./components/Honoraire";
 import RenderingDateBadge from "../../../utils/RenderingDateBadge";
 import InvoicingStateSwitch from "../../../utils/InvoicingStateSwitch";
+import AgenceBadge from "../../../utils/AgenceBadge";
 
 interface IProjectCardProps {
   showMoreInfo: boolean;
@@ -53,6 +54,7 @@ const ProjectCardSettingsModal = (props: IProjectCardProps) => {
             title={`${props.project.DOSSIER} - ${props.project.AFFAIRE}`}
           />
           <div style={{ display: "flex", gap: "8px" }}>
+            <AgenceBadge project={props.project} />
             <RenderingDateBadge project={props.project} />
             <InvoicingStateSwitch
               project={props.project}

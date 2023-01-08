@@ -30,10 +30,6 @@ const General = (props: IGeneralProps) => {
         <b>Client : </b>
         {props.project.CLIENT !== "" ? props.project.CLIENT : "-"}
       </p>
-      <p>
-        <b>Agence : </b>
-        {props.project.AGENCE !== "" ? props.project.AGENCE : "-"}
-      </p>
       <TextInput
         label="N° Sous-traitance"
         style={{ marginBottom: "16px" }}

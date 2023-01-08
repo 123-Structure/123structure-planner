@@ -15,7 +15,6 @@ export interface IProject {
   "TEMPS REALISE": string;
   "TEMPS RESTANT": string;
   "MONTANT DEVIS (EUR HT)": string;
-  AGENCE: string;
   ETAT: string;
   RENDU: string | undefined;
   PHASE: TPhase;

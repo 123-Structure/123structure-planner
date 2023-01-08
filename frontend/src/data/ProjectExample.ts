@@ -14,7 +14,7 @@ export const ProjectExample: IProject[] = [
     "TEMPS REALISE": "21",
     "TEMPS RESTANT": "25",
     "MONTANT DEVIS (EUR HT)": "4600",
-    AGENCE: "Clisson (44)",
+
     LIVRAISON: "",
     SOL: "",
     ETAT: "mustBeAssign",
@@ -36,7 +36,7 @@ export const ProjectExample: IProject[] = [
     "TEMPS REALISE": "21",
     "TEMPS RESTANT": "25",
     "MONTANT DEVIS (EUR HT)": "4600",
-    AGENCE: "Clisson (44)",
+
     LIVRAISON: "",
     SOL: "",
     ETAT: "mustBeAssign",
@@ -58,7 +58,7 @@ export const ProjectExample: IProject[] = [
     "TEMPS REALISE": "21",
     "TEMPS RESTANT": "25",
     "MONTANT DEVIS (EUR HT)": "4600",
-    AGENCE: "Clisson (44)",
+
     LIVRAISON: "",
     SOL: "",
     ETAT: "mustBeAssign",
@@ -80,7 +80,7 @@ export const ProjectExample: IProject[] = [
     "TEMPS REALISE": "21",
     "TEMPS RESTANT": "25",
     "MONTANT DEVIS (EUR HT)": "4600",
-    AGENCE: "Clisson (44)",
+
     LIVRAISON: "",
     SOL: "",
     ETAT: "mustBeAssign",
@@ -103,7 +103,7 @@ export const ProjectExample: IProject[] = [
     "TEMPS REALISE": "21",
     "TEMPS RESTANT": "25",
     "MONTANT DEVIS (EUR HT)": "4600",
-    AGENCE: "Clisson (44)",
+
     LIVRAISON: "",
     SOL: "",
     ETAT: "mustBeAssign",
@@ -125,7 +125,7 @@ export const ProjectExample: IProject[] = [
     "TEMPS REALISE": "21",
     "TEMPS RESTANT": "25",
     "MONTANT DEVIS (EUR HT)": "4600",
-    AGENCE: "Clisson (44)",
+
     LIVRAISON: "",
     SOL: "",
     ETAT: "mustBeAssign",
@@ -147,7 +147,7 @@ export const ProjectExample: IProject[] = [
     "TEMPS REALISE": "21",
     "TEMPS RESTANT": "25",
     "MONTANT DEVIS (EUR HT)": "4600",
-    AGENCE: "Clisson (44)",
+
     LIVRAISON: "",
     SOL: "",
     ETAT: "mustBeAssign",
@@ -169,7 +169,7 @@ export const ProjectExample: IProject[] = [
     "TEMPS REALISE": "21",
     "TEMPS RESTANT": "25",
     "MONTANT DEVIS (EUR HT)": "4600",
-    AGENCE: "Clisson (44)",
+
     LIVRAISON: "",
     SOL: "",
     ETAT: "mustBeAssign",
@@ -191,7 +191,7 @@ export const ProjectExample: IProject[] = [
     "TEMPS REALISE": "21",
     "TEMPS RESTANT": "25",
     "MONTANT DEVIS (EUR HT)": "4600",
-    AGENCE: "Clisson (44)",
+
     LIVRAISON: "",
     SOL: "",
     ETAT: "mustBeAssign",
@@ -213,7 +213,7 @@ export const ProjectExample: IProject[] = [
     "TEMPS REALISE": "21",
     "TEMPS RESTANT": "25",
     "MONTANT DEVIS (EUR HT)": "4600",
-    AGENCE: "Clisson (44)",
+
     LIVRAISON: "",
     SOL: "",
     ETAT: "mustBeAssign",
@@ -235,7 +235,7 @@ export const ProjectExample: IProject[] = [
     "TEMPS REALISE": "21",
     "TEMPS RESTANT": "25",
     "MONTANT DEVIS (EUR HT)": "4600",
-    AGENCE: "Clisson (44)",
+
     LIVRAISON: "",
     SOL: "",
     ETAT: "mustBeAssign",
@@ -258,7 +258,7 @@ export const ProjectExample: IProject[] = [
     "TEMPS REALISE": "21",
     "TEMPS RESTANT": "25",
     "MONTANT DEVIS (EUR HT)": "4600",
-    AGENCE: "Clisson (44)",
+
     LIVRAISON: "",
     SOL: "",
     ETAT: "mustBeAssign",
@@ -280,7 +280,7 @@ export const ProjectExample: IProject[] = [
     "TEMPS REALISE": "21",
     "TEMPS RESTANT": "25",
     "MONTANT DEVIS (EUR HT)": "4600",
-    AGENCE: "Clisson (44)",
+
     LIVRAISON: "",
     SOL: "",
     ETAT: "mustBeAssign",
@@ -302,7 +302,7 @@ export const ProjectExample: IProject[] = [
     "TEMPS REALISE": "21",
     "TEMPS RESTANT": "25",
     "MONTANT DEVIS (EUR HT)": "4600",
-    AGENCE: "Clisson (44)",
+
     LIVRAISON: "",
     SOL: "",
     ETAT: "mustBeAssign",
@@ -324,7 +324,7 @@ export const ProjectExample: IProject[] = [
     "TEMPS REALISE": "21",
     "TEMPS RESTANT": "25",
     "MONTANT DEVIS (EUR HT)": "4600",
-    AGENCE: "Clisson (44)",
+
     LIVRAISON: "",
     SOL: "",
     ETAT: "mustBeAssign",
@@ -346,7 +346,7 @@ export const ProjectExample: IProject[] = [
     "TEMPS REALISE": "21",
     "TEMPS RESTANT": "25",
     "MONTANT DEVIS (EUR HT)": "4600",
-    AGENCE: "Clisson (44)",
+
     LIVRAISON: "",
     SOL: "",
     ETAT: "mustBeAssign",
@@ -368,7 +368,7 @@ export const ProjectExample: IProject[] = [
     "TEMPS REALISE": "21",
     "TEMPS RESTANT": "25",
     "MONTANT DEVIS (EUR HT)": "4600",
-    AGENCE: "Clisson (44)",
+
     LIVRAISON: "",
     SOL: "",
     ETAT: "mustBeAssign",
@@ -379,7 +379,7 @@ export const ProjectExample: IProject[] = [
     AVANCEMENT: [],
   },
   {
-    DOSSIER: "22.09.053L",
+    DOSSIER: "22.09.053Y",
     "SOUS TRAITANCE": "",
     AFFAIRE: "CREATION MICRO CRECHE (Prouteau)",
     CLIENT: "LMCR Les Maçons Coopérateurs Réunis",
@@ -390,7 +390,7 @@ export const ProjectExample: IProject[] = [
     "TEMPS REALISE": "21",
     "TEMPS RESTANT": "25",
     "MONTANT DEVIS (EUR HT)": "4600",
-    AGENCE: "Clisson (44)",
+
     LIVRAISON: "",
     SOL: "",
     ETAT: "mustBeAssign",
@@ -401,7 +401,7 @@ export const ProjectExample: IProject[] = [
     AVANCEMENT: [],
   },
   {
-    DOSSIER: "22.09.519L",
+    DOSSIER: "22.09.519U",
     "SOUS TRAITANCE": "",
     AFFAIRE: "Propriété M. ROUSSEAU et Mme PIVETEAU (Prouteau)",
     CLIENT: "LMCR Les Maçons Coopérateurs Réunis",
@@ -412,7 +412,7 @@ export const ProjectExample: IProject[] = [
     "TEMPS REALISE": "21",
     "TEMPS RESTANT": "25",
     "MONTANT DEVIS (EUR HT)": "4600",
-    AGENCE: "Clisson (44)",
+
     LIVRAISON: "",
     SOL: "",
     ETAT: "invoicing t.gallet",
@@ -450,7 +450,7 @@ export const ProjectExample: IProject[] = [
     "TEMPS REALISE": "21",
     "TEMPS RESTANT": "25",
     "MONTANT DEVIS (EUR HT)": "4600",
-    AGENCE: "Clisson (44)",
+
     LIVRAISON: "",
     SOL: "",
     ETAT: "invoicing t.gallet",
