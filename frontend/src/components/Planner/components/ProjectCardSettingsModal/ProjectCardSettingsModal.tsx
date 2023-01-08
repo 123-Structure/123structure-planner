@@ -11,6 +11,7 @@ import Honoraire from "./components/Honoraire";
 import RenderingDateBadge from "../../../utils/RenderingDateBadge";
 import InvoicingStateSwitch from "../../../utils/InvoicingStateSwitch";
 import AgenceBadge from "../../../utils/AgenceBadge";
+import { getMonthColor } from "../../../../utils/getMonthColor";
 
 interface IProjectCardProps {
   showMoreInfo: boolean;
@@ -49,10 +50,19 @@ const ProjectCardSettingsModal = (props: IProjectCardProps) => {
       padding={"xl"}
       title={
         <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
-          <CustomTitle
-            icon={<IconFolder size={24} />}
-            title={`${props.project.DOSSIER} - ${props.project.AFFAIRE}`}
-          />
+          <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+            <CustomTitle
+              icon={
+                <IconFolder
+                  size={32}
+                  style={{
+                    fill: getMonthColor(props.project.DOSSIER.split(".")[1])[0],
+                  }}
+                />
+              }
+              title={`${props.project.DOSSIER} - ${props.project.AFFAIRE}`}
+            />
+          </div>
           <div style={{ display: "flex", gap: "8px" }}>
             <AgenceBadge project={props.project} />
             <RenderingDateBadge project={props.project} />

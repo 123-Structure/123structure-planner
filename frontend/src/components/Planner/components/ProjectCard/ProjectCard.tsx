@@ -5,10 +5,10 @@ import ProjectCardSettingsModal from "../ProjectCardSettingsModal/ProjectCardSet
 import { useDrag } from "react-dnd";
 import { ItemTypes } from "../../../../data/constants/ItemTypes";
 import { Tooltip } from "@mantine/core";
-import { FolderColors } from "../../../../data/constants/FolderColors";
 import truncateString from "../../../../utils/truncateString";
 import RenderingDateBadge from "../../../utils/RenderingDateBadge";
 import InvoicingStateSwitch from "../../../utils/InvoicingStateSwitch";
+import { getMonthColor } from "../../../../utils/getMonthColor";
 
 interface IProjectCardProps {
   project: IProject;
@@ -32,16 +32,6 @@ const ProjectCard = (props: IProjectCardProps) => {
 
   const handleShowMoreInfoModal = () => {
     setShowMoreInfo(true);
-  };
-
-  const getMonthColor = (m: string) => {
-    for (let i = 0; i < FolderColors.length; i++) {
-      const month = FolderColors[i];
-      if (m === month.id) {
-        return [month.BgColor, month.FontColor];
-      }
-    }
-    return "white";
   };
 
   return (
