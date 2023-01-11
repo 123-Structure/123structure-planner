@@ -167,7 +167,15 @@ const Honoraire = (props: IHonoraireProps) => {
   };
 
   return (
-    <>
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "flex-start",
+        alignItems: "flex-start",
+        paddingRight: "16px",
+      }}
+    >
       <CustomTitle icon={<IconWallet size={24} />} title={"Honoraires :"} />
       <div
         style={{
@@ -384,7 +392,7 @@ const Honoraire = (props: IHonoraireProps) => {
       ) : (
         <></>
       )}
-    </>
+    </div>
   );
 };
 

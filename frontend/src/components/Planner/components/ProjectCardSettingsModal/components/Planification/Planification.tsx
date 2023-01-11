@@ -85,8 +85,21 @@ const Planification = (props: IPlanificationProps) => {
     );
   };
 
+  const handleDateChange = (val: Date) => {
+    props.setRenderingDate(val);
+    props.project.RENDU = val.toLocaleDateString("fr");
+  };
+
   return (
-    <>
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "flex-start",
+        alignItems: "flex-start",
+        paddingRight: "16px",
+      }}
+    >
       <CustomTitle
         icon={<IconCalendarTime size={24} />}
         title={"Planification :"}
@@ -134,7 +147,7 @@ const Planification = (props: IPlanificationProps) => {
               [classes.outside]: modifiers.outside,
             })
           }
-          onChange={(val: Date) => props.setRenderingDate(val)}
+          onChange={(val: Date) => handleDateChange(val)}
           dayStyle={(date) => getRemainingTimeBgColor(date)}
           renderDay={(date) => {
             const day = date.toLocaleDateString("fr");
@@ -154,7 +167,7 @@ const Planification = (props: IPlanificationProps) => {
           icon={<IconCalendar color={theme.colors.yellow[6]} />}
         />
       </div>
-    </>
+    </div>
   );
 };
 

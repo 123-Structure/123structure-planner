@@ -13,7 +13,15 @@ const General = (props: IGeneralProps) => {
   const theme = useMantineTheme();
 
   return (
-    <>
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "flex-start",
+        alignItems: "flex-start",
+        paddingRight: "16px",
+      }}
+    >
       <CustomTitle
         icon={<IconFileDescription size={24} />}
         title={"Général :"}
@@ -38,7 +46,7 @@ const General = (props: IGeneralProps) => {
         value={props.subcontracting}
         onChange={(event) => props.setSubcontracting(event.currentTarget.value)}
       ></TextInput>
-    </>
+    </div>
   );
 };
 
