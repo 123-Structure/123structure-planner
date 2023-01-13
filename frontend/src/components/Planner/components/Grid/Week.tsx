@@ -9,7 +9,7 @@ import {
 } from "../../../../context/ProjectContext";
 import { sortProjects } from "../../../../utils/sortProjects";
 import dayjs from "dayjs";
-import IsoWeek from "dayjs/plugin/IsoWeek";
+import IsoWeek from "dayjs/plugin/isoWeek.js";
 
 interface IWeekProps {
   id: string;

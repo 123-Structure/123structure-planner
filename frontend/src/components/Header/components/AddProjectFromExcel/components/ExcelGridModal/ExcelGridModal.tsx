@@ -3,7 +3,7 @@ import { IconFilePlus } from "@tabler/icons";
 import { useState } from "react";
 import { IProject } from "../../../../../../data/interfaces/IProject";
 import ExcelSettings from "./components/ModalSettingsButton";
-import ModalTitle from "../../../../../utils/ModalTitle";
+import CustomTitle from "../../../../../utils/CustomTitle";
 import ValidateButton from "./components/ValidateButton";
 import Grid from "./components/Grid";
 
@@ -45,7 +45,7 @@ const ExcelGridModal = (props: IExcelDataGridModalProps) => {
       size="calc(100vw - 500px)"
       padding={"xl"}
       title={
-        <ModalTitle
+        <CustomTitle
           icon={<IconFilePlus size={24} />}
           title="Importer des nouveaux projets depuis un fichier Excel"
         />

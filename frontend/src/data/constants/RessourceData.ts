@@ -180,7 +180,7 @@ export const RessourceData: IRessource[] = [
   {
     firstName: "Vanessa",
     lastName: "LAFRECHOUX",
-    role: ["Administrateur", "Correcteur"],
+    role: ["Administrateur", "Correcteur", "Ingénieur"],
     company: "Global",
     _id: "v.lafrechoux",
     fixer: undefined,

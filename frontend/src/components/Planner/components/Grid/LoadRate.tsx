@@ -24,32 +24,32 @@ const LoadRate = (props: ILoadRateProps) => {
       (r) => r._id === props.rowId
     )[0].role;
 
-    const projectAssignToCurrentRessource = projects
-      .filter((project) =>
-        project.ETAT.includes("w" + props.id.charAt(props.id.length - 1))
-      )
-      .filter((project) => project.ETAT.includes(props.rowId));
-
-    return (
-      <>
-        <IconClock style={{ marginRight: "4px" }} />
-        {projectAssignToCurrentRessource.reduce(
-          (acc, p) => acc + p.H_DESSIN + p.H_INGENIEUR,
-          0
-        ) + "h ("}
-        <IconCalculator style={{ marginRight: "4px" }} />
-        {projectAssignToCurrentRessource.reduce(
-          (acc, p) => acc + p.H_INGENIEUR,
-          0
-        ) + "h -"}
-        <IconPencil style={{ margin: "0 4px" }} />
-        {projectAssignToCurrentRessource.reduce(
-          (acc, p) => acc + p.H_DESSIN,
-          0
-        ) + "h"}
-        {")"}
-      </>
-    );
+    if (currentRessourceRole.includes("Ingénieur")) {
+      return (
+        <>
+          <IconCalculator style={{ marginRight: "4px" }} />
+          {projects
+            .filter((project) =>
+              project.ETAT.includes("w" + props.id.charAt(props.id.length - 1))
+            )
+            .filter((project) => project.ETAT.includes(props.rowId))
+            .reduce((acc, p) => acc + p.H_INGENIEUR, 0) + "h"}
+        </>
+      );
+    }
+    if (currentRessourceRole.includes("Dessinateur")) {
+      return (
+        <>
+          <IconPencil style={{ marginRight: "4px" }} />
+          {projects
+            .filter((project) =>
+              project.ETAT.includes("w" + props.id.charAt(props.id.length - 1))
+            )
+            .filter((project) => project.ETAT.includes(props.rowId))
+            .reduce((acc, p) => acc + p.H_DESSIN, 0) + "h"}
+        </>
+      );
+    }
   };
 
   return (

@@ -21,7 +21,7 @@ import { Dispatch, SetStateAction } from "react";
 import { useRessources } from "../../../../../context/RessourceContext";
 import { companyColor } from "../../../../../utils/companyColor";
 import { defaultAccessRight } from "../../../../../utils/defaultAccessRight";
-import ModalTitle from "../../../../utils/ModalTitle";
+import CustomTitle from "../../../../utils/CustomTitle";
 import AddUser from "./AddUser";
 import MultiFixerSelect from "./MultiSelect/MultiFixerSelect";
 import MultiRoleSelect from "./MultiSelect/MultiRoleSelect";
@@ -127,7 +127,7 @@ const ManageUsersModal = (props: IManageUsersModalProps) => {
       size="calc(window.screen.width-25%)"
       padding={"xl"}
       title={
-        <ModalTitle
+        <CustomTitle
           icon={<IconSettings size={24} />}
           title="Réglage des utilisateurs"
         />
