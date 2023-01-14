@@ -1,4 +1,4 @@
-import { Tooltip, useMantineTheme } from "@mantine/core";
+import { useMantineTheme } from "@mantine/core";
 import { showNotification } from "@mantine/notifications";
 import { useDrop } from "react-dnd";
 import {
@@ -7,6 +7,7 @@ import {
 } from "../../../../context/ProjectContext";
 import { ItemTypes } from "../../../../data/constants/ItemTypes";
 import { sortProjects } from "../../../../utils/sortProjects";
+import CustomTooltip from "../../../utils/CustomTooltip";
 import ProjectCard from "../ProjectCard/ProjectCard";
 
 const MustBeAssign = () => {
@@ -43,17 +44,7 @@ const MustBeAssign = () => {
   };
 
   return (
-    <Tooltip
-      label={"Projet(s) à attribuer"}
-      position="bottom-start"
-      color="gray"
-      transition="slide-up"
-      transitionDuration={300}
-      openDelay={1000}
-      style={{ fontWeight: "bold" }}
-      withArrow
-      arrowSize={8}
-    >
+    <CustomTooltip label={"Projet(s) à attribuer"}>
       <div
         className="mustBeAssign"
         ref={drop}
@@ -69,7 +60,7 @@ const MustBeAssign = () => {
           <ProjectCard key={index} project={filteredProjects} />
         ))}
       </div>
-    </Tooltip>
+    </CustomTooltip>
   );
 };
 

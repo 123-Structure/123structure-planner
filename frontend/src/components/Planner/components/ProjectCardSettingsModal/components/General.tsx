@@ -13,15 +13,7 @@ const General = (props: IGeneralProps) => {
   const theme = useMantineTheme();
 
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "flex-start",
-        alignItems: "flex-start",
-        paddingRight: "16px",
-      }}
-    >
+    <div id="general">
       <CustomTitle
         icon={<IconFileDescription size={24} />}
         title={"Général :"}
@@ -40,7 +32,6 @@ const General = (props: IGeneralProps) => {
       </p>
       <TextInput
         label="N° Sous-traitance"
-        style={{ marginBottom: "16px" }}
         placeholder="00.00.000A"
         icon={<IconId color={theme.colors.yellow[6]} />}
         value={props.subcontracting}

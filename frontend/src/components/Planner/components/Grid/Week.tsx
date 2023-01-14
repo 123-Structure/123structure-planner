@@ -1,7 +1,7 @@
 import { useDrop } from "react-dnd";
 import { ItemTypes } from "../../../../data/constants/ItemTypes";
 import ProjectCard from "../ProjectCard/ProjectCard";
-import { Tooltip, useMantineTheme } from "@mantine/core";
+import { useMantineTheme } from "@mantine/core";
 import { showNotification } from "@mantine/notifications";
 import {
   useProject,
@@ -10,6 +10,7 @@ import {
 import { sortProjects } from "../../../../utils/sortProjects";
 import dayjs from "dayjs";
 import IsoWeek from "dayjs/plugin/isoWeek.js";
+import CustomTooltip from "../../../utils/CustomTooltip";
 
 interface IWeekProps {
   id: string;
@@ -59,18 +60,10 @@ const Week = (props: IWeekProps) => {
   });
 
   return (
-    <Tooltip
+    <CustomTooltip
       label={`n°${weekNumber(
         parseInt(props.id[1]) - 1
       )} - ${props.rowId.toUpperCase()}`}
-      position="bottom-end"
-      color="gray"
-      transition="slide-up"
-      transitionDuration={300}
-      openDelay={1000}
-      style={{ fontWeight: "bold" }}
-      withArrow
-      arrowSize={8}
     >
       <div
         className="week"
@@ -92,7 +85,7 @@ const Week = (props: IWeekProps) => {
             <ProjectCard key={index} project={filteredProjects} />
           ))}
       </div>
-    </Tooltip>
+    </CustomTooltip>
   );
 };
 

@@ -3,11 +3,10 @@ import {
   Group,
   MultiSelect,
   Text,
-  useMantineTheme,
 } from "@mantine/core";
 import {
+  IconCalculator,
   IconCrown,
-  IconMathSymbols,
   IconPencil,
   IconStar,
   IconUserExclamation,
@@ -44,7 +43,7 @@ const MultiRoleSelect = (props: IMultiRoleSelectProps) => {
     if (label === "Dessinateur") {
       return <IconPencil />;
     } else if (label === "Ingénieur") {
-      return <IconMathSymbols />;
+      return <IconCalculator />;
     } else if (label === "Administrateur") {
       return <IconCrown />;
     } else if (label === "Correcteur") {
@@ -75,9 +74,9 @@ const MultiRoleSelect = (props: IMultiRoleSelectProps) => {
       <div ref={ref} {...others}>
         <Group noWrap>
           <Avatar
+            className="manageUsersModalAvatar"
             size={40}
             radius={40}
-            style={{ marginBottom: "6px" }}
             color={companyColor(props.user.company)}
           >
             {Icon(label)}

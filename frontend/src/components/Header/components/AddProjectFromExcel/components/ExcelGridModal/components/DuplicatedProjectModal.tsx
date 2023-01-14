@@ -63,7 +63,7 @@ const DuplicatedProjectModal = (props: IDuplicatedProjectModal) => {
         }`}
       </p>
       <Select
-        style={{ marginBottom: "16px" }}
+        className="duplicatedProjectStateSelector"
         label="Sélectionner une phase à attribuer puis valider"
         data={data}
         value={value}

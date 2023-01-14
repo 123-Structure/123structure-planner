@@ -1,0 +1,17 @@
+.projectCard {
+  height: 66px;
+  padding: 2px 4px 6px 6px;
+  outline: 1px solid black;
+  font-weight: bold;
+}
+
+.projectCardName {
+  margin: 0 0 2px 0;
+}
+
+.projectCardData {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 8px;
+}

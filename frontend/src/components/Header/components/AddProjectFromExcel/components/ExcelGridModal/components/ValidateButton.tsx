@@ -66,6 +66,8 @@ const ValidateButton = (props: IValidateButton) => {
           PHASE: p.PHASE === undefined ? "EXE" : p.PHASE,
           H_DESSIN: 0,
           H_INGENIEUR: 0,
+          "SOUS TRAITANCE": "",
+          AVANCEMENT: [],
         };
         newProjects.push(newProject);
       }
@@ -90,14 +92,7 @@ const ValidateButton = (props: IValidateButton) => {
   };
 
   return (
-    <div
-      style={{
-        marginBottom: "16px",
-        display: "flex",
-        flexDirection: "row",
-        gap: "16px",
-      }}
-    >
+    <div className="validateButton">
       <CustomButton
         color="green"
         disabled={props.duplicatedProjectLength !== 0}

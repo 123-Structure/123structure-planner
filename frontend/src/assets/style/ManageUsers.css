@@ -1,0 +1,16 @@
+#manageUsersModalScrollArea {
+  height: 75vh
+}
+
+.manageUsersModalAvatarContainer {
+  display: grid;
+  max-width: 90px;
+}
+
+.manageUsersModalAvatar {
+  margin-bottom: 6px;
+}
+
+.multiRoleSelect, .multiFixerSelect {
+  max-width: 215px;
+}

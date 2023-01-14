@@ -8,7 +8,6 @@ import {
 import { IProject } from "../../../../../../../data/interfaces/IProject";
 import { ColumnDef } from "@tanstack/react-table";
 import { ProjectParameters } from "../../../../../../../data/constants/ProjectParameters";
-import "../../../../../../../assets/style/ExcelGrid.css";
 import { useProject } from "../../../../../../../context/ProjectContext";
 import DuplicatedProjectModal from "./DuplicatedProjectModal";
 

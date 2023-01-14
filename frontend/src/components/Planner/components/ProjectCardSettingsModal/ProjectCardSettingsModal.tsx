@@ -13,11 +13,12 @@ import CustomTitle from "../../../utils/CustomTitle";
 import CustomButton from "../../../utils/CustomButton";
 import General from "./components/General";
 import Planification from "./components/Planification/Planification";
-import Honoraire from "./components/Honoraire";
+import Honoraire from "./components/Honoraire/Honoraire";
 import RenderingDateBadge from "../../../utils/RenderingDateBadge";
 import InvoicingStateSwitch from "../../../utils/InvoicingStateSwitch";
 import AgenceBadge from "../../../utils/AgenceBadge";
 import { getMonthColor } from "../../../../utils/getMonthColor";
+import "../../../../assets/style/ProjectCardSettingsModal.css";
 
 interface IProjectCardProps {
   showMoreInfo: boolean;
@@ -69,21 +70,19 @@ const ProjectCardSettingsModal = (props: IProjectCardProps) => {
       size="auto"
       padding={"xl"}
       title={
-        <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
-          <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-            <CustomTitle
-              icon={
-                <IconFolder
-                  size={32}
-                  style={{
-                    fill: getMonthColor(props.project.DOSSIER.split(".")[1])[0],
-                  }}
-                />
-              }
-              title={`${props.project.DOSSIER} - ${props.project.AFFAIRE}`}
-            />
-          </div>
-          <div style={{ display: "flex", gap: "8px" }}>
+        <div className="projectCardSettingsModalTitle">
+          <CustomTitle
+            icon={
+              <IconFolder
+                size={32}
+                style={{
+                  fill: getMonthColor(props.project.DOSSIER.split(".")[1])[0],
+                }}
+              />
+            }
+            title={`${props.project.DOSSIER} - ${props.project.AFFAIRE}`}
+          />
+          <div className="projectCardSettingsModalTitleBadge">
             <AgenceBadge project={props.project} />
             <RenderingDateBadge project={props.project} />
             <InvoicingStateSwitch
@@ -129,7 +128,10 @@ const ProjectCardSettingsModal = (props: IProjectCardProps) => {
           </Tabs.Tab>
         </Tabs.List>
 
-        <Tabs.Panel value="general" pt="xs" style={{ paddingLeft: "16px" }}>
+        <Tabs.Panel
+          className="projectCardSettingsModalTabsPanel"
+          value="general"
+        >
           <General
             project={props.project}
             subcontracting={subcontracting}
@@ -137,14 +139,16 @@ const ProjectCardSettingsModal = (props: IProjectCardProps) => {
           />
         </Tabs.Panel>
 
-        <Tabs.Panel value="honoraire" pt="xs" style={{ paddingLeft: "16px" }}>
+        <Tabs.Panel
+          className="projectCardSettingsModalTabsPanel"
+          value="honoraire"
+        >
           <Honoraire project={props.project} />
         </Tabs.Panel>
 
         <Tabs.Panel
+          className="projectCardSettingsModalTabsPanel"
           value="planification"
-          pt="xs"
-          style={{ paddingLeft: "16px" }}
         >
           <Planification
             project={props.project}
@@ -157,14 +161,7 @@ const ProjectCardSettingsModal = (props: IProjectCardProps) => {
           />
         </Tabs.Panel>
       </Tabs>
-      <div
-        style={{
-          width: "100%",
-          display: "flex",
-          justifyContent: "flex-end",
-          marginTop: "16px",
-        }}
-      >
+      <div className="projectCardSettingsModalButton">
         <CustomButton
           handleClick={handleSubmit}
           icon={<IconDeviceFloppy />}

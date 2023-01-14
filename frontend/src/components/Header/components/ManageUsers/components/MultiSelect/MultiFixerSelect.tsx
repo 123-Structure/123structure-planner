@@ -55,9 +55,9 @@ const MultiFixerSelect = (props: IMultiFixerSelectProps) => {
       <div ref={ref} {...others}>
         <Group noWrap>
           <Avatar
+            className="manageUsersModalAvatar"
             size={22}
             radius={40}
-            style={{ marginBottom: "6px" }}
             color={companyColor(
               ressources.filter(
                 (ressource) =>

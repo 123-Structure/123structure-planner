@@ -27,7 +27,7 @@ const LoadRate = (props: ILoadRateProps) => {
     if (currentRessourceRole.includes("Ingénieur")) {
       return (
         <>
-          <IconCalculator style={{ marginRight: "4px" }} />
+          <IconCalculator className="loadRateAvatar" />
           {projects
             .filter((project) =>
               project.ETAT.includes("w" + props.id.charAt(props.id.length - 1))
@@ -40,7 +40,7 @@ const LoadRate = (props: ILoadRateProps) => {
     if (currentRessourceRole.includes("Dessinateur")) {
       return (
         <>
-          <IconPencil style={{ marginRight: "4px" }} />
+          <IconPencil className="loadRateAvatar" />
           {projects
             .filter((project) =>
               project.ETAT.includes("w" + props.id.charAt(props.id.length - 1))

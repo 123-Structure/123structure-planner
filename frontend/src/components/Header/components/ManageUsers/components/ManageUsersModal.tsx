@@ -11,7 +11,7 @@ import {
 import { useMediaQuery } from "@mantine/hooks";
 import {
   IconCrown,
-  IconMathSymbols,
+  IconCalculator,
   IconPencil,
   IconSettings,
   IconStar,
@@ -25,6 +25,7 @@ import CustomTitle from "../../../../utils/CustomTitle";
 import AddUser from "./AddUser";
 import MultiFixerSelect from "./MultiSelect/MultiFixerSelect";
 import MultiRoleSelect from "./MultiSelect/MultiRoleSelect";
+import "../../../../../assets/style/ManageUsers.css";
 
 interface IManageUsersModalProps {
   openManageUser: boolean;
@@ -40,12 +41,12 @@ const ManageUsersModal = (props: IManageUsersModalProps) => {
     <tr key={`${user.firstName}_${user.lastName}`}>
       <td>
         <Group spacing="sm">
-          <div style={{ maxWidth: "90px", display: "grid" }}>
+          <div className="manageUsersModalAvatarContainer">
             {user.role.length === 0 ? (
               <Avatar
+                className="manageUsersModalAvatar"
                 size={40}
                 radius={40}
-                style={{ marginBottom: "6px" }}
                 color={companyColor(user.company)}
               >
                 <IconUserExclamation />
@@ -53,15 +54,15 @@ const ManageUsersModal = (props: IManageUsersModalProps) => {
             ) : (
               user.role.sort().map((r) => (
                 <Avatar
+                  className="manageUsersModalAvatar"
                   size={40}
                   radius={40}
-                  style={{ marginBottom: "6px" }}
                   color={companyColor(user.company)}
                 >
                   {r?.includes("Dessinateur") ? (
                     <IconPencil />
                   ) : r?.includes("Ingénieur") ? (
-                    <IconMathSymbols />
+                    <IconCalculator />
                   ) : r?.includes("Administrateur") ? (
                     <IconCrown />
                   ) : r?.includes("Correcteur") ? (
@@ -84,7 +85,7 @@ const ManageUsersModal = (props: IManageUsersModalProps) => {
           </div>
         </Group>
       </td>
-      <td style={{ maxWidth: "215px" }}>
+      <td className="multiRoleSelect">
         <MultiRoleSelect user={user} />
       </td>
       <td>
@@ -92,7 +93,7 @@ const ManageUsersModal = (props: IManageUsersModalProps) => {
           {user.company ? user.company : "Non défini"}
         </Badge>
       </td>
-      <td style={{ maxWidth: "215px" }}>
+      <td className="multiFixerSelect">
         <MultiFixerSelect user={user} />
       </td>
       <td>
@@ -134,7 +135,7 @@ const ManageUsersModal = (props: IManageUsersModalProps) => {
       }
     >
       {/* <AddUser /> */}
-      <ScrollArea style={{ height: "900px" }} offsetScrollbars>
+      <ScrollArea id="manageUsersModalScrollArea" offsetScrollbars>
         <Table sx={{ minWidth: 1250 }} verticalSpacing="sm">
           <thead>
             <tr>

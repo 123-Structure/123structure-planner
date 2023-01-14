@@ -13,7 +13,6 @@ interface IInvoicingStateSwitch {
 }
 
 const InvoicingStateSwitch = (props: IInvoicingStateSwitch) => {
-  
   const theme = useMantineTheme();
   const projects = useProject();
   const setProjects = useUpdateProject();
@@ -88,6 +87,11 @@ const InvoicingStateSwitch = (props: IInvoicingStateSwitch) => {
       }}
     >
       <Checkbox
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
         checked={props.isInvoiced}
         onChange={handleInvoiceChange}
         label={

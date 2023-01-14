@@ -1,0 +1,39 @@
+.mantine-1t59ujk[data-active] {
+  color: black !important;
+}
+
+.loadProjectLength {
+  margin: 0;
+}
+
+.modalSettingsButton {
+  display: grid;
+  grid-template-columns: 270px max-content;
+  row-gap: 8px;
+  column-gap: 16px;
+  margin-bottom: 16px;
+  align-items: center;
+}
+
+.newOrDuplicatedProjectBadgeContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  grid-column: 1;
+}
+
+.newOrDuplicatedProjectBadge {
+  margin: 0 0 8px 0;
+}
+
+.validateButton {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.duplicatedProjectStateSelector {
+  margin-bottom: 16px;
+}

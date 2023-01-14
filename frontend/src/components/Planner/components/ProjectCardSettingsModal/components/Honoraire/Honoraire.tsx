@@ -17,13 +17,14 @@ import {
   IconWallet,
   IconX,
 } from "@tabler/icons";
-import React, { useState } from "react";
-import { IAvancement } from "../../../../../data/interfaces/IAvancement";
-import { IProject } from "../../../../../data/interfaces/IProject";
-import CustomButton from "../../../../utils/CustomButton";
-import CustomTitle from "../../../../utils/CustomTitle";
+import { useState } from "react";
+import { IAvancement } from "../../../../../../data/interfaces/IAvancement";
+import { IProject } from "../../../../../../data/interfaces/IProject";
+import CustomButton from "../../../../../utils/CustomButton";
+import CustomTitle from "../../../../../utils/CustomTitle";
 
-import "../../../../../assets/style/Table.css";
+import "../../../../../../assets/style/Table.css";
+import AvancementsRows from "./components/AvancementsRows";
 
 interface IHonoraireProps {
   project: IProject;
@@ -44,112 +45,6 @@ const Honoraire = (props: IHonoraireProps) => {
   const [newProgressAmount, setNewProgressAmount] = useState(0);
   const [editProgress, setEditProgress] = useState(false);
 
-  const rows = avancements.map((avancement, index) =>
-    editProgress ? (
-      <tr
-        key={avancement._id}
-        className={`${
-          index === avancements.length - 1 ? "progress-table-lastRow" : ""
-        }`}
-      >
-        <td className="progress-table-data">
-          <DatePicker
-            allowFreeInput
-            dropdownPosition={undefined}
-            locale="fr"
-            excludeDate={(date) => date.getDay() === 0 || date.getDay() === 6}
-            inputFormat="DD/MM/YYYY"
-            defaultValue={avancement.date}
-            onChange={(val: Date) => (avancement.date = val)}
-            renderDay={(date) => {
-              const day = date.toLocaleDateString("fr");
-              const today = new Date().toLocaleDateString("fr");
-              return (
-                <Indicator
-                  size={6}
-                  color="red"
-                  offset={8}
-                  disabled={day !== today}
-                >
-                  <div>{date.getDate()}</div>
-                </Indicator>
-              );
-            }}
-            icon={<IconCalendar color={theme.colors.yellow[6]} />}
-          />
-        </td>
-        <td className="progress-table-data">
-          <NumberInput
-            defaultValue={parseFloat(avancement.amount)}
-            step={100}
-            precision={2}
-            min={0}
-            icon={<IconCurrencyEuro color={theme.colors.yellow[6]} />}
-            value={parseFloat(avancement.amount)}
-            onChange={(val: number) => (avancement.amount = val.toString())}
-          />
-        </td>
-        <td className="progress-table-data">...</td>
-        <td className="progress-table-data">...</td>
-        <td className="progress-table-data">...</td>
-      </tr>
-    ) : (
-      <tr
-        key={avancement._id}
-        style={{
-          backgroundColor:
-            index === avancements.length - 1 ? theme.colors.yellow[1] : "",
-          borderBottomStyle: "solid",
-          borderBottomWidth: "2px",
-          borderBottomColor:
-            index === avancements.length - 1 ? theme.colors.yellow[5] : "",
-          fontWeight: index === avancements.length - 1 ? "bold" : "normal",
-        }}
-      >
-        <td className="progress-table-data" style={{ width: "15%" }}>
-          {avancement.date.toLocaleDateString("fr")}
-        </td>
-        <td className="progress-table-data" style={{ width: "15%" }}>
-          {parseFloat(avancement.amount).toFixed(2).toString()}
-        </td>
-        <td className="progress-table-data">
-          {index > 0
-            ? avancements
-                .slice(0, index + 1)
-                .reduce((acc, p) => acc + parseFloat(p.amount), 0)
-                .toFixed(2)
-            : parseFloat(avancement.amount).toFixed(2)}
-        </td>
-        <td className="progress-table-data">
-          {(
-            (parseFloat(avancement.amount) /
-              parseFloat(props.project["MONTANT DEVIS (EUR HT)"])) *
-            100
-          ).toFixed(2)}
-        </td>
-        <td className="progress-table-data">
-          {index > 0
-            ? avancements
-                .slice(0, index + 1)
-                .reduce(
-                  (acc, p) =>
-                    acc +
-                    (parseFloat(p.amount) /
-                      parseFloat(props.project["MONTANT DEVIS (EUR HT)"])) *
-                      100,
-                  0
-                )
-                .toFixed(2)
-            : (
-                (parseFloat(avancement.amount) /
-                  parseFloat(props.project["MONTANT DEVIS (EUR HT)"])) *
-                100
-              ).toFixed(2)}
-        </td>
-      </tr>
-    )
-  );
-
   const toggleEditInvoiceAmount = () => {
     setEditInvoiceAmount(!editInvoiceAmount);
   };
@@ -167,30 +62,16 @@ const Honoraire = (props: IHonoraireProps) => {
   };
 
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "flex-start",
-        alignItems: "flex-start",
-        paddingRight: "16px",
-      }}
-    >
+    <div id="honoraire">
       <CustomTitle icon={<IconWallet size={24} />} title={"Honoraires :"} />
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          gap: "8px",
-        }}
-      >
+      <div className="honoraireTitle">
         <p>
           <b>Total des Honoraires : </b>
         </p>
 
         {editInvoiceAmount ? (
           <NumberInput
-            style={{ width: "30%" }}
+            className="honoraireMontantDevis"
             defaultValue={invoiceAmount}
             step={100}
             precision={2}
@@ -208,11 +89,7 @@ const Honoraire = (props: IHonoraireProps) => {
         )}
 
         {editInvoiceAmount ? (
-          <div
-            style={{
-              display: "flex",
-            }}
-          >
+          <div className="honoraireEditMontantDevis">
             <ActionIcon
               color={"green"}
               {...props}
@@ -240,16 +117,9 @@ const Honoraire = (props: IHonoraireProps) => {
       </div>
 
       <b>Avancement : </b>
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "row",
-          alignItems: "flex-end",
-          gap: "8px",
-          marginBottom: "20px",
-        }}
-      >
+      <div className="honoraireAddAvancement">
         <DatePicker
+          className="avancementDatePicker"
           error={
             newProgressAmount < 0 ||
             parseFloat(props.project["MONTANT DEVIS (EUR HT)"]) -
@@ -262,7 +132,6 @@ const Honoraire = (props: IHonoraireProps) => {
               ? "-"
               : ""
           }
-          style={{ width: "35%" }}
           allowFreeInput
           label={"Date"}
           locale="fr"
@@ -287,6 +156,7 @@ const Honoraire = (props: IHonoraireProps) => {
           icon={<IconCalendar color={theme.colors.yellow[6]} />}
         />
         <NumberInput
+          className="avancementNumberInput"
           error={
             newProgressAmount < 0
               ? "Valeur négative"
@@ -300,7 +170,6 @@ const Honoraire = (props: IHonoraireProps) => {
               ? "Montant trop élevé"
               : ""
           }
-          style={{ width: "30%" }}
           label={"Montant"}
           defaultValue={0}
           step={100}
@@ -386,7 +255,13 @@ const Honoraire = (props: IHonoraireProps) => {
                 </th>
               </tr>
             </thead>
-            <tbody>{rows}</tbody>
+            <tbody>
+              <AvancementsRows
+                avancements={avancements}
+                editProgress={editProgress}
+                project={props.project}
+              />
+            </tbody>
           </table>
         </>
       ) : (

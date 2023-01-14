@@ -1,7 +1,7 @@
 import { Avatar, Badge, Checkbox, Group, Select, Text } from "@mantine/core";
 import {
   IconCrown,
-  IconMathSymbols,
+  IconCalculator,
   IconPencil,
   IconUserExclamation,
 } from "@tabler/icons";
@@ -12,10 +12,12 @@ import { defaultAccessRight } from "../../../../../utils/defaultAccessRight";
 
 const AddUser = () => {
   const [user, setUser] = useState<IRessource>({
+    _id:"j.doe",
+    fixer: undefined,
     firstName: "John",
     lastName: "DOE",
     company: undefined,
-    role: undefined,
+    role: [],
   });
 
   const rolesData = ["Dessinateur", "Ingénieur", "Administrateur"];
@@ -25,11 +27,11 @@ const AddUser = () => {
       <td>
         <Group spacing="sm">
           <Avatar size={40} radius={40} color={companyColor(user.company)}>
-            {user.role === "Dessinateur" ? (
+            {user.role.includes("Dessinateur") ? (
               <IconPencil />
-            ) : user.role === "Ingénieur" ? (
-              <IconMathSymbols />
-            ) : user.role === "Administrateur" ? (
+            ) : user.role.includes("Ingénieur") ? (
+              <IconCalculator />
+            ) : user.role.includes("Administrateur") ? (
               <IconCrown />
             ) : (
               <IconUserExclamation />

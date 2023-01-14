@@ -4,11 +4,12 @@ import { IProject } from "../../../../data/interfaces/IProject";
 import ProjectCardSettingsModal from "../ProjectCardSettingsModal/ProjectCardSettingsModal";
 import { useDrag } from "react-dnd";
 import { ItemTypes } from "../../../../data/constants/ItemTypes";
-import { Tooltip } from "@mantine/core";
 import truncateString from "../../../../utils/truncateString";
 import RenderingDateBadge from "../../../utils/RenderingDateBadge";
 import InvoicingStateSwitch from "../../../utils/InvoicingStateSwitch";
 import { getMonthColor } from "../../../../utils/getMonthColor";
+import CustomTooltip from "../../../utils/CustomTooltip";
+import "../../../../assets/style/ProjectCard.css";
 
 interface IProjectCardProps {
   project: IProject;
@@ -43,46 +44,25 @@ const ProjectCard = (props: IProjectCardProps) => {
         isInvoiced={isInvoiced}
         setIsInvoiced={setIsInvoiced}
       />
-      <Tooltip
+      <CustomTooltip
         label={`${props.project.DOSSIER} - ${props.project.AFFAIRE}`}
-        color="yellow"
-        transition="slide-up"
-        transitionDuration={300}
-        openDelay={1000}
-        style={{ color: "black", fontWeight: "bold" }}
-        withArrow
-        arrowSize={8}
       >
         <div
           ref={drag}
+          className="projectCard"
           style={{
-            height: "66px",
             backgroundColor: getMonthColor(
               props.project.DOSSIER.split(".")[1]
             )[0],
-            padding: "2px 4px 6px 6px",
             opacity: isDragging ? "0.5" : 1,
-            outline: "1px solid black",
             color: getMonthColor(props.project.DOSSIER.split(".")[1])[1],
-            fontWeight: "bold",
           }}
           onDoubleClick={handleShowMoreInfoModal}
         >
-          <p
-            style={{
-              margin: "0 0 4px 0",
-            }}
-          >
+          <p className="projectCardName">
             {truncateString(projectNameReducer(props.project))}
           </p>
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "flex-start",
-              alignItems: "center",
-              gap: "16px",
-            }}
-          >
+          <div className="projectCardData">
             <RenderingDateBadge project={props.project} />
             <InvoicingStateSwitch
               project={props.project}
@@ -94,7 +74,7 @@ const ProjectCard = (props: IProjectCardProps) => {
             />
           </div>
         </div>
-      </Tooltip>
+      </CustomTooltip>
     </>
   );
 };

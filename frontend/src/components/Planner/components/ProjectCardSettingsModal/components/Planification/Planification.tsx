@@ -91,15 +91,7 @@ const Planification = (props: IPlanificationProps) => {
   };
 
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "flex-start",
-        alignItems: "flex-start",
-        paddingRight: "16px",
-      }}
-    >
+    <div id="planification">
       <CustomTitle
         icon={<IconCalendarTime size={24} />}
         title={"Planification :"}

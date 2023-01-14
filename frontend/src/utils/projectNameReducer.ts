@@ -32,15 +32,31 @@ export const projectNameReducer = (projects: IProject) => {
     const newAFFAIRE = "CONSTRUCTION";
     return `${DOSSIER} - ${newAFFAIRE}`;
   } else if (AFFAIRE.includes("EXTENSION") || AFFAIRE.includes("Extension")) {
-    const newAFFAIRE = AFFAIRE.split("Extension")[1]
-      .split("(")[0]
-      .split(" - ")[0];
-    return `${DOSSIER} - ${newAFFAIRE}`;
+    if (AFFAIRE.includes("EXTENSION")) {
+      const newAFFAIRE = AFFAIRE.split("EXTENSION")[1]
+        .split("(")[0]
+        .split(" - ")[0];
+      return `${DOSSIER} - ${newAFFAIRE}`;
+    }
+    if (AFFAIRE.includes("Extension")) {
+      const newAFFAIRE = AFFAIRE.split("Extension")[1]
+        .split("(")[0]
+        .split(" - ")[0];
+      return `${DOSSIER} - ${newAFFAIRE}`;
+    }
   } else if (AFFAIRE.includes("PROPRIETE") || AFFAIRE.includes("Propriété")) {
-    const newAFFAIRE = AFFAIRE.split("Propriété")[1]
-      .split("(")[0]
-      .split(" - ")[0];
-    return `${DOSSIER} - ${newAFFAIRE}`;
+    if (AFFAIRE.includes("PROPRIETE")) {
+      const newAFFAIRE = AFFAIRE.split("PROPRIETE")[1]
+        .split("(")[0]
+        .split(" - ")[0];
+      return `${DOSSIER} - ${newAFFAIRE}`;
+    }
+    if (AFFAIRE.includes("Propriété")) {
+      const newAFFAIRE = AFFAIRE.split("Propriété")[1]
+        .split("(")[0]
+        .split(" - ")[0];
+      return `${DOSSIER} - ${newAFFAIRE}`;
+    }
   } else if (AFFAIRE.includes("PT") || AFFAIRE.includes("pt")) {
     const newAFFAIRE = "POUTRE";
     return `${DOSSIER} - ${newAFFAIRE}`;
