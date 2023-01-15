@@ -19,6 +19,10 @@ import InvoicingStateSwitch from "../../../utils/InvoicingStateSwitch";
 import AgenceBadge from "../../../utils/AgenceBadge";
 import { getMonthColor } from "../../../../utils/getMonthColor";
 import "../../../../assets/style/ProjectCardSettingsModal.css";
+import {
+  useProject,
+  useUpdateProject,
+} from "../../../../context/ProjectContext";
 
 interface IProjectCardProps {
   showMoreInfo: boolean;
@@ -29,6 +33,9 @@ interface IProjectCardProps {
 }
 
 const ProjectCardSettingsModal = (props: IProjectCardProps) => {
+  const projects = useProject();
+  const setProjects = useUpdateProject();
+
   const [subcontracting, setSubcontracting] = useState(
     props.project["SOUS TRAITANCE"]
   );
@@ -52,11 +59,18 @@ const ProjectCardSettingsModal = (props: IProjectCardProps) => {
     return unfilledDateLength;
   };
 
-  const handleSubmit = () => {
-    props.project.H_DESSIN = drawTime;
-    props.project.H_INGENIEUR = engineeringTime;
-    props.project.RENDU = renderingDate.toLocaleDateString("fr");
-    props.project["SOUS TRAITANCE"] = subcontracting;
+  const updateProject = () => {
+    const newProjects = [...projects];
+    const changedProject = newProjects.filter(
+      (project) => project.DOSSIER === props.project.DOSSIER
+    );
+
+    changedProject[0].H_DESSIN = drawTime;
+    changedProject[0].H_INGENIEUR = engineeringTime;
+    changedProject[0].RENDU = renderingDate.toLocaleDateString("fr");
+    changedProject[0]["SOUS TRAITANCE"] = subcontracting;
+    setProjects(newProjects);
+
     props.setShowMoreInfo(false);
   };
 
@@ -66,7 +80,7 @@ const ProjectCardSettingsModal = (props: IProjectCardProps) => {
       overlayOpacity={0.55}
       overlayBlur={3}
       opened={props.showMoreInfo}
-      onClose={handleSubmit}
+      onClose={updateProject}
       size="auto"
       padding={"xl"}
       title={
@@ -163,7 +177,7 @@ const ProjectCardSettingsModal = (props: IProjectCardProps) => {
       </Tabs>
       <div className="projectCardSettingsModalButton">
         <CustomButton
-          handleClick={handleSubmit}
+          handleClick={updateProject}
           icon={<IconDeviceFloppy />}
           label={"Enregistrer"}
         />
