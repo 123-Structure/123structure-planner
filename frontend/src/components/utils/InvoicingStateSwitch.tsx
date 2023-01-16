@@ -25,7 +25,6 @@ const InvoicingStateSwitch = (props: IInvoicingStateSwitch) => {
     );
 
     changedProject[0].ETAT = newValue;
-    console.log(newValue);
     setProjects(newProjects);
   };
 

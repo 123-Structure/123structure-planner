@@ -20,7 +20,7 @@ const Planner = () => {
         <div
           className="grid"
           style={{
-            gridTemplateRows: `328px 50px repeat(${
+            gridTemplateRows: `50px 328px 50px repeat(${
               ressources.filter(
                 (ressource) =>
                   ressource.role.sort()[0] !== "Administrateur" ||
@@ -29,15 +29,14 @@ const Planner = () => {
             }, minmax(66px, auto))`,
           }}
         >
+          <div className="mustBeAssignTitle">
+            <p>Dossier à attribuer</p>
+          </div>
           <MustBeAssign />
           <Title />
           <NewEntry />
           {ressources
-            .filter(
-              (ressource) =>
-                ressource.role.sort()[0] !== "Administrateur" ||
-                ressource.role.length > 1
-            )
+            .filter((ressource) => !ressource.role.includes("Administrateur"))
             .map((ressource, index) => (
               <Row key={index} id={`${ressource._id}`} ressource={ressource} />
             ))}

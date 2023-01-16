@@ -11,7 +11,7 @@ import {
 import { IProject } from "../../../../data/interfaces/IProject";
 import CustomTitle from "../../../utils/CustomTitle";
 import CustomButton from "../../../utils/CustomButton";
-import General from "./components/General";
+import General from "./components/General/General";
 import Planification from "./components/Planification/Planification";
 import Honoraire from "./components/Honoraire/Honoraire";
 import RenderingDateBadge from "../../../utils/RenderingDateBadge";
@@ -23,6 +23,7 @@ import {
   useProject,
   useUpdateProject,
 } from "../../../../context/ProjectContext";
+import { showNotification } from "@mantine/notifications";
 
 interface IProjectCardProps {
   showMoreInfo: boolean;
@@ -69,8 +70,43 @@ const ProjectCardSettingsModal = (props: IProjectCardProps) => {
     changedProject[0].H_INGENIEUR = engineeringTime;
     changedProject[0].RENDU = renderingDate.toLocaleDateString("fr");
     changedProject[0]["SOUS TRAITANCE"] = subcontracting;
-    setProjects(newProjects);
 
+    let unfilledDateLength = 0;
+    if (changedProject[0].H_DESSIN === 0) {
+      unfilledDateLength++;
+      console.log("h_dessin");
+    }
+    if (changedProject[0].H_INGENIEUR === 0) {
+      unfilledDateLength++;
+      console.log("h_inge");
+    }
+    if (changedProject[0].RENDU === undefined) {
+      unfilledDateLength++;
+      console.log("rendu");
+    }
+    if (changedProject[0].INGENIEUR.length === 0) {
+      unfilledDateLength++;
+      console.log("inge");
+    }
+
+    if (changedProject[0].ETAT.includes("newEntry")) {
+      if (unfilledDateLength > 0) {
+        showNotification({
+          title: "⚠️ Informations manquantes",
+          message: `Il reste ${unfilledDateLength} information(s) à remplir`,
+          color: "orange",
+        });
+      } else {
+        showNotification({
+          title: "✅ Dossier complété",
+          message: `Le dossier ${changedProject[0].DOSSIER} vient de passer dans la catégorie "Dossier à assigner"`,
+          color: "green",
+        });
+        changedProject[0].ETAT = "mustBeAssign";
+      }
+    }
+
+    setProjects(newProjects);
     props.setShowMoreInfo(false);
   };
 
@@ -113,7 +149,25 @@ const ProjectCardSettingsModal = (props: IProjectCardProps) => {
     >
       <Tabs color="yellow" defaultValue="general" orientation="vertical">
         <Tabs.List>
-          <Tabs.Tab value="general" icon={<IconFileDescription size={14} />}>
+          <Tabs.Tab
+            value="general"
+            icon={<IconFileDescription size={14} />}
+            rightSection={
+              props.project.INGENIEUR.length === 0 ? (
+                <Badge
+                  sx={{ width: 16, height: 16, pointerEvents: "none" }}
+                  variant="filled"
+                  size="xs"
+                  p={0}
+                  color={"red"}
+                >
+                  1
+                </Badge>
+              ) : (
+                <></>
+              )
+            }
+          >
             Général
           </Tabs.Tab>
           <Tabs.Tab value="honoraire" icon={<IconWallet size={14} />}>

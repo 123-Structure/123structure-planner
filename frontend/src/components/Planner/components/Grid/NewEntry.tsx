@@ -46,7 +46,11 @@ const NewEntry = () => {
         backgroundColor: isOver
           ? theme.colors.yellow[3]
           : theme.colors.yellow[0],
-        gridRow: `3 / span ${ressources.length}`,
+        gridRow: `4 / span ${
+          ressources.filter(
+            (ressource) => !ressource.role.includes("Administrateur")
+          ).length
+        }`,
       }}
     >
       {sortProjects(

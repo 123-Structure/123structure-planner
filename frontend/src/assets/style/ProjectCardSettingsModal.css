@@ -32,12 +32,27 @@
   align-items: flex-start;
 }
 
+.multiRessourcesSelectTitle {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.multiRessourcesSelectInput {
+  width: 50%;
+}
+
 .honoraireTitle {
   display: flex;
   align-items: center;
   gap: 8px;
 }
 
+.sousTraitanceInput {
+  width: 130px;
+}
 .honoraireMontantDevis,
 .avancementDatePicker,
 .avancementNumberInput {

@@ -66,6 +66,8 @@ const ValidateButton = (props: IValidateButton) => {
           PHASE: p.PHASE === undefined ? "EXE" : p.PHASE,
           H_DESSIN: 0,
           H_INGENIEUR: 0,
+          DESSINATEUR: [],
+          INGENIEUR: [],
           "SOUS TRAITANCE": "",
           AVANCEMENT: [],
         };
