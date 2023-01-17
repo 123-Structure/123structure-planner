@@ -9,8 +9,10 @@ import NewEntry from "./components/Grid/NewEntry";
 import { useAuth } from "../../context/AuthContext";
 import { useRessources } from "../../context/RessourceContext";
 import { isTouchDevice } from "../../utils/isTouchDevice";
+import { useMantineTheme } from "@mantine/core";
 
 const Planner = () => {
+  const theme = useMantineTheme();
   const auth = useAuth();
   const ressources = useRessources();
 
@@ -29,7 +31,12 @@ const Planner = () => {
             }, minmax(66px, auto))`,
           }}
         >
-          <div className="mustBeAssignTitle">
+          <div
+            className="mustBeAssignTitle"
+            style={{
+              backgroundColor: theme.colors.yellow[5],
+            }}
+          >
             <p>Dossier à attribuer</p>
           </div>
           <MustBeAssign />

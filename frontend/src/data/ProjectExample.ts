@@ -451,7 +451,7 @@ export const ProjectExample: IProject[] = [
 
     LIVRAISON: "",
     SOL: "",
-    ETAT: "invoicing t.gallet",
+    ETAT: "invoicing j.jansens",
     RENDU: undefined,
     PHASE: "EXE",
     H_DESSIN: 0,
@@ -491,7 +491,7 @@ export const ProjectExample: IProject[] = [
 
     LIVRAISON: "",
     SOL: "",
-    ETAT: "invoicing t.gallet",
+    ETAT: "invoicing j.jansens",
     RENDU: undefined,
     PHASE: "EXE",
     H_DESSIN: 100,
