@@ -13,7 +13,9 @@ interface IRowProps {
 
 const Row = (props: IRowProps) => {
   return (
-    <div className="row">
+    <div
+      className="row"
+    >
       <Ressource ressource={props.ressource} />
       <Invoicing rowId={props.id} />
       <Correction rowId={props.id} />

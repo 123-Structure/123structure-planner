@@ -7,9 +7,9 @@ import {
 } from "react";
 
 const AuthContext = createContext<boolean>(false);
-const AuthUpdateContext = createContext<
-  Dispatch<SetStateAction<boolean>>
->(() => true);
+const AuthUpdateContext = createContext<Dispatch<SetStateAction<boolean>>>(
+  () => true
+);
 
 interface IProjectContextProps {
   children: React.ReactNode;

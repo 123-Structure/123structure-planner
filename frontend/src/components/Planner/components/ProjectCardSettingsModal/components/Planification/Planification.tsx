@@ -45,7 +45,6 @@ const Planification = (props: IPlanificationProps) => {
     const rendu = dayjs(date.toLocaleDateString("fr"), "DD-MM-YYYY");
     const today = dayjs(new Date().toLocaleDateString("fr"), "DD-MM-YYYY");
     const diff = rendu.diff(today, "day");
-    console.log();
     const bgColor =
       date.getTime() === props.renderingDate.getTime()
         ? { backgroundColor: theme.colors.dark[2] }

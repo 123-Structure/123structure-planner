@@ -97,6 +97,7 @@ const MultiFixerSelect = (props: IMultiFixerSelectProps) => {
       searchable
       nothingFound="Aucun résultat"
       itemComponent={SelectItem}
+      clearable
     />
   );
 };

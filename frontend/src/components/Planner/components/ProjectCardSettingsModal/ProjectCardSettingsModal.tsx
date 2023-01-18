@@ -11,7 +11,7 @@ import {
 import { IProject } from "../../../../data/interfaces/IProject";
 import CustomTitle from "../../../utils/CustomTitle";
 import CustomButton from "../../../utils/CustomButton";
-import General from "./components/General";
+import General from "./components/General/General";
 import Planification from "./components/Planification/Planification";
 import Honoraire from "./components/Honoraire/Honoraire";
 import RenderingDateBadge from "../../../utils/RenderingDateBadge";
@@ -19,6 +19,11 @@ import InvoicingStateSwitch from "../../../utils/InvoicingStateSwitch";
 import AgenceBadge from "../../../utils/AgenceBadge";
 import { getMonthColor } from "../../../../utils/getMonthColor";
 import "../../../../assets/style/ProjectCardSettingsModal.css";
+import {
+  useProject,
+  useUpdateProject,
+} from "../../../../context/ProjectContext";
+import { showNotification } from "@mantine/notifications";
 
 interface IProjectCardProps {
   showMoreInfo: boolean;
@@ -29,6 +34,9 @@ interface IProjectCardProps {
 }
 
 const ProjectCardSettingsModal = (props: IProjectCardProps) => {
+  const projects = useProject();
+  const setProjects = useUpdateProject();
+
   const [subcontracting, setSubcontracting] = useState(
     props.project["SOUS TRAITANCE"]
   );
@@ -52,11 +60,53 @@ const ProjectCardSettingsModal = (props: IProjectCardProps) => {
     return unfilledDateLength;
   };
 
-  const handleSubmit = () => {
-    props.project.H_DESSIN = drawTime;
-    props.project.H_INGENIEUR = engineeringTime;
-    props.project.RENDU = renderingDate.toLocaleDateString("fr");
-    props.project["SOUS TRAITANCE"] = subcontracting;
+  const updateProject = () => {
+    const newProjects = [...projects];
+    const changedProject = newProjects.filter(
+      (project) => project.DOSSIER === props.project.DOSSIER
+    );
+
+    changedProject[0].H_DESSIN = drawTime;
+    changedProject[0].H_INGENIEUR = engineeringTime;
+    changedProject[0].RENDU = renderingDate.toLocaleDateString("fr");
+    changedProject[0]["SOUS TRAITANCE"] = subcontracting;
+
+    let unfilledDateLength = 0;
+    if (changedProject[0].H_DESSIN === 0) {
+      unfilledDateLength++;
+      console.log("h_dessin");
+    }
+    if (changedProject[0].H_INGENIEUR === 0) {
+      unfilledDateLength++;
+      console.log("h_inge");
+    }
+    if (changedProject[0].RENDU === undefined) {
+      unfilledDateLength++;
+      console.log("rendu");
+    }
+    if (changedProject[0].INGENIEUR.length === 0) {
+      unfilledDateLength++;
+      console.log("inge");
+    }
+
+    if (changedProject[0].ETAT.includes("newEntry")) {
+      if (unfilledDateLength > 0) {
+        showNotification({
+          title: "⚠️ Informations manquantes",
+          message: `Il reste ${unfilledDateLength} information(s) à remplir`,
+          color: "orange",
+        });
+      } else {
+        showNotification({
+          title: "✅ Dossier complété",
+          message: `Le dossier ${changedProject[0].DOSSIER} vient de passer dans la catégorie "Dossier à assigner"`,
+          color: "green",
+        });
+        changedProject[0].ETAT = "mustBeAssign";
+      }
+    }
+
+    setProjects(newProjects);
     props.setShowMoreInfo(false);
   };
 
@@ -66,7 +116,7 @@ const ProjectCardSettingsModal = (props: IProjectCardProps) => {
       overlayOpacity={0.55}
       overlayBlur={3}
       opened={props.showMoreInfo}
-      onClose={handleSubmit}
+      onClose={updateProject}
       size="auto"
       padding={"xl"}
       title={
@@ -99,7 +149,25 @@ const ProjectCardSettingsModal = (props: IProjectCardProps) => {
     >
       <Tabs color="yellow" defaultValue="general" orientation="vertical">
         <Tabs.List>
-          <Tabs.Tab value="general" icon={<IconFileDescription size={14} />}>
+          <Tabs.Tab
+            value="general"
+            icon={<IconFileDescription size={14} />}
+            rightSection={
+              props.project.INGENIEUR.length === 0 ? (
+                <Badge
+                  sx={{ width: 16, height: 16, pointerEvents: "none" }}
+                  variant="filled"
+                  size="xs"
+                  p={0}
+                  color={"red"}
+                >
+                  1
+                </Badge>
+              ) : (
+                <></>
+              )
+            }
+          >
             Général
           </Tabs.Tab>
           <Tabs.Tab value="honoraire" icon={<IconWallet size={14} />}>
@@ -163,7 +231,7 @@ const ProjectCardSettingsModal = (props: IProjectCardProps) => {
       </Tabs>
       <div className="projectCardSettingsModalButton">
         <CustomButton
-          handleClick={handleSubmit}
+          handleClick={updateProject}
           icon={<IconDeviceFloppy />}
           label={"Enregistrer"}
         />

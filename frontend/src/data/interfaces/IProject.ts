@@ -1,5 +1,6 @@
 import { TPhase } from "../types/TPhase";
 import { IAvancement } from "./IAvancement";
+import { IRessource } from "./IRessource";
 
 export interface IProject {
   DOSSIER: string;
@@ -20,6 +21,14 @@ export interface IProject {
   PHASE: TPhase;
   H_DESSIN: number;
   H_INGENIEUR: number;
+  DESSINATEUR: IRessource[];
+  INGENIEUR: IRessource[];
   AVANCEMENT: IAvancement[];
-  [key: string]: string | boolean | number | IAvancement[] | undefined;
+  [key: string]:
+    | string
+    | boolean
+    | number
+    | IRessource[]
+    | IAvancement[]
+    | undefined;
 }

@@ -5,6 +5,7 @@ import {
   useProject,
   useUpdateProject,
 } from "../../../../context/ProjectContext";
+import { useRessources } from "../../../../context/RessourceContext";
 import { ItemTypes } from "../../../../data/constants/ItemTypes";
 import { sortProjects } from "../../../../utils/sortProjects";
 import CustomTooltip from "../../../utils/CustomTooltip";
@@ -25,21 +26,36 @@ const MustBeAssign = () => {
 
   const updateProject = (itemId: any, newValue: string) => {
     const newProjects = [...projects];
-
     const changedProject = newProjects.filter(
-      (project) => project.DOSSIER === itemId && project.ETAT === "mustBeAssign"
+      (project) =>
+        project.DOSSIER === itemId && project.ETAT.includes("mustBeAssign")
     );
 
-    if (changedProject.length === 0) {
+    if (
+      changedProject[0].H_DESSIN === 0 ||
+      changedProject[0].H_INGENIEUR === 0 ||
+      changedProject[0].RENDU === undefined ||
+      changedProject[0].INGENIEUR.length === 0
+    ) {
       showNotification({
-        title: "⛔ Action impossible",
+        title: "⛔ Action impossible - Informations manquantes",
         message:
-          'Ce projet ne peut pas être déplacé dans les "Projets à attribuer"',
+          'Ce projet ne peut pas être déplacé dans "Projets à attribuer"',
         color: "red",
       });
     } else {
-      changedProject[0].ETAT = newValue;
-      setProjects(newProjects);
+      if (changedProject.length === 0) {
+        showNotification({
+          title: "⛔ Action impossible",
+          message:
+            'Ce projet ne peut pas être déplacé dans "Projets à attribuer"',
+          color: "red",
+        });
+      } else {
+        changedProject[0].ETAT = newValue;
+
+        setProjects(newProjects);
+      }
     }
   };
 

@@ -1,6 +1,6 @@
-import { useMantineTheme } from "@mantine/core";
+import { ScrollArea, useMantineTheme } from "@mantine/core";
 import { showNotification } from "@mantine/notifications";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useDrop } from "react-dnd";
 import { useProject } from "../../../../context/ProjectContext";
 import { useRessources } from "../../../../context/RessourceContext";
@@ -12,6 +12,8 @@ const NewEntry = () => {
   const theme = useMantineTheme();
   const projects = useProject();
   const ressources = useRessources();
+
+  const [height, setHeight] = useState(0);
 
   const updateProject = (itemId: any, newValue: string) => {
     const newProjects = [...projects];
@@ -38,22 +40,48 @@ const NewEntry = () => {
     }),
   });
 
+  useEffect(() => {
+    const onPageLoad = () => {
+      const elements = document.querySelectorAll("div.correction");
+      let totalHeight = 0;
+
+      for (let i = 0; i < elements.length; i++) {
+        totalHeight += elements[i].getBoundingClientRect().height;
+      }
+      console.log(totalHeight);
+      setHeight(totalHeight);
+    };
+
+    onPageLoad();
+  }, [document.querySelectorAll("div.correction")]);
+
   return (
     <div
-      className="newEntry"
       ref={drop}
+      className="newEntry"
       style={{
+        // height: height(),
         backgroundColor: isOver
           ? theme.colors.yellow[3]
           : theme.colors.yellow[0],
-        gridRow: `3 / span ${ressources.length}`,
+        gridRow: `4 / span ${
+          ressources.filter(
+            (ressource) => !ressource.role.includes("Administrateur")
+          ).length
+        }`,
       }}
     >
-      {sortProjects(
-        projects.filter((project) => project.ETAT.includes("newEntry"))
-      ).map((project) => (
-        <ProjectCard key={project.DOSSIER} project={project} />
-      ))}
+      <ScrollArea
+        style={{
+          height: height,
+        }}
+      >
+        {sortProjects(
+          projects.filter((project) => project.ETAT.includes("newEntry"))
+        ).map((project) => (
+          <ProjectCard key={project.DOSSIER} project={project} />
+        ))}
+      </ScrollArea>
     </div>
   );
 };

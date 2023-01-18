@@ -9,8 +9,10 @@ import NewEntry from "./components/Grid/NewEntry";
 import { useAuth } from "../../context/AuthContext";
 import { useRessources } from "../../context/RessourceContext";
 import { isTouchDevice } from "../../utils/isTouchDevice";
+import { useMantineTheme } from "@mantine/core";
 
 const Planner = () => {
+  const theme = useMantineTheme();
   const auth = useAuth();
   const ressources = useRessources();
 
@@ -20,7 +22,7 @@ const Planner = () => {
         <div
           className="grid"
           style={{
-            gridTemplateRows: `328px 50px repeat(${
+            gridTemplateRows: `50px 328px 50px repeat(${
               ressources.filter(
                 (ressource) =>
                   ressource.role.sort()[0] !== "Administrateur" ||
@@ -29,15 +31,19 @@ const Planner = () => {
             }, minmax(66px, auto))`,
           }}
         >
+          <div
+            className="mustBeAssignTitle"
+            style={{
+              backgroundColor: theme.colors.yellow[5],
+            }}
+          >
+            <p>Dossier à attribuer</p>
+          </div>
           <MustBeAssign />
           <Title />
           <NewEntry />
           {ressources
-            .filter(
-              (ressource) =>
-                ressource.role.sort()[0] !== "Administrateur" ||
-                ressource.role.length > 1
-            )
+            .filter((ressource) => !ressource.role.includes("Administrateur"))
             .map((ressource, index) => (
               <Row key={index} id={`${ressource._id}`} ressource={ressource} />
             ))}

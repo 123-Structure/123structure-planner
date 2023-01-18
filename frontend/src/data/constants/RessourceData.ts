@@ -147,7 +147,7 @@ export const RessourceData: IRessource[] = [
   {
     firstName: "Baptiste",
     lastName: "LECHAT",
-    role: ["Administrateur", "Dessinateur"],
+    role: ["Dessinateur"],
     company: "Global",
     _id: "b.lechat",
     fixer: [
@@ -180,7 +180,7 @@ export const RessourceData: IRessource[] = [
   {
     firstName: "Vanessa",
     lastName: "LAFRECHOUX",
-    role: ["Administrateur", "Correcteur", "Ingénieur"],
+    role: ["Correcteur", "Ingénieur"],
     company: "Global",
     _id: "v.lafrechoux",
     fixer: undefined,

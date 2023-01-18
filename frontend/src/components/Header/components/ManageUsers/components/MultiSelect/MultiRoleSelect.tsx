@@ -100,6 +100,7 @@ const MultiRoleSelect = (props: IMultiRoleSelectProps) => {
       searchable
       nothingFound="Aucun résultat"
       itemComponent={SelectItem}
+      clearable
     />
   );
 };
