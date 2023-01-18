@@ -48,7 +48,6 @@ const NewEntry = () => {
       for (let i = 0; i < elements.length; i++) {
         totalHeight += elements[i].getBoundingClientRect().height;
       }
-      console.log(totalHeight);
       setHeight(totalHeight);
     };
 
@@ -66,7 +65,9 @@ const NewEntry = () => {
           : theme.colors.yellow[0],
         gridRow: `4 / span ${
           ressources.filter(
-            (ressource) => !ressource.role.includes("Administrateur")
+            (ressource) =>
+              !ressource.role.includes("Administrateur") &&
+              !ressource.role.includes("Commercial")
           ).length
         }`,
       }}

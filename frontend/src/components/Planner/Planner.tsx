@@ -43,7 +43,11 @@ const Planner = () => {
           <Title />
           <NewEntry />
           {ressources
-            .filter((ressource) => !ressource.role.includes("Administrateur"))
+            .filter(
+              (ressource) =>
+                !ressource.role.includes("Administrateur") &&
+                !ressource.role.includes("Commercial")
+            )
             .map((ressource, index) => (
               <Row key={index} id={`${ressource._id}`} ressource={ressource} />
             ))}

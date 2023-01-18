@@ -3,5 +3,6 @@ export type TRole =
   | "Ingénieur"
   | "Administrateur"
   | "Correcteur"
+  | "Commercial"
   | undefined
   | "";

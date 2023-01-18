@@ -293,4 +293,20 @@ export const RessourceData: IRessource[] = [
       },
     ],
   },
+  {
+    firstName: "Gwenaël",
+    lastName: "BARAIS",
+    role: ["Commercial"],
+    company: "Clisson",
+    _id: "g.barais",
+    fixer: [],
+  },
+  {
+    firstName: "Pierrick",
+    lastName: "LOURME",
+    role: ["Commercial"],
+    company: "Anglet",
+    _id: "p.lourme",
+    fixer: [],
+  },
 ];
