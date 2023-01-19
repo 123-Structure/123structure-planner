@@ -1,7 +1,7 @@
 import { Button } from "@mantine/core";
 import { TablerIcon, TablerIconProps } from "@tabler/icons";
 
-interface ICustomButton {
+interface ICustomButtonProps {
   handleClick: () => void;
   icon?: React.ReactNode;
   color?: string;
@@ -10,7 +10,7 @@ interface ICustomButton {
   extraStyle?: React.CSSProperties;
 }
 
-const CustomButton = (props: ICustomButton) => {
+const CustomButton = (props: ICustomButtonProps) => {
   return (
     <Button
       color={props.color}
@@ -19,7 +19,7 @@ const CustomButton = (props: ICustomButton) => {
         ...props.extraStyle,
         color: props.disabled
           ? "#b2b9c1"
-          : props.color != undefined
+          : props.color != undefined && props.color !== "yellow"
           ? "white"
           : "black",
       }}

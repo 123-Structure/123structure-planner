@@ -6,7 +6,7 @@ import { TPhase } from "../../../../../../../data/types/TPhase";
 import CustomButton from "../../../../../../utils/CustomButton";
 import CustomTitle from "../../../../../../utils/CustomTitle";
 
-interface IDuplicatedProjectModal {
+interface IDuplicatedProjectModalProps {
   showDuplicatedProjectModal: boolean;
   setShowDuplicatedProjectModal: React.Dispatch<React.SetStateAction<boolean>>;
   currentDuplicatedProject: IProject | undefined;
@@ -17,7 +17,7 @@ interface IDuplicatedProjectModal {
   setDuplicatedProjectID: React.Dispatch<React.SetStateAction<string[]>>;
 }
 
-const DuplicatedProjectModal = (props: IDuplicatedProjectModal) => {
+const DuplicatedProjectModal = (props: IDuplicatedProjectModalProps) => {
   const [value, setValue] = useState<string | null>(null);
 
   const data = ["DIAG", "AVP", "EXE", "ETUDE DE SOL"];

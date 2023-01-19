@@ -7,14 +7,14 @@ import {
 import { IProject } from "../../../../../../../data/interfaces/IProject";
 import CustomButton from "../../../../../../utils/CustomButton";
 
-interface IValidateButton {
+interface IValidateButtonProps {
   importProject: IProject[] | undefined;
   handleModalClose: () => void;
   newProjectLength: number | undefined;
   duplicatedProjectLength: number | undefined;
 }
 
-const ValidateButton = (props: IValidateButton) => {
+const ValidateButton = (props: IValidateButtonProps) => {
   const projects = useProject();
   const setProjects = useUpdateProject();
 

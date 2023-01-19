@@ -1,32 +1,45 @@
-import { Tabs } from "@mantine/core";
-import React from "react";
+import { Tabs, useMantineTheme } from "@mantine/core";
+import React, { useState } from "react";
+import { ICustomer } from "../../../../data/interfaces/ICustomer";
+import Customer from "../Customer/Customer";
 
+interface IAgence {
+  color: string;
+  customers: ICustomer[];
+}
 
+const Agence = (props: IAgence) => {
+  const [activeTab, setActiveTab] = useState<string | null>(
+    props.customers[0].name
+  );
+  const theme = useMantineTheme();
 
-const Agence = () => {
   return (
     <Tabs
-      color="yellow"
+      color={props.color}
       orientation="vertical"
-      defaultValue="agenceConstructeur0"
+      value={activeTab}
+      onTabChange={setActiveTab}
     >
       <Tabs.List>
-        {Array.from({ length: 10 }).map((el, index) => (
+        {props.customers.map((customer) => (
           <Tabs.Tab
-            key={`agenceConstructeur${index}`}
-            value={`agenceConstructeur${index}`}
+            key={customer.name}
+            style={{
+              backgroundColor:
+                activeTab === customer.name ? theme.colors[props.color][1] : "",
+              fontWeight: activeTab === customer.name ? "bold" : "",
+            }}
+            value={customer.name}
           >
-            {`Agence Constructeur ${index}`}
+            {customer.name}
           </Tabs.Tab>
         ))}
       </Tabs.List>
 
-      {Array.from({ length: 10 }).map((el, index) => (
-        <Tabs.Panel
-          key={`constructeur${index}`}
-          value={`agenceConstructeur${index}`}
-        >
-          {`Agence Constructeur ${index} content`}
+      {props.customers.map((customer) => (
+        <Tabs.Panel key={customer.name} value={customer.name}>
+          <Customer color={props.color} customer={customer} />
         </Tabs.Panel>
       ))}
     </Tabs>

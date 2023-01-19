@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { useProject, useUpdateProject } from "../../context/ProjectContext";
 import { IProject } from "../../data/interfaces/IProject";
 
-interface IInvoicingStateSwitch {
+interface IInvoicingStateSwitchProps {
   project: IProject;
   isInvoiced: boolean;
   setIsInvoiced: React.Dispatch<React.SetStateAction<boolean>>;
@@ -12,7 +12,7 @@ interface IInvoicingStateSwitch {
   isPartialInvoicedLabel: string;
 }
 
-const InvoicingStateSwitch = (props: IInvoicingStateSwitch) => {
+const InvoicingStateSwitch = (props: IInvoicingStateSwitchProps) => {
   const theme = useMantineTheme();
   const projects = useProject();
   const setProjects = useUpdateProject();

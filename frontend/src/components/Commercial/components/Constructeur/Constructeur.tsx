@@ -1,14 +1,15 @@
 import { Tabs, useMantineTheme } from "@mantine/core";
 import React, { useState } from "react";
 import { useCustomer } from "../../../../context/CustomerContext";
-import { ICustomer } from "../../../../data/interfaces/ICustomer";
+import Customer from "../Customer/Customer";
+import Agence from "./Agence";
 
 interface IConstructeur {
   color: string;
 }
 
 const Constructeur = (props: IConstructeur) => {
-  const [activeTab, setActiveTab] = useState<string | null>("Constructeur");
+  const [activeTab, setActiveTab] = useState<string | null>(".G ARCHITECTURE");
   const theme = useMantineTheme();
   const customers = useCustomer();
 
@@ -49,11 +50,44 @@ const Constructeur = (props: IConstructeur) => {
       {customers
         .filter(
           (customer) =>
+            customer.category === "Constructeur" && customer.group === ""
+        )
+        .reduce((acc, customer) => {
+          const value = customer.group === "" ? customer.name : customer.group;
+
+          if (!acc.includes(value)) {
+            acc.push(value);
+          }
+          return acc;
+        }, [] as string[])
+        .map((customer) => (
+          <Tabs.Panel key={customer} value={customer}>
+            <Customer
+              color={props.color}
+              customer={customers.filter((c) => c.name === customer)[0]}
+            />
+          </Tabs.Panel>
+        ))}
+
+      {customers
+        .filter(
+          (customer) =>
             customer.category === "Constructeur" && customer.group !== ""
         )
+        .reduce((acc, customer) => {
+          const value = customer.group === "" ? customer.name : customer.group;
+
+          if (!acc.includes(value)) {
+            acc.push(value);
+          }
+          return acc;
+        }, [] as string[])
         .map((customer) => (
-          <Tabs.Panel key={customer.group} value={customer.group}>
-            {customer.name}
+          <Tabs.Panel key={customer} value={customer}>
+            <Agence
+              color={props.color}
+              customers={customers.filter((c) => c.group === customer)}
+            />
           </Tabs.Panel>
         ))}
     </Tabs>

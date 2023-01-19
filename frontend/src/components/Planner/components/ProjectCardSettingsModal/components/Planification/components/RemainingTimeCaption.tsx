@@ -1,9 +1,9 @@
-interface IRemainingTimeCaption {
+interface IRemainingTimeCaptionProps {
   color: string;
   label: string;
 }
 
-const RemainingTimeCaption = (props: IRemainingTimeCaption) => {
+const RemainingTimeCaption = (props: IRemainingTimeCaptionProps) => {
   return (
     <div
       style={{

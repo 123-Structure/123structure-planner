@@ -9,7 +9,7 @@ import { useRessources } from "../../../../../../../context/RessourceContext";
 import { IProject } from "../../../../../../../data/interfaces/IProject";
 import { companyColor } from "../../../../../../../utils/companyColor";
 
-interface IMultiDessinateurSelect {
+interface IMultiDessinateurSelectProps {
   project: IProject;
 }
 
@@ -17,7 +17,7 @@ interface ItemProps extends React.ComponentPropsWithoutRef<"div"> {
   label: string;
 }
 
-const MultiDessinateurSelect = (props: IMultiDessinateurSelect) => {
+const MultiDessinateurSelect = (props: IMultiDessinateurSelectProps) => {
   const projects = useProject();
   const setProjects = useUpdateProject();
   const ressources = useRessources();

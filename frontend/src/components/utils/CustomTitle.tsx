@@ -1,15 +1,16 @@
-interface IModalTilte {
+interface IModalTilteProps {
   icon: React.ReactNode;
   title: string;
+  flexStart?: boolean;
 }
 
-const CustomTitle = (props: IModalTilte) => {
+const CustomTitle = (props: IModalTilteProps) => {
   return (
     <div
       style={{
         display: "flex",
         alignItems: "center",
-        justifyContent: "center",
+        justifyContent: props.flexStart === false ? "center" : "flex-start",
       }}
     >
       {props.icon}

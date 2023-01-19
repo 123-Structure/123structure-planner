@@ -2,11 +2,11 @@ import { Tabs, useMantineTheme } from "@mantine/core";
 import React, { useState } from "react";
 import Constructeur from "./Constructeur/Constructeur";
 
-interface ICustomerCategories {
+interface ICustomerCategoriesProps {
   color: string;
 }
 
-const CustomerCategories = (props: ICustomerCategories) => {
+const CustomerCategories = (props: ICustomerCategoriesProps) => {
   const [activeTab, setActiveTab] = useState<string | null>("Constructeur");
   const theme = useMantineTheme();
 
