@@ -18,7 +18,11 @@ const CustomerItem = (props: ICustomerItemProps) => {
       }`}
       onClick={props.handleClick}
     >
-      <ActionIcon size="xl" variant="filled" color={props.color}>
+      <ActionIcon
+        size="xl"
+        variant="filled"
+        color={props.color}
+      >
         {props.icon}
       </ActionIcon>
       {props.label}

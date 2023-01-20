@@ -43,7 +43,6 @@ const CustomerIdentity = (props: ICustomerIdentityProps) => {
         icon={<IconAddressBook size={24} />}
         title={props.customer.name}
       />
-
       <div
         style={{
           display: "flex",
@@ -168,7 +167,6 @@ const CustomerIdentity = (props: ICustomerIdentityProps) => {
           width: "fit-content",
         }}
       />
-      {/* </div> */}
     </Card>
   );
 };

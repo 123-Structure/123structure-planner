@@ -1,5 +1,12 @@
 import { Card, MultiSelect } from "@mantine/core";
-import { IconArrowRight } from "@tabler/icons";
+import {
+  IconArrowRight,
+  IconCalendar,
+  IconHomeDollar,
+  IconTarget,
+  IconUser,
+  IconUsers,
+} from "@tabler/icons";
 import React from "react";
 import {
   useCustomer,
@@ -40,6 +47,17 @@ const CustomerRelationship = (props: ICustomerRelationshipProps) => {
     setCustomers(newCustomers);
   };
 
+  const getLastAppointment = () => {
+    if (props.customer.appointment.length > 0) {
+      const appointment =
+        props.customer.appointment[props.customer.appointment.length - 1];
+
+      return `${appointment.title} (${appointment.date.toLocaleDateString("fr")})`;
+    } else {
+      return "-";
+    }
+  };
+
   return (
     <Card
       shadow="sm"
@@ -48,22 +66,63 @@ const CustomerRelationship = (props: ICustomerRelationshipProps) => {
       withBorder
       className="customerRelationship"
     >
-      <MultiSelect
-        data={ressources
-          .filter((ressource) => ressource.role.includes("Commercial"))
-          .map(
+      <div className="multiSelectCommercial">
+        <CustomerItem
+          isClickableItem={false}
+          color={props.color}
+          label={"Commercial référent :"}
+          icon={
+            <IconUsers
+              size={24}
+              color={props.color === "yellow" ? "black" : "white"}
+            />
+          }
+        />
+        <MultiSelect
+          data={ressources
+            .filter((ressource) => ressource.role.includes("Commercial"))
+            .map(
+              (commercial) => `${commercial.firstName} ${commercial.lastName}`
+            )}
+          value={props.customer.commercial.map(
             (commercial) => `${commercial.firstName} ${commercial.lastName}`
           )}
-        value={props.customer.commercial.map(
-          (commercial) => `${commercial.firstName} ${commercial.lastName}`
-        )}
-        variant="unstyled"
-        placeholder="Rôle non défini"
-        onChange={(newCommercial) => handleCommercialChange(newCommercial)}
-        searchable
-        nothingFound="Aucun résultat"
-        clearable
-      />
+          variant="unstyled"
+          placeholder="Rôle non défini"
+          onChange={(newCommercial) => handleCommercialChange(newCommercial)}
+          searchable
+          nothingFound="Aucun résultat"
+          clearable
+        />
+      </div>
+      <div className="multiSelectCommercial">
+        <CustomerItem
+          isClickableItem={false}
+          color={props.color}
+          label={"Dernière visite :"}
+          icon={
+            <IconCalendar
+              size={24}
+              color={props.color === "yellow" ? "black" : "white"}
+            />
+          }
+        />
+        <p>{getLastAppointment()}</p>
+      </div>
+      <div className="multiSelectCommercial">
+        <CustomerItem
+          isClickableItem={false}
+          color={props.color}
+          label={"Objectif de dossier :"}
+          icon={
+            <IconHomeDollar
+              size={24}
+              color={props.color === "yellow" ? "black" : "white"}
+            />
+          }
+        />
+        <p>{props.customer.projectGoal} Dossier(s)</p>
+      </div>
     </Card>
   );
 };

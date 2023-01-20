@@ -1,5 +1,6 @@
 import { TCustomerCategory } from "../types/TCustomerCategory";
 import { TPaymentType } from "../types/TPaymentType";
+import { IAppointment } from "./IAppointment";
 import { IContact } from "./IContact";
 import { IRessource } from "./IRessource";
 
@@ -16,7 +17,7 @@ export interface ICustomer {
   contact: IContact[];
   priceList: string;
   commercial: IRessource[];
-  lastAppointment: Date;
+  appointment: IAppointment[];
   projectGoal: number;
   paymentDeadline: 30 | 45;
   paymentType: TPaymentType;
