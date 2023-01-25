@@ -1,15 +1,16 @@
 import { Tabs, useMantineTheme } from "@mantine/core";
 import React, { useState } from "react";
-import { useCustomer } from "../../../../context/CustomerContext";
-import Customer from "../Customer/Customer";
-import Agence from "./Agence";
+import { useCustomer } from "../../../context/CustomerContext";
+import Customer from "./Customer/Customer";
+import AgenceList from "./AgenceList";
 
-interface IConstructeur {
+interface ICustomerListProps {
   color: string;
+  category: string;
 }
 
-const Constructeur = (props: IConstructeur) => {
-  const [activeTab, setActiveTab] = useState<string | null>(".G ARCHITECTURE");
+const CustomerList = (props: ICustomerListProps) => {
+  const [activeTab, setActiveTab] = useState<string | null>("");
   const theme = useMantineTheme();
   const customers = useCustomer();
 
@@ -22,7 +23,7 @@ const Constructeur = (props: IConstructeur) => {
     >
       <Tabs.List>
         {customers
-          .filter((customer) => customer.category === "Constructeur")
+          .filter((customer) => customer.category === props.category)
           .reduce((acc, customer) => {
             const value =
               customer.group === "" ? customer.name : customer.group;
@@ -50,7 +51,7 @@ const Constructeur = (props: IConstructeur) => {
       {customers
         .filter(
           (customer) =>
-            customer.category === "Constructeur" && customer.group === ""
+            customer.category === props.category && customer.group === ""
         )
         .reduce((acc, customer) => {
           const value = customer.group === "" ? customer.name : customer.group;
@@ -72,7 +73,7 @@ const Constructeur = (props: IConstructeur) => {
       {customers
         .filter(
           (customer) =>
-            customer.category === "Constructeur" && customer.group !== ""
+            customer.category === props.category && customer.group !== ""
         )
         .reduce((acc, customer) => {
           const value = customer.group === "" ? customer.name : customer.group;
@@ -84,7 +85,7 @@ const Constructeur = (props: IConstructeur) => {
         }, [] as string[])
         .map((customer) => (
           <Tabs.Panel key={customer} value={customer}>
-            <Agence
+            <AgenceList
               color={props.color}
               customers={customers.filter((c) => c.group === customer)}
             />
@@ -94,4 +95,4 @@ const Constructeur = (props: IConstructeur) => {
   );
 };
 
-export default Constructeur;
+export default CustomerList;

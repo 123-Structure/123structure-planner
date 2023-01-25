@@ -52,7 +52,9 @@ const CustomerRelationship = (props: ICustomerRelationshipProps) => {
       const appointment =
         props.customer.appointment[props.customer.appointment.length - 1];
 
-      return `${appointment.title} (${appointment.date.toLocaleDateString("fr")})`;
+      return `${appointment.title} (${appointment.date.toLocaleDateString(
+        "fr"
+      )})`;
     } else {
       return "-";
     }

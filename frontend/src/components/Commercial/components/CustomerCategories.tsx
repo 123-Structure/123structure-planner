@@ -1,6 +1,6 @@
 import { Tabs, useMantineTheme } from "@mantine/core";
 import React, { useState } from "react";
-import Constructeur from "./Constructeur/Constructeur";
+import CustomerList from "./CustomerList";
 
 interface ICustomerCategoriesProps {
   color: string;
@@ -41,19 +41,11 @@ const CustomerCategories = (props: ICustomerCategoriesProps) => {
         ))}
       </Tabs.List>
 
-      <Tabs.Panel value="Constructeur">
-        <Constructeur color={props.color} />
-      </Tabs.Panel>
-
-      <Tabs.Panel value="Négoce">Négoce tab content</Tabs.Panel>
-
-      <Tabs.Panel value="Maitre d'Oeuvre">
-        Maitre d'Oeuvre tab content
-      </Tabs.Panel>
-
-      <Tabs.Panel value="Maçon">Maçon tab content</Tabs.Panel>
-
-      <Tabs.Panel value="Charpentier">Charpentier tab content</Tabs.Panel>
+      {categories.map((category) => (
+        <Tabs.Panel key={category} value={category}>
+          <CustomerList color={props.color} category={category} />
+        </Tabs.Panel>
+      ))}
     </Tabs>
   );
 };

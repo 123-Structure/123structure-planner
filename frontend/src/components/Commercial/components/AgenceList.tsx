@@ -1,14 +1,14 @@
 import { Tabs, useMantineTheme } from "@mantine/core";
 import React, { useState } from "react";
-import { ICustomer } from "../../../../data/interfaces/ICustomer";
-import Customer from "../Customer/Customer";
+import { ICustomer } from "../../../data/interfaces/ICustomer";
+import Customer from "./Customer/Customer";
 
-interface IAgence {
+interface IAgenceListProps {
   color: string;
   customers: ICustomer[];
 }
 
-const Agence = (props: IAgence) => {
+const AgenceList = (props: IAgenceListProps) => {
   const [activeTab, setActiveTab] = useState<string | null>(
     props.customers[0].name
   );
@@ -46,4 +46,4 @@ const Agence = (props: IAgence) => {
   );
 };
 
-export default Agence;
+export default AgenceList;

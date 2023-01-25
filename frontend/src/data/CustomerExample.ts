@@ -70,7 +70,7 @@ export const CustomerExample: ICustomer[] = [
           },
         ],
         location: "18 venelle de l'Escarpe, 44190 Clisson",
-        title:"RDV COURTOISIE",
+        title: "RDV COURTOISIE",
         text: "Logoden biniou degemer mat an penn ar, bed drezout e glas Kermouster. Servijañ Rosko mab Nazer An Alre gwastell c’helenner, bragoù tro prad gwellañ ken. Pleg vugale kriz ijinañ c’haol dremm eme, dirak kentel daol skignañ niverenn. Bez ne sec’hed genver he c’hodell deiz, reiñ sklaer c’hardeur gaer eured. Lagad dimeurzh Pornizhan daouzek ganet Sant-Tegoneg godell, start chadenn gant kastell birviñ. Hegarat evitañ ar Remengol dindan  mouezh Sant-Nouga, koad tour skevent echu dour. Ar Gall diskar merc’h dirak  abardaez, kennebeut a c’hartoñs c’houzoug, padout kriz dreñv. Traoñ taer aon arrebeuri skignañ Skrigneg troad, lezenn lenn mañ stlakañ galleg. Enebour warno per war evezh aer vourc’h, an vandenn Plouha gwern Plouared. Kêr c’hilhog vignonez forzh bann, dour bouzar ostaleri diaoul, bluenn c’hontadenn gwiskamant.\n Kaeraat gouren yenijenn kuzhat eme c’hontadenn ac'hanoc'h, follenn lizherenn sankañ c’hof keniterv. Kof derc’hent dispign dirak  anavezout muiañ tamall, Europa diouzhtu skalier skorn spi. Mignon plant beleg mae kotoñs, yezh ha fiñval kerzu, banniel drezañ dispign. Pep nebeut mantell bazh Konk, c’hof goustad Sun klañv, dra follenn kerc’h. E a pakad tal alies, bro ouzhit gounez kelc’hiek, dimeziñ antronoz boull. Redek c’hwec’hvet ezel naontek a bann hanter, oaled gwellañ c’hraou tachenn ennomp. Tennañ mesk Skrigneg kontrol stad, ugnet bagad brudet drezomp, warno kerc’h laerezh. Abeg da mae war skolaer ur meskañ, an gwaz bodañ wenodenn a. Pornizhan boultrenn drezañ c’hotoñs kreñv kêr glas, arc’h doñjer grizilh gouere lous. Plelann-Veur gentañ c’helien sec’h eme, c’houevr milin galon muioc’h, vro bezh kontañ. \n Ennoc'h ivez harp da holl egistañ laouen, alies dant keniterv nizez Pempoull. War warni, an ket spontus, derc’hel arrebeuri ar roud, rannañ Breizh chal. Egistomp c’harrez doujañ naet kentel reas peogwir, leun harzhal Sant-Maloù Egineg plijet. Kenavo Orient kaozeadenn Mikael poultrenn, davarn biz pakañ atav, ezel arc’h eta. Ganti Pont-Aven arar outo abardaez lakaat tavarnour, anzav logod aour muzell aod. Distagañ kavout war pennad eñ gounez Brest, heuliañ buhez poultrenn gousperoù tra. Brezel Orient enor onest perc’henn ac'hanout ober, dirak  da anzav lizher neñv. Gontell start baradoz prennañ levrioù, Arre am gouiziek tagañ, Plelann-Veur aes c’hroc’hen. Plouezoc’h ruilhañ brumenn kas deoc'h, nav mar meur Pembo, giz anezho kromm. Koll leal darn pemzek mignon ezhomm sailh, bleunioù dud dianav aon santout.",
       },
     ],
@@ -141,7 +141,7 @@ export const CustomerExample: ICustomer[] = [
     group: "",
   },
   {
-    category: undefined,
+    category: "Négoce",
     name: "AADI Atlantique",
     address: "18 Rue de M�rin\nL'Atelier",
     cp: "64200",
@@ -161,7 +161,7 @@ export const CustomerExample: ICustomer[] = [
     group: "",
   },
   {
-    category: undefined,
+    category: "Maitre d'Oeuvre",
     name: "AADP-Atelier d'architecture Duranteau Pidoux",
     address: "17 avenue Jean Jaur�s",
     cp: "85100",
@@ -181,7 +181,7 @@ export const CustomerExample: ICustomer[] = [
     group: "",
   },
   {
-    category: undefined,
+    category: "Maçon",
     name: "AB DECO",
     address: "13 La Nourissonni�re",
     cp: "44190",
@@ -201,7 +201,7 @@ export const CustomerExample: ICustomer[] = [
     group: "",
   },
   {
-    category: undefined,
+    category: "Négoce",
     name: "ABAK CLISSON",
     address: "18 Venelle de l'Escarpe",
     cp: "44190",
@@ -218,10 +218,10 @@ export const CustomerExample: ICustomer[] = [
     paymentDeadline: 30,
     paymentType: "Virement",
     GMapsLink: "",
-    group: "",
+    group: "ABAK",
   },
   {
-    category: undefined,
+    category: "Négoce",
     name: "ABAK GENERAL INGENIERIE",
     address: "34 Bd Joliot Curie",
     cp: "44200",
@@ -238,10 +238,10 @@ export const CustomerExample: ICustomer[] = [
     paymentDeadline: 30,
     paymentType: "Virement",
     GMapsLink: "",
-    group: "",
+    group: "ABAK",
   },
   {
-    category: undefined,
+    category: "Négoce",
     name: "ABAK INGENIERIE PROVENCE",
     address: "5 Rue Charles Duchesne\nImmeuble Le Tertia 1",
     cp: "13290",
@@ -258,7 +258,7 @@ export const CustomerExample: ICustomer[] = [
     paymentDeadline: 30,
     paymentType: "Virement",
     GMapsLink: "",
-    group: "",
+    group: "ABAK",
   },
   {
     category: undefined,
@@ -281,7 +281,7 @@ export const CustomerExample: ICustomer[] = [
     group: "",
   },
   {
-    category: undefined,
+    category: "Charpentier",
     name: "ABID",
     address: "16 Rue Ernest Renan",
     cp: "93400",
