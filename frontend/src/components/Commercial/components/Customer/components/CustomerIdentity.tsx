@@ -1,7 +1,6 @@
 import { Card } from "@mantine/core";
 import {
   IconAddressBook,
-  IconCurrencyEuro,
   IconMail,
   IconMap2,
   IconPhone,
@@ -151,22 +150,6 @@ const CustomerIdentity = (props: ICustomerIdentityProps) => {
           />
         ))}
       </div>
-      <div
-        style={{
-          width: "100%",
-          borderTop: "2px dotted #dfe2e6",
-          margin: "8px 0 8px 0",
-        }}
-      />
-      <CustomButton
-        handleClick={() => openURL(props.customer.priceList)}
-        icon={<IconCurrencyEuro />}
-        color={props.color}
-        label={"Grille tarifaire"}
-        extraStyle={{
-          width: "fit-content",
-        }}
-      />
     </Card>
   );
 };

@@ -12,8 +12,9 @@
 }
 
 .customerIdentity,
-.customerRelationship {
-  width: calc(33% - 8px);
+.customerRelationship,
+.customerPayment {
+  width: calc(33% - 12px);
 }
 
 .customerItem {
@@ -34,14 +35,24 @@
   display: none;
 }
 
+.customerItemContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.customerItemTitle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.customerItemTitle > p {
+  margin: 0;
+}
+
 .contactContainer {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-}
-
-.multiSelectCommercial {
-  display: flex;
-  align-items: center;
-  gap: 16px;
 }

@@ -77,7 +77,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -97,7 +97,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "B",
     group: "",
   },
   {
@@ -117,7 +117,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "C",
     group: "",
   },
   {
@@ -137,7 +137,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -157,7 +157,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -177,7 +177,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -197,7 +197,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -217,7 +217,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "ABAK",
   },
   {
@@ -237,7 +237,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "ABAK",
   },
   {
@@ -257,7 +257,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "ABAK",
   },
   {
@@ -277,7 +277,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -297,7 +297,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -317,7 +317,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -337,7 +337,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -357,7 +357,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -377,7 +377,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -397,7 +397,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -417,7 +417,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -437,7 +437,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -457,7 +457,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -477,7 +477,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -497,7 +497,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -517,7 +517,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -537,7 +537,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -557,7 +557,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -577,7 +577,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -597,7 +597,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -617,7 +617,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -637,7 +637,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -657,7 +657,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -677,7 +677,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -697,7 +697,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -717,7 +717,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -737,7 +737,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -757,7 +757,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -777,7 +777,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -797,7 +797,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -817,7 +817,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -837,7 +837,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -857,7 +857,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -877,7 +877,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -897,7 +897,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -917,7 +917,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -937,7 +937,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -957,7 +957,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -977,7 +977,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -997,7 +997,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -1017,7 +1017,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -1037,7 +1037,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -1057,7 +1057,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -1077,7 +1077,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -1097,7 +1097,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -1117,7 +1117,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -1137,7 +1137,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -1157,7 +1157,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -1177,7 +1177,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -1197,7 +1197,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -1217,7 +1217,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -1237,7 +1237,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -1257,7 +1257,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -1277,7 +1277,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -1297,7 +1297,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -1317,7 +1317,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -1337,7 +1337,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -1357,7 +1357,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -1377,7 +1377,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -1397,7 +1397,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -1417,7 +1417,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -1437,7 +1437,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -1457,7 +1457,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -1477,7 +1477,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -1497,7 +1497,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -1517,7 +1517,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -1537,7 +1537,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -1557,7 +1557,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -1577,7 +1577,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -1597,7 +1597,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -1617,7 +1617,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -1637,7 +1637,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -1657,7 +1657,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -1677,7 +1677,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -1697,7 +1697,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -1717,7 +1717,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -1737,7 +1737,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -1757,7 +1757,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -1777,7 +1777,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -1797,7 +1797,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -1817,7 +1817,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -1837,7 +1837,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -1857,7 +1857,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -1878,7 +1878,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -1898,7 +1898,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -1918,7 +1918,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -1938,7 +1938,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -1958,7 +1958,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -1978,7 +1978,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -1998,7 +1998,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -2018,7 +2018,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -2038,7 +2038,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -2058,7 +2058,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -2078,7 +2078,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -2098,7 +2098,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -2118,7 +2118,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -2138,7 +2138,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -2159,7 +2159,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -2179,7 +2179,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -2199,7 +2199,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -2219,7 +2219,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -2239,7 +2239,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -2259,7 +2259,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -2279,7 +2279,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -2299,7 +2299,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -2319,7 +2319,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -2339,7 +2339,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -2359,7 +2359,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -2379,7 +2379,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -2399,7 +2399,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -2419,7 +2419,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -2439,7 +2439,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -2459,7 +2459,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -2479,7 +2479,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -2499,7 +2499,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -2519,7 +2519,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -2539,7 +2539,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -2559,7 +2559,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -2579,7 +2579,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -2599,7 +2599,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -2619,7 +2619,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -2639,7 +2639,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -2659,7 +2659,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -2679,7 +2679,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -2699,7 +2699,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -2719,7 +2719,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -2739,7 +2739,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -2759,7 +2759,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -2779,7 +2779,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -2799,7 +2799,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -2819,7 +2819,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -2839,7 +2839,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -2859,7 +2859,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -2879,7 +2879,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -2899,7 +2899,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -2919,7 +2919,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -2939,7 +2939,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -2959,7 +2959,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -2979,7 +2979,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -2999,7 +2999,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -3019,7 +3019,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -3039,7 +3039,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -3059,7 +3059,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -3079,7 +3079,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -3099,7 +3099,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -3119,7 +3119,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -3139,7 +3139,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -3159,7 +3159,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -3179,7 +3179,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -3199,7 +3199,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -3219,7 +3219,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -3239,7 +3239,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -3259,7 +3259,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -3279,7 +3279,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -3299,7 +3299,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -3319,7 +3319,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -3339,7 +3339,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -3359,7 +3359,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -3379,7 +3379,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -3399,7 +3399,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -3419,7 +3419,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -3439,7 +3439,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -3459,7 +3459,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -3479,7 +3479,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -3499,7 +3499,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -3519,7 +3519,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -3539,7 +3539,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -3559,7 +3559,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -3579,7 +3579,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -3599,7 +3599,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -3619,7 +3619,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -3639,7 +3639,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -3659,7 +3659,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -3679,7 +3679,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -3699,7 +3699,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -3719,7 +3719,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -3739,7 +3739,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -3759,7 +3759,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -3779,7 +3779,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -3799,7 +3799,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -3819,7 +3819,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -3839,7 +3839,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -3859,7 +3859,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -3879,7 +3879,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -3899,7 +3899,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -3919,7 +3919,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -3939,7 +3939,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -3959,7 +3959,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -3979,7 +3979,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -3999,7 +3999,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -4019,7 +4019,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -4039,7 +4039,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -4059,7 +4059,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -4079,7 +4079,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -4099,7 +4099,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -4119,7 +4119,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -4139,7 +4139,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -4159,7 +4159,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -4179,7 +4179,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -4199,7 +4199,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -4219,7 +4219,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -4239,7 +4239,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -4259,7 +4259,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -4279,7 +4279,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -4299,7 +4299,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -4319,7 +4319,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -4339,7 +4339,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -4360,7 +4360,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -4380,7 +4380,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -4400,7 +4400,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -4420,7 +4420,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -4440,7 +4440,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -4460,7 +4460,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -4480,7 +4480,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -4500,7 +4500,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -4520,7 +4520,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -4540,7 +4540,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -4560,7 +4560,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -4580,7 +4580,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -4600,7 +4600,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -4620,7 +4620,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -4640,7 +4640,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -4660,7 +4660,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -4680,7 +4680,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -4700,7 +4700,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -4720,7 +4720,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -4740,7 +4740,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -4760,7 +4760,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -4780,7 +4780,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -4800,7 +4800,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -4820,7 +4820,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -4840,7 +4840,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -4860,7 +4860,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -4880,7 +4880,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -4900,7 +4900,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -4920,7 +4920,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -4940,7 +4940,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -4960,7 +4960,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -4980,7 +4980,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -5000,7 +5000,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -5020,7 +5020,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -5040,7 +5040,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -5060,7 +5060,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -5080,7 +5080,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -5100,7 +5100,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -5120,7 +5120,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -5140,7 +5140,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -5160,7 +5160,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -5180,7 +5180,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -5200,7 +5200,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -5220,7 +5220,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -5240,7 +5240,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -5260,7 +5260,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -5280,7 +5280,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -5300,7 +5300,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -5320,7 +5320,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -5340,7 +5340,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -5360,7 +5360,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -5380,7 +5380,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -5400,7 +5400,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -5420,7 +5420,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -5440,7 +5440,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -5460,7 +5460,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -5480,7 +5480,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -5500,7 +5500,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -5520,7 +5520,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -5540,7 +5540,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -5560,7 +5560,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -5580,7 +5580,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -5600,7 +5600,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -5620,7 +5620,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -5640,7 +5640,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -5660,7 +5660,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -5680,7 +5680,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -5700,7 +5700,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -5720,7 +5720,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -5740,7 +5740,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -5760,7 +5760,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -5780,7 +5780,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -5800,7 +5800,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -5820,7 +5820,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -5840,7 +5840,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -5860,7 +5860,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -5880,7 +5880,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -5900,7 +5900,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -5920,7 +5920,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -5940,7 +5940,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -5960,7 +5960,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -5980,7 +5980,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -6000,7 +6000,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -6020,7 +6020,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -6040,7 +6040,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -6060,7 +6060,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -6080,7 +6080,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -6100,7 +6100,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -6120,7 +6120,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -6140,7 +6140,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -6160,7 +6160,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -6180,7 +6180,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -6200,7 +6200,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -6220,7 +6220,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -6240,7 +6240,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -6260,7 +6260,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -6280,7 +6280,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -6300,7 +6300,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -6320,7 +6320,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -6340,7 +6340,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -6360,7 +6360,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -6380,7 +6380,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -6400,7 +6400,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -6420,7 +6420,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -6440,7 +6440,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -6460,7 +6460,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -6480,7 +6480,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -6500,7 +6500,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -6520,7 +6520,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -6540,7 +6540,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -6560,7 +6560,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -6580,7 +6580,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -6600,7 +6600,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -6620,7 +6620,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -6640,7 +6640,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -6660,7 +6660,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -6680,7 +6680,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -6700,7 +6700,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -6720,7 +6720,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -6740,7 +6740,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -6760,7 +6760,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -6780,7 +6780,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -6800,7 +6800,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -6820,7 +6820,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -6840,7 +6840,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -6860,7 +6860,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -6880,7 +6880,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -6900,7 +6900,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -6920,7 +6920,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -6940,7 +6940,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -6960,7 +6960,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -6980,7 +6980,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -7000,7 +7000,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -7020,7 +7020,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -7040,7 +7040,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -7060,7 +7060,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -7080,7 +7080,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -7100,7 +7100,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -7120,7 +7120,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -7140,7 +7140,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -7160,7 +7160,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -7180,7 +7180,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -7200,7 +7200,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -7220,7 +7220,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -7240,7 +7240,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -7260,7 +7260,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -7280,7 +7280,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -7300,7 +7300,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -7320,7 +7320,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -7340,7 +7340,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "ALYSIA",
   },
   {
@@ -7360,7 +7360,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "ALYSIA",
   },
   {
@@ -7380,7 +7380,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "ALYSIA",
   },
   {
@@ -7400,7 +7400,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "ALYSIA",
   },
   {
@@ -7420,7 +7420,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "ALYSIA",
   },
   {
@@ -7440,7 +7440,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "ALYSIA",
   },
   {
@@ -7460,7 +7460,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "ALYSIA",
   },
   {
@@ -7480,7 +7480,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "ALYSIA",
   },
   {
@@ -7500,7 +7500,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "ALYSIA",
   },
   {
@@ -7520,7 +7520,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "ALYSIA",
   },
   {
@@ -7540,7 +7540,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "ALYSIA",
   },
   {
@@ -7560,7 +7560,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "ALYSIA",
   },
   {
@@ -7580,7 +7580,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "ALYSIA",
   },
   {
@@ -7600,7 +7600,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -7620,7 +7620,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -7640,7 +7640,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -7660,7 +7660,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -7680,7 +7680,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -7700,7 +7700,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -7720,7 +7720,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -7740,7 +7740,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -7760,7 +7760,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -7780,7 +7780,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -7800,7 +7800,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -7820,7 +7820,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -7840,7 +7840,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -7860,7 +7860,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -7880,7 +7880,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -7900,7 +7900,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -7920,7 +7920,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -7940,7 +7940,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -7960,7 +7960,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -7980,7 +7980,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -8000,7 +8000,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -8020,7 +8020,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -8040,7 +8040,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -8060,7 +8060,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -8080,7 +8080,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -8100,7 +8100,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -8120,7 +8120,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -8140,7 +8140,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -8160,7 +8160,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -8180,7 +8180,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -8200,7 +8200,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -8220,7 +8220,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -8240,7 +8240,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -8260,7 +8260,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -8280,7 +8280,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -8300,7 +8300,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -8320,7 +8320,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -8340,7 +8340,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -8360,7 +8360,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -8380,7 +8380,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -8400,7 +8400,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -8420,7 +8420,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -8440,7 +8440,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -8460,7 +8460,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -8480,7 +8480,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -8500,7 +8500,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -8520,7 +8520,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -8540,7 +8540,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -8560,7 +8560,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -8580,7 +8580,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -8600,7 +8600,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -8620,7 +8620,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -8640,7 +8640,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -8660,7 +8660,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -8680,7 +8680,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -8700,7 +8700,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -8720,7 +8720,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -8740,7 +8740,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -8760,7 +8760,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -8780,7 +8780,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -8800,7 +8800,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -8820,7 +8820,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -8840,7 +8840,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -8860,7 +8860,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -8880,7 +8880,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -8900,7 +8900,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -8920,7 +8920,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -8940,7 +8940,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -8960,7 +8960,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -8980,7 +8980,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -9000,7 +9000,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -9020,7 +9020,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -9040,7 +9040,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -9060,7 +9060,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -9080,7 +9080,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -9100,7 +9100,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -9120,7 +9120,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -9140,7 +9140,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -9160,7 +9160,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -9180,7 +9180,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -9200,7 +9200,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -9220,7 +9220,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -9240,7 +9240,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -9260,7 +9260,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -9280,7 +9280,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -9300,7 +9300,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -9320,7 +9320,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -9340,7 +9340,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -9360,7 +9360,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -9380,7 +9380,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -9400,7 +9400,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -9420,7 +9420,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -9440,7 +9440,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -9460,7 +9460,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -9480,7 +9480,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -9500,7 +9500,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -9520,7 +9520,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -9540,7 +9540,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -9560,7 +9560,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -9580,7 +9580,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -9600,7 +9600,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -9620,7 +9620,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -9640,7 +9640,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -9660,7 +9660,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -9680,7 +9680,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -9700,7 +9700,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -9720,7 +9720,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -9740,7 +9740,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -9760,7 +9760,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -9780,7 +9780,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -9800,7 +9800,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -9820,7 +9820,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -9840,7 +9840,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -9860,7 +9860,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -9880,7 +9880,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -9900,7 +9900,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -9920,7 +9920,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -9940,7 +9940,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -9960,7 +9960,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -9980,7 +9980,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -10000,7 +10000,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -10020,7 +10020,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -10040,7 +10040,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -10060,7 +10060,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -10080,7 +10080,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -10100,7 +10100,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -10120,7 +10120,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -10140,7 +10140,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -10160,7 +10160,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -10180,7 +10180,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -10200,7 +10200,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -10220,7 +10220,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -10240,7 +10240,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -10260,7 +10260,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -10280,7 +10280,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -10300,7 +10300,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -10320,7 +10320,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -10340,7 +10340,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -10360,7 +10360,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -10380,7 +10380,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -10400,7 +10400,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -10420,7 +10420,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -10440,7 +10440,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -10460,7 +10460,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -10480,7 +10480,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -10500,7 +10500,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -10520,7 +10520,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -10540,7 +10540,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -10560,7 +10560,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -10580,7 +10580,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -10600,7 +10600,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -10620,7 +10620,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -10640,7 +10640,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -10660,7 +10660,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -10680,7 +10680,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -10700,7 +10700,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -10720,7 +10720,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -10740,7 +10740,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -10760,7 +10760,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -10780,7 +10780,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -10800,7 +10800,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -10820,7 +10820,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -10840,7 +10840,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -10860,7 +10860,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -10880,7 +10880,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -10900,7 +10900,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -10920,7 +10920,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -10940,7 +10940,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -10960,7 +10960,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -10980,7 +10980,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -11000,7 +11000,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -11020,7 +11020,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -11040,7 +11040,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -11060,7 +11060,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -11080,7 +11080,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -11100,7 +11100,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -11120,7 +11120,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -11140,7 +11140,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -11160,7 +11160,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -11180,7 +11180,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -11200,7 +11200,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -11220,7 +11220,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -11240,7 +11240,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -11260,7 +11260,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -11280,7 +11280,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -11300,7 +11300,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -11320,7 +11320,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -11340,7 +11340,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -11360,7 +11360,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -11380,7 +11380,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -11400,7 +11400,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -11420,7 +11420,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -11440,7 +11440,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -11460,7 +11460,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -11480,7 +11480,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -11500,7 +11500,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -11520,7 +11520,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -11540,7 +11540,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -11560,7 +11560,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -11580,7 +11580,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -11600,7 +11600,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -11620,7 +11620,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -11640,7 +11640,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -11660,7 +11660,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -11680,7 +11680,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -11700,7 +11700,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -11720,7 +11720,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -11740,7 +11740,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -11760,7 +11760,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -11780,7 +11780,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -11800,7 +11800,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -11820,7 +11820,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -11840,7 +11840,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -11860,7 +11860,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -11880,7 +11880,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -11900,7 +11900,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -11920,7 +11920,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -11940,7 +11940,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -11960,7 +11960,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -11980,7 +11980,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -12000,7 +12000,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -12020,7 +12020,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -12040,7 +12040,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -12060,7 +12060,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -12080,7 +12080,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -12100,7 +12100,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -12120,7 +12120,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -12140,7 +12140,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -12160,7 +12160,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -12180,7 +12180,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -12200,7 +12200,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -12220,7 +12220,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -12240,7 +12240,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
   {
@@ -12260,7 +12260,7 @@ export const CustomerExample: ICustomer[] = [
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
     paymentType: "Virement",
-    GMapsLink: "",
+    paymentStatus: "A",
     group: "",
   },
 ];

@@ -21,5 +21,5 @@ export interface ICustomer {
   projectGoal: number;
   paymentDeadline: 30 | 45;
   paymentType: TPaymentType;
-  GMapsLink: string;
+  paymentStatus: "A" | "B" | "C";
 }
