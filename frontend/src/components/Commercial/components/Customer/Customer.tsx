@@ -4,19 +4,44 @@ import "../../../../assets/style/Customer.css";
 import CustomerIdentity from "./components/CustomerIdentity";
 import CustomerRelationship from "./components/CustomerRelationship";
 import CustomerPayment from "./components/CustomerPayment";
+import { useMediaQuery } from "@mantine/hooks";
+import { Accordion, useMantineTheme } from "@mantine/core";
+import { IconCash, IconUsers } from "@tabler/icons";
 
 interface ICustomerProps {
-  color: string;
   customer: ICustomer;
 }
 
 const Customer = (props: ICustomerProps) => {
   return (
-    <div className="customer">
-      <CustomerIdentity color={props.color} customer={props.customer} />
-      <CustomerRelationship color={props.color} customer={props.customer} />
-      <CustomerPayment color={props.color} customer={props.customer} />
-    </div>
+    <>
+      <div className="customer">
+        <CustomerIdentity customer={props.customer} />
+        <CustomerRelationship customer={props.customer} />
+        <CustomerPayment customer={props.customer} />
+      </div>
+      <Accordion className="customerAccordion">
+        <CustomerIdentity customer={props.customer} />
+
+        <Accordion.Item value="flexibility">
+          <Accordion.Control icon={<IconUsers size={24} />}>
+            Relation commerciale
+          </Accordion.Control>
+          <Accordion.Panel className="customerAccordionContent">
+            <CustomerRelationship customer={props.customer} />
+          </Accordion.Panel>
+        </Accordion.Item>
+
+        <Accordion.Item value="focus-ring">
+          <Accordion.Control icon={<IconCash size={24} />}>
+            Comptabilité
+          </Accordion.Control>
+          <Accordion.Panel className="customerAccordionContent">
+            <CustomerPayment customer={props.customer} />
+          </Accordion.Panel>
+        </Accordion.Item>
+      </Accordion>
+    </>
   );
 };
 

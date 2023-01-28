@@ -1,7 +1,18 @@
 .customer {
   display: flex;
+  flex-direction: row;
   padding-left: 16px;
   gap: 16px;
+}
+
+.customerAccordion {
+  display: none;
+  margin: 0 16px 0 16px;
+}
+
+.customerAccordionContent > div > div {
+  margin: 0;
+  padding: 0;
 }
 
 .customerLogo {
@@ -55,4 +66,20 @@
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
+}
+
+@media (max-width: 1400px) {
+  .customer {
+    display: none;
+  }
+
+  .customerAccordion {
+    display: block;
+  }
+
+  .customerIdentity,
+  .customerRelationship,
+  .customerPayment {
+    width: calc(100% - 16px);
+  }
 }

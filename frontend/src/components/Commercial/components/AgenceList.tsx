@@ -4,7 +4,6 @@ import { ICustomer } from "../../../data/interfaces/ICustomer";
 import Customer from "./Customer/Customer";
 
 interface IAgenceListProps {
-  color: string;
   customers: ICustomer[];
 }
 
@@ -15,19 +14,14 @@ const AgenceList = (props: IAgenceListProps) => {
   const theme = useMantineTheme();
 
   return (
-    <Tabs
-      color={props.color}
-      orientation="vertical"
-      value={activeTab}
-      onTabChange={setActiveTab}
-    >
+    <Tabs orientation="vertical" value={activeTab} onTabChange={setActiveTab}>
       <Tabs.List>
         {props.customers.map((customer) => (
           <Tabs.Tab
             key={customer.name}
             style={{
               backgroundColor:
-                activeTab === customer.name ? theme.colors[props.color][1] : "",
+                activeTab === customer.name ? theme.colors.yellow[1] : "",
               fontWeight: activeTab === customer.name ? "bold" : "",
             }}
             value={customer.name}
@@ -39,7 +33,7 @@ const AgenceList = (props: IAgenceListProps) => {
 
       {props.customers.map((customer) => (
         <Tabs.Panel key={customer.name} value={customer.name}>
-          <Customer color={props.color} customer={customer} />
+          <Customer customer={customer} />
         </Tabs.Panel>
       ))}
     </Tabs>

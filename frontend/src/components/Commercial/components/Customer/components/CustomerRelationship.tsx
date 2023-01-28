@@ -1,4 +1,5 @@
-import { Card, MultiSelect } from "@mantine/core";
+import { Card, MultiSelect, useMantineTheme } from "@mantine/core";
+import { useMediaQuery } from "@mantine/hooks";
 import {
   IconArrowRight,
   IconCalendar,
@@ -24,7 +25,6 @@ import CustomButton from "../../../../utils/CustomButton";
 import CustomerItem from "./CustomerItem";
 
 interface ICustomerRelationshipProps {
-  color: string;
   customer: ICustomer;
 }
 
@@ -32,6 +32,9 @@ const CustomerRelationship = (props: ICustomerRelationshipProps) => {
   const ressources = useRessources();
   const customers = useCustomer();
   const setCustomers = useUpdateCustomer();
+
+  const theme = useMantineTheme();
+  const smallScreen = useMediaQuery(`(max-width: ${theme.breakpoints.xs}px)`);
 
   const openURL = (url: string) => {
     window.open(url, "_blank");
@@ -78,14 +81,9 @@ const CustomerRelationship = (props: ICustomerRelationshipProps) => {
         <div className="customerItemTitle">
           <CustomerItem
             isClickableItem={false}
-            color={props.color}
-            label={"Commercial référent :"}
-            icon={
-              <IconUsers
-                size={24}
-                color={props.color === "yellow" ? "black" : "white"}
-              />
-            }
+            label={smallScreen ? "" : "Commercial référent :"}
+            icon={<IconUsers size={24} color="black" />}
+            color="yellow"
           />
           <MultiSelect
             data={ressources
@@ -97,9 +95,9 @@ const CustomerRelationship = (props: ICustomerRelationshipProps) => {
               (commercial) => `${commercial.firstName} ${commercial.lastName}`
             )}
             variant="unstyled"
-            placeholder="Rôle non défini"
+            placeholder="Commercial non défini"
             onChange={(newCommercial) => handleCommercialChange(newCommercial)}
-            searchable
+            searchable={!smallScreen}
             nothingFound="Aucun résultat"
             clearable
           />
@@ -107,28 +105,18 @@ const CustomerRelationship = (props: ICustomerRelationshipProps) => {
         <div className="customerItemTitle">
           <CustomerItem
             isClickableItem={false}
-            color={props.color}
             label={"Dernière visite :"}
-            icon={
-              <IconCalendar
-                size={24}
-                color={props.color === "yellow" ? "black" : "white"}
-              />
-            }
+            icon={<IconCalendar size={24} color="black" />}
+            color="yellow"
           />
           <p>{getLastAppointment()}</p>
         </div>
         <div className="customerItemTitle">
           <CustomerItem
             isClickableItem={false}
-            color={props.color}
-            label={"Objectif de dossier :"}
-            icon={
-              <IconHomeDollar
-                size={24}
-                color={props.color === "yellow" ? "black" : "white"}
-              />
-            }
+            label={"Objectif :"}
+            icon={<IconHomeDollar size={24} color="black" />}
+            color="yellow"
           />
           <p>{props.customer.projectGoal} Dossier(s)</p>
         </div>
@@ -143,7 +131,6 @@ const CustomerRelationship = (props: ICustomerRelationshipProps) => {
       <CustomButton
         handleClick={() => openURL(props.customer.priceList)}
         icon={<IconCurrencyEuro />}
-        color={props.color}
         label={"Grille tarifaire"}
         extraStyle={{
           width: "fit-content",

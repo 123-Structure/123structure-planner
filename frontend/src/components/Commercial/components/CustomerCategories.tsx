@@ -1,13 +1,11 @@
 import { Tabs, useMantineTheme } from "@mantine/core";
+import { useMediaQuery } from "@mantine/hooks";
 import React, { useState } from "react";
 import CustomerList from "./CustomerList";
 
-interface ICustomerCategoriesProps {
-  color: string;
-}
-
-const CustomerCategories = (props: ICustomerCategoriesProps) => {
+const CustomerCategories = () => {
   const [activeTab, setActiveTab] = useState<string | null>("Constructeur");
+
   const theme = useMantineTheme();
 
   const categories = [
@@ -18,35 +16,43 @@ const CustomerCategories = (props: ICustomerCategoriesProps) => {
     "Charpentier",
   ];
 
-  return (
-    <Tabs
-      color={props.color}
-      orientation="vertical"
-      value={activeTab}
-      onTabChange={setActiveTab}
-    >
-      <Tabs.List>
-        {categories.map((category) => (
-          <Tabs.Tab
-            key={category}
-            style={{
-              backgroundColor:
-                activeTab === category ? theme.colors[props.color][1] : "",
-              fontWeight: activeTab === category ? "bold" : "",
-            }}
-            value={category}
-          >
-            {category}
-          </Tabs.Tab>
-        ))}
-      </Tabs.List>
+  const getDisplay = () => {
+    const element = document.querySelector(
+      ".customerCategories"
+    ) as HTMLDivElement;
+    if (element !== null) {
+      console.log(element.style.display);
+    }
+  };
 
-      {categories.map((category) => (
-        <Tabs.Panel key={category} value={category}>
-          <CustomerList color={props.color} category={category} />
-        </Tabs.Panel>
-      ))}
-    </Tabs>
+  getDisplay();
+
+  return (
+    <>
+      <Tabs orientation="vertical" value={activeTab} onTabChange={setActiveTab}>
+        <Tabs.List>
+          {categories.map((category) => (
+            <Tabs.Tab
+              key={category}
+              style={{
+                backgroundColor:
+                  activeTab === category ? theme.colors.yellow[1] : "",
+                fontWeight: activeTab === category ? "bold" : "",
+              }}
+              value={category}
+            >
+              {category}
+            </Tabs.Tab>
+          ))}
+        </Tabs.List>
+
+        {categories.map((category) => (
+          <Tabs.Panel key={category} value={category}>
+            <CustomerList category={category} />
+          </Tabs.Panel>
+        ))}
+      </Tabs>
+    </>
   );
 };
 

@@ -10,7 +10,6 @@ import { ICustomer } from "../../../../../data/interfaces/ICustomer";
 import CustomerItem from "./CustomerItem";
 
 interface ICustomerPaymentProps {
-  color: string;
   customer: ICustomer;
 }
 
@@ -21,28 +20,18 @@ const CustomerPayment = (props: ICustomerPaymentProps) => {
         <div className="customerItemTitle">
           <CustomerItem
             isClickableItem={false}
-            color={props.color}
             label={"Délai de paiement :"}
-            icon={
-              <IconCalendarTime
-                size={24}
-                color={props.color === "yellow" ? "black" : "white"}
-              />
-            }
+            icon={<IconCalendarTime size={24} color="black" />}
+            color="yellow"
           />
           <p>{props.customer.paymentDeadline}</p>
         </div>
         <div className="customerItemTitle">
           <CustomerItem
             isClickableItem={false}
-            color={props.color}
             label={"Mode de paiement :"}
-            icon={
-              <IconCreditCard
-                size={24}
-                color={props.color === "yellow" ? "black" : "white"}
-              />
-            }
+            icon={<IconCreditCard size={24} color="black" />}
+            color="yellow"
           />
           <p>{props.customer.paymentType}</p>
         </div>
@@ -59,15 +48,9 @@ const CustomerPayment = (props: ICustomerPaymentProps) => {
             label={"Statut de paiement :"}
             icon={
               props.customer.paymentStatus === "C" ? (
-                <IconCashOff
-                  size={24}
-                  color={props.color === "yellow" ? "black" : "white"}
-                />
+                <IconCashOff size={24} color="black" />
               ) : (
-                <IconCash
-                  size={24}
-                  color={props.color === "yellow" ? "black" : "white"}
-                />
+                <IconCash size={24} color="black"/>
               )
             }
           />

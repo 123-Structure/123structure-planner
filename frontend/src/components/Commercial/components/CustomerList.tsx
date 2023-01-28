@@ -5,7 +5,6 @@ import Customer from "./Customer/Customer";
 import AgenceList from "./AgenceList";
 
 interface ICustomerListProps {
-  color: string;
   category: string;
 }
 
@@ -15,12 +14,7 @@ const CustomerList = (props: ICustomerListProps) => {
   const customers = useCustomer();
 
   return (
-    <Tabs
-      color={props.color}
-      orientation="vertical"
-      value={activeTab}
-      onTabChange={setActiveTab}
-    >
+    <Tabs orientation="vertical" value={activeTab} onTabChange={setActiveTab}>
       <Tabs.List>
         {customers
           .filter((customer) => customer.category === props.category)
@@ -38,7 +32,7 @@ const CustomerList = (props: ICustomerListProps) => {
               key={customer}
               style={{
                 backgroundColor:
-                  activeTab === customer ? theme.colors[props.color][1] : "",
+                  activeTab === customer ? theme.colors.yellow[1] : "",
                 fontWeight: activeTab === customer ? "bold" : "",
               }}
               value={customer}
@@ -64,7 +58,6 @@ const CustomerList = (props: ICustomerListProps) => {
         .map((customer) => (
           <Tabs.Panel key={customer} value={customer}>
             <Customer
-              color={props.color}
               customer={customers.filter((c) => c.name === customer)[0]}
             />
           </Tabs.Panel>
@@ -86,7 +79,6 @@ const CustomerList = (props: ICustomerListProps) => {
         .map((customer) => (
           <Tabs.Panel key={customer} value={customer}>
             <AgenceList
-              color={props.color}
               customers={customers.filter((c) => c.group === customer)}
             />
           </Tabs.Panel>

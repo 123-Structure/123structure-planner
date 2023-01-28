@@ -116,7 +116,7 @@ export const CustomerExample: ICustomer[] = [
     appointment: [],
     projectGoal: Math.floor(Math.random() * 1000),
     paymentDeadline: 30,
-    paymentType: "Virement",
+    paymentType: "Lettre de change relevé (LCR)",
     paymentStatus: "C",
     group: "",
   },

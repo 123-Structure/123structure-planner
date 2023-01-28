@@ -13,7 +13,6 @@ import CustomTitle from "../../../../utils/CustomTitle";
 import CustomerItem from "./CustomerItem";
 
 interface ICustomerIdentityProps {
-  color: string;
   customer: ICustomer;
 }
 
@@ -66,14 +65,9 @@ const CustomerIdentity = (props: ICustomerIdentityProps) => {
         >
           <CustomerItem
             isClickableItem={true}
-            color={props.color}
             label={`${props.customer.address}, ${props.customer.cp} ${props.customer.city}`}
-            icon={
-              <IconMap2
-                size={24}
-                color={props.color === "yellow" ? "black" : "white"}
-              />
-            }
+            icon={<IconMap2 size={24} color="black" />}
+            color="yellow"
             handleClick={() =>
               openURL(
                 `https://www.google.fr/maps/search/${props.customer.address}, ${props.customer.cp} ${props.customer.city}`
@@ -82,14 +76,9 @@ const CustomerIdentity = (props: ICustomerIdentityProps) => {
           />
           <CustomerItem
             isClickableItem={true}
-            color={props.color}
             label={props.customer.email}
-            icon={
-              <IconMail
-                size={24}
-                color={props.color === "yellow" ? "black" : "white"}
-              />
-            }
+            icon={<IconMail size={24} color="black" />}
+            color="yellow"
             handleClick={() =>
               sendEmailorCallPhone(
                 `#sendEmail_${props.customer.name
@@ -108,14 +97,9 @@ const CustomerIdentity = (props: ICustomerIdentityProps) => {
 
           <CustomerItem
             isClickableItem={true}
-            color={props.color}
             label={props.customer.phone}
-            icon={
-              <IconPhone
-                size={24}
-                color={props.color === "yellow" ? "black" : "white"}
-              />
-            }
+            icon={<IconPhone size={24} color="black" />}
+            color="yellow"
             handleClick={() =>
               sendEmailorCallPhone(
                 `#callPhone_${props.customer.name
@@ -142,7 +126,6 @@ const CustomerIdentity = (props: ICustomerIdentityProps) => {
             key={index}
             handleClick={() => console.log("test")}
             icon={<IconUser />}
-            color={props.color}
             label={`${contact.firstName} ${contact.lastName}`}
             extraStyle={{
               width: "fit-content",

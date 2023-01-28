@@ -1,19 +1,21 @@
-import { Tabs } from "@mantine/core";
+import { Tabs, useMantineTheme } from "@mantine/core";
 import { useState } from "react";
 import { useRessources } from "../../context/RessourceContext";
 import { companyColor } from "../../utils/companyColor";
 import CustomerCategories from "./components/CustomerCategories";
 import "../../assets/style/Commercial.css";
+import { useMediaQuery } from "@mantine/hooks";
+import MobileCustomerMenu from "./components/MobileCustomerMenu";
 
 const Commercial = () => {
   const [activeTab, setActiveTab] = useState<string | null>("g.barais");
   const ressources = useRessources();
+  const theme = useMantineTheme();
+  const smallScreen = useMediaQuery(`(max-width: ${theme.breakpoints.lg}px)`);
 
   return (
     <Tabs
-      color={companyColor(
-        ressources.filter((ressource) => ressource._id === activeTab)[0].company
-      )}
+      color="yellow"
       variant="pills"
       value={activeTab}
       onTabChange={setActiveTab}
@@ -28,7 +30,7 @@ const Commercial = () => {
               value={ressource._id}
               style={{
                 color:
-                  activeTab === ressource._id && ressource.company === "Clisson"
+                  activeTab === ressource._id 
                     ? "black"
                     : "",
               }}
@@ -38,15 +40,21 @@ const Commercial = () => {
       {ressources
         .filter((ressource) => ressource.role.includes("Commercial"))
         .map((ressource) => (
-          <Tabs.Panel key={ressource._id} value={ressource._id}>
-            <CustomerCategories
-              color={companyColor(
-                ressources.filter((ressource) => ressource._id === activeTab)[0]
-                  .company
-              )}
-            />
+          <Tabs.Panel
+            key={ressource._id}
+            value={ressource._id}
+            style={{
+              display: smallScreen
+                ? "none"
+                : activeTab === ressource._id
+                ? "block"
+                : "",
+            }}
+          >
+            <CustomerCategories />
           </Tabs.Panel>
         ))}
+      <MobileCustomerMenu />
     </Tabs>
   );
 };
