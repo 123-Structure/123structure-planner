@@ -6,19 +6,23 @@ import React from "react";
 interface IEditAppointmentToggleProps {
   editAppointment: boolean;
   setEditAppointment: React.Dispatch<React.SetStateAction<boolean>>;
-  handleContentChange: (editor: Editor) => void;
+  handleContentChange: (newValue: string | undefined) => void;
+  newValue: string | undefined;
 }
 
 const EditAppointmentToggle = (props: IEditAppointmentToggleProps) => {
+  const handleSaveContent = () => {
+    props.handleContentChange(props.newValue);
+    props.setEditAppointment(false);
+  };
+
   return (
     <div className="editAppointmentToggle">
       {props.editAppointment ? (
         <>
           <div
             className="editAppointmentToggleItem"
-            onClick={() => {
-              props.setEditAppointment(false);
-            }}
+            onClick={handleSaveContent}
           >
             <ActionIcon color={"green"}>
               <IconCheck size={20} color="green" />

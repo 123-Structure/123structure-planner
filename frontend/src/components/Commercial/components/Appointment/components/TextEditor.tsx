@@ -38,7 +38,7 @@ interface ITextEditorProps {
 }
 
 const TextEditor = (props: ITextEditorProps) => {
-  const [editAppointment, setEditAppointment] = useState(true);
+  const [editAppointment, setEditAppointment] = useState(false);
 
   const customers = useCustomer();
   const setCustomers = useUpdateCustomer();
@@ -61,7 +61,7 @@ const TextEditor = (props: ITextEditorProps) => {
     content: props.appointment.content,
   });
 
-  const handleContentChange = (editor: Editor) => {
+  const handleContentChange = (newValue: string | undefined) => {
     const newCustomer = [...customers];
     const changedCustomer = newCustomer.filter(
       (customer) =>
@@ -69,15 +69,17 @@ const TextEditor = (props: ITextEditorProps) => {
         customer.group === props.customer.group &&
         customer.name === props.customer.name
     );
-    changedCustomer[0].appointment[props._id].content = editor.getHTML();
-    setCustomers(newCustomer);
-    showNotification({
-      title: `✅ Rendez-vous sauvegardé`,
-      message: `${props.customer.name} - ${
-        props.appointment.title
-      } (${props.appointment.date.toLocaleDateString("fr")}) mis à jour`,
-      color: "green",
-    });
+    if (newValue !== undefined) {
+      changedCustomer[0].appointment[props._id].content = newValue;
+      setCustomers(newCustomer);
+      showNotification({
+        title: `✅ Rendez-vous sauvegardé`,
+        message: `${props.customer.name} - ${
+          props.appointment.title
+        } (${props.appointment.date.toLocaleDateString("fr")}) mis à jour`,
+        color: "green",
+      });
+    }
   };
 
   const colorPicker = (
@@ -116,6 +118,7 @@ const TextEditor = (props: ITextEditorProps) => {
         editAppointment={editAppointment}
         setEditAppointment={setEditAppointment}
         handleContentChange={handleContentChange}
+        newValue={editor?.getHTML()}
       />
       {editAppointment ? (
         <RichTextEditor editor={editor}>
@@ -173,9 +176,6 @@ const TextEditor = (props: ITextEditorProps) => {
             <CustomerButton customer={props.customer} />
             <InsertStarControl />
             <SaveContent
-              _id={props._id}
-              customer={props.customer}
-              appointment={props.appointment}
               handleContentChange={handleContentChange}
             />
           </RichTextEditor.Toolbar>

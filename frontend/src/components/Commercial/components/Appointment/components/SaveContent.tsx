@@ -3,13 +3,9 @@ import { IconDeviceFloppy } from "@tabler/icons";
 import { Editor } from "@tiptap/react";
 import React from "react";
 import { IAppointment } from "../../../../../data/interfaces/IAppointment";
-import { ICustomer } from "../../../../../data/interfaces/ICustomer";
 
 interface ISaveContentProps {
-  _id: number;
-  customer: ICustomer;
-  appointment: IAppointment;
-  handleContentChange: (editor: Editor) => void;
+  handleContentChange: (newValue: string | undefined) => void;
 }
 
 const SaveContent = (props: ISaveContentProps) => {
@@ -17,7 +13,7 @@ const SaveContent = (props: ISaveContentProps) => {
 
   return (
     <RichTextEditor.Control
-      onClick={() => props.handleContentChange(editor)}
+      onClick={() => props.handleContentChange(editor.getHTML())}
       aria-label="Sauvegarder"
       title="Sauvegarder"
     >

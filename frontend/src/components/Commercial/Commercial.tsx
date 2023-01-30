@@ -18,7 +18,8 @@ const Commercial = () => {
       variant="pills"
       value={activeTab}
       onTabChange={setActiveTab}
-      className="commercialContainer">
+      className="commercialContainer"
+    >
       <Tabs.List>
         {ressources
           .filter((ressource) => ressource.role.includes("Commercial"))
@@ -28,10 +29,7 @@ const Commercial = () => {
               key={ressource._id}
               value={ressource._id}
               style={{
-                color:
-                  activeTab === ressource._id 
-                    ? "black"
-                    : "",
+                color: activeTab === ressource._id ? "black" : "",
               }}
             >{`${ressource.firstName} ${ressource.lastName}`}</Tabs.Tab>
           ))}

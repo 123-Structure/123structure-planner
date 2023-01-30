@@ -21,7 +21,6 @@
 
 .mobileCustomerMenuSelect {
   width: calc(33%);
-  color: black;
 }
 
 @media (max-width: 576px) {
