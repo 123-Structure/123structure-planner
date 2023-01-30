@@ -1,8 +1,8 @@
 import { Select, SelectItem, useMantineTheme } from "@mantine/core";
 import { useMediaQuery } from "@mantine/hooks";
 import React, { useState } from "react";
-import { useCustomer } from "../../../context/CustomerContext";
-import Customer from "./Customer/Customer";
+import { useCustomer } from "../../../../context/CustomerContext";
+import Customer from "../Customer/Customer";
 
 const MobileCustomerMenu = () => {
   const [currentCategory, setCurrentCategory] = useState<string | null>(

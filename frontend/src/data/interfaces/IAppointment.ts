@@ -5,5 +5,5 @@ export interface IAppointment {
   contact: IContact[];
   location: string;
   title: string;
-  text: string;
+  content: string;
 }

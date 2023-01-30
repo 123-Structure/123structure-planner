@@ -1,0 +1,192 @@
+import {
+  RichTextEditor,
+  Link,
+  useRichTextEditorContext,
+} from "@mantine/tiptap";
+import { BubbleMenu, FloatingMenu, useEditor } from "@tiptap/react";
+import Highlight from "@tiptap/extension-highlight";
+import StarterKit from "@tiptap/starter-kit";
+import Underline from "@tiptap/extension-underline";
+import TextAlign from "@tiptap/extension-text-align";
+import Superscript from "@tiptap/extension-superscript";
+import SubScript from "@tiptap/extension-subscript";
+import Placeholder from "@tiptap/extension-placeholder";
+import { Color } from "@tiptap/extension-color";
+import TextStyle from "@tiptap/extension-text-style";
+import { IAppointment } from "../../../../../data/interfaces/IAppointment";
+import { ICustomer } from "../../../../../data/interfaces/ICustomer";
+import SaveContent from "./SaveContent";
+import CustomerButton from "./CustomerButton";
+import InsertStarControl from "./InsertStarControl";
+import { ActionIcon, Checkbox, useMantineTheme } from "@mantine/core";
+import { useState } from "react";
+import { IconCheck, IconPencil, IconX } from "@tabler/icons";
+import "../../../../../assets/style/Appointment.css";
+import theme from "../../../../../assets/style/MantineTheme";
+import EditAppointmentToggle from "./EditAppointmentToggle";
+import {
+  useCustomer,
+  useUpdateCustomer,
+} from "../../../../../context/CustomerContext";
+import { Editor } from "@tiptap/core";
+import { showNotification } from "@mantine/notifications";
+
+interface ITextEditorProps {
+  _id: number;
+  customer: ICustomer;
+  appointment: IAppointment;
+}
+
+const TextEditor = (props: ITextEditorProps) => {
+  const [editAppointment, setEditAppointment] = useState(true);
+
+  const customers = useCustomer();
+  const setCustomers = useUpdateCustomer();
+
+  const editor = useEditor({
+    extensions: [
+      StarterKit,
+      Underline,
+      Link,
+      Superscript,
+      SubScript,
+      Highlight,
+      TextStyle,
+      Color,
+      TextAlign.configure({ types: ["heading", "paragraph"] }),
+      Placeholder.configure({
+        placeholder: "Saisir ici votre compte-rendu de visite",
+      }),
+    ],
+    content: props.appointment.content,
+  });
+
+  const handleContentChange = (editor: Editor) => {
+    const newCustomer = [...customers];
+    const changedCustomer = newCustomer.filter(
+      (customer) =>
+        customer.category === props.customer.category &&
+        customer.group === props.customer.group &&
+        customer.name === props.customer.name
+    );
+    changedCustomer[0].appointment[props._id].content = editor.getHTML();
+    setCustomers(newCustomer);
+    showNotification({
+      title: `✅ Rendez-vous sauvegardé`,
+      message: `${props.customer.name} - ${
+        props.appointment.title
+      } (${props.appointment.date.toLocaleDateString("fr")}) mis à jour`,
+      color: "green",
+    });
+  };
+
+  const colorPicker = (
+    <RichTextEditor.ColorPicker
+      colors={[
+        "#25262b",
+        "#868e96",
+        "#fa5252",
+        "#e64980",
+        "#be4bdb",
+        "#7950f2",
+        "#4c6ef5",
+        "#228be6",
+        "#15aabf",
+        "#12b886",
+        "#40c057",
+        "#82c91e",
+        "#fab005",
+        "#fd7e14",
+      ]}
+    />
+  );
+
+  const alignText = (
+    <RichTextEditor.ControlsGroup>
+      <RichTextEditor.AlignLeft />
+      <RichTextEditor.AlignCenter />
+      <RichTextEditor.AlignJustify />
+      <RichTextEditor.AlignRight />
+    </RichTextEditor.ControlsGroup>
+  );
+
+  return (
+    <>
+      <EditAppointmentToggle
+        editAppointment={editAppointment}
+        setEditAppointment={setEditAppointment}
+        handleContentChange={handleContentChange}
+      />
+      {editAppointment ? (
+        <RichTextEditor editor={editor}>
+          <RichTextEditor.Toolbar sticky>
+            {editor && (
+              <BubbleMenu editor={editor}>
+                <RichTextEditor.ControlsGroup>
+                  {colorPicker}
+                  <RichTextEditor.Bold />
+                  <RichTextEditor.Italic />
+                  <RichTextEditor.Underline />
+                  <RichTextEditor.Link />
+                </RichTextEditor.ControlsGroup>
+                {alignText}
+              </BubbleMenu>
+            )}
+            {editor && (
+              <FloatingMenu editor={editor}>
+                <RichTextEditor.ControlsGroup>
+                  <RichTextEditor.H1 />
+                  <RichTextEditor.H2 />
+                  <RichTextEditor.BulletList />
+                  {colorPicker}
+                </RichTextEditor.ControlsGroup>
+              </FloatingMenu>
+            )}
+            {colorPicker}
+            <RichTextEditor.ControlsGroup>
+              <RichTextEditor.Bold />
+              <RichTextEditor.Italic />
+              <RichTextEditor.Underline />
+              <RichTextEditor.Strikethrough />
+              <RichTextEditor.ClearFormatting />
+              <RichTextEditor.Highlight />
+            </RichTextEditor.ControlsGroup>
+            <RichTextEditor.ControlsGroup>
+              <RichTextEditor.H1 />
+              <RichTextEditor.H2 />
+              <RichTextEditor.H3 />
+              <RichTextEditor.H4 />
+            </RichTextEditor.ControlsGroup>
+            <RichTextEditor.ControlsGroup>
+              <RichTextEditor.Blockquote />
+              <RichTextEditor.Hr />
+              <RichTextEditor.BulletList />
+              <RichTextEditor.OrderedList />
+              <RichTextEditor.Subscript />
+              <RichTextEditor.Superscript />
+            </RichTextEditor.ControlsGroup>
+            <RichTextEditor.ControlsGroup>
+              <RichTextEditor.Link />
+              <RichTextEditor.Unlink />
+            </RichTextEditor.ControlsGroup>
+            {alignText}
+            <CustomerButton customer={props.customer} />
+            <InsertStarControl />
+            <SaveContent
+              _id={props._id}
+              customer={props.customer}
+              appointment={props.appointment}
+              handleContentChange={handleContentChange}
+            />
+          </RichTextEditor.Toolbar>
+
+          <RichTextEditor.Content />
+        </RichTextEditor>
+      ) : (
+        <div dangerouslySetInnerHTML={{ __html: props.appointment.content }} />
+      )}
+    </>
+  );
+};
+
+export default TextEditor;

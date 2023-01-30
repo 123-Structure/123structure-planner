@@ -10,6 +10,10 @@
   margin: 0 16px 0 16px;
 }
 
+.customerAppointmentAccordion {
+  margin: 16px 16px 0 16px;
+}
+
 .customerAccordionContent > div > div {
   margin: 0;
   padding: 0;

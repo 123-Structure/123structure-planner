@@ -1,7 +1,7 @@
 import { Tabs, useMantineTheme } from "@mantine/core";
 import React, { useState } from "react";
-import { useCustomer } from "../../../context/CustomerContext";
-import Customer from "./Customer/Customer";
+import { useCustomer } from "../../../../context/CustomerContext";
+import Customer from "../Customer/Customer";
 import AgenceList from "./AgenceList";
 
 interface ICustomerListProps {

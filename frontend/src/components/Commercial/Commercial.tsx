@@ -1,11 +1,10 @@
 import { Tabs, useMantineTheme } from "@mantine/core";
 import { useState } from "react";
 import { useRessources } from "../../context/RessourceContext";
-import { companyColor } from "../../utils/companyColor";
-import CustomerCategories from "./components/CustomerCategories";
+import CustomerCategories from "./components/Menu/CustomerCategories";
 import "../../assets/style/Commercial.css";
 import { useMediaQuery } from "@mantine/hooks";
-import MobileCustomerMenu from "./components/MobileCustomerMenu";
+import MobileCustomerMenu from "./components/Menu/MobileCustomerMenu";
 
 const Commercial = () => {
   const [activeTab, setActiveTab] = useState<string | null>("g.barais");
@@ -19,7 +18,7 @@ const Commercial = () => {
       variant="pills"
       value={activeTab}
       onTabChange={setActiveTab}
-    >
+      className="commercialContainer">
       <Tabs.List>
         {ressources
           .filter((ressource) => ressource.role.includes("Commercial"))
