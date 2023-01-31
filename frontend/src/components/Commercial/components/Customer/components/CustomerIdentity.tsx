@@ -29,11 +29,11 @@ interface ICustomerIdentityProps {
 
 const CustomerIdentity = (props: ICustomerIdentityProps) => {
   const [editCustomerIdentity, setEditCustomerIdentity] = useState(false);
-  const [address, setAddress] = useState(props.customer.address);
-  const [cp, setCp] = useState(props.customer.cp);
-  const [city, setCity] = useState(props.customer.city);
-  const [email, setEmail] = useState(props.customer.email);
-  const [phone, setPhone] = useState(props.customer.phone);
+  const [address, setAddress] = useState<string>(props.customer.address);
+  const [cp, setCp] = useState<string>(props.customer.cp);
+  const [city, setCity] = useState<string>(props.customer.city);
+  const [email, setEmail] = useState<string>(props.customer.email);
+  const [phone, setPhone] = useState<string>(props.customer.phone);
 
   const customers = useCustomer();
   const setCustomers = useUpdateCustomer();
@@ -128,6 +128,7 @@ const CustomerIdentity = (props: ICustomerIdentityProps) => {
         >
           <CustomerItem
             editMode={editCustomerIdentity}
+            inputType={"text"}
             label={[address, cp, city]}
             updateLabel={[setAddress, setCp, setCity]}
             icon={<IconMap2 size={24} color="black" />}
@@ -145,6 +146,7 @@ const CustomerIdentity = (props: ICustomerIdentityProps) => {
           />
           <CustomerItem
             editMode={editCustomerIdentity}
+            inputType={"text"}
             label={[email]}
             updateLabel={[setEmail]}
             icon={<IconMail size={24} color="black" />}
@@ -170,6 +172,7 @@ const CustomerIdentity = (props: ICustomerIdentityProps) => {
 
           <CustomerItem
             editMode={editCustomerIdentity}
+            inputType={"text"}
             label={[phone]}
             updateLabel={[setPhone]}
             icon={<IconPhone size={24} color="black" />}

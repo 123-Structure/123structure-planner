@@ -7,6 +7,8 @@ import {
 } from "@tabler/icons";
 import React, { useState } from "react";
 import { ICustomer } from "../../../../../data/interfaces/ICustomer";
+import CustomTitle from "../../../../utils/CustomTitle";
+import EditModeToggle from "../../../../utils/EditModeToggle";
 import CustomerItem from "./CustomerItem";
 
 interface ICustomerPaymentProps {

@@ -2,11 +2,9 @@ import { Card, MultiSelect, useMantineTheme } from "@mantine/core";
 import { useMediaQuery } from "@mantine/hooks";
 import { showNotification } from "@mantine/notifications";
 import {
-  IconArrowRight,
   IconCalendar,
   IconCurrencyEuro,
   IconHomeDollar,
-  IconTarget,
   IconUser,
   IconUsers,
 } from "@tabler/icons";
@@ -18,6 +16,7 @@ import {
 import { useRessources } from "../../../../../context/RessourceContext";
 import { ICustomer } from "../../../../../data/interfaces/ICustomer";
 import CustomButton from "../../../../utils/CustomButton";
+import CustomDivider from "../../../../utils/CustomDivider";
 import CustomTitle from "../../../../utils/CustomTitle";
 import EditModeToggle from "../../../../utils/EditModeToggle";
 import CustomerItem from "./CustomerItem";
@@ -29,7 +28,6 @@ interface ICustomerRelationshipProps {
 const CustomerRelationship = (props: ICustomerRelationshipProps) => {
   const [editCustomerRelationship, setEditCustomerRelationship] =
     useState(false);
-
   const [projectGoal, setProjectGoal] = useState(props.customer.projectGoal);
 
   const ressources = useRessources();
@@ -73,6 +71,7 @@ const CustomerRelationship = (props: ICustomerRelationshipProps) => {
   };
 
   const handleValideClick = () => {
+    console.log(projectGoal);
     const newCustomer = [...customers];
     const changedCustomer = newCustomer.filter(
       (customer) =>
@@ -164,7 +163,9 @@ const CustomerRelationship = (props: ICustomerRelationshipProps) => {
         <div className="customerItemTitle">
           <CustomerItem
             editMode={editCustomerRelationship}
+            inputType={"number"}
             label={[editCustomerRelationship ? projectGoal : "Objectif :"]}
+            updateLabel={[setProjectGoal]}
             icon={<IconHomeDollar size={24} color="black" />}
             color="yellow"
           />
@@ -175,13 +176,7 @@ const CustomerRelationship = (props: ICustomerRelationshipProps) => {
           )}
         </div>
       </div>
-      <div
-        style={{
-          width: "100%",
-          borderTop: "2px dotted #dfe2e6",
-          margin: "8px 0 8px 0",
-        }}
-      />
+      <CustomDivider />
       <CustomButton
         handleClick={() => openURL(props.customer.priceList)}
         icon={<IconCurrencyEuro />}

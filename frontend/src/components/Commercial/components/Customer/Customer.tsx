@@ -1,10 +1,10 @@
-import React, { ReactNode } from "react";
+import React, { ReactNode, useState } from "react";
 import { ICustomer } from "../../../../data/interfaces/ICustomer";
 import "../../../../assets/style/Customer.css";
 import CustomerIdentity from "./components/CustomerIdentity";
 import CustomerRelationship from "./components/CustomerRelationship";
 import CustomerPayment from "./components/CustomerPayment";
-import { Accordion, Breadcrumbs } from "@mantine/core";
+import { Accordion } from "@mantine/core";
 import { IconCash, IconUsers } from "@tabler/icons";
 import Appointment from "../Appointment/Appointment";
 
@@ -13,6 +13,7 @@ interface ICustomerProps {
 }
 
 const Customer = (props: ICustomerProps) => {
+  const [value, setValue] = useState<string | null>(null);
 
   return (
     <>
