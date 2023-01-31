@@ -4,7 +4,7 @@ export const CustomerExample: ICustomer[] = [
   {
     category: "Constructeur",
     name: ".G ARCHITECTURE",
-    address: "16 Rue des Rossignols\nBellignin",
+    address: "16 Rue des Rossignols Bellignin",
     cp: "01300",
     city: "BELLEY",
     email: "yoanngerboud@gmail.com",
@@ -58,7 +58,7 @@ export const CustomerExample: ICustomer[] = [
         location: "18 venelle de l'Escarpe, 44190 Clisson",
         title: "RDV DEMARCHARGE",
         content:
-          "Logoden biniou degemer mat an penn ar, bed drezout e glas Kermouster. Servijañ Rosko mab Nazer An Alre gwastell c’helenner, bragoù tro prad gwellañ ken. Pleg vugale kriz ijinañ c’haol dremm eme, dirak kentel daol skignañ niverenn. Bez ne sec’hed genver he c’hodell deiz, reiñ sklaer c’hardeur gaer eured. Lagad dimeurzh Pornizhan daouzek ganet Sant-Tegoneg godell, start chadenn gant kastell birviñ. Hegarat evitañ ar Remengol dindan  mouezh Sant-Nouga, koad tour skevent echu dour. Ar Gall diskar merc’h dirak  abardaez, kennebeut a c’hartoñs c’houzoug, padout kriz dreñv. Traoñ taer aon arrebeuri skignañ Skrigneg troad, lezenn lenn mañ stlakañ galleg. Enebour warno per war evezh aer vourc’h, an vandenn Plouha gwern Plouared. Kêr c’hilhog vignonez forzh bann, dour bouzar ostaleri diaoul, bluenn c’hontadenn gwiskamant.\n Kaeraat gouren yenijenn kuzhat eme c’hontadenn ac'hanoc'h, follenn lizherenn sankañ c’hof keniterv. Kof derc’hent dispign dirak  anavezout muiañ tamall, Europa diouzhtu skalier skorn spi. Mignon plant beleg mae kotoñs, yezh ha fiñval kerzu, banniel drezañ dispign. Pep nebeut mantell bazh Konk, c’hof goustad Sun klañv, dra follenn kerc’h. E a pakad tal alies, bro ouzhit gounez kelc’hiek, dimeziñ antronoz boull. Redek c’hwec’hvet ezel naontek a bann hanter, oaled gwellañ c’hraou tachenn ennomp. Tennañ mesk Skrigneg kontrol stad, ugnet bagad brudet drezomp, warno kerc’h laerezh. Abeg da mae war skolaer ur meskañ, an gwaz bodañ wenodenn a. Pornizhan boultrenn drezañ c’hotoñs kreñv kêr glas, arc’h doñjer grizilh gouere lous. Plelann-Veur gentañ c’helien sec’h eme, c’houevr milin galon muioc’h, vro bezh kontañ. \n Ennoc'h ivez harp da holl egistañ laouen, alies dant keniterv nizez Pempoull. War warni, an ket spontus, derc’hel arrebeuri ar roud, rannañ Breizh chal. Egistomp c’harrez doujañ naet kentel reas peogwir, leun harzhal Sant-Maloù Egineg plijet. Kenavo Orient kaozeadenn Mikael poultrenn, davarn biz pakañ atav, ezel arc’h eta. Ganti Pont-Aven arar outo abardaez lakaat tavarnour, anzav logod aour muzell aod. Distagañ kavout war pennad eñ gounez Brest, heuliañ buhez poultrenn gousperoù tra. Brezel Orient enor onest perc’henn ac'hanout ober, dirak  da anzav lizher neñv. Gontell start baradoz prennañ levrioù, Arre am gouiziek tagañ, Plelann-Veur aes c’hroc’hen. Plouezoc’h ruilhañ brumenn kas deoc'h, nav mar meur Pembo, giz anezho kromm. Koll leal darn pemzek mignon ezhomm sailh, bleunioù dud dianav aon santout.",
+          "Logoden biniou degemer mat an penn ar, bed drezout e glas Kermouster. Servijañ Rosko mab Nazer An Alre gwastell c’helenner, bragoù tro prad gwellañ ken. Pleg vugale kriz ijinañ c’haol dremm eme, dirak kentel daol skignañ niverenn. Bez ne sec’hed genver he c’hodell deiz, reiñ sklaer c’hardeur gaer eured. Lagad dimeurzh Pornizhan daouzek ganet Sant-Tegoneg godell, start chadenn gant kastell birviñ. Hegarat evitañ ar Remengol dindan  mouezh Sant-Nouga, koad tour skevent echu dour. Ar Gall diskar merc’h dirak  abardaez, kennebeut a c’hartoñs c’houzoug, padout kriz dreñv. Traoñ taer aon arrebeuri skignañ Skrigneg troad, lezenn lenn mañ stlakañ galleg. Enebour warno per war evezh aer vourc’h, an vandenn Plouha gwern Plouared. Kêr c’hilhog vignonez forzh bann, dour bouzar ostaleri diaoul, bluenn c’hontadenn gwiskamant. Kaeraat gouren yenijenn kuzhat eme c’hontadenn ac'hanoc'h, follenn lizherenn sankañ c’hof keniterv. Kof derc’hent dispign dirak  anavezout muiañ tamall, Europa diouzhtu skalier skorn spi. Mignon plant beleg mae kotoñs, yezh ha fiñval kerzu, banniel drezañ dispign. Pep nebeut mantell bazh Konk, c’hof goustad Sun klañv, dra follenn kerc’h. E a pakad tal alies, bro ouzhit gounez kelc’hiek, dimeziñ antronoz boull. Redek c’hwec’hvet ezel naontek a bann hanter, oaled gwellañ c’hraou tachenn ennomp. Tennañ mesk Skrigneg kontrol stad, ugnet bagad brudet drezomp, warno kerc’h laerezh. Abeg da mae war skolaer ur meskañ, an gwaz bodañ wenodenn a. Pornizhan boultrenn drezañ c’hotoñs kreñv kêr glas, arc’h doñjer grizilh gouere lous. Plelann-Veur gentañ c’helien sec’h eme, c’houevr milin galon muioc’h, vro bezh kontañ.   Ennoc'h ivez harp da holl egistañ laouen, alies dant keniterv nizez Pempoull. War warni, an ket spontus, derc’hel arrebeuri ar roud, rannañ Breizh chal. Egistomp c’harrez doujañ naet kentel reas peogwir, leun harzhal Sant-Maloù Egineg plijet. Kenavo Orient kaozeadenn Mikael poultrenn, davarn biz pakañ atav, ezel arc’h eta. Ganti Pont-Aven arar outo abardaez lakaat tavarnour, anzav logod aour muzell aod. Distagañ kavout war pennad eñ gounez Brest, heuliañ buhez poultrenn gousperoù tra. Brezel Orient enor onest perc’henn ac'hanout ober, dirak  da anzav lizher neñv. Gontell start baradoz prennañ levrioù, Arre am gouiziek tagañ, Plelann-Veur aes c’hroc’hen. Plouezoc’h ruilhañ brumenn kas deoc'h, nav mar meur Pembo, giz anezho kromm. Koll leal darn pemzek mignon ezhomm sailh, bleunioù dud dianav aon santout.",
       },
       {
         date: new Date("01/25/2023"),
@@ -73,7 +73,7 @@ export const CustomerExample: ICustomer[] = [
         location: "18 venelle de l'Escarpe, 44190 Clisson",
         title: "RDV COURTOISIE",
         content:
-          "Logoden biniou degemer mat an penn ar, bed drezout e glas Kermouster. Servijañ Rosko mab Nazer An Alre gwastell c’helenner, bragoù tro prad gwellañ ken. Pleg vugale kriz ijinañ c’haol dremm eme, dirak kentel daol skignañ niverenn. Bez ne sec’hed genver he c’hodell deiz, reiñ sklaer c’hardeur gaer eured. Lagad dimeurzh Pornizhan daouzek ganet Sant-Tegoneg godell, start chadenn gant kastell birviñ. Hegarat evitañ ar Remengol dindan  mouezh Sant-Nouga, koad tour skevent echu dour. Ar Gall diskar merc’h dirak  abardaez, kennebeut a c’hartoñs c’houzoug, padout kriz dreñv. Traoñ taer aon arrebeuri skignañ Skrigneg troad, lezenn lenn mañ stlakañ galleg. Enebour warno per war evezh aer vourc’h, an vandenn Plouha gwern Plouared. Kêr c’hilhog vignonez forzh bann, dour bouzar ostaleri diaoul, bluenn c’hontadenn gwiskamant.\n Kaeraat gouren yenijenn kuzhat eme c’hontadenn ac'hanoc'h, follenn lizherenn sankañ c’hof keniterv. Kof derc’hent dispign dirak  anavezout muiañ tamall, Europa diouzhtu skalier skorn spi. Mignon plant beleg mae kotoñs, yezh ha fiñval kerzu, banniel drezañ dispign. Pep nebeut mantell bazh Konk, c’hof goustad Sun klañv, dra follenn kerc’h. E a pakad tal alies, bro ouzhit gounez kelc’hiek, dimeziñ antronoz boull. Redek c’hwec’hvet ezel naontek a bann hanter, oaled gwellañ c’hraou tachenn ennomp. Tennañ mesk Skrigneg kontrol stad, ugnet bagad brudet drezomp, warno kerc’h laerezh. Abeg da mae war skolaer ur meskañ, an gwaz bodañ wenodenn a. Pornizhan boultrenn drezañ c’hotoñs kreñv kêr glas, arc’h doñjer grizilh gouere lous. Plelann-Veur gentañ c’helien sec’h eme, c’houevr milin galon muioc’h, vro bezh kontañ. \n Ennoc'h ivez harp da holl egistañ laouen, alies dant keniterv nizez Pempoull. War warni, an ket spontus, derc’hel arrebeuri ar roud, rannañ Breizh chal. Egistomp c’harrez doujañ naet kentel reas peogwir, leun harzhal Sant-Maloù Egineg plijet. Kenavo Orient kaozeadenn Mikael poultrenn, davarn biz pakañ atav, ezel arc’h eta. Ganti Pont-Aven arar outo abardaez lakaat tavarnour, anzav logod aour muzell aod. Distagañ kavout war pennad eñ gounez Brest, heuliañ buhez poultrenn gousperoù tra. Brezel Orient enor onest perc’henn ac'hanout ober, dirak  da anzav lizher neñv. Gontell start baradoz prennañ levrioù, Arre am gouiziek tagañ, Plelann-Veur aes c’hroc’hen. Plouezoc’h ruilhañ brumenn kas deoc'h, nav mar meur Pembo, giz anezho kromm. Koll leal darn pemzek mignon ezhomm sailh, bleunioù dud dianav aon santout.",
+          "Logoden biniou degemer mat an penn ar, bed drezout e glas Kermouster. Servijañ Rosko mab Nazer An Alre gwastell c’helenner, bragoù tro prad gwellañ ken. Pleg vugale kriz ijinañ c’haol dremm eme, dirak kentel daol skignañ niverenn. Bez ne sec’hed genver he c’hodell deiz, reiñ sklaer c’hardeur gaer eured. Lagad dimeurzh Pornizhan daouzek ganet Sant-Tegoneg godell, start chadenn gant kastell birviñ. Hegarat evitañ ar Remengol dindan  mouezh Sant-Nouga, koad tour skevent echu dour. Ar Gall diskar merc’h dirak  abardaez, kennebeut a c’hartoñs c’houzoug, padout kriz dreñv. Traoñ taer aon arrebeuri skignañ Skrigneg troad, lezenn lenn mañ stlakañ galleg. Enebour warno per war evezh aer vourc’h, an vandenn Plouha gwern Plouared. Kêr c’hilhog vignonez forzh bann, dour bouzar ostaleri diaoul, bluenn c’hontadenn gwiskamant.  Kaeraat gouren yenijenn kuzhat eme c’hontadenn ac'hanoc'h, follenn lizherenn sankañ c’hof keniterv. Kof derc’hent dispign dirak  anavezout muiañ tamall, Europa diouzhtu skalier skorn spi. Mignon plant beleg mae kotoñs, yezh ha fiñval kerzu, banniel drezañ dispign. Pep nebeut mantell bazh Konk, c’hof goustad Sun klañv, dra follenn kerc’h. E a pakad tal alies, bro ouzhit gounez kelc’hiek, dimeziñ antronoz boull. Redek c’hwec’hvet ezel naontek a bann hanter, oaled gwellañ c’hraou tachenn ennomp. Tennañ mesk Skrigneg kontrol stad, ugnet bagad brudet drezomp, warno kerc’h laerezh. Abeg da mae war skolaer ur meskañ, an gwaz bodañ wenodenn a. Pornizhan boultrenn drezañ c’hotoñs kreñv kêr glas, arc’h doñjer grizilh gouere lous. Plelann-Veur gentañ c’helien sec’h eme, c’houevr milin galon muioc’h, vro bezh kontañ.   Ennoc'h ivez harp da holl egistañ laouen, alies dant keniterv nizez Pempoull. War warni, an ket spontus, derc’hel arrebeuri ar roud, rannañ Breizh chal. Egistomp c’harrez doujañ naet kentel reas peogwir, leun harzhal Sant-Maloù Egineg plijet. Kenavo Orient kaozeadenn Mikael poultrenn, davarn biz pakañ atav, ezel arc’h eta. Ganti Pont-Aven arar outo abardaez lakaat tavarnour, anzav logod aour muzell aod. Distagañ kavout war pennad eñ gounez Brest, heuliañ buhez poultrenn gousperoù tra. Brezel Orient enor onest perc’henn ac'hanout ober, dirak  da anzav lizher neñv. Gontell start baradoz prennañ levrioù, Arre am gouiziek tagañ, Plelann-Veur aes c’hroc’hen. Plouezoc’h ruilhañ brumenn kas deoc'h, nav mar meur Pembo, giz anezho kromm. Koll leal darn pemzek mignon ezhomm sailh, bleunioù dud dianav aon santout.",
       },
     ],
     projectGoal: Math.floor(Math.random() * 1000),
@@ -85,7 +85,7 @@ export const CustomerExample: ICustomer[] = [
   {
     category: "Constructeur",
     name: "3DMI",
-    address: "5 Rue Andr� Amp�re\nSaint Andr� de la Marche",
+    address: "5 Rue Andr� Amp�re Saint Andr� de la Marche",
     cp: "49450",
     city: "SEVREMOINE",
     email: "contact@3dmi.fr",
@@ -125,7 +125,7 @@ export const CustomerExample: ICustomer[] = [
   {
     category: "Constructeur",
     name: "A-BTP",
-    address: "ZI des Bluchets\n7 bis Rue de la Marsallais",
+    address: "ZI des Bluchets 7 bis Rue de la Marsallais",
     cp: "44130",
     city: "BLAIN",
     email: "",
@@ -145,7 +145,7 @@ export const CustomerExample: ICustomer[] = [
   {
     category: "Négoce",
     name: "AADI Atlantique",
-    address: "18 Rue de M�rin\nL'Atelier",
+    address: "18 Rue de M�rin L'Atelier",
     cp: "64200",
     city: "BIARRITZ",
     email: "biarritz@aadi-architectes.com",
@@ -245,7 +245,7 @@ export const CustomerExample: ICustomer[] = [
   {
     category: "Négoce",
     name: "ABAK INGENIERIE PROVENCE",
-    address: "5 Rue Charles Duchesne\nImmeuble Le Tertia 1",
+    address: "5 Rue Charles Duchesne Immeuble Le Tertia 1",
     cp: "13290",
     city: "AIX EN PROVENCE",
     email: "",
@@ -425,7 +425,7 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "ACTIPOLE IMMOBILIER (FiduSab)",
-    address: "305 Rue Gabriel Voisin\nB�timent D - 1er �tage",
+    address: "305 Rue Gabriel Voisin B�timent D - 1er �tage",
     cp: "69400",
     city: "cityFRANCHE SUR SAONE",
     email: "",
@@ -485,7 +485,7 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "Agence LENAIN",
-    address: "14 Rue de Saumur\nBP. 437",
+    address: "14 Rue de Saumur BP. 437",
     cp: "85504",
     city: "LES HERBIERS CEDEX",
     email: "",
@@ -605,7 +605,7 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "ALF MACONNERIE",
-    address: "1 Rue du Tranchet\nLa Pommeraye",
+    address: "1 Rue du Tranchet La Pommeraye",
     cp: "49620",
     city: "MAUGES SUR LOIRE",
     email: "alf.maconnerie@orange.fr",
@@ -625,7 +625,7 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "ALP Soci�t� d'Architecture & d'Urbanisme",
-    address: "3 Rue Georges Cl�menceau\nBP. 10",
+    address: "3 Rue Georges Cl�menceau BP. 10",
     cp: "85540",
     city: "MOUTIERS LES MAUXFAITS",
     email: "info@alp-architecture.com",
@@ -685,7 +685,7 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "ANDRE BTP",
-    address: "10 Chemin Montplaisir\nBP. 68534",
+    address: "10 Chemin Montplaisir BP. 68534",
     cp: "44185",
     city: "NANTEX cedex 4",
     email: "andrebtp.accueil@demathieu-bard.fr",
@@ -865,7 +865,7 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "ARTECO",
-    address: "34 Route des Commandi�res\nZone Commerciale de l'Immacul�e",
+    address: "34 Route des Commandi�res Zone Commerciale de l'Immacul�e",
     cp: "44600",
     city: "SAINT NAZAIRE",
     email: "meuzenat@arteco.fr",
@@ -925,7 +925,7 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "ARVOR CONSTRUCTIONS",
-    address: "Zone de Tr�huinec\n3 Rue Andr� Amp�re",
+    address: "Zone de Tr�huinec 3 Rue Andr� Amp�re",
     cp: "56890",
     city: "PLESCOP",
     email: "",
@@ -1025,7 +1025,7 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "ATELIER PIEL ARCHITECTURE",
-    address: "ZA Porte du Labourd\nRoute de Bidarrai",
+    address: "ZA Porte du Labourd Route de Bidarrai",
     cp: "64250",
     city: "LOUHOSSOA",
     email: "contact@pielarchitecture.com",
@@ -1045,7 +1045,7 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "ATLANTIQUE HABITATIONS",
-    address: "All�e Jean Raulo\nBP. 30335",
+    address: "All�e Jean Raulo BP. 30335",
     cp: "44803",
     city: "SAINT HERBLAIN CEDEX",
     email: "siege@atlantique-habitations.fr",
@@ -1185,7 +1185,7 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "AUJOGUE",
-    address: "Chemin du Vinceret\nPouilly le Monial",
+    address: "Chemin du Vinceret Pouilly le Monial",
     cp: "69400",
     city: "PORTE DES PIERRES DOREES",
     email: "",
@@ -1285,7 +1285,7 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "BAHUAUD",
-    address: "Promenade Enchant�e\n14 Rue de la Galti�re",
+    address: "Promenade Enchant�e 14 Rue de la Galti�re",
     cp: "44230",
     city: "SAINT SEBASTIEN SUR LOIRE",
     email: "",
@@ -1345,7 +1345,7 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "BALLANGER RIGALLEAU",
-    address: "R�sidence Les Cyclades - B�t.A\n24 Boulevard Saint Just",
+    address: "R�sidence Les Cyclades - B�t.A 24 Boulevard Saint Just",
     cp: "86000",
     city: "POITIERS",
     email: "",
@@ -1585,7 +1585,7 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "BEAUMARD Julien",
-    address: "32 Rue du Commerce\nSaint Macaire en Mauges",
+    address: "32 Rue du Commerce Saint Macaire en Mauges",
     cp: "49450",
     city: "SEVREMOINE",
     email: "contact@julien-beaumard.com",
@@ -1685,7 +1685,7 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "BELTZA Architecture",
-    address: "82 Rue de Madrid\nB�timent Windsor I",
+    address: "82 Rue de Madrid B�timent Windsor I",
     cp: "64200",
     city: "BIARRRITZ",
     email: "",
@@ -1745,7 +1745,7 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "BERGEARD FRANCOIS",
-    address: "49 Rue Blanqui\nR�sidence Bords de Loire",
+    address: "49 Rue Blanqui R�sidence Bords de Loire",
     cp: "37700",
     city: "SAINT PIERRE DES CORPS",
     email: "",
@@ -1845,7 +1845,7 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "BG BAT",
-    address: "Rue des Bateliers\nLieu-dit Coudray\nMarign�",
+    address: "Rue des Bateliers Lieu-dit Coudray Marign�",
     cp: "49330",
     city: "LES HAUTS D'ANJOU",
     email: "",
@@ -1866,7 +1866,7 @@ export const CustomerExample: ICustomer[] = [
     category: undefined,
     name: "BIGMAT - 44 MATERIAUX",
     address:
-      "Agence de Cand�\nRoute de Ch�teaubriant\n167 Rue de la Gr�e Saint Jacques",
+      "Agence de Cand� Route de Ch�teaubriant 167 Rue de la Gr�e Saint Jacques",
     cp: "44540",
     city: "VRITZ",
     email: "l.buret@bigmat.fr",
@@ -1906,7 +1906,7 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "BIGMAT - 44 MATERIAUX",
-    address: "D'Eau\nZAC des Bluchets - 14 Le Ch�teau",
+    address: "D'Eau ZAC des Bluchets - 14 Le Ch�teau",
     cp: "44130",
     city: "BLAIN",
     email: "",
@@ -1926,7 +1926,7 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "BIGMAT - LIBAUD N�goce Mat�riaux",
-    address: "Z.A. du Grand Pli\nBoulevard Andr� Malraux",
+    address: "Z.A. du Grand Pli Boulevard Andr� Malraux",
     cp: "85170",
     city: "BELLEVIGNY",
     email: "",
@@ -1986,7 +1986,7 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "BIGMAT - OCEANE DE MATERIAUX",
-    address: "ZI de la Seiglerie\nRoute de Challans",
+    address: "ZI de la Seiglerie Route de Challans",
     cp: "44270",
     city: "MACHECOUL",
     email: "",
@@ -2147,7 +2147,7 @@ export const CustomerExample: ICustomer[] = [
     category: undefined,
     name: "BMSO SA",
     address:
-      "Service Traitement Administratif\n15 Rue Bernard Palissy\nCS 30005",
+      "Service Traitement Administratif 15 Rue Bernard Palissy CS 30005",
     cp: "45808",
     city: "SAINT JEAN DE BRAYE CEDEX",
     email: "",
@@ -2427,7 +2427,7 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "BRETEAUDEAU",
-    address: "23 bis Rue de la Maison Neuve\nSaint Andr� de la Marche",
+    address: "23 bis Rue de la Maison Neuve Saint Andr� de la Marche",
     cp: "49450",
     city: "SEVREMOINE",
     email: "",
@@ -2467,7 +2467,7 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "BRISSON LEGOGUELIN",
-    address: "6 Rue des Ecoles\nChaucre",
+    address: "6 Rue des Ecoles Chaucre",
     cp: "17190",
     city: "SAINT GEORGES D'OLERON",
     email: "",
@@ -2587,7 +2587,7 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "BTG SCOT",
-    address: "Z.A. Les Ch�taigneraies\n9 Rue des Noisetiers",
+    address: "Z.A. Les Ch�taigneraies 9 Rue des Noisetiers",
     cp: "49270",
     city: "LANDEMONT",
     email: "btg.scot@wanadoo.fr",
@@ -2667,7 +2667,7 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "BUROMAT",
-    address: "PA des Coteaux de Grand Lieu\n1 Rue Jarlot",
+    address: "PA des Coteaux de Grand Lieu 1 Rue Jarlot",
     cp: "44830",
     city: "BOUAYE",
     email: "",
@@ -2707,7 +2707,7 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "C.I.S.",
-    address: "5 Rue du Meunier\nZI du Moulin",
+    address: "5 Rue du Meunier ZI du Moulin",
     cp: "44880",
     city: "SAUTRON",
     email: "info@c-i-s.fr",
@@ -2727,7 +2727,7 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "C3P Constructions des 3 Provinces",
-    address: "Z.A. Le Bordage II\nBP. 60001",
+    address: "Z.A. Le Bordage II BP. 60001",
     cp: "85610",
     city: "CUGAND",
     email: "contact@c-3-p.fr",
@@ -3027,7 +3027,7 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "CHAUSSON MATERIAUX",
-    address: "60 Rue de Fenouillet\nBP. 35140\nCentre Commercial Hexagone",
+    address: "60 Rue de Fenouillet BP. 35140 Centre Commercial Hexagone",
     cp: "31142",
     city: "SAINT ALBAN CEDEX",
     email: "",
@@ -3047,7 +3047,7 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "CHENAIS BATIMENT",
-    address: "23 Route de Barbechat\nZI de la Fid�le\nBP. 14",
+    address: "23 Route de Barbechat ZI de la Fid�le BP. 14",
     cp: "44430",
     city: "LE LOROUX BOTTEREAU",
     email: "",
@@ -3147,7 +3147,7 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "CHOLET AGGLOS",
-    address: "ZA Rue de l'Europe\nBP. 36",
+    address: "ZA Rue de l'Europe BP. 36",
     cp: "49280",
     city: "LA SEGUINIERE",
     email: "",
@@ -3207,7 +3207,7 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "CLISSON SEVRE ET MAINE AGGLO",
-    address: "15 Rue des Malifestes\nCS 89409",
+    address: "15 Rue des Malifestes CS 89409",
     cp: "44194",
     city: "CLISSON CEDEX",
     email: "",
@@ -3247,7 +3247,7 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "CMO ARNAUD BABIN",
-    address: "21 rue Robert d'Arbrissel\nChemill�",
+    address: "21 rue Robert d'Arbrissel Chemill�",
     cp: "49210",
     city: "CHEMILLE EN ANJOU",
     email: "a.babin.cmo@gmail.com",
@@ -3347,7 +3347,7 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "CONSTRUCTION NANTAISE",
-    address: "Rue du Trait� de Maastricht\nZAC de l'Europe",
+    address: "Rue du Trait� de Maastricht ZAC de l'Europe",
     cp: "44210",
     city: "PORNIC",
     email: "",
@@ -3367,7 +3367,7 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "Copropri�t�",
-    address: "Impasse des terres\n5 Rue des Passeloup\nLiergues",
+    address: "Impasse des terres 5 Rue des Passeloup Liergues",
     cp: "69400",
     city: "PORTE DES PIERRES DOREES",
     email: "",
@@ -3547,7 +3547,7 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "COVAL",
-    address: "Le Limeur\nBP. 74328",
+    address: "Le Limeur BP. 74328",
     cp: "44243",
     city: "LA CHAPELLE SUR ERDRE CEDEX",
     email: "coval44@wanadoo.fr",
@@ -3607,7 +3607,7 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "DAVIAUD",
-    address: "2 Rue de la Marne\nBat 1 / Appartement B001",
+    address: "2 Rue de la Marne Bat 1 / Appartement B001",
     cp: "85600",
     city: "MONTAIGU VENDEE",
     email: "",
@@ -3787,7 +3787,7 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "DEFOND Ma�onnerie",
-    address: "9 Rue L�onard de Vinci\nSaint Andr� de la Marche",
+    address: "9 Rue L�onard de Vinci Saint Andr� de la Marche",
     cp: "49450",
     city: "SEVREMOINE",
     email: "",
@@ -4167,7 +4167,7 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "DUBROCA BATIMENT",
-    address: "5 Rue Bazter Bidea\nZ.A. de Lana",
+    address: "5 Rue Bazter Bidea Z.A. de Lana",
     cp: "64210",
     city: "BIDART",
     email: "",
@@ -4187,7 +4187,7 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "DUGAST",
-    address: "2 Rue Bruneau\nTrentemoult",
+    address: "2 Rue Bruneau Trentemoult",
     cp: "44400",
     city: "REZE",
     email: "",
@@ -4267,7 +4267,7 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "E.S.T. CONSTRUCTION",
-    address: "La Persilli�re\nRue de la Paperie",
+    address: "La Persilli�re Rue de la Paperie",
     cp: "49124",
     city: "SAINT BARTHELEMY D'ANJOU",
     email: "",
@@ -4287,7 +4287,7 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "EBA - ENTREPRISE DE BATIMENT ANGLOY",
-    address: "Les Pyramides \n4 Route de Pitoys",
+    address: "Les Pyramides  4 Route de Pitoys",
     cp: "64600",
     city: "ANGLET",
     email: "bruno.kerherve@eba-sas.fr",
@@ -4348,7 +4348,7 @@ export const CustomerExample: ICustomer[] = [
     category: undefined,
     name: "EGIS",
     address:
-      "ZAC de la Courrouze\nImmeuble Eolios, 1er �tage, 3 Rue Louis Braille",
+      "ZAC de la Courrouze Immeuble Eolios, 1er �tage, 3 Rue Louis Braille",
     cp: "35136",
     city: "SAINT JACQUES DE LA LANDE",
     email: "",
@@ -4388,7 +4388,7 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "ENARD",
-    address: "69 Cours Desbiey\nApt24",
+    address: "69 Cours Desbiey Apt24",
     cp: "33120",
     city: "ARCACHON",
     email: "",
@@ -4488,7 +4488,7 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "ETHIC Architecture",
-    address: "GUYLLIERMINETTI Julie\n4 Chemin Notre-Dame des Neiges",
+    address: "GUYLLIERMINETTI Julie 4 Chemin Notre-Dame des Neiges",
     cp: "73100",
     city: "MOUXY",
     email: "ethicarchi@gmail.com",
@@ -4548,7 +4548,7 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "FARCY Alexandre",
-    address: "422 Chemin des Brosses\nLieu-dit La Petite B�cane",
+    address: "422 Chemin des Brosses Lieu-dit La Petite B�cane",
     cp: "72470",
     city: "FATINES",
     email: "",
@@ -4768,7 +4768,7 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "FRAPPIER Ma�onnerie",
-    address: "34 Rue des Tisserands\nGeste",
+    address: "34 Rue des Tisserands Geste",
     cp: "49600",
     city: "BEAUPREAU EN MAUGES",
     email: "",
@@ -4868,7 +4868,7 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "GAPANTE Architecte d'Int�rieur",
-    address: "Lise Moutard\n73 Rue de M�nilmontant",
+    address: "Lise Moutard 73 Rue de M�nilmontant",
     cp: "75020",
     city: "PARIS",
     email: "",
@@ -5008,7 +5008,7 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "GAVARD",
-    address: "27 La Canqueti�re\nBouff�r�",
+    address: "27 La Canqueti�re Bouff�r�",
     cp: "85600",
     city: "MONTAIGU VENDEE",
     email: "",
@@ -5288,7 +5288,7 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "GONTIER THIREAU",
-    address: "La Grande Haie\nVritz",
+    address: "La Grande Haie Vritz",
     cp: "44540",
     city: "VALLONS DE L'ERDRE",
     email: "",
@@ -5548,7 +5548,7 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "H2G CONSTRUCTION",
-    address: "Miguel HARDY\n5 Rue de la Grassini�re",
+    address: "Miguel HARDY 5 Rue de la Grassini�re",
     cp: "44120",
     city: "VERTOU",
     email: "h2g.hardy@gmail.com",
@@ -5648,7 +5648,7 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "HERVOUET PICORIT SARL",
-    address: "Z.A. La Dauni�re\nRue de la Signeauderie",
+    address: "Z.A. La Dauni�re Rue de la Signeauderie",
     cp: "85600",
     city: "SAINT GEORGES DE MONTAIGU",
     email: "contact@hervouet-picorit.fr",
@@ -5708,7 +5708,7 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "HOME CONSTRUCTION",
-    address: "Parc d'Affaires de Cr�cy\n1 Rue Claude Chappe",
+    address: "Parc d'Affaires de Cr�cy 1 Rue Claude Chappe",
     cp: "69370",
     city: "SAINT DIDIER AU MONT D'OR",
     email: "contact.homeconstruction@gmail.com",
@@ -5788,7 +5788,7 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "I.G.C.",
-    address: "ZA Landrieu\nRN. 89 - Sortie N� 5",
+    address: "ZA Landrieu RN. 89 - Sortie N� 5",
     cp: "33750",
     city: "BEYCHAC ET CAILLAU",
     email: "",
@@ -5828,7 +5828,7 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "IN UIT ARCHITECTURE",
-    address: "3 Cour de la Brocante\nAcc�s Place Viarme",
+    address: "3 Cour de la Brocante Acc�s Place Viarme",
     cp: "44000",
     city: "NANTES",
     email: "contact@in-uit.fr",
@@ -5888,7 +5888,7 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "INOVEAM",
-    address: "Le 1084 - Bat 1\n110 Rue du Chat Bott�",
+    address: "Le 1084 - Bat 1 110 Rue du Chat Bott�",
     cp: "1700",
     city: "BEYNOST",
     email: "",
@@ -5928,7 +5928,7 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "IP ARCHITECTURE D'INTERIEUR",
-    address: "Agence Isabelle Plessis\n5 Rue Fougnot",
+    address: "Agence Isabelle Plessis 5 Rue Fougnot",
     cp: "44190",
     city: "CLISSON",
     email: "agence.ip-creations@ip-creations.fr",
@@ -6248,7 +6248,7 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "L'ATELIER 2C",
-    address: "3 Impasse du Clos Neuf\nZA Les Berthaudi�res",
+    address: "3 Impasse du Clos Neuf ZA Les Berthaudi�res",
     cp: "44680",
     city: "SAINTE PAZANNE",
     email: "ceciliagasnier@latelier2c.fr",
@@ -6288,7 +6288,7 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "LA MAISON DES TRAVAUX",
-    address: "MC COURTAGE\n342 Route de Clisson",
+    address: "MC COURTAGE 342 Route de Clisson",
     cp: "44120",
     city: "VERTOU",
     email: "",
@@ -6328,7 +6328,7 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "LAMOTTE",
-    address: "2 Avenue des Peupliers\nCS 27742",
+    address: "2 Avenue des Peupliers CS 27742",
     cp: "35577",
     city: "CESSON SEVIGNE CEDEX",
     email: "",
@@ -6368,7 +6368,7 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "LANDRON - MARTIN Ma�onnerie",
-    address: "ZA Route du Petit Moulin\nVritz",
+    address: "ZA Route du Petit Moulin Vritz",
     cp: "44540",
     city: "VALLONS DE L'ERDRE",
     email: "contact@maconnerie-martin.fr",
@@ -6428,7 +6428,7 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "LAURENT Ma�onnerie",
-    address: "1190 Route de Sarcey\nLe Magnin Sud",
+    address: "1190 Route de Sarcey Le Magnin Sud",
     cp: "69490",
     city: "VINDRY SUR TURDINE / LES OLMES",
     email: "",
@@ -6528,7 +6528,7 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "LECADRE",
-    address: "Lotissement de la Garenne - Lot 0.22\nLa Chapelle Basse Mer",
+    address: "Lotissement de la Garenne - Lot 0.22 La Chapelle Basse Mer",
     cp: "44450",
     city: "DIVATTE SUR LOIRE",
     email: "",
@@ -6648,7 +6648,7 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "LES CONSTRUCTIONS DE L'ERDRE",
-    address: "11 rue de Toscane\nBP. 4426",
+    address: "11 rue de Toscane BP. 4426",
     cp: "44240",
     city: "LA CHAPELLE SUR ERDRE",
     email: "contact@constructions-erdre.fr",
@@ -6728,7 +6728,7 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "LES MATERIAUX DE L'OUEST",
-    address: "Z.I. de la Hauti�re\nBP. 30",
+    address: "Z.I. de la Hauti�re BP. 30",
     cp: "35590",
     city: "L'HERMITAGE",
     email: "go@mdo.com.fr",
@@ -6848,7 +6848,7 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "LMCR Les Ma�ons Coop�rateurs R�unis",
-    address: "Artip�le\nBP. 14",
+    address: "Artip�le BP. 14",
     cp: "85280",
     city: "LA FERRIERE",
     email: "",
@@ -6928,7 +6928,7 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "LOMBARD CHIRON",
-    address: "10 Les Zais\nSaint Hilaire de Mortagne",
+    address: "10 Les Zais Saint Hilaire de Mortagne",
     cp: "85290",
     city: "MORTAGNE SUR SEVRE",
     email: "isa.artiste@gmail.com",
@@ -7108,7 +7108,7 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "MACORETZ",
-    address: "4 Route de Nantes\nLa Hurline",
+    address: "4 Route de Nantes La Hurline",
     cp: "44320",
     city: "SAINT PERE EN RETZ",
     email: "",
@@ -7248,7 +7248,7 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "Mairie de LUCON",
-    address: "1 Rue de l'H�tel de city\nBP. 339",
+    address: "1 Rue de l'H�tel de city BP. 339",
     cp: "85403",
     city: "LUCON CEDEX",
     email: "veronique.grelaud@lucon.fr",
@@ -7348,7 +7348,7 @@ export const CustomerExample: ICustomer[] = [
   {
     category: "Constructeur",
     name: "MAISONS ALYSIA 28",
-    address: "Jardin d'Entreprises - Technopolis b�t. B\n4 Rue Blaise Pascal",
+    address: "Jardin d'Entreprises - Technopolis b�t. B 4 Rue Blaise Pascal",
     cp: "28000",
     city: "CHARTRES",
     email: "",
@@ -7408,7 +7408,7 @@ export const CustomerExample: ICustomer[] = [
   {
     category: "Constructeur",
     name: "MAISONS ALYSIA 44 EST",
-    address: "71 Rue Georges Charpak\nParc d'activit� La Lande Saint Martin",
+    address: "71 Rue Georges Charpak Parc d'activit� La Lande Saint Martin",
     cp: "44115",
     city: "HAUTE GOULAINE",
     email: "",
@@ -7488,7 +7488,7 @@ export const CustomerExample: ICustomer[] = [
   {
     category: "Constructeur",
     name: "MAISONS ALYSIA 49 NORD",
-    address: "40 Boulevard de la Chantrerie\nSaint Sylvain d'Anjou",
+    address: "40 Boulevard de la Chantrerie Saint Sylvain d'Anjou",
     cp: "49480",
     city: "VERRIERES EN ANJOU",
     email: "agence49nord@maisons-alysia.com",
@@ -7548,7 +7548,7 @@ export const CustomerExample: ICustomer[] = [
   {
     category: "Constructeur",
     name: "MAISONS ALYSIA 85-79",
-    address: "Zone commerciale de la Mude\n21 Route de la Rochelle",
+    address: "Zone commerciale de la Mude 21 Route de la Rochelle",
     cp: "79000",
     city: "BESSINES",
     email: "",
@@ -7568,7 +7568,7 @@ export const CustomerExample: ICustomer[] = [
   {
     category: "Constructeur",
     name: "MAISONS ALYSIA 86",
-    address: "15 Rue Germaine Tillion\nZ.C. L'Or�e de Mign�",
+    address: "15 Rue Germaine Tillion Z.C. L'Or�e de Mign�",
     cp: "86440",
     city: "MIGNE AUXANCES",
     email: "agence86@maisons-alysia.com",
@@ -7588,7 +7588,7 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "MAISONS BERNARD JAMBERT",
-    address: "18 Boulevard du G�n�ral de Gaulle\nBP. 1538",
+    address: "18 Boulevard du G�n�ral de Gaulle BP. 1538",
     cp: "49015",
     city: "ANGERS CEDEX",
     email: "",
@@ -7608,7 +7608,7 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "MAISONS BF Architecteur",
-    address: "Rue des Tilleuls\nRoute de Challes",
+    address: "Rue des Tilleuls Route de Challes",
     cp: "73000",
     city: "BARBERAZ",
     email: "bfarchitecteur@orange.fr",
@@ -7708,7 +7708,7 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "MAISONS GOCHOKI",
-    address: "L'Atelier\n18 Rue de M�rin",
+    address: "L'Atelier 18 Rue de M�rin",
     cp: "64200",
     city: "BIARRITZ",
     email: "",
@@ -7988,7 +7988,7 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "MARTIN",
-    address: "19 Rue des Mauges\nGest�",
+    address: "19 Rue des Mauges Gest�",
     cp: "49600",
     city: "BEAUPREAU EN MAUGES",
     email: "",
@@ -8088,7 +8088,7 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "MARTINS DE SOUSA MARY",
-    address: "24 Cancale\nLa Salle et Chapelle Aubry",
+    address: "24 Cancale La Salle et Chapelle Aubry",
     cp: "49110",
     city: "MONTREVAULT SUR EVRE",
     email: "samuel.mds@orange.fr",
@@ -8168,7 +8168,7 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "MCD Entreprise",
-    address: "M. Micka�l DURAND\n11 Rue de la Machanderie",
+    address: "M. Micka�l DURAND 11 Rue de la Machanderie",
     cp: "44830",
     city: "BOUAYE",
     email: "michael.durand0@orange.fr",
@@ -8188,7 +8188,7 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "MENDES",
-    address: "23 Route de Champagne\nAll�e C",
+    address: "23 Route de Champagne All�e C",
     cp: "69370",
     city: "SAINT DIDIER AU MONT D'OR",
     email: "",
@@ -8688,7 +8688,7 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "MOULIN",
-    address: "Rue Abb� Bricard\nDrain",
+    address: "Rue Abb� Bricard Drain",
     cp: "49530",
     city: "OREE D'ANJOU",
     email: "",
@@ -8848,7 +8848,7 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "NEAU",
-    address: "14 Rue Notre Dame de Piti�\nValanjou",
+    address: "14 Rue Notre Dame de Piti� Valanjou",
     cp: "49670",
     city: "CHEMILLE EN ANJOU",
     email: "",
@@ -8868,7 +8868,7 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "NIDUM Architecture",
-    address: "Christophe PRAUD\n98 Rue Jean Fraix",
+    address: "Christophe PRAUD 98 Rue Jean Fraix",
     cp: "44400",
     city: "REZE",
     email: "",
@@ -9088,7 +9088,7 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "OYHABURU BATIMENT",
-    address: "BP. 24\nOneix",
+    address: "BP. 24 Oneix",
     cp: "64120",
     city: "SAINT PALAIS",
     email: "JL.oyhamburu@wanadoo.fr",
@@ -9108,7 +9108,7 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "PADIOU SAS",
-    address: "Z.I. Nord\n6 Rue Vincent Ansquer",
+    address: "Z.I. Nord 6 Rue Vincent Ansquer",
     cp: "85600",
     city: "TREIZE SEPTIERS",
     email: "contact@padiou-veranda.fr",
@@ -9608,7 +9608,7 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "PLEZ FERREIRA",
-    address: "Maison Haizpak\nQuartier Erremuxil",
+    address: "Maison Haizpak Quartier Erremuxil",
     cp: "64310",
     city: "SARE",
     email: "xabieloeh@gmail.com",
@@ -9688,7 +9688,7 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "POINT P",
-    address: "D4 Le Triangle \nZI",
+    address: "D4 Le Triangle  ZI",
     cp: "38200",
     city: "SEYSSUEL",
     email: "",
@@ -9768,7 +9768,7 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "POIRIER GOMEZ",
-    address: "16 Pourtour Th�landais\nLe Th�lin",
+    address: "16 Pourtour Th�landais Le Th�lin",
     cp: "35380",
     city: "PLELAN LE GRAND",
     email: "",
@@ -9948,7 +9948,7 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "QUANTUM Architecte",
-    address: "Le 1084 - Bat 1\n110 Rue du Chat Bott�",
+    address: "Le 1084 - Bat 1 110 Rue du Chat Bott�",
     cp: "1700",
     city: "BEYNOST",
     email: "contact-quantum@quantum-architecte.fr",
@@ -10208,7 +10208,7 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "ROBAT Ma�onnerie",
-    address: "R�sidence Canop�\n12 Rue Vigne",
+    address: "R�sidence Canop� 12 Rue Vigne",
     cp: "64100",
     city: "BAYONNE",
     email: "",
@@ -10448,7 +10448,7 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "SANSON Benoit Architecte Associ�",
-    address: "Le Bureau P�hant\n30 Rue Emile P�hant",
+    address: "Le Bureau P�hant 30 Rue Emile P�hant",
     cp: "44000",
     city: "NANTES",
     email: "",
@@ -10468,7 +10468,7 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "SAS BRON DE LATTRE DE TASSIGNY",
-    address: "OGIC\n11 bis Quai Perrache",
+    address: "OGIC 11 bis Quai Perrache",
     cp: "69002",
     city: "LYON",
     email: "",
@@ -10588,7 +10588,7 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "SCCV ARENTHON VERGERS",
-    address: "CAPELLI\n58 Avenue Mar�chal Foche",
+    address: "CAPELLI 58 Avenue Mar�chal Foche",
     cp: "69006",
     city: "LYON",
     email: "",
@@ -10648,7 +10648,7 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "SCCV cityURBANNE BRESSAT c/o Ydonna",
-    address: "Immeuble le 45'\n45 Chemin Moulin Carron",
+    address: "Immeuble le 45' 45 Chemin Moulin Carron",
     cp: "69570",
     city: "DARDILLY",
     email: "",
@@ -10948,7 +10948,7 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "SCI PARIS PROVINCES PROPERTIES - PPP",
-    address: "7 Rue de l'Amiral d'Estaing\nCS 41694",
+    address: "7 Rue de l'Amiral d'Estaing CS 41694",
     cp: "75773",
     city: "PARIS CEDEX 16",
     email: "",
@@ -11028,7 +11028,7 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "SCOP TIERRHABITAT",
-    address: "4 Rue des Artisans\nZA du Charbonneau",
+    address: "4 Rue des Artisans ZA du Charbonneau",
     cp: "44521",
     city: "COUFFE",
     email: "",
@@ -11048,7 +11048,7 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "SDC 3 rue Rameau",
-    address: "Par Cabinet RONGIER\n2 Rue Beaurepaire",
+    address: "Par Cabinet RONGIER 2 Rue Beaurepaire",
     cp: "44000",
     city: "NANTES",
     email: "",
@@ -11068,7 +11068,7 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "SEVRE LOIRE HABITAT",
-    address: "34 Rue St Christophe\nCS 32144",
+    address: "34 Rue St Christophe CS 32144",
     cp: "49321",
     city: "CHOLET CEDEX",
     email: "",
@@ -11168,7 +11168,7 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "SOCALBAT Ma�onnerie",
-    address: "135 Rue Beno�t Mulsant\nBP. 90044",
+    address: "135 Rue Beno�t Mulsant BP. 90044",
     cp: "69652",
     city: "cityFRANCHE SUR SAONE CEDEX",
     email: "contact@socalbat.fr",
@@ -11528,7 +11528,7 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "TESSIER Pascal Ma�onnerie",
-    address: "Parc d'Activit� de la Bloire\n31 Rue Gustave Eiffel",
+    address: "Parc d'Activit� de la Bloire 31 Rue Gustave Eiffel",
     cp: "85300",
     city: "CHALLANS",
     email: "maconnerieptessier@outlook.com",
@@ -11648,7 +11648,7 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "TISSOT MARSAUD",
-    address: "Hameau Pech Caussen\nSaint Pantal�on",
+    address: "Hameau Pech Caussen Saint Pantal�on",
     cp: "46800",
     city: "BARGUELONNE EN QUERCY",
     email: "samarsaud@wanadoo.fr",
@@ -11748,7 +11748,7 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "TOUT FAIRE MATERIAUX",
-    address: "ZA Espace Vie Atlantique Sud\nBP. 4",
+    address: "ZA Espace Vie Atlantique Sud BP. 4",
     cp: "85190",
     city: "AIZENAY",
     email: "",
@@ -11768,7 +11768,7 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "TOUT FAIRE MATERIAUX",
-    address: "SARL FAUCON\n86 Bd de Thouars",
+    address: "SARL FAUCON 86 Bd de Thouars",
     cp: "79300",
     city: "BRESSUIRE",
     email: "sarl.faucon@orange.fr",
@@ -11788,7 +11788,7 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "TPS",
-    address: "M. PETARD Mathieu\nZA Saint Cl�ment",
+    address: "M. PETARD Mathieu ZA Saint Cl�ment",
     cp: "44450",
     city: "DIVATTE SUR LOIRE",
     email: "",
@@ -11828,7 +11828,7 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "TREMBLAY SCOP",
-    address: "ZA Le Houssais\nles Landes de Belle Noe",
+    address: "ZA Le Houssais les Landes de Belle Noe",
     cp: "",
     city: "",
     email: "contact@tremblayscop.fr",
@@ -11848,7 +11848,7 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "TUPIN SAS",
-    address: "10 Rue Tupin\nGrande Rue",
+    address: "10 Rue Tupin Grande Rue",
     cp: "69600",
     city: "OULLINS",
     email: "",
@@ -12028,7 +12028,7 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "VIENNE RENOVATION",
-    address: "SARL GARRIVIER MASSOT\nChemin des Courses",
+    address: "SARL GARRIVIER MASSOT Chemin des Courses",
     cp: "38780",
     city: "PONT EVEQUE",
     email: "",

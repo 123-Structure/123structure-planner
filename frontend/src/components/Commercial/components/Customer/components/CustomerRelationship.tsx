@@ -1,5 +1,6 @@
 import { Card, MultiSelect, useMantineTheme } from "@mantine/core";
 import { useMediaQuery } from "@mantine/hooks";
+import { showNotification } from "@mantine/notifications";
 import {
   IconArrowRight,
   IconCalendar,
@@ -9,19 +10,16 @@ import {
   IconUser,
   IconUsers,
 } from "@tabler/icons";
-import React from "react";
+import React, { useState } from "react";
 import {
   useCustomer,
   useUpdateCustomer,
 } from "../../../../../context/CustomerContext";
-import {
-  useRessources,
-  useUpdateRessources,
-} from "../../../../../context/RessourceContext";
+import { useRessources } from "../../../../../context/RessourceContext";
 import { ICustomer } from "../../../../../data/interfaces/ICustomer";
-import { IRessource } from "../../../../../data/interfaces/IRessource";
-import { TRole } from "../../../../../data/types/TRole";
 import CustomButton from "../../../../utils/CustomButton";
+import CustomTitle from "../../../../utils/CustomTitle";
+import EditModeToggle from "../../../../utils/EditModeToggle";
 import CustomerItem from "./CustomerItem";
 
 interface ICustomerRelationshipProps {
@@ -29,6 +27,11 @@ interface ICustomerRelationshipProps {
 }
 
 const CustomerRelationship = (props: ICustomerRelationshipProps) => {
+  const [editCustomerRelationship, setEditCustomerRelationship] =
+    useState(false);
+
+  const [projectGoal, setProjectGoal] = useState(props.customer.projectGoal);
+
   const ressources = useRessources();
   const customers = useCustomer();
   const setCustomers = useUpdateCustomer();
@@ -69,6 +72,36 @@ const CustomerRelationship = (props: ICustomerRelationshipProps) => {
     }
   };
 
+  const handleValideClick = () => {
+    const newCustomer = [...customers];
+    const changedCustomer = newCustomer.filter(
+      (customer) =>
+        customer.category === props.customer.category &&
+        customer.group === props.customer.group &&
+        customer.name === props.customer.name
+    );
+    changedCustomer[0].projectGoal = projectGoal;
+
+    setCustomers(newCustomer);
+    showNotification({
+      title: `✅ Fiche client sauvegardé`,
+      message: `La fiche client ${props.customer.name} est mise à jour`,
+      color: "green",
+    });
+    setEditCustomerRelationship(false);
+  };
+
+  const handleCancelClick = () => {
+    setProjectGoal(props.customer.projectGoal);
+
+    showNotification({
+      title: `⛔ Fiche client non sauvegardé`,
+      message: `Les modifications pour ${props.customer.name} sont annulées`,
+      color: "red",
+    });
+    setEditCustomerRelationship(false);
+  };
+
   return (
     <Card
       shadow="sm"
@@ -77,12 +110,29 @@ const CustomerRelationship = (props: ICustomerRelationshipProps) => {
       withBorder
       className="customerRelationship"
     >
+      <div className="customerIdentityTitle">
+        <CustomTitle
+          flexStart={true}
+          icon={<IconUsers size={24} />}
+          title="Relation commerciale"
+        />
+        <EditModeToggle
+          disabled={false}
+          editMode={editCustomerRelationship}
+          editLabel=""
+          validateLabel=""
+          cancelLabel=""
+          handleEditClick={() => setEditCustomerRelationship(true)}
+          handleValideClick={handleValideClick}
+          handleCancelClick={handleCancelClick}
+        />
+      </div>
       <div className="customerItemContainer">
         <div className="customerItemTitle">
           <CustomerItem
-            isClickableItem={false}
-            label={smallScreen ? "" : "Commercial référent :"}
-            icon={<IconUsers size={24} color="black" />}
+            editMode={false}
+            label={smallScreen ? [""] : ["Commercial référent :"]}
+            icon={<IconUser size={24} color="black" />}
             color="yellow"
           />
           <MultiSelect
@@ -104,8 +154,8 @@ const CustomerRelationship = (props: ICustomerRelationshipProps) => {
         </div>
         <div className="customerItemTitle">
           <CustomerItem
-            isClickableItem={false}
-            label={"Dernière visite :"}
+            editMode={false}
+            label={["Dernière visite :"]}
             icon={<IconCalendar size={24} color="black" />}
             color="yellow"
           />
@@ -113,12 +163,16 @@ const CustomerRelationship = (props: ICustomerRelationshipProps) => {
         </div>
         <div className="customerItemTitle">
           <CustomerItem
-            isClickableItem={false}
-            label={"Objectif :"}
+            editMode={editCustomerRelationship}
+            label={[editCustomerRelationship ? projectGoal : "Objectif :"]}
             icon={<IconHomeDollar size={24} color="black" />}
             color="yellow"
           />
-          <p>{props.customer.projectGoal} Dossier(s)</p>
+          {editCustomerRelationship ? (
+            <p>Dossier(s)</p>
+          ) : (
+            <p>{props.customer.projectGoal} Dossier(s)</p>
+          )}
         </div>
       </div>
       <div

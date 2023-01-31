@@ -5,7 +5,7 @@ import {
   IconCashOff,
   IconCreditCard,
 } from "@tabler/icons";
-import React from "react";
+import React, { useState } from "react";
 import { ICustomer } from "../../../../../data/interfaces/ICustomer";
 import CustomerItem from "./CustomerItem";
 
@@ -14,13 +14,15 @@ interface ICustomerPaymentProps {
 }
 
 const CustomerPayment = (props: ICustomerPaymentProps) => {
+  const [editCustomerPayment, setEditCustomerPayment] = useState(false);
+
   return (
     <Card shadow="sm" p="lg" radius="md" withBorder className="customerPayment">
       <div className="customerItemContainer">
         <div className="customerItemTitle">
           <CustomerItem
-            isClickableItem={false}
-            label={"Délai de paiement :"}
+            editMode={editCustomerPayment}
+            label={["Délai de paiement :"]}
             icon={<IconCalendarTime size={24} color="black" />}
             color="yellow"
           />
@@ -28,8 +30,8 @@ const CustomerPayment = (props: ICustomerPaymentProps) => {
         </div>
         <div className="customerItemTitle">
           <CustomerItem
-            isClickableItem={false}
-            label={"Mode de paiement :"}
+            editMode={editCustomerPayment}
+            label={["Mode de paiement :"]}
             icon={<IconCreditCard size={24} color="black" />}
             color="yellow"
           />
@@ -37,7 +39,7 @@ const CustomerPayment = (props: ICustomerPaymentProps) => {
         </div>
         <div className="customerItemTitle">
           <CustomerItem
-            isClickableItem={false}
+            editMode={editCustomerPayment}
             color={
               props.customer.paymentStatus === "A"
                 ? "green"
@@ -45,12 +47,12 @@ const CustomerPayment = (props: ICustomerPaymentProps) => {
                 ? "orange"
                 : "red"
             }
-            label={"Statut de paiement :"}
+            label={["Statut de paiement :"]}
             icon={
               props.customer.paymentStatus === "C" ? (
                 <IconCashOff size={24} color="black" />
               ) : (
-                <IconCash size={24} color="black"/>
+                <IconCash size={24} color="black" />
               )
             }
           />

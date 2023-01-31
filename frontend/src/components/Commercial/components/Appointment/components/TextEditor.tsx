@@ -18,18 +18,13 @@ import { ICustomer } from "../../../../../data/interfaces/ICustomer";
 import SaveContent from "./SaveContent";
 import CustomerButton from "./CustomerButton";
 import InsertStarControl from "./InsertStarControl";
-import { ActionIcon, Checkbox, useMantineTheme } from "@mantine/core";
 import { useState } from "react";
-import { IconCheck, IconPencil, IconX } from "@tabler/icons";
-import "../../../../../assets/style/Appointment.css";
-import theme from "../../../../../assets/style/MantineTheme";
-import EditAppointmentToggle from "./EditAppointmentToggle";
 import {
   useCustomer,
   useUpdateCustomer,
 } from "../../../../../context/CustomerContext";
-import { Editor } from "@tiptap/core";
 import { showNotification } from "@mantine/notifications";
+import EditModeToggle from "../../../../utils/EditModeToggle";
 
 interface ITextEditorProps {
   _id: number;
@@ -82,6 +77,22 @@ const TextEditor = (props: ITextEditorProps) => {
     }
   };
 
+  const handleValideClick = () => {
+    handleContentChange(editor?.getHTML());
+    setEditAppointment(false);
+  };
+
+  const handleCancelClick = () => {
+    setEditAppointment(false);
+    showNotification({
+      title: `⛔ Rendez-vous non sauvegardé`,
+      message: `Les modifications pour ${props.customer.name} - ${
+        props.appointment.title
+      } (${props.appointment.date.toLocaleDateString("fr")}) sont annulées`,
+      color: "red",
+    });
+  };
+
   const colorPicker = (
     <RichTextEditor.ColorPicker
       colors={[
@@ -114,11 +125,14 @@ const TextEditor = (props: ITextEditorProps) => {
 
   return (
     <>
-      <EditAppointmentToggle
-        editAppointment={editAppointment}
-        setEditAppointment={setEditAppointment}
-        handleContentChange={handleContentChange}
-        newValue={editor?.getHTML()}
+      <EditModeToggle
+        editMode={editAppointment}
+        editLabel="Modifier le rendez-vous"
+        validateLabel="Sauvegarder le rendez-vous"
+        cancelLabel="Annuler les modifications"
+        handleEditClick={() => setEditAppointment(true)}
+        handleValideClick={handleValideClick}
+        handleCancelClick={handleCancelClick}
       />
       {editAppointment ? (
         <RichTextEditor editor={editor}>
@@ -175,9 +189,7 @@ const TextEditor = (props: ITextEditorProps) => {
             {alignText}
             <CustomerButton customer={props.customer} />
             <InsertStarControl />
-            <SaveContent
-              handleContentChange={handleContentChange}
-            />
+            <SaveContent handleContentChange={handleContentChange} />
           </RichTextEditor.Toolbar>
 
           <RichTextEditor.Content />

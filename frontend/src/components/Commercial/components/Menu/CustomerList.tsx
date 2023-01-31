@@ -9,7 +9,7 @@ interface ICustomerListProps {
 }
 
 const CustomerList = (props: ICustomerListProps) => {
-  const [activeTab, setActiveTab] = useState<string | null>("");
+  const [activeTab, setActiveTab] = useState<string | null>(".G ARCHITECTURE");
   const theme = useMantineTheme();
   const customers = useCustomer();
 
