@@ -1,7 +1,14 @@
-import { ActionIcon, NumberInput, TextInput } from "@mantine/core";
+import {
+  ActionIcon,
+  NumberInput,
+  Select,
+  SelectItem,
+  TextInput,
+} from "@mantine/core";
 import React, { ReactNode } from "react";
+import { NumberFormat } from "xlsx";
 import "../../../../../assets/style/CustomerItem.css";
-import { TProjectGoal } from "../../../../../data/types/TProjectGoal";
+import { TPaymentType } from "../../../../../data/types/TPaymentType";
 
 interface ICustomerItemProps {
   color: string;
@@ -9,11 +16,14 @@ interface ICustomerItemProps {
   updateLabel?: (
     | React.Dispatch<React.SetStateAction<string>>
     | React.Dispatch<React.SetStateAction<number>>
+    | React.Dispatch<React.SetStateAction<"30" | "45">>
+    | React.Dispatch<React.SetStateAction<TPaymentType>>
+    | React.Dispatch<React.SetStateAction<"A" | "B" | "C">>
   )[];
   icon: React.ReactNode;
   handleClick?: () => void;
   editMode?: boolean;
-  inputType?: "text" | "number";
+  inputType?: "text" | "number" | "select";
   errorMessage?: string[];
 }
 
@@ -40,6 +50,7 @@ const CustomerItem = (props: ICustomerItemProps) => {
         />
       ));
     }
+
     if (props.inputType === "number") {
       return props.label.map((label, index) => (
         <NumberInput
@@ -57,6 +68,39 @@ const CustomerItem = (props: ICustomerItemProps) => {
           }}
         />
       ));
+    }
+
+    if (props.inputType === "select") {
+      const getData = () => {
+        return props.label.reduce(
+          (acc, label: string | number | SelectItem) => {
+            const item = {
+              value: label,
+              label: label.toString().replace("*", ""),
+            } as SelectItem;
+            acc.push(item);
+            return acc;
+          },
+          [] as (string | SelectItem)[]
+        );
+      };
+
+      const getValue = () => {
+        const labels = props.label as string[];
+        return labels.filter((label) => label.includes("*"))[0];
+      };
+
+      return (
+        <Select
+          data={getData()}
+          value={getValue()}
+          onChange={(val) => {
+            if (props.updateLabel !== undefined) {
+              props.updateLabel[0](val as any);
+            }
+          }}
+        />
+      );
     }
   };
 

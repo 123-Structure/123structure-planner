@@ -5,7 +5,6 @@ import {
   IconCalendar,
   IconCurrencyEuro,
   IconHomeCheck,
-  IconHomeStats,
   IconTargetArrow,
   IconUser,
   IconUsers,
@@ -53,7 +52,7 @@ const CustomerRelationship = (props: ICustomerRelationshipProps) => {
     getPreviousYearGoal()
   );
 
-  const currentProjectInvoiced = 120;
+  const currentProjectInvoiced = 100;
   const previousYearProjectInvoiced = 100;
 
   const ressources = useRessources();
@@ -208,7 +207,7 @@ const CustomerRelationship = (props: ICustomerRelationshipProps) => {
               label={[
                 editCustomerRelationship
                   ? previousYearGoal
-                  : `Obj. ${new Date().getFullYear() - 1} :`,
+                  : `Objectif ${new Date().getFullYear() - 1} :`,
               ]}
               updateLabel={[setPreviousYearGoal]}
               icon={<IconTargetArrow size={24} color="black" />}
@@ -227,7 +226,7 @@ const CustomerRelationship = (props: ICustomerRelationshipProps) => {
               label={[
                 editCustomerRelationship
                   ? currentProjectGoal
-                  : `Obj. ${new Date().getFullYear()} :`,
+                  : `Objectif ${new Date().getFullYear()} :`,
               ]}
               updateLabel={[setCurrentProjectGoal]}
               icon={<IconTargetArrow size={24} color="black" />}
@@ -242,7 +241,7 @@ const CustomerRelationship = (props: ICustomerRelationshipProps) => {
           <div className="customerItemTitle">
             <CustomerItem
               inputType={"number"}
-              label={[`Prod. ${new Date().getFullYear() - 1} :`]}
+              label={[`Production ${new Date().getFullYear() - 1} :`]}
               icon={<IconHomeCheck size={24} color="black" />}
               color={
                 (previousYearProjectInvoiced / previousYearGoal) * 100 < 80
@@ -277,7 +276,7 @@ const CustomerRelationship = (props: ICustomerRelationshipProps) => {
           <div className="customerItemTitle">
             <CustomerItem
               inputType={"number"}
-              label={[`Prod. ${new Date().getFullYear()} :`]}
+              label={[`Production ${new Date().getFullYear()} :`]}
               icon={<IconHomeCheck size={24} color="black" />}
               color={
                 (currentProjectInvoiced / currentProjectGoal) * 100 < 80

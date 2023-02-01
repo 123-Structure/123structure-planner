@@ -38,7 +38,7 @@ const Customer = (props: ICustomerProps) => {
           <Accordion.Control icon={<IconCash size={24} />}>
             Comptabilité
           </Accordion.Control>
-          <Accordion.Panel className="customerPayment">
+          <Accordion.Panel className="customerAccordionContent">
             <CustomerPayment customer={props.customer} />
           </Accordion.Panel>
         </Accordion.Item>

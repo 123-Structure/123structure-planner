@@ -20,7 +20,7 @@ export interface ICustomer {
   commercial: IRessource[];
   appointment: IAppointment[];
   projectGoal: TProjectGoal[];
-  paymentDeadline: 30 | 45;
+  paymentDeadline: "30" | "45";
   paymentType: TPaymentType;
   paymentStatus: "A" | "B" | "C";
 }
