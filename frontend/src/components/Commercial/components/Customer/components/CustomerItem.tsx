@@ -1,6 +1,7 @@
 import { ActionIcon, NumberInput, TextInput } from "@mantine/core";
 import React, { ReactNode } from "react";
 import "../../../../../assets/style/CustomerItem.css";
+import { TProjectGoal } from "../../../../../data/types/TProjectGoal";
 
 interface ICustomerItemProps {
   color: string;
@@ -11,7 +12,7 @@ interface ICustomerItemProps {
   )[];
   icon: React.ReactNode;
   handleClick?: () => void;
-  editMode: boolean;
+  editMode?: boolean;
   inputType?: "text" | "number";
   errorMessage?: string[];
 }

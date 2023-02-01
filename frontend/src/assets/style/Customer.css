@@ -76,6 +76,16 @@
   gap: 8px;
 }
 
+.customerProjectGoalContainer {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  row-gap: 8px;
+}
+
+.customerProductionContainer {
+  font-weight: bold;
+}
+
 @media (max-width: 1400px) {
   .customer {
     display: none;
@@ -89,5 +99,19 @@
   .customerRelationship,
   .customerPayment {
     width: calc(100% - 16px);
+  }
+}
+
+@media (min-width: 1400px) and (max-width: 2150px) {
+  .customerProjectGoalContainer {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 850px) {
+  .customerProjectGoalContainer {
+    display: flex;
+    flex-direction: column;
   }
 }

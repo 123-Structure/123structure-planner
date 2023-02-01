@@ -4,7 +4,9 @@ import { showNotification } from "@mantine/notifications";
 import {
   IconCalendar,
   IconCurrencyEuro,
-  IconHomeDollar,
+  IconHomeCheck,
+  IconHomeStats,
+  IconTargetArrow,
   IconUser,
   IconUsers,
 } from "@tabler/icons";
@@ -26,9 +28,33 @@ interface ICustomerRelationshipProps {
 }
 
 const CustomerRelationship = (props: ICustomerRelationshipProps) => {
+  const getCurrentGoal = () => {
+    const currentYear = props.customer.projectGoal.filter(
+      (projectGoal) => projectGoal.year === new Date().getFullYear()
+    )[0];
+
+    return currentYear !== undefined ? currentYear.goal : 0;
+  };
+
+  const getPreviousYearGoal = () => {
+    const previousYear = props.customer.projectGoal.filter(
+      (projectGoal) => projectGoal.year === new Date().getFullYear() - 1
+    )[0];
+
+    return previousYear !== undefined ? previousYear.goal : 0;
+  };
+
   const [editCustomerRelationship, setEditCustomerRelationship] =
     useState(false);
-  const [projectGoal, setProjectGoal] = useState(props.customer.projectGoal);
+  const [currentProjectGoal, setCurrentProjectGoal] = useState(
+    getCurrentGoal()
+  );
+  const [previousYearGoal, setPreviousYearGoal] = useState(
+    getPreviousYearGoal()
+  );
+
+  const currentProjectInvoiced = 120;
+  const previousYearProjectInvoiced = 100;
 
   const ressources = useRessources();
   const customers = useCustomer();
@@ -71,7 +97,6 @@ const CustomerRelationship = (props: ICustomerRelationshipProps) => {
   };
 
   const handleValideClick = () => {
-    console.log(projectGoal);
     const newCustomer = [...customers];
     const changedCustomer = newCustomer.filter(
       (customer) =>
@@ -79,7 +104,14 @@ const CustomerRelationship = (props: ICustomerRelationshipProps) => {
         customer.group === props.customer.group &&
         customer.name === props.customer.name
     );
-    changedCustomer[0].projectGoal = projectGoal;
+
+    changedCustomer[0].projectGoal.filter(
+      (projectGoal) => projectGoal.year === new Date().getFullYear()
+    )[0].goal = currentProjectGoal;
+
+    changedCustomer[0].projectGoal.filter(
+      (projectGoal) => projectGoal.year === new Date().getFullYear() - 1
+    )[0].goal = previousYearGoal;
 
     setCustomers(newCustomer);
     showNotification({
@@ -91,7 +123,17 @@ const CustomerRelationship = (props: ICustomerRelationshipProps) => {
   };
 
   const handleCancelClick = () => {
-    setProjectGoal(props.customer.projectGoal);
+    setCurrentProjectGoal(
+      props.customer.projectGoal.filter(
+        (projectGoal) => projectGoal.year === new Date().getFullYear()
+      )[0].goal
+    );
+
+    setPreviousYearGoal(
+      props.customer.projectGoal.filter(
+        (projectGoal) => projectGoal.year === new Date().getFullYear() - 1
+      )[0].goal
+    );
 
     showNotification({
       title: `⛔ Fiche client non sauvegardé`,
@@ -129,7 +171,6 @@ const CustomerRelationship = (props: ICustomerRelationshipProps) => {
       <div className="customerItemContainer">
         <div className="customerItemTitle">
           <CustomerItem
-            editMode={false}
             label={smallScreen ? [""] : ["Commercial référent :"]}
             icon={<IconUser size={24} color="black" />}
             color="yellow"
@@ -153,27 +194,119 @@ const CustomerRelationship = (props: ICustomerRelationshipProps) => {
         </div>
         <div className="customerItemTitle">
           <CustomerItem
-            editMode={false}
             label={["Dernière visite :"]}
             icon={<IconCalendar size={24} color="black" />}
             color="yellow"
           />
           <p>{getLastAppointment()}</p>
         </div>
-        <div className="customerItemTitle">
-          <CustomerItem
-            editMode={editCustomerRelationship}
-            inputType={"number"}
-            label={[editCustomerRelationship ? projectGoal : "Objectif :"]}
-            updateLabel={[setProjectGoal]}
-            icon={<IconHomeDollar size={24} color="black" />}
-            color="yellow"
-          />
-          {editCustomerRelationship ? (
-            <p>Dossier(s)</p>
-          ) : (
-            <p>{props.customer.projectGoal} Dossier(s)</p>
-          )}
+        <div className="customerProjectGoalContainer">
+          <div className="customerItemTitle">
+            <CustomerItem
+              editMode={editCustomerRelationship}
+              inputType={"number"}
+              label={[
+                editCustomerRelationship
+                  ? previousYearGoal
+                  : `Obj. ${new Date().getFullYear() - 1} :`,
+              ]}
+              updateLabel={[setPreviousYearGoal]}
+              icon={<IconTargetArrow size={24} color="black" />}
+              color="yellow"
+            />
+            {editCustomerRelationship ? (
+              <p>Dossier(s)</p>
+            ) : (
+              <p>{previousYearGoal}</p>
+            )}
+          </div>
+          <div className="customerItemTitle">
+            <CustomerItem
+              editMode={editCustomerRelationship}
+              inputType={"number"}
+              label={[
+                editCustomerRelationship
+                  ? currentProjectGoal
+                  : `Obj. ${new Date().getFullYear()} :`,
+              ]}
+              updateLabel={[setCurrentProjectGoal]}
+              icon={<IconTargetArrow size={24} color="black" />}
+              color="yellow"
+            />
+            {editCustomerRelationship ? (
+              <p>Dossier(s)</p>
+            ) : (
+              <p>{currentProjectGoal}</p>
+            )}
+          </div>
+          <div className="customerItemTitle">
+            <CustomerItem
+              inputType={"number"}
+              label={[`Prod. ${new Date().getFullYear() - 1} :`]}
+              icon={<IconHomeCheck size={24} color="black" />}
+              color={
+                (previousYearProjectInvoiced / previousYearGoal) * 100 < 80
+                  ? "red"
+                  : (previousYearProjectInvoiced / previousYearGoal) * 100 >=
+                      80 &&
+                    (previousYearProjectInvoiced / previousYearGoal) * 100 < 100
+                  ? "orange"
+                  : "green"
+              }
+            />
+            <p className="customerProductionContainer">
+              <span
+                style={{
+                  color:
+                    (previousYearProjectInvoiced / previousYearGoal) * 100 < 80
+                      ? theme.colors.red[6]
+                      : (previousYearProjectInvoiced / previousYearGoal) *
+                          100 >=
+                          80 &&
+                        (previousYearProjectInvoiced / previousYearGoal) * 100 <
+                          100
+                      ? theme.colors.orange[6]
+                      : theme.colors.green[6],
+                }}
+              >
+                {previousYearProjectInvoiced}
+              </span>
+              {`/${previousYearGoal}`}
+            </p>
+          </div>
+          <div className="customerItemTitle">
+            <CustomerItem
+              inputType={"number"}
+              label={[`Prod. ${new Date().getFullYear()} :`]}
+              icon={<IconHomeCheck size={24} color="black" />}
+              color={
+                (currentProjectInvoiced / currentProjectGoal) * 100 < 80
+                  ? "red"
+                  : (currentProjectInvoiced / currentProjectGoal) * 100 >= 80 &&
+                    (currentProjectInvoiced / currentProjectGoal) * 100 < 100
+                  ? "orange"
+                  : "green"
+              }
+            />
+            <p className="customerProductionContainer">
+              <span
+                style={{
+                  color:
+                    (currentProjectInvoiced / currentProjectGoal) * 100 < 80
+                      ? theme.colors.red[6]
+                      : (currentProjectInvoiced / currentProjectGoal) * 100 >=
+                          80 &&
+                        (currentProjectInvoiced / currentProjectGoal) * 100 <
+                          100
+                      ? theme.colors.orange[6]
+                      : theme.colors.green[6],
+                }}
+              >
+                {currentProjectInvoiced}
+              </span>
+              {`/${currentProjectGoal}`}
+            </p>
+          </div>
         </div>
       </div>
       <CustomDivider />
