@@ -6,7 +6,6 @@ import {
   TextInput,
 } from "@mantine/core";
 import React, { ReactNode } from "react";
-import { NumberFormat } from "xlsx";
 import "../../../../../assets/style/CustomerItem.css";
 import { TPaymentType } from "../../../../../data/types/TPaymentType";
 

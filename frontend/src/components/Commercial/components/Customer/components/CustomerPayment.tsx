@@ -1,10 +1,12 @@
-import { Card } from "@mantine/core";
+import { Card, useMantineTheme } from "@mantine/core";
 import { showNotification } from "@mantine/notifications";
 import {
   IconCalendarTime,
   IconCash,
   IconCashOff,
   IconCreditCard,
+  IconBusinessplan,
+  IconCalculator,
 } from "@tabler/icons";
 import React, { useState } from "react";
 import {
@@ -33,8 +35,25 @@ const CustomerPayment = (props: ICustomerPaymentProps) => {
     props.customer.paymentStatus
   );
 
+  const currentProjectInvoiced: number = 200;
+  const currentInvoiceAmount: number = 25000;
+
+  const previousYearProjectInvoiced: number = 10;
+  const previousYearInvoiceAmount: number = 10000;
+
   const customers = useCustomer();
   const setCustomers = useUpdateCustomer();
+
+  const theme = useMantineTheme();
+
+  const localeCurrencyString = (number: number) => {
+    return new Intl.NumberFormat("fr-FR", {
+      style: "currency",
+      currency: "EUR",
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2,
+    }).format(number);
+  };
 
   const selectLabel = (
     editMode: boolean,
@@ -77,7 +96,7 @@ const CustomerPayment = (props: ICustomerPaymentProps) => {
   const handleCancelClick = () => {
     setPaymentDeadline(props.customer.paymentDeadline);
     setPaymentType(props.customer.paymentType);
-    setPaymentStatus(props.customer.paymentStatus)
+    setPaymentStatus(props.customer.paymentStatus);
 
     showNotification({
       title: `⛔ Fiche client non sauvegardé`,
@@ -170,7 +189,127 @@ const CustomerPayment = (props: ICustomerPaymentProps) => {
                 : "red"
             }
           />
-          <p>{editCustomerPayment ? "" : paymentStatus}</p>
+          <p
+            style={{
+              fontWeight: "bold",
+              color:
+                paymentStatus === "A"
+                  ? theme.colors.green[6]
+                  : paymentStatus === "B"
+                  ? theme.colors.orange[6]
+                  : theme.colors.red[6],
+            }}
+          >
+            {editCustomerPayment ? "" : paymentStatus}
+          </p>
+        </div>
+        <div className="customerProjectGoalContainer">
+          <div className="customerItemTitle">
+            <CustomerItem
+              label={[`Facturation ${new Date().getFullYear() - 1} :`]}
+              icon={<IconBusinessplan size={24} color="black" />}
+              color="yellow"
+            />
+            <p>{localeCurrencyString(previousYearInvoiceAmount)}</p>
+          </div>
+          <div className="customerItemTitle">
+            <CustomerItem
+              label={[`Facturation ${new Date().getFullYear()} :`]}
+              icon={<IconBusinessplan size={24} color="black" />}
+              color={
+                (currentInvoiceAmount / previousYearInvoiceAmount) * 100 < 80
+                  ? "red"
+                  : (currentInvoiceAmount / previousYearInvoiceAmount) * 100 >=
+                      80 &&
+                    (currentInvoiceAmount / previousYearInvoiceAmount) * 100 <
+                      100
+                  ? "orange"
+                  : "green"
+              }
+            />
+            <p
+              style={{
+                fontWeight: "bold",
+                color:
+                  (currentInvoiceAmount / previousYearInvoiceAmount) * 100 < 80
+                    ? theme.colors.red[6]
+                    : (currentInvoiceAmount / previousYearInvoiceAmount) *
+                        100 >=
+                        80 &&
+                      (currentInvoiceAmount / previousYearInvoiceAmount) * 100 <
+                        100
+                    ? theme.colors.orange[6]
+                    : theme.colors.green[6],
+              }}
+            >
+              {localeCurrencyString(currentInvoiceAmount)}
+            </p>
+          </div>
+
+          <div className="customerItemTitle">
+            <CustomerItem
+              inputType={"number"}
+              label={[`Moyenne ${new Date().getFullYear() - 1} :`]}
+              icon={<IconCalculator size={24} color="black" />}
+              color={"yellow"}
+            />
+            <p>{localeCurrencyString((previousYearInvoiceAmount / previousYearProjectInvoiced))}</p>
+          </div>
+          <div className="customerItemTitle">
+            <CustomerItem
+              inputType={"number"}
+              label={[`Moyenne ${new Date().getFullYear() - 1} :`]}
+              icon={<IconCalculator size={24} color="black" />}
+              color={
+                (currentInvoiceAmount /
+                  currentProjectInvoiced /
+                  (previousYearInvoiceAmount / previousYearProjectInvoiced)) *
+                  100 <
+                80
+                  ? "red"
+                  : (currentInvoiceAmount /
+                      currentProjectInvoiced /
+                      (previousYearInvoiceAmount /
+                        previousYearProjectInvoiced)) *
+                      100 >=
+                      80 &&
+                    (currentInvoiceAmount /
+                      currentProjectInvoiced /
+                      (previousYearInvoiceAmount /
+                        previousYearProjectInvoiced)) *
+                      100 <
+                      100
+                  ? "orange"
+                  : "green"
+              }
+            />
+            <p
+              style={{
+                fontWeight: "bold",
+                color:
+                  (currentInvoiceAmount /
+                    currentProjectInvoiced /
+                    (previousYearInvoiceAmount / previousYearProjectInvoiced)) *
+                    100 <
+                  80
+                    ? theme.colors.red[6]
+                    : (currentInvoiceAmount /
+                        currentProjectInvoiced /
+                        (previousYearInvoiceAmount /
+                          previousYearProjectInvoiced)) *
+                        100 >=
+                        80 &&
+                      (currentInvoiceAmount /
+                        currentProjectInvoiced /
+                        (previousYearInvoiceAmount /
+                          previousYearProjectInvoiced)) *
+                        100 <
+                        100
+                    ? theme.colors.orange[6]
+                    : theme.colors.green[6],
+              }}
+            >{localeCurrencyString((currentInvoiceAmount / currentProjectInvoiced))}</p>
+          </div>
         </div>
       </div>
     </Card>

@@ -214,7 +214,7 @@ const CustomerRelationship = (props: ICustomerRelationshipProps) => {
               color="yellow"
             />
             {editCustomerRelationship ? (
-              <p>Dossier(s)</p>
+              <p>{`(${new Date().getFullYear()-1})`}</p>
             ) : (
               <p>{previousYearGoal}</p>
             )}
@@ -233,7 +233,7 @@ const CustomerRelationship = (props: ICustomerRelationshipProps) => {
               color="yellow"
             />
             {editCustomerRelationship ? (
-              <p>Dossier(s)</p>
+              <p>{`(${new Date().getFullYear()})`}</p>
             ) : (
               <p>{currentProjectGoal}</p>
             )}
