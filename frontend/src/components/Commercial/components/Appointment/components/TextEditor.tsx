@@ -18,23 +18,30 @@ import { ICustomer } from "../../../../../data/interfaces/ICustomer";
 import SaveContent from "./SaveContent";
 import CustomerButton from "./CustomerButton";
 import InsertStarControl from "./InsertStarControl";
-import { useState } from "react";
 import {
   useCustomer,
   useUpdateCustomer,
 } from "../../../../../context/CustomerContext";
 import { showNotification } from "@mantine/notifications";
 import EditModeToggle from "../../../../utils/EditModeToggle";
+import { TAppointmentTitle } from "../../../../../data/types/TApppointmentTitle";
 
 interface ITextEditorProps {
   _id: number;
   customer: ICustomer;
   appointment: IAppointment;
+  editAppointment: boolean;
+  setEditAppointment: React.Dispatch<React.SetStateAction<boolean>>;
+  appointmentTitle: string | TAppointmentTitle | null;
+  setAppointmentTitle: React.Dispatch<
+    React.SetStateAction<string | null | TAppointmentTitle>
+  >;
+  appointmentDate: Date;
+  setAppointmentDate: React.Dispatch<React.SetStateAction<Date>>;
+  setAccordionValue: React.Dispatch<React.SetStateAction<string | null>>;
 }
 
 const TextEditor = (props: ITextEditorProps) => {
-  const [editAppointment, setEditAppointment] = useState(false);
-
   const customers = useCustomer();
   const setCustomers = useUpdateCustomer();
 
@@ -66,24 +73,34 @@ const TextEditor = (props: ITextEditorProps) => {
     );
     if (newValue !== undefined) {
       changedCustomer[0].appointment[props._id].content = newValue;
-      setCustomers(newCustomer);
-      showNotification({
-        title: `✅ Rendez-vous sauvegardé`,
-        message: `${props.customer.name} - ${
-          props.appointment.title
-        } (${props.appointment.date.toLocaleDateString("fr")}) mis à jour`,
-        color: "green",
-      });
     }
+    changedCustomer[0].appointment[props._id].title =
+      props.appointmentTitle as TAppointmentTitle;
+    changedCustomer[0].appointment[props._id].date = props.appointmentDate;
+    setCustomers(newCustomer);
   };
 
   const handleValideClick = () => {
     handleContentChange(editor?.getHTML());
-    setEditAppointment(false);
+    showNotification({
+      title: `✅ Rendez-vous sauvegardé`,
+      message: `${props.customer.name} - ${
+        props.appointment.title
+      } (${props.appointment.date.toLocaleDateString("fr")}) mis à jour`,
+      color: "green",
+    });
+    props.setEditAppointment(false);
+    props.setAccordionValue(
+      `${props.appointmentTitle} (${props.appointmentDate.toLocaleDateString(
+        "fr"
+      )})`
+    );
   };
 
   const handleCancelClick = () => {
-    setEditAppointment(false);
+    props.setEditAppointment(false);
+    props.setAppointmentTitle(props.appointment.title);
+    props.setAppointmentDate(props.appointment.date);
     showNotification({
       title: `⛔ Rendez-vous non sauvegardé`,
       message: `Les modifications pour ${props.customer.name} - ${
@@ -126,16 +143,19 @@ const TextEditor = (props: ITextEditorProps) => {
   return (
     <>
       <EditModeToggle
-        editMode={editAppointment}
+        editMode={props.editAppointment}
         editLabel="Modifier le rendez-vous"
         validateLabel="Sauvegarder le rendez-vous"
         cancelLabel="Annuler les modifications"
-        handleEditClick={() => setEditAppointment(true)}
+        handleEditClick={() => {
+          props.setAppointmentTitle(props.appointment.title);
+          props.setEditAppointment(true);
+        }}
         handleValideClick={handleValideClick}
         handleCancelClick={handleCancelClick}
       />
-      {editAppointment ? (
-        <RichTextEditor editor={editor}>
+      {props.editAppointment ? (
+        <RichTextEditor className="textEditor" editor={editor}>
           <RichTextEditor.Toolbar sticky>
             {editor && (
               <BubbleMenu editor={editor}>
@@ -145,6 +165,7 @@ const TextEditor = (props: ITextEditorProps) => {
                   <RichTextEditor.Italic />
                   <RichTextEditor.Underline />
                   <RichTextEditor.Link />
+                  <RichTextEditor.Unlink />
                 </RichTextEditor.ControlsGroup>
                 {alignText}
               </BubbleMenu>
@@ -195,7 +216,12 @@ const TextEditor = (props: ITextEditorProps) => {
           <RichTextEditor.Content />
         </RichTextEditor>
       ) : (
-        <div dangerouslySetInnerHTML={{ __html: props.appointment.content }} />
+        <div
+          style={{
+            marginTop: "16px",
+          }}
+          dangerouslySetInnerHTML={{ __html: props.appointment.content }}
+        />
       )}
     </>
   );

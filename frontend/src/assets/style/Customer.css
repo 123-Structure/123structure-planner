@@ -11,7 +11,7 @@
 }
 
 .customerAppointmentAccordion {
-  margin: 16px 16px 0 16px;
+  margin: 0px 16px 0 16px;
 }
 
 .customerAccordionContent > div > div {
@@ -35,6 +35,7 @@
 .customerIdentityTitle {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   margin-bottom: 8px;
 }
 

@@ -10,13 +10,13 @@
 .mobileCustomerMenu {
   display: flex;
   flex-direction: column;
-  gap: 16px;
 }
 
 .mobileCustomerMenuSelectContainer {
   flex-direction: row;
   padding: 0 16px;
   gap: 8px;
+  margin-bottom: 16px;
 }
 
 .mobileCustomerMenuSelect {

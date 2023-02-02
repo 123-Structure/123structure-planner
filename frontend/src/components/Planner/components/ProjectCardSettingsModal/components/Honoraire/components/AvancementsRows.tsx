@@ -4,6 +4,7 @@ import { IconCalendar, IconCurrencyEuro } from "@tabler/icons";
 import React from "react";
 import { IAvancement } from "../../../../../../../data/interfaces/IAvancement";
 import { IProject } from "../../../../../../../data/interfaces/IProject";
+import "dayjs/locale/fr";
 
 interface IAvancementsRowsProps {
   avancements: IAvancement[];

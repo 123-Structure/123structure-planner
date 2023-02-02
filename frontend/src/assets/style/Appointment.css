@@ -1,0 +1,15 @@
+.editAppointmentTitle {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+}
+
+.textEditor {
+  margin-top: 16px;
+}
+
+@media (max-width: 850px) {
+  .editAppointmentTitle {
+    flex-direction: column;
+  }
+}

@@ -115,7 +115,6 @@ const CustomerPayment = (props: ICustomerPaymentProps) => {
           title="Comptabilité"
         />
         <EditModeToggle
-          disabled={false}
           editMode={editCustomerPayment}
           editLabel=""
           validateLabel=""
