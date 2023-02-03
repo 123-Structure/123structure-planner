@@ -4,9 +4,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: "Constructeur",
     name: ".G ARCHITECTURE",
-    address: "16 Rue des Rossignols Bellignin",
-    cp: "01300",
-    city: "BELLEY",
+    location: {
+      address: "16 Rue des Rossignols Bellignin",
+      cp: "01300",
+      city: "BELLEY",
+    },
     email: "yoanngerboud@gmail.com",
     phone: "04 79 87 31 73",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -46,8 +48,19 @@ export const CustomerExample: ICustomer[] = [
             email: "b.lechat@123structure.fr",
             phone: "06 00 00 00 00",
           },
+          {
+            firstName: "Matthieu",
+            lastName: "LECHAT",
+            email: "m.lechat@123structure.fr",
+            phone: "07 00 00 00 00",
+          },
         ],
-        location: "18 venelle de l'Escarpe, 44190 Clisson",
+        location: {
+          address: "18 Venelle de l'escarpe",
+          cp: "44190",
+          city: "Clisson",
+        },
+
         title: "RDV Technique",
         content:
           "Logoden biniou degemer mat an penn ar, bed drezout e glas Kermouster. Servijañ Rosko mab Nazer An Alre gwastell c’helenner, bragoù tro prad gwellañ ken. Pleg vugale kriz ijinañ c’haol dremm eme, dirak kentel daol skignañ niverenn. Bez ne sec’hed genver he c’hodell deiz, reiñ sklaer c’hardeur gaer eured. Lagad dimeurzh Pornizhan daouzek ganet Sant-Tegoneg godell, start chadenn gant kastell birviñ. Hegarat evitañ ar Remengol dindan  mouezh Sant-Nouga, koad tour skevent echu dour. Ar Gall diskar merc’h dirak  abardaez, kennebeut a c’hartoñs c’houzoug, padout kriz dreñv. Traoñ taer aon arrebeuri skignañ Skrigneg troad, lezenn lenn mañ stlakañ galleg. Enebour warno per war evezh aer vourc’h, an vandenn Plouha gwern Plouared. Kêr c’hilhog vignonez forzh bann, dour bouzar ostaleri diaoul, bluenn c’hontadenn gwiskamant. Kaeraat gouren yenijenn kuzhat eme c’hontadenn ac'hanoc'h, follenn lizherenn sankañ c’hof keniterv. Kof derc’hent dispign dirak  anavezout muiañ tamall, Europa diouzhtu skalier skorn spi. Mignon plant beleg mae kotoñs, yezh ha fiñval kerzu, banniel drezañ dispign. Pep nebeut mantell bazh Konk, c’hof goustad Sun klañv, dra follenn kerc’h. E a pakad tal alies, bro ouzhit gounez kelc’hiek, dimeziñ antronoz boull. Redek c’hwec’hvet ezel naontek a bann hanter, oaled gwellañ c’hraou tachenn ennomp. Tennañ mesk Skrigneg kontrol stad, ugnet bagad brudet drezomp, warno kerc’h laerezh. Abeg da mae war skolaer ur meskañ, an gwaz bodañ wenodenn a. Pornizhan boultrenn drezañ c’hotoñs kreñv kêr glas, arc’h doñjer grizilh gouere lous. Plelann-Veur gentañ c’helien sec’h eme, c’houevr milin galon muioc’h, vro bezh kontañ.   Ennoc'h ivez harp da holl egistañ laouen, alies dant keniterv nizez Pempoull. War warni, an ket spontus, derc’hel arrebeuri ar roud, rannañ Breizh chal. Egistomp c’harrez doujañ naet kentel reas peogwir, leun harzhal Sant-Maloù Egineg plijet. Kenavo Orient kaozeadenn Mikael poultrenn, davarn biz pakañ atav, ezel arc’h eta. Ganti Pont-Aven arar outo abardaez lakaat tavarnour, anzav logod aour muzell aod. Distagañ kavout war pennad eñ gounez Brest, heuliañ buhez poultrenn gousperoù tra. Brezel Orient enor onest perc’henn ac'hanout ober, dirak  da anzav lizher neñv. Gontell start baradoz prennañ levrioù, Arre am gouiziek tagañ, Plelann-Veur aes c’hroc’hen. Plouezoc’h ruilhañ brumenn kas deoc'h, nav mar meur Pembo, giz anezho kromm. Koll leal darn pemzek mignon ezhomm sailh, bleunioù dud dianav aon santout.",
@@ -62,7 +75,12 @@ export const CustomerExample: ICustomer[] = [
             phone: "06 00 00 00 00",
           },
         ],
-        location: "18 venelle de l'Escarpe, 44190 Clisson",
+        location: {
+          address: "18 Venelle de l'escarpe",
+          cp: "44190",
+          city: "Clisson",
+        },
+
         title: "RDV Courtoisie",
         content:
           "Logoden biniou degemer mat an penn ar, bed drezout e glas Kermouster. Servijañ Rosko mab Nazer An Alre gwastell c’helenner, bragoù tro prad gwellañ ken. Pleg vugale kriz ijinañ c’haol dremm eme, dirak kentel daol skignañ niverenn. Bez ne sec’hed genver he c’hodell deiz, reiñ sklaer c’hardeur gaer eured. Lagad dimeurzh Pornizhan daouzek ganet Sant-Tegoneg godell, start chadenn gant kastell birviñ. Hegarat evitañ ar Remengol dindan  mouezh Sant-Nouga, koad tour skevent echu dour. Ar Gall diskar merc’h dirak  abardaez, kennebeut a c’hartoñs c’houzoug, padout kriz dreñv. Traoñ taer aon arrebeuri skignañ Skrigneg troad, lezenn lenn mañ stlakañ galleg. Enebour warno per war evezh aer vourc’h, an vandenn Plouha gwern Plouared. Kêr c’hilhog vignonez forzh bann, dour bouzar ostaleri diaoul, bluenn c’hontadenn gwiskamant.  Kaeraat gouren yenijenn kuzhat eme c’hontadenn ac'hanoc'h, follenn lizherenn sankañ c’hof keniterv. Kof derc’hent dispign dirak  anavezout muiañ tamall, Europa diouzhtu skalier skorn spi. Mignon plant beleg mae kotoñs, yezh ha fiñval kerzu, banniel drezañ dispign. Pep nebeut mantell bazh Konk, c’hof goustad Sun klañv, dra follenn kerc’h. E a pakad tal alies, bro ouzhit gounez kelc’hiek, dimeziñ antronoz boull. Redek c’hwec’hvet ezel naontek a bann hanter, oaled gwellañ c’hraou tachenn ennomp. Tennañ mesk Skrigneg kontrol stad, ugnet bagad brudet drezomp, warno kerc’h laerezh. Abeg da mae war skolaer ur meskañ, an gwaz bodañ wenodenn a. Pornizhan boultrenn drezañ c’hotoñs kreñv kêr glas, arc’h doñjer grizilh gouere lous. Plelann-Veur gentañ c’helien sec’h eme, c’houevr milin galon muioc’h, vro bezh kontañ.   Ennoc'h ivez harp da holl egistañ laouen, alies dant keniterv nizez Pempoull. War warni, an ket spontus, derc’hel arrebeuri ar roud, rannañ Breizh chal. Egistomp c’harrez doujañ naet kentel reas peogwir, leun harzhal Sant-Maloù Egineg plijet. Kenavo Orient kaozeadenn Mikael poultrenn, davarn biz pakañ atav, ezel arc’h eta. Ganti Pont-Aven arar outo abardaez lakaat tavarnour, anzav logod aour muzell aod. Distagañ kavout war pennad eñ gounez Brest, heuliañ buhez poultrenn gousperoù tra. Brezel Orient enor onest perc’henn ac'hanout ober, dirak  da anzav lizher neñv. Gontell start baradoz prennañ levrioù, Arre am gouiziek tagañ, Plelann-Veur aes c’hroc’hen. Plouezoc’h ruilhañ brumenn kas deoc'h, nav mar meur Pembo, giz anezho kromm. Koll leal darn pemzek mignon ezhomm sailh, bleunioù dud dianav aon santout.",
@@ -86,9 +104,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: "Constructeur",
     name: "3DMI",
-    address: "5 Rue Andr� Amp�re Saint Andr� de la Marche",
-    cp: "49450",
-    city: "SEVREMOINE",
+    location: {
+      address: "5 Rue Andr� Amp�re Saint Andr� de la Marche",
+      cp: "49450",
+      city: "SEVREMOINE",
+    },
     email: "contact@3dmi.fr",
     phone: "02 41 30 86 21",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -115,9 +135,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: "Constructeur",
     name: "3R ENTREPRISE",
-    address: "91 Quai Emile Cormerais",
-    cp: "44800",
-    city: "SAINT HERBLAIN",
+    location: {
+      address: "91 Quai Emile Cormerais",
+      cp: "44800",
+      city: "SAINT HERBLAIN",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -144,9 +166,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: "Constructeur",
     name: "A-BTP",
-    address: "ZI des Bluchets 7 bis Rue de la Marsallais",
-    cp: "44130",
-    city: "BLAIN",
+    location: {
+      address: "ZI des Bluchets 7 bis Rue de la Marsallais",
+      cp: "44130",
+      city: "BLAIN",
+    },
     email: "",
     phone: "02 40 51 37 58",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -173,9 +197,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: "Négoce",
     name: "AADI Atlantique",
-    address: "18 Rue de M�rin L'Atelier",
-    cp: "64200",
-    city: "BIARRITZ",
+    location: {
+      address: "18 Rue de M�rin L'Atelier",
+      cp: "64200",
+      city: "BIARRITZ",
+    },
     email: "biarritz@aadi-architectes.com",
     phone: "05 59 25 69 28",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -202,9 +228,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: "Maitre d'Oeuvre",
     name: "AADP-Atelier d'architecture Duranteau Pidoux",
-    address: "17 avenue Jean Jaur�s",
-    cp: "85100",
-    city: "LES SABLES D'OLONNE",
+    location: {
+      address: "17 avenue Jean Jaur�s",
+      cp: "85100",
+      city: "LES SABLES D'OLONNE",
+    },
     email: "contact@aadp-architectes.com",
     phone: "02.51.32.17.36",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -231,9 +259,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: "Maçon",
     name: "AB DECO",
-    address: "13 La Nourissonni�re",
-    cp: "44190",
-    city: "BOUSSAY",
+    location: {
+      address: "13 La Nourissonni�re",
+      cp: "44190",
+      city: "BOUSSAY",
+    },
     email: "abetondeco@gmail.com",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -260,9 +290,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: "Négoce",
     name: "ABAK CLISSON",
-    address: "18 Venelle de l'Escarpe",
-    cp: "44190",
-    city: "CLISSON",
+    location: {
+      address: "18 Venelle de l'Escarpe",
+      cp: "44190",
+      city: "CLISSON",
+    },
     email: "",
     phone: "02 28 00 31 95",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -289,9 +321,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: "Négoce",
     name: "ABAK GENERAL INGENIERIE",
-    address: "34 Bd Joliot Curie",
-    cp: "44200",
-    city: "NANTES",
+    location: {
+      address: "34 Bd Joliot Curie",
+      cp: "44200",
+      city: "NANTES",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -318,9 +352,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: "Négoce",
     name: "ABAK INGENIERIE PROVENCE",
-    address: "5 Rue Charles Duchesne Immeuble Le Tertia 1",
-    cp: "13290",
-    city: "AIX EN PROVENCE",
+    location: {
+      address: "5 Rue Charles Duchesne Immeuble Le Tertia 1",
+      cp: "13290",
+      city: "AIX EN PROVENCE",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -347,9 +383,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "ABALHAJJ",
-    address: "Rue de l'Eglise",
-    cp: "78130",
-    city: "CHAPET",
+    location: {
+      address: "Rue de l'Eglise",
+      cp: "78130",
+      city: "CHAPET",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -376,9 +414,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: "Charpentier",
     name: "ABID",
-    address: "16 Rue Ernest Renan",
-    cp: "93400",
-    city: "SAINT OUEN",
+    location: {
+      address: "16 Rue Ernest Renan",
+      cp: "93400",
+      city: "SAINT OUEN",
+    },
     email: "idirabid02@gmail.com",
     phone: "06 77 77 17 55",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -405,9 +445,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "ABILOM",
-    address: "305 Rue Gabriel Voisin",
-    cp: "69400",
-    city: "cityFRANCHE SUR SAONE",
+    location: {
+      address: "305 Rue Gabriel Voisin",
+      cp: "69400",
+      city: "cityFRANCHE SUR SAONE",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -434,9 +476,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "ABSCISSE Architecture",
-    address: "9 Rue du Vincin",
-    cp: "56000",
-    city: "VANNES",
+    location: {
+      address: "9 Rue du Vincin",
+      cp: "56000",
+      city: "VANNES",
+    },
     email: "",
     phone: "02 97 40 38 49",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -463,9 +507,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "ABSIAL",
-    address: "14 Rue de l'H�tel de city",
-    cp: "44310",
-    city: "SAINT PHILBERT DE GRANDLIEU",
+    location: {
+      address: "14 Rue de l'H�tel de city",
+      cp: "44310",
+      city: "SAINT PHILBERT DE GRANDLIEU",
+    },
     email: "pym@absial.fr",
     phone: "02 40 78 86 06",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -492,9 +538,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "ACM CONSTRUCTION",
-    address: "6 Bis, rue de l'Industrie",
-    cp: "44450",
-    city: "DIVATTE SUR LOIRE",
+    location: {
+      address: "6 Bis, rue de l'Industrie",
+      cp: "44450",
+      city: "DIVATTE SUR LOIRE",
+    },
     email: "contact@acmdivatte.fr",
     phone: "02 40 73 93 96",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -521,9 +569,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "ACOSTA",
-    address: "19 rue de la Cordi�re",
-    cp: "69290",
-    city: "SAINT PRIEST",
+    location: {
+      address: "19 rue de la Cordi�re",
+      cp: "69290",
+      city: "SAINT PRIEST",
+    },
     email: "yoan.acosta9@gmail.com",
     phone: "06 50 97 89 93",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -550,9 +600,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "ACOUSTIQUE CONSULTING",
-    address: "39 Rue L�on Weber",
-    cp: "69400",
-    city: "cityFRANCHE SUR SAONE",
+    location: {
+      address: "39 Rue L�on Weber",
+      cp: "69400",
+      city: "cityFRANCHE SUR SAONE",
+    },
     email: "",
     phone: "04 74 65 58 01",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -579,9 +631,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "ACTIPOLE IMMOBILIER (FiduSab)",
-    address: "305 Rue Gabriel Voisin B�timent D - 1er �tage",
-    cp: "69400",
-    city: "cityFRANCHE SUR SAONE",
+    location: {
+      address: "305 Rue Gabriel Voisin B�timent D - 1er �tage",
+      cp: "69400",
+      city: "cityFRANCHE SUR SAONE",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -608,9 +662,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "ACTIPOLE SUD CALADE",
-    address: "3 Rue de la Salamandre",
-    cp: "69220",
-    city: "BELLEcity",
+    location: {
+      address: "3 Rue de la Salamandre",
+      cp: "69220",
+      city: "BELLEcity",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -637,9 +693,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "ADCLIC",
-    address: "151 Rue de la Lib�ration",
-    cp: "44220",
-    city: "COUERON",
+    location: {
+      address: "151 Rue de la Lib�ration",
+      cp: "44220",
+      city: "COUERON",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -666,9 +724,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "Agence LENAIN",
-    address: "14 Rue de Saumur BP. 437",
-    cp: "85504",
-    city: "LES HERBIERS CEDEX",
+    location: {
+      address: "14 Rue de Saumur BP. 437",
+      cp: "85504",
+      city: "LES HERBIERS CEDEX",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -695,9 +755,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "AGIUS MACONNERIE",
-    address: "22 Le P�tis Cibot",
-    cp: "44130",
-    city: "SAINT EMILIEN DE BLAIN",
+    location: {
+      address: "22 Le P�tis Cibot",
+      cp: "44130",
+      city: "SAINT EMILIEN DE BLAIN",
+    },
     email: "",
     phone: "02 40 51 19 39",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -724,9 +786,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "AL CONSTRUCTION",
-    address: "34 Rue de la Creuilli�re",
-    cp: "49450",
-    city: "SAINT ANDRE DE LA MARCHE",
+    location: {
+      address: "34 Rue de la Creuilli�re",
+      cp: "49450",
+      city: "SAINT ANDRE DE LA MARCHE",
+    },
     email: "",
     phone: "02 41 30 58 42",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -753,9 +817,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "ALAMAN & MACDONALD Architectes",
-    address: "28 Avenue d'Espagne",
-    cp: "64250",
-    city: "CAMBO LES BAINS",
+    location: {
+      address: "28 Avenue d'Espagne",
+      cp: "64250",
+      city: "CAMBO LES BAINS",
+    },
     email: "alaman.macdonald@wanadoo.fr",
     phone: "05 59 29 97 13",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -782,9 +848,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "ALEX",
-    address: "22 bis Rue de Malandr�",
-    cp: "44119",
-    city: "TREILLIERES",
+    location: {
+      address: "22 bis Rue de Malandr�",
+      cp: "44119",
+      city: "TREILLIERES",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -811,9 +879,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "ALEX ARCHITECTE",
-    address: "",
-    cp: "",
-    city: "",
+    location: {
+      address: "",
+      cp: "",
+      city: "",
+    },
     email: "alex@alexarchitecte.fr",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -840,9 +910,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "ALF MACONNERIE",
-    address: "1 Rue du Tranchet La Pommeraye",
-    cp: "49620",
-    city: "MAUGES SUR LOIRE",
+    location: {
+      address: "1 Rue du Tranchet La Pommeraye",
+      cp: "49620",
+      city: "MAUGES SUR LOIRE",
+    },
     email: "alf.maconnerie@orange.fr",
     phone: "02 41 78 93 42",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -869,9 +941,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "ALP Soci�t� d'Architecture & d'Urbanisme",
-    address: "3 Rue Georges Cl�menceau BP. 10",
-    cp: "85540",
-    city: "MOUTIERS LES MAUXFAITS",
+    location: {
+      address: "3 Rue Georges Cl�menceau BP. 10",
+      cp: "85540",
+      city: "MOUTIERS LES MAUXFAITS",
+    },
     email: "info@alp-architecture.com",
     phone: "02 51 31 44 45",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -898,9 +972,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "ALVES",
-    address: "12 Rue Paul Langevin",
-    cp: "69680",
-    city: "CHASSIEU",
+    location: {
+      address: "12 Rue Paul Langevin",
+      cp: "69680",
+      city: "CHASSIEU",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -927,9 +1003,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "AMBIANCE HABITAT 44",
-    address: "11 Avenue de la Vertonne",
-    cp: "44120",
-    city: "VERTOU",
+    location: {
+      address: "11 Avenue de la Vertonne",
+      cp: "44120",
+      city: "VERTOU",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -956,9 +1034,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "ANDRE BTP",
-    address: "10 Chemin Montplaisir BP. 68534",
-    cp: "44185",
-    city: "NANTEX cedex 4",
+    location: {
+      address: "10 Chemin Montplaisir BP. 68534",
+      cp: "44185",
+      city: "NANTEX cedex 4",
+    },
     email: "andrebtp.accueil@demathieu-bard.fr",
     phone: "02 40 89 27 27",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -985,9 +1065,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "ANJOU STRUCTURE",
-    address: "9 Rue Joseph Fourier",
-    cp: "49070",
-    city: "BEAUCOUZE",
+    location: {
+      address: "9 Rue Joseph Fourier",
+      cp: "49070",
+      city: "BEAUCOUZE",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -1014,9 +1096,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "ARCHAMBAUD",
-    address: "3 Impasse des Alisiers",
-    cp: "44140",
-    city: "GENESTON",
+    location: {
+      address: "3 Impasse des Alisiers",
+      cp: "44140",
+      city: "GENESTON",
+    },
     email: "",
     phone: "06 12 40 56 01",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -1043,9 +1127,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "ARCHITEA",
-    address: "18 Chemin de Gargantua",
-    cp: "69570",
-    city: "DARDILLY",
+    location: {
+      address: "18 Chemin de Gargantua",
+      cp: "69570",
+      city: "DARDILLY",
+    },
     email: "",
     phone: "04 82 29 59 78",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -1072,9 +1158,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "ARCOBAT",
-    address: "344 Boulevard Marcel Paul",
-    cp: "44800",
-    city: "SAINT HERBLAIN",
+    location: {
+      address: "344 Boulevard Marcel Paul",
+      cp: "44800",
+      city: "SAINT HERBLAIN",
+    },
     email: "",
     phone: "02 85 52 84 21",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -1101,9 +1189,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "ARIBIT BAUDRY",
-    address: "ZI Errobi",
-    cp: "64250",
-    city: "ITXASSOU",
+    location: {
+      address: "ZI Errobi",
+      cp: "64250",
+      city: "ITXASSOU",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -1130,9 +1220,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "ARKI-DEA",
-    address: "105 La No�",
-    cp: "44850",
-    city: "SAINT MARS DU DESERT",
+    location: {
+      address: "105 La No�",
+      cp: "44850",
+      city: "SAINT MARS DU DESERT",
+    },
     email: "arki-dea.moe@outlook.fr",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -1159,9 +1251,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "ARRIBE RELUN",
-    address: "64 Rue Joseph Doury",
-    cp: "44300",
-    city: "NANTES",
+    location: {
+      address: "64 Rue Joseph Doury",
+      cp: "44300",
+      city: "NANTES",
+    },
     email: "claire.relun@gmail.com",
     phone: "06 44 08 88 52",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -1188,9 +1282,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "ARTECO",
-    address: "11 Rue Auguste Piccard",
-    cp: "56000",
-    city: "VANNES",
+    location: {
+      address: "11 Rue Auguste Piccard",
+      cp: "56000",
+      city: "VANNES",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -1217,9 +1313,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "ARTECO",
-    address: "34 Route des Commandi�res Zone Commerciale de l'Immacul�e",
-    cp: "44600",
-    city: "SAINT NAZAIRE",
+    location: {
+      address: "34 Route des Commandi�res Zone Commerciale de l'Immacul�e",
+      cp: "44600",
+      city: "SAINT NAZAIRE",
+    },
     email: "meuzenat@arteco.fr",
     phone: "02 40 19 32 30",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -1246,9 +1344,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "ARTECO RENO",
-    address: "Lieu-dit Le Bothouzo",
-    cp: "56690",
-    city: "LANDAUL",
+    location: {
+      address: "Lieu-dit Le Bothouzo",
+      cp: "56690",
+      city: "LANDAUL",
+    },
     email: "",
     phone: "02 97 29 40 40",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -1275,9 +1375,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "ARTI CREATIONS Constructions",
-    address: "21 Rue de l'Atlantique",
-    cp: "44115",
-    city: "BASSE GOULAINE",
+    location: {
+      address: "21 Rue de l'Atlantique",
+      cp: "44115",
+      city: "BASSE GOULAINE",
+    },
     email: "",
     phone: "02 40 13 09 10",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -1304,9 +1406,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "ARVOR CONSTRUCTIONS",
-    address: "Zone de Tr�huinec 3 Rue Andr� Amp�re",
-    cp: "56890",
-    city: "PLESCOP",
+    location: {
+      address: "Zone de Tr�huinec 3 Rue Andr� Amp�re",
+      cp: "56890",
+      city: "PLESCOP",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -1333,9 +1437,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "ATABAY",
-    address: "Rue de la Frosinere",
-    cp: "44119",
-    city: "TREILLIERES",
+    location: {
+      address: "Rue de la Frosinere",
+      cp: "44119",
+      city: "TREILLIERES",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -1362,9 +1468,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "ATELIER D'ARCHITECTURE DU PIC",
-    address: "89 Rue Maxime Guillot",
-    cp: "21300",
-    city: "CHENOVE",
+    location: {
+      address: "89 Rue Maxime Guillot",
+      cp: "21300",
+      city: "CHENOVE",
+    },
     email: "contact@archipic.fr",
     phone: "03 80 54 91 40",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -1391,9 +1499,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "Atelier MCA",
-    address: "79 route de Corbas",
-    cp: "69008",
-    city: "LYON",
+    location: {
+      address: "79 route de Corbas",
+      cp: "69008",
+      city: "LYON",
+    },
     email: "",
     phone: "472145252",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -1420,9 +1530,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "ATELIER PANACHE",
-    address: "1 rue Fran�ois Bruneau",
-    cp: "44000",
-    city: "NANTES",
+    location: {
+      address: "1 rue Fran�ois Bruneau",
+      cp: "44000",
+      city: "NANTES",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -1449,9 +1561,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "ATELIER PIEL ARCHITECTURE",
-    address: "ZA Porte du Labourd Route de Bidarrai",
-    cp: "64250",
-    city: "LOUHOSSOA",
+    location: {
+      address: "ZA Porte du Labourd Route de Bidarrai",
+      cp: "64250",
+      city: "LOUHOSSOA",
+    },
     email: "contact@pielarchitecture.com",
     phone: "05 59 15 60 08",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -1478,9 +1592,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "ATLANTIQUE HABITATIONS",
-    address: "All�e Jean Raulo BP. 30335",
-    cp: "44803",
-    city: "SAINT HERBLAIN CEDEX",
+    location: {
+      address: "All�e Jean Raulo BP. 30335",
+      cp: "44803",
+      city: "SAINT HERBLAIN CEDEX",
+    },
     email: "siege@atlantique-habitations.fr",
     phone: "02 51 80 67 67",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -1507,9 +1623,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "ATREGE CONSTRUCTIONS",
-    address: "6 Rue de la Petite Colline",
-    cp: "44350",
-    city: "GUERANDE",
+    location: {
+      address: "6 Rue de la Petite Colline",
+      cp: "44350",
+      city: "GUERANDE",
+    },
     email: "",
     phone: "02 40 42 29 28",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -1536,9 +1654,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "AUDE Architecture",
-    address: "8 Rue des Maraichers",
-    cp: "44400",
-    city: "REZE",
+    location: {
+      address: "8 Rue des Maraichers",
+      cp: "44400",
+      city: "REZE",
+    },
     email: "",
     phone: "06 75 03 24 23",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -1565,9 +1685,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "AUDEON Bertrand",
-    address: "7 L'Esp�rance",
-    cp: "44270",
-    city: "MACHECOUL",
+    location: {
+      address: "7 L'Esp�rance",
+      cp: "44270",
+      city: "MACHECOUL",
+    },
     email: "bertrand.audeon@gmail.com",
     phone: "02 40 78 63 16",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -1594,9 +1716,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "AUDIBERT",
-    address: "8 Rue de la Carri�re",
-    cp: "56610",
-    city: "ARRADON",
+    location: {
+      address: "8 Rue de la Carri�re",
+      cp: "56610",
+      city: "ARRADON",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -1623,9 +1747,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "AUDIBERT Elodie Architecture",
-    address: "5 All�e de Pondinan",
-    cp: "56610",
-    city: "ARRADON",
+    location: {
+      address: "5 All�e de Pondinan",
+      cp: "56610",
+      city: "ARRADON",
+    },
     email: "contact@elodie-audibert-architecture.com",
     phone: "06 87 04 74 65",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -1652,9 +1778,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "AUGEREAU",
-    address: "Rue du C�teau au Gotay",
-    cp: "44430",
-    city: "LE LANDREAU",
+    location: {
+      address: "Rue du C�teau au Gotay",
+      cp: "44430",
+      city: "LE LANDREAU",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -1681,9 +1809,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "AUJOGUE",
-    address: "Chemin du Vinceret Pouilly le Monial",
-    cp: "69400",
-    city: "PORTE DES PIERRES DOREES",
+    location: {
+      address: "Chemin du Vinceret Pouilly le Monial",
+      cp: "69400",
+      city: "PORTE DES PIERRES DOREES",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -1710,9 +1840,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "AUJOGUE Entreprise",
-    address: "66 Chemin de la T�te d'Or",
-    cp: "69400",
-    city: "PORTE DES PIERRES DOREES",
+    location: {
+      address: "66 Chemin de la T�te d'Or",
+      cp: "69400",
+      city: "PORTE DES PIERRES DOREES",
+    },
     email: "contact@sarl-aujogue.fr",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -1739,9 +1871,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "BABONNEAU",
-    address: "3 Rue des Carriers",
-    cp: "44140",
-    city: "AIGREFEUILLE SUR MAINE",
+    location: {
+      address: "3 Rue des Carriers",
+      cp: "44140",
+      city: "AIGREFEUILLE SUR MAINE",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -1768,9 +1902,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "BABOUCHE",
-    address: "34 Rue Goulphar",
-    cp: "44300",
-    city: "NANTES",
+    location: {
+      address: "34 Rue Goulphar",
+      cp: "44300",
+      city: "NANTES",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -1797,9 +1933,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "BADINOT",
-    address: "Rue des Giraudelles",
-    cp: "85610",
-    city: "CUGAND",
+    location: {
+      address: "Rue des Giraudelles",
+      cp: "85610",
+      city: "CUGAND",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -1826,9 +1964,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "BAHUAUD",
-    address: "Promenade Enchant�e 14 Rue de la Galti�re",
-    cp: "44230",
-    city: "SAINT SEBASTIEN SUR LOIRE",
+    location: {
+      address: "Promenade Enchant�e 14 Rue de la Galti�re",
+      cp: "44230",
+      city: "SAINT SEBASTIEN SUR LOIRE",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -1855,9 +1995,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "BAILLEUL",
-    address: "28 Rue de la Billardi�re",
-    cp: "44120",
-    city: "VERTOU",
+    location: {
+      address: "28 Rue de la Billardi�re",
+      cp: "44120",
+      city: "VERTOU",
+    },
     email: "",
     phone: "06 28 68 18 57",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -1884,9 +2026,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "BALA",
-    address: "27 All�e de Seine",
-    cp: "76430",
-    city: "SAINT ROMAIN DE COLBOSC",
+    location: {
+      address: "27 All�e de Seine",
+      cp: "76430",
+      city: "SAINT ROMAIN DE COLBOSC",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -1913,9 +2057,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "BALLANGER RIGALLEAU",
-    address: "R�sidence Les Cyclades - B�t.A 24 Boulevard Saint Just",
-    cp: "86000",
-    city: "POITIERS",
+    location: {
+      address: "R�sidence Les Cyclades - B�t.A 24 Boulevard Saint Just",
+      cp: "86000",
+      city: "POITIERS",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -1942,9 +2088,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "BARADUC VERNEAU",
-    address: "3 Rue Henri Dunant",
-    cp: "37550",
-    city: "SAINT AVERTIN",
+    location: {
+      address: "3 Rue Henri Dunant",
+      cp: "37550",
+      city: "SAINT AVERTIN",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -1971,9 +2119,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "BARAIS",
-    address: "La AAA",
-    cp: "44000",
-    city: "NANTES",
+    location: {
+      address: "La AAA",
+      cp: "44000",
+      city: "NANTES",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -2000,9 +2150,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "BARKATS",
-    address: "4 Avenue de la Tranquilit�",
-    cp: "44230",
-    city: "SAINT SEBASTIEN SUR LOIRE",
+    location: {
+      address: "4 Avenue de la Tranquilit�",
+      cp: "44230",
+      city: "SAINT SEBASTIEN SUR LOIRE",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -2029,9 +2181,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "BARRIOS Architecture",
-    address: "8 Rue J. Peyret",
-    cp: "69420",
-    city: "CONDRIEU",
+    location: {
+      address: "8 Rue J. Peyret",
+      cp: "69420",
+      city: "CONDRIEU",
+    },
     email: "contact@barriosarchitecture.fr",
     phone: "04 74 56 61 70",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -2058,9 +2212,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "BATARD",
-    address: "32 Rue du Cartron",
-    cp: "44115",
-    city: "HAUTE GOULAINE",
+    location: {
+      address: "32 Rue du Cartron",
+      cp: "44115",
+      city: "HAUTE GOULAINE",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -2087,9 +2243,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "BATID'L",
-    address: "38 Avenue du G�n�ral de Gaulle",
-    cp: "49360",
-    city: "MAULEVRIER",
+    location: {
+      address: "38 Avenue du G�n�ral de Gaulle",
+      cp: "49360",
+      city: "MAULEVRIER",
+    },
     email: "batidl@outlook.com",
     phone: "02 41 55 09 05",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -2116,9 +2274,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "BATILUX HABITATS",
-    address: "810 rue de Neucity",
-    cp: "69250",
-    city: "MONTANAY",
+    location: {
+      address: "810 rue de Neucity",
+      cp: "69250",
+      city: "MONTANAY",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -2145,9 +2305,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "BATISCOP",
-    address: "8 route du Loroux Bottereau",
-    cp: "44230",
-    city: "SAINT SEBASTIEN SUR LOIRE",
+    location: {
+      address: "8 route du Loroux Bottereau",
+      cp: "44230",
+      city: "SAINT SEBASTIEN SUR LOIRE",
+    },
     email: "",
     phone: "06.76.19.71.72",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -2174,9 +2336,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "BATISSE",
-    address: "12 Rocade des Monts d'Or",
-    cp: "69370",
-    city: "SAINT DIDIER AU MONT D'OR",
+    location: {
+      address: "12 Rocade des Monts d'Or",
+      cp: "69370",
+      city: "SAINT DIDIER AU MONT D'OR",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -2203,9 +2367,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "BAUDON Architecte",
-    address: "3 Rue Bretonnaise",
-    cp: "49300",
-    city: "CHOLET",
+    location: {
+      address: "3 Rue Bretonnaise",
+      cp: "49300",
+      city: "CHOLET",
+    },
     email: "",
     phone: "02 41 62 59 83",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -2232,9 +2398,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "BEAUFILS",
-    address: "3 Rue Spica",
-    cp: "53470",
-    city: "MARTIGNE",
+    location: {
+      address: "3 Rue Spica",
+      cp: "53470",
+      city: "MARTIGNE",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -2261,9 +2429,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "BEAUMARD Julien",
-    address: "32 Rue du Commerce Saint Macaire en Mauges",
-    cp: "49450",
-    city: "SEVREMOINE",
+    location: {
+      address: "32 Rue du Commerce Saint Macaire en Mauges",
+      cp: "49450",
+      city: "SEVREMOINE",
+    },
     email: "contact@julien-beaumard.com",
     phone: "07 82 45 05 88",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -2290,9 +2460,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "BEFA Construction",
-    address: "Route Suisse, 7D",
-    cp: "1295",
-    city: "MIES Suisse",
+    location: {
+      address: "Route Suisse, 7D",
+      cp: "1295",
+      city: "MIES Suisse",
+    },
     email: "",
     phone: "+41 (0) 22 755 02 74",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -2319,9 +2491,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "BELLANGER Jean SARL",
-    address: "4 bis, Voie Romaine",
-    cp: "49080",
-    city: "BOUCHEMAINE",
+    location: {
+      address: "4 bis, Voie Romaine",
+      cp: "49080",
+      city: "BOUCHEMAINE",
+    },
     email: "jbellanger@jeanbellanger.com",
     phone: "02 53 57 88 37",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -2348,9 +2522,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "BELLING",
-    address: "48 Rue Jean-Baptiste Robert",
-    cp: "44230",
-    city: "SAINT SEBASTIEN SUR LOIRE",
+    location: {
+      address: "48 Rue Jean-Baptiste Robert",
+      cp: "44230",
+      city: "SAINT SEBASTIEN SUR LOIRE",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -2377,9 +2553,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "BELNOU",
-    address: "21 Rue Delaage",
-    cp: "49000",
-    city: "ANGERS",
+    location: {
+      address: "21 Rue Delaage",
+      cp: "49000",
+      city: "ANGERS",
+    },
     email: "",
     phone: "06 10 54 74 72",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -2406,9 +2584,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "BELTZA Architecture",
-    address: "82 Rue de Madrid B�timent Windsor I",
-    cp: "64200",
-    city: "BIARRRITZ",
+    location: {
+      address: "82 Rue de Madrid B�timent Windsor I",
+      cp: "64200",
+      city: "BIARRRITZ",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -2435,9 +2615,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "BEN HADJ",
-    address: "19C Place Claudius Bery",
-    cp: "69320",
-    city: "FEYZIN",
+    location: {
+      address: "19C Place Claudius Bery",
+      cp: "69320",
+      city: "FEYZIN",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -2464,9 +2646,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "BENEZECH Philippe Architecte",
-    address: "59 Route de Cugand",
-    cp: "44190",
-    city: "CLISSON",
+    location: {
+      address: "59 Route de Cugand",
+      cp: "44190",
+      city: "CLISSON",
+    },
     email: "philippebenezech@hotmail.com",
     phone: "06 63 56 92 29",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -2493,9 +2677,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "BERGEARD FRANCOIS",
-    address: "49 Rue Blanqui R�sidence Bords de Loire",
-    cp: "37700",
-    city: "SAINT PIERRE DES CORPS",
+    location: {
+      address: "49 Rue Blanqui R�sidence Bords de Loire",
+      cp: "37700",
+      city: "SAINT PIERRE DES CORPS",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -2522,9 +2708,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "BERNARD Jean-No�l Ma�tre d'Oeuvre",
-    address: "6 rue du Gu�",
-    cp: "44190",
-    city: "GORGES",
+    location: {
+      address: "6 rue du Gu�",
+      cp: "44190",
+      city: "GORGES",
+    },
     email: "",
     phone: "02 28 21 50 89",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -2551,9 +2739,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "BERTHELOT CONSTRUCTIONS",
-    address: "2 Impasse de la Barri�re",
-    cp: "44220",
-    city: "COUERON",
+    location: {
+      address: "2 Impasse de la Barri�re",
+      cp: "44220",
+      city: "COUERON",
+    },
     email: "",
     phone: "02 28 01 58 53",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -2580,9 +2770,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "BERTHOU",
-    address: "4 Rue des Salorges",
-    cp: "44000",
-    city: "NANTES",
+    location: {
+      address: "4 Rue des Salorges",
+      cp: "44000",
+      city: "NANTES",
+    },
     email: "camille.berthou@gmail.com",
     phone: "06 80 54 94 96",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -2609,9 +2801,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "BESSE ENTREPRISE",
-    address: "ZA La Ferri�re",
-    cp: "37270",
-    city: "ATHEE SUR CHER",
+    location: {
+      address: "ZA La Ferri�re",
+      cp: "37270",
+      city: "ATHEE SUR CHER",
+    },
     email: "",
     phone: "02 47 50 68 35",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -2638,9 +2832,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "BG BAT",
-    address: "Rue des Bateliers Lieu-dit Coudray Marign�",
-    cp: "49330",
-    city: "LES HAUTS D'ANJOU",
+    location: {
+      address: "Rue des Bateliers Lieu-dit Coudray Marign�",
+      cp: "49330",
+      city: "LES HAUTS D'ANJOU",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -2667,10 +2863,12 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "BIGMAT - 44 MATERIAUX",
-    address:
-      "Agence de Cand� Route de Ch�teaubriant 167 Rue de la Gr�e Saint Jacques",
-    cp: "44540",
-    city: "VRITZ",
+    location: {
+      address:
+        "Agence de Cand� Route de Ch�teaubriant 167 Rue de la Gr�e Saint Jacques",
+      cp: "44540",
+      city: "VRITZ",
+    },
     email: "l.buret@bigmat.fr",
     phone: "02 41 61 62 77",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -2697,9 +2895,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "BIGMAT - 44 MATERIAUX",
-    address: "22 Rue Jules Launey",
-    cp: "44100",
-    city: "NANTES",
+    location: {
+      address: "22 Rue Jules Launey",
+      cp: "44100",
+      city: "NANTES",
+    },
     email: "",
     phone: "02 53 00 65 00",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -2726,9 +2926,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "BIGMAT - 44 MATERIAUX",
-    address: "D'Eau ZAC des Bluchets - 14 Le Ch�teau",
-    cp: "44130",
-    city: "BLAIN",
+    location: {
+      address: "D'Eau ZAC des Bluchets - 14 Le Ch�teau",
+      cp: "44130",
+      city: "BLAIN",
+    },
     email: "",
     phone: "02 40 87 12 54",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -2755,9 +2957,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "BIGMAT - LIBAUD N�goce Mat�riaux",
-    address: "Z.A. du Grand Pli Boulevard Andr� Malraux",
-    cp: "85170",
-    city: "BELLEVIGNY",
+    location: {
+      address: "Z.A. du Grand Pli Boulevard Andr� Malraux",
+      cp: "85170",
+      city: "BELLEVIGNY",
+    },
     email: "",
     phone: "02 51 41 05 08",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -2784,9 +2988,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "BIGMAT - LIBAUD N�goce Mat�riaux",
-    address: "1 Rue Amp�re",
-    cp: "85500",
-    city: "LES HERBIERS",
+    location: {
+      address: "1 Rue Amp�re",
+      cp: "85500",
+      city: "LES HERBIERS",
+    },
     email: "",
     phone: "02 51 61 10 60",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -2813,9 +3019,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "BIGMAT - M MATERIAUX",
-    address: "21 Rue du Hanipet",
-    cp: "49124",
-    city: "SAINT BARTHELEMY D'ANJOU",
+    location: {
+      address: "21 Rue du Hanipet",
+      cp: "49124",
+      city: "SAINT BARTHELEMY D'ANJOU",
+    },
     email: "contact@mmateriaux-bigmat.fr",
     phone: "02 21 76 40 15",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -2842,9 +3050,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "BIGMAT - OCEANE DE MATERIAUX",
-    address: "ZI de la Seiglerie Route de Challans",
-    cp: "44270",
-    city: "MACHECOUL",
+    location: {
+      address: "ZI de la Seiglerie Route de Challans",
+      cp: "44270",
+      city: "MACHECOUL",
+    },
     email: "",
     phone: "02 40 78 52 28",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -2871,9 +3081,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "BIGMAT - SANSEAU MATERIAUX",
-    address: "Rue de Coray",
-    cp: "29140",
-    city: "ROSPORDEN",
+    location: {
+      address: "Rue de Coray",
+      cp: "29140",
+      city: "ROSPORDEN",
+    },
     email: "pierre.sanseau@gmail.com",
     phone: "02 98 59 22 02",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -2900,9 +3112,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "BIGMAT - SIMON MATERIAUX",
-    address: "48 Route d'Issoudun",
-    cp: "36120",
-    city: "SAINT AOUT",
+    location: {
+      address: "48 Route d'Issoudun",
+      cp: "36120",
+      city: "SAINT AOUT",
+    },
     email: "",
     phone: "02 54 36 28 11",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -2929,9 +3143,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "BILESIMO Claire",
-    address: "Serre Bellon",
-    cp: "5200",
-    city: "SAINT ANDRE D'EMBRUN",
+    location: {
+      address: "Serre Bellon",
+      cp: "5200",
+      city: "SAINT ANDRE D'EMBRUN",
+    },
     email: "claire.bilesimo@gmail.com",
     phone: "06 75 31 40 89",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -2958,9 +3174,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "BILLON",
-    address: "33 Chemin du Grand Bois",
-    cp: "69160",
-    city: "TASSIN LA DEMI LUNE",
+    location: {
+      address: "33 Chemin du Grand Bois",
+      cp: "69160",
+      city: "TASSIN LA DEMI LUNE",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -2987,9 +3205,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "BIZEUL",
-    address: "16 Rue des Peupliers",
-    cp: "44270",
-    city: "SAINT ETIENNE DE MER MORTE",
+    location: {
+      address: "16 Rue des Peupliers",
+      cp: "44270",
+      city: "SAINT ETIENNE DE MER MORTE",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -3016,9 +3236,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "BLAIN CONSTRUCTION",
-    address: "3 Rue de la Toscane",
-    cp: "44240",
-    city: "LA CHAPELLE SUR ERDRE",
+    location: {
+      address: "3 Rue de la Toscane",
+      cp: "44240",
+      city: "LA CHAPELLE SUR ERDRE",
+    },
     email: "",
     phone: "02 40 26 60 60",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -3045,9 +3267,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "BLANDIN",
-    address: "6 rue des Macareux",
-    cp: "44810",
-    city: "HERIC",
+    location: {
+      address: "6 rue des Macareux",
+      cp: "44810",
+      city: "HERIC",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -3074,9 +3298,12 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "BMSO SA",
-    address: "Service Traitement Administratif 15 Rue Bernard Palissy CS 30005",
-    cp: "45808",
-    city: "SAINT JEAN DE BRAYE CEDEX",
+    location: {
+      address:
+        "Service Traitement Administratif 15 Rue Bernard Palissy CS 30005",
+      cp: "45808",
+      city: "SAINT JEAN DE BRAYE CEDEX",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -3103,9 +3330,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "BOISSARD",
-    address: "23 Rue de la Douve Neuve",
-    cp: "44115",
-    city: "HAUTE GOULAINE",
+    location: {
+      address: "23 Rue de la Douve Neuve",
+      cp: "44115",
+      city: "HAUTE GOULAINE",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -3132,9 +3361,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "BOITELLE",
-    address: "4 Rue des Alouettes",
-    cp: "44220",
-    city: "COUERON",
+    location: {
+      address: "4 Rue des Alouettes",
+      cp: "44220",
+      city: "COUERON",
+    },
     email: "",
     phone: "06 07 15 19 30",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -3161,9 +3392,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "BORTOLI Architecture",
-    address: "24 bis, Rue Etienne Perrot",
-    cp: "38780",
-    city: "PONT EVEQUE",
+    location: {
+      address: "24 bis, Rue Etienne Perrot",
+      cp: "38780",
+      city: "PONT EVEQUE",
+    },
     email: "",
     phone: "04 74 20 94 87",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -3190,9 +3423,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "BOUAMOUD",
-    address: "Rue du Champ de Tir",
-    cp: "28320",
-    city: "GALLARDON",
+    location: {
+      address: "Rue du Champ de Tir",
+      cp: "28320",
+      city: "GALLARDON",
+    },
     email: "",
     phone: "06 34 45 56 04",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -3219,9 +3454,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "BOUDAUD",
-    address: "La Colassi�re",
-    cp: "44330",
-    city: "LA CHAPELLE HEULIN",
+    location: {
+      address: "La Colassi�re",
+      cp: "44330",
+      city: "LA CHAPELLE HEULIN",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -3248,9 +3485,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "BOUHADJEB",
-    address: "46 Rue du Commerce",
-    cp: "49230",
-    city: "TILLIERES",
+    location: {
+      address: "46 Rue du Commerce",
+      cp: "49230",
+      city: "TILLIERES",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -3277,9 +3516,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "BOURDIER",
-    address: "15 Route de Fouchault",
-    cp: "37190",
-    city: "VALLERES",
+    location: {
+      address: "15 Route de Fouchault",
+      cp: "37190",
+      city: "VALLERES",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -3306,9 +3547,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "BOUSSEAU",
-    address: "16 Rue du Clos du Paradis",
-    cp: "85600",
-    city: "SAINT GEORGES DE MONTAIGU",
+    location: {
+      address: "16 Rue du Clos du Paradis",
+      cp: "85600",
+      city: "SAINT GEORGES DE MONTAIGU",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -3335,9 +3578,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "BOUTTIER SARL P�re et Fils",
-    address: "L'Anneau",
-    cp: "72510",
-    city: "SAINT JEAN DE LA MOTTE",
+    location: {
+      address: "L'Anneau",
+      cp: "72510",
+      city: "SAINT JEAN DE LA MOTTE",
+    },
     email: "",
     phone: "02 43 45 05 78",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -3364,9 +3609,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "BR CONCEPT",
-    address: "140 Impasse de la Tour Varissan",
-    cp: "69700",
-    city: "GIVORS",
+    location: {
+      address: "140 Impasse de la Tour Varissan",
+      cp: "69700",
+      city: "GIVORS",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -3393,9 +3640,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "BRANQUART",
-    address: "7 Rue des Alisiers",
-    cp: "78220",
-    city: "VIROFLAY",
+    location: {
+      address: "7 Rue des Alisiers",
+      cp: "78220",
+      city: "VIROFLAY",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -3422,9 +3671,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "BRAUD GAGNIERE",
-    address: "35 Rue Sylvain Roy�",
-    cp: "44100",
-    city: "NANTES",
+    location: {
+      address: "35 Rue Sylvain Roy�",
+      cp: "44100",
+      city: "NANTES",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -3451,9 +3702,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "BRENON",
-    address: "141 La Biderie",
-    cp: "44340",
-    city: "LE LOROUX BOTTEREAU",
+    location: {
+      address: "141 La Biderie",
+      cp: "44340",
+      city: "LE LOROUX BOTTEREAU",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -3480,9 +3733,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "BRETEAUDEAU",
-    address: "23 bis Rue de la Maison Neuve Saint Andr� de la Marche",
-    cp: "49450",
-    city: "SEVREMOINE",
+    location: {
+      address: "23 bis Rue de la Maison Neuve Saint Andr� de la Marche",
+      cp: "49450",
+      city: "SEVREMOINE",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -3509,9 +3764,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "BRIAND",
-    address: "111 Laquais",
-    cp: "44810",
-    city: "HERIC",
+    location: {
+      address: "111 Laquais",
+      cp: "44810",
+      city: "HERIC",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -3538,9 +3795,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "BRISSON LEGOGUELIN",
-    address: "6 Rue des Ecoles Chaucre",
-    cp: "17190",
-    city: "SAINT GEORGES D'OLERON",
+    location: {
+      address: "6 Rue des Ecoles Chaucre",
+      cp: "17190",
+      city: "SAINT GEORGES D'OLERON",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -3567,9 +3826,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "BROCHARD - SCI ELOG",
-    address: "40 Rue de la Madeleine",
-    cp: "44190",
-    city: "CLISSON",
+    location: {
+      address: "40 Rue de la Madeleine",
+      cp: "44190",
+      city: "CLISSON",
+    },
     email: "brochardimmo@gmail.com",
     phone: "06 59 04 90 11",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -3596,9 +3857,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "BROSSEAU",
-    address: "34 Rue du Plessis",
-    cp: "44330",
-    city: "MOUZILLON",
+    location: {
+      address: "34 Rue du Plessis",
+      cp: "44330",
+      city: "MOUZILLON",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -3625,9 +3888,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "BRUCHET J. Architecture",
-    address: "38 Avenue de Grange Blanche",
-    cp: "69160",
-    city: "TASSIN LA DEMI LUNE",
+    location: {
+      address: "38 Avenue de Grange Blanche",
+      cp: "69160",
+      city: "TASSIN LA DEMI LUNE",
+    },
     email: "jbruchet.architecture@gmail.com",
     phone: "06 74 73 24 38",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -3654,9 +3919,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "BS7 IMMO",
-    address: "5 Impasse des Bl�s d'Or",
-    cp: "69360",
-    city: "TERNAY",
+    location: {
+      address: "5 Impasse des Bl�s d'Or",
+      cp: "69360",
+      city: "TERNAY",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -3683,9 +3950,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "BT Ma�onnerie",
-    address: "219 Chemin du Petit Cosset",
-    cp: "69640",
-    city: "city SUR JARNIOUX",
+    location: {
+      address: "219 Chemin du Petit Cosset",
+      cp: "69640",
+      city: "city SUR JARNIOUX",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -3712,9 +3981,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "BTG SCOT",
-    address: "Z.A. Les Ch�taigneraies 9 Rue des Noisetiers",
-    cp: "49270",
-    city: "LANDEMONT",
+    location: {
+      address: "Z.A. Les Ch�taigneraies 9 Rue des Noisetiers",
+      cp: "49270",
+      city: "LANDEMONT",
+    },
     email: "btg.scot@wanadoo.fr",
     phone: "02 40 98 71 25",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -3741,9 +4012,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "BUI",
-    address: "28 Rue Jean Jaur�s",
-    cp: "78330",
-    city: "FONTENAY LE FLEURY",
+    location: {
+      address: "28 Rue Jean Jaur�s",
+      cp: "78330",
+      city: "FONTENAY LE FLEURY",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -3770,9 +4043,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "BUREAU",
-    address: "17 Passage Louis Levesque",
-    cp: "44000",
-    city: "NANTES",
+    location: {
+      address: "17 Passage Louis Levesque",
+      cp: "44000",
+      city: "NANTES",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -3799,9 +4074,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "BURLOT",
-    address: "1 Le Kerdreuz",
-    cp: "22290",
-    city: "TREGUIDEL",
+    location: {
+      address: "1 Le Kerdreuz",
+      cp: "22290",
+      city: "TREGUIDEL",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -3828,9 +4105,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "BUROMAT",
-    address: "PA des Coteaux de Grand Lieu 1 Rue Jarlot",
-    cp: "44830",
-    city: "BOUAYE",
+    location: {
+      address: "PA des Coteaux de Grand Lieu 1 Rue Jarlot",
+      cp: "44830",
+      city: "BOUAYE",
+    },
     email: "",
     phone: "02 40 32 06 07",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -3857,9 +4136,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "BUZY CAMPOS",
-    address: "295 Chemin des Cotes",
-    cp: "69250",
-    city: "POLEYMIEUX AU MONT D'OR",
+    location: {
+      address: "295 Chemin des Cotes",
+      cp: "69250",
+      city: "POLEYMIEUX AU MONT D'OR",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -3886,9 +4167,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "C.I.S.",
-    address: "5 Rue du Meunier ZI du Moulin",
-    cp: "44880",
-    city: "SAUTRON",
+    location: {
+      address: "5 Rue du Meunier ZI du Moulin",
+      cp: "44880",
+      city: "SAUTRON",
+    },
     email: "info@c-i-s.fr",
     phone: "02 40 94 70 40",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -3915,9 +4198,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "C3P Constructions des 3 Provinces",
-    address: "Z.A. Le Bordage II BP. 60001",
-    cp: "85610",
-    city: "CUGAND",
+    location: {
+      address: "Z.A. Le Bordage II BP. 60001",
+      cp: "85610",
+      city: "CUGAND",
+    },
     email: "contact@c-3-p.fr",
     phone: "02 51 42 12 32",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -3944,9 +4229,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "C3P PROMOTION",
-    address: "ZA Le Bordage II",
-    cp: "85610",
-    city: "CUGAND",
+    location: {
+      address: "ZA Le Bordage II",
+      cp: "85610",
+      city: "CUGAND",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -3973,9 +4260,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "CABAT GROUPE",
-    address: "21 Rue de l'Atlantique",
-    cp: "44115",
-    city: "BASSE GOULAINE",
+    location: {
+      address: "21 Rue de l'Atlantique",
+      cp: "44115",
+      city: "BASSE GOULAINE",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -4002,9 +4291,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "CABINET DUPONT",
-    address: "2A Rue Jean Mermoz",
-    cp: "44115",
-    city: "HAUTE GOULAINE",
+    location: {
+      address: "2A Rue Jean Mermoz",
+      cp: "44115",
+      city: "HAUTE GOULAINE",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -4031,9 +4322,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "CABINET GASCOIN",
-    address: "297 Route du Loroux Bottereau",
-    cp: "44115",
-    city: "BASSE GOULAINE",
+    location: {
+      address: "297 Route du Loroux Bottereau",
+      cp: "44115",
+      city: "BASSE GOULAINE",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -4060,9 +4353,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "CALADE CONSTRUCTION BATIMENT (C.C.B.)",
-    address: "167-225 Avenue Th�odore Braun",
-    cp: "69400",
-    city: "cityFRANCHE SUR SAONE",
+    location: {
+      address: "167-225 Avenue Th�odore Braun",
+      cp: "69400",
+      city: "cityFRANCHE SUR SAONE",
+    },
     email: "",
     phone: "04 74 02 82 75",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -4089,9 +4384,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "CALAIS",
-    address: "29 Route de Saint Romain",
-    cp: "76430",
-    city: "TANCARcity",
+    location: {
+      address: "29 Route de Saint Romain",
+      cp: "76430",
+      city: "TANCARcity",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -4118,9 +4415,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "CARRE BATIMENT",
-    address: "5 Passage Fleury Jay",
-    cp: "69520",
-    city: "GRIGNY",
+    location: {
+      address: "5 Passage Fleury Jay",
+      cp: "69520",
+      city: "GRIGNY",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -4147,9 +4446,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "CARRE CHARPENTES",
-    address: "La Thibouvais",
-    cp: "22250",
-    city: "PLUMAUGAT",
+    location: {
+      address: "La Thibouvais",
+      cp: "22250",
+      city: "PLUMAUGAT",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -4176,9 +4477,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "CARRE Coop�rative",
-    address: "Z.A. de la Motte",
-    cp: "37130",
-    city: "LIGNIERES DE TOURAINE",
+    location: {
+      address: "Z.A. de la Motte",
+      cp: "37130",
+      city: "LIGNIERES DE TOURAINE",
+    },
     email: "carre.37anim@orange.fr",
     phone: "02 47 96 83 83",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -4205,9 +4508,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "CBH HABITAT",
-    address: "48 bis Avenue de Nantes",
-    cp: "44140",
-    city: "AIGREFEUILLE SUR MAINE",
+    location: {
+      address: "48 bis Avenue de Nantes",
+      cp: "44140",
+      city: "AIGREFEUILLE SUR MAINE",
+    },
     email: "contact@cbh-habitat.fr",
     phone: "02 40 04 63 44",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -4234,9 +4539,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "CELIK",
-    address: "6 Place des Th�baudi�res",
-    cp: "44800",
-    city: "SAINT HERBLAIN",
+    location: {
+      address: "6 Place des Th�baudi�res",
+      cp: "44800",
+      city: "SAINT HERBLAIN",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -4263,9 +4570,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "CHAIZE",
-    address: "21 rue de l'Orangeraie",
-    cp: "37390",
-    city: "METTRAY",
+    location: {
+      address: "21 rue de l'Orangeraie",
+      cp: "37390",
+      city: "METTRAY",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -4292,9 +4601,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "CHARRIER Entreprise",
-    address: "All�e des Sapins",
-    cp: "44470",
-    city: "CARQUEFOU",
+    location: {
+      address: "All�e des Sapins",
+      cp: "44470",
+      city: "CARQUEFOU",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -4321,9 +4632,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "CHARRIER S�bastien SARL",
-    address: "2 Le Patis",
-    cp: "44190",
-    city: "GORGES",
+    location: {
+      address: "2 Le Patis",
+      cp: "44190",
+      city: "GORGES",
+    },
     email: "cs.carrelage@outlook.fr",
     phone: "06 29 37 86 75",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -4350,9 +4663,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "CHAUSSON MATERIAUX",
-    address: "60 Rue de Fenouillet BP. 35140 Centre Commercial Hexagone",
-    cp: "31142",
-    city: "SAINT ALBAN CEDEX",
+    location: {
+      address: "60 Rue de Fenouillet BP. 35140 Centre Commercial Hexagone",
+      cp: "31142",
+      city: "SAINT ALBAN CEDEX",
+    },
     email: "",
     phone: "05 61 37 37 37",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -4379,9 +4694,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "CHENAIS BATIMENT",
-    address: "23 Route de Barbechat ZI de la Fid�le BP. 14",
-    cp: "44430",
-    city: "LE LOROUX BOTTEREAU",
+    location: {
+      address: "23 Route de Barbechat ZI de la Fid�le BP. 14",
+      cp: "44430",
+      city: "LE LOROUX BOTTEREAU",
+    },
     email: "",
     phone: "02 40 03 79 25",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -4408,9 +4725,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "CHEVALLIER CONSTRUCTION",
-    address: "ZA du Petit Gu�",
-    cp: "49440",
-    city: "ANGRIE",
+    location: {
+      address: "ZA du Petit Gu�",
+      cp: "49440",
+      city: "ANGRIE",
+    },
     email: "patrice@chevallierconstruction.fr",
     phone: "02 41 92 95 98",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -4437,9 +4756,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "CHEVALLIER ROBINS",
-    address: "4 Rue du Stade",
-    cp: "44190",
-    city: "SAINT HILAIRE DE CLISSON",
+    location: {
+      address: "4 Rue du Stade",
+      cp: "44190",
+      city: "SAINT HILAIRE DE CLISSON",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -4466,9 +4787,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "CHICAULT",
-    address: "22 Rue Auguste Renoir",
-    cp: "87000",
-    city: "LIMOGES",
+    location: {
+      address: "22 Rue Auguste Renoir",
+      cp: "87000",
+      city: "LIMOGES",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -4495,9 +4818,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "CHIVERT",
-    address: "7 Chemin de la Brizasserie",
-    cp: "37130",
-    city: "LANGEAIS",
+    location: {
+      address: "7 Chemin de la Brizasserie",
+      cp: "37130",
+      city: "LANGEAIS",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -4524,9 +4849,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "CHOLET AGGLOS",
-    address: "ZA Rue de l'Europe BP. 36",
-    cp: "49280",
-    city: "LA SEGUINIERE",
+    location: {
+      address: "ZA Rue de l'Europe BP. 36",
+      cp: "49280",
+      city: "LA SEGUINIERE",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -4553,9 +4880,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "CIVEL",
-    address: "2 Place Ren� Bouhier",
-    cp: "44000",
-    city: "NANTES",
+    location: {
+      address: "2 Place Ren� Bouhier",
+      cp: "44000",
+      city: "NANTES",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -4582,9 +4911,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "CLAYEUX SOLIS",
-    address: "13-15 Rue Am�d�e Boll�e",
-    cp: "92500",
-    city: "RUEIL MALMAISON",
+    location: {
+      address: "13-15 Rue Am�d�e Boll�e",
+      cp: "92500",
+      city: "RUEIL MALMAISON",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -4611,9 +4942,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "CLISSON SEVRE ET MAINE AGGLO",
-    address: "15 Rue des Malifestes CS 89409",
-    cp: "44194",
-    city: "CLISSON CEDEX",
+    location: {
+      address: "15 Rue des Malifestes CS 89409",
+      cp: "44194",
+      city: "CLISSON CEDEX",
+    },
     email: "",
     phone: "02 40 54 75 15",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -4640,9 +4973,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "CLKD Entreprise",
-    address: "19 Route de Marseille",
-    cp: "38150",
-    city: "CHANAS",
+    location: {
+      address: "19 Route de Marseille",
+      cp: "38150",
+      city: "CHANAS",
+    },
     email: "clkd@gmail.com",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -4669,9 +5004,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "CMO ARNAUD BABIN",
-    address: "21 rue Robert d'Arbrissel Chemill�",
-    cp: "49210",
-    city: "CHEMILLE EN ANJOU",
+    location: {
+      address: "21 rue Robert d'Arbrissel Chemill�",
+      cp: "49210",
+      city: "CHEMILLE EN ANJOU",
+    },
     email: "a.babin.cmo@gmail.com",
     phone: "06 08 06 72 58",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -4698,9 +5035,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "COBAT",
-    address: "ZA La Cousini�re",
-    cp: "41360",
-    city: "EPUISAY",
+    location: {
+      address: "ZA La Cousini�re",
+      cp: "41360",
+      city: "EPUISAY",
+    },
     email: "",
     phone: "02 72 16 49 87",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -4727,9 +5066,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "COBAT",
-    address: "18 Rue du Stade Saint Exup�ry",
-    cp: "72100",
-    city: "LE MANS",
+    location: {
+      address: "18 Rue du Stade Saint Exup�ry",
+      cp: "72100",
+      city: "LE MANS",
+    },
     email: "a.mautrait@cobat.coop",
     phone: "02 72 16 46 42",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -4756,9 +5097,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "COMMUNE DE LE PIN",
-    address: "11 Rue du Sapin",
-    cp: "44450",
-    city: "LE PIN",
+    location: {
+      address: "11 Rue du Sapin",
+      cp: "44450",
+      city: "LE PIN",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -4785,9 +5128,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "COMPAGNIE DE CONSTRUCTION",
-    address: "5 / 7 Chemin du Tronchon",
-    cp: "69570",
-    city: "DARDILLY",
+    location: {
+      address: "5 / 7 Chemin du Tronchon",
+      cp: "69570",
+      city: "DARDILLY",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -4814,9 +5159,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "CONSTRUCTION NANTAISE",
-    address: "Rue du Trait� de Maastricht ZAC de l'Europe",
-    cp: "44210",
-    city: "PORNIC",
+    location: {
+      address: "Rue du Trait� de Maastricht ZAC de l'Europe",
+      cp: "44210",
+      city: "PORNIC",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -4843,9 +5190,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "Copropri�t�",
-    address: "Impasse des terres 5 Rue des Passeloup Liergues",
-    cp: "69400",
-    city: "PORTE DES PIERRES DOREES",
+    location: {
+      address: "Impasse des terres 5 Rue des Passeloup Liergues",
+      cp: "69400",
+      city: "PORTE DES PIERRES DOREES",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -4872,9 +5221,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "CORBREJAUD",
-    address: "5 Rue du Nil",
-    cp: "44470",
-    city: "CARQUEFOU",
+    location: {
+      address: "5 Rue du Nil",
+      cp: "44470",
+      city: "CARQUEFOU",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -4901,9 +5252,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "CORNEYLLIE LE TENDRE",
-    address: "21 Rue Jules Piedeleu",
-    cp: "44100",
-    city: "NANTES",
+    location: {
+      address: "21 Rue Jules Piedeleu",
+      cp: "44100",
+      city: "NANTES",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -4930,9 +5283,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "COSTA LE NAVEOS",
-    address: "118 Rue des Renardi�res",
-    cp: "44100",
-    city: "NANTES",
+    location: {
+      address: "118 Rue des Renardi�res",
+      cp: "44100",
+      city: "NANTES",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -4959,9 +5314,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "COULON FRERES",
-    address: "3 Impasse des Entrepreneurs",
-    cp: "44690",
-    city: "MONNIERES",
+    location: {
+      address: "3 Impasse des Entrepreneurs",
+      cp: "44690",
+      city: "MONNIERES",
+    },
     email: "contact@coulonfreres.com",
     phone: "02 40 54 60 56",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -4988,9 +5345,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "COULON MUSIAL",
-    address: "6 Impasse des M�riers",
-    cp: "44115",
-    city: "HAUTE GOULAINE",
+    location: {
+      address: "6 Impasse des M�riers",
+      cp: "44115",
+      city: "HAUTE GOULAINE",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -5017,9 +5376,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "COURCELLE Camille Architecte",
-    address: "8 bis Rue Poterie",
-    cp: "41100",
-    city: "VENDOME",
+    location: {
+      address: "8 bis Rue Poterie",
+      cp: "41100",
+      city: "VENDOME",
+    },
     email: "contact@camillecourcellearchitecte.com",
     phone: "02 54 80 48 39",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -5046,9 +5407,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "COURILLEAU NERAULT",
-    address: "21 Cours Saint Antoine",
-    cp: "79250",
-    city: "NUEIL LES AUBIERS",
+    location: {
+      address: "21 Cours Saint Antoine",
+      cp: "79250",
+      city: "NUEIL LES AUBIERS",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -5075,9 +5438,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "COUTHOUIS",
-    address: "91 Rue Ren� Dumont",
-    cp: "44220",
-    city: "COUERON",
+    location: {
+      address: "91 Rue Ren� Dumont",
+      cp: "44220",
+      city: "COUERON",
+    },
     email: "",
     phone: "06 63 95 16 49",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -5104,9 +5469,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "COVAL",
-    address: "Le Limeur BP. 74328",
-    cp: "44243",
-    city: "LA CHAPELLE SUR ERDRE CEDEX",
+    location: {
+      address: "Le Limeur BP. 74328",
+      cp: "44243",
+      city: "LA CHAPELLE SUR ERDRE CEDEX",
+    },
     email: "coval44@wanadoo.fr",
     phone: "02 40 89 24 33",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -5133,9 +5500,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "CROTHERS",
-    address: "18 Avenue Lorne",
-    cp: "92700",
-    city: "COLOMBES",
+    location: {
+      address: "18 Avenue Lorne",
+      cp: "92700",
+      city: "COLOMBES",
+    },
     email: "",
     phone: "06 52 93 72 40",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -5162,9 +5531,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "D'ALMEIDA BOURSIN",
-    address: "1 Impasse des Puisatiers",
-    cp: "44120",
-    city: "VERTOU",
+    location: {
+      address: "1 Impasse des Puisatiers",
+      cp: "44120",
+      city: "VERTOU",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -5191,9 +5562,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "DAVIAUD",
-    address: "2 Rue de la Marne Bat 1 / Appartement B001",
-    cp: "85600",
-    city: "MONTAIGU VENDEE",
+    location: {
+      address: "2 Rue de la Marne Bat 1 / Appartement B001",
+      cp: "85600",
+      city: "MONTAIGU VENDEE",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -5220,9 +5593,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "DAVID",
-    address: "23 Chemin de Nantes",
-    cp: "44140",
-    city: "GENESTON",
+    location: {
+      address: "23 Chemin de Nantes",
+      cp: "44140",
+      city: "GENESTON",
+    },
     email: "",
     phone: "06 42 29 13 13",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -5249,9 +5624,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "DAVID BRIAND",
-    address: "21 Bd des Tribunes",
-    cp: "44300",
-    city: "NANTES",
+    location: {
+      address: "21 Bd des Tribunes",
+      cp: "44300",
+      city: "NANTES",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -5278,9 +5655,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "DB CONCEPT",
-    address: "1 bis Chez Leroux",
-    cp: "44140",
-    city: "AIGREFEUILLE SUR MAINE",
+    location: {
+      address: "1 bis Chez Leroux",
+      cp: "44140",
+      city: "AIGREFEUILLE SUR MAINE",
+    },
     email: "contact@dbconcept.fr",
     phone: "02 40 06 78 63",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -5307,9 +5686,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "DBC Architecture & Ma�trise d'Oeuvre",
-    address: "3 Rue de l'H�tel de city",
-    cp: "44310",
-    city: "SAINT PHILBERT DE GRANDLIEU",
+    location: {
+      address: "3 Rue de l'H�tel de city",
+      cp: "44310",
+      city: "SAINT PHILBERT DE GRANDLIEU",
+    },
     email: "dbc.maisons@yahoo.fr",
     phone: "02 40 02 83 90",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -5336,9 +5717,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "DCH Soci�t�",
-    address: "4 Avenue Alexandre Goupil",
-    cp: "44700",
-    city: "ORVAULT",
+    location: {
+      address: "4 Avenue Alexandre Goupil",
+      cp: "44700",
+      city: "ORVAULT",
+    },
     email: "",
     phone: "09 80 96 23 86",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -5365,9 +5748,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "DE LA GIRODAY",
-    address: "La Minaudi�re",
-    cp: "45510",
-    city: "VIENNE SUR VAL",
+    location: {
+      address: "La Minaudi�re",
+      cp: "45510",
+      city: "VIENNE SUR VAL",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -5394,9 +5779,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "DE SCHUYTENEER",
-    address: "31 Rue du Clos des Cavaliers",
-    cp: "86000",
-    city: "POITIERS",
+    location: {
+      address: "31 Rue du Clos des Cavaliers",
+      cp: "86000",
+      city: "POITIERS",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -5423,9 +5810,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "DECARPENTRY LEBORGNE",
-    address: "48 Chemin des Garniers",
-    cp: "44300",
-    city: "NANTES",
+    location: {
+      address: "48 Chemin des Garniers",
+      cp: "44300",
+      city: "NANTES",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -5452,9 +5841,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "DEFOND Ma�onnerie",
-    address: "9 Rue L�onard de Vinci Saint Andr� de la Marche",
-    cp: "49450",
-    city: "SEVREMOINE",
+    location: {
+      address: "9 Rue L�onard de Vinci Saint Andr� de la Marche",
+      cp: "49450",
+      city: "SEVREMOINE",
+    },
     email: "",
     phone: "02 51 56 54 53",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -5481,9 +5872,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "DELAPRE GARINO",
-    address: "10 Rue de la Taill�e",
-    cp: "44310",
-    city: "SAINT LUMINE DE COUTAIS",
+    location: {
+      address: "10 Rue de la Taill�e",
+      cp: "44310",
+      city: "SAINT LUMINE DE COUTAIS",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -5510,9 +5903,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "DELMAS",
-    address: "6 Rue Louis Renard",
-    cp: "86240",
-    city: "SMARVES",
+    location: {
+      address: "6 Rue Louis Renard",
+      cp: "86240",
+      city: "SMARVES",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -5539,9 +5934,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "DEMEURES NANTAISES",
-    address: "2 Rue Sainte Marguerite",
-    cp: "44800",
-    city: "SAINT HERBLAIN",
+    location: {
+      address: "2 Rue Sainte Marguerite",
+      cp: "44800",
+      city: "SAINT HERBLAIN",
+    },
     email: "contact@demeuresnantaises.com",
     phone: "02 40 74 17 56",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -5568,9 +5965,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "DEPIERRE DENICOLINI",
-    address: "All�e Christine de Pizan",
-    cp: "37270",
-    city: "MONTLOUIS SUR LOIRE",
+    location: {
+      address: "All�e Christine de Pizan",
+      cp: "37270",
+      city: "MONTLOUIS SUR LOIRE",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -5597,9 +5996,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "DERVELOY",
-    address: "Les Essarts",
-    cp: "72270",
-    city: "ARTHEZE",
+    location: {
+      address: "Les Essarts",
+      cp: "72270",
+      city: "ARTHEZE",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -5626,9 +6027,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "DESIGN HABITAT",
-    address: "",
-    cp: "",
-    city: "",
+    location: {
+      address: "",
+      cp: "",
+      city: "",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -5655,9 +6058,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "DESORMEAUX SARL",
-    address: "203 La Croix",
-    cp: "44440",
-    city: "TEILLE",
+    location: {
+      address: "203 La Croix",
+      cp: "44440",
+      city: "TEILLE",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -5684,9 +6089,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "DESRIVIERES BESIN",
-    address: "6 Impasse des Loriots",
-    cp: "44115",
-    city: "HAUTE GOULAINE",
+    location: {
+      address: "6 Impasse des Loriots",
+      cp: "44115",
+      city: "HAUTE GOULAINE",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -5713,9 +6120,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "DETIMMO Soci�t�",
-    address: "19 Boulevard Jean Rose",
-    cp: "77100",
-    city: "MEAUX",
+    location: {
+      address: "19 Boulevard Jean Rose",
+      cp: "77100",
+      city: "MEAUX",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -5742,9 +6151,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "DEUX POINTS Architectes SARL",
-    address: "60 Rue Serpenoise",
-    cp: "57000",
-    city: "METZ",
+    location: {
+      address: "60 Rue Serpenoise",
+      cp: "57000",
+      city: "METZ",
+    },
     email: "ew@deuxpointsarchitectes.fr",
     phone: "03 87 16 09 72",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -5771,9 +6182,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "DHOTEL",
-    address: "Les Eaux",
-    cp: "85350",
-    city: "ILE D'YEU",
+    location: {
+      address: "Les Eaux",
+      cp: "85350",
+      city: "ILE D'YEU",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -5800,9 +6213,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "DIBARGINTZA",
-    address: "DIBAR Battitte",
-    cp: "64250",
-    city: "CAMBO LES BAINS",
+    location: {
+      address: "DIBAR Battitte",
+      cp: "64250",
+      city: "CAMBO LES BAINS",
+    },
     email: "",
     phone: "06 74 33 15 12",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -5829,9 +6244,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "DICKINSON",
-    address: "7 Rue Sim�on Foucault",
-    cp: "44400",
-    city: "REZE",
+    location: {
+      address: "7 Rue Sim�on Foucault",
+      cp: "44400",
+      city: "REZE",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -5858,9 +6275,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "DIEUDE VIAUD",
-    address: "33 Rue Joseph et Lucien Leclerc",
-    cp: "44400",
-    city: "REZE",
+    location: {
+      address: "33 Rue Joseph et Lucien Leclerc",
+      cp: "44400",
+      city: "REZE",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -5887,9 +6306,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "DIRAND",
-    address: "17 Rue Paupi�re",
-    cp: "69270",
-    city: "COUZON AU MONT D'OR",
+    location: {
+      address: "17 Rue Paupi�re",
+      cp: "69270",
+      city: "COUZON AU MONT D'OR",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -5916,9 +6337,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "DUBOC",
-    address: "412 Rue des Landes de la Pl�e",
-    cp: "44115",
-    city: "BASSE GOULAINE",
+    location: {
+      address: "412 Rue des Landes de la Pl�e",
+      cp: "44115",
+      city: "BASSE GOULAINE",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -5945,9 +6368,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "DUBOIS",
-    address: "890 Chemin Les Hauts du Lan�on",
-    cp: "83110",
-    city: "SANARY SUR MER",
+    location: {
+      address: "890 Chemin Les Hauts du Lan�on",
+      cp: "83110",
+      city: "SANARY SUR MER",
+    },
     email: "sdubois90@me.com",
     phone: "06 23 02 76 99",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -5974,9 +6399,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "DUBOIS PONTHIEUX",
-    address: "13 route de Marennes",
-    cp: "69360",
-    city: "COMMUNAY",
+    location: {
+      address: "13 route de Marennes",
+      cp: "69360",
+      city: "COMMUNAY",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -6003,9 +6430,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "DUBROCA BATIMENT",
-    address: "5 Rue Bazter Bidea Z.A. de Lana",
-    cp: "64210",
-    city: "BIDART",
+    location: {
+      address: "5 Rue Bazter Bidea Z.A. de Lana",
+      cp: "64210",
+      city: "BIDART",
+    },
     email: "",
     phone: "05 59 26 34 75",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -6032,9 +6461,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "DUGAST",
-    address: "2 Rue Bruneau Trentemoult",
-    cp: "44400",
-    city: "REZE",
+    location: {
+      address: "2 Rue Bruneau Trentemoult",
+      cp: "44400",
+      city: "REZE",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -6061,9 +6492,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "DUGAST BLANCHARD",
-    address: "3 Rue du Plessis Guerry",
-    cp: "44330",
-    city: "LE PALLET",
+    location: {
+      address: "3 Rue du Plessis Guerry",
+      cp: "44330",
+      city: "LE PALLET",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -6090,9 +6523,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "DUPUY Emilie Atelier Architecte",
-    address: "18 Route de Pont Caffino",
-    cp: "44120",
-    city: "VERTOU",
+    location: {
+      address: "18 Route de Pont Caffino",
+      cp: "44120",
+      city: "VERTOU",
+    },
     email: "emiliedupuy@yahoo.fr",
     phone: "09 81 03 31 88",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -6119,9 +6554,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "E-LOFT",
-    address: "14 Avenue des Ch�telets",
-    cp: "22440",
-    city: "PLOUFRAGAN",
+    location: {
+      address: "14 Avenue des Ch�telets",
+      cp: "22440",
+      city: "PLOUFRAGAN",
+    },
     email: "",
     phone: "02 96 72 66 60",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -6148,9 +6585,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "E.S.T. CONSTRUCTION",
-    address: "La Persilli�re Rue de la Paperie",
-    cp: "49124",
-    city: "SAINT BARTHELEMY D'ANJOU",
+    location: {
+      address: "La Persilli�re Rue de la Paperie",
+      cp: "49124",
+      city: "SAINT BARTHELEMY D'ANJOU",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -6177,9 +6616,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "EBA - ENTREPRISE DE BATIMENT ANGLOY",
-    address: "Les Pyramides  4 Route de Pitoys",
-    cp: "64600",
-    city: "ANGLET",
+    location: {
+      address: "Les Pyramides  4 Route de Pitoys",
+      cp: "64600",
+      city: "ANGLET",
+    },
     email: "bruno.kerherve@eba-sas.fr",
     phone: "05 59 52 57 57",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -6206,9 +6647,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "ECLUSE INVEST",
-    address: "14 Avenue des Chatelets",
-    cp: "22440",
-    city: "PLOUFRAGAN",
+    location: {
+      address: "14 Avenue des Chatelets",
+      cp: "22440",
+      city: "PLOUFRAGAN",
+    },
     email: "",
     phone: "06 48 27 70 10",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -6235,9 +6678,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "ECOBAT",
-    address: "66 Bd Bessi�res",
-    cp: "75017",
-    city: "PARIS",
+    location: {
+      address: "66 Bd Bessi�res",
+      cp: "75017",
+      city: "PARIS",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -6264,10 +6709,12 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "EGIS",
-    address:
-      "ZAC de la Courrouze Immeuble Eolios, 1er �tage, 3 Rue Louis Braille",
-    cp: "35136",
-    city: "SAINT JACQUES DE LA LANDE",
+    location: {
+      address:
+        "ZAC de la Courrouze Immeuble Eolios, 1er �tage, 3 Rue Louis Braille",
+      cp: "35136",
+      city: "SAINT JACQUES DE LA LANDE",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -6294,9 +6741,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "EL ABBOUNI Hicham",
-    address: "8b Rue des Fr�res Paquet",
-    cp: "21121",
-    city: "FONTAINE LES DIJON",
+    location: {
+      address: "8b Rue des Fr�res Paquet",
+      cp: "21121",
+      city: "FONTAINE LES DIJON",
+    },
     email: "chami0500@yahoo.fr",
     phone: "06 58 87 14 06",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -6323,9 +6772,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "ENARD",
-    address: "69 Cours Desbiey Apt24",
-    cp: "33120",
-    city: "ARCACHON",
+    location: {
+      address: "69 Cours Desbiey Apt24",
+      cp: "33120",
+      city: "ARCACHON",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -6352,9 +6803,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "Entreprise JOIGNEAU C�dric",
-    address: "17 Rue Grand Jean",
-    cp: "40220",
-    city: "TARNOS",
+    location: {
+      address: "17 Rue Grand Jean",
+      cp: "40220",
+      city: "TARNOS",
+    },
     email: "",
     phone: "06 71 21 14 86",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -6381,9 +6834,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "Entreprise JOSSE",
-    address: "5 Rue du Clos Vaillant",
-    cp: "44410",
-    city: "LA CHAPELLE DES MARAIS",
+    location: {
+      address: "5 Rue du Clos Vaillant",
+      cp: "44410",
+      city: "LA CHAPELLE DES MARAIS",
+    },
     email: "",
     phone: "02 40 53 20 10",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -6410,9 +6865,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "ERAUD DROUIN",
-    address: "8, La Renourie",
-    cp: "44680",
-    city: "SAINT MARS DE COUTAIS",
+    location: {
+      address: "8, La Renourie",
+      cp: "44680",
+      city: "SAINT MARS DE COUTAIS",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -6439,9 +6896,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "ESPACE 21 CONSTRUCTION",
-    address: "1993 ZI Evre et Loire",
-    cp: "49600",
-    city: "BEAUPREAU EN MAUGES",
+    location: {
+      address: "1993 ZI Evre et Loire",
+      cp: "49600",
+      city: "BEAUPREAU EN MAUGES",
+    },
     email: "espace21@orange.fr",
     phone: "02 41 64 20 46",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -6468,9 +6927,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "ETHIC Architecture",
-    address: "GUYLLIERMINETTI Julie 4 Chemin Notre-Dame des Neiges",
-    cp: "73100",
-    city: "MOUXY",
+    location: {
+      address: "GUYLLIERMINETTI Julie 4 Chemin Notre-Dame des Neiges",
+      cp: "73100",
+      city: "MOUXY",
+    },
     email: "ethicarchi@gmail.com",
     phone: "06 81 70 52 46",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -6497,9 +6958,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "EURL Anita BONNIER",
-    address: "La G�gaudais",
-    cp: "44660",
-    city: "RUFFIGNE",
+    location: {
+      address: "La G�gaudais",
+      cp: "44660",
+      city: "RUFFIGNE",
+    },
     email: "anitabonnier@orange.fr",
     phone: "09 61 47 61 02",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -6526,9 +6989,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "EXAMETAL",
-    address: "16 BOULEVARD JOLIOT CURIE",
-    cp: "44200",
-    city: "NANTES",
+    location: {
+      address: "16 BOULEVARD JOLIOT CURIE",
+      cp: "44200",
+      city: "NANTES",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -6555,9 +7020,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "FARCY Alexandre",
-    address: "422 Chemin des Brosses Lieu-dit La Petite B�cane",
-    cp: "72470",
-    city: "FATINES",
+    location: {
+      address: "422 Chemin des Brosses Lieu-dit La Petite B�cane",
+      cp: "72470",
+      city: "FATINES",
+    },
     email: "",
     phone: "07 60 68 97 36",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -6584,9 +7051,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "FEDERALY CONSTRUCTION",
-    address: "90 Avenue Marius Berliet",
-    cp: "69970",
-    city: "CHAPONNAY",
+    location: {
+      address: "90 Avenue Marius Berliet",
+      cp: "69970",
+      city: "CHAPONNAY",
+    },
     email: "",
     phone: "04 78 51 91 93",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -6613,9 +7082,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "FELLAH",
-    address: "33 bis Chemin de la Savaudi�re",
-    cp: "44470",
-    city: "CARQUEFOU",
+    location: {
+      address: "33 bis Chemin de la Savaudi�re",
+      cp: "44470",
+      city: "CARQUEFOU",
+    },
     email: "",
     phone: "06 49 77 39 57",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -6642,9 +7113,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "FERGERE",
-    address: "220 Rue de Saint Cyr",
-    cp: "69009",
-    city: "LYON",
+    location: {
+      address: "220 Rue de Saint Cyr",
+      cp: "69009",
+      city: "LYON",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -6671,9 +7144,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "FERNOUX",
-    address: "11 Rue du Fr�ne",
-    cp: "44119",
-    city: "GRANDCHAMPS DES FONTAINES",
+    location: {
+      address: "11 Rue du Fr�ne",
+      cp: "44119",
+      city: "GRANDCHAMPS DES FONTAINES",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -6700,9 +7175,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "FINCATO GILLET",
-    address: "13 Rue du Pilet",
-    cp: "86440",
-    city: "MIGNE AUXANCES",
+    location: {
+      address: "13 Rue du Pilet",
+      cp: "86440",
+      city: "MIGNE AUXANCES",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -6729,9 +7206,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "FORMAVENTE",
-    address: "415 Rue des Pinsons",
-    cp: "69400",
-    city: "ARNAS",
+    location: {
+      address: "415 Rue des Pinsons",
+      cp: "69400",
+      city: "ARNAS",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -6758,9 +7237,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "FOUGERAY MOUSSET",
-    address: "5 Chemin de la Ram�e",
-    cp: "44120",
-    city: "VERTOU",
+    location: {
+      address: "5 Chemin de la Ram�e",
+      cp: "44120",
+      city: "VERTOU",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -6787,9 +7268,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "FOUGERE COUFFIN",
-    address: "2 Rue Madeleine Bres",
-    cp: "44800",
-    city: "SAINT HERBLAIN",
+    location: {
+      address: "2 Rue Madeleine Bres",
+      cp: "44800",
+      city: "SAINT HERBLAIN",
+    },
     email: "",
     phone: "06 80 89 13 51",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -6816,9 +7299,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "FP HABITAT - FLORENT",
-    address: "5 All�e de la Grande Treille",
-    cp: "35000",
-    city: "RENNES",
+    location: {
+      address: "5 All�e de la Grande Treille",
+      cp: "35000",
+      city: "RENNES",
+    },
     email: "p.florent95@gmail.com",
     phone: "06 04 41 93 21",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -6845,9 +7330,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "FRANPRIX",
-    address: "123 Quai Jules Guesde",
-    cp: "94400",
-    city: "VITRY SUR SEINE",
+    location: {
+      address: "123 Quai Jules Guesde",
+      cp: "94400",
+      city: "VITRY SUR SEINE",
+    },
     email: "mgrimaudrobert@franprix.fr",
     phone: "06 75 14 85 61",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -6874,9 +7361,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "FRAPPIER Ma�onnerie",
-    address: "34 Rue des Tisserands Geste",
-    cp: "49600",
-    city: "BEAUPREAU EN MAUGES",
+    location: {
+      address: "34 Rue des Tisserands Geste",
+      cp: "49600",
+      city: "BEAUPREAU EN MAUGES",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -6903,9 +7392,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "FRITSCH IMMOBILIER",
-    address: "557 Rue Pierre Morin",
-    cp: "69400",
-    city: "cityFRANCHE SUR SAONE",
+    location: {
+      address: "557 Rue Pierre Morin",
+      cp: "69400",
+      city: "cityFRANCHE SUR SAONE",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -6932,9 +7423,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "FUSILIER",
-    address: "41A, Boulevard Fran�ois Mitterand",
-    cp: "44800",
-    city: "SAINT HERBLAIN",
+    location: {
+      address: "41A, Boulevard Fran�ois Mitterand",
+      cp: "44800",
+      city: "SAINT HERBLAIN",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -6961,9 +7454,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "G.M. CONSTRUCTION",
-    address: "3 Rue Le Corbusier",
-    cp: "49300",
-    city: "CHOLET",
+    location: {
+      address: "3 Rue Le Corbusier",
+      cp: "49300",
+      city: "CHOLET",
+    },
     email: "gmconstruction49@gmail.com",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -6990,9 +7485,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "GAILLARD",
-    address: "155 Rue Fran�ois-Ren� de Chateaubriand",
-    cp: "44470",
-    city: "CARQUEFOU",
+    location: {
+      address: "155 Rue Fran�ois-Ren� de Chateaubriand",
+      cp: "44470",
+      city: "CARQUEFOU",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -7019,9 +7516,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "GAPANTE Architecte d'Int�rieur",
-    address: "Lise Moutard 73 Rue de M�nilmontant",
-    cp: "75020",
-    city: "PARIS",
+    location: {
+      address: "Lise Moutard 73 Rue de M�nilmontant",
+      cp: "75020",
+      city: "PARIS",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -7048,9 +7547,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "GARNIER",
-    address: "5 Rue du Clos du Coteau",
-    cp: "44120",
-    city: "VERTOU",
+    location: {
+      address: "5 Rue du Clos du Coteau",
+      cp: "44120",
+      city: "VERTOU",
+    },
     email: "rene.garnier990@orange.fr",
     phone: "06 71 03 63 17",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -7077,9 +7578,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "GATEAU",
-    address: "4 Rue du 19 mars 1962",
-    cp: "17230",
-    city: "ANDILLY",
+    location: {
+      address: "4 Rue du 19 mars 1962",
+      cp: "17230",
+      city: "ANDILLY",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -7106,9 +7609,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "GAUTIER",
-    address: "14 Boulevard des Manouvriers",
-    cp: "53810",
-    city: "CHANGE",
+    location: {
+      address: "14 Boulevard des Manouvriers",
+      cp: "53810",
+      city: "CHANGE",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -7135,9 +7640,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "GAUTIER Guy Architecture",
-    address: "17 ter, Rue du Parc",
-    cp: "49122",
-    city: "LE MAY SUR EVRE",
+    location: {
+      address: "17 ter, Rue du Parc",
+      cp: "49122",
+      city: "LE MAY SUR EVRE",
+    },
     email: "",
     phone: "02 41 56 77 93",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -7164,9 +7671,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "GAUVRIT",
-    address: "10 Chemin du Cracaud",
-    cp: "44210",
-    city: "PORNIC",
+    location: {
+      address: "10 Chemin du Cracaud",
+      cp: "44210",
+      city: "PORNIC",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -7193,9 +7702,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "GAVAGGIO JUILLARD",
-    address: "8 Rue des Fr�res Montgolfier",
-    cp: "56700",
-    city: "HENNEBONT",
+    location: {
+      address: "8 Rue des Fr�res Montgolfier",
+      cp: "56700",
+      city: "HENNEBONT",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -7222,9 +7733,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "GAVARD",
-    address: "27 La Canqueti�re Bouff�r�",
-    cp: "85600",
-    city: "MONTAIGU VENDEE",
+    location: {
+      address: "27 La Canqueti�re Bouff�r�",
+      cp: "85600",
+      city: "MONTAIGU VENDEE",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -7251,9 +7764,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "GEDIMAT DURRUTY MATERIAUX",
-    address: "D�partementale 932",
-    cp: "64480",
-    city: "LARRESSORE",
+    location: {
+      address: "D�partementale 932",
+      cp: "64480",
+      city: "LARRESSORE",
+    },
     email: "",
     phone: "05 59 93 20 93",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -7280,9 +7795,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "GEDIMAT Lesimple",
-    address: "ZI du Champ Fleuri",
-    cp: "44840",
-    city: "LES SORINIERES",
+    location: {
+      address: "ZI du Champ Fleuri",
+      cp: "44840",
+      city: "LES SORINIERES",
+    },
     email: "armatures.lesimple@gedimat.fr",
     phone: "02 40 31 25 21",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -7309,9 +7826,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "GEDIMAT SOCRAMAT",
-    address: "ZA La P�pini�re",
-    cp: "53400",
-    city: "CRAON",
+    location: {
+      address: "ZA La P�pini�re",
+      cp: "53400",
+      city: "CRAON",
+    },
     email: "",
     phone: "02 43 09 19 19",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -7338,9 +7857,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "GELINEAU Ma�onnerie",
-    address: "42 rue Charles de Gaulle",
-    cp: "49340",
-    city: "CHANTELOUP LES BOIS",
+    location: {
+      address: "42 rue Charles de Gaulle",
+      cp: "49340",
+      city: "CHANTELOUP LES BOIS",
+    },
     email: "",
     phone: "02 41 64 43 64",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -7367,9 +7888,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "GENEST",
-    address: "Le Petit Kermorvan",
-    cp: "56660",
-    city: "SAINT JEAN BREVELAY",
+    location: {
+      address: "Le Petit Kermorvan",
+      cp: "56660",
+      city: "SAINT JEAN BREVELAY",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -7396,9 +7919,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "GERALD",
-    address: "Route des Douze Traits",
-    cp: "44860",
-    city: "SAINT AIGNAN DE GRANDLIEU",
+    location: {
+      address: "Route des Douze Traits",
+      cp: "44860",
+      city: "SAINT AIGNAN DE GRANDLIEU",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -7425,9 +7950,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "GERARD",
-    address: "134 Rue du Pays de Retz",
-    cp: "44860",
-    city: "PONT SAINT MARTIN",
+    location: {
+      address: "134 Rue du Pays de Retz",
+      cp: "44860",
+      city: "PONT SAINT MARTIN",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -7454,9 +7981,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "GIRARDEAU",
-    address: "Le Pin Sauvage",
-    cp: "85610",
-    city: "CUGAND",
+    location: {
+      address: "Le Pin Sauvage",
+      cp: "85610",
+      city: "CUGAND",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -7483,9 +8012,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "GIRAUD",
-    address: "5 Avenue Renoir",
-    cp: "44470",
-    city: "CARQUEFOU",
+    location: {
+      address: "5 Avenue Renoir",
+      cp: "44470",
+      city: "CARQUEFOU",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -7512,9 +8043,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "GIRAUDINEAU Antoine Architecte",
-    address: "14 Rue de l'H�tel de city",
-    cp: "44310",
-    city: "SAINT PHILBERT DE GRANDLIEU",
+    location: {
+      address: "14 Rue de l'H�tel de city",
+      cp: "44310",
+      city: "SAINT PHILBERT DE GRANDLIEU",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -7541,9 +8074,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "GM CONSTRUCTION",
-    address: "3 Rue Le Corbusier",
-    cp: "49300",
-    city: "CHOLET",
+    location: {
+      address: "3 Rue Le Corbusier",
+      cp: "49300",
+      city: "CHOLET",
+    },
     email: "",
     phone: "06 26 36 28 17",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -7570,9 +8105,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "GOEBEL",
-    address: "1 Rue Charlemagne",
-    cp: "57310",
-    city: "BERTRANGE",
+    location: {
+      address: "1 Rue Charlemagne",
+      cp: "57310",
+      city: "BERTRANGE",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -7599,9 +8136,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "GOISLOT CHAPELEAU",
-    address: "11 La Dabini�re",
-    cp: "44190",
-    city: "SAINT HILAIRE DE CLISSON",
+    location: {
+      address: "11 La Dabini�re",
+      cp: "44190",
+      city: "SAINT HILAIRE DE CLISSON",
+    },
     email: "iza-87@hotmail.fr",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -7628,9 +8167,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "GONTIER THIREAU",
-    address: "La Grande Haie Vritz",
-    cp: "44540",
-    city: "VALLONS DE L'ERDRE",
+    location: {
+      address: "La Grande Haie Vritz",
+      cp: "44540",
+      city: "VALLONS DE L'ERDRE",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -7657,9 +8198,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "GOUIN St�phane",
-    address: "6 Rue des Deux Mares",
-    cp: "85600",
-    city: "MONTAIGU",
+    location: {
+      address: "6 Rue des Deux Mares",
+      cp: "85600",
+      city: "MONTAIGU",
+    },
     email: "gouin.archi@gmail.com",
     phone: "06 75 20 15 96",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -7686,9 +8229,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "GOYTY Nad�ge Architecte",
-    address: "13 Rue Jean Bart",
-    cp: "64200",
-    city: "BIARRITZ",
+    location: {
+      address: "13 Rue Jean Bart",
+      cp: "64200",
+      city: "BIARRITZ",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -7715,9 +8260,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "GROLEAU",
-    address: "93 Chemin du Moulin",
-    cp: "44420",
-    city: "MESQUER",
+    location: {
+      address: "93 Chemin du Moulin",
+      cp: "44420",
+      city: "MESQUER",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -7744,9 +8291,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "GROS MATHURIN",
-    address: "Le Moulin",
-    cp: "69640",
-    city: "RIVOLET",
+    location: {
+      address: "Le Moulin",
+      cp: "69640",
+      city: "RIVOLET",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -7773,9 +8322,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "GROUPE SATOV",
-    address: "27 Route de la Roche",
-    cp: "85800",
-    city: "SAINT GILLES CROIX DE VIE",
+    location: {
+      address: "27 Route de la Roche",
+      cp: "85800",
+      city: "SAINT GILLES CROIX DE VIE",
+    },
     email: "s.bacher@groupesatov.fr",
     phone: "02 51 26 91 91",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -7802,9 +8353,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "GUERY THUILLIER Ma�onnerie",
-    address: "25 Rue Croix de Pierre",
-    cp: "49110",
-    city: "MAUGES SUR LOIRE",
+    location: {
+      address: "25 Rue Croix de Pierre",
+      cp: "49110",
+      city: "MAUGES SUR LOIRE",
+    },
     email: "",
     phone: "02 41 71 17 82",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -7831,9 +8384,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "GUICHAOUA",
-    address: "20 Rue des Primev�res",
-    cp: "44470",
-    city: "CARQUEFOU",
+    location: {
+      address: "20 Rue des Primev�res",
+      cp: "44470",
+      city: "CARQUEFOU",
+    },
     email: "",
     phone: "06 25 78 27 53",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -7860,9 +8415,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "GUILBAUD",
-    address: "16 bis Rue des Vignes",
-    cp: "44115",
-    city: "HAUTE GOULAINE",
+    location: {
+      address: "16 bis Rue des Vignes",
+      cp: "44115",
+      city: "HAUTE GOULAINE",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -7889,9 +8446,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "GUILLAUMIN",
-    address: "68 Rue Henri Julliln",
-    cp: "44300",
-    city: "NANTES",
+    location: {
+      address: "68 Rue Henri Julliln",
+      cp: "44300",
+      city: "NANTES",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -7918,9 +8477,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "GUILLEN",
-    address: "39 Rue des Sabli�res",
-    cp: "69660",
-    city: "COLLONGES AU MONT D'OR",
+    location: {
+      address: "39 Rue des Sabli�res",
+      cp: "69660",
+      city: "COLLONGES AU MONT D'OR",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -7947,9 +8508,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "GUILLET",
-    address: "5 La Guin�vre",
-    cp: "44310",
-    city: "SAINT PHILBERT DE GRANDLIEU",
+    location: {
+      address: "5 La Guin�vre",
+      cp: "44310",
+      city: "SAINT PHILBERT DE GRANDLIEU",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -7976,9 +8539,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "GUITET",
-    address: "25 rue de Bretagne",
-    cp: "44190",
-    city: "GETIGNE",
+    location: {
+      address: "25 rue de Bretagne",
+      cp: "44190",
+      city: "GETIGNE",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -8005,9 +8570,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "H2G CONSTRUCTION",
-    address: "Miguel HARDY 5 Rue de la Grassini�re",
-    cp: "44120",
-    city: "VERTOU",
+    location: {
+      address: "Miguel HARDY 5 Rue de la Grassini�re",
+      cp: "44120",
+      city: "VERTOU",
+    },
     email: "h2g.hardy@gmail.com",
     phone: "06 82 07 45 97",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -8034,9 +8601,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "HAAS",
-    address: "10 Rue des Cerisiers",
-    cp: "44190",
-    city: "GORGES",
+    location: {
+      address: "10 Rue des Cerisiers",
+      cp: "44190",
+      city: "GORGES",
+    },
     email: "mathieu.haas@gmail.com",
     phone: "07 68 90 02 95",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -8063,9 +8632,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "HAPPY HOUSE",
-    address: "108 Rue des Vall�es",
-    cp: "44115",
-    city: "BASSE GOULAINE",
+    location: {
+      address: "108 Rue des Vall�es",
+      cp: "44115",
+      city: "BASSE GOULAINE",
+    },
     email: "accueil@maison-happy-house.fr",
     phone: "02 28 00 34 90",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -8092,9 +8663,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "HERNANDEZ DECLERCQ",
-    address: "26 Rue Henri Bergson",
-    cp: "37540",
-    city: "SAINT CYR SUR LOIRE",
+    location: {
+      address: "26 Rue Henri Bergson",
+      cp: "37540",
+      city: "SAINT CYR SUR LOIRE",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -8121,9 +8694,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "HERVIEU YANN",
-    address: "",
-    cp: "78410",
-    city: "BOUAFLE",
+    location: {
+      address: "",
+      cp: "78410",
+      city: "BOUAFLE",
+    },
     email: "yannhervieu@sfr.fr",
     phone: "06.63.91.35.72",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -8150,9 +8725,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "HERVOUET PICORIT SARL",
-    address: "Z.A. La Dauni�re Rue de la Signeauderie",
-    cp: "85600",
-    city: "SAINT GEORGES DE MONTAIGU",
+    location: {
+      address: "Z.A. La Dauni�re Rue de la Signeauderie",
+      cp: "85600",
+      city: "SAINT GEORGES DE MONTAIGU",
+    },
     email: "contact@hervouet-picorit.fr",
     phone: "02 51 48 88 68",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -8179,9 +8756,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "HERVOUET RIPAUD",
-    address: "Rue du Marais",
-    cp: "44860",
-    city: "PONT SAINT MARTIN",
+    location: {
+      address: "Rue du Marais",
+      cp: "44860",
+      city: "PONT SAINT MARTIN",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -8208,9 +8787,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "HOGARD",
-    address: "106 Chemin Venelle",
-    cp: "64990",
-    city: "URCUIT",
+    location: {
+      address: "106 Chemin Venelle",
+      cp: "64990",
+      city: "URCUIT",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -8237,9 +8818,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "HOME CONSTRUCTION",
-    address: "Parc d'Affaires de Cr�cy 1 Rue Claude Chappe",
-    cp: "69370",
-    city: "SAINT DIDIER AU MONT D'OR",
+    location: {
+      address: "Parc d'Affaires de Cr�cy 1 Rue Claude Chappe",
+      cp: "69370",
+      city: "SAINT DIDIER AU MONT D'OR",
+    },
     email: "contact.homeconstruction@gmail.com",
     phone: "06 10 68 29 36",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -8266,9 +8849,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "HOUGUET",
-    address: "42 Rue de la Commune de Paris",
-    cp: "44600",
-    city: "SAINT NAZAIRE",
+    location: {
+      address: "42 Rue de la Commune de Paris",
+      cp: "44600",
+      city: "SAINT NAZAIRE",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -8295,9 +8880,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "HOZ Architecture",
-    address: "45 Rue des Hauts Pav�s",
-    cp: "44000",
-    city: "NANTES",
+    location: {
+      address: "45 Rue des Hauts Pav�s",
+      cp: "44000",
+      city: "NANTES",
+    },
     email: "contact@hozarchitecture.fr",
     phone: "02 53 35 38 53",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -8324,9 +8911,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "HUMEAU GOULET",
-    address: "14 Rue des Merrandiers",
-    cp: "44330",
-    city: "LE PALLET",
+    location: {
+      address: "14 Rue des Merrandiers",
+      cp: "44330",
+      city: "LE PALLET",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -8353,9 +8942,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "I.G.C.",
-    address: "ZA Landrieu RN. 89 - Sortie N� 5",
-    cp: "33750",
-    city: "BEYCHAC ET CAILLAU",
+    location: {
+      address: "ZA Landrieu RN. 89 - Sortie N� 5",
+      cp: "33750",
+      city: "BEYCHAC ET CAILLAU",
+    },
     email: "",
     phone: "05 57 97 91 12",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -8382,9 +8973,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "ILLICO TRAVAUX ANGERS NORD-EST",
-    address: "4 bis Rue du March�",
-    cp: "49150",
-    city: "BAUGE EN ANJOU",
+    location: {
+      address: "4 bis Rue du March�",
+      cp: "49150",
+      city: "BAUGE EN ANJOU",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -8411,9 +9004,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "IN UIT ARCHITECTURE",
-    address: "3 Cour de la Brocante Acc�s Place Viarme",
-    cp: "44000",
-    city: "NANTES",
+    location: {
+      address: "3 Cour de la Brocante Acc�s Place Viarme",
+      cp: "44000",
+      city: "NANTES",
+    },
     email: "contact@in-uit.fr",
     phone: "09 81 82 08 58",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -8440,9 +9035,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "INDIVISION METTETAL",
-    address: "40 Avenue de la R�publique",
-    cp: "69370",
-    city: "SAINT DIDIER AU MONT D'OR",
+    location: {
+      address: "40 Avenue de la R�publique",
+      cp: "69370",
+      city: "SAINT DIDIER AU MONT D'OR",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -8469,9 +9066,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "INNOVATIS",
-    address: "150 Rue Georges Charpak",
-    cp: "1390",
-    city: "CIVRIEUX",
+    location: {
+      address: "150 Rue Georges Charpak",
+      cp: "1390",
+      city: "CIVRIEUX",
+    },
     email: "contact@inno-vatis.com",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -8498,9 +9097,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "INOVEAM",
-    address: "Le 1084 - Bat 1 110 Rue du Chat Bott�",
-    cp: "1700",
-    city: "BEYNOST",
+    location: {
+      address: "Le 1084 - Bat 1 110 Rue du Chat Bott�",
+      cp: "1700",
+      city: "BEYNOST",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -8527,9 +9128,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "INTERSTICES - J�r�me Desbordes",
-    address: "8 bis Place Saint Jacques",
-    cp: "44190",
-    city: "CLISSON",
+    location: {
+      address: "8 bis Place Saint Jacques",
+      cp: "44190",
+      city: "CLISSON",
+    },
     email: "",
     phone: "02 40 54 39 90",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -8556,9 +9159,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "IP ARCHITECTURE D'INTERIEUR",
-    address: "Agence Isabelle Plessis 5 Rue Fougnot",
-    cp: "44190",
-    city: "CLISSON",
+    location: {
+      address: "Agence Isabelle Plessis 5 Rue Fougnot",
+      cp: "44190",
+      city: "CLISSON",
+    },
     email: "agence.ip-creations@ip-creations.fr",
     phone: "02 28 01 38 47",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -8585,9 +9190,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "JAF BATIMENT",
-    address: "17 Rue du Lyonnais",
-    cp: "69800",
-    city: "SAINT PRIEST",
+    location: {
+      address: "17 Rue du Lyonnais",
+      cp: "69800",
+      city: "SAINT PRIEST",
+    },
     email: "jafbatiment@gmail.com",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -8614,9 +9221,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "JANNOTIN",
-    address: "12 Rue Louis Loday",
-    cp: "44510",
-    city: "LE POULIGUEN",
+    location: {
+      address: "12 Rue Louis Loday",
+      cp: "44510",
+      city: "LE POULIGUEN",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -8643,9 +9252,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "JBS MACONNERIE",
-    address: "Les 4 Vents",
-    cp: "49710",
-    city: "LE LONGERON",
+    location: {
+      address: "Les 4 Vents",
+      cp: "49710",
+      city: "LE LONGERON",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -8672,9 +9283,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "JEHANNO THOMAS",
-    address: "2 La Belle Eug�nie",
-    cp: "85150",
-    city: "LE GIROUARD",
+    location: {
+      address: "2 La Belle Eug�nie",
+      cp: "85150",
+      city: "LE GIROUARD",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -8701,9 +9314,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "JF RENOV",
-    address: "6 La Clavellerie",
-    cp: "44450",
-    city: "SAINT JULIEN DE CONCELLES",
+    location: {
+      address: "6 La Clavellerie",
+      cp: "44450",
+      city: "SAINT JULIEN DE CONCELLES",
+    },
     email: "jf_renov@yahoo.fr",
     phone: "02 40 36 50 43",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -8730,9 +9345,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "JORDAN",
-    address: "Le Jardin des Vignes",
-    cp: "38540",
-    city: "SAINT JUST CHALEYSSIN",
+    location: {
+      address: "Le Jardin des Vignes",
+      cp: "38540",
+      city: "SAINT JUST CHALEYSSIN",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -8759,9 +9376,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "JOYEUX MABY",
-    address: "9 Impassse des Taloupes",
-    cp: "44850",
-    city: "SAINT MARS DU DESERT",
+    location: {
+      address: "9 Impassse des Taloupes",
+      cp: "44850",
+      city: "SAINT MARS DU DESERT",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -8788,9 +9407,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "JS CONSTRUCTIONS",
-    address: "143 Avenue de Villarcher",
-    cp: "73000",
-    city: "CHAMBERY",
+    location: {
+      address: "143 Avenue de Villarcher",
+      cp: "73000",
+      city: "CHAMBERY",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -8817,9 +9438,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "JUHEL",
-    address: "15 Route de la Bru�re",
-    cp: "44110",
-    city: "CHATEAUBRIANT",
+    location: {
+      address: "15 Route de la Bru�re",
+      cp: "44110",
+      city: "CHATEAUBRIANT",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -8846,9 +9469,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "JUHEL",
-    address: "5 Rue Jean-Paul Aubin",
-    cp: "44119",
-    city: "TREILLIERES",
+    location: {
+      address: "5 Rue Jean-Paul Aubin",
+      cp: "44119",
+      city: "TREILLIERES",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -8875,9 +9500,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "KAPETANOVIC TAINE",
-    address: "2 Rue des Terres au Cur�",
-    cp: "75013",
-    city: "PARIS",
+    location: {
+      address: "2 Rue des Terres au Cur�",
+      cp: "75013",
+      city: "PARIS",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -8904,9 +9531,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "KEITA Lassine Ma�onnerie",
-    address: "Cheillon",
-    cp: "49170",
-    city: "SAINT GEORGES SUR LOIRE",
+    location: {
+      address: "Cheillon",
+      cp: "49170",
+      city: "SAINT GEORGES SUR LOIRE",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -8933,9 +9562,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "KER-BAT SARL",
-    address: "1 Rue des Fr�res Lumi�re",
-    cp: "56600",
-    city: "LANESTER",
+    location: {
+      address: "1 Rue des Fr�res Lumi�re",
+      cp: "56600",
+      city: "LANESTER",
+    },
     email: "",
     phone: "06 42 95 47 87",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -8962,9 +9593,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "KLEIN",
-    address: "",
-    cp: "",
-    city: "",
+    location: {
+      address: "",
+      cp: "",
+      city: "",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -8991,9 +9624,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "KLYMA PROMOTION",
-    address: "16 Rue du Bourg Nouveau",
-    cp: "35000",
-    city: "RENNES",
+    location: {
+      address: "16 Rue du Bourg Nouveau",
+      cp: "35000",
+      city: "RENNES",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -9020,9 +9655,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "L'ATELIER 2C",
-    address: "3 Impasse du Clos Neuf ZA Les Berthaudi�res",
-    cp: "44680",
-    city: "SAINTE PAZANNE",
+    location: {
+      address: "3 Impasse du Clos Neuf ZA Les Berthaudi�res",
+      cp: "44680",
+      city: "SAINTE PAZANNE",
+    },
     email: "ceciliagasnier@latelier2c.fr",
     phone: "02 40 76 10 07",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -9049,9 +9686,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "L'HIRONDEL",
-    address: "35 Boulevard du Charbonneau",
-    cp: "44470",
-    city: "CARQUEFOU",
+    location: {
+      address: "35 Boulevard du Charbonneau",
+      cp: "44470",
+      city: "CARQUEFOU",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -9078,9 +9717,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "LA MAISON DES TRAVAUX",
-    address: "MC COURTAGE 342 Route de Clisson",
-    cp: "44120",
-    city: "VERTOU",
+    location: {
+      address: "MC COURTAGE 342 Route de Clisson",
+      cp: "44120",
+      city: "VERTOU",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -9107,9 +9748,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "LAMESTA HOUPIEZ",
-    address: "32 Avenue du Pr�sident Joseph Bouyer",
-    cp: "44100",
-    city: "NANTES",
+    location: {
+      address: "32 Avenue du Pr�sident Joseph Bouyer",
+      cp: "44100",
+      city: "NANTES",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -9136,9 +9779,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "LAMOTTE",
-    address: "2 Avenue des Peupliers CS 27742",
-    cp: "35577",
-    city: "CESSON SEVIGNE CEDEX",
+    location: {
+      address: "2 Avenue des Peupliers CS 27742",
+      cp: "35577",
+      city: "CESSON SEVIGNE CEDEX",
+    },
     email: "",
     phone: "02 99 33 95 96",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -9165,9 +9810,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "LANCIEN",
-    address: "1 Rue du Pinier",
-    cp: "44830",
-    city: "BOUAYE",
+    location: {
+      address: "1 Rue du Pinier",
+      cp: "44830",
+      city: "BOUAYE",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -9194,9 +9841,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "LANDRON - MARTIN Ma�onnerie",
-    address: "ZA Route du Petit Moulin Vritz",
-    cp: "44540",
-    city: "VALLONS DE L'ERDRE",
+    location: {
+      address: "ZA Route du Petit Moulin Vritz",
+      cp: "44540",
+      city: "VALLONS DE L'ERDRE",
+    },
     email: "contact@maconnerie-martin.fr",
     phone: "02 41 92 75 19",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -9223,9 +9872,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "LAURA SCURTI",
-    address: "",
-    cp: "78120",
-    city: "CLAIREFONTAINE EN YVELINES",
+    location: {
+      address: "",
+      cp: "78120",
+      city: "CLAIREFONTAINE EN YVELINES",
+    },
     email: "scurtilaura@gmail.com",
     phone: "645074648",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -9252,9 +9903,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "LAURE",
-    address: "53 Rue de la Chapelle Saint Martin",
-    cp: "4411",
-    city: "HAUTE GOULAINE",
+    location: {
+      address: "53 Rue de la Chapelle Saint Martin",
+      cp: "4411",
+      city: "HAUTE GOULAINE",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -9281,9 +9934,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "LAURENT Ma�onnerie",
-    address: "1190 Route de Sarcey Le Magnin Sud",
-    cp: "69490",
-    city: "VINDRY SUR TURDINE / LES OLMES",
+    location: {
+      address: "1190 Route de Sarcey Le Magnin Sud",
+      cp: "69490",
+      city: "VINDRY SUR TURDINE / LES OLMES",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -9310,9 +9965,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "LAVOIS GUYOT",
-    address: "3 Rue du Professeur Yves Bocquien",
-    cp: "44100",
-    city: "NANTES",
+    location: {
+      address: "3 Rue du Professeur Yves Bocquien",
+      cp: "44100",
+      city: "NANTES",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -9339,9 +9996,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "LE GOUIC TOGONAL - EURL XELAIUG",
-    address: "32 Rue des Hauts Pav�s",
-    cp: "44000",
-    city: "NANTES",
+    location: {
+      address: "32 Rue des Hauts Pav�s",
+      cp: "44000",
+      city: "NANTES",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -9368,9 +10027,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "LE POTIER",
-    address: "All�e Paul-Emile Victor",
-    cp: "22370",
-    city: "PLENEUF VAL ANDRE",
+    location: {
+      address: "All�e Paul-Emile Victor",
+      cp: "22370",
+      city: "PLENEUF VAL ANDRE",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -9397,9 +10058,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "LE TARGAT KHATIB BRUNET",
-    address: "2 bis Bd Boulay Paty",
-    cp: "44100",
-    city: "NANTES",
+    location: {
+      address: "2 bis Bd Boulay Paty",
+      cp: "44100",
+      city: "NANTES",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -9426,9 +10089,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "LECADRE",
-    address: "Lotissement de la Garenne - Lot 0.22 La Chapelle Basse Mer",
-    cp: "44450",
-    city: "DIVATTE SUR LOIRE",
+    location: {
+      address: "Lotissement de la Garenne - Lot 0.22 La Chapelle Basse Mer",
+      cp: "44450",
+      city: "DIVATTE SUR LOIRE",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -9455,9 +10120,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "LECAMP",
-    address: "29 Route de Nieuil l'Espoir",
-    cp: "86800",
-    city: "SAINT JULIEN L'ARS",
+    location: {
+      address: "29 Route de Nieuil l'Espoir",
+      cp: "86800",
+      city: "SAINT JULIEN L'ARS",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -9484,9 +10151,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "LEDUC",
-    address: "46 rue du Plessis Tison",
-    cp: "44300",
-    city: "NANTES",
+    location: {
+      address: "46 rue du Plessis Tison",
+      cp: "44300",
+      city: "NANTES",
+    },
     email: "tc.leduc@orange.fr",
     phone: "06 07 94 58 11",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -9513,9 +10182,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "LEGAUD",
-    address: "14 bis Rue Joseph et Lucien Leclerc",
-    cp: "44400",
-    city: "REZE",
+    location: {
+      address: "14 bis Rue Joseph et Lucien Leclerc",
+      cp: "44400",
+      city: "REZE",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -9542,9 +10213,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "LEMERLE",
-    address: "5 La Grenaudi�re",
-    cp: "44690",
-    city: "MAISDON SUR SEVRE",
+    location: {
+      address: "5 La Grenaudi�re",
+      cp: "44690",
+      city: "MAISDON SUR SEVRE",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -9571,9 +10244,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "LERAT",
-    address: "199 Rue des Baleines",
-    cp: "44119",
-    city: "TREILLIERES",
+    location: {
+      address: "199 Rue des Baleines",
+      cp: "44119",
+      city: "TREILLIERES",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -9600,9 +10275,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "LES CONSTRUCTIONS DE L'ERDRE",
-    address: "11 rue de Toscane BP. 4426",
-    cp: "44240",
-    city: "LA CHAPELLE SUR ERDRE",
+    location: {
+      address: "11 rue de Toscane BP. 4426",
+      cp: "44240",
+      city: "LA CHAPELLE SUR ERDRE",
+    },
     email: "contact@constructions-erdre.fr",
     phone: "02 40 72 93 93",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -9629,9 +10306,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "LES GOELANDS",
-    address: "M. et Mme LAPARRA",
-    cp: "56000",
-    city: "VANNES",
+    location: {
+      address: "M. et Mme LAPARRA",
+      cp: "56000",
+      city: "VANNES",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -9658,9 +10337,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "LES GRANDS BOIS",
-    address: "La Roiserie",
-    cp: "44850",
-    city: "LIGNE",
+    location: {
+      address: "La Roiserie",
+      cp: "44850",
+      city: "LIGNE",
+    },
     email: "contact@les-grands-bois.fr",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -9687,9 +10368,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "LES MAISONS FEVRIER",
-    address: "1 Avenue Louis Dufour",
-    cp: "69300",
-    city: "CALUIRE ET CUIRE",
+    location: {
+      address: "1 Avenue Louis Dufour",
+      cp: "69300",
+      city: "CALUIRE ET CUIRE",
+    },
     email: "",
     phone: "04 78 22 41 19",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -9716,9 +10399,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "LES MATERIAUX DE L'OUEST",
-    address: "Z.I. de la Hauti�re BP. 30",
-    cp: "35590",
-    city: "L'HERMITAGE",
+    location: {
+      address: "Z.I. de la Hauti�re BP. 30",
+      cp: "35590",
+      city: "L'HERMITAGE",
+    },
     email: "go@mdo.com.fr",
     phone: "02 99 78 68 18",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -9745,9 +10430,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "LEVAILLANT",
-    address: "277b Chemin des Molli�res",
-    cp: "69210",
-    city: "L'ARBRESLE",
+    location: {
+      address: "277b Chemin des Molli�res",
+      cp: "69210",
+      city: "L'ARBRESLE",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -9774,9 +10461,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "LEYRIT",
-    address: "50 Rue Jan et Jo�l Martel",
-    cp: "85710",
-    city: "BOIS DE CENE",
+    location: {
+      address: "50 Rue Jan et Jo�l Martel",
+      cp: "85710",
+      city: "BOIS DE CENE",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -9803,9 +10492,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "LINE ARCHITECTURE",
-    address: "14 Rue des Merisiers",
-    cp: "44800",
-    city: "SAINT HERBLAIN",
+    location: {
+      address: "14 Rue des Merisiers",
+      cp: "44800",
+      city: "SAINT HERBLAIN",
+    },
     email: "",
     phone: "02 40 36 45 99",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -9832,9 +10523,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "LMCR Les Ma�ons Carreleurs R�unis",
-    address: "Rue de la Marsollais",
-    cp: "44130",
-    city: "BLAIN",
+    location: {
+      address: "Rue de la Marsollais",
+      cp: "44130",
+      city: "BLAIN",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -9861,9 +10554,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "LMCR Les Ma�ons Coop�rateurs R�unis",
-    address: "ZA Le Landreau",
-    cp: "49610",
-    city: "MOZE SUR LOUET",
+    location: {
+      address: "ZA Le Landreau",
+      cp: "49610",
+      city: "MOZE SUR LOUET",
+    },
     email: "",
     phone: "02 41 80 80 62",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -9890,9 +10585,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "LMCR Les Ma�ons Coop�rateurs R�unis",
-    address: "Artip�le BP. 14",
-    cp: "85280",
-    city: "LA FERRIERE",
+    location: {
+      address: "Artip�le BP. 14",
+      cp: "85280",
+      city: "LA FERRIERE",
+    },
     email: "",
     phone: "02 40 51 91 01",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -9919,9 +10616,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "LMRT SARL",
-    address: "ZA de Ribotte",
-    cp: "49410",
-    city: "SAINT FLORENT LE VIEIL",
+    location: {
+      address: "ZA de Ribotte",
+      cp: "49410",
+      city: "SAINT FLORENT LE VIEIL",
+    },
     email: "lmrtguillaume@gmail.com",
     phone: "02 41 72 74 03",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -9948,9 +10647,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "LOGEROT",
-    address: "43 Rue du Moulin Vert",
-    cp: "75014",
-    city: "PARIS",
+    location: {
+      address: "43 Rue du Moulin Vert",
+      cp: "75014",
+      city: "PARIS",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -9977,9 +10678,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "LOISEAU",
-    address: "51 Coursay",
-    cp: "44690",
-    city: "MONNIERES",
+    location: {
+      address: "51 Coursay",
+      cp: "44690",
+      city: "MONNIERES",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -10006,9 +10709,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "LOMBARD CHIRON",
-    address: "10 Les Zais Saint Hilaire de Mortagne",
-    cp: "85290",
-    city: "MORTAGNE SUR SEVRE",
+    location: {
+      address: "10 Les Zais Saint Hilaire de Mortagne",
+      cp: "85290",
+      city: "MORTAGNE SUR SEVRE",
+    },
     email: "isa.artiste@gmail.com",
     phone: "06 85 66 35 64",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -10035,9 +10740,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "LORIN SAS",
-    address: "62 rue des Marmati�res",
-    cp: "1140",
-    city: "Mogneneins",
+    location: {
+      address: "62 rue des Marmati�res",
+      cp: "1140",
+      city: "Mogneneins",
+    },
     email: "m.lorin@lorin-construction.fr",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -10064,9 +10771,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "LOT GROS-OEUVRE",
-    address: "",
-    cp: "",
-    city: "",
+    location: {
+      address: "",
+      cp: "",
+      city: "",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -10093,9 +10802,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "M BLEIN Yves",
-    address: "104 AVENUE JULES GUESDES",
-    cp: "69200",
-    city: "VENISSIEUX",
+    location: {
+      address: "104 AVENUE JULES GUESDES",
+      cp: "69200",
+      city: "VENISSIEUX",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -10122,9 +10833,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "M. DENEUX",
-    address: "35 Boulevard Jean Ingres",
-    cp: "44100",
-    city: "NANTES",
+    location: {
+      address: "35 Boulevard Jean Ingres",
+      cp: "44100",
+      city: "NANTES",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -10151,9 +10864,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "M. et Mme GHOULAM",
-    address: "5 impasse des Campagnols",
-    cp: "44860",
-    city: "PONT SAINT MARTIN",
+    location: {
+      address: "5 impasse des Campagnols",
+      cp: "44860",
+      city: "PONT SAINT MARTIN",
+    },
     email: "ghoulam.ali@gmail.com",
     phone: "679068190",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -10180,9 +10895,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "M. RIPOT",
-    address: "13 Rue des Vignes",
-    cp: "44115",
-    city: "HAUTE GOULAINE",
+    location: {
+      address: "13 Rue des Vignes",
+      cp: "44115",
+      city: "HAUTE GOULAINE",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -10209,9 +10926,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "MABIT Entreprise",
-    address: "8 ZA de la Biode",
-    cp: "49230",
-    city: "SAINT CRESPIN SUR MOINE",
+    location: {
+      address: "8 ZA de la Biode",
+      cp: "49230",
+      city: "SAINT CRESPIN SUR MOINE",
+    },
     email: "contact@mabitconstruction.com",
     phone: "02 41 70 49 11",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -10238,9 +10957,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "MACONNERIE DES MARCHES DE BRETAGNE",
-    address: "",
-    cp: "44390",
-    city: "CASSON",
+    location: {
+      address: "",
+      cp: "44390",
+      city: "CASSON",
+    },
     email: "eric.david546@wanadoo.fr",
     phone: "06 73 39 53 73",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -10267,9 +10988,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "MACORETZ",
-    address: "4 Route de Nantes La Hurline",
-    cp: "44320",
-    city: "SAINT PERE EN RETZ",
+    location: {
+      address: "4 Route de Nantes La Hurline",
+      cp: "44320",
+      city: "SAINT PERE EN RETZ",
+    },
     email: "",
     phone: "02 40 21 82 90",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -10296,9 +11019,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "MAGMA Architectes",
-    address: "26 Rue Rabelais",
-    cp: "69003",
-    city: "LYON",
+    location: {
+      address: "26 Rue Rabelais",
+      cp: "69003",
+      city: "LYON",
+    },
     email: "",
     phone: "04 78 42 05 77",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -10325,9 +11050,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "MAGNON BRISSON",
-    address: "22 All�e Jean Monnet",
-    cp: "37250",
-    city: "MONTBAZON",
+    location: {
+      address: "22 All�e Jean Monnet",
+      cp: "37250",
+      city: "MONTBAZON",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -10354,9 +11081,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "MAINE Alice Architecte",
-    address: "1 Chemin de la Boucardi�re",
-    cp: "44100",
-    city: "NANTES",
+    location: {
+      address: "1 Chemin de la Boucardi�re",
+      cp: "44100",
+      city: "NANTES",
+    },
     email: "architecte@alicemaine.fr",
     phone: "06 36 66 54 23",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -10383,9 +11112,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "MAINGUET",
-    address: "51 Route de Clisson",
-    cp: "44190",
-    city: "SAINT LUMINE DE CLISSON",
+    location: {
+      address: "51 Route de Clisson",
+      cp: "44190",
+      city: "SAINT LUMINE DE CLISSON",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -10412,9 +11143,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "Mairie d'AIGREFEUILLE",
-    address: "29 Avenue de la Vend�e",
-    cp: "44140",
-    city: "AIGREFEUILLE SUR MAINE",
+    location: {
+      address: "29 Avenue de la Vend�e",
+      cp: "44140",
+      city: "AIGREFEUILLE SUR MAINE",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -10441,9 +11174,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "Mairie de CHAUMES EN RETZ",
-    address: "1 Rue de Pornic",
-    cp: "44320",
-    city: "CHAUMES EN RETZ",
+    location: {
+      address: "1 Rue de Pornic",
+      cp: "44320",
+      city: "CHAUMES EN RETZ",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -10470,9 +11205,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "Mairie de LUCON",
-    address: "1 Rue de l'H�tel de city BP. 339",
-    cp: "85403",
-    city: "LUCON CEDEX",
+    location: {
+      address: "1 Rue de l'H�tel de city BP. 339",
+      cp: "85403",
+      city: "LUCON CEDEX",
+    },
     email: "veronique.grelaud@lucon.fr",
     phone: "02 51 29 19 25",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -10499,9 +11236,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "MAISONNEUVE",
-    address: "52b Rue Herv� Leguyader",
-    cp: "44240",
-    city: "LA CHAPELLE SUR ERDRE",
+    location: {
+      address: "52b Rue Herv� Leguyader",
+      cp: "44240",
+      city: "LA CHAPELLE SUR ERDRE",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -10528,9 +11267,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "MAISONS ADELIE",
-    address: "2 Rue H�l�ne Boucher",
-    cp: "44115",
-    city: "HAUTE GOULAINE",
+    location: {
+      address: "2 Rue H�l�ne Boucher",
+      cp: "44115",
+      city: "HAUTE GOULAINE",
+    },
     email: "",
     phone: "02 40 04 10 04",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -10557,9 +11298,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "MAISONS ALPES SAVOIE",
-    address: "295 Rue de la Prairie",
-    cp: "73420",
-    city: "VOGLANS",
+    location: {
+      address: "295 Rue de la Prairie",
+      cp: "73420",
+      city: "VOGLANS",
+    },
     email: "",
     phone: "04 79 52 05 00",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -10586,9 +11329,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: "Constructeur",
     name: "MAISONS ALYSIA 17 SUD",
-    address: "24 Cours Mar�chal Leclerc",
-    cp: "17100",
-    city: "SAINTES",
+    location: {
+      address: "24 Cours Mar�chal Leclerc",
+      cp: "17100",
+      city: "SAINTES",
+    },
     email: "",
     phone: "05 86 30 21 31",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -10615,9 +11360,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: "Constructeur",
     name: "MAISONS ALYSIA 28",
-    address: "Jardin d'Entreprises - Technopolis b�t. B 4 Rue Blaise Pascal",
-    cp: "28000",
-    city: "CHARTRES",
+    location: {
+      address: "Jardin d'Entreprises - Technopolis b�t. B 4 Rue Blaise Pascal",
+      cp: "28000",
+      city: "CHARTRES",
+    },
     email: "",
     phone: "02 30 32 39 00",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -10644,9 +11391,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: "Constructeur",
     name: "MAISONS ALYSIA 33 NORD",
-    address: "200 Rue Nationale",
-    cp: "33240",
-    city: "SAINT ANDRE DE CUBZAC",
+    location: {
+      address: "200 Rue Nationale",
+      cp: "33240",
+      city: "SAINT ANDRE DE CUBZAC",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -10673,9 +11422,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: "Constructeur",
     name: "MAISONS ALYSIA 37 SUD",
-    address: "6 Rue des Granges Galand",
-    cp: "37550",
-    city: "SAINT AVERTIN",
+    location: {
+      address: "6 Rue des Granges Galand",
+      cp: "37550",
+      city: "SAINT AVERTIN",
+    },
     email: "agence37sud@maisons-alysia.com",
     phone: "02 19 24 01 20",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -10702,9 +11453,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: "Constructeur",
     name: "MAISONS ALYSIA 44 EST",
-    address: "71 Rue Georges Charpak Parc d'activit� La Lande Saint Martin",
-    cp: "44115",
-    city: "HAUTE GOULAINE",
+    location: {
+      address: "71 Rue Georges Charpak Parc d'activit� La Lande Saint Martin",
+      cp: "44115",
+      city: "HAUTE GOULAINE",
+    },
     email: "",
     phone: "02 55 59 60 85",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -10731,9 +11484,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: "Constructeur",
     name: "MAISONS ALYSIA 44 NORD",
-    address: "4 rue Leinster",
-    cp: "44240",
-    city: "LA CHAPELLE SUR ERDRE",
+    location: {
+      address: "4 rue Leinster",
+      cp: "44240",
+      city: "LA CHAPELLE SUR ERDRE",
+    },
     email: "agence44nord@maisons-alysia.com",
     phone: "02 55 59 60 81",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -10760,9 +11515,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: "Constructeur",
     name: "MAISONS ALYSIA 44 OUEST",
-    address: "5 Rue des Tro�nes",
-    cp: "44600",
-    city: "SAINT NAZAIRE",
+    location: {
+      address: "5 Rue des Tro�nes",
+      cp: "44600",
+      city: "SAINT NAZAIRE",
+    },
     email: "agence44ouest@maisons-alysia.com",
     phone: "02 21 76 24 99",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -10789,9 +11546,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: "Constructeur",
     name: "MAISONS ALYSIA 44 SUD",
-    address: "3 ter Z.A. de la For�t",
-    cp: "44830",
-    city: "BOUAYE",
+    location: {
+      address: "3 ter Z.A. de la For�t",
+      cp: "44830",
+      city: "BOUAYE",
+    },
     email: "agence44sud@maisons-alysia.com",
     phone: "02 55 59 60 80",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -10818,9 +11577,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: "Constructeur",
     name: "MAISONS ALYSIA 49 NORD",
-    address: "40 Boulevard de la Chantrerie Saint Sylvain d'Anjou",
-    cp: "49480",
-    city: "VERRIERES EN ANJOU",
+    location: {
+      address: "40 Boulevard de la Chantrerie Saint Sylvain d'Anjou",
+      cp: "49480",
+      city: "VERRIERES EN ANJOU",
+    },
     email: "agence49nord@maisons-alysia.com",
     phone: "02 55 97 02 00",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -10847,9 +11608,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: "Constructeur",
     name: "MAISONS ALYSIA 85 EST",
-    address: "7 Place de la Roseraie",
-    cp: "85290",
-    city: "MORTAGNE SUR SEVRE",
+    location: {
+      address: "7 Place de la Roseraie",
+      cp: "85290",
+      city: "MORTAGNE SUR SEVRE",
+    },
     email: "accueil85est@maisons-alysia.com",
     phone: "02 21 76 24 98",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -10876,9 +11639,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: "Constructeur",
     name: "MAISONS ALYSIA 85 SUD",
-    address: "17 Impasse des Transports",
-    cp: "85000",
-    city: "LA ROCHE SUR YON",
+    location: {
+      address: "17 Impasse des Transports",
+      cp: "85000",
+      city: "LA ROCHE SUR YON",
+    },
     email: "agence85sud@maisons-alysia.com",
     phone: "02 52 61 48 21",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -10905,9 +11670,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: "Constructeur",
     name: "MAISONS ALYSIA 85-79",
-    address: "Zone commerciale de la Mude 21 Route de la Rochelle",
-    cp: "79000",
-    city: "BESSINES",
+    location: {
+      address: "Zone commerciale de la Mude 21 Route de la Rochelle",
+      cp: "79000",
+      city: "BESSINES",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -10934,9 +11701,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: "Constructeur",
     name: "MAISONS ALYSIA 86",
-    address: "15 Rue Germaine Tillion Z.C. L'Or�e de Mign�",
-    cp: "86440",
-    city: "MIGNE AUXANCES",
+    location: {
+      address: "15 Rue Germaine Tillion Z.C. L'Or�e de Mign�",
+      cp: "86440",
+      city: "MIGNE AUXANCES",
+    },
     email: "agence86@maisons-alysia.com",
     phone: "05 86 98 02 96",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -10963,9 +11732,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "MAISONS BERNARD JAMBERT",
-    address: "18 Boulevard du G�n�ral de Gaulle BP. 1538",
-    cp: "49015",
-    city: "ANGERS CEDEX",
+    location: {
+      address: "18 Boulevard du G�n�ral de Gaulle BP. 1538",
+      cp: "49015",
+      city: "ANGERS CEDEX",
+    },
     email: "",
     phone: "02 41 24 99 24",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -10992,9 +11763,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "MAISONS BF Architecteur",
-    address: "Rue des Tilleuls Route de Challes",
-    cp: "73000",
-    city: "BARBERAZ",
+    location: {
+      address: "Rue des Tilleuls Route de Challes",
+      cp: "73000",
+      city: "BARBERAZ",
+    },
     email: "bfarchitecteur@orange.fr",
     phone: "04 79 44 12 12",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -11021,9 +11794,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "MAISONS BOUVIER",
-    address: "1 Route du Point du Jour",
-    cp: "44600",
-    city: "SAINT NAZAIRE",
+    location: {
+      address: "1 Route du Point du Jour",
+      cp: "44600",
+      city: "SAINT NAZAIRE",
+    },
     email: "",
     phone: "02 40 22 09 90",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -11050,9 +11825,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "MAISONS DRC",
-    address: "6 Rue du Grand Launay",
-    cp: "49000",
-    city: "ANGERS",
+    location: {
+      address: "6 Rue du Grand Launay",
+      cp: "49000",
+      city: "ANGERS",
+    },
     email: "",
     phone: "02 41 17 31 51",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -11079,9 +11856,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "MAISONS DREAN",
-    address: "83 Route de la Gare",
-    cp: "44120",
-    city: "VERTOU",
+    location: {
+      address: "83 Route de la Gare",
+      cp: "44120",
+      city: "VERTOU",
+    },
     email: "",
     phone: "02 40 04 72 70",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -11108,9 +11887,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "MAISONS DU VAL CONSTRUCTEUR",
-    address: "1 Rue de la Pi�ce Noire",
-    cp: "44119",
-    city: "TREILLIERES",
+    location: {
+      address: "1 Rue de la Pi�ce Noire",
+      cp: "44119",
+      city: "TREILLIERES",
+    },
     email: "",
     phone: "02 51 77 10 10",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -11137,9 +11918,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "MAISONS GOCHOKI",
-    address: "L'Atelier 18 Rue de M�rin",
-    cp: "64200",
-    city: "BIARRITZ",
+    location: {
+      address: "L'Atelier 18 Rue de M�rin",
+      cp: "64200",
+      city: "BIARRITZ",
+    },
     email: "",
     phone: "05 59 43 82 54",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -11166,9 +11949,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "MAISONS LACAZE",
-    address: "1054 Avenue Br�montier",
-    cp: "40160",
-    city: "PARENTIS EN BORN",
+    location: {
+      address: "1054 Avenue Br�montier",
+      cp: "40160",
+      city: "PARENTIS EN BORN",
+    },
     email: "",
     phone: "05 58 78 95 06",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -11195,9 +11980,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "MAISONS MCA",
-    address: "204 Boulevard de la R�publique",
-    cp: "40000",
-    city: "MONT DE MARSAN",
+    location: {
+      address: "204 Boulevard de la R�publique",
+      cp: "40000",
+      city: "MONT DE MARSAN",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -11224,9 +12011,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "MAISONS SOCOREN",
-    address: "76 Rue du Leinster",
-    cp: "44240",
-    city: "LA CHAPELLE SUR ERDRE",
+    location: {
+      address: "76 Rue du Leinster",
+      cp: "44240",
+      city: "LA CHAPELLE SUR ERDRE",
+    },
     email: "",
     phone: "02 51 77 88 50",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -11253,9 +12042,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "MAISONS TEVA",
-    address: "25 Rue Jules Verne",
-    cp: "44700",
-    city: "ORVAULT",
+    location: {
+      address: "25 Rue Jules Verne",
+      cp: "44700",
+      city: "ORVAULT",
+    },
     email: "",
     phone: "02 40 47 76 07",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -11282,9 +12073,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "MAISONS VILLAS CLUB",
-    address: "26 Rue du 19 mars 1962",
-    cp: "29000",
-    city: "QUIMPER",
+    location: {
+      address: "26 Rue du 19 mars 1962",
+      cp: "29000",
+      city: "QUIMPER",
+    },
     email: "",
     phone: "02 98 50 64 84",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -11311,9 +12104,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "MALLET",
-    address: "Route de Chaponnay",
-    cp: "69970",
-    city: "MARENNES",
+    location: {
+      address: "Route de Chaponnay",
+      cp: "69970",
+      city: "MARENNES",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -11340,9 +12135,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "MAMMERI",
-    address: "3 Impasse des Tonneliers",
-    cp: "44880",
-    city: "SAUTRON",
+    location: {
+      address: "3 Impasse des Tonneliers",
+      cp: "44880",
+      city: "SAUTRON",
+    },
     email: "virginie.nant@gmail.com",
     phone: "09 51 07 41 90",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -11369,9 +12166,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "MANNAI",
-    address: "11 rue du Coteau",
-    cp: "69390",
-    city: "VERNAISON",
+    location: {
+      address: "11 rue du Coteau",
+      cp: "69390",
+      city: "VERNAISON",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -11398,9 +12197,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "MANSARD",
-    address: "22 Rue Astoul",
-    cp: "85150",
-    city: "LANDERONDE",
+    location: {
+      address: "22 Rue Astoul",
+      cp: "85150",
+      city: "LANDERONDE",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -11427,9 +12228,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "MARINHO St�phane",
-    address: "60 Rue des Sables",
-    cp: "44210",
-    city: "PORNIC",
+    location: {
+      address: "60 Rue des Sables",
+      cp: "44210",
+      city: "PORNIC",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -11456,9 +12259,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "MARQUETON",
-    address: "28 Rue des Mortiers",
-    cp: "44230",
-    city: "SAINT SEBASTIEN SUR LOIRE",
+    location: {
+      address: "28 Rue des Mortiers",
+      cp: "44230",
+      city: "SAINT SEBASTIEN SUR LOIRE",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -11485,9 +12290,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "MARRIN",
-    address: "6 Rue Jos�phine Baker",
-    cp: "29590",
-    city: "PONT DE BUIS LES QUIMERCH",
+    location: {
+      address: "6 Rue Jos�phine Baker",
+      cp: "29590",
+      city: "PONT DE BUIS LES QUIMERCH",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -11514,9 +12321,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "MARTIN",
-    address: "29 Route du Petit Brossais",
-    cp: "44260",
-    city: "SAVENAY",
+    location: {
+      address: "29 Route du Petit Brossais",
+      cp: "44260",
+      city: "SAVENAY",
+    },
     email: "",
     phone: "06 71 88 03 43",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -11543,9 +12352,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "MARTIN",
-    address: "19 Rue des Mauges Gest�",
-    cp: "49600",
-    city: "BEAUPREAU EN MAUGES",
+    location: {
+      address: "19 Rue des Mauges Gest�",
+      cp: "49600",
+      city: "BEAUPREAU EN MAUGES",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -11572,9 +12383,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "MARTIN",
-    address: "3 Impasse des Glycines",
-    cp: "69340",
-    city: "FRANCHEcity",
+    location: {
+      address: "3 Impasse des Glycines",
+      cp: "69340",
+      city: "FRANCHEcity",
+    },
     email: "",
     phone: "06 11 01 75 71",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -11601,9 +12414,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "MARTIN",
-    address: "256 Boulevard Robert Schuman",
-    cp: "44300",
-    city: "NANTES",
+    location: {
+      address: "256 Boulevard Robert Schuman",
+      cp: "44300",
+      city: "NANTES",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -11630,9 +12445,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "MARTIN GUERIN",
-    address: "2 Avenue de l'Alden Park",
-    cp: "44200",
-    city: "NANTES",
+    location: {
+      address: "2 Avenue de l'Alden Park",
+      cp: "44200",
+      city: "NANTES",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -11659,9 +12476,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "MARTINS",
-    address: "363 Rue de la Vente Bertine",
-    cp: "78630",
-    city: "ORGEVAL",
+    location: {
+      address: "363 Rue de la Vente Bertine",
+      cp: "78630",
+      city: "ORGEVAL",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -11688,9 +12507,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "MARTINS DE SOUSA MARY",
-    address: "24 Cancale La Salle et Chapelle Aubry",
-    cp: "49110",
-    city: "MONTREVAULT SUR EVRE",
+    location: {
+      address: "24 Cancale La Salle et Chapelle Aubry",
+      cp: "49110",
+      city: "MONTREVAULT SUR EVRE",
+    },
     email: "samuel.mds@orange.fr",
     phone: "06 37 08 81 29",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -11717,9 +12538,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "MATHILDE DESIGN",
-    address: "15 Rue Edouard Branly",
-    cp: "44980",
-    city: "SAINTE LUCE SUR LOIRE",
+    location: {
+      address: "15 Rue Edouard Branly",
+      cp: "44980",
+      city: "SAINTE LUCE SUR LOIRE",
+    },
     email: "loreline@mathilde-design.fr",
     phone: "02 85 52 48 01",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -11746,9 +12569,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "MAUD",
-    address: "3 Rue Traversi�re",
-    cp: "44120",
-    city: "VERTOU",
+    location: {
+      address: "3 Rue Traversi�re",
+      cp: "44120",
+      city: "VERTOU",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -11775,9 +12600,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "MAUSIER",
-    address: "41 Rue du Cher",
-    cp: "37200",
-    city: "TOURS",
+    location: {
+      address: "41 Rue du Cher",
+      cp: "37200",
+      city: "TOURS",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -11804,9 +12631,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "MCD Entreprise",
-    address: "M. Micka�l DURAND 11 Rue de la Machanderie",
-    cp: "44830",
-    city: "BOUAYE",
+    location: {
+      address: "M. Micka�l DURAND 11 Rue de la Machanderie",
+      cp: "44830",
+      city: "BOUAYE",
+    },
     email: "michael.durand0@orange.fr",
     phone: "06 80 46 07 05",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -11833,9 +12662,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "MENDES",
-    address: "23 Route de Champagne All�e C",
-    cp: "69370",
-    city: "SAINT DIDIER AU MONT D'OR",
+    location: {
+      address: "23 Route de Champagne All�e C",
+      cp: "69370",
+      city: "SAINT DIDIER AU MONT D'OR",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -11862,9 +12693,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "MENU FIGUEIRA",
-    address: "8 Route du Port de l'halbrandi�re",
-    cp: "44860",
-    city: "SAINT AIGNAN DE GRAND LIEU",
+    location: {
+      address: "8 Route du Port de l'halbrandi�re",
+      cp: "44860",
+      city: "SAINT AIGNAN DE GRAND LIEU",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -11891,9 +12724,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "MENUISERIE DES 2 RIVES",
-    address: "2 Rue de la P�pini�re",
-    cp: "44190",
-    city: "GETIGNE",
+    location: {
+      address: "2 Rue de la P�pini�re",
+      cp: "44190",
+      city: "GETIGNE",
+    },
     email: "",
     phone: "02 40 71 86 43",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -11920,9 +12755,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "MERCIER HARRAULT",
-    address: "2 Rue du 8 Mai 1945",
-    cp: "37520",
-    city: "LA RICHE",
+    location: {
+      address: "2 Rue du 8 Mai 1945",
+      cp: "37520",
+      city: "LA RICHE",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -11949,9 +12786,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "MERIOT",
-    address: "ZA Saint Cl�ment",
-    cp: "44450",
-    city: "DIVATTE SUR LOIRE",
+    location: {
+      address: "ZA Saint Cl�ment",
+      cp: "44450",
+      city: "DIVATTE SUR LOIRE",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -11978,9 +12817,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "METAYER BERTHOME",
-    address: "34 Rue de la Chenardi�re",
-    cp: "44071",
-    city: "HAUTE GOULAINE",
+    location: {
+      address: "34 Rue de la Chenardi�re",
+      cp: "44071",
+      city: "HAUTE GOULAINE",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -12007,9 +12848,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "METER",
-    address: "14 Chemin des pr�s Noroux",
-    cp: "44470",
-    city: "CARQUEFOU",
+    location: {
+      address: "14 Chemin des pr�s Noroux",
+      cp: "44470",
+      city: "CARQUEFOU",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -12036,9 +12879,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "METRIAU FLORENT EURL",
-    address: "3 Rue du Pr� Boismain",
-    cp: "44760",
-    city: "LA BERNERIE EN RETZ",
+    location: {
+      address: "3 Rue du Pr� Boismain",
+      cp: "44760",
+      city: "LA BERNERIE EN RETZ",
+    },
     email: "florent.metriau@orange.fr",
     phone: "02 51 74 60 92",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -12065,9 +12910,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "MEUNIER",
-    address: "2 Rue d'Alta�r",
-    cp: "44700",
-    city: "ORVAULT",
+    location: {
+      address: "2 Rue d'Alta�r",
+      cp: "44700",
+      city: "ORVAULT",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -12094,9 +12941,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "MIGNET L'HERMINE",
-    address: "62 Rue de la Marine Royale",
-    cp: "85600",
-    city: "MONTAIGU VENDEE",
+    location: {
+      address: "62 Rue de la Marine Royale",
+      cp: "85600",
+      city: "MONTAIGU VENDEE",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -12123,9 +12972,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "MIGNOTTE KOSTROMINE",
-    address: "15 Rue des Cordeliers",
-    cp: "44190",
-    city: "CLISSON",
+    location: {
+      address: "15 Rue des Cordeliers",
+      cp: "44190",
+      city: "CLISSON",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -12152,9 +13003,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "MIKIT Agence Nord Ouest",
-    address: "2 PA de la Gr�e Nevet",
-    cp: "56130",
-    city: "NIVILLAC",
+    location: {
+      address: "2 PA de la Gr�e Nevet",
+      cp: "56130",
+      city: "NIVILLAC",
+    },
     email: "",
     phone: "02 23 10 01 12",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -12181,9 +13034,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "MIRANDA Soci�t�",
-    address: "84 B Chemin de la Fouillouse",
-    cp: "69800",
-    city: "SAINT PRIEST",
+    location: {
+      address: "84 B Chemin de la Fouillouse",
+      cp: "69800",
+      city: "SAINT PRIEST",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -12210,9 +13065,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "MIWA Atelier d'Architecture",
-    address: "4 Rue Victor Lagrange",
-    cp: "69007",
-    city: "LYON",
+    location: {
+      address: "4 Rue Victor Lagrange",
+      cp: "69007",
+      city: "LYON",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -12239,9 +13096,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "MNB  CONSTRUCTION",
-    address: "79 Rue Alexandre Dumas",
-    cp: "73100",
-    city: "AIX LES BAINS",
+    location: {
+      address: "79 Rue Alexandre Dumas",
+      cp: "73100",
+      city: "AIX LES BAINS",
+    },
     email: "mnbarchitecteur@orange.fr",
     phone: "04 79 35 55 55",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -12268,9 +13127,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "MOHTSA Architecture d'Int�rieurs",
-    address: "1 Rue Mond�sir",
-    cp: "44000",
-    city: "NANTES",
+    location: {
+      address: "1 Rue Mond�sir",
+      cp: "44000",
+      city: "NANTES",
+    },
     email: "mohtsa.archint@gmail.com",
     phone: "06 10 64 20 85",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -12297,9 +13158,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "MOLAY Laurent",
-    address: "6 Rue Louis Lavoix",
-    cp: "44250",
-    city: "SAINT BREVIN LES PINS",
+    location: {
+      address: "6 Rue Louis Lavoix",
+      cp: "44250",
+      city: "SAINT BREVIN LES PINS",
+    },
     email: "",
     phone: "02 40 39 14 60",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -12326,9 +13189,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "MON COURTIER MAISON",
-    address: "36 Rue Lucie Aubrac",
-    cp: "44800",
-    city: "SAINT HERBLAIN",
+    location: {
+      address: "36 Rue Lucie Aubrac",
+      cp: "44800",
+      city: "SAINT HERBLAIN",
+    },
     email: "",
     phone: "02 28 02 27 32",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -12355,9 +13220,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "MON COURTIER MAISON",
-    address: "22 Avenue du Gulf Stream",
-    cp: "44380",
-    city: "PORNICHET",
+    location: {
+      address: "22 Avenue du Gulf Stream",
+      cp: "44380",
+      city: "PORNICHET",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -12384,9 +13251,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "MONDEJAR",
-    address: "Route de la For�t",
-    cp: "86580",
-    city: "BIARD",
+    location: {
+      address: "Route de la For�t",
+      cp: "86580",
+      city: "BIARD",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -12413,9 +13282,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "MORE",
-    address: "24 Chemin Joseph Pierre",
-    cp: "44300",
-    city: "NANTES",
+    location: {
+      address: "24 Chemin Joseph Pierre",
+      cp: "44300",
+      city: "NANTES",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -12442,9 +13313,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "MOREAU",
-    address: "La Noue N� 37",
-    cp: "85610",
-    city: "LA BERNARDIERE",
+    location: {
+      address: "La Noue N� 37",
+      cp: "85610",
+      city: "LA BERNARDIERE",
+    },
     email: "moreaulolo@wanadoo.fr",
     phone: "06 80 65 30 75",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -12471,9 +13344,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "MORIN",
-    address: "32 route de Cugand",
-    cp: "44190",
-    city: "CLISSON",
+    location: {
+      address: "32 route de Cugand",
+      cp: "44190",
+      city: "CLISSON",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -12500,9 +13375,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "MORINAY",
-    address: "85 Avenue de la Morli�re",
-    cp: "44700",
-    city: "ORVAULT",
+    location: {
+      address: "85 Avenue de la Morli�re",
+      cp: "44700",
+      city: "ORVAULT",
+    },
     email: "",
     phone: "06 03 39 24 53",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -12529,9 +13406,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "MORINIERE SARL",
-    address: "12 rue Ormois",
-    cp: "44330",
-    city: "VALLET",
+    location: {
+      address: "12 rue Ormois",
+      cp: "44330",
+      city: "VALLET",
+    },
     email: "sarl.moriniere@orange.fr",
     phone: "02.40.36.32.71",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -12558,9 +13437,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "MOULIN",
-    address: "Rue Abb� Bricard Drain",
-    cp: "49530",
-    city: "OREE D'ANJOU",
+    location: {
+      address: "Rue Abb� Bricard Drain",
+      cp: "49530",
+      city: "OREE D'ANJOU",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -12587,9 +13468,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "MOULIN",
-    address: "44 Rue de la Hurque",
-    cp: "50120",
-    city: "EQUEURDREcity",
+    location: {
+      address: "44 Rue de la Hurque",
+      cp: "50120",
+      city: "EQUEURDREcity",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -12616,9 +13499,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "MS ERISOGLU HOLDING",
-    address: "17 Rue d'Alg�rie",
-    cp: "49300",
-    city: "CHOLET",
+    location: {
+      address: "17 Rue d'Alg�rie",
+      cp: "49300",
+      city: "CHOLET",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -12645,9 +13530,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "MS HABITAT",
-    address: "10 Rue du Dr Jean Paillot",
-    cp: "73100",
-    city: "AIX LES BAINS",
+    location: {
+      address: "10 Rue du Dr Jean Paillot",
+      cp: "73100",
+      city: "AIX LES BAINS",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -12674,9 +13561,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "MTC",
-    address: "4 Rue de la Chambre aux Deniers",
-    cp: "49000",
-    city: "ANGERS",
+    location: {
+      address: "4 Rue de la Chambre aux Deniers",
+      cp: "49000",
+      city: "ANGERS",
+    },
     email: "",
     phone: "02 41 60 49 20",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -12703,9 +13592,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "NAEL",
-    address: "286 Chemin du Val de la Lande",
-    cp: "56350",
-    city: "RIEUX",
+    location: {
+      address: "286 Chemin du Val de la Lande",
+      cp: "56350",
+      city: "RIEUX",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -12732,9 +13623,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "NASKKA",
-    address: "56 Rue Auguste Garnier",
-    cp: "44120",
-    city: "VERTOU",
+    location: {
+      address: "56 Rue Auguste Garnier",
+      cp: "44120",
+      city: "VERTOU",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -12761,9 +13654,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "NATILIA",
-    address: "246 Route de B�nodet",
-    cp: "29000",
-    city: "QUIMPER",
+    location: {
+      address: "246 Route de B�nodet",
+      cp: "29000",
+      city: "QUIMPER",
+    },
     email: "",
     phone: "02 98 11 76 35",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -12790,9 +13685,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "NEAU",
-    address: "14 Rue Notre Dame de Piti� Valanjou",
-    cp: "49670",
-    city: "CHEMILLE EN ANJOU",
+    location: {
+      address: "14 Rue Notre Dame de Piti� Valanjou",
+      cp: "49670",
+      city: "CHEMILLE EN ANJOU",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -12819,9 +13716,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "NIDUM Architecture",
-    address: "Christophe PRAUD 98 Rue Jean Fraix",
-    cp: "44400",
-    city: "REZE",
+    location: {
+      address: "Christophe PRAUD 98 Rue Jean Fraix",
+      cp: "44400",
+      city: "REZE",
+    },
     email: "",
     phone: "06 17 14 75 66",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -12848,9 +13747,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "NOTO",
-    address: "2414 Route de Menton",
-    cp: "6500",
-    city: "MENTON",
+    location: {
+      address: "2414 Route de Menton",
+      cp: "6500",
+      city: "MENTON",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -12877,9 +13778,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "NOVA CONCEPTION",
-    address: "225 Rue des Fr�res Voisin",
-    cp: "69970",
-    city: "CHAPONNAY",
+    location: {
+      address: "225 Rue des Fr�res Voisin",
+      cp: "69970",
+      city: "CHAPONNAY",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -12906,9 +13809,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "OBJECTIF PIERRE",
-    address: "64 Chemin de Sermenaz",
-    cp: "1700",
-    city: "NEYRON",
+    location: {
+      address: "64 Chemin de Sermenaz",
+      cp: "1700",
+      city: "NEYRON",
+    },
     email: "technique.objectif.pierre@gmail.com",
     phone: "04 78 62 86 81",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -12935,9 +13840,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "OIZEL",
-    address: "28 Rue de la Pierre",
-    cp: "44220",
-    city: "COUERON",
+    location: {
+      address: "28 Rue de la Pierre",
+      cp: "44220",
+      city: "COUERON",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -12964,9 +13871,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "OLIVIER",
-    address: "21 La Sauvageais",
-    cp: "44640",
-    city: "VUE",
+    location: {
+      address: "21 La Sauvageais",
+      cp: "44640",
+      city: "VUE",
+    },
     email: "",
     phone: "07 87 42 78 53",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -12993,9 +13902,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "OLLIERIC",
-    address: "22 Rue du Bois Barre",
-    cp: "44100",
-    city: "NANTES",
+    location: {
+      address: "22 Rue du Bois Barre",
+      cp: "44100",
+      city: "NANTES",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -13022,9 +13933,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "ORENGE",
-    address: "4 Rue de la Haute Lande",
-    cp: "44840",
-    city: "LES SORINIERES",
+    location: {
+      address: "4 Rue de la Haute Lande",
+      cp: "44840",
+      city: "LES SORINIERES",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -13051,9 +13964,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "ORIEUX",
-    address: "ZA Saint Cl�ment",
-    cp: "44450",
-    city: "DIVATTE SUR LOIRE",
+    location: {
+      address: "ZA Saint Cl�ment",
+      cp: "44450",
+      city: "DIVATTE SUR LOIRE",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -13080,9 +13995,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "OUVRARD",
-    address: "8 Rue des Erables",
-    cp: "44190",
-    city: "CLISSON",
+    location: {
+      address: "8 Rue des Erables",
+      cp: "44190",
+      city: "CLISSON",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -13109,9 +14026,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "OXA Architectures",
-    address: "21 Route de Clisson",
-    cp: "44330",
-    city: "VALLET",
+    location: {
+      address: "21 Route de Clisson",
+      cp: "44330",
+      city: "VALLET",
+    },
     email: "contact@oxa-a.fr",
     phone: "09 82 57 62 65",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -13138,9 +14057,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "OYHABURU BATIMENT",
-    address: "BP. 24 Oneix",
-    cp: "64120",
-    city: "SAINT PALAIS",
+    location: {
+      address: "BP. 24 Oneix",
+      cp: "64120",
+      city: "SAINT PALAIS",
+    },
     email: "JL.oyhamburu@wanadoo.fr",
     phone: "05 59 65 71 46",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -13167,9 +14088,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "PADIOU SAS",
-    address: "Z.I. Nord 6 Rue Vincent Ansquer",
-    cp: "85600",
-    city: "TREIZE SEPTIERS",
+    location: {
+      address: "Z.I. Nord 6 Rue Vincent Ansquer",
+      cp: "85600",
+      city: "TREIZE SEPTIERS",
+    },
     email: "contact@padiou-veranda.fr",
     phone: "02 51 41 54 07",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -13196,9 +14119,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "PAPION",
-    address: "Restaurant La Joie",
-    cp: "44850",
-    city: "LE CELLIER",
+    location: {
+      address: "Restaurant La Joie",
+      cp: "44850",
+      city: "LE CELLIER",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -13225,9 +14150,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "PARANT",
-    address: "9 Rue du Bois Robillard",
-    cp: "44300",
-    city: "NANTES",
+    location: {
+      address: "9 Rue du Bois Robillard",
+      cp: "44300",
+      city: "NANTES",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -13254,9 +14181,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "PARTEC ETUD",
-    address: "29 Avenue du Stade",
-    cp: "40360",
-    city: "POMAREZ",
+    location: {
+      address: "29 Avenue du Stade",
+      cp: "40360",
+      city: "POMAREZ",
+    },
     email: "contact@partec-etud.fr",
     phone: "05 58 89 89 27",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -13283,9 +14212,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "PASQUET Fr�d�rique Architecture",
-    address: "113 Avenue Jules Dufaure",
-    cp: "17100",
-    city: "SAINTES",
+    location: {
+      address: "113 Avenue Jules Dufaure",
+      cp: "17100",
+      city: "SAINTES",
+    },
     email: "frederique.pasquet@club-internet.fr",
     phone: "05 46 74 73 04",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -13312,9 +14243,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "PASQUIER",
-    address: "32 Rue Christophe Colomb",
-    cp: "37000",
-    city: "TOURS",
+    location: {
+      address: "32 Rue Christophe Colomb",
+      cp: "37000",
+      city: "TOURS",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -13341,9 +14274,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "PAVAGEAU",
-    address: "10 Rue des Riquiers",
-    cp: "44190",
-    city: "SAINT HILAIRE DE CLISSON",
+    location: {
+      address: "10 Rue des Riquiers",
+      cp: "44190",
+      city: "SAINT HILAIRE DE CLISSON",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -13370,9 +14305,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "PAYELLEcity ORDUREAU",
-    address: "2169 Rue Nicolet",
-    cp: "",
-    city: "MONTREAL QC H1W-3L3 CANADA",
+    location: {
+      address: "2169 Rue Nicolet",
+      cp: "",
+      city: "MONTREAL QC H1W-3L3 CANADA",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -13399,9 +14336,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "PECHET",
-    address: "1 Rue Victor Hugo",
-    cp: "44390",
-    city: "PETIT MARS",
+    location: {
+      address: "1 Rue Victor Hugo",
+      cp: "44390",
+      city: "PETIT MARS",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -13428,9 +14367,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "PEJOUX",
-    address: "2 Chemin des Enclos",
-    cp: "44580",
-    city: "cityNEUVE EN RETZ",
+    location: {
+      address: "2 Chemin des Enclos",
+      cp: "44580",
+      city: "cityNEUVE EN RETZ",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -13457,9 +14398,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "PELE",
-    address: "",
-    cp: "49080",
-    city: "BOUCHEMAINE",
+    location: {
+      address: "",
+      cp: "49080",
+      city: "BOUCHEMAINE",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -13486,9 +14429,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "PELLETIER BELAEN",
-    address: "10 Rue Jean Ferrat",
-    cp: "86550",
-    city: "MIGNALOUX BEAUVOIR",
+    location: {
+      address: "10 Rue Jean Ferrat",
+      cp: "86550",
+      city: "MIGNALOUX BEAUVOIR",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -13515,9 +14460,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "PENPENIC MATERIAUX",
-    address: "Kerboulard",
-    cp: "56250",
-    city: "TREFFLEAN",
+    location: {
+      address: "Kerboulard",
+      cp: "56250",
+      city: "TREFFLEAN",
+    },
     email: "",
     phone: "02 97 45 46 46",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -13544,9 +14491,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "PERTHUIS PICAUD",
-    address: "5 Impasse de la Brise",
-    cp: "44860",
-    city: "PONT SAINT MARTIN",
+    location: {
+      address: "5 Impasse de la Brise",
+      cp: "44860",
+      city: "PONT SAINT MARTIN",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -13573,9 +14522,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "PERUGI",
-    address: "36 Rue Jules Ferry",
-    cp: "44300",
-    city: "NANTES",
+    location: {
+      address: "36 Rue Jules Ferry",
+      cp: "44300",
+      city: "NANTES",
+    },
     email: "fabien.perugi@gmail.com",
     phone: "07 89 49 68 58",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -13602,9 +14553,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "PETARD MOSTEAU",
-    address: "1 ter La Tannerie",
-    cp: "44450",
-    city: "LA CHAPELLE BASSE MER",
+    location: {
+      address: "1 ter La Tannerie",
+      cp: "44450",
+      city: "LA CHAPELLE BASSE MER",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -13631,9 +14584,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "PETIT",
-    address: "26 Rue de Bois Colombes",
-    cp: "44700",
-    city: "ORVAULT",
+    location: {
+      address: "26 Rue de Bois Colombes",
+      cp: "44700",
+      city: "ORVAULT",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -13660,9 +14615,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "PG Consultant",
-    address: "16 Boulevard Joliot Curie",
-    cp: "44200",
-    city: "NANTES",
+    location: {
+      address: "16 Boulevard Joliot Curie",
+      cp: "44200",
+      city: "NANTES",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -13689,9 +14646,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "PIAU",
-    address: "",
-    cp: "",
-    city: "",
+    location: {
+      address: "",
+      cp: "",
+      city: "",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -13718,9 +14677,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "PILON",
-    address: "5 Rue Van Vooren",
-    cp: "72000",
-    city: "LE MANS",
+    location: {
+      address: "5 Rue Van Vooren",
+      cp: "72000",
+      city: "LE MANS",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -13747,9 +14708,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "PIMIENTA",
-    address: "9 Kermoisan",
-    cp: "44350",
-    city: "SAINT MOLF",
+    location: {
+      address: "9 Kermoisan",
+      cp: "44350",
+      city: "SAINT MOLF",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -13776,9 +14739,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "PITIS REMANDE",
-    address: "2 Rue Elsa Triolet",
-    cp: "37230",
-    city: "SAINT ETIENNE DE CHIGNY",
+    location: {
+      address: "2 Rue Elsa Triolet",
+      cp: "37230",
+      city: "SAINT ETIENNE DE CHIGNY",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -13805,9 +14770,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "PLAETEVOET",
-    address: "13 Rue de la Gare",
-    cp: "86380",
-    city: "SAINT MARTIN LA PALLU",
+    location: {
+      address: "13 Rue de la Gare",
+      cp: "86380",
+      city: "SAINT MARTIN LA PALLU",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -13834,9 +14801,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "PLANTIVE Ma�onnerie",
-    address: "4 bis Rue du Lac",
-    cp: "44270",
-    city: "LA MARNE",
+    location: {
+      address: "4 bis Rue du Lac",
+      cp: "44270",
+      city: "LA MARNE",
+    },
     email: "sarl-plantive-maconnerie@orange.fr",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -13863,9 +14832,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "PLATTARD N�goce",
-    address: "Rue Charles S�ve",
-    cp: "69400",
-    city: "cityFRANCHE SUR SAONE",
+    location: {
+      address: "Rue Charles S�ve",
+      cp: "69400",
+      city: "cityFRANCHE SUR SAONE",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -13892,9 +14863,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "PLEZ FERREIRA",
-    address: "Maison Haizpak Quartier Erremuxil",
-    cp: "64310",
-    city: "SARE",
+    location: {
+      address: "Maison Haizpak Quartier Erremuxil",
+      cp: "64310",
+      city: "SARE",
+    },
     email: "xabieloeh@gmail.com",
     phone: "06 83 59 14 38",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -13921,9 +14894,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "POINT P",
-    address: "Route la Magdeleine",
-    cp: "64220",
-    city: "SAINT JEAN LE VIEUX",
+    location: {
+      address: "Route la Magdeleine",
+      cp: "64220",
+      city: "SAINT JEAN LE VIEUX",
+    },
     email: "",
     phone: "05 59 37 20 68",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -13950,9 +14925,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "POINT P",
-    address: "25 Boulevard des Nations",
-    cp: "69780",
-    city: "MIONS",
+    location: {
+      address: "25 Boulevard des Nations",
+      cp: "69780",
+      city: "MIONS",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -13979,9 +14956,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "POINT P",
-    address: "Chemin de la Beaume",
-    cp: "7300",
-    city: "TOURNON SUR RHONE",
+    location: {
+      address: "Chemin de la Beaume",
+      cp: "7300",
+      city: "TOURNON SUR RHONE",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -14008,9 +14987,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "POINT P",
-    address: "D4 Le Triangle  ZI",
-    cp: "38200",
-    city: "SEYSSUEL",
+    location: {
+      address: "D4 Le Triangle  ZI",
+      cp: "38200",
+      city: "SEYSSUEL",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -14037,9 +15018,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "POINT P - AGENCE SAINT AGREVE",
-    address: "Les Pr�s de Coussac",
-    cp: "7320",
-    city: "SAINT AGREVE",
+    location: {
+      address: "Les Pr�s de Coussac",
+      cp: "7320",
+      city: "SAINT AGREVE",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -14066,9 +15049,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "POINT P BAYONNE BAB",
-    address: "10 Chemin de Sabalce",
-    cp: "64100",
-    city: "BAYONNE",
+    location: {
+      address: "10 Chemin de Sabalce",
+      cp: "64100",
+      city: "BAYONNE",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -14095,9 +15080,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "POIRET Yves Architecte",
-    address: "5 Rue de la Pierre",
-    cp: "44350",
-    city: "GUERANDE",
+    location: {
+      address: "5 Rue de la Pierre",
+      cp: "44350",
+      city: "GUERANDE",
+    },
     email: "poiret.archi@gmail.com",
     phone: "06 86 64 51 26",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -14124,9 +15111,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "POIRIER GOMEZ",
-    address: "16 Pourtour Th�landais Le Th�lin",
-    cp: "35380",
-    city: "PLELAN LE GRAND",
+    location: {
+      address: "16 Pourtour Th�landais Le Th�lin",
+      cp: "35380",
+      city: "PLELAN LE GRAND",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -14153,9 +15142,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "POLYHOME",
-    address: "48-50 Rue de l'Ouche Buron",
-    cp: "44300",
-    city: "NANTES",
+    location: {
+      address: "48-50 Rue de l'Ouche Buron",
+      cp: "44300",
+      city: "NANTES",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -14182,9 +15173,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "POTET",
-    address: "",
-    cp: "44000",
-    city: "NANTES",
+    location: {
+      address: "",
+      cp: "44000",
+      city: "NANTES",
+    },
     email: "info@laurapotet.com",
     phone: "06 26 59 42 42",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -14211,9 +15204,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "POUDRY MATERIAUX",
-    address: "82 Rue de la Loire",
-    cp: "44980",
-    city: "SAINTE LUCE SUR LOIRE",
+    location: {
+      address: "82 Rue de la Loire",
+      cp: "44980",
+      city: "SAINTE LUCE SUR LOIRE",
+    },
     email: "",
     phone: "02 40 25 62 16",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -14240,9 +15235,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "POUYSEGU EURL",
-    address: "550 Route de Guichot",
-    cp: "40180",
-    city: "SORT EN CHALOSSE",
+    location: {
+      address: "550 Route de Guichot",
+      cp: "40180",
+      city: "SORT EN CHALOSSE",
+    },
     email: "contact@pouysegu.fr",
     phone: "06 75 94 22 97",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -14269,9 +15266,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "PRO GESTE",
-    address: "7 Rue de la Blussi�re",
-    cp: "44220",
-    city: "COUERON",
+    location: {
+      address: "7 Rue de la Blussi�re",
+      cp: "44220",
+      city: "COUERON",
+    },
     email: "progesesas@gmail.com",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -14298,9 +15297,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "PROM-S SAS",
-    address: "19b Rue de la R�publique",
-    cp: "69740",
-    city: "GENAS",
+    location: {
+      address: "19b Rue de la R�publique",
+      cp: "69740",
+      city: "GENAS",
+    },
     email: "",
     phone: "04 72 51 16 41",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -14327,9 +15328,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "PROU",
-    address: "41 Rue de la Haute Grammoire",
-    cp: "44115",
-    city: "BASSE GOULAINE",
+    location: {
+      address: "41 Rue de la Haute Grammoire",
+      cp: "44115",
+      city: "BASSE GOULAINE",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -14356,9 +15359,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "PYRAMIDE Constructions",
-    address: "3 Rue de Clermont",
-    cp: "44000",
-    city: "NANTES",
+    location: {
+      address: "3 Rue de Clermont",
+      cp: "44000",
+      city: "NANTES",
+    },
     email: "",
     phone: "09 63 67 94 32",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -14385,9 +15390,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "QUANTUM Architecte",
-    address: "Le 1084 - Bat 1 110 Rue du Chat Bott�",
-    cp: "1700",
-    city: "BEYNOST",
+    location: {
+      address: "Le 1084 - Bat 1 110 Rue du Chat Bott�",
+      cp: "1700",
+      city: "BEYNOST",
+    },
     email: "contact-quantum@quantum-architecte.fr",
     phone: "04 78 55 08 88",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -14414,9 +15421,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "RAGAIN",
-    address: "20 Rue de Vallaudron",
-    cp: "37390",
-    city: "LA MEMBROLLE SUR CHOISILLE",
+    location: {
+      address: "20 Rue de Vallaudron",
+      cp: "37390",
+      city: "LA MEMBROLLE SUR CHOISILLE",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -14443,9 +15452,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "RAGUENES",
-    address: "Rue Marie-Claude Vaillant-Couturier",
-    cp: "44300",
-    city: "NANTES",
+    location: {
+      address: "Rue Marie-Claude Vaillant-Couturier",
+      cp: "44300",
+      city: "NANTES",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -14472,9 +15483,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "RANNOU",
-    address: "15 Rue du Fr�ne",
-    cp: "44119",
-    city: "GRANDCHAMPS DES FONTAINES",
+    location: {
+      address: "15 Rue du Fr�ne",
+      cp: "44119",
+      city: "GRANDCHAMPS DES FONTAINES",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -14501,9 +15514,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "RDB ARCHITECTES",
-    address: "189 Rue Volney",
-    cp: "49000",
-    city: "ANGERS",
+    location: {
+      address: "189 Rue Volney",
+      cp: "49000",
+      city: "ANGERS",
+    },
     email: "rdb.architectes@gmail.com",
     phone: "02 53 91 46 53",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -14530,9 +15545,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "REBOUL Jean-Tugdual Architecte",
-    address: "30 Rue Division Leclerc",
-    cp: "53200",
-    city: "BAZOUGES",
+    location: {
+      address: "30 Rue Division Leclerc",
+      cp: "53200",
+      city: "BAZOUGES",
+    },
     email: "jean-tugdual.reboul@wanadoo.fr",
     phone: "02 43 70 09 48",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -14559,9 +15576,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "REDOIS Camille Architecte",
-    address: "16 Rue du Cardinal Richard",
-    cp: "44190",
-    city: "BOUSSAY",
+    location: {
+      address: "16 Rue du Cardinal Richard",
+      cp: "44190",
+      city: "BOUSSAY",
+    },
     email: "camille.redoit@wanadoo.fr",
     phone: "06 09 80 07 97",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -14588,9 +15607,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "REMAUD",
-    address: "22 Rue de la Beneti�re",
-    cp: "44860",
-    city: "PONT SAINT MARTIN",
+    location: {
+      address: "22 Rue de la Beneti�re",
+      cp: "44860",
+      city: "PONT SAINT MARTIN",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -14617,9 +15638,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "RENIER",
-    address: "29 Rue d'Oradour sur Gl�ne",
-    cp: "93230",
-    city: "ROMAINcity",
+    location: {
+      address: "29 Rue d'Oradour sur Gl�ne",
+      cp: "93230",
+      city: "ROMAINcity",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -14646,9 +15669,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "RENOVENERGY",
-    address: "11-12 Quai Henri Barbusse",
-    cp: "44000",
-    city: "NANTES",
+    location: {
+      address: "11-12 Quai Henri Barbusse",
+      cp: "44000",
+      city: "NANTES",
+    },
     email: "bp.nantes@renovenergy.fr",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -14675,9 +15700,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "REYES J. Entreprise",
-    address: "79 route de Corbas",
-    cp: "69780",
-    city: "MIONS",
+    location: {
+      address: "79 route de Corbas",
+      cp: "69780",
+      city: "MIONS",
+    },
     email: "",
     phone: "478218986",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -14704,9 +15731,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "RIPORTO",
-    address: "Achemin de Champagne",
-    cp: "69870",
-    city: "SAINT JUST D'AVRAY",
+    location: {
+      address: "Achemin de Champagne",
+      cp: "69870",
+      city: "SAINT JUST D'AVRAY",
+    },
     email: "KRIPORTO@magestime.com",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -14733,9 +15762,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "RIVET",
-    address: "ZA Saint Cl�ment",
-    cp: "44450",
-    city: "DIVATTE SUR LOIRE",
+    location: {
+      address: "ZA Saint Cl�ment",
+      cp: "44450",
+      city: "DIVATTE SUR LOIRE",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -14762,9 +15793,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "ROBAT Ma�onnerie",
-    address: "R�sidence Canop� 12 Rue Vigne",
-    cp: "64100",
-    city: "BAYONNE",
+    location: {
+      address: "R�sidence Canop� 12 Rue Vigne",
+      cp: "64100",
+      city: "BAYONNE",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -14791,9 +15824,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "ROBERT Bertrand et Rosalie Architectes",
-    address: "26 Rue de Clermont",
-    cp: "44850",
-    city: "LE CELLIER",
+    location: {
+      address: "26 Rue de Clermont",
+      cp: "44850",
+      city: "LE CELLIER",
+    },
     email: "bertrand.robert.arch@free.fr",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -14820,9 +15855,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "ROUILLON",
-    address: "11 bis Rue Aristide Hignard",
-    cp: "44000",
-    city: "NANTES",
+    location: {
+      address: "11 bis Rue Aristide Hignard",
+      cp: "44000",
+      city: "NANTES",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -14849,9 +15886,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "ROUSSEL",
-    address: "1 Impasse de l'Avocette",
-    cp: "44115",
-    city: "BASSE GOULAINE",
+    location: {
+      address: "1 Impasse de l'Avocette",
+      cp: "44115",
+      city: "BASSE GOULAINE",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -14878,9 +15917,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "ROUSSEL",
-    address: "11 Rue Cr�billon",
-    cp: "44000",
-    city: "NANTES",
+    location: {
+      address: "11 Rue Cr�billon",
+      cp: "44000",
+      city: "NANTES",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -14907,9 +15948,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "ROUSSELOT FLEURIET",
-    address: "23 Rue de la Petite Mitrie",
-    cp: "44000",
-    city: "NANTES",
+    location: {
+      address: "23 Rue de la Petite Mitrie",
+      cp: "44000",
+      city: "NANTES",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -14936,9 +15979,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "ROUX",
-    address: "9 Rue de l'Aveneau",
-    cp: "44400",
-    city: "REZE",
+    location: {
+      address: "9 Rue de l'Aveneau",
+      cp: "44400",
+      city: "REZE",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -14965,9 +16010,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "RUBEL Architecte",
-    address: "B�timent 3D (4�me �tage)",
-    cp: "73290",
-    city: "LA MOTTE SERVOLEX",
+    location: {
+      address: "B�timent 3D (4�me �tage)",
+      cp: "73290",
+      city: "LA MOTTE SERVOLEX",
+    },
     email: "rubel.architecte@gmail.com",
     phone: "06 22 43 37 49",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -14994,9 +16041,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "RUGA CAURRIER",
-    address: "",
-    cp: "",
-    city: "",
+    location: {
+      address: "",
+      cp: "",
+      city: "",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -15023,9 +16072,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "SAINT MARD TOSETTO",
-    address: "2A Rue d'Anjou",
-    cp: "54400",
-    city: "COSNES ET ROMAIN",
+    location: {
+      address: "2A Rue d'Anjou",
+      cp: "54400",
+      city: "COSNES ET ROMAIN",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -15052,9 +16103,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "SALACE ESCULIER",
-    address: "160 Rue de Goulaine",
-    cp: "44115",
-    city: "BASSE GOULAINE",
+    location: {
+      address: "160 Rue de Goulaine",
+      cp: "44115",
+      city: "BASSE GOULAINE",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -15081,9 +16134,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "SAMM Entreprise",
-    address: "ZA Les Quatre Chemins",
-    cp: "44330",
-    city: "MOUZILLON",
+    location: {
+      address: "ZA Les Quatre Chemins",
+      cp: "44330",
+      city: "MOUZILLON",
+    },
     email: "sammouzillon@gmail.com",
     phone: "02 40 36 21 08",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -15110,9 +16165,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "SANSON Benoit Architecte Associ�",
-    address: "Le Bureau P�hant 30 Rue Emile P�hant",
-    cp: "44000",
-    city: "NANTES",
+    location: {
+      address: "Le Bureau P�hant 30 Rue Emile P�hant",
+      cp: "44000",
+      city: "NANTES",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -15139,9 +16196,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "SAS BRON DE LATTRE DE TASSIGNY",
-    address: "OGIC 11 bis Quai Perrache",
-    cp: "69002",
-    city: "LYON",
+    location: {
+      address: "OGIC 11 bis Quai Perrache",
+      cp: "69002",
+      city: "LYON",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -15168,9 +16227,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "SAS LES JEUNES POUCES",
-    address: "71 Place Travot",
-    cp: "49300",
-    city: "CHOLET",
+    location: {
+      address: "71 Place Travot",
+      cp: "49300",
+      city: "CHOLET",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -15197,9 +16258,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "SAS MARIELOU",
-    address: "5 Rue de Calais",
-    cp: "49800",
-    city: "BRAIN SUR L'AUTHION",
+    location: {
+      address: "5 Rue de Calais",
+      cp: "49800",
+      city: "BRAIN SUR L'AUTHION",
+    },
     email: "sasmarielou49@gmail.com",
     phone: "06 23 91 66 90",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -15226,9 +16289,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "SAS PROMOCONCEPT",
-    address: "28 Le Bois Mac�",
-    cp: "44210",
-    city: "PORNIC",
+    location: {
+      address: "28 Le Bois Mac�",
+      cp: "44210",
+      city: "PORNIC",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -15255,9 +16320,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "SAS SOMIMMO",
-    address: "5 Rue de la Grassini�re",
-    cp: "44120",
-    city: "VERTOU",
+    location: {
+      address: "5 Rue de la Grassini�re",
+      cp: "44120",
+      city: "VERTOU",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -15284,9 +16351,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "SASU I.M.A.",
-    address: "325 Route de Ste Luce",
-    cp: "44300",
-    city: "NANTES",
+    location: {
+      address: "325 Route de Ste Luce",
+      cp: "44300",
+      city: "NANTES",
+    },
     email: "sasu462ima@gmail.com",
     phone: "02 28 34 40 95",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -15313,9 +16382,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "SCCV ARENTHON VERGERS",
-    address: "CAPELLI 58 Avenue Mar�chal Foche",
-    cp: "69006",
-    city: "LYON",
+    location: {
+      address: "CAPELLI 58 Avenue Mar�chal Foche",
+      cp: "69006",
+      city: "LYON",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -15342,9 +16413,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "SCCV Aupr�s du Ruisseau",
-    address: "64 Chemin de Sermenaz",
-    cp: "1700",
-    city: "NEYRON",
+    location: {
+      address: "64 Chemin de Sermenaz",
+      cp: "1700",
+      city: "NEYRON",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -15371,9 +16444,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "SCCV TERRES DE LORRAINE",
-    address: "14 Rue de Lorraine",
-    cp: "57880",
-    city: "HAM SOUS VARSBERG",
+    location: {
+      address: "14 Rue de Lorraine",
+      cp: "57880",
+      city: "HAM SOUS VARSBERG",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -15400,9 +16475,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "SCCV cityURBANNE BRESSAT c/o Ydonna",
-    address: "Immeuble le 45' 45 Chemin Moulin Carron",
-    cp: "69570",
-    city: "DARDILLY",
+    location: {
+      address: "Immeuble le 45' 45 Chemin Moulin Carron",
+      cp: "69570",
+      city: "DARDILLY",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -15429,9 +16506,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "SCI 13 METAL",
-    address: "13 Rue de la M�tallurgie",
-    cp: "44470",
-    city: "CARQUEFOU",
+    location: {
+      address: "13 Rue de la M�tallurgie",
+      cp: "44470",
+      city: "CARQUEFOU",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -15458,9 +16537,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "SCI AGP & ISG",
-    address: "ZA du Butai",
-    cp: "44320",
-    city: "CHAUMES EN RETZ",
+    location: {
+      address: "ZA du Butai",
+      cp: "44320",
+      city: "CHAUMES EN RETZ",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -15487,9 +16568,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "SCI BJL FAMILY - M. JOUIS",
-    address: "14 Place de l'Eglise",
-    cp: "44115",
-    city: "HAUTE GOULAINE",
+    location: {
+      address: "14 Place de l'Eglise",
+      cp: "44115",
+      city: "HAUTE GOULAINE",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -15516,9 +16599,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "SCI CLOS SAINT PIERRE",
-    address: "31 Rue des Forges",
-    cp: "44430",
-    city: "LE LOROUX BOTTEREAU",
+    location: {
+      address: "31 Rue des Forges",
+      cp: "44430",
+      city: "LE LOROUX BOTTEREAU",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -15545,9 +16630,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "SCI DU CAMP DE CESAR",
-    address: "Chemin des Rini�res",
-    cp: "49130",
-    city: "SAINTE GEMMES SUR LOIRE",
+    location: {
+      address: "Chemin des Rini�res",
+      cp: "49130",
+      city: "SAINTE GEMMES SUR LOIRE",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -15574,9 +16661,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "SCI EL ASSAAD",
-    address: "27 Avenue Drevet",
-    cp: "44500",
-    city: "LA BAULE",
+    location: {
+      address: "27 Avenue Drevet",
+      cp: "44500",
+      city: "LA BAULE",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -15603,9 +16692,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "SCI EMMAFLO",
-    address: "La Tellerie",
-    cp: "44710",
-    city: "PORT SAINT PERE",
+    location: {
+      address: "La Tellerie",
+      cp: "44710",
+      city: "PORT SAINT PERE",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -15632,9 +16723,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "SCI FMPJ",
-    address: "Parc Visionis",
-    cp: "1990",
-    city: "GUEREINS",
+    location: {
+      address: "Parc Visionis",
+      cp: "1990",
+      city: "GUEREINS",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -15661,9 +16754,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "SCI GVSES",
-    address: "4 Rue Ren� Guy Cadou",
-    cp: "44450",
-    city: "DIVATTE SUR LOIRE",
+    location: {
+      address: "4 Rue Ren� Guy Cadou",
+      cp: "44450",
+      city: "DIVATTE SUR LOIRE",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -15690,9 +16785,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "SCI LES GENETS",
-    address: "6 Rue Pierre Mendes France",
-    cp: "44640",
-    city: "SAINT JEAN DE BOISEAU",
+    location: {
+      address: "6 Rue Pierre Mendes France",
+      cp: "44640",
+      city: "SAINT JEAN DE BOISEAU",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -15719,9 +16816,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "SCI MALT",
-    address: "5 Rue James Joule",
-    cp: "44400",
-    city: "REZE",
+    location: {
+      address: "5 Rue James Joule",
+      cp: "44400",
+      city: "REZE",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -15748,9 +16847,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "SCI MANSIMMO",
-    address: "",
-    cp: "",
-    city: "",
+    location: {
+      address: "",
+      cp: "",
+      city: "",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -15777,9 +16878,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "SCI MB2L repr�sent�e par M. BOSSARD",
-    address: "2 Chemin du Petit Bois",
-    cp: "44690",
-    city: "LA HAYE FOUASSIERE",
+    location: {
+      address: "2 Chemin du Petit Bois",
+      cp: "44690",
+      city: "LA HAYE FOUASSIERE",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -15806,9 +16909,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "SCI ODYC",
-    address: "4 Rue des Petits C�teaux",
-    cp: "44200",
-    city: "NANTES",
+    location: {
+      address: "4 Rue des Petits C�teaux",
+      cp: "44200",
+      city: "NANTES",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -15835,9 +16940,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "SCI PARIS PROVINCES PROPERTIES - PPP",
-    address: "7 Rue de l'Amiral d'Estaing CS 41694",
-    cp: "75773",
-    city: "PARIS CEDEX 16",
+    location: {
+      address: "7 Rue de l'Amiral d'Estaing CS 41694",
+      cp: "75773",
+      city: "PARIS CEDEX 16",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -15864,9 +16971,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "SCI RJL",
-    address: "19 Vie des Mulets",
-    cp: "38300",
-    city: "RUY MONTCEAU",
+    location: {
+      address: "19 Vie des Mulets",
+      cp: "38300",
+      city: "RUY MONTCEAU",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -15893,9 +17002,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "SCI TL 68.51",
-    address: "2827 Chemin du Train des Pignes",
-    cp: "83230",
-    city: "BORMES LES MIMOSAS",
+    location: {
+      address: "2827 Chemin du Train des Pignes",
+      cp: "83230",
+      city: "BORMES LES MIMOSAS",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -15922,9 +17033,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "SCI TOM - FLO",
-    address: "Avenue Miln",
-    cp: "56340",
-    city: "CARNAC",
+    location: {
+      address: "Avenue Miln",
+      cp: "56340",
+      city: "CARNAC",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -15951,9 +17064,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "SCOP TIERRHABITAT",
-    address: "4 Rue des Artisans ZA du Charbonneau",
-    cp: "44521",
-    city: "COUFFE",
+    location: {
+      address: "4 Rue des Artisans ZA du Charbonneau",
+      cp: "44521",
+      city: "COUFFE",
+    },
     email: "",
     phone: "02 40 93 05 79",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -15980,9 +17095,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "SDC 3 rue Rameau",
-    address: "Par Cabinet RONGIER 2 Rue Beaurepaire",
-    cp: "44000",
-    city: "NANTES",
+    location: {
+      address: "Par Cabinet RONGIER 2 Rue Beaurepaire",
+      cp: "44000",
+      city: "NANTES",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -16009,9 +17126,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "SEVRE LOIRE HABITAT",
-    address: "34 Rue St Christophe CS 32144",
-    cp: "49321",
-    city: "CHOLET CEDEX",
+    location: {
+      address: "34 Rue St Christophe CS 32144",
+      cp: "49321",
+      city: "CHOLET CEDEX",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -16038,9 +17157,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "SGB CONSTRUCTION",
-    address: "38 Avenue de la Table de Pierre",
-    cp: "69340",
-    city: "FRANCHEcity",
+    location: {
+      address: "38 Avenue de la Table de Pierre",
+      cp: "69340",
+      city: "FRANCHEcity",
+    },
     email: "",
     phone: "04 78 57 45 86",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -16067,9 +17188,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "SICARD QUENET",
-    address: "1 bis Rue du Couvent",
-    cp: "56420",
-    city: "PLAUDREN",
+    location: {
+      address: "1 bis Rue du Couvent",
+      cp: "56420",
+      city: "PLAUDREN",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -16096,9 +17219,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "SMEG",
-    address: "Z.I. du Ty Mor",
-    cp: "56700",
-    city: "HENNEBONT",
+    location: {
+      address: "Z.I. du Ty Mor",
+      cp: "56700",
+      city: "HENNEBONT",
+    },
     email: "",
     phone: "02 97 36 21 21",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -16125,9 +17250,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "SOCABAT",
-    address: "9 Avenue des Ch�taigniers",
-    cp: "44470",
-    city: "CARQUEFOU",
+    location: {
+      address: "9 Avenue des Ch�taigniers",
+      cp: "44470",
+      city: "CARQUEFOU",
+    },
     email: "so.ca.bat@free.fr",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -16154,9 +17281,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "SOCALBAT Ma�onnerie",
-    address: "135 Rue Beno�t Mulsant BP. 90044",
-    cp: "69652",
-    city: "cityFRANCHE SUR SAONE CEDEX",
+    location: {
+      address: "135 Rue Beno�t Mulsant BP. 90044",
+      cp: "69652",
+      city: "cityFRANCHE SUR SAONE CEDEX",
+    },
     email: "contact@socalbat.fr",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -16183,9 +17312,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "SOCRAMAT FABRICATION",
-    address: "La Gare",
-    cp: "53800",
-    city: "LA SELLE CRAONNAISE",
+    location: {
+      address: "La Gare",
+      cp: "53800",
+      city: "LA SELLE CRAONNAISE",
+    },
     email: "",
     phone: "02 43 09 19 20",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -16212,9 +17343,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "SOJIBAT Soci�t�",
-    address: "4 Avenue Alexandre Goupil",
-    cp: "44700",
-    city: "ORVAULT",
+    location: {
+      address: "4 Avenue Alexandre Goupil",
+      cp: "44700",
+      city: "ORVAULT",
+    },
     email: "",
     phone: "09 80 96 23 86",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -16241,9 +17374,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "SOLRENOV Entreprise",
-    address: "All�e Sagardi",
-    cp: "64990",
-    city: "LAHONCE",
+    location: {
+      address: "All�e Sagardi",
+      cp: "64990",
+      city: "LAHONCE",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -16270,9 +17405,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "SOPRAGGLO",
-    address: "6 Rue Antoine B�cquerel",
-    cp: "72100",
-    city: "LE MANS",
+    location: {
+      address: "6 Rue Antoine B�cquerel",
+      cp: "72100",
+      city: "LE MANS",
+    },
     email: "",
     phone: "02 43 85 84 57",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -16299,9 +17436,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "SOTRABEAU",
-    address: "305 D Rue Gabriel Voisin",
-    cp: "69400",
-    city: "cityFRANCHE SUR SAONE",
+    location: {
+      address: "305 D Rue Gabriel Voisin",
+      cp: "69400",
+      city: "cityFRANCHE SUR SAONE",
+    },
     email: "mbo@actipole.fr",
     phone: "04 74 69 00 39",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -16328,9 +17467,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "STD Entreprise",
-    address: "Torreseneko Bidea",
-    cp: "64250",
-    city: "ESPELETTE",
+    location: {
+      address: "Torreseneko Bidea",
+      cp: "64250",
+      city: "ESPELETTE",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -16357,9 +17498,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "St�phane PIARD SARL",
-    address: "18 rue de la Chabossonni�re",
-    cp: "44119",
-    city: "GRANDCHAMPS DES FONTAINES",
+    location: {
+      address: "18 rue de la Chabossonni�re",
+      cp: "44119",
+      city: "GRANDCHAMPS DES FONTAINES",
+    },
     email: "spiard@agencepiard.fr",
     phone: "02 40 43 92 55",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -16386,9 +17529,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "STUDEO",
-    address: "24 Rue du Temple",
-    cp: "44320",
-    city: "SAINT PERE EN RETZ",
+    location: {
+      address: "24 Rue du Temple",
+      cp: "44320",
+      city: "SAINT PERE EN RETZ",
+    },
     email: "",
     phone: "02 40 82 01 58",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -16415,9 +17560,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "SUPERNORMAL Architecture",
-    address: "94 Rue Gaston Turpin",
-    cp: "44000",
-    city: "NANTES",
+    location: {
+      address: "94 Rue Gaston Turpin",
+      cp: "44000",
+      city: "NANTES",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -16444,9 +17591,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "SUTEAU SARL",
-    address: "17 La Brahini�re",
-    cp: "44190",
-    city: "GETIGNE",
+    location: {
+      address: "17 La Brahini�re",
+      cp: "44190",
+      city: "GETIGNE",
+    },
     email: "suteau.maconnerie@gmail.com",
     phone: "06 20 67 55 13",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -16473,9 +17622,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "TABARY",
-    address: "3 Rue de Pocy sur Eure",
-    cp: "78111",
-    city: "DAMMARTIN EN SEVRE",
+    location: {
+      address: "3 Rue de Pocy sur Eure",
+      cp: "78111",
+      city: "DAMMARTIN EN SEVRE",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -16502,9 +17653,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "TANGUY MATERIAUX",
-    address: "La Verrie",
-    cp: "44450",
-    city: "SAINT JULIEN DE CONCELLES",
+    location: {
+      address: "La Verrie",
+      cp: "44450",
+      city: "SAINT JULIEN DE CONCELLES",
+    },
     email: "",
     phone: "02 40 54 13 00",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -16531,9 +17684,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "TECHNO PIEUX",
-    address: "4 Rue du Mar�chal Ferrant",
-    cp: "49124",
-    city: "LE PLESSIS GRAMMOIRE",
+    location: {
+      address: "4 Rue du Mar�chal Ferrant",
+      cp: "49124",
+      city: "LE PLESSIS GRAMMOIRE",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -16560,9 +17715,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "TEMACO Entreprise",
-    address: "74 Rue Mend�s France",
-    cp: "44240",
-    city: "LA CHAPELLE SUR ERDRE",
+    location: {
+      address: "74 Rue Mend�s France",
+      cp: "44240",
+      city: "LA CHAPELLE SUR ERDRE",
+    },
     email: "",
     phone: "02 40 93 10 65",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -16589,9 +17746,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "TEMPEZ JOSSO",
-    address: "43 Bd Meusnier de Querlon",
-    cp: "44000",
-    city: "NANTES",
+    location: {
+      address: "43 Bd Meusnier de Querlon",
+      cp: "44000",
+      city: "NANTES",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -16618,9 +17777,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "TESSIER",
-    address: "38 Rue des Chalatres",
-    cp: "44000",
-    city: "NANTES",
+    location: {
+      address: "38 Rue des Chalatres",
+      cp: "44000",
+      city: "NANTES",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -16647,9 +17808,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "TESSIER",
-    address: "11 Rue Jules Benoit",
-    cp: "44510",
-    city: "LE POULIGUEN",
+    location: {
+      address: "11 Rue Jules Benoit",
+      cp: "44510",
+      city: "LE POULIGUEN",
+    },
     email: "gerardtessier@free.fr",
     phone: "06 11 71 92 06",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -16676,9 +17839,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "TESSIER Pascal Ma�onnerie",
-    address: "Parc d'Activit� de la Bloire 31 Rue Gustave Eiffel",
-    cp: "85300",
-    city: "CHALLANS",
+    location: {
+      address: "Parc d'Activit� de la Bloire 31 Rue Gustave Eiffel",
+      cp: "85300",
+      city: "CHALLANS",
+    },
     email: "maconnerieptessier@outlook.com",
     phone: "02 51 35 57 69",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -16705,9 +17870,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "TETO",
-    address: "4 Chemin du Clos de la Motte",
-    cp: "44350",
-    city: "GUERANDE",
+    location: {
+      address: "4 Chemin du Clos de la Motte",
+      cp: "44350",
+      city: "GUERANDE",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -16734,9 +17901,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "TG BAT",
-    address: "15 rue des Entrepreneurs",
-    cp: "44120",
-    city: "VERTOU",
+    location: {
+      address: "15 rue des Entrepreneurs",
+      cp: "44120",
+      city: "VERTOU",
+    },
     email: "",
     phone: "02.40.34.37.97",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -16763,9 +17932,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "THOLIN",
-    address: "1177 Route de la Chataigni�re",
-    cp: "69760",
-    city: "LIMONEST",
+    location: {
+      address: "1177 Route de la Chataigni�re",
+      cp: "69760",
+      city: "LIMONEST",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -16792,9 +17963,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "THOMOUX",
-    address: "3 Rue des Manoirs",
-    cp: "44690",
-    city: "SAINT FIACRE",
+    location: {
+      address: "3 Rue des Manoirs",
+      cp: "44690",
+      city: "SAINT FIACRE",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -16821,9 +17994,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "TIKTO Architecte",
-    address: "2 Rue Robert Schuman",
-    cp: "44400",
-    city: "REZE",
+    location: {
+      address: "2 Rue Robert Schuman",
+      cp: "44400",
+      city: "REZE",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -16850,9 +18025,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "TISSOT MARSAUD",
-    address: "Hameau Pech Caussen Saint Pantal�on",
-    cp: "46800",
-    city: "BARGUELONNE EN QUERCY",
+    location: {
+      address: "Hameau Pech Caussen Saint Pantal�on",
+      cp: "46800",
+      city: "BARGUELONNE EN QUERCY",
+    },
     email: "samarsaud@wanadoo.fr",
     phone: "07 77 03 63 66",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -16879,9 +18056,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "TOFFOLO Entreprise",
-    address: "710 Chemin Leihorrondo",
-    cp: "64480",
-    city: "USTARITZ",
+    location: {
+      address: "710 Chemin Leihorrondo",
+      cp: "64480",
+      city: "USTARITZ",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -16908,9 +18087,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "TORIKIAN VICTORIA Architecture",
-    address: "88 Chemin des Douves",
-    cp: "69700",
-    city: "MONTAGNY",
+    location: {
+      address: "88 Chemin des Douves",
+      cp: "69700",
+      city: "MONTAGNY",
+    },
     email: "torikian.architecture@gmail.com",
     phone: "06 23 31 03 16",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -16937,9 +18118,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "TOULGOAT Tony",
-    address: "6 rue de Plaisance",
-    cp: "44100",
-    city: "NANTES",
+    location: {
+      address: "6 rue de Plaisance",
+      cp: "44100",
+      city: "NANTES",
+    },
     email: "tonytoulgoatmoe@gmail.com",
     phone: "02 40 46 87 33",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -16966,9 +18149,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "TOUMELIN DOXIN",
-    address: "27 Route de la Maine",
-    cp: "44190",
-    city: "SAINT LUMINE DE CLISSON",
+    location: {
+      address: "27 Route de la Maine",
+      cp: "44190",
+      city: "SAINT LUMINE DE CLISSON",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -16995,9 +18180,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "TOUT FAIRE MATERIAUX",
-    address: "ZA Espace Vie Atlantique Sud BP. 4",
-    cp: "85190",
-    city: "AIZENAY",
+    location: {
+      address: "ZA Espace Vie Atlantique Sud BP. 4",
+      cp: "85190",
+      city: "AIZENAY",
+    },
     email: "",
     phone: "02 51 34 73 96",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -17024,9 +18211,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "TOUT FAIRE MATERIAUX",
-    address: "SARL FAUCON 86 Bd de Thouars",
-    cp: "79300",
-    city: "BRESSUIRE",
+    location: {
+      address: "SARL FAUCON 86 Bd de Thouars",
+      cp: "79300",
+      city: "BRESSUIRE",
+    },
     email: "sarl.faucon@orange.fr",
     phone: "05 49 74 06 14",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -17053,9 +18242,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "TPS",
-    address: "M. PETARD Mathieu ZA Saint Cl�ment",
-    cp: "44450",
-    city: "DIVATTE SUR LOIRE",
+    location: {
+      address: "M. PETARD Mathieu ZA Saint Cl�ment",
+      cp: "44450",
+      city: "DIVATTE SUR LOIRE",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -17082,9 +18273,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "TRADINOVA",
-    address: "Impasse des Vignes",
-    cp: "72390",
-    city: "LE LUART",
+    location: {
+      address: "Impasse des Vignes",
+      cp: "72390",
+      city: "LE LUART",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -17111,9 +18304,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "TREMBLAY SCOP",
-    address: "ZA Le Houssais les Landes de Belle Noe",
-    cp: "",
-    city: "",
+    location: {
+      address: "ZA Le Houssais les Landes de Belle Noe",
+      cp: "",
+      city: "",
+    },
     email: "contact@tremblayscop.fr",
     phone: "02 40 19 61 27",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -17140,9 +18335,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "TUPIN SAS",
-    address: "10 Rue Tupin Grande Rue",
-    cp: "69600",
-    city: "OULLINS",
+    location: {
+      address: "10 Rue Tupin Grande Rue",
+      cp: "69600",
+      city: "OULLINS",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -17169,9 +18366,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "UHOZE Armel Architecte",
-    address: "",
-    cp: "",
-    city: "",
+    location: {
+      address: "",
+      cp: "",
+      city: "",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -17198,9 +18397,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "USTABAT Entreprise",
-    address: "231 Chemin d'Etxauzia",
-    cp: "64250",
-    city: "ITXASSOU",
+    location: {
+      address: "231 Chemin d'Etxauzia",
+      cp: "64250",
+      city: "ITXASSOU",
+    },
     email: "",
     phone: "05 59 29 90 01",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -17227,9 +18428,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "VAN OUTRYVEN",
-    address: "Impasse du Pic Vert",
-    cp: "72470",
-    city: "CHAMPAGNE",
+    location: {
+      address: "Impasse du Pic Vert",
+      cp: "72470",
+      city: "CHAMPAGNE",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -17256,9 +18459,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "VENDEE EXTENSION Ma�onnerie",
-    address: "49 Bd Gustave Eiffel",
-    cp: "85170",
-    city: "BELLEVIGNY",
+    location: {
+      address: "49 Bd Gustave Eiffel",
+      cp: "85170",
+      city: "BELLEVIGNY",
+    },
     email: "",
     phone: "02 44 40 89 03",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -17285,9 +18490,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "VEUVE CHATAIN",
-    address: "Avenue du Dauphin�",
-    cp: "38790",
-    city: "Charentonnay",
+    location: {
+      address: "Avenue du Dauphin�",
+      cp: "38790",
+      city: "Charentonnay",
+    },
     email: "",
     phone: "474590309",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -17314,9 +18521,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "VIADE CONSTRUCTION",
-    address: "ZAC Les Grands Moulins",
-    cp: "44270",
-    city: "LA MARNE",
+    location: {
+      address: "ZAC Les Grands Moulins",
+      cp: "44270",
+      city: "LA MARNE",
+    },
     email: "a.pasquier@viade-construction.com",
     phone: "02 40 71 70 84",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -17343,9 +18552,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "VIAUD CONCEPTION 3D",
-    address: "Ch�teau de Clermont",
-    cp: "44850",
-    city: "LE CELLIER",
+    location: {
+      address: "Ch�teau de Clermont",
+      cp: "44850",
+      city: "LE CELLIER",
+    },
     email: "viaud.conception3d@gmail.com",
     phone: "06 37 05 72 00",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -17372,9 +18583,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "VIEIRA",
-    address: "89 Chemin de Moly",
-    cp: "69230",
-    city: "SAINT GENIS LAVAL",
+    location: {
+      address: "89 Chemin de Moly",
+      cp: "69230",
+      city: "SAINT GENIS LAVAL",
+    },
     email: "",
     phone: "06 78 91 56 38",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -17401,9 +18614,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "VIENNE RENOVATION",
-    address: "SARL GARRIVIER MASSOT Chemin des Courses",
-    cp: "38780",
-    city: "PONT EVEQUE",
+    location: {
+      address: "SARL GARRIVIER MASSOT Chemin des Courses",
+      cp: "38780",
+      city: "PONT EVEQUE",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -17430,9 +18645,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "VIGNEAU",
-    address: "2 B Rue des Jasmins",
-    cp: "68190",
-    city: "ENSISHEIM",
+    location: {
+      address: "2 B Rue des Jasmins",
+      cp: "68190",
+      city: "ENSISHEIM",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -17459,9 +18676,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "VIGOUROUX HOCHET",
-    address: "37 Rue de Thoiry",
-    cp: "44100",
-    city: "NANTES",
+    location: {
+      address: "37 Rue de Thoiry",
+      cp: "44100",
+      city: "NANTES",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -17488,9 +18707,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "VINES CONSTRUCTION",
-    address: "19 bis Rue du Petit Prince",
-    cp: "44360",
-    city: "VIGNEUX DE BRETAGNE",
+    location: {
+      address: "19 bis Rue du Petit Prince",
+      cp: "44360",
+      city: "VIGNEUX DE BRETAGNE",
+    },
     email: "v.vines@vines-construction.fr",
     phone: "02 40 31 65 69",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -17517,9 +18738,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "VINET",
-    address: "La Quilla",
-    cp: "44690",
-    city: "LA HAYE FOUASSIERE",
+    location: {
+      address: "La Quilla",
+      cp: "44690",
+      city: "LA HAYE FOUASSIERE",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -17546,9 +18769,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "VISION D'ARCHI - VDA",
-    address: "2 All�e du Moulin Berger",
-    cp: "69130",
-    city: "ECULLY",
+    location: {
+      address: "2 All�e du Moulin Berger",
+      cp: "69130",
+      city: "ECULLY",
+    },
     email: "f.coston@visiondarchi.fr",
     phone: "07 60 35 61 59",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -17575,9 +18800,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "VOLPATO",
-    address: "12 Rue de la Vergnaie",
-    cp: "44190",
-    city: "SAINT HILAIRE DE CLISSON",
+    location: {
+      address: "12 Rue de la Vergnaie",
+      cp: "44190",
+      city: "SAINT HILAIRE DE CLISSON",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -17604,9 +18831,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "WE-BATI",
-    address: "1 Rue de Bellevue",
-    cp: "44880",
-    city: "SAUTRON",
+    location: {
+      address: "1 Rue de Bellevue",
+      cp: "44880",
+      city: "SAUTRON",
+    },
     email: "v.jego@we-bati.fr",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -17633,9 +18862,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "YGNACE",
-    address: "23 Rue louis Dansard",
-    cp: "69007",
-    city: "LYON",
+    location: {
+      address: "23 Rue louis Dansard",
+      cp: "69007",
+      city: "LYON",
+    },
     email: "",
     phone: "06 61 33 64 52",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -17662,9 +18893,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "ZALTZMAN",
-    address: "10 All�e des Hauts Viviers",
-    cp: "44120",
-    city: "VERTOU",
+    location: {
+      address: "10 All�e des Hauts Viviers",
+      cp: "44120",
+      city: "VERTOU",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -17691,9 +18924,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "ZBIRI Abdellatif",
-    address: "58 bi, Rue Durivum",
-    cp: "85600",
-    city: "SAINT GEORGES DE MONTAIGU",
+    location: {
+      address: "58 bi, Rue Durivum",
+      cp: "85600",
+      city: "SAINT GEORGES DE MONTAIGU",
+    },
     email: "cad.abdel@free.fr",
     phone: "02 51 42 03 73",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
@@ -17720,9 +18955,11 @@ export const CustomerExample: ICustomer[] = [
   {
     category: undefined,
     name: "ZITOUNI",
-    address: "6 Avenue des Iris",
-    cp: "44240",
-    city: "SUCE SUR ERDRE",
+    location: {
+      address: "6 Avenue des Iris",
+      cp: "44240",
+      city: "SUCE SUR ERDRE",
+    },
     email: "",
     phone: "",
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",

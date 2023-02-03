@@ -6,7 +6,7 @@ import CustomerRelationship from "./components/CustomerRelationship";
 import CustomerPayment from "./components/CustomerPayment";
 import { Accordion } from "@mantine/core";
 import { IconCash, IconUsers } from "@tabler/icons";
-import Appointment from "../Appointment/Appointment";
+import Appointment from "../Appointment/AppointmentList";
 
 interface ICustomerProps {
   customer: ICustomer;

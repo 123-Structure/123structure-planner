@@ -8,6 +8,13 @@
   margin-top: 16px;
 }
 
+.appointementHeader {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 8px;
+}
+
 @media (max-width: 850px) {
   .editAppointmentTitle {
     flex-direction: column;

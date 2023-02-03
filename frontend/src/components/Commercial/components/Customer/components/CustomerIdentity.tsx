@@ -29,9 +29,11 @@ interface ICustomerIdentityProps {
 
 const CustomerIdentity = (props: ICustomerIdentityProps) => {
   const [editCustomerIdentity, setEditCustomerIdentity] = useState(false);
-  const [address, setAddress] = useState<string>(props.customer.address);
-  const [cp, setCp] = useState<string>(props.customer.cp);
-  const [city, setCity] = useState<string>(props.customer.city);
+  const [address, setAddress] = useState<string>(
+    props.customer.location.address
+  );
+  const [cp, setCp] = useState<string>(props.customer.location.cp);
+  const [city, setCity] = useState<string>(props.customer.location.city);
   const [email, setEmail] = useState<string>(props.customer.email);
   const [phone, setPhone] = useState<string>(props.customer.phone);
 
@@ -57,9 +59,9 @@ const CustomerIdentity = (props: ICustomerIdentityProps) => {
         customer.group === props.customer.group &&
         customer.name === props.customer.name
     );
-    changedCustomer[0].address = address;
-    changedCustomer[0].cp = cp;
-    changedCustomer[0].city = city;
+    changedCustomer[0].location.address = address;
+    changedCustomer[0].location.cp = cp;
+    changedCustomer[0].location.city = city;
     changedCustomer[0].email = email;
     changedCustomer[0].phone = phone;
     setCustomers(newCustomer);
@@ -72,9 +74,9 @@ const CustomerIdentity = (props: ICustomerIdentityProps) => {
   };
 
   const handleCancelClick = () => {
-    setAddress(props.customer.address);
-    setCp(props.customer.cp);
-    setCity(props.customer.city);
+    setAddress(props.customer.location.address);
+    setCp(props.customer.location.cp);
+    setCity(props.customer.location.city);
     setEmail(props.customer.email);
     setPhone(props.customer.phone);
     showNotification({
@@ -135,7 +137,7 @@ const CustomerIdentity = (props: ICustomerIdentityProps) => {
             color="yellow"
             handleClick={() =>
               openURL(
-                `https://www.google.fr/maps/search/${props.customer.address}, ${props.customer.cp} ${props.customer.city}`
+                `https://www.google.fr/maps/search/${props.customer.location.address}, ${props.customer.location.cp} ${props.customer.location.city}`
               )
             }
             errorMessage={[
@@ -209,9 +211,6 @@ const CustomerIdentity = (props: ICustomerIdentityProps) => {
             handleClick={() => console.log("test")}
             icon={<IconUser />}
             label={`${contact.firstName} ${contact.lastName}`}
-            extraStyle={{
-              width: "fit-content",
-            }}
           />
         ))}
       </div>

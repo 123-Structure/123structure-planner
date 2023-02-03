@@ -4,15 +4,15 @@ import { IconCalendarEvent } from "@tabler/icons";
 import React, { useState } from "react";
 import { ICustomer } from "../../../../data/interfaces/ICustomer";
 import { TAppointmentTitle } from "../../../../data/types/TApppointmentTitle";
-import TextEditor from "./components/TextEditor";
+import TextEditor from "./components/Appointment";
 import "dayjs/locale/fr";
 import "../../../../assets/style/Appointment.css";
 
-interface IAppointment {
+interface IAppointmentList {
   customer: ICustomer;
 }
 
-const Appointment = (props: IAppointment) => {
+const AppointmentList = (props: IAppointmentList) => {
   const [editAppointment, setEditAppointment] = useState(false);
   const [accordionValue, setAccordionValue] = useState<string | null>(null);
   const [appointmentTitle, setAppointmentTitle] = useState<
@@ -126,4 +126,4 @@ const Appointment = (props: IAppointment) => {
   );
 };
 
-export default Appointment;
+export default AppointmentList;

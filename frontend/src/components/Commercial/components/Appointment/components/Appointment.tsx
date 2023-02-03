@@ -25,8 +25,11 @@ import {
 import { showNotification } from "@mantine/notifications";
 import EditModeToggle from "../../../../utils/EditModeToggle";
 import { TAppointmentTitle } from "../../../../../data/types/TApppointmentTitle";
+import CustomButton from "../../../../utils/CustomButton";
+import { IconMap2, IconUser } from "@tabler/icons";
+import CustomerItem from "../../Customer/components/CustomerItem";
 
-interface ITextEditorProps {
+interface IAppointmentProps {
   _id: number;
   customer: ICustomer;
   appointment: IAppointment;
@@ -41,7 +44,7 @@ interface ITextEditorProps {
   setAccordionValue: React.Dispatch<React.SetStateAction<string | null>>;
 }
 
-const TextEditor = (props: ITextEditorProps) => {
+const Appointment = (props: IAppointmentProps) => {
   const customers = useCustomer();
   const setCustomers = useUpdateCustomer();
 
@@ -62,6 +65,10 @@ const TextEditor = (props: ITextEditorProps) => {
     ],
     content: props.appointment.content,
   });
+
+  const openURL = (url: string) => {
+    window.open(url, "_blank");
+  };
 
   const handleContentChange = (newValue: string | undefined) => {
     const newCustomer = [...customers];
@@ -154,7 +161,32 @@ const TextEditor = (props: ITextEditorProps) => {
         handleValideClick={handleValideClick}
         handleCancelClick={handleCancelClick}
       />
-      
+      <div className="appointementHeader">
+        <div className="contactContainer">
+          {props.appointment.contact.map((contact, index) => (
+            <CustomButton
+              key={index}
+              handleClick={() => console.log("test")}
+              icon={<IconUser />}
+              label={`${contact.firstName} ${contact.lastName}`}
+            />
+          ))}
+        </div>
+        <CustomerItem
+          label={[
+            props.appointment.location.address,
+            props.appointment.location.cp,
+            props.appointment.location.city,
+          ]}
+          icon={<IconMap2 size={24} color="black" />}
+          color="yellow"
+          handleClick={() =>
+            openURL(
+              `https://www.google.fr/maps/search/${props.appointment.location.address}, ${props.appointment.location.cp} ${props.appointment.location.city}`
+            )
+          }
+        />
+      </div>
       {props.editAppointment ? (
         <RichTextEditor className="textEditor" editor={editor}>
           <RichTextEditor.Toolbar sticky>
@@ -228,4 +260,4 @@ const TextEditor = (props: ITextEditorProps) => {
   );
 };
 
-export default TextEditor;
+export default Appointment;

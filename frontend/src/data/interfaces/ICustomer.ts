@@ -9,9 +9,11 @@ export interface ICustomer {
   category: TCustomerCategory;
   group: string;
   name: string;
-  address: string;
-  cp: string;
-  city: string;
+  location: {
+    address: string;
+    cp: string;
+    city: string;
+  };
   email: string;
   phone: string;
   logo: string;

@@ -252,7 +252,11 @@ const CustomerPayment = (props: ICustomerPaymentProps) => {
               icon={<IconCalculator size={24} color="black" />}
               color={"yellow"}
             />
-            <p>{localeCurrencyString((previousYearInvoiceAmount / previousYearProjectInvoiced))}</p>
+            <p>
+              {localeCurrencyString(
+                previousYearInvoiceAmount / previousYearProjectInvoiced
+              )}
+            </p>
           </div>
           <div className="customerItemTitle">
             <CustomerItem
@@ -307,7 +311,11 @@ const CustomerPayment = (props: ICustomerPaymentProps) => {
                     ? theme.colors.orange[6]
                     : theme.colors.green[6],
               }}
-            >{localeCurrencyString((currentInvoiceAmount / currentProjectInvoiced))}</p>
+            >
+              {localeCurrencyString(
+                currentInvoiceAmount / currentProjectInvoiced
+              )}
+            </p>
           </div>
         </div>
       </div>
