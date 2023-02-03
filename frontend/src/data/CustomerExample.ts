@@ -35,14 +35,6 @@ export const CustomerExample: ICustomer[] = [
         _id: "g.barais",
         fixer: [],
       },
-      {
-        firstName: "Pierrick",
-        lastName: "LOURME",
-        role: ["Commercial"],
-        company: "Anglet",
-        _id: "p.lourme",
-        fixer: [],
-      },
     ],
     appointment: [
       {

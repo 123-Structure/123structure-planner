@@ -27,6 +27,10 @@ interface ICustomerRelationshipProps {
 }
 
 const CustomerRelationship = (props: ICustomerRelationshipProps) => {
+  const ressources = useRessources();
+  const customers = useCustomer();
+  const setCustomers = useUpdateCustomer();
+
   const getCurrentGoal = () => {
     const currentYear = props.customer.projectGoal.filter(
       (projectGoal) => projectGoal.year === new Date().getFullYear()
@@ -51,13 +55,14 @@ const CustomerRelationship = (props: ICustomerRelationshipProps) => {
   const [previousYearGoal, setPreviousYearGoal] = useState(
     getPreviousYearGoal()
   );
+  const [commercial, setCommercial] = useState(
+    props.customer.commercial.map(
+      (commercial) => `${commercial.firstName} ${commercial.lastName}`
+    )
+  );
 
   const currentProjectInvoiced = 100;
   const previousYearProjectInvoiced = 100;
-
-  const ressources = useRessources();
-  const customers = useCustomer();
-  const setCustomers = useUpdateCustomer();
 
   const theme = useMantineTheme();
   const smallScreen = useMediaQuery(`(max-width: ${theme.breakpoints.xs}px)`);
@@ -104,6 +109,10 @@ const CustomerRelationship = (props: ICustomerRelationshipProps) => {
         customer.name === props.customer.name
     );
 
+    changedCustomer[0].commercial = ressources.filter((ressource) =>
+      commercial.includes(`${ressource.firstName} ${ressource.lastName}`)
+    );
+
     changedCustomer[0].projectGoal.filter(
       (projectGoal) => projectGoal.year === new Date().getFullYear()
     )[0].goal = currentProjectGoal;
@@ -122,6 +131,12 @@ const CustomerRelationship = (props: ICustomerRelationshipProps) => {
   };
 
   const handleCancelClick = () => {
+    setCommercial(
+      props.customer.commercial.map(
+        (commercial) => `${commercial.firstName} ${commercial.lastName}`
+      )
+    );
+
     setCurrentProjectGoal(
       props.customer.projectGoal.filter(
         (projectGoal) => projectGoal.year === new Date().getFullYear()
@@ -140,6 +155,23 @@ const CustomerRelationship = (props: ICustomerRelationshipProps) => {
       color: "red",
     });
     setEditCustomerRelationship(false);
+  };
+
+  const selectLabel = (
+    editMode: boolean,
+    currentValue: string[],
+    label: string[],
+    defaultValue: string[]
+  ) => {
+    if (editMode) {
+      const acc = [] as string[];
+      label.map((label) =>
+        currentValue.includes(label) ? acc.push(`${label}*`) : acc.push(label)
+      );
+      return acc;
+    } else {
+      return smallScreen ? [""] : defaultValue;
+    }
   };
 
   return (
@@ -170,26 +202,32 @@ const CustomerRelationship = (props: ICustomerRelationshipProps) => {
       <div className="customerItemContainer">
         <div className="customerItemTitle">
           <CustomerItem
-            label={smallScreen ? [""] : ["Commercial référent :"]}
+            editMode={editCustomerRelationship}
+            inputType={"multiselect"}
+            label={selectLabel(
+              editCustomerRelationship,
+              commercial,
+              ressources
+                .filter((commercial) => commercial.role.includes("Commercial"))
+                .map(
+                  (ressource) => `${ressource.firstName} ${ressource.lastName}`
+                ),
+              ["Commercial référent :"]
+            )}
+            updateLabel={[setCommercial]}
             icon={<IconUser size={24} color="black" />}
             color="yellow"
           />
-          <MultiSelect
-            data={ressources
-              .filter((ressource) => ressource.role.includes("Commercial"))
-              .map(
-                (commercial) => `${commercial.firstName} ${commercial.lastName}`
-              )}
-            value={props.customer.commercial.map(
-              (commercial) => `${commercial.firstName} ${commercial.lastName}`
-            )}
-            variant="unstyled"
-            placeholder="Commercial non défini"
-            onChange={(newCommercial) => handleCommercialChange(newCommercial)}
-            searchable={!smallScreen}
-            nothingFound="Aucun résultat"
-            clearable
-          />
+          <p>
+            {editCustomerRelationship
+              ? ""
+              : props.customer.commercial.map(
+                  (commercial, index) =>
+                    `${index > 0 ? " - " : ""}${commercial.firstName} ${
+                      commercial.lastName
+                    }`
+                )}
+          </p>
         </div>
         <div className="customerItemTitle">
           <CustomerItem
@@ -213,11 +251,11 @@ const CustomerRelationship = (props: ICustomerRelationshipProps) => {
               icon={<IconTargetArrow size={24} color="black" />}
               color="yellow"
             />
-            {editCustomerRelationship ? (
-              <p>{`(${new Date().getFullYear()-1})`}</p>
-            ) : (
-              <p>{previousYearGoal}</p>
-            )}
+            <p>
+              {editCustomerRelationship
+                ? `(${new Date().getFullYear() - 1})`
+                : currentProjectGoal}
+            </p>
           </div>
           <div className="customerItemTitle">
             <CustomerItem
@@ -232,11 +270,11 @@ const CustomerRelationship = (props: ICustomerRelationshipProps) => {
               icon={<IconTargetArrow size={24} color="black" />}
               color="yellow"
             />
-            {editCustomerRelationship ? (
-              <p>{`(${new Date().getFullYear()})`}</p>
-            ) : (
-              <p>{currentProjectGoal}</p>
-            )}
+            <p>
+              {editCustomerRelationship
+                ? `(${new Date().getFullYear()})`
+                : currentProjectGoal}
+            </p>
           </div>
           <div className="customerItemTitle">
             <CustomerItem

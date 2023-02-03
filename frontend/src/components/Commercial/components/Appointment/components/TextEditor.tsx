@@ -154,6 +154,7 @@ const TextEditor = (props: ITextEditorProps) => {
         handleValideClick={handleValideClick}
         handleCancelClick={handleCancelClick}
       />
+      
       {props.editAppointment ? (
         <RichTextEditor className="textEditor" editor={editor}>
           <RichTextEditor.Toolbar sticky>

@@ -6,7 +6,7 @@ import { ICustomer } from "../../../../data/interfaces/ICustomer";
 import { TAppointmentTitle } from "../../../../data/types/TApppointmentTitle";
 import TextEditor from "./components/TextEditor";
 import "dayjs/locale/fr";
-import "../../../../assets/style/Appointment.css"
+import "../../../../assets/style/Appointment.css";
 
 interface IAppointment {
   customer: ICustomer;
