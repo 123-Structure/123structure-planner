@@ -131,8 +131,9 @@ const CustomerIdentity = (props: ICustomerIdentityProps) => {
           <CustomerItem
             editMode={editCustomerIdentity}
             inputType={"text"}
-            label={[address, cp, city]}
-            updateLabel={[setAddress, setCp, setCity]}
+            label={["Adresse", "CP", "Ville"]}
+            value={[address, cp, city]}
+            updateValue={[setAddress, setCp, setCity]}
             icon={<IconMap2 size={24} color="black" />}
             color="yellow"
             handleClick={() =>
@@ -149,8 +150,8 @@ const CustomerIdentity = (props: ICustomerIdentityProps) => {
           <CustomerItem
             editMode={editCustomerIdentity}
             inputType={"text"}
-            label={[email]}
-            updateLabel={[setEmail]}
+            value={[email]}
+            updateValue={[setEmail]}
             icon={<IconMail size={24} color="black" />}
             color="yellow"
             handleClick={() =>
@@ -175,8 +176,8 @@ const CustomerIdentity = (props: ICustomerIdentityProps) => {
           <CustomerItem
             editMode={editCustomerIdentity}
             inputType={"text"}
-            label={[phone]}
-            updateLabel={[setPhone]}
+            value={[phone]}
+            updateValue={[setPhone]}
             icon={<IconPhone size={24} color="black" />}
             color="yellow"
             handleClick={() =>

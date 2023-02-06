@@ -28,6 +28,8 @@ import { TAppointmentTitle } from "../../../../../data/types/TApppointmentTitle"
 import CustomButton from "../../../../utils/CustomButton";
 import { IconMap2, IconUser } from "@tabler/icons";
 import CustomerItem from "../../Customer/components/CustomerItem";
+import { isCPFormat } from "../../../../../utils/validateInput";
+import { useState } from "react";
 
 interface IAppointmentProps {
   _id: number;
@@ -45,6 +47,12 @@ interface IAppointmentProps {
 }
 
 const Appointment = (props: IAppointmentProps) => {
+  const [address, setAddress] = useState<string>(
+    props.appointment.location.address
+  );
+  const [cp, setCp] = useState<string>(props.appointment.location.cp);
+  const [city, setCity] = useState<string>(props.appointment.location.city);
+
   const customers = useCustomer();
   const setCustomers = useUpdateCustomer();
 
@@ -84,11 +92,21 @@ const Appointment = (props: IAppointmentProps) => {
     changedCustomer[0].appointment[props._id].title =
       props.appointmentTitle as TAppointmentTitle;
     changedCustomer[0].appointment[props._id].date = props.appointmentDate;
+    changedCustomer[0].appointment[props._id].location.address = address;
+    changedCustomer[0].appointment[props._id].location.cp = cp;
+    changedCustomer[0].appointment[props._id].location.city = city;
+
     setCustomers(newCustomer);
   };
 
   const handleValideClick = () => {
     handleContentChange(editor?.getHTML());
+    props.setEditAppointment(false);
+    props.setAccordionValue(
+      `${props.appointmentTitle} (${props.appointmentDate.toLocaleDateString(
+        "fr"
+      )})`
+    );
     showNotification({
       title: `✅ Rendez-vous sauvegardé`,
       message: `${props.customer.name} - ${
@@ -96,18 +114,16 @@ const Appointment = (props: IAppointmentProps) => {
       } (${props.appointment.date.toLocaleDateString("fr")}) mis à jour`,
       color: "green",
     });
-    props.setEditAppointment(false);
-    props.setAccordionValue(
-      `${props.appointmentTitle} (${props.appointmentDate.toLocaleDateString(
-        "fr"
-      )})`
-    );
   };
 
   const handleCancelClick = () => {
     props.setEditAppointment(false);
     props.setAppointmentTitle(props.appointment.title);
     props.setAppointmentDate(props.appointment.date);
+    setAddress(props.appointment.location.address);
+    setCp(props.appointment.location.cp);
+    setCity(props.appointment.location.city);
+
     showNotification({
       title: `⛔ Rendez-vous non sauvegardé`,
       message: `Les modifications pour ${props.customer.name} - ${
@@ -173,11 +189,11 @@ const Appointment = (props: IAppointmentProps) => {
           ))}
         </div>
         <CustomerItem
-          label={[
-            props.appointment.location.address,
-            props.appointment.location.cp,
-            props.appointment.location.city,
-          ]}
+          editMode={props.editAppointment}
+          inputType={"text"}
+          label={["Adresse", "CP", "Ville"]}
+          value={[address, cp, city]}
+          updateValue={[setAddress, setCp, setCity]}
           icon={<IconMap2 size={24} color="black" />}
           color="yellow"
           handleClick={() =>
@@ -185,6 +201,11 @@ const Appointment = (props: IAppointmentProps) => {
               `https://www.google.fr/maps/search/${props.appointment.location.address}, ${props.appointment.location.cp} ${props.appointment.location.city}`
             )
           }
+          errorMessage={[
+            isCPFormat(cp) ? "" : ".",
+            isCPFormat(cp) ? "" : "Code postale de 5 chiffres",
+            isCPFormat(cp) ? "" : ".",
+          ]}
         />
       </div>
       {props.editAppointment ? (

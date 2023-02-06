@@ -55,7 +55,7 @@ const CustomerPayment = (props: ICustomerPaymentProps) => {
     }).format(number);
   };
 
-  const selectLabel = (
+  const selectValue = (
     editMode: boolean,
     currentValue: string | undefined,
     label: string[],
@@ -129,13 +129,13 @@ const CustomerPayment = (props: ICustomerPaymentProps) => {
           <CustomerItem
             editMode={editCustomerPayment}
             inputType="select"
-            label={selectLabel(
+            value={selectValue(
               editCustomerPayment,
               paymentDeadline,
               ["30", "45"],
               ["Délai de paiement :"]
             )}
-            updateLabel={[setPaymentDeadline]}
+            updateValue={[setPaymentDeadline]}
             icon={<IconCalendarTime size={24} color="black" />}
             color="yellow"
           />
@@ -145,7 +145,7 @@ const CustomerPayment = (props: ICustomerPaymentProps) => {
           <CustomerItem
             editMode={editCustomerPayment}
             inputType={"select"}
-            label={selectLabel(
+            value={selectValue(
               editCustomerPayment,
               paymentType,
               [
@@ -156,7 +156,7 @@ const CustomerPayment = (props: ICustomerPaymentProps) => {
               ],
               ["Mode de paiement :"]
             )}
-            updateLabel={[setPaymentType]}
+            updateValue={[setPaymentType]}
             icon={<IconCreditCard size={24} color="black" />}
             color="yellow"
           />
@@ -166,13 +166,13 @@ const CustomerPayment = (props: ICustomerPaymentProps) => {
           <CustomerItem
             editMode={editCustomerPayment}
             inputType={"select"}
-            label={selectLabel(
+            value={selectValue(
               editCustomerPayment,
               paymentStatus,
               ["A", "B", "C"],
               ["Statut de paiement :"]
             )}
-            updateLabel={[setPaymentStatus]}
+            updateValue={[setPaymentStatus]}
             icon={
               paymentStatus === "C" ? (
                 <IconCashOff size={24} color="black" />
@@ -205,7 +205,7 @@ const CustomerPayment = (props: ICustomerPaymentProps) => {
         <div className="customerProjectGoalContainer">
           <div className="customerItemTitle">
             <CustomerItem
-              label={[`Facturation ${new Date().getFullYear() - 1} :`]}
+              value={[`Facturation ${new Date().getFullYear() - 1} :`]}
               icon={<IconBusinessplan size={24} color="black" />}
               color="yellow"
             />
@@ -213,7 +213,7 @@ const CustomerPayment = (props: ICustomerPaymentProps) => {
           </div>
           <div className="customerItemTitle">
             <CustomerItem
-              label={[`Facturation ${new Date().getFullYear()} :`]}
+              value={[`Facturation ${new Date().getFullYear()} :`]}
               icon={<IconBusinessplan size={24} color="black" />}
               color={
                 (currentInvoiceAmount / previousYearInvoiceAmount) * 100 < 80
@@ -248,7 +248,7 @@ const CustomerPayment = (props: ICustomerPaymentProps) => {
           <div className="customerItemTitle">
             <CustomerItem
               inputType={"number"}
-              label={[`Moyenne ${new Date().getFullYear() - 1} :`]}
+              value={[`Moyenne ${new Date().getFullYear() - 1} :`]}
               icon={<IconCalculator size={24} color="black" />}
               color={"yellow"}
             />
@@ -261,7 +261,7 @@ const CustomerPayment = (props: ICustomerPaymentProps) => {
           <div className="customerItemTitle">
             <CustomerItem
               inputType={"number"}
-              label={[`Moyenne ${new Date().getFullYear() - 1} :`]}
+              value={[`Moyenne ${new Date().getFullYear() - 1} :`]}
               icon={<IconCalculator size={24} color="black" />}
               color={
                 (currentInvoiceAmount /

@@ -8,15 +8,15 @@ import {
   useMantineTheme,
 } from "@mantine/core";
 import { useMediaQuery } from "@mantine/hooks";
-import React, { ReactNode } from "react";
+import React from "react";
 import "../../../../../assets/style/CustomerItem.css";
-import { IRessource } from "../../../../../data/interfaces/IRessource";
 import { TPaymentType } from "../../../../../data/types/TPaymentType";
 
 interface ICustomerItemProps {
   color: string;
-  label: (string | number)[];
-  updateLabel?: (
+  label?: string[];
+  value: (string | number)[];
+  updateValue?: (
     | React.Dispatch<React.SetStateAction<string>>
     | React.Dispatch<React.SetStateAction<number>>
     | React.Dispatch<React.SetStateAction<"30" | "45">>
@@ -37,14 +37,15 @@ const CustomerItem = (props: ICustomerItemProps) => {
 
   const input = () => {
     if (props.inputType === "text") {
-      return props.label.map((label, index) => (
+      return props.value.map((value, index) => (
         <TextInput
           key={index}
           className="customerItemInput"
-          value={label}
+          label={props.label !== undefined ? props.label[index] : ""}
+          value={value}
           onChange={(event) => {
-            if (props.updateLabel !== undefined) {
-              props.updateLabel[index](event.currentTarget.value as any);
+            if (props.updateValue !== undefined) {
+              props.updateValue[index](event.currentTarget.value as any);
             }
           }}
           error={
@@ -59,18 +60,18 @@ const CustomerItem = (props: ICustomerItemProps) => {
     }
 
     if (props.inputType === "number") {
-      return props.label.map((label, index) => (
+      return props.value.map((value, index) => (
         <NumberInput
           key={index}
           className="honoraireMontantDevis"
-          defaultValue={label as number}
+          defaultValue={value as number}
           step={10}
           precision={0}
           min={0}
-          value={label as number}
+          value={value as number}
           onChange={(val: number) => {
-            if (props.updateLabel !== undefined) {
-              props.updateLabel[index](val as any);
+            if (props.updateValue !== undefined) {
+              props.updateValue[index](val as any);
             }
           }}
         />
@@ -79,11 +80,11 @@ const CustomerItem = (props: ICustomerItemProps) => {
 
     if (props.inputType === "select") {
       const getData = () => {
-        return props.label.reduce(
-          (acc, label: string | number | SelectItem) => {
+        return props.value.reduce(
+          (acc, value: string | number | SelectItem) => {
             const item = {
-              value: label,
-              label: label.toString().replace("*", ""),
+              value: value,
+              label: value.toString().replace("*", ""),
             } as SelectItem;
             acc.push(item);
             return acc;
@@ -93,8 +94,8 @@ const CustomerItem = (props: ICustomerItemProps) => {
       };
 
       const getValue = () => {
-        const labels = props.label as string[];
-        return labels.filter((label) => label.includes("*"))[0];
+        const values = props.value as string[];
+        return values.filter((value) => value.includes("*"))[0];
       };
 
       return (
@@ -102,8 +103,8 @@ const CustomerItem = (props: ICustomerItemProps) => {
           data={getData()}
           value={getValue()}
           onChange={(val) => {
-            if (props.updateLabel !== undefined) {
-              props.updateLabel[0](val as any);
+            if (props.updateValue !== undefined) {
+              props.updateValue[0](val as any);
             }
           }}
         />
@@ -112,12 +113,12 @@ const CustomerItem = (props: ICustomerItemProps) => {
 
     if (props.inputType === "multiselect") {
       const getData = () => {
-        const data = props.label as string[];
+        const data = props.value as string[];
 
-        return data.reduce((acc, label: string | SelectItem) => {
+        return data.reduce((acc, value: string | SelectItem) => {
           const item = {
-            value: label,
-            label: label.replace("*", ""),
+            value: value,
+            label: value.replace("*", ""),
           } as SelectItem;
           acc.push(item);
           return acc;
@@ -125,8 +126,8 @@ const CustomerItem = (props: ICustomerItemProps) => {
       };
 
       const getValue = () => {
-        const labels = props.label as string[];
-        return labels.filter((label) => label.includes("*"));
+        const values = props.value as string[];
+        return values.filter((value) => value.includes("*"));
       };
 
       return (
@@ -138,9 +139,9 @@ const CustomerItem = (props: ICustomerItemProps) => {
           data={getData()}
           value={getValue()}
           onChange={(val) => {
-            if (props.updateLabel !== undefined) {
+            if (props.updateValue !== undefined) {
               const newValue = val.map((val) => val.replace("*", "")) as any;
-              props.updateLabel[0](newValue);
+              props.updateValue[0](newValue);
             }
           }}
         />
@@ -164,7 +165,7 @@ const CustomerItem = (props: ICustomerItemProps) => {
       <ActionIcon size="xl" variant="filled" color={props.color}>
         {props.icon}
       </ActionIcon>
-      {props.editMode ? input() : <p>{props.label.join(" ")}</p>}
+      {props.editMode ? input() : <p>{props.value.join(" ")}</p>}
     </div>
   );
 };

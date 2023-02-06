@@ -71,22 +71,6 @@ const CustomerRelationship = (props: ICustomerRelationshipProps) => {
     window.open(url, "_blank");
   };
 
-  const handleCommercialChange = (newCommercial: string[] | null) => {
-    const newCustomers = [...customers];
-
-    const changedCustomer = newCustomers.filter(
-      (customer) => customer.name === props.customer.name
-    );
-
-    const newValue = ressources.filter((ressource) =>
-      newCommercial?.includes(`${ressource.firstName} ${ressource.lastName}`)
-    );
-
-    changedCustomer[0].commercial = newValue;
-
-    setCustomers(newCustomers);
-  };
-
   const getLastAppointment = () => {
     if (props.customer.appointment.length > 0) {
       const appointment =
@@ -157,7 +141,7 @@ const CustomerRelationship = (props: ICustomerRelationshipProps) => {
     setEditCustomerRelationship(false);
   };
 
-  const selectLabel = (
+  const selectValue = (
     editMode: boolean,
     currentValue: string[],
     label: string[],
@@ -204,7 +188,7 @@ const CustomerRelationship = (props: ICustomerRelationshipProps) => {
           <CustomerItem
             editMode={editCustomerRelationship}
             inputType={"multiselect"}
-            label={selectLabel(
+            value={selectValue(
               editCustomerRelationship,
               commercial,
               ressources
@@ -214,7 +198,7 @@ const CustomerRelationship = (props: ICustomerRelationshipProps) => {
                 ),
               ["Commercial référent :"]
             )}
-            updateLabel={[setCommercial]}
+            updateValue={[setCommercial]}
             icon={<IconUser size={24} color="black" />}
             color="yellow"
           />
@@ -231,7 +215,7 @@ const CustomerRelationship = (props: ICustomerRelationshipProps) => {
         </div>
         <div className="customerItemTitle">
           <CustomerItem
-            label={["Dernière visite :"]}
+            value={["Dernière visite :"]}
             icon={<IconCalendar size={24} color="black" />}
             color="yellow"
           />
@@ -242,12 +226,12 @@ const CustomerRelationship = (props: ICustomerRelationshipProps) => {
             <CustomerItem
               editMode={editCustomerRelationship}
               inputType={"number"}
-              label={[
+              value={[
                 editCustomerRelationship
                   ? previousYearGoal
                   : `Objectif ${new Date().getFullYear() - 1} :`,
               ]}
-              updateLabel={[setPreviousYearGoal]}
+              updateValue={[setPreviousYearGoal]}
               icon={<IconTargetArrow size={24} color="black" />}
               color="yellow"
             />
@@ -261,12 +245,12 @@ const CustomerRelationship = (props: ICustomerRelationshipProps) => {
             <CustomerItem
               editMode={editCustomerRelationship}
               inputType={"number"}
-              label={[
+              value={[
                 editCustomerRelationship
                   ? currentProjectGoal
                   : `Objectif ${new Date().getFullYear()} :`,
               ]}
-              updateLabel={[setCurrentProjectGoal]}
+              updateValue={[setCurrentProjectGoal]}
               icon={<IconTargetArrow size={24} color="black" />}
               color="yellow"
             />
@@ -279,7 +263,7 @@ const CustomerRelationship = (props: ICustomerRelationshipProps) => {
           <div className="customerItemTitle">
             <CustomerItem
               inputType={"number"}
-              label={[`Production ${new Date().getFullYear() - 1} :`]}
+              value={[`Production ${new Date().getFullYear() - 1} :`]}
               icon={<IconHomeCheck size={24} color="black" />}
               color={
                 (previousYearProjectInvoiced / previousYearGoal) * 100 < 80
@@ -314,7 +298,7 @@ const CustomerRelationship = (props: ICustomerRelationshipProps) => {
           <div className="customerItemTitle">
             <CustomerItem
               inputType={"number"}
-              label={[`Production ${new Date().getFullYear()} :`]}
+              value={[`Production ${new Date().getFullYear()} :`]}
               icon={<IconHomeCheck size={24} color="black" />}
               color={
                 (currentProjectInvoiced / currentProjectGoal) * 100 < 80
