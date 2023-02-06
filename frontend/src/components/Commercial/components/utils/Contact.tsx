@@ -1,21 +1,32 @@
-import { Badge, Button, Menu, Modal } from "@mantine/core";
-import { IconAddressBook, IconMail, IconPhone, IconUser } from "@tabler/icons";
+import { Badge, Button, Menu, Modal, useMantineTheme } from "@mantine/core";
+import {
+  IconAddressBook,
+  IconHome2,
+  IconMail,
+  IconPhone,
+  IconUser,
+} from "@tabler/icons";
 import React, { useState } from "react";
 import { IContact } from "../../../../data/interfaces/IContact";
 import "../../../../assets/style/Contact.css";
 import CustomTitle from "../../../utils/CustomTitle";
 import CustomerItem from "./CustomerItem";
 import CustomButton from "../../../utils/CustomButton";
+import { useMediaQuery } from "@mantine/hooks";
 
 interface IContactProps {
   color?: string;
   extraStyle?: React.CSSProperties;
+  editMode?: boolean;
   customerName: string;
   contact: IContact;
 }
 
 const Contact = (props: IContactProps) => {
   const [openContact, setOpenContact] = useState(false);
+
+  const theme = useMantineTheme();
+  const smallScreen = useMediaQuery(`(max-width: ${theme.breakpoints.xs}px)`);
 
   const sendEmailOrCallPhone = (id: string) => {
     const anchor = document.querySelector(id) as HTMLAnchorElement;
@@ -24,11 +35,33 @@ const Contact = (props: IContactProps) => {
     }
   };
 
+  const selectValue = (
+    editMode: boolean,
+    currentValue: string | undefined,
+    label: string[],
+    defaultValue: string[]
+  ) => {
+    if (editMode) {
+      return label.reduce((acc, l) => {
+        l === currentValue ? acc.push(l + "*") : acc.push(l);
+        return acc;
+      }, [] as string[]);
+    } else {
+      return defaultValue;
+    }
+  };
+
   return (
     <>
-      <div className="contactContentModal">
+      <div
+        className="contactContentModal"
+        style={{
+          display: smallScreen || props.editMode ? "block" : "none",
+        }}
+      >
         <Modal
-          fullScreen
+          fullScreen={smallScreen}
+          centered
           overlayOpacity={0.55}
           overlayBlur={3}
           opened={openContact}
@@ -48,6 +81,27 @@ const Contact = (props: IContactProps) => {
               icon={<IconAddressBook size={24} color="black" />}
             />
             <CustomerItem
+              editMode={props.editMode}
+              inputType="select"
+              color="yellow"
+              value={selectValue(
+                props.editMode !== undefined ? props.editMode : false,
+                props.contact.category,
+                [
+                  "Direction",
+                  "Commerce",
+                  "Conduite de travaux",
+                  "Assistance technique",
+                  "Secrétariat",
+                  "Autre",
+                ],
+                [props.contact.category]
+              )}
+              icon={<IconHome2 size={24} color="black" />}
+            />
+            <CustomerItem
+              editMode={props.editMode}
+              inputType="text"
               color="yellow"
               value={[props.contact.email]}
               icon={<IconMail size={24} color="black" />}
@@ -62,6 +116,8 @@ const Contact = (props: IContactProps) => {
               }
             />
             <CustomerItem
+              editMode={props.editMode}
+              inputType="text"
               color="yellow"
               value={[props.contact.phone]}
               icon={<IconPhone size={24} color="black" />}
@@ -92,6 +148,7 @@ const Contact = (props: IContactProps) => {
             color={props.color}
             style={{
               ...props.extraStyle,
+              display: smallScreen || props.editMode ? "none" : "block",
               color:
                 props.color != undefined && props.color !== "yellow"
                   ? "white"
@@ -108,6 +165,9 @@ const Contact = (props: IContactProps) => {
           <Menu.Label>Coordonnées</Menu.Label>
           <Menu.Item icon={<IconAddressBook size={14} />}>
             {props.customerName}
+          </Menu.Item>
+          <Menu.Item icon={<IconHome2 size={14} />}>
+            {props.contact.category}
           </Menu.Item>
           <Menu.Item
             icon={<IconMail size={14} />}

@@ -12,6 +12,7 @@ import {
   isEmailFormat,
   isPhoneFormat,
 } from "../../../../../utils/validateInput";
+import CustomDivider from "../../../../utils/CustomDivider";
 import CustomTitle from "../../../../utils/CustomTitle";
 import EditModeToggle from "../../../../utils/EditModeToggle";
 import Contact from "../../utils/Contact";
@@ -198,10 +199,12 @@ const CustomerIdentity = (props: ICustomerIdentityProps) => {
           />
         </div>
       </div>
+      <CustomDivider/>
       <h3>Interlocuteurs :</h3>
       <div className="contactContainer">
         {props.customer.contact.map((contact, index) => (
           <Contact
+            editMode={editCustomerIdentity}
             key={index}
             customerName={props.customer.name}
             contact={contact}

@@ -181,6 +181,7 @@ const Appointment = (props: IAppointmentProps) => {
         <div className="contactContainer">
           {props.appointment.contact.map((contact, index) => (
             <Contact
+              editMode={props.editAppointment}
               key={index}
               customerName={props.customer.name}
               contact={contact}
