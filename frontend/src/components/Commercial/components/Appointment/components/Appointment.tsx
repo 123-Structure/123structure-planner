@@ -25,11 +25,11 @@ import {
 import { showNotification } from "@mantine/notifications";
 import EditModeToggle from "../../../../utils/EditModeToggle";
 import { TAppointmentTitle } from "../../../../../data/types/TApppointmentTitle";
-import CustomButton from "../../../../utils/CustomButton";
-import { IconMap2, IconUser } from "@tabler/icons";
-import CustomerItem from "../../Customer/components/CustomerItem";
+import { IconMap2 } from "@tabler/icons";
+import CustomerItem from "../../utils/CustomerItem";
 import { isCPFormat } from "../../../../../utils/validateInput";
 import { useState } from "react";
+import Contact from "../../utils/Contact";
 
 interface IAppointmentProps {
   _id: number;
@@ -180,11 +180,10 @@ const Appointment = (props: IAppointmentProps) => {
       <div className="appointementHeader">
         <div className="contactContainer">
           {props.appointment.contact.map((contact, index) => (
-            <CustomButton
+            <Contact
               key={index}
-              handleClick={() => console.log("test")}
-              icon={<IconUser />}
-              label={`${contact.firstName} ${contact.lastName}`}
+              customerName={props.customer.name}
+              contact={contact}
             />
           ))}
         </div>

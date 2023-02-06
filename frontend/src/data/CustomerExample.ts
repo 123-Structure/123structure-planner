@@ -14,16 +14,20 @@ export const CustomerExample: ICustomer[] = [
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
     contact: [
       {
+        gender: "M.",
         firstName: "Baptiste",
         lastName: "LECHAT",
         email: "b.lechat@123structure.fr",
         phone: "06 00 00 00 00",
+        category: "Assistance technique",
       },
       {
+        gender: "M.",
         firstName: "Matthieu",
         lastName: "LECHAT",
         email: "m.lechat@123structure.fr",
         phone: "07 00 00 00 00",
+        category: "Assistance technique",
       },
     ],
     priceList:
@@ -43,16 +47,20 @@ export const CustomerExample: ICustomer[] = [
         date: new Date(),
         contact: [
           {
+            gender: "M.",
             firstName: "Baptiste",
             lastName: "LECHAT",
             email: "b.lechat@123structure.fr",
             phone: "06 00 00 00 00",
+            category: "Assistance technique",
           },
           {
+            gender: "M.",
             firstName: "Matthieu",
             lastName: "LECHAT",
             email: "m.lechat@123structure.fr",
             phone: "07 00 00 00 00",
+            category: "Assistance technique",
           },
         ],
         location: {
@@ -69,10 +77,12 @@ export const CustomerExample: ICustomer[] = [
         date: new Date("01/25/2023"),
         contact: [
           {
+            gender: "M.",
             firstName: "Baptiste",
             lastName: "LECHAT",
             email: "b.lechat@123structure.fr",
             phone: "06 00 00 00 00",
+            category: "Commerce",
           },
         ],
         location: {

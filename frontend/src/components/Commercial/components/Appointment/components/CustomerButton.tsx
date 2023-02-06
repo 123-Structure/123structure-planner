@@ -21,7 +21,7 @@ const CustomerButton = (props: ICustomerButtonProps) => {
       <RichTextEditor.Control
         onClick={() =>
           editor?.commands.insertContent(
-            `${props.customer.address}, ${props.customer.cp} ${props.customer.city}`.replace(
+            `${props.customer.location.address}, ${props.customer.location.cp} ${props.customer.location.city}`.replace(
               "\n",
               " "
             )

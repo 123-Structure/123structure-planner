@@ -2,7 +2,7 @@ import { Button } from "@mantine/core";
 import { TablerIcon, TablerIconProps } from "@tabler/icons";
 
 interface ICustomButtonProps {
-  handleClick: () => void;
+  handleClick?: () => void;
   icon?: React.ReactNode;
   color?: string;
   label: string;
@@ -23,12 +23,12 @@ const CustomButton = (props: ICustomButtonProps) => {
           ? "white"
           : "black",
       }}
-      onClick={props.handleClick}
+      onClick={props.handleClick !== undefined ? props.handleClick : () => ""}
     >
       <div style={{ marginRight: "8px" }}>{props.icon}</div>
       {props.label}
     </Button>
-  );
-};
+  )
+}; 
 
 export default CustomButton;

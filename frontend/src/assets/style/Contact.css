@@ -1,0 +1,23 @@
+.contactContentContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.contactContentMenu {
+  display: block;
+}
+
+.contactContentModal {
+  display: none;
+}
+
+@media (max-width: 576px) {
+  .contactContentMenu {
+    display: none;
+  }
+
+  .contactContentModal {
+    display: block;
+  }
+}

@@ -1,12 +1,6 @@
 import { Card } from "@mantine/core";
 import { showNotification } from "@mantine/notifications";
-import {
-  IconAddressBook,
-  IconMail,
-  IconMap2,
-  IconPhone,
-  IconUser,
-} from "@tabler/icons";
+import { IconAddressBook, IconMail, IconMap2, IconPhone } from "@tabler/icons";
 import React, { useState } from "react";
 import {
   useCustomer,
@@ -18,10 +12,10 @@ import {
   isEmailFormat,
   isPhoneFormat,
 } from "../../../../../utils/validateInput";
-import CustomButton from "../../../../utils/CustomButton";
 import CustomTitle from "../../../../utils/CustomTitle";
 import EditModeToggle from "../../../../utils/EditModeToggle";
-import CustomerItem from "./CustomerItem";
+import Contact from "../../utils/Contact";
+import CustomerItem from "../../utils/CustomerItem";
 
 interface ICustomerIdentityProps {
   customer: ICustomer;
@@ -207,11 +201,10 @@ const CustomerIdentity = (props: ICustomerIdentityProps) => {
       <h3>Interlocuteurs :</h3>
       <div className="contactContainer">
         {props.customer.contact.map((contact, index) => (
-          <CustomButton
+          <Contact
             key={index}
-            handleClick={() => console.log("test")}
-            icon={<IconUser />}
-            label={`${contact.firstName} ${contact.lastName}`}
+            customerName={props.customer.name}
+            contact={contact}
           />
         ))}
       </div>

@@ -20,7 +20,7 @@ import CustomButton from "../../../../utils/CustomButton";
 import CustomDivider from "../../../../utils/CustomDivider";
 import CustomTitle from "../../../../utils/CustomTitle";
 import EditModeToggle from "../../../../utils/EditModeToggle";
-import CustomerItem from "./CustomerItem";
+import CustomerItem from "../../utils/CustomerItem";
 
 interface ICustomerRelationshipProps {
   customer: ICustomer;

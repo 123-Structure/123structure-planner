@@ -9,8 +9,8 @@ import {
 } from "@mantine/core";
 import { useMediaQuery } from "@mantine/hooks";
 import React from "react";
-import "../../../../../assets/style/CustomerItem.css";
-import { TPaymentType } from "../../../../../data/types/TPaymentType";
+import "../../../../assets/style/CustomerItem.css";
+import { TPaymentType } from "../../../../data/types/TPaymentType";
 
 interface ICustomerItemProps {
   color: string;

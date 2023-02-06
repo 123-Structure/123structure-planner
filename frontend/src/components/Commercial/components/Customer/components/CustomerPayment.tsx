@@ -17,7 +17,7 @@ import { ICustomer } from "../../../../../data/interfaces/ICustomer";
 import { TPaymentType } from "../../../../../data/types/TPaymentType";
 import CustomTitle from "../../../../utils/CustomTitle";
 import EditModeToggle from "../../../../utils/EditModeToggle";
-import CustomerItem from "./CustomerItem";
+import CustomerItem from "../../utils/CustomerItem";
 
 interface ICustomerPaymentProps {
   customer: ICustomer;
