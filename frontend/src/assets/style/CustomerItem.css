@@ -9,3 +9,7 @@
 .customerItem > p {
   margin: 0;
 }
+
+.customerItem > div {
+  width: 100%;
+}

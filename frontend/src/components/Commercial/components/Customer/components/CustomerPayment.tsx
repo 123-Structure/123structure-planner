@@ -86,7 +86,7 @@ const CustomerPayment = (props: ICustomerPaymentProps) => {
 
     setCustomers(newCustomer);
     showNotification({
-      title: `✅ Fiche client sauvegardé`,
+      title: `✅ Fiche client sauvegardée`,
       message: `La fiche client ${props.customer.name} est mise à jour`,
       color: "green",
     });
@@ -99,7 +99,7 @@ const CustomerPayment = (props: ICustomerPaymentProps) => {
     setPaymentStatus(props.customer.paymentStatus);
 
     showNotification({
-      title: `⛔ Fiche client non sauvegardé`,
+      title: `⛔ Fiche client non sauvegardée`,
       message: `Les modifications pour ${props.customer.name} sont annulées`,
       color: "red",
     });

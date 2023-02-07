@@ -107,7 +107,7 @@ const CustomerRelationship = (props: ICustomerRelationshipProps) => {
 
     setCustomers(newCustomer);
     showNotification({
-      title: `✅ Fiche client sauvegardé`,
+      title: `✅ Fiche client sauvegardée`,
       message: `La fiche client ${props.customer.name} est mise à jour`,
       color: "green",
     });
@@ -134,7 +134,7 @@ const CustomerRelationship = (props: ICustomerRelationshipProps) => {
     );
 
     showNotification({
-      title: `⛔ Fiche client non sauvegardé`,
+      title: `⛔ Fiche client non sauvegardée`,
       message: `Les modifications pour ${props.customer.name} sont annulées`,
       color: "red",
     });

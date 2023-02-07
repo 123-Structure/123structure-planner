@@ -24,13 +24,12 @@ interface ICustomerIdentityProps {
 
 const CustomerIdentity = (props: ICustomerIdentityProps) => {
   const [editCustomerIdentity, setEditCustomerIdentity] = useState(false);
-  const [address, setAddress] = useState<string>(
-    props.customer.location.address
-  );
-  const [cp, setCp] = useState<string>(props.customer.location.cp);
-  const [city, setCity] = useState<string>(props.customer.location.city);
-  const [email, setEmail] = useState<string>(props.customer.email);
-  const [phone, setPhone] = useState<string>(props.customer.phone);
+  const [address, setAddress] = useState(props.customer.location.address);
+  const [cp, setCp] = useState(props.customer.location.cp);
+  const [city, setCity] = useState(props.customer.location.city);
+  const [email, setEmail] = useState(props.customer.email);
+  const [phone, setPhone] = useState(props.customer.phone);
+  const [contact, setContact] = useState(props.customer.contact);
 
   const customers = useCustomer();
   const setCustomers = useUpdateCustomer();
@@ -59,9 +58,11 @@ const CustomerIdentity = (props: ICustomerIdentityProps) => {
     changedCustomer[0].location.city = city;
     changedCustomer[0].email = email;
     changedCustomer[0].phone = phone;
+    changedCustomer[0].contact = contact;
+
     setCustomers(newCustomer);
     showNotification({
-      title: `✅ Fiche client sauvegardé`,
+      title: `✅ Fiche client sauvegardée`,
       message: `La fiche client ${props.customer.name} est mise à jour`,
       color: "green",
     });
@@ -74,8 +75,9 @@ const CustomerIdentity = (props: ICustomerIdentityProps) => {
     setCity(props.customer.location.city);
     setEmail(props.customer.email);
     setPhone(props.customer.phone);
+    setContact(props.customer.contact);
     showNotification({
-      title: `⛔ Fiche client non sauvegardé`,
+      title: `⛔ Fiche client non sauvegardée`,
       message: `Les modifications pour ${props.customer.name} sont annulées`,
       color: "red",
     });
@@ -199,15 +201,15 @@ const CustomerIdentity = (props: ICustomerIdentityProps) => {
           />
         </div>
       </div>
-      <CustomDivider/>
+      <CustomDivider />
       <h3>Interlocuteurs :</h3>
       <div className="contactContainer">
-        {props.customer.contact.map((contact, index) => (
+        {contact.map((currentContact, index) => (
           <Contact
             editMode={editCustomerIdentity}
             key={index}
-            customerName={props.customer.name}
-            contact={contact}
+            customer={props.customer}
+            currentContact={currentContact}
           />
         ))}
       </div>

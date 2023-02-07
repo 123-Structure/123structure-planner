@@ -3,3 +3,18 @@
   flex-direction: column;
   gap: 8px;
 }
+
+.contactModalTitle {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+}
+
+.contactIdentityContainer {
+  margin-bottom: 8px;
+}
+
+.contactCustomerNameBadge {
+  margin: -8px 0 8px 0;
+}

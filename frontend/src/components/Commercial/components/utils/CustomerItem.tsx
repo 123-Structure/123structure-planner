@@ -10,6 +10,7 @@ import {
 import { useMediaQuery } from "@mantine/hooks";
 import React from "react";
 import "../../../../assets/style/CustomerItem.css";
+import { TContactCategories } from "../../../../data/types/TContactCategories";
 import { TPaymentType } from "../../../../data/types/TPaymentType";
 
 interface ICustomerItemProps {
@@ -23,12 +24,14 @@ interface ICustomerItemProps {
     | React.Dispatch<React.SetStateAction<TPaymentType>>
     | React.Dispatch<React.SetStateAction<"A" | "B" | "C">>
     | React.Dispatch<React.SetStateAction<string[]>>
+    | React.Dispatch<React.SetStateAction<TContactCategories>>
   )[];
   icon: React.ReactNode;
   handleClick?: () => void;
   editMode?: boolean;
   inputType?: "text" | "number" | "select" | "multiselect";
   errorMessage?: string[];
+  extraStyle?: React.CSSProperties;
 }
 
 const CustomerItem = (props: ICustomerItemProps) => {
@@ -161,6 +164,9 @@ const CustomerItem = (props: ICustomerItemProps) => {
           ? props.handleClick
           : () => ""
       }
+      style={{
+        ...props.extraStyle,
+      }}
     >
       <ActionIcon size="xl" variant="filled" color={props.color}>
         {props.icon}

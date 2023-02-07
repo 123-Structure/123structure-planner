@@ -3,7 +3,7 @@ import { IContact } from "./IContact";
 
 export interface IAppointment {
   date: Date;
-  contact: IContact[];
+  contact: string[];
   location: {
     address: string;
     cp: string;

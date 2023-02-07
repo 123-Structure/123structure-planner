@@ -178,16 +178,6 @@ const Appointment = (props: IAppointmentProps) => {
         handleCancelClick={handleCancelClick}
       />
       <div className="appointementHeader">
-        <div className="contactContainer">
-          {props.appointment.contact.map((contact, index) => (
-            <Contact
-              editMode={props.editAppointment}
-              key={index}
-              customerName={props.customer.name}
-              contact={contact}
-            />
-          ))}
-        </div>
         <CustomerItem
           editMode={props.editAppointment}
           inputType={"text"}
@@ -207,6 +197,20 @@ const Appointment = (props: IAppointmentProps) => {
             isCPFormat(cp) ? "" : ".",
           ]}
         />
+        <div className="contactContainer">
+          {props.customer.contact
+            .filter((contact) =>
+              props.appointment.contact.includes(contact._id)
+            )
+            .map((currentContact, index) => (
+              <Contact
+                editMode={props.editAppointment}
+                key={index}
+                customer={props.customer}
+                currentContact={currentContact}
+              />
+            ))}
+        </div>
       </div>
       {props.editAppointment ? (
         <RichTextEditor className="textEditor" editor={editor}>
