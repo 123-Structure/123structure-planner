@@ -25,12 +25,17 @@ import {
 import { showNotification } from "@mantine/notifications";
 import EditModeToggle from "../../../../utils/EditModeToggle";
 import { TAppointmentTitle } from "../../../../../data/types/TApppointmentTitle";
-import { IconMap2 } from "@tabler/icons";
+import { IconMap2, IconUser } from "@tabler/icons";
 import CustomerItem from "../../utils/CustomerItem";
 import { isCPFormat } from "../../../../../utils/validateInput";
 import { useState } from "react";
 import Contact from "../../utils/Contact";
-import { MultiSelect, SelectItem, useMantineTheme } from "@mantine/core";
+import {
+  ActionIcon,
+  MultiSelect,
+  SelectItem,
+  useMantineTheme,
+} from "@mantine/core";
 import { useMediaQuery } from "@mantine/hooks";
 
 interface IAppointmentProps {
@@ -209,25 +214,29 @@ const Appointment = (props: IAppointmentProps) => {
           />
         </div>
         {props.editAppointment ? (
-          <MultiSelect
-            className="appointmentContactMultiSelect"
-            variant="unstyled"
-            searchable={!smallScreen}
-            nothingFound="Aucun résultat"
-            clearable
-            data={props.customer.contact.reduce((acc, contact) => {
-              const item = {
-                value: `${contact.firstName}_${contact.lastName}_${contact.email}`,
-                label: `${contact.gender} ${contact.firstName} ${contact.lastName}`,
-              } as SelectItem;
-              acc.push(item);
-              return acc;
-            }, [] as (string | SelectItem)[])}
-            value={appointmentContact}
-            onChange={(val) => {
-              setAppointmentContact(val);
-            }}
-          />
+          <div className="appointmentContactContainer">
+            <ActionIcon size="xl" variant="filled" color={"yellow"}>
+              <IconUser size={24} color="black" />
+            </ActionIcon>
+            <MultiSelect
+              className="appointmentContactMultiSelect"
+              searchable={!smallScreen}
+              nothingFound="Aucun résultat"
+              clearable
+              data={props.customer.contact.reduce((acc, contact) => {
+                const item = {
+                  value: `${contact.firstName}_${contact.lastName}_${contact.email}`,
+                  label: `${contact.gender} ${contact.firstName} ${contact.lastName}`,
+                } as SelectItem;
+                acc.push(item);
+                return acc;
+              }, [] as (string | SelectItem)[])}
+              value={appointmentContact}
+              onChange={(val) => {
+                setAppointmentContact(val);
+              }}
+            />
+          </div>
         ) : (
           <div className="contactContainer">
             {props.customer.contact

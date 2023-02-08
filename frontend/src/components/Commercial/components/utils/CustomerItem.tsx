@@ -134,7 +134,6 @@ const CustomerItem = (props: ICustomerItemProps) => {
 
       return (
         <MultiSelect
-          variant="unstyled"
           searchable={!smallScreen}
           nothingFound="Aucun résultat"
           clearable

@@ -119,157 +119,143 @@ const Contact = (props: IContactProps) => {
 
   return (
     <>
-      <div className="contactContentModal">
-        <Modal
-          fullScreen={smallScreen}
-          centered
-          overlayOpacity={0.55}
-          overlayBlur={3}
-          opened={openContact}
-          onClose={() => {
-            setOpenContact(false);
-            editContact ? handleCancelClick() : "";
-          }}
-          padding={"xl"}
-          title={
-            <div className="contactModalTitle">
-              <CustomTitle
-                flexStart={true}
-                icon={<IconUser size={24} />}
-                title={`${props.currentContact.gender} ${props.currentContact.firstName} ${props.currentContact.lastName}`}
-              />
-              <EditModeToggle
-                disabled={!isEmailFormat(email) || !isPhoneFormat(phone)}
-                editMode={editContact}
-                editLabel=""
-                validateLabel=""
-                cancelLabel=""
-                handleEditClick={() => setEditContact(true)}
-                handleValideClick={handleValideClick}
-                handleCancelClick={handleCancelClick}
-              />
-            </div>
-          }
-        >
-          <div className="contactContentContainer">
-            <div className="contactCustomerNameBadge">
-              <Badge color="dark" variant="filled">
-                {props.customer.name}
-              </Badge>
-            </div>
-            {editContact ? (
-              <div className="contactIdentityContainer">
-                <Radio.Group
-                  name="favoriteFramework"
-                  label="M. / Mme"
-                  value={gender}
-                  onChange={(val) => setGender(val as "M." | "Mme")}
-                >
-                  <Radio
-                    value="M."
-                    label="
-                    M."
-                  />
-                  <Radio value="Mme" label="Mme" />
-                </Radio.Group>
-                <TextInput
-                  label={"Prénom"}
-                  value={firstName}
-                  onChange={(event) => {
-                    setFirstName(event.currentTarget.value);
-                  }}
-                />
-                <TextInput
-                  label={"Nom"}
-                  value={lastName}
-                  onChange={(event) => {
-                    setLastName(event.currentTarget.value);
-                  }}
-                />
-              </div>
-            ) : (
-              <></>
-            )}
-
-            {/* <CustomerItem
-              color="yellow"
-              value={[props.customer.name]}
-              icon={<IconAddressBook size={24} color="black" />}
-              extraStyle={{ fontWeight: "bold", fontStyle: "italic" }}
-            /> */}
-            <CustomerItem
-              editMode={editContact}
-              inputType="select"
-              color="yellow"
-              value={selectValue(
-                editContact,
-                category,
-                [
-                  "Direction",
-                  "Commerce",
-                  "Conduite de travaux",
-                  "Assistance technique",
-                  "Secrétariat",
-                  "Autre",
-                ],
-                [category]
-              )}
-              updateValue={[setCategory]}
-              icon={<IconHome2 size={24} color="black" />}
+      <Modal
+        fullScreen={smallScreen}
+        centered
+        overlayOpacity={0.55}
+        overlayBlur={3}
+        opened={openContact}
+        onClose={() => {
+          setOpenContact(false);
+          editContact ? handleCancelClick() : "";
+        }}
+        padding={"xl"}
+        title={
+          <div className="contactModalTitle">
+            <CustomTitle
+              flexStart={true}
+              icon={<IconUser size={24} />}
+              title={`${props.currentContact.gender} ${props.currentContact.firstName} ${props.currentContact.lastName}`}
             />
-            <CustomerItem
+            <EditModeToggle
+              disabled={!isEmailFormat(email) || !isPhoneFormat(phone)}
               editMode={editContact}
-              inputType="text"
-              color="yellow"
-              value={[email]}
-              updateValue={[setEmail]}
-              icon={<IconMail size={24} color="black" />}
-              handleClick={() =>
-                sendEmailOrCallPhone(
-                  `#sendEmail_${props.currentContact.firstName
-                    .replaceAll(" ", "_")
-                    .replaceAll(".", "")}_${props.currentContact.lastName
-                    .replaceAll(" ", "_")
-                    .replaceAll(".", "")}`
-                )
-              }
-              errorMessage={[
-                isEmailFormat(email) ? "" : "Format d'email invalide",
-              ]}
-            />
-            <CustomerItem
-              editMode={editContact}
-              inputType="text"
-              color="yellow"
-              value={[phone]}
-              updateValue={[setPhone]}
-              icon={<IconPhone size={24} color="black" />}
-              handleClick={() =>
-                sendEmailOrCallPhone(
-                  `#callPhone_${props.currentContact.firstName
-                    .replaceAll(" ", "_")
-                    .replaceAll(".", "")}_${props.currentContact.lastName
-                    .replaceAll(" ", "_")
-                    .replaceAll(".", "")}`
-                )
-              }
-              errorMessage={[
-                isPhoneFormat(phone)
-                  ? ""
-                  : "Format de numéro de téléphone invalide",
-              ]}
+              editLabel=""
+              validateLabel=""
+              cancelLabel=""
+              handleEditClick={() => setEditContact(true)}
+              handleValideClick={handleValideClick}
+              handleCancelClick={handleCancelClick}
             />
           </div>
-        </Modal>
+        }
+      >
+        <div className="contactContentContainer">
+          <div className="contactCustomerNameBadge">
+            <Badge color="dark" variant="filled">
+              {props.customer.name}
+            </Badge>
+          </div>
+          {editContact ? (
+            <div className="contactIdentityContainer">
+              <Radio.Group
+                name="favoriteFramework"
+                label="M. / Mme"
+                value={gender}
+                onChange={(val) => setGender(val as "M." | "Mme")}
+              >
+                <Radio
+                  value="M."
+                  label="
+                    M."
+                />
+                <Radio value="Mme" label="Mme" />
+              </Radio.Group>
+              <TextInput
+                label={"Prénom"}
+                value={firstName}
+                onChange={(event) => {
+                  setFirstName(event.currentTarget.value);
+                }}
+              />
+              <TextInput
+                label={"Nom"}
+                value={lastName}
+                onChange={(event) => {
+                  setLastName(event.currentTarget.value);
+                }}
+              />
+            </div>
+          ) : (
+            <></>
+          )}
 
-        <CustomButton
-          handleClick={() => setOpenContact(true)}
-          icon={<IconUser />}
-          label={`${props.currentContact.gender} ${props.currentContact.firstName} ${props.currentContact.lastName}`}
-        />
-      </div>
+          <CustomerItem
+            editMode={editContact}
+            inputType="select"
+            color="yellow"
+            value={selectValue(
+              editContact,
+              category,
+              [
+                "Direction",
+                "Commerce",
+                "Conduite de travaux",
+                "Assistance technique",
+                "Secrétariat",
+                "Autre",
+              ],
+              [category]
+            )}
+            updateValue={[setCategory]}
+            icon={<IconHome2 size={24} color="black" />}
+          />
+          <CustomerItem
+            editMode={editContact}
+            inputType="text"
+            color="yellow"
+            value={[email]}
+            updateValue={[setEmail]}
+            icon={<IconMail size={24} color="black" />}
+            handleClick={() =>
+              sendEmailOrCallPhone(
+                `#sendEmail_${firstName
+                  .replaceAll(" ", "_")
+                  .replaceAll(".", "")}_${lastName
+                  .replaceAll(" ", "_")
+                  .replaceAll(".", "")}`
+              )
+            }
+            errorMessage={[
+              isEmailFormat(email) ? "" : "Format d'email invalide",
+            ]}
+          />
+          <CustomerItem
+            editMode={editContact}
+            inputType="text"
+            color="yellow"
+            value={[phone]}
+            updateValue={[setPhone]}
+            icon={<IconPhone size={24} color="black" />}
+            handleClick={() =>
+              sendEmailOrCallPhone(
+                `#callPhone_${firstName
+                  .replaceAll(" ", "_")
+                  .replaceAll(".", "")}_${lastName
+                  .replaceAll(" ", "_")
+                  .replaceAll(".", "")}`
+              )
+            }
+            errorMessage={[
+              isPhoneFormat(phone)
+                ? ""
+                : "Format de numéro de téléphone invalide",
+            ]}
+          />
+        </div>
+      </Modal>
 
-      {/* <Menu withArrow trigger="hover" openDelay={100} closeDelay={400}>
+      <Menu withArrow trigger="hover" openDelay={100} closeDelay={400}>
         <Menu.Target>
           <Button
             className="contactContentMenu"
@@ -282,72 +268,69 @@ const Contact = (props: IContactProps) => {
                   ? "white"
                   : "black",
             }}
+            onClick={() => setOpenContact(true)}
           >
             <div style={{ marginRight: "8px" }}>
               <IconUser />
             </div>
-            {`${props.currentContact.gender} ${props.currentContact.firstName} ${props.currentContact.lastName}`}
+            {`${gender} ${firstName} ${lastName}`}
           </Button>
         </Menu.Target>
         <Menu.Dropdown>
           <Menu.Label>Coordonnées</Menu.Label>
           <Menu.Item icon={<IconAddressBook size={14} />}>
-            {props.customerName}
+            {props.customer.name}
           </Menu.Item>
-          <Menu.Item icon={<IconHome2 size={14} />}>
-            {props.currentContact.category}
-          </Menu.Item>
+          <Menu.Item icon={<IconHome2 size={14} />}>{category}</Menu.Item>
           <Menu.Item
             icon={<IconMail size={14} />}
             onClick={() =>
               sendEmailOrCallPhone(
-                `#sendEmail_${props.currentContact.firstName
+                `#sendEmail_${firstName
                   .replaceAll(" ", "_")
-                  .replaceAll(".", "")}_${props.currentContact.lastName
+                  .replaceAll(".", "")}_${lastName
                   .replaceAll(" ", "_")
                   .replaceAll(".", "")}`
               )
             }
           >
-            {props.currentContact.email}
+            {email}
           </Menu.Item>
           <Menu.Item
             icon={<IconPhone size={14} />}
             onClick={() =>
               sendEmailOrCallPhone(
-                `#callPhone_${props.currentContact.firstName
+                `#callPhone_${firstName
                   .replaceAll(" ", "_")
-                  .replaceAll(".", "")}_${props.currentContact.lastName
+                  .replaceAll(".", "")}_${lastName
                   .replaceAll(" ", "_")
                   .replaceAll(".", "")}`
               )
             }
           >
-            {props.currentContact.phone}
+            {phone}
           </Menu.Item>
         </Menu.Dropdown>
-      </Menu> */}
+      </Menu>
 
       <a
         className="sendEmail"
-        id={`sendEmail_${props.currentContact.firstName
+        id={`sendEmail_${firstName
           .replaceAll(" ", "_")
-          .replaceAll(".", "")}_${props.currentContact.lastName
+          .replaceAll(".", "")}_${lastName
           .replaceAll(" ", "_")
           .replaceAll(".", "")}`}
-        href={`mailto:${props.currentContact.email}`}
+        href={`mailto:${email}`}
       />
 
       <a
         className="callPhone"
-        id={`callPhone_${props.currentContact.firstName
+        id={`callPhone_${firstName
           .replaceAll(" ", "_")
-          .replaceAll(".", "")}_${props.currentContact.lastName
+          .replaceAll(".", "")}_${lastName
           .replaceAll(" ", "_")
           .replaceAll(".", "")}`}
-        href={`tel:${props.currentContact.phone
-          .replaceAll(" ", "")
-          .replaceAll(".", "")}`}
+        href={`tel:${phone.replaceAll(" ", "").replaceAll(".", "")}`}
       />
     </>
   );
