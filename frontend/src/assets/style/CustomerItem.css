@@ -10,6 +10,10 @@
   margin: 0;
 }
 
-.customerItem > div {
+.customerItemInput {
   width: 100%;
 }
+/* 
+.customerItem > div {
+  width: 100%;
+} */

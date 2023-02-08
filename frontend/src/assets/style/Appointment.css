@@ -15,8 +15,24 @@
   margin-top: 8px;
 }
 
+.appointmentAddressContainer,
+.appointmentContactMultiSelect {
+  width: 50%;
+}
+
+@media (max-width: 1400px) {
+  .appointmentAddressContainer,
+  .appointmentContactMultiSelect {
+    width: 75%;
+  }
+}
+
 @media (max-width: 850px) {
   .editAppointmentTitle {
     flex-direction: column;
+  }
+  .appointmentAddressContainer,
+  .appointmentContactMultiSelect {
+    width: 100%;
   }
 }

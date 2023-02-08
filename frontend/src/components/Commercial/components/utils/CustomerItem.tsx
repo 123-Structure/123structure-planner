@@ -66,7 +66,6 @@ const CustomerItem = (props: ICustomerItemProps) => {
       return props.value.map((value, index) => (
         <NumberInput
           key={index}
-          className="honoraireMontantDevis"
           defaultValue={value as number}
           step={10}
           precision={0}

@@ -30,6 +30,8 @@ import CustomerItem from "../../utils/CustomerItem";
 import { isCPFormat } from "../../../../../utils/validateInput";
 import { useState } from "react";
 import Contact from "../../utils/Contact";
+import { MultiSelect, SelectItem, useMantineTheme } from "@mantine/core";
+import { useMediaQuery } from "@mantine/hooks";
 
 interface IAppointmentProps {
   _id: number;
@@ -52,9 +54,14 @@ const Appointment = (props: IAppointmentProps) => {
   );
   const [cp, setCp] = useState<string>(props.appointment.location.cp);
   const [city, setCity] = useState<string>(props.appointment.location.city);
+  const [appointmentContact, setAppointmentContact] = useState(
+    props.appointment.contact
+  );
 
   const customers = useCustomer();
   const setCustomers = useUpdateCustomer();
+  const theme = useMantineTheme();
+  const smallScreen = useMediaQuery(`(max-width: ${theme.breakpoints.xs}px)`);
 
   const editor = useEditor({
     extensions: [
@@ -95,6 +102,7 @@ const Appointment = (props: IAppointmentProps) => {
     changedCustomer[0].appointment[props._id].location.address = address;
     changedCustomer[0].appointment[props._id].location.cp = cp;
     changedCustomer[0].appointment[props._id].location.city = city;
+    changedCustomer[0].appointment[props._id].contact = appointmentContact;
 
     setCustomers(newCustomer);
   };
@@ -123,6 +131,7 @@ const Appointment = (props: IAppointmentProps) => {
     setAddress(props.appointment.location.address);
     setCp(props.appointment.location.cp);
     setCity(props.appointment.location.city);
+    setAppointmentContact(props.appointment.contact);
 
     showNotification({
       title: `⛔ Rendez-vous non sauvegardé`,
@@ -178,39 +187,63 @@ const Appointment = (props: IAppointmentProps) => {
         handleCancelClick={handleCancelClick}
       />
       <div className="appointementHeader">
-        <CustomerItem
-          editMode={props.editAppointment}
-          inputType={"text"}
-          label={["Adresse", "CP", "Ville"]}
-          value={[address, cp, city]}
-          updateValue={[setAddress, setCp, setCity]}
-          icon={<IconMap2 size={24} color="black" />}
-          color="yellow"
-          handleClick={() =>
-            openURL(
-              `https://www.google.fr/maps/search/${props.appointment.location.address}, ${props.appointment.location.cp} ${props.appointment.location.city}`
-            )
-          }
-          errorMessage={[
-            isCPFormat(cp) ? "" : ".",
-            isCPFormat(cp) ? "" : "Code postale de 5 chiffres",
-            isCPFormat(cp) ? "" : ".",
-          ]}
-        />
-        <div className="contactContainer">
-          {props.customer.contact
-            .filter((contact) =>
-              props.appointment.contact.includes(contact._id)
-            )
-            .map((currentContact, index) => (
-              <Contact
-                editMode={props.editAppointment}
-                key={index}
-                customer={props.customer}
-                currentContact={currentContact}
-              />
-            ))}
+        <div className="appointmentAddressContainer">
+          <CustomerItem
+            editMode={props.editAppointment}
+            inputType={"text"}
+            label={["Adresse", "CP", "Ville"]}
+            value={[address, cp, city]}
+            updateValue={[setAddress, setCp, setCity]}
+            icon={<IconMap2 size={24} color="black" />}
+            color="yellow"
+            handleClick={() =>
+              openURL(
+                `https://www.google.fr/maps/search/${props.appointment.location.address}, ${props.appointment.location.cp} ${props.appointment.location.city}`
+              )
+            }
+            errorMessage={[
+              isCPFormat(cp) ? "" : ".",
+              isCPFormat(cp) ? "" : "Code postale de 5 chiffres",
+              isCPFormat(cp) ? "" : ".",
+            ]}
+          />
         </div>
+        {props.editAppointment ? (
+          <MultiSelect
+            className="appointmentContactMultiSelect"
+            variant="unstyled"
+            searchable={!smallScreen}
+            nothingFound="Aucun résultat"
+            clearable
+            data={props.customer.contact.reduce((acc, contact) => {
+              const item = {
+                value: `${contact.firstName}_${contact.lastName}_${contact.email}`,
+                label: `${contact.gender} ${contact.firstName} ${contact.lastName}`,
+              } as SelectItem;
+              acc.push(item);
+              return acc;
+            }, [] as (string | SelectItem)[])}
+            value={appointmentContact}
+            onChange={(val) => {
+              setAppointmentContact(val);
+            }}
+          />
+        ) : (
+          <div className="contactContainer">
+            {props.customer.contact
+              .filter((contact) =>
+                props.appointment.contact.includes(contact._id)
+              )
+              .map((currentContact, index) => (
+                <Contact
+                  editMode={props.editAppointment}
+                  key={index}
+                  customer={props.customer}
+                  currentContact={currentContact}
+                />
+              ))}
+          </div>
+        )}
       </div>
       {props.editAppointment ? (
         <RichTextEditor className="textEditor" editor={editor}>
