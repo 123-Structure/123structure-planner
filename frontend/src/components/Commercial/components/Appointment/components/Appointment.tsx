@@ -225,7 +225,7 @@ const Appointment = (props: IAppointmentProps) => {
               clearable
               data={props.customer.contact.reduce((acc, contact) => {
                 const item = {
-                  value: `${contact.firstName}_${contact.lastName}_${contact.email}`,
+                  value: contact._id,
                   label: `${contact.gender} ${contact.firstName} ${contact.lastName}`,
                 } as SelectItem;
                 acc.push(item);

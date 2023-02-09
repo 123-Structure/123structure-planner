@@ -4,4 +4,5 @@ export type TContactCategories =
   | "Conduite de travaux"
   | "Assistance technique"
   | "Secrétariat"
-  | "Autre";
+  | "Autre"
+  | "";

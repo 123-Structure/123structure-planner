@@ -85,7 +85,7 @@ const EditModeToggle = (props: IEditModeToggleProps) => {
             </div>
           ) : (
             <ActionIcon color={"yellow"} onClick={props.handleEditClick}>
-              {<IconPencil size={20} color="black" />}
+              <IconPencil size={20} color="black" />
             </ActionIcon>
           )}
         </>

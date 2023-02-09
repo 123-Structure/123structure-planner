@@ -1,6 +1,12 @@
-import { Card } from "@mantine/core";
+import { ActionIcon, Card } from "@mantine/core";
 import { showNotification } from "@mantine/notifications";
-import { IconAddressBook, IconMail, IconMap2, IconPhone } from "@tabler/icons";
+import {
+  IconAddressBook,
+  IconCirclePlus,
+  IconMail,
+  IconMap2,
+  IconPhone,
+} from "@tabler/icons";
 import React, { useState } from "react";
 import {
   useCustomer,
@@ -17,6 +23,7 @@ import CustomTitle from "../../../../utils/CustomTitle";
 import EditModeToggle from "../../../../utils/EditModeToggle";
 import Contact from "../../utils/Contact";
 import CustomerItem from "../../utils/CustomerItem";
+import CustomerContact from "./CustomerContact";
 
 interface ICustomerIdentityProps {
   customer: ICustomer;
@@ -92,7 +99,7 @@ const CustomerIdentity = (props: ICustomerIdentityProps) => {
       withBorder
       className="customerIdentity"
     >
-      <div className="customerIdentityTitle">
+      <div className="customerTitle">
         <CustomTitle
           flexStart={true}
           icon={<IconAddressBook size={24} />}
@@ -202,17 +209,11 @@ const CustomerIdentity = (props: ICustomerIdentityProps) => {
         </div>
       </div>
       <CustomDivider />
-      <h3>Interlocuteurs :</h3>
-      <div className="contactContainer">
-        {contact.map((currentContact, index) => (
-          <Contact
-            editMode={editCustomerIdentity}
-            key={index}
-            customer={props.customer}
-            currentContact={currentContact}
-          />
-        ))}
-      </div>
+      <CustomerContact
+        contact={contact}
+        customer={props.customer}
+        editMode={editCustomerIdentity}
+      />
     </Card>
   );
 };

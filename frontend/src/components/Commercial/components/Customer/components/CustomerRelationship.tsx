@@ -166,7 +166,7 @@ const CustomerRelationship = (props: ICustomerRelationshipProps) => {
       withBorder
       className="customerRelationship"
     >
-      <div className="customerIdentityTitle">
+      <div className="customerTitle">
         <CustomTitle
           flexStart={true}
           icon={<IconUsers size={24} />}

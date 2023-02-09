@@ -32,7 +32,7 @@
   width: calc(33% - 12px);
 }
 
-.customerIdentityTitle {
+.customerTitle {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -74,6 +74,7 @@
 .contactContainer {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   gap: 8px;
 }
 

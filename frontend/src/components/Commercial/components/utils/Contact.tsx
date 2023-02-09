@@ -47,7 +47,8 @@ const Contact = (props: IContactProps) => {
   const [gender, setGender] = useState(props.currentContact.gender);
   const [category, setCategory] = useState(props.currentContact.category);
   const [email, setEmail] = useState(props.currentContact.email);
-  const [phone, setPhone] = useState(props.currentContact.phone);
+  const [phone1, setPhone1] = useState(props.currentContact.phone1);
+  const [phone2, setPhone2] = useState(props.currentContact.phone2);
 
   const theme = useMantineTheme();
   const smallScreen = useMediaQuery(`(max-width: ${theme.breakpoints.xs}px)`);
@@ -85,7 +86,8 @@ const Contact = (props: IContactProps) => {
         (contact) =>
           contact.category === props.currentContact.category &&
           contact.email === props.currentContact.email &&
-          contact.phone === props.currentContact.phone
+          contact.phone1 === props.currentContact.phone1 &&
+          contact.phone2 === props.currentContact.phone2
       );
 
     changedContact[0].firstName = firstName;
@@ -93,7 +95,8 @@ const Contact = (props: IContactProps) => {
     changedContact[0].gender = gender;
     changedContact[0].category = category;
     changedContact[0].email = email;
-    changedContact[0].phone = phone;
+    changedContact[0].phone1 = phone1;
+    changedContact[0].phone2 = phone2;
 
     setCustomers(newCustomer);
     showNotification({
@@ -107,7 +110,8 @@ const Contact = (props: IContactProps) => {
   const handleCancelClick = () => {
     setCategory(props.currentContact.category);
     setEmail(props.currentContact.email);
-    setPhone(props.currentContact.phone);
+    setPhone1(props.currentContact.phone1);
+    setPhone2(props.currentContact.phone2);
 
     showNotification({
       title: `⛔ Fiche client non sauvegardée`,
@@ -138,7 +142,13 @@ const Contact = (props: IContactProps) => {
               title={`${props.currentContact.gender} ${props.currentContact.firstName} ${props.currentContact.lastName}`}
             />
             <EditModeToggle
-              disabled={!isEmailFormat(email) || !isPhoneFormat(phone)}
+              disabled={
+                !isEmailFormat(email) ||
+                !isPhoneFormat(phone1) ||
+                (!isPhoneFormat(phone2) && phone2 !== "") ||
+                firstName.length < 1 ||
+                lastName.length < 1
+              }
               editMode={editContact}
               editLabel=""
               validateLabel=""
@@ -177,6 +187,7 @@ const Contact = (props: IContactProps) => {
                 onChange={(event) => {
                   setFirstName(event.currentTarget.value);
                 }}
+                error={firstName.length < 1 ? "Prénom manquant" : ""}
               />
               <TextInput
                 label={"Nom"}
@@ -184,6 +195,7 @@ const Contact = (props: IContactProps) => {
                 onChange={(event) => {
                   setLastName(event.currentTarget.value);
                 }}
+                error={lastName.length < 1 ? "Nom manquant" : ""}
               />
             </div>
           ) : (
@@ -210,48 +222,82 @@ const Contact = (props: IContactProps) => {
             updateValue={[setCategory]}
             icon={<IconHome2 size={24} color="black" />}
           />
-          <CustomerItem
-            editMode={editContact}
-            inputType="text"
-            color="yellow"
-            value={[email]}
-            updateValue={[setEmail]}
-            icon={<IconMail size={24} color="black" />}
-            handleClick={() =>
-              sendEmailOrCallPhone(
-                `#sendEmail_${firstName
-                  .replaceAll(" ", "_")
-                  .replaceAll(".", "")}_${lastName
-                  .replaceAll(" ", "_")
-                  .replaceAll(".", "")}`
-              )
-            }
-            errorMessage={[
-              isEmailFormat(email) ? "" : "Format d'email invalide",
-            ]}
-          />
-          <CustomerItem
-            editMode={editContact}
-            inputType="text"
-            color="yellow"
-            value={[phone]}
-            updateValue={[setPhone]}
-            icon={<IconPhone size={24} color="black" />}
-            handleClick={() =>
-              sendEmailOrCallPhone(
-                `#callPhone_${firstName
-                  .replaceAll(" ", "_")
-                  .replaceAll(".", "")}_${lastName
-                  .replaceAll(" ", "_")
-                  .replaceAll(".", "")}`
-              )
-            }
-            errorMessage={[
-              isPhoneFormat(phone)
-                ? ""
-                : "Format de numéro de téléphone invalide",
-            ]}
-          />
+          {(email !== "-" && email !== "") || editContact ? (
+            <CustomerItem
+              editMode={editContact}
+              inputType="text"
+              color="yellow"
+              value={[email]}
+              updateValue={[setEmail]}
+              icon={<IconMail size={24} color="black" />}
+              handleClick={() =>
+                sendEmailOrCallPhone(
+                  `#sendEmail_${firstName
+                    .replaceAll(" ", "_")
+                    .replaceAll(".", "")}_${lastName
+                    .replaceAll(" ", "_")
+                    .replaceAll(".", "")}`
+                )
+              }
+              errorMessage={[
+                isEmailFormat(email) ? "" : "Format d'email invalide",
+              ]}
+            />
+          ) : (
+            <></>
+          )}
+          {(phone1 !== "-" && phone1 !== "") || editContact ? (
+            <CustomerItem
+              editMode={editContact}
+              inputType="text"
+              color="yellow"
+              value={[phone1]}
+              updateValue={[setPhone1]}
+              icon={<IconPhone size={24} color="black" />}
+              handleClick={() =>
+                sendEmailOrCallPhone(
+                  `#callPhone_1${firstName
+                    .replaceAll(" ", "_")
+                    .replaceAll(".", "")}_${lastName
+                    .replaceAll(" ", "_")
+                    .replaceAll(".", "")}`
+                )
+              }
+              errorMessage={[
+                isPhoneFormat(phone1)
+                  ? ""
+                  : "Format de numéro de téléphone invalide",
+              ]}
+            />
+          ) : (
+            <></>
+          )}
+          {(phone2 !== "-" && phone2 !== "") || editContact ? (
+            <CustomerItem
+              editMode={editContact}
+              inputType="text"
+              color="yellow"
+              value={[phone2]}
+              updateValue={[setPhone2]}
+              icon={<IconPhone size={24} color="black" />}
+              handleClick={() =>
+                sendEmailOrCallPhone(
+                  `#callPhone_2${firstName
+                    .replaceAll(" ", "_")
+                    .replaceAll(".", "")}_${lastName
+                    .replaceAll(" ", "_")
+                    .replaceAll(".", "")}`
+                )
+              }
+              errorMessage={[
+                isPhoneFormat(phone2)
+                  ? ""
+                  : "Format de numéro de téléphone invalide",
+              ]}
+            />
+          ) : (
+            <></>
+          )}
         </div>
       </Modal>
 
@@ -273,7 +319,7 @@ const Contact = (props: IContactProps) => {
             <div style={{ marginRight: "8px" }}>
               <IconUser />
             </div>
-            {`${gender} ${firstName} ${lastName}`}
+            {`${props.currentContact.gender} ${props.currentContact.firstName} ${props.currentContact.lastName}`}
           </Button>
         </Menu.Target>
         <Menu.Dropdown>
@@ -282,55 +328,98 @@ const Contact = (props: IContactProps) => {
             {props.customer.name}
           </Menu.Item>
           <Menu.Item icon={<IconHome2 size={14} />}>{category}</Menu.Item>
-          <Menu.Item
-            icon={<IconMail size={14} />}
-            onClick={() =>
-              sendEmailOrCallPhone(
-                `#sendEmail_${firstName
-                  .replaceAll(" ", "_")
-                  .replaceAll(".", "")}_${lastName
-                  .replaceAll(" ", "_")
-                  .replaceAll(".", "")}`
-              )
-            }
-          >
-            {email}
-          </Menu.Item>
-          <Menu.Item
-            icon={<IconPhone size={14} />}
-            onClick={() =>
-              sendEmailOrCallPhone(
-                `#callPhone_${firstName
-                  .replaceAll(" ", "_")
-                  .replaceAll(".", "")}_${lastName
-                  .replaceAll(" ", "_")
-                  .replaceAll(".", "")}`
-              )
-            }
-          >
-            {phone}
-          </Menu.Item>
+          {props.currentContact.email !== "-" &&
+          props.currentContact.email !== "" ? (
+            <Menu.Item
+              icon={<IconMail size={14} />}
+              onClick={() =>
+                sendEmailOrCallPhone(
+                  `#sendEmail_${props.currentContact.firstName
+                    .replaceAll(" ", "_")
+                    .replaceAll(".", "")}_${props.currentContact.lastName
+                    .replaceAll(" ", "_")
+                    .replaceAll(".", "")}`
+                )
+              }
+            >
+              {props.currentContact.email}
+            </Menu.Item>
+          ) : (
+            <></>
+          )}
+          {props.currentContact.phone1 !== "-" &&
+          props.currentContact.phone1 !== "" ? (
+            <Menu.Item
+              icon={<IconPhone size={14} />}
+              onClick={() =>
+                sendEmailOrCallPhone(
+                  `#callPhone_1${props.currentContact.firstName
+                    .replaceAll(" ", "_")
+                    .replaceAll(".", "")}_${props.currentContact.lastName
+                    .replaceAll(" ", "_")
+                    .replaceAll(".", "")}`
+                )
+              }
+            >
+              {props.currentContact.phone1}
+            </Menu.Item>
+          ) : (
+            <></>
+          )}
+          {props.currentContact.phone2 !== "-" &&
+          props.currentContact.phone2 !== "" ? (
+            <Menu.Item
+              icon={<IconPhone size={14} />}
+              onClick={() =>
+                sendEmailOrCallPhone(
+                  `#callPhone_2${props.currentContact.firstName
+                    .replaceAll(" ", "_")
+                    .replaceAll(".", "")}_${props.currentContact.lastName
+                    .replaceAll(" ", "_")
+                    .replaceAll(".", "")}`
+                )
+              }
+            >
+              {props.currentContact.phone2}
+            </Menu.Item>
+          ) : (
+            <></>
+          )}
         </Menu.Dropdown>
       </Menu>
 
       <a
         className="sendEmail"
-        id={`sendEmail_${firstName
+        id={`sendEmail_${props.currentContact.firstName
           .replaceAll(" ", "_")
-          .replaceAll(".", "")}_${lastName
+          .replaceAll(".", "")}_${props.currentContact.lastName
           .replaceAll(" ", "_")
           .replaceAll(".", "")}`}
-        href={`mailto:${email}`}
+        href={`mailto:${props.currentContact.email}`}
       />
 
       <a
         className="callPhone"
-        id={`callPhone_${firstName
+        id={`callPhone_1${props.currentContact.firstName
           .replaceAll(" ", "_")
-          .replaceAll(".", "")}_${lastName
+          .replaceAll(".", "")}_${props.currentContact.lastName
           .replaceAll(" ", "_")
           .replaceAll(".", "")}`}
-        href={`tel:${phone.replaceAll(" ", "").replaceAll(".", "")}`}
+        href={`tel:${props.currentContact.phone1
+          .replaceAll(" ", "")
+          .replaceAll(".", "")}`}
+      />
+
+      <a
+        className="callPhone"
+        id={`callPhone_2${props.currentContact.firstName
+          .replaceAll(" ", "_")
+          .replaceAll(".", "")}_${props.currentContact.lastName
+          .replaceAll(" ", "_")
+          .replaceAll(".", "")}`}
+        href={`tel:${props.currentContact.phone2
+          .replaceAll(" ", "")
+          .replaceAll(".", "")}`}
       />
     </>
   );

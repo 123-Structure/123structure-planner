@@ -108,7 +108,7 @@ const CustomerPayment = (props: ICustomerPaymentProps) => {
 
   return (
     <Card shadow="sm" p="lg" radius="md" withBorder className="customerPayment">
-      <div className="customerIdentityTitle">
+      <div className="customerTitle">
         <CustomTitle
           flexStart={true}
           icon={<IconCalendarTime size={24} />}

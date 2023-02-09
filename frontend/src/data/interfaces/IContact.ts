@@ -5,7 +5,8 @@ export interface IContact {
   firstName: string;
   lastName: string;
   email: string;
-  phone: string;
+  phone1: string;
+  phone2: string;
   category: TContactCategories;
   gender: "M." | "Mme";
 }

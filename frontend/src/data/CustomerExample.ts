@@ -14,21 +14,23 @@ export const CustomerExample: ICustomer[] = [
     logo: "https://www.abak-ingenierie.com/wp-content/uploads/2021/02/123structure-logo-300x70.png",
     contact: [
       {
-        _id: "Baptiste_LECHAT_b.lechat@123structure.fr",
+        _id: "1e1fa639-90e8-4fda-b08a-282ec8acc54a",
         gender: "M.",
         firstName: "Baptiste",
         lastName: "LECHAT",
         email: "b.lechat@123structure.fr",
-        phone: "06 00 00 00 00",
+        phone1: "06 00 00 00 00",
+        phone2: "-",
         category: "Assistance technique",
       },
       {
-        _id: "Matthieu_LECHAT_m.lechat@123structure.fr",
+        _id: "d591dc33-7acb-42e2-b74c-ef6c58472945",
         gender: "M.",
         firstName: "Matthieu",
         lastName: "LECHAT",
         email: "m.lechat@123structure.fr",
-        phone: "07 00 00 00 00",
+        phone1: "07 00 00 00 00",
+        phone2: "03 00 00 00 00",
         category: "Assistance technique",
       },
     ],
@@ -48,8 +50,8 @@ export const CustomerExample: ICustomer[] = [
       {
         date: new Date(),
         contact: [
-          "Baptiste_LECHAT_b.lechat@123structure.fr",
-          "Matthieu_LECHAT_m.lechat@123structure.fr",
+          "1e1fa639-90e8-4fda-b08a-282ec8acc54a",
+          "d591dc33-7acb-42e2-b74c-ef6c58472945",
         ],
         location: {
           address: "18 Venelle de l'escarpe",
@@ -63,7 +65,7 @@ export const CustomerExample: ICustomer[] = [
       },
       {
         date: new Date("01/25/2023"),
-        contact: ["Baptiste_LECHAT_b.lechat@123structure.fr"],
+        contact: ["1e1fa639-90e8-4fda-b08a-282ec8acc54a"],
         location: {
           address: "18 Venelle de l'escarpe",
           cp: "44190",

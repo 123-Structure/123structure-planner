@@ -18,3 +18,11 @@
 .contactCustomerNameBadge {
   margin: -8px 0 8px 0;
 }
+
+.newContactButtonContainer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-top: 32px;
+  gap: 8px;
+}
