@@ -2,9 +2,14 @@
   margin-left: 16px;
 }
 
+.commercialList {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
 .commercialTab {
   font-weight: bold;
-  margin-bottom: 8px;
 }
 
 .mobileCustomerMenu {

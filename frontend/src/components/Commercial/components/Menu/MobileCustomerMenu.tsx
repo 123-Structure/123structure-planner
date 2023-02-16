@@ -2,6 +2,7 @@ import { Select, SelectItem, useMantineTheme } from "@mantine/core";
 import { useMediaQuery } from "@mantine/hooks";
 import React, { useState } from "react";
 import { useCustomer } from "../../../../context/CustomerContext";
+import { CustomerCategoryList } from "../../../../data/constants/CustomerCategoryList";
 import Customer from "../Customer/Customer";
 
 const MobileCustomerMenu = () => {
@@ -18,18 +19,10 @@ const MobileCustomerMenu = () => {
 
   const smallScreen = useMediaQuery(`(max-width: ${theme.breakpoints.lg}px)`);
 
-  const categories = [
-    "Constructeur",
-    "Négoce",
-    "Maitre d'Oeuvre",
-    "Maçon",
-    "Charpentier",
-  ];
-
   const groupList = [] as (string | null)[];
 
   const getCategories = () => {
-    return categories.reduce((acc, category: string | SelectItem) => {
+    return CustomerCategoryList.reduce((acc, category: string | SelectItem) => {
       const item = { value: category, label: category } as SelectItem;
       acc.push(item);
       return acc;

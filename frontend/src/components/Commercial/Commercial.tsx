@@ -1,13 +1,15 @@
-import { Tabs, useMantineTheme } from "@mantine/core";
+import { ActionIcon, Tabs, useMantineTheme } from "@mantine/core";
 import { useState } from "react";
 import { useRessources } from "../../context/RessourceContext";
 import CustomerCategories from "./components/Menu/CustomerCategories";
 import "../../assets/style/Commercial.css";
 import { useMediaQuery } from "@mantine/hooks";
 import MobileCustomerMenu from "./components/Menu/MobileCustomerMenu";
+import NewCustomer from "./components/Menu/NewCustomer";
 
 const Commercial = () => {
-  const [activeTab, setActiveTab] = useState<string | null>("g.barais");
+  const [activeTab, setActiveTab] = useState<string | null>("");
+
   const ressources = useRessources();
   const theme = useMantineTheme();
   const smallScreen = useMediaQuery(`(max-width: ${theme.breakpoints.lg}px)`);
@@ -20,7 +22,7 @@ const Commercial = () => {
       onTabChange={setActiveTab}
       className="commercialContainer"
     >
-      <Tabs.List>
+      <Tabs.List className="commercialList">
         {ressources
           .filter((ressource) => ressource.role.includes("Commercial"))
           .map((ressource) => (
@@ -33,6 +35,7 @@ const Commercial = () => {
               }}
             >{`${ressource.firstName} ${ressource.lastName}`}</Tabs.Tab>
           ))}
+        <NewCustomer />
       </Tabs.List>
       {ressources
         .filter((ressource) => ressource.role.includes("Commercial"))

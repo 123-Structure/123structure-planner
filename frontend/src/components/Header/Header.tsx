@@ -14,7 +14,7 @@ const Header = () => {
         </div>
         <Login />
       </div>
-      <img src={logo} alt="logo" />
+      <img id="logoHeader" src={logo} alt="logo" />
     </div>
   );
 };
