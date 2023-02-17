@@ -1,5 +1,4 @@
 import {
-  ActionIcon,
   FileInput,
   Modal,
   MultiSelect,
@@ -13,8 +12,10 @@ import {
   IconAddressBook,
   IconCheck,
   IconCirclePlus,
+  IconCurrencyEuro,
+  IconEyeCheck,
+  IconFileUpload,
   IconUpload,
-  IconUser,
   IconX,
 } from "@tabler/icons";
 import React, { useEffect, useState } from "react";
@@ -40,6 +41,10 @@ const NewCustomer = () => {
   const [phone, setPhone] = useState("");
   const [logoFile, setLogoFile] = useState<File | null>(null);
   const [logo, setLogo] = useState("");
+  const [priceListFile, setPriceListFile] = useState<File | null>(null);
+  const [pdfViewerURL, setPdfViewerURL] = useState("");
+  const [priceList, setPriceList] = useState("");
+
   const [errorCustomerName, setErrorCustomerName] = useState("");
   const [errorAddress, setErrorAddress] = useState("");
   const [errorCp, setErrorCp] = useState("");
@@ -79,22 +84,48 @@ const NewCustomer = () => {
     setOpenNewCustomer(false);
   };
 
-  const handleUploadLogo = (file: File | null) => {
-    setLogoFile(file);
+  const handleUploadFile = (
+    file: File | null,
+    setFile: React.Dispatch<React.SetStateAction<File | null>>,
+    setBinary: React.Dispatch<React.SetStateAction<string>>
+  ) => {
+    setFile(file);
     if (file !== null) {
-      new Promise((resolve, reject) => {
-        const fileReader = new FileReader();
-        fileReader.readAsDataURL(file);
-        fileReader.onload = () => {
-          resolve(fileReader.result);
-          setLogo(fileReader.result as string);
-        };
-        fileReader.onerror = (error) => {
-          reject(error);
-        };
-      });
+      const fileReader = new FileReader();
+      fileReader.readAsDataURL(file);
+      fileReader.onload = () => {
+        const base64String = fileReader.result as string;
+        if (base64String !== null) {
+          setBinary(base64String);
+        }
+      };
     }
   };
+
+  useEffect(() => {
+    if (priceList !== "") {
+      const binaryString = window.atob(priceList.split(",")[1]);
+      const binaryLen = binaryString.length;
+      const bytes = new Uint8Array(binaryLen);
+      for (let i = 0; i < binaryLen; i++) {
+        bytes[i] = binaryString.charCodeAt(i);
+      }
+      const arrayBuffer = bytes.buffer;
+
+      // Créer un objet blob à partir de l'ArrayBuffer
+      const blob = new Blob([arrayBuffer], { type: "application/pdf" });
+
+      // Créer un objet URL à partir du blob
+      const pdfUrl = URL.createObjectURL(blob);
+      setPdfViewerURL(pdfUrl);
+
+      // Afficher le PDF dans l'élément d'embed
+      const pdfViewer = document.getElementById("pdfViewer");
+      if (pdfViewer !== null) {
+        pdfViewer.setAttribute("src", pdfUrl);
+      }
+    }
+  }, [priceList]);
 
   useEffect(() => {
     setGroup(
@@ -128,6 +159,7 @@ const NewCustomer = () => {
         opened={openNewCustomer}
         onClose={() => setOpenNewCustomer(false)}
         padding={"xl"}
+        size="xl"
         title={
           <div className="contactModalTitle">
             <CustomTitle
@@ -138,105 +170,155 @@ const NewCustomer = () => {
           </div>
         }
       >
-        <MultiSelect
-          withAsterisk
-          searchable={!smallScreen}
-          nothingFound="Aucun résultat"
-          clearable
-          label="Commercial référent"
-          data={ressources
-            .filter((ressource) => ressource.role.includes("Commercial"))
-            .map((ressource) => `${ressource.firstName} ${ressource.lastName}`)}
-          value={commercial}
-          onChange={(val) => {
-            setCommercial(val);
+        <div
+          className={"newCustomerInputContainer"}
+          style={{
+            flexDirection: smallScreen ? "column" : "row",
+            gap: smallScreen ? 0 : "16px",
           }}
-        />
-        <Select
-          withAsterisk
-          searchable
-          label="Catégorie"
-          data={getCategories()}
-          value={customerCategory}
-          onChange={(val) => {
-            setCustomerCategory(val as string);
-          }}
-        />
-        <Select
-          label="Groupe"
-          data={group}
-          searchable
-          creatable
-          getCreateLabel={(query) => `+ Ajouter ${query}`}
-          onCreate={(query) => {
-            const item = { value: query, label: query };
-            setGroup((current) => [...current, item]);
-            return item;
-          }}
-        />
-        <TextInput
-          withAsterisk
-          label={"Dénomination"}
-          value={customerName}
-          onChange={(event) => {
-            setCustomerName(event.currentTarget.value);
-          }}
-          error={errorCustomerName}
-        />
-        <TextInput
-          withAsterisk
-          label={"Adresse"}
-          value={address}
-          onChange={(event) => {
-            setAddress(event.currentTarget.value);
-          }}
-          error={errorAddress}
-        />
-        <TextInput
-          withAsterisk
-          label={"Code Postal"}
-          value={cp}
-          onChange={(event) => {
-            setCp(event.currentTarget.value);
-          }}
-          error={errorCp}
-        />
-        <TextInput
-          withAsterisk
-          label={"Ville"}
-          value={city}
-          onChange={(event) => {
-            setCity(event.currentTarget.value);
-          }}
-          error={errorCity}
-        />
-        <TextInput
-          label={"Email"}
-          value={email}
-          onChange={(event) => {
-            setEmail(event.currentTarget.value);
-          }}
-        />
-        <TextInput
-          label={"Téléphone"}
-          value={phone}
-          onChange={(event) => {
-            setPhone(event.currentTarget.value);
-          }}
-        />
-        <FileInput
-          label="Logo"
-          placeholder="logo.png"
-          icon={<IconUpload size={14} />}
-          accept="image/png,image/jpeg"
-          value={logoFile}
-          onChange={(file) => handleUploadLogo(file)}
-        />
-        {logo !== "" ? (
-          <img className="newCustomerLogo" src={logo} alt={"logo"} />
-        ) : (
-          <></>
-        )}
+        >
+          <div className={"newCustomerInputContainerColumn"}>
+            <MultiSelect
+              withAsterisk
+              searchable={!smallScreen}
+              nothingFound="Aucun résultat"
+              clearable
+              label="Commercial référent"
+              data={ressources
+                .filter((ressource) => ressource.role.includes("Commercial"))
+                .map(
+                  (ressource) => `${ressource.firstName} ${ressource.lastName}`
+                )}
+              value={commercial}
+              onChange={(val) => {
+                setCommercial(val);
+              }}
+            />
+            <Select
+              withAsterisk
+              searchable
+              label="Catégorie"
+              data={getCategories()}
+              value={customerCategory}
+              onChange={(val) => {
+                setCustomerCategory(val as string);
+              }}
+            />
+            <Select
+              label="Groupe"
+              data={group}
+              searchable
+              creatable
+              getCreateLabel={(query) => `+ Ajouter ${query}`}
+              onCreate={(query) => {
+                const item = { value: query, label: query };
+                setGroup((current) => [...current, item]);
+                return item;
+              }}
+            />
+            <TextInput
+              withAsterisk
+              label={"Dénomination"}
+              value={customerName}
+              onChange={(event) => {
+                setCustomerName(event.currentTarget.value);
+              }}
+              error={errorCustomerName}
+            />
+            <TextInput
+              withAsterisk
+              label={"Adresse"}
+              value={address}
+              onChange={(event) => {
+                setAddress(event.currentTarget.value);
+              }}
+              error={errorAddress}
+            />
+            <TextInput
+              withAsterisk
+              label={"Code Postal"}
+              value={cp}
+              onChange={(event) => {
+                setCp(event.currentTarget.value);
+              }}
+              error={errorCp}
+            />
+            <TextInput
+              withAsterisk
+              label={"Ville"}
+              value={city}
+              onChange={(event) => {
+                setCity(event.currentTarget.value);
+              }}
+              error={errorCity}
+            />
+            <TextInput
+              label={"Email"}
+              value={email}
+              onChange={(event) => {
+                setEmail(event.currentTarget.value);
+              }}
+            />
+            <TextInput
+              label={"Téléphone"}
+              value={phone}
+              onChange={(event) => {
+                setPhone(event.currentTarget.value);
+              }}
+            />
+          </div>
+          <div className={"newCustomerInputContainerColumn"}>
+            <FileInput
+              label="Logo"
+              placeholder="logo.png"
+              icon={<IconUpload size={14} />}
+              accept="image/png,image/jpeg"
+              value={logoFile}
+              onChange={(file) => handleUploadFile(file, setLogoFile, setLogo)}
+            />
+            {logo !== "" && !smallScreen ? (
+              <img className="newCustomerLogo" src={logo} alt={"logo"} />
+            ) : (
+              <></>
+            )}
+            <FileInput
+              label="Grille de prix"
+              placeholder="grille_tarifaire.pdf"
+              icon={<IconCurrencyEuro size={14} />}
+              accept=".pdf"
+              value={priceListFile}
+              onChange={(file) =>
+                handleUploadFile(file, setPriceListFile, setPriceList)
+              }
+            />
+            {priceList !== "" && !smallScreen ? (
+              <>
+                <CustomButton
+                  handleClick={() => window.open(pdfViewerURL, "_blank")}
+                  icon={<IconEyeCheck />}
+                  label={"Afficher le pdf dans un nouvel onglet"}
+                  color={"yellow"}
+                  extraStyle={{
+                    marginTop: "8px",
+                    color: "black",
+                  }}
+                />
+                <embed
+                  id="pdfViewer"
+                  type="application/pdf"
+                  width="100%"
+                  height="500"
+                />
+              </>
+            ) : (
+              <></>
+            )}
+          </div>
+          <div>
+            
+          </div>
+        </div>
+
         <div className="newContactButtonContainer">
           <CustomButton
             handleClick={handleValideClick}
