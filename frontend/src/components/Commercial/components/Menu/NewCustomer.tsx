@@ -2,6 +2,7 @@ import {
   FileInput,
   Modal,
   MultiSelect,
+  NumberInput,
   Select,
   SelectItem,
   TextInput,
@@ -14,7 +15,6 @@ import {
   IconCirclePlus,
   IconCurrencyEuro,
   IconEyeCheck,
-  IconFileUpload,
   IconUpload,
   IconX,
 } from "@tabler/icons";
@@ -28,6 +28,15 @@ import CustomButton from "../../../utils/CustomButton";
 import CustomTitle from "../../../utils/CustomTitle";
 import "../../../../assets/style/newCustomer.css";
 import { useRessources } from "../../../../context/RessourceContext";
+import {
+  isCPFormat,
+  isEmailFormat,
+  isPhoneFormat,
+} from "../../../../utils/validateInput";
+import { showNotification } from "@mantine/notifications";
+import { ICustomer } from "../../../../data/interfaces/ICustomer";
+import { TCustomerCategory } from "../../../../data/types/TCustomerCategory";
+import { TPaymentType } from "../../../../data/types/TPaymentType";
 
 const NewCustomer = () => {
   const [openNewCustomer, setOpenNewCustomer] = useState(false);
@@ -39,12 +48,17 @@ const NewCustomer = () => {
   const [city, setCity] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
+  const [paymentDeadline, setPaymentDeadline] = useState("");
+  const [paymentType, setPaymentType] = useState("");
+  const [projectGoal, setProjectGoal] = useState(0);
   const [logoFile, setLogoFile] = useState<File | null>(null);
   const [logo, setLogo] = useState("");
   const [priceListFile, setPriceListFile] = useState<File | null>(null);
   const [pdfViewerURL, setPdfViewerURL] = useState("");
   const [priceList, setPriceList] = useState("");
 
+  const [errorCommercial, setErrorCommercial] = useState("");
+  const [errorCustomerCategory, setErrorCustomerCategory] = useState("");
   const [errorCustomerName, setErrorCustomerName] = useState("");
   const [errorAddress, setErrorAddress] = useState("");
   const [errorCp, setErrorCp] = useState("");
@@ -56,7 +70,7 @@ const NewCustomer = () => {
   const customers = useCustomer();
   const setCustomers = useUpdateCustomer();
 
-  const [group, setGroup] = useState(
+  const [groupList, setGroupList] = useState(
     customers
       .filter((customer) => customer.category === customerCategory)
       .reduce((acc, customer) => {
@@ -67,6 +81,7 @@ const NewCustomer = () => {
         return acc;
       }, [] as (string | SelectItem)[])
   );
+  const [group, setGroup] = useState("");
 
   const getCategories = () => {
     return CustomerCategoryList.reduce((acc, category: string | SelectItem) => {
@@ -76,12 +91,130 @@ const NewCustomer = () => {
     }, [] as (string | SelectItem)[]);
   };
 
-  const handleValideClick = () => {
+  const handleCloseModal = () => {
     setOpenNewCustomer(false);
+    setCommercial([]);
+    setCustomerCategory("");
+    setCustomerName("");
+    setAddress("");
+    setCp("");
+    setCity("");
+    setEmail("");
+    setPhone("");
+    setPaymentDeadline("");
+    setPaymentType("");
+    setLogoFile(null);
+    setLogo("");
+    setPriceListFile(null);
+    setPriceList("");
+    setPdfViewerURL("");
+    setGroupList(
+      customers
+        .filter((customer) => customer.category === customerCategory)
+        .reduce((acc, customer) => {
+          const item = customer.group;
+          if (!acc.includes(item) && item !== "") {
+            acc.push(item);
+          }
+          return acc;
+        }, [] as (string | SelectItem)[])
+    );
+    setGroup("");
+
+    setErrorCommercial("");
+    setErrorCustomerCategory("");
+    setErrorCustomerName("");
+    setErrorAddress("");
+    setErrorCp("");
+    setErrorCity("");
+  };
+
+  const handleValideClick = () => {
+    if (
+      commercial.length > 0 &&
+      customerCategory !== "" &&
+      customerName !== "" &&
+      address !== "" &&
+      isCPFormat(cp) &&
+      city !== "" &&
+      (email.length > 0 ? isEmailFormat(email) : true) &&
+      (phone.length > 0 ? isPhoneFormat(phone) : true)
+    ) {
+      const newCustomer = [...customers];
+      const currentNewCustomer: ICustomer = {
+        category: customerCategory as TCustomerCategory,
+        group: group,
+        name: customerName,
+        location: {
+          address: address,
+          cp: cp,
+          city: city,
+        },
+        email: email,
+        phone: phone,
+        logo: logo,
+        contact: [],
+        priceList: priceList,
+        commercial: ressources
+          .filter((ressource) => ressource.role.includes("Commercial"))
+          .filter((ressource) =>
+            commercial.includes(`${ressource.firstName} ${ressource.lastName}`)
+          ),
+        appointment: [],
+        projectGoal: [
+          {
+            year: new Date().getFullYear() - 1,
+            goal: 0,
+          },
+          {
+            year: new Date().getFullYear(),
+            goal: projectGoal,
+          },
+        ],
+        paymentDeadline: paymentDeadline as "30" | "45",
+        paymentType: paymentType as TPaymentType,
+        paymentStatus: "A",
+      };
+      newCustomer.push(currentNewCustomer);
+      setCustomers(newCustomer);
+      showNotification({
+        title: `✅ Nouvelle fiche client sauvegardé`,
+        message: `${customerName} ajouté à l'annuaire de client`,
+        color: "green",
+      });
+      handleCloseModal();
+    } else {
+      commercial.length <= 0
+        ? setErrorCommercial("Information manquante")
+        : setErrorCommercial("");
+      customerCategory === ""
+        ? setErrorCustomerCategory("Information manquante")
+        : setErrorCustomerCategory("");
+      customerName === ""
+        ? setErrorCustomerName("Information manquante")
+        : setErrorCustomerName("");
+      address === ""
+        ? setErrorAddress("Information manquante")
+        : setErrorAddress("");
+      !isCPFormat(cp)
+        ? setErrorCp("Code postale de 5 chiffres")
+        : setErrorCp("");
+      city === "" ? setErrorCity("Information manquante") : setErrorCity("");
+      showNotification({
+        title: `⛔ Erreur à corriger`,
+        message: `Un ou plusieurs champs de saisie requiert votre attention`,
+        color: "red",
+      });
+    }
   };
 
   const handleCancelClick = () => {
-    setOpenNewCustomer(false);
+    showNotification({
+      title: `⛔ Nouvelle fiche client non sauvegardé`,
+      message: `Création d'une nouvelle fiche client annulé`,
+      color: "red",
+    });
+    handleCloseModal();
   };
 
   const handleUploadFile = (
@@ -128,7 +261,7 @@ const NewCustomer = () => {
   }, [priceList]);
 
   useEffect(() => {
-    setGroup(
+    setGroupList(
       customers
         .filter((customer) => customer.category === customerCategory)
         .reduce((acc, customer) => {
@@ -157,15 +290,15 @@ const NewCustomer = () => {
         overlayOpacity={0.55}
         overlayBlur={3}
         opened={openNewCustomer}
-        onClose={() => setOpenNewCustomer(false)}
+        onClose={handleCancelClick}
         padding={"xl"}
-        size="xl"
+        size="75%"
         title={
           <div className="contactModalTitle">
             <CustomTitle
               flexStart={true}
               icon={<IconAddressBook size={24} />}
-              title={"Nouveau contact"}
+              title={"Nouvelle fiche client"}
             />
           </div>
         }
@@ -193,6 +326,7 @@ const NewCustomer = () => {
               onChange={(val) => {
                 setCommercial(val);
               }}
+              error={errorCommercial}
             />
             <Select
               withAsterisk
@@ -203,17 +337,22 @@ const NewCustomer = () => {
               onChange={(val) => {
                 setCustomerCategory(val as string);
               }}
+              error={errorCustomerCategory}
             />
             <Select
               label="Groupe"
-              data={group}
+              data={groupList}
               searchable
               creatable
               getCreateLabel={(query) => `+ Ajouter ${query}`}
               onCreate={(query) => {
                 const item = { value: query, label: query };
-                setGroup((current) => [...current, item]);
+                setGroupList((current) => [...current, item]);
                 return item;
+              }}
+              value={group}
+              onChange={(val) => {
+                setGroup(val as string);
               }}
             />
             <TextInput
@@ -258,6 +397,11 @@ const NewCustomer = () => {
               onChange={(event) => {
                 setEmail(event.currentTarget.value);
               }}
+              error={
+                isEmailFormat(email) || email.length < 1
+                  ? ""
+                  : "Format d'email invalide"
+              }
             />
             <TextInput
               label={"Téléphone"}
@@ -265,6 +409,11 @@ const NewCustomer = () => {
               onChange={(event) => {
                 setPhone(event.currentTarget.value);
               }}
+              error={
+                isPhoneFormat(phone) || phone.length < 1
+                  ? ""
+                  : "Format de numéro de téléphone invalide"
+              }
             />
           </div>
           <div className={"newCustomerInputContainerColumn"}>
@@ -314,11 +463,41 @@ const NewCustomer = () => {
               <></>
             )}
           </div>
-          <div>
-            
+          <div className={"newCustomerInputContainerColumn"}>
+            <NumberInput
+              label={`Objectif ${new Date().getFullYear()}`}
+              defaultValue={0}
+              step={10}
+              precision={0}
+              min={0}
+              value={projectGoal}
+              onChange={(val: number) => {
+                setProjectGoal(val);
+              }}
+            />
+            <Select
+              label={"Délai de paiement"}
+              data={["30", "45"]}
+              value={paymentDeadline}
+              onChange={(val) => {
+                setPaymentDeadline(val as string);
+              }}
+            />
+            <Select
+              label={"Mode de paiement"}
+              data={[
+                "Chèque",
+                "Virement",
+                "Lettre de change relevé (LCR)",
+                "Contrat cadre",
+              ]}
+              value={paymentType}
+              onChange={(val) => {
+                setPaymentType(val as string);
+              }}
+            />
           </div>
         </div>
-
         <div className="newContactButtonContainer">
           <CustomButton
             handleClick={handleValideClick}

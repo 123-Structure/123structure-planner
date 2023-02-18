@@ -148,7 +148,7 @@ const CustomerContact = (props: ICustomerContactProps) => {
 
   const handleCancelClick = () => {
     showNotification({
-      title: `⛔ Nouveau client non sauvegardé`,
+      title: `⛔ Nouveau contact non sauvegardé`,
       message: `L'ajout d'un nouveau contact pour ${props.customer.name} est annulé`,
       color: "red",
     });

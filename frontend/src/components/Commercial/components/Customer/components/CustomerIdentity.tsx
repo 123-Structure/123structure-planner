@@ -166,7 +166,9 @@ const CustomerIdentity = (props: ICustomerIdentityProps) => {
               )
             }
             errorMessage={[
-              isEmailFormat(email) ? "" : "Format d'email invalide",
+              isEmailFormat(email)
+                ? ""
+                : "Format d'email invalide",
             ]}
           />
           <a
