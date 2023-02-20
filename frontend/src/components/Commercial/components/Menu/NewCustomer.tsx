@@ -103,6 +103,7 @@ const NewCustomer = () => {
     setPhone("");
     setPaymentDeadline("");
     setPaymentType("");
+    setProjectGoal(0)
     setLogoFile(null);
     setLogo("");
     setPriceListFile(null);
@@ -150,8 +151,8 @@ const NewCustomer = () => {
           cp: cp,
           city: city,
         },
-        email: email,
-        phone: phone,
+        email: email === "" ? "-" : email,
+        phone: phone === "" ? "-" : phone,
         logo: logo,
         contact: [],
         priceList: priceList,

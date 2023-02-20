@@ -24,6 +24,7 @@ import EditModeToggle from "../../../../utils/EditModeToggle";
 import Contact from "../../utils/Contact";
 import CustomerItem from "../../utils/CustomerItem";
 import CustomerContact from "./CustomerContact";
+import House from "../../../../../assets/img/house.png";
 
 interface ICustomerIdentityProps {
   customer: ICustomer;
@@ -121,10 +122,18 @@ const CustomerIdentity = (props: ICustomerIdentityProps) => {
       <div className="customerIdentityContainer">
         <div>
           <img
-            className="customerLogo"
-            src={props.customer.logo}
-            alt={props.customer.name}
+            className={`customerLogo ${
+              editCustomerIdentity ? "editCustomerLogo" : ""
+            }`}
+            src={props.customer.logo !== "" ? props.customer.logo : House}
+            alt={`Logo ${props.customer.name}`}
+            onClick={() =>
+              editCustomerIdentity
+                ? document.getElementById("logoFileInput")?.click()
+                : null
+            }
           />
+          <input type="file" id="logoFileInput" />
         </div>
         <div
           className="customerItemContainer"
@@ -166,9 +175,7 @@ const CustomerIdentity = (props: ICustomerIdentityProps) => {
               )
             }
             errorMessage={[
-              isEmailFormat(email)
-                ? ""
-                : "Format d'email invalide",
+              isEmailFormat(email) ? "" : "Format d'email invalide",
             ]}
           />
           <a

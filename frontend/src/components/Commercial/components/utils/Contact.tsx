@@ -308,7 +308,6 @@ const Contact = (props: IContactProps) => {
             color={props.color}
             style={{
               ...props.extraStyle,
-              display: smallScreen || props.editMode ? "none" : "block",
               color:
                 props.color != undefined && props.color !== "yellow"
                   ? "white"

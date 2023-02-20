@@ -31,6 +31,23 @@ const CustomerRelationship = (props: ICustomerRelationshipProps) => {
   const customers = useCustomer();
   const setCustomers = useUpdateCustomer();
 
+  const getPriceListURL = () => {
+    const binaryString = window.atob(props.customer.priceList.split(",")[1]);
+    const binaryLen = binaryString.length;
+    const bytes = new Uint8Array(binaryLen);
+    for (let i = 0; i < binaryLen; i++) {
+      bytes[i] = binaryString.charCodeAt(i);
+    }
+    const arrayBuffer = bytes.buffer;
+
+    // Créer un objet blob à partir de l'ArrayBuffer
+    const blob = new Blob([arrayBuffer], { type: "application/pdf" });
+
+    // Créer un objet URL à partir du blob
+    const pdfUrl = URL.createObjectURL(blob);
+    return pdfUrl;
+  };
+
   const getCurrentGoal = () => {
     const currentYear = props.customer.projectGoal.filter(
       (projectGoal) => projectGoal.year === new Date().getFullYear()
@@ -238,7 +255,7 @@ const CustomerRelationship = (props: ICustomerRelationshipProps) => {
             <p>
               {editCustomerRelationship
                 ? `(${new Date().getFullYear() - 1})`
-                : currentProjectGoal}
+                : previousYearGoal}
             </p>
           </div>
           <div className="customerItemTitle">
@@ -332,7 +349,7 @@ const CustomerRelationship = (props: ICustomerRelationshipProps) => {
       </div>
       <CustomDivider />
       <CustomButton
-        handleClick={() => openURL(props.customer.priceList)}
+        handleClick={() => openURL(getPriceListURL())}
         icon={<IconCurrencyEuro />}
         label={"Grille tarifaire"}
         extraStyle={{
