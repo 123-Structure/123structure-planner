@@ -1,11 +1,11 @@
 import { Badge, useMantineTheme } from "@mantine/core";
 import { IProject } from "../../data/interfaces/IProject";
 
-interface IAgenceBadge {
+interface IAgenceBadgeProps {
   project: IProject;
 }
 
-const AgenceBadge = (props: IAgenceBadge) => {
+const AgenceBadge = (props: IAgenceBadgeProps) => {
   const theme = useMantineTheme();
   const getAgence = () => {
     const agenceLetter = props.project.DOSSIER.slice(-1);

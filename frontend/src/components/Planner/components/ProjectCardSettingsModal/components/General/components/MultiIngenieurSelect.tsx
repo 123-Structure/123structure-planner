@@ -9,7 +9,7 @@ import { useRessources } from "../../../../../../../context/RessourceContext";
 import { IProject } from "../../../../../../../data/interfaces/IProject";
 import { companyColor } from "../../../../../../../utils/companyColor";
 
-interface IMultiIngenieurSelect {
+interface IMultiIngenieurSelectProps {
   project: IProject;
 }
 
@@ -17,7 +17,7 @@ interface ItemProps extends React.ComponentPropsWithoutRef<"div"> {
   label: string;
 }
 
-const MultiIngenieurSelect = (props: IMultiIngenieurSelect) => {
+const MultiIngenieurSelect = (props: IMultiIngenieurSelectProps) => {
   const projects = useProject();
   const setProjects = useUpdateProject();
   const ressources = useRessources();

@@ -1,12 +1,12 @@
 import { Tooltip } from "@mantine/core";
 import React from "react";
 
-interface ICustomTooltip {
+interface ICustomTooltipProps {
   label: string;
   children: React.ReactNode;
 }
 
-const CustomTooltip = (props: ICustomTooltip) => {
+const CustomTooltip = (props: ICustomTooltipProps) => {
   return (
     <Tooltip
       style={{ fontWeight: "bold" }}

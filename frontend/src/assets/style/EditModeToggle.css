@@ -1,0 +1,17 @@
+.editModeToggle {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  /* margin-bottom: 16px; */
+}
+
+.editModeToggleItem {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.editModeToggleItem > p {
+  margin: 0;
+  cursor: pointer;
+}

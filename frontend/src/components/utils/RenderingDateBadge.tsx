@@ -2,11 +2,11 @@ import { Badge, useMantineTheme } from "@mantine/core";
 import dayjs from "dayjs";
 import { IProject } from "../../data/interfaces/IProject";
 
-interface IRenderingDateBadge {
+interface IRenderingDateBadgeProps {
   project: IProject;
 }
 
-const RenderingDateBadge = (props: IRenderingDateBadge) => {
+const RenderingDateBadge = (props: IRenderingDateBadgeProps) => {
   const theme = useMantineTheme();
 
   const getRemainingTimeColor = (d: string | undefined) => {

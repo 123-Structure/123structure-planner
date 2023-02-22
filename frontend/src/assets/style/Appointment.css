@@ -1,0 +1,48 @@
+.editAppointmentTitle {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+}
+
+.textEditor {
+  margin-top: 16px;
+}
+
+.appointementHeader {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.appointmentAddressContainer,
+.appointmentContactContainer {
+  width: 50%;
+}
+
+.appointmentContactContainer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.appointmentContactContainer > div {
+  width: 100%;
+}
+
+@media (max-width: 1400px) {
+  .appointmentAddressContainer,
+  .appointmentContactContainer {
+    width: 75%;
+  }
+}
+
+@media (max-width: 850px) {
+  .editAppointmentTitle {
+    flex-direction: column;
+  }
+  .appointmentAddressContainer,
+  .appointmentContactContainer {
+    width: 100%;
+  }
+}

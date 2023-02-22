@@ -1,0 +1,38 @@
+.commercialContainer {
+  margin-left: 16px;
+}
+
+.commercialList {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.commercialTab {
+  font-weight: bold;
+}
+
+.mobileCustomerMenu {
+  display: flex;
+  flex-direction: column;
+}
+
+.mobileCustomerMenuSelectContainer {
+  flex-direction: row;
+  padding: 0 16px;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.mobileCustomerMenuSelect {
+  width: calc(33%);
+}
+
+@media (max-width: 576px) {
+  .mobileCustomerMenuSelect {
+    width: 100%;
+  }
+  .mobileCustomerMenuSelectContainer {
+    flex-direction: column;
+  }
+}

@@ -50,7 +50,7 @@ const General = (props: IGeneralProps) => {
           onChange={(event) =>
             props.setSubcontracting(event.currentTarget.value)
           }
-        ></TextInput>
+        />
       </div>
       <div
         style={{

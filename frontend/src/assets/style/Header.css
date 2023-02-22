@@ -3,6 +3,8 @@
   align-items: center;
   justify-content: space-between;
   padding: 1rem;
+  border-bottom: 1px solid #dfe2e6;
+  margin-bottom: 16px;
 }
 
 .admin {
@@ -28,12 +30,12 @@
   padding-left: 16px;
 }
 
-img {
+#logoHeader {
   height: 75px;
 }
 
 @media (max-width: 950px) {
-  img {
+  #logoHeader {
     display: none;
   }
 }

@@ -1,0 +1,28 @@
+.contactContentContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.contactModalTitle {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+}
+
+.contactIdentityContainer {
+  margin-bottom: 8px;
+}
+
+.contactCustomerNameBadge {
+  margin: -8px 0 8px 0;
+}
+
+.newContactButtonContainer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-top: 32px;
+  gap: 8px;
+}

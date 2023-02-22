@@ -1,10 +1,8 @@
 import {
   ActionIcon,
-  Checkbox,
   Indicator,
   NumberInput,
   Switch,
-  Table,
   useMantineTheme,
 } from "@mantine/core";
 import { DatePicker } from "@mantine/dates";
@@ -22,9 +20,8 @@ import { IAvancement } from "../../../../../../data/interfaces/IAvancement";
 import { IProject } from "../../../../../../data/interfaces/IProject";
 import CustomButton from "../../../../../utils/CustomButton";
 import CustomTitle from "../../../../../utils/CustomTitle";
-
-import "../../../../../../assets/style/Table.css";
 import AvancementsRows from "./components/AvancementsRows";
+import "../../../../../../assets/style/Table.css";
 
 interface IHonoraireProps {
   project: IProject;

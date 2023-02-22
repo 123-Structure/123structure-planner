@@ -1,7 +1,7 @@
 import { Badge } from "@mantine/core";
 import ModalSettings from "./ModalSettings";
 
-interface IExcelSettings {
+interface IExcelSettingsProps {
   projectLength: number | undefined;
   showParams: string[];
   setShowParams: React.Dispatch<React.SetStateAction<string[]>>;
@@ -9,7 +9,7 @@ interface IExcelSettings {
   duplicatedProjectLength: number | undefined;
 }
 
-const ModalSettingsButton = (props: IExcelSettings) => {
+const ModalSettingsButton = (props: IExcelSettingsProps) => {
   return (
     <div className="modalSettingsButton">
       <h2 className="loadProjectLength">

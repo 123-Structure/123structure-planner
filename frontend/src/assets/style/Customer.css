@@ -1,0 +1,154 @@
+.customer {
+  display: flex;
+  flex-direction: row;
+  padding-left: 16px;
+  gap: 16px;
+}
+
+.customerAccordion {
+  display: none;
+  margin: 0 16px 0 16px;
+}
+
+.customerAppointmentAccordion {
+  margin: 0px 16px 0 16px;
+}
+
+.customerAccordionContent > div > div {
+  margin: 0;
+  padding: 0;
+}
+
+.customerLogoContainer {
+  position: relative;
+}
+
+.customerLogo {
+  object-fit: contain;
+  height: 150px;
+  width: 150px;
+  transition: filter 0.3s ease-in-out;
+}
+
+.editCustomerLogo:before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 150px;
+  height: 150px;
+  background-image: url("../img/upload.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 50px;
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  background-color: rgba(255, 255, 255, 0.75);
+  cursor: pointer;
+}
+
+.editCustomerLogo:hover:before {
+  opacity: 1;
+}
+
+.logoFileInput {
+  display: none;
+}
+
+.customerIdentity,
+.customerRelationship,
+.customerPayment {
+  width: calc(33% - 12px);
+}
+
+.customerTitle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.customerIdentityContainer {
+  display: grid;
+  grid-template-columns: max-content auto;
+  align-items: center;
+  margin-top: 8px;
+}
+
+.customerClickableItem {
+  cursor: pointer;
+}
+
+.sendEmail,
+.callPhone {
+  display: none;
+}
+
+.customerItemContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.customerItemTitle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.customerItemTitle > p {
+  margin: 0;
+}
+
+.contactContainer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.customerProjectGoalContainer {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  row-gap: 8px;
+}
+
+.customerProductionContainer {
+  font-weight: bold;
+}
+
+@media (max-width: 1400px) {
+  .customer {
+    display: none;
+  }
+
+  .customerAccordion {
+    display: block;
+  }
+
+  .customerIdentity,
+  .customerRelationship,
+  .customerPayment {
+    width: calc(100% - 16px);
+  }
+}
+
+@media (min-width: 1400px) and (max-width: 2150px) {
+  .customerProjectGoalContainer {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 850px) {
+  .customerProjectGoalContainer {
+    display: flex;
+    flex-direction: column;
+  }
+  .customerLogo {
+    display: none;
+  }
+}
