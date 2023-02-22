@@ -2,6 +2,7 @@ import express, { Express, NextFunction, Request, Response } from "express";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
 import projectsRouter from "./routes/projects.route";
+import customersRouter from "./routes/customers.route";
 
 dotenv.config();
 
@@ -23,6 +24,7 @@ app.get("/", (req: Request, res: Response) => {
 });
 
 app.use("/api/projects", projectsRouter);
+app.use("/api/customers", customersRouter);
 
 // Connect to database
 mongoose

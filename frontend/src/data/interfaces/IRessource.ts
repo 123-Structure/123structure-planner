@@ -11,5 +11,5 @@ export interface IRessource {
     | "Villefranche-sur-Saône"
     | "Global"
     | undefined;
-  fixer: IRessource[] | undefined;
+  fixer?: IRessource[] | undefined;
 }
