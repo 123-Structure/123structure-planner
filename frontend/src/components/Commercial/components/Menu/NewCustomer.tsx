@@ -37,6 +37,7 @@ import { showNotification } from "@mantine/notifications";
 import { ICustomer } from "../../../../data/interfaces/ICustomer";
 import { TCustomerCategory } from "../../../../data/types/TCustomerCategory";
 import { TPaymentType } from "../../../../data/types/TPaymentType";
+import { HandleUploadFile } from "../../../utils/HandleUploadFile";
 
 const NewCustomer = () => {
   const [openNewCustomer, setOpenNewCustomer] = useState(false);
@@ -216,24 +217,6 @@ const NewCustomer = () => {
       color: "red",
     });
     handleCloseModal();
-  };
-
-  const handleUploadFile = (
-    file: File | null,
-    setFile: React.Dispatch<React.SetStateAction<File | null>>,
-    setBinary: React.Dispatch<React.SetStateAction<string>>
-  ) => {
-    setFile(file);
-    if (file !== null) {
-      const fileReader = new FileReader();
-      fileReader.readAsDataURL(file);
-      fileReader.onload = () => {
-        const base64String = fileReader.result as string;
-        if (base64String !== null) {
-          setBinary(base64String);
-        }
-      };
-    }
   };
 
   useEffect(() => {
@@ -424,7 +407,7 @@ const NewCustomer = () => {
               icon={<IconUpload size={14} />}
               accept="image/png,image/jpeg"
               value={logoFile}
-              onChange={(file) => handleUploadFile(file, setLogoFile, setLogo)}
+              onChange={(file) => HandleUploadFile(file, setLogoFile, setLogo)}
             />
             {logo !== "" && !smallScreen ? (
               <img className="newCustomerLogo" src={logo} alt={"logo"} />
@@ -438,7 +421,7 @@ const NewCustomer = () => {
               accept=".pdf"
               value={priceListFile}
               onChange={(file) =>
-                handleUploadFile(file, setPriceListFile, setPriceList)
+                HandleUploadFile(file, setPriceListFile, setPriceList)
               }
             />
             {priceList !== "" && !smallScreen ? (

@@ -1,4 +1,4 @@
-import { Card, MultiSelect, useMantineTheme } from "@mantine/core";
+import { Card, FileInput, MultiSelect, useMantineTheme } from "@mantine/core";
 import { useMediaQuery } from "@mantine/hooks";
 import { showNotification } from "@mantine/notifications";
 import {
@@ -6,6 +6,7 @@ import {
   IconCurrencyEuro,
   IconHomeCheck,
   IconTargetArrow,
+  IconUpload,
   IconUser,
   IconUsers,
 } from "@tabler/icons";
@@ -20,6 +21,7 @@ import CustomButton from "../../../../utils/CustomButton";
 import CustomDivider from "../../../../utils/CustomDivider";
 import CustomTitle from "../../../../utils/CustomTitle";
 import EditModeToggle from "../../../../utils/EditModeToggle";
+import { HandleUploadFile } from "../../../../utils/HandleUploadFile";
 import CustomerItem from "../../utils/CustomerItem";
 
 interface ICustomerRelationshipProps {
@@ -27,10 +29,6 @@ interface ICustomerRelationshipProps {
 }
 
 const CustomerRelationship = (props: ICustomerRelationshipProps) => {
-  const ressources = useRessources();
-  const customers = useCustomer();
-  const setCustomers = useUpdateCustomer();
-
   const getPriceListURL = () => {
     const binaryString = window.atob(props.customer.priceList.split(",")[1]);
     const binaryLen = binaryString.length;
@@ -78,9 +76,15 @@ const CustomerRelationship = (props: ICustomerRelationshipProps) => {
     )
   );
 
+  const [priceList, setPriceList] = useState(props.customer.priceList);
+  const [priceListFile, setPriceListFile] = useState<File | null>(null);
+
   const currentProjectInvoiced = 100;
   const previousYearProjectInvoiced = 100;
 
+  const ressources = useRessources();
+  const customers = useCustomer();
+  const setCustomers = useUpdateCustomer();
   const theme = useMantineTheme();
   const smallScreen = useMediaQuery(`(max-width: ${theme.breakpoints.xs}px)`);
 
@@ -122,6 +126,9 @@ const CustomerRelationship = (props: ICustomerRelationshipProps) => {
       (projectGoal) => projectGoal.year === new Date().getFullYear() - 1
     )[0].goal = previousYearGoal;
 
+    changedCustomer[0].priceList = priceList;
+    setPriceListFile(null);
+
     setCustomers(newCustomer);
     showNotification({
       title: `✅ Fiche client sauvegardée`,
@@ -149,6 +156,9 @@ const CustomerRelationship = (props: ICustomerRelationshipProps) => {
         (projectGoal) => projectGoal.year === new Date().getFullYear() - 1
       )[0].goal
     );
+
+    setPriceList(props.customer.priceList);
+    setPriceListFile(null);
 
     showNotification({
       title: `⛔ Fiche client non sauvegardée`,
@@ -348,14 +358,27 @@ const CustomerRelationship = (props: ICustomerRelationshipProps) => {
         </div>
       </div>
       <CustomDivider />
-      <CustomButton
-        handleClick={() => openURL(getPriceListURL())}
-        icon={<IconCurrencyEuro />}
-        label={"Grille tarifaire"}
-        extraStyle={{
-          width: "fit-content",
-        }}
-      />
+      {editCustomerRelationship ? (
+        <FileInput
+          label="Grille de prix"
+          placeholder="grille_tarifaire.pdf"
+          icon={<IconCurrencyEuro size={14} />}
+          accept=".pdf"
+          value={priceListFile}
+          onChange={(file) =>
+            HandleUploadFile(file, setPriceListFile, setPriceList)
+          }
+        />
+      ) : (
+        <CustomButton
+          handleClick={() => openURL(getPriceListURL())}
+          icon={<IconCurrencyEuro />}
+          label={"Grille tarifaire"}
+          extraStyle={{
+            width: "fit-content",
+          }}
+        />
+      )}
     </Card>
   );
 };
