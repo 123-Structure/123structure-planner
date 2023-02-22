@@ -21,11 +21,9 @@ import {
 import CustomDivider from "../../../../utils/CustomDivider";
 import CustomTitle from "../../../../utils/CustomTitle";
 import EditModeToggle from "../../../../utils/EditModeToggle";
-import Contact from "../../utils/Contact";
 import CustomerItem from "../../utils/CustomerItem";
 import CustomerContact from "./CustomerContact";
 import House from "../../../../../assets/img/house.png";
-import { useSetState } from "@mantine/hooks";
 
 interface ICustomerIdentityProps {
   customer: ICustomer;
@@ -102,6 +100,8 @@ const CustomerIdentity = (props: ICustomerIdentityProps) => {
       return;
     }
 
+    console.log(props.customer.name);
+
     const file = e.target.files[0];
 
     const fileReader = new FileReader();
@@ -148,18 +148,21 @@ const CustomerIdentity = (props: ICustomerIdentityProps) => {
           }`}
           onClick={() =>
             editCustomerIdentity
-              ? document.getElementById("logoFileInput")?.click()
+              ? document
+                  .getElementById(`logoFileInput_${props.customer.name}`)
+                  ?.click()
               : null
           }
         >
           <img
             className="customerLogo"
-            src={logo !== "" ? logo : House}
+            src={logo}
             alt={`Logo ${props.customer.name}`}
           />
           <input
             type="file"
-            id="logoFileInput"
+            className="logoFileInput"
+            id={`logoFileInput_${props.customer.name}`}
             onChange={(e) => handleUploadFile(e)}
             accept="image/png,image/jpeg"
           />

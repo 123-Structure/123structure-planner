@@ -14,7 +14,6 @@ interface ICustomerProps {
 
 const Customer = (props: ICustomerProps) => {
   const [value, setValue] = useState<string | null>(null);
-
   return (
     <>
       <div className="customer">
