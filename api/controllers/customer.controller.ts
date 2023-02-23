@@ -13,13 +13,13 @@ export const getCustomer = async (req: Request, res: Response) => {
   const { id } = req.params;
 
   if (!Types.ObjectId.isValid(id)) {
-    return res.status(404).json({ error: "⛔ No such project" });
+    return res.status(404).json({ error: "⛔ No such customer" });
   }
 
   const customer = await Customer.findById(id);
 
   if (!customer) {
-    return res.status(404).json({ error: "⛔ No such project" });
+    return res.status(404).json({ error: "⛔ No such customer" });
   }
 
   res.status(200).json(customer);
@@ -33,6 +33,7 @@ export const createCustomer = async (req: Request, res: Response) => {
     name,
     location,
     email,
+    phone,
     contact,
     priceList,
     commercial,
@@ -50,6 +51,7 @@ export const createCustomer = async (req: Request, res: Response) => {
       name,
       location,
       email,
+      phone,
       contact,
       priceList,
       commercial,
@@ -59,6 +61,7 @@ export const createCustomer = async (req: Request, res: Response) => {
       paymentType,
       paymentStatus,
     });
+
     res.status(200).json(newCustomer);
   } catch (error: any) {
     res.status(400).json({ error: "⛔ " + error.message });
@@ -70,13 +73,13 @@ export const deleteCustomer = async (req: Request, res: Response) => {
   const { id } = req.params;
 
   if (!Types.ObjectId.isValid(id)) {
-    return res.status(404).json({ error: "⛔ No such project" });
+    return res.status(404).json({ error: "⛔ No such customer" });
   }
 
   const customer = await Customer.findOneAndDelete({ _id: id });
 
   if (!customer) {
-    return res.status(400).json({ error: "⛔ No such project" });
+    return res.status(400).json({ error: "⛔ No such customer" });
   }
 
   res.status(200).json({ customer });
@@ -87,7 +90,7 @@ export const updateCustomer = async (req: Request, res: Response) => {
   const { id } = req.params;
 
   if (!Types.ObjectId.isValid(id)) {
-    return res.status(404).json({ error: "⛔ No such project" });
+    return res.status(404).json({ error: "⛔ No such customer" });
   }
 
   const customer = await Customer.findOneAndUpdate(
@@ -96,8 +99,23 @@ export const updateCustomer = async (req: Request, res: Response) => {
   );
 
   if (!customer) {
-    return res.status(400).json({ error: "⛔ No such project" });
+    return res.status(400).json({ error: "⛔ No such customer" });
   }
 
   res.status(200).json({ customer });
+};
+
+//SEARCH a customer
+export const searchCustomer = async (req: Request, res: Response) => {
+  const { id } = req.params;
+
+  const customers = await Customer.find(
+    { $text: { $search: id } },
+    { score: { $meta: "textScore" } }
+  ).sort({ score: { $meta: "textScore" } });
+
+  if (!customers) {
+    return res.status(400).json({ error: "⛔ No such customer" });
+  }
+  res.status(200).json(customers);
 };

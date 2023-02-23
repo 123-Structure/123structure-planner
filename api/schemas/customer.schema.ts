@@ -36,6 +36,10 @@ export const customerSchema = new Schema(
       type: String,
       required: true,
     },
+    phone: {
+      type: String,
+      required: true,
+    },
     contact: {
       type: [contactSchema],
       required: true,
@@ -72,4 +76,34 @@ export const customerSchema = new Schema(
   {
     timestamps: true,
   }
+);
+
+customerSchema.index(
+  {
+    category: "text",
+    group: "text",
+    name: "text",
+    "location.cp": "text",
+    "location.city": "text",
+    email: "text",
+    phone: "text",
+
+    "contact.firstName": "text",
+    "contact.lastName": "text",
+    "contact.email": "text",
+    "contact.phone1": "text",
+    "contact.phone2": "text",
+    "contact.category": "text",
+
+    "commercial.firstName": "text",
+    "commercial.lastName": "text",
+    "commercial.role": "text",
+    "commercial.company": "text",
+
+    "appointment.location.cp": "text",
+    "appointment.location.city": "text",
+    "appointment.title": "text",
+    "appointment.content": "text",
+  },
+  { default_language: "french" }
 );

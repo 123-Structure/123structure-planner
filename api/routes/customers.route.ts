@@ -4,6 +4,7 @@ import {
   deleteCustomer,
   getCustomer,
   getCustomers,
+  searchCustomer,
   updateCustomer,
 } from "../controllers/customer.controller";
 
@@ -23,5 +24,8 @@ customersRouter.delete("/:id", deleteCustomer);
 
 // UPDATE a customer
 customersRouter.patch("/:id", updateCustomer);
+
+// SEARCH a customer
+customersRouter.get("/search/:id", searchCustomer);
 
 export default customersRouter;
