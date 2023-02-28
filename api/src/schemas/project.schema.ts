@@ -1,8 +1,6 @@
-import mongoose, { Schema } from "mongoose";
+import { Schema } from "mongoose";
 
-const Project = mongoose.Schema;
-
-const projectSchema = new Schema(
+export const projectSchema = new Schema(
   {
     DOSSIER: {
       type: String,
@@ -23,5 +21,3 @@ const projectSchema = new Schema(
     timestamps: true,
   }
 );
-
-export default mongoose.model("Project", projectSchema);
