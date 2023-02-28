@@ -13,7 +13,8 @@ export const customerSchema = new Schema<ICustomer>(
     },
     group: {
       type: String,
-      required: true,
+      required: false,
+      default: "",
     },
     name: {
       type: String,
@@ -43,7 +44,8 @@ export const customerSchema = new Schema<ICustomer>(
     },
     logo: {
       type: String,
-      required: true,
+      required: false,
+      default: "",
     },
     contact: {
       type: [contactSchema],
@@ -51,7 +53,8 @@ export const customerSchema = new Schema<ICustomer>(
     },
     priceList: {
       type: String,
-      required: true,
+      required: false,
+      default: "",
     },
     commercial: {
       type: [ressourceSchema],
@@ -67,11 +70,13 @@ export const customerSchema = new Schema<ICustomer>(
     },
     paymentDeadline: {
       type: String,
-      required: true,
+      required: false,
+      default: "",
     },
     paymentType: {
       type: String,
-      required: true,
+      required: false,
+      default: "",
     },
     paymentStatus: {
       type: String,

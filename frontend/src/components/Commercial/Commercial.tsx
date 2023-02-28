@@ -1,4 +1,4 @@
-import { ActionIcon, Tabs, useMantineTheme } from "@mantine/core";
+import { Tabs, useMantineTheme } from "@mantine/core";
 import { useState } from "react";
 import { useRessources } from "../../context/RessourceContext";
 import CustomerCategories from "./components/Menu/CustomerCategories";

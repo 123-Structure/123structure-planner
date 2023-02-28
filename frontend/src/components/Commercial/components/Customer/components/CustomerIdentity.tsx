@@ -156,7 +156,7 @@ const CustomerIdentity = (props: ICustomerIdentityProps) => {
         >
           <img
             className="customerLogo"
-            src={logo}
+            src={logo === "" ? House : logo}
             alt={`Logo ${props.customer.name}`}
           />
           <input

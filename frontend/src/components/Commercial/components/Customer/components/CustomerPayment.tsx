@@ -132,7 +132,7 @@ const CustomerPayment = (props: ICustomerPaymentProps) => {
             value={selectValue(
               editCustomerPayment,
               paymentDeadline,
-              ["30", "45"],
+              ["30 (Fin de mois)", "30 (Net)", "45"],
               ["Délai de paiement :"]
             )}
             updateValue={[setPaymentDeadline]}
@@ -153,6 +153,7 @@ const CustomerPayment = (props: ICustomerPaymentProps) => {
                 "Virement",
                 "Lettre de change relevé (LCR)",
                 "Contrat cadre",
+                "-",
               ],
               ["Mode de paiement :"]
             )}

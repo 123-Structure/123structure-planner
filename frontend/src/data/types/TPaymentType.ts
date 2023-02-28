@@ -3,4 +3,5 @@ export type TPaymentType =
   | "Virement"
   | "Lettre de change relevé (LCR)"
   | "Contrat cadre"
+  | "-"
   | undefined;

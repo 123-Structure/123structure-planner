@@ -6,6 +6,7 @@ import { IContact } from "./IContact";
 import { IRessource } from "./IRessource";
 
 export interface ICustomer {
+  _id?: string;
   category: TCustomerCategory;
   group: string;
   name: string;
@@ -22,7 +23,7 @@ export interface ICustomer {
   commercial: IRessource[];
   appointment: IAppointment[];
   projectGoal: TProjectGoal[];
-  paymentDeadline: "30" | "45";
+  paymentDeadline: "30 (Fin de mois)" | "30 (Net)" | "45";
   paymentType: TPaymentType;
   paymentStatus: "A" | "B" | "C";
 }

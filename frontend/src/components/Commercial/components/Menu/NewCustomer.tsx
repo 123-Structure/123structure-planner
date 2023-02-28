@@ -104,7 +104,7 @@ const NewCustomer = () => {
     setPhone("");
     setPaymentDeadline("");
     setPaymentType("");
-    setProjectGoal(0)
+    setProjectGoal(0);
     setLogoFile(null);
     setLogo("");
     setPriceListFile(null);
@@ -131,7 +131,7 @@ const NewCustomer = () => {
     setErrorCity("");
   };
 
-  const handleValideClick = () => {
+  const handleValideClick = async () => {
     if (
       commercial.length > 0 &&
       customerCategory !== "" &&
@@ -173,10 +173,27 @@ const NewCustomer = () => {
             goal: projectGoal,
           },
         ],
-        paymentDeadline: paymentDeadline as "30" | "45",
+        paymentDeadline: paymentDeadline as
+          | "45"
+          | "30 (Fin de mois)"
+          | "30 (Net)",
         paymentType: paymentType as TPaymentType,
         paymentStatus: "A",
       };
+
+      const response = await fetch(
+        `${import.meta.env.VITE_API_URL}/api/customers`,
+        {
+          method: "POST",
+          body: JSON.stringify(currentNewCustomer),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      const json = await response.json();
+      console.log(json);
+
       newCustomer.push(currentNewCustomer);
       setCustomers(newCustomer);
       showNotification({
