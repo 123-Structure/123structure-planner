@@ -1,8 +1,8 @@
 import express, { Express, NextFunction, Request, Response } from "express";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
-import projectsRouter from "./routes/projects.route";
-import customersRouter from "./routes/customers.route";
+import projectsRouter from "./src/routes/projects.route";
+import customersRouter from "./src/routes/customers.route";
 import chalk from "chalk";
 
 dotenv.config();

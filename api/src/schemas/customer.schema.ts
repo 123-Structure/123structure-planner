@@ -1,10 +1,11 @@
 import { Schema } from "mongoose";
+import { ICustomer } from "../data/interfaces/ICustomer";
 import { appointmentSchema } from "./utils/appointment.schema";
 import { contactSchema } from "./utils/contact.schema";
 import { projectGoalSchema } from "./utils/projectGoal.schema";
 import { ressourceSchema } from "./utils/ressource.schema";
 
-export const customerSchema = new Schema(
+export const customerSchema = new Schema<ICustomer>(
   {
     category: {
       type: String,
@@ -37,6 +38,10 @@ export const customerSchema = new Schema(
       required: true,
     },
     phone: {
+      type: String,
+      required: true,
+    },
+    logo: {
       type: String,
       required: true,
     },

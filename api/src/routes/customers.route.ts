@@ -26,6 +26,6 @@ customersRouter.delete("/:id", deleteCustomer);
 customersRouter.patch("/:id", updateCustomer);
 
 // SEARCH a customer
-customersRouter.get("/search/:id", searchCustomer);
+customersRouter.get("/search/:searchValue", searchCustomer);
 
 export default customersRouter;

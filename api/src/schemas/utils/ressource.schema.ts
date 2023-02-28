@@ -1,6 +1,7 @@
 import { Schema } from "mongoose";
+import { IRessource } from "../../data/interfaces/IRessource";
 
-export const contactSchema = new Schema({
+export const ressourceSchema = new Schema<IRessource>({
   _id: {
     type: String,
     required: true,
@@ -13,23 +14,11 @@ export const contactSchema = new Schema({
     type: String,
     required: true,
   },
-  email: {
+  role: {
     type: String,
     required: true,
   },
-  phone1: {
-    type: String,
-    required: true,
-  },
-  phone2: {
-    type: String,
-    required: true,
-  },
-  category: {
-    type: String,
-    required: true,
-  },
-  gender: {
+  company: {
     type: String,
     required: true,
   },

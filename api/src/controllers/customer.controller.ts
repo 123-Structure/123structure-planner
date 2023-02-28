@@ -1,5 +1,7 @@
 import { Request, Response } from "express";
 import { Types } from "mongoose";
+import { ICustomer } from "../data/interfaces/ICustomer";
+import { findPath } from "../data/utils/findPath";
 import Customer from "../models/customer.model";
 
 // GET all customers
@@ -34,6 +36,7 @@ export const createCustomer = async (req: Request, res: Response) => {
     location,
     email,
     phone,
+    logo,
     contact,
     priceList,
     commercial,
@@ -52,6 +55,7 @@ export const createCustomer = async (req: Request, res: Response) => {
       location,
       email,
       phone,
+      logo,
       contact,
       priceList,
       commercial,
@@ -107,15 +111,23 @@ export const updateCustomer = async (req: Request, res: Response) => {
 
 //SEARCH a customer
 export const searchCustomer = async (req: Request, res: Response) => {
-  const { id } = req.params;
+  const { searchValue } = req.params;
 
   const customers = await Customer.find(
-    { $text: { $search: id } },
+    { $text: { $search: searchValue } },
     { score: { $meta: "textScore" } }
   ).sort({ score: { $meta: "textScore" } });
 
   if (!customers) {
     return res.status(400).json({ error: "⛔ No such customer" });
   }
-  res.status(200).json(customers);
+
+  const customersObject = JSON.parse(JSON.stringify(customers)) as ICustomer[];
+
+  const result = customersObject.map((customer) => {
+    // console.log(findPropertiesWithValue(customer, searchValue));
+    return findPath(customer, searchValue);
+  });
+
+  res.status(200).json(result);
 };

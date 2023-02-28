@@ -1,6 +1,7 @@
 import { Schema } from "mongoose";
+import { IAppointment } from "../../data/interfaces/IAppointment";
 
-export const appointmentSchema = new Schema({
+export const appointmentSchema = new Schema<IAppointment>({
   date: {
     type: Date,
     required: true,

@@ -1,5 +1,3 @@
-import { TAppointmentTitle } from "../types/TApppointmentTitle";
-
 export interface IAppointment {
   date: Date;
   contact: string[];
@@ -8,6 +6,6 @@ export interface IAppointment {
     cp: string;
     city: string;
   };
-  title: TAppointmentTitle;
+  title: string;
   content: string;
 }
