@@ -11,10 +11,7 @@ import { useMediaQuery } from "@mantine/hooks";
 import { showNotification } from "@mantine/notifications";
 import { IconCheck, IconCirclePlus, IconUser, IconX } from "@tabler/icons";
 import React, { useState } from "react";
-import {
-  useCustomer,
-  useUpdateCustomer,
-} from "../../../../../context/CustomerContext";
+import { useCustomers } from "../../../../../context/CustomerContext";
 import { IContact } from "../../../../../data/interfaces/IContact";
 import { ICustomer } from "../../../../../data/interfaces/ICustomer";
 import { TContactCategories } from "../../../../../data/types/TContactCategories";
@@ -50,8 +47,8 @@ const CustomerContact = (props: ICustomerContactProps) => {
 
   const theme = useMantineTheme();
   const smallScreen = useMediaQuery(`(max-width: ${theme.breakpoints.xs}px)`);
-  const customers = useCustomer();
-  const setCustomers = useUpdateCustomer();
+
+  const { customers, updateCustomers } = useCustomers();
 
   //generates random id;
   const guid = () => {
@@ -93,20 +90,20 @@ const CustomerContact = (props: ICustomerContactProps) => {
     setCategoryError("");
   };
 
-  const handleValideClick = () => {
+  const handleValideClick = async () => {
     if (
       gender !== "" &&
       firstName !== "" &&
       lastName !== "" &&
       category !== ""
     ) {
-      const newCustomer = [...customers];
-      const changedCustomer = newCustomer.filter(
+      const changedCustomer = customers.customersList.filter(
         (customer) =>
           customer.category === props.customer.category &&
           customer.group === props.customer.group &&
           customer.name === props.customer.name
-      );
+      )[0];
+
       const newContact: IContact = {
         _id: guid(),
         firstName: firstName,
@@ -117,8 +114,38 @@ const CustomerContact = (props: ICustomerContactProps) => {
         phone1: phone1 === "-" || phone1 === "" ? "-" : phone1,
         phone2: phone2 === "-" || phone2 === "" ? "-" : phone2,
       };
-      changedCustomer[0].contact.push(newContact);
-      setCustomers(newCustomer);
+      changedCustomer.contact.push(newContact);
+
+      const response = await fetch(
+        `${import.meta.env.VITE_API_URL}/api/customers/${
+          changedCustomer._id as string
+        }`,
+        {
+          method: "PATCH",
+          body: JSON.stringify(changedCustomer.contact),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      const data = await response.json();
+
+      if (!response.ok) {
+        showNotification({
+          title: `⛔ Erreur serveur`,
+          message: data.error,
+          color: "red",
+        });
+      }
+
+      updateCustomers({
+        type: "UPDATE_CUSTOMER",
+        payload: {
+          id: changedCustomer._id as string,
+          customer: changedCustomer,
+        },
+      });
+
       showNotification({
         title: `✅ Nouveau contact sauvegardé`,
         message: `Nouveau contact ajouté à ${props.customer.name}`,

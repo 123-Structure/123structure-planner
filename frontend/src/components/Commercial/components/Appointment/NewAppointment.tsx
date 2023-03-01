@@ -16,20 +16,16 @@ import {
   IconX,
 } from "@tabler/icons";
 import React, { useState } from "react";
-import {
-  useCustomer,
-  useUpdateCustomer,
-} from "../../../../context/CustomerContext";
 import CustomButton from "../../../utils/CustomButton";
 import CustomTitle from "../../../utils/CustomTitle";
 import "../../../../assets/style/newCustomer.css";
-import { useRessources } from "../../../../context/RessourceContext";
 import { isCPFormat } from "../../../../utils/validateInput";
 import { showNotification } from "@mantine/notifications";
 import { ICustomer } from "../../../../data/interfaces/ICustomer";
 import { DatePicker } from "@mantine/dates";
 import { IAppointment } from "../../../../data/interfaces/IAppointment";
 import { TAppointmentTitle } from "../../../../data/types/TApppointmentTitle";
+import { useCustomers } from "../../../../context/CustomerContext";
 
 interface INewAppointmentProps {
   customer: ICustomer;
@@ -53,9 +49,8 @@ const NewAppointment = (props: INewAppointmentProps) => {
 
   const theme = useMantineTheme();
   const smallScreen = useMediaQuery(`(max-width: ${theme.breakpoints.xs}px)`);
-  const ressources = useRessources();
-  const customers = useCustomer();
-  const setCustomers = useUpdateCustomer();
+
+  const { customers, updateCustomers } = useCustomers();
 
   const handleCloseModal = () => {
     setOpenNewAppointment(false);
@@ -67,20 +62,19 @@ const NewAppointment = (props: INewAppointmentProps) => {
     setAppointmentContact([]);
   };
 
-  const handleValideClick = () => {
+  const handleValideClick = async () => {
     if (
       appointmentTitle !== "" &&
       address !== "" &&
       isCPFormat(cp) &&
       city !== ""
     ) {
-      const newCustomer = [...customers];
-      const changedCustomer = newCustomer.filter(
+      const changedCustomer = customers.customersList.filter(
         (customer) =>
           customer.category === props.customer.category &&
           customer.group === props.customer.group &&
           customer.name === props.customer.name
-      );
+      )[0];
 
       const newAppointment: IAppointment = {
         date: appointmentDate,
@@ -100,8 +94,38 @@ const NewAppointment = (props: INewAppointmentProps) => {
         content: "",
       };
 
-      changedCustomer[0].appointment.push(newAppointment);
-      setCustomers(newCustomer);
+      changedCustomer.appointment.push(newAppointment);
+
+      const response = await fetch(
+        `${import.meta.env.VITE_API_URL}/api/customers/${
+          changedCustomer._id as string
+        }`,
+        {
+          method: "PATCH",
+          body: JSON.stringify(changedCustomer.appointment),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      const data = await response.json();
+
+      if (!response.ok) {
+        showNotification({
+          title: `⛔ Erreur serveur`,
+          message: data.error,
+          color: "red",
+        });
+      }
+
+      updateCustomers({
+        type: "UPDATE_CUSTOMER",
+        payload: {
+          id: changedCustomer._id as string,
+          customer: changedCustomer,
+        },
+      });
+
       showNotification({
         title: `✅ Nouveau rendez-vous sauvegardé`,
         message: `Nouveau rendez-vous ajouté pour ${props.customer.name}`,

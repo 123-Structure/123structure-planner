@@ -16,7 +16,7 @@ const MONGODB_URI = process.env.MONGODB_URI as string;
 // Middleware
 app.use(
   cors({
-    origin: process.env.FRONTEND_URL,
+    origin: process.env.FRONTEND_URL as string,
   })
 );
 app.use(
