@@ -168,11 +168,11 @@ const NewCustomer = () => {
             goal: projectGoal,
           },
         ],
-        paymentDeadline: paymentDeadline as
-          | "45"
-          | "30 (Fin de mois)"
-          | "30 (Net)",
-        paymentType: paymentType as TPaymentType,
+        paymentDeadline:
+          paymentDeadline === ""
+            ? "-"
+            : (paymentDeadline as "45" | "30 (Fin de mois)" | "30 (Net)" | "-"),
+        paymentType: paymentType === "" ? "-" : (paymentType as TPaymentType),
         paymentStatus: "A",
       };
 

@@ -78,13 +78,13 @@ const NewAppointment = (props: INewAppointmentProps) => {
 
       const newAppointment: IAppointment = {
         date: appointmentDate,
-        contact: props.customer.contact
+        contact: changedCustomer.contact
           .filter((contact) =>
             appointmentContact.includes(
               `${contact.firstName} ${contact.lastName}`
             )
           )
-          .map((contact) => contact._id),
+          .map((contact) => contact._id) as string[],
         location: {
           address: address,
           cp: cp,
@@ -102,7 +102,7 @@ const NewAppointment = (props: INewAppointmentProps) => {
         }`,
         {
           method: "PATCH",
-          body: JSON.stringify(changedCustomer.appointment),
+          body: JSON.stringify({ appointment: changedCustomer.appointment }),
           headers: {
             "Content-Type": "application/json",
           },
@@ -168,6 +168,7 @@ const NewAppointment = (props: INewAppointmentProps) => {
       "RDV Démarchage",
       "RDV Technique",
       "RDV Courtoisie",
+      "Autre",
     ];
 
     return appointmentTitle.reduce((acc, title: string | SelectItem) => {

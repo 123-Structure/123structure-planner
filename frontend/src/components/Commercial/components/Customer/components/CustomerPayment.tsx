@@ -22,7 +22,9 @@ interface ICustomerPaymentProps {
 
 const CustomerPayment = (props: ICustomerPaymentProps) => {
   const [editCustomerPayment, setEditCustomerPayment] = useState(false);
-  const [paymentDeadline, setPaymentDeadline] = useState(props.customer.paymentDeadline);
+  const [paymentDeadline, setPaymentDeadline] = useState(
+    props.customer.paymentDeadline
+  );
   const [paymentType, setPaymentType] = useState<TPaymentType>(
     props.customer.paymentType
   );
@@ -179,7 +181,6 @@ const CustomerPayment = (props: ICustomerPaymentProps) => {
                 "Virement",
                 "Lettre de change relevé (LCR)",
                 "Contrat cadre",
-                "-",
               ],
               ["Mode de paiement :"]
             )}

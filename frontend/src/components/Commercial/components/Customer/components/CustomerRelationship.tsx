@@ -94,9 +94,9 @@ const CustomerRelationship = (props: ICustomerRelationshipProps) => {
       const appointment =
         props.customer.appointment[props.customer.appointment.length - 1];
 
-      return `${appointment.title} (${appointment.date.toLocaleDateString(
-        "fr"
-      )})`;
+      return `${appointment.title} (${new Date(
+        appointment.date
+      ).toLocaleDateString("fr")})`;
     } else {
       return "-";
     }
@@ -124,6 +124,8 @@ const CustomerRelationship = (props: ICustomerRelationshipProps) => {
 
     changedCustomer.priceList = priceList;
 
+    console.log(changedCustomer.commercial);
+
     const response = await fetch(
       `${import.meta.env.VITE_API_URL}/api/customers/${
         changedCustomer._id as string
@@ -131,7 +133,7 @@ const CustomerRelationship = (props: ICustomerRelationshipProps) => {
       {
         method: "PATCH",
         body: JSON.stringify({
-          commercial: commercial,
+          commercial: changedCustomer.commercial,
           projectGoal: changedCustomer.projectGoal,
           priceList: priceList,
         }),
@@ -407,6 +409,7 @@ const CustomerRelationship = (props: ICustomerRelationshipProps) => {
           extraStyle={{
             width: "fit-content",
           }}
+          disabled={priceList === ""}
         />
       )}
     </Card>

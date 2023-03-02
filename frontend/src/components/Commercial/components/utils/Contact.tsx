@@ -14,12 +14,11 @@ import {
   IconPhone,
   IconUser,
 } from "@tabler/icons";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { IContact } from "../../../../data/interfaces/IContact";
 import "../../../../assets/style/Contact.css";
 import CustomTitle from "../../../utils/CustomTitle";
 import CustomerItem from "./CustomerItem";
-import CustomButton from "../../../utils/CustomButton";
 import { useMediaQuery } from "@mantine/hooks";
 import EditModeToggle from "../../../utils/EditModeToggle";
 import { ICustomer } from "../../../../data/interfaces/ICustomer";
@@ -101,7 +100,7 @@ const Contact = (props: IContactProps) => {
       }`,
       {
         method: "PATCH",
-        body: JSON.stringify(changedCustomer.contact),
+        body: JSON.stringify({ contact: changedCustomer.contact }),
         headers: {
           "Content-Type": "application/json",
         },

@@ -2,12 +2,11 @@ import { ActionIcon, Card } from "@mantine/core";
 import { showNotification } from "@mantine/notifications";
 import {
   IconAddressBook,
-  IconCirclePlus,
   IconMail,
   IconMap2,
   IconPhone,
 } from "@tabler/icons";
-import React, { ChangeEvent, useState } from "react";
+import { ChangeEvent, useState } from "react";
 import { ICustomer } from "../../../../../data/interfaces/ICustomer";
 import {
   isCPFormat,
@@ -87,6 +86,7 @@ const CustomerIdentity = (props: ICustomerIdentityProps) => {
         },
       }
     );
+
     const data = await response.json();
 
     if (!response.ok) {

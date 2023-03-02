@@ -21,7 +21,7 @@ interface ICustomerItemProps {
     | React.Dispatch<React.SetStateAction<string>>
     | React.Dispatch<React.SetStateAction<number>>
     | React.Dispatch<
-        React.SetStateAction<"45" | "30 (Fin de mois)" | "30 (Net)">
+        React.SetStateAction<"45" | "30 (Fin de mois)" | "30 (Net)" | "-">
       >
     | React.Dispatch<React.SetStateAction<TPaymentType>>
     | React.Dispatch<React.SetStateAction<"A" | "B" | "C">>

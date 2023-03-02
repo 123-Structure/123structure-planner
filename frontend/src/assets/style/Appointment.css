@@ -30,6 +30,10 @@
   width: 100%;
 }
 
+a {
+  color: #fab005;
+}
+
 @media (max-width: 1400px) {
   .appointmentAddressContainer,
   .appointmentContactContainer {

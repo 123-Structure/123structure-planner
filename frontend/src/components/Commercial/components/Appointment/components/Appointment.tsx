@@ -111,7 +111,7 @@ const Appointment = (props: IAppointmentProps) => {
       }`,
       {
         method: "PATCH",
-        body: JSON.stringify(changedCustomer.appointment),
+        body: JSON.stringify({ appointment: changedCustomer.appointment }),
         headers: {
           "Content-Type": "application/json",
         },
@@ -134,7 +134,6 @@ const Appointment = (props: IAppointmentProps) => {
         customer: changedCustomer,
       },
     });
-
   };
 
   const handleValideClick = () => {
@@ -147,9 +146,9 @@ const Appointment = (props: IAppointmentProps) => {
     );
     showNotification({
       title: `✅ Rendez-vous sauvegardé`,
-      message: `${props.customer.name} - ${
-        props.appointment.title
-      } (${props.appointment.date.toLocaleDateString("fr")}) mis à jour`,
+      message: `${props.customer.name} - ${props.appointment.title} (${new Date(
+        props.appointment.date
+      ).toLocaleDateString("fr")}) mis à jour`,
       color: "green",
     });
   };
@@ -167,7 +166,9 @@ const Appointment = (props: IAppointmentProps) => {
       title: `⛔ Rendez-vous non sauvegardé`,
       message: `Les modifications pour ${props.customer.name} - ${
         props.appointment.title
-      } (${props.appointment.date.toLocaleDateString("fr")}) sont annulées`,
+      } (${new Date(props.appointment.date).toLocaleDateString(
+        "fr"
+      )}) sont annulées`,
       color: "red",
     });
   };
@@ -266,7 +267,7 @@ const Appointment = (props: IAppointmentProps) => {
           <div className="contactContainer">
             {props.customer.contact
               .filter((contact) =>
-                props.appointment.contact.includes(contact._id)
+                props.appointment.contact.includes(contact._id as string)
               )
               .map((currentContact, index) => (
                 <Contact

@@ -114,6 +114,7 @@ const CustomerContact = (props: ICustomerContactProps) => {
         phone1: phone1 === "-" || phone1 === "" ? "-" : phone1,
         phone2: phone2 === "-" || phone2 === "" ? "-" : phone2,
       };
+
       changedCustomer.contact.push(newContact);
 
       const response = await fetch(
@@ -122,12 +123,13 @@ const CustomerContact = (props: ICustomerContactProps) => {
         }`,
         {
           method: "PATCH",
-          body: JSON.stringify(changedCustomer.contact),
+          body: JSON.stringify({ contact: changedCustomer.contact }),
           headers: {
             "Content-Type": "application/json",
           },
         }
       );
+
       const data = await response.json();
 
       if (!response.ok) {
@@ -195,14 +197,21 @@ const CustomerContact = (props: ICustomerContactProps) => {
         </ActionIcon>
       </div>
       <div className="contactContainer">
-        {props.contact.map((currentContact, index) => (
-          <Contact
-            editMode={props.editMode}
-            key={index}
-            customer={props.customer}
-            currentContact={currentContact}
-          />
-        ))}
+        {customers.customersList
+          .filter(
+            (customer) =>
+              customer.category === props.customer.category &&
+              customer.group === props.customer.group &&
+              customer.name === props.customer.name
+          )[0]
+          .contact.map((currentContact, index) => (
+            <Contact
+              editMode={props.editMode}
+              key={index}
+              customer={props.customer}
+              currentContact={currentContact}
+            />
+          ))}
       </div>
       <Modal
         fullScreen={smallScreen}
