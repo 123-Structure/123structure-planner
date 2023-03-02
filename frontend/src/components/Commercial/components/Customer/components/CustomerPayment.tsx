@@ -9,10 +9,7 @@ import {
   IconCalculator,
 } from "@tabler/icons";
 import React, { useState } from "react";
-import {
-  useCustomer,
-  useUpdateCustomer,
-} from "../../../../../context/CustomerContext";
+import { useCustomers } from "../../../../../context/CustomerContext";
 import { ICustomer } from "../../../../../data/interfaces/ICustomer";
 import { TPaymentType } from "../../../../../data/types/TPaymentType";
 import CustomTitle from "../../../../utils/CustomTitle";
@@ -41,8 +38,7 @@ const CustomerPayment = (props: ICustomerPaymentProps) => {
   const previousYearProjectInvoiced: number = 10;
   const previousYearInvoiceAmount: number = 10000;
 
-  const customers = useCustomer();
-  const setCustomers = useUpdateCustomer();
+  const { customers, updateCustomers } = useCustomers();
 
   const theme = useMantineTheme();
 
@@ -71,20 +67,52 @@ const CustomerPayment = (props: ICustomerPaymentProps) => {
     }
   };
 
-  const handleValideClick = () => {
-    const newCustomer = [...customers];
-    const changedCustomer = newCustomer.filter(
+  const handleValideClick = async () => {
+    const changedCustomer = customers.customersList.filter(
       (customer) =>
         customer.category === props.customer.category &&
         customer.group === props.customer.group &&
         customer.name === props.customer.name
+    )[0];
+
+    changedCustomer.paymentDeadline = paymentDeadline;
+    changedCustomer.paymentType = paymentType;
+    changedCustomer.paymentStatus = paymentStatus;
+
+    const response = await fetch(
+      `${import.meta.env.VITE_API_URL}/api/customers/${
+        changedCustomer._id as string
+      }`,
+      {
+        method: "PATCH",
+        body: JSON.stringify({
+          paymentDeadline: paymentDeadline,
+          paymentType: paymentType,
+          paymentStatus: paymentStatus,
+        }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
     );
+    const data = await response.json();
 
-    changedCustomer[0].paymentDeadline = paymentDeadline;
-    changedCustomer[0].paymentType = paymentType;
-    changedCustomer[0].paymentStatus = paymentStatus;
+    if (!response.ok) {
+      showNotification({
+        title: `⛔ Erreur serveur`,
+        message: data.error,
+        color: "red",
+      });
+    }
 
-    setCustomers(newCustomer);
+    updateCustomers({
+      type: "UPDATE_CUSTOMER",
+      payload: {
+        id: changedCustomer._id as string,
+        customer: changedCustomer,
+      },
+    });
+
     showNotification({
       title: `✅ Fiche client sauvegardée`,
       message: `La fiche client ${props.customer.name} est mise à jour`,
@@ -132,7 +160,7 @@ const CustomerPayment = (props: ICustomerPaymentProps) => {
             value={selectValue(
               editCustomerPayment,
               paymentDeadline,
-              ["30", "45"],
+              ["30 (Fin de mois)", "30 (Net)", "45"],
               ["Délai de paiement :"]
             )}
             updateValue={[setPaymentDeadline]}

@@ -1,7 +1,7 @@
 import { Select, SelectItem, useMantineTheme } from "@mantine/core";
 import { useMediaQuery } from "@mantine/hooks";
 import React, { useState } from "react";
-import { useCustomer } from "../../../../context/CustomerContext";
+import { useCustomers } from "../../../../context/CustomerContext";
 import { CustomerCategoryList } from "../../../../data/constants/CustomerCategoryList";
 import Customer from "../Customer/Customer";
 
@@ -14,9 +14,8 @@ const MobileCustomerMenu = () => {
   );
   const [currentAgence, setCurrentAgence] = useState<string | null>("");
 
-  const customers = useCustomer();
+  const { customers } = useCustomers();
   const theme = useMantineTheme();
-
   const smallScreen = useMediaQuery(`(max-width: ${theme.breakpoints.lg}px)`);
 
   const groupList = [] as (string | null)[];
@@ -30,7 +29,7 @@ const MobileCustomerMenu = () => {
   };
 
   const getCustomerList = () => {
-    return customers
+    return customers.customersList
       .filter((customer) => customer.category === currentCategory)
       .reduce((acc, customer) => {
         const value = customer.group === "" ? customer.name : customer.group;
@@ -47,7 +46,7 @@ const MobileCustomerMenu = () => {
   };
 
   const getAgenceList = () => {
-    return customers
+    return customers.customersList
       .filter(
         (customer) =>
           customer.category === currentCategory &&
@@ -72,14 +71,14 @@ const MobileCustomerMenu = () => {
 
   const getCustomer = () => {
     if (currentAgence !== "") {
-      return customers.filter(
+      return customers.customersList.filter(
         (customer) =>
           currentCategory === currentCategory &&
           customer.group === currentCustomerList &&
           customer.name === currentAgence
       )[0];
     } else {
-      return customers.filter(
+      return customers.customersList.filter(
         (customer) =>
           currentCategory === currentCategory &&
           customer.name === currentCustomerList
@@ -129,7 +128,7 @@ const MobileCustomerMenu = () => {
       {getCustomer() !== undefined ? (
         <Customer
           customer={
-            customers.filter(
+            customers.customersList.filter(
               (customer) =>
                 customer.category === currentCategory &&
                 (customer.name === currentCustomerList ||

@@ -1,6 +1,6 @@
 import { Tabs, useMantineTheme } from "@mantine/core";
 import React, { useState } from "react";
-import { useCustomer } from "../../../../context/CustomerContext";
+import { useCustomers } from "../../../../context/CustomerContext";
 import Customer from "../Customer/Customer";
 import AgenceList from "./AgenceList";
 
@@ -11,12 +11,12 @@ interface ICustomerListProps {
 const CustomerList = (props: ICustomerListProps) => {
   const [activeTab, setActiveTab] = useState<string | null>("");
   const theme = useMantineTheme();
-  const customers = useCustomer();
+  const { customers } = useCustomers();
 
   return (
     <Tabs orientation="vertical" value={activeTab} onTabChange={setActiveTab}>
       <Tabs.List>
-        {customers
+        {customers.customersList
           .filter((customer) => customer.category === props.category)
           .reduce((acc, customer) => {
             const value =
@@ -42,7 +42,7 @@ const CustomerList = (props: ICustomerListProps) => {
           ))}
       </Tabs.List>
 
-      {customers
+      {customers.customersList
         .filter(
           (customer) =>
             customer.category === props.category && customer.group === ""
@@ -58,12 +58,14 @@ const CustomerList = (props: ICustomerListProps) => {
         .map((customer) => (
           <Tabs.Panel key={customer} value={customer}>
             <Customer
-              customer={customers.filter((c) => c.name === customer)[0]}
+              customer={
+                customers.customersList.filter((c) => c.name === customer)[0]
+              }
             />
           </Tabs.Panel>
         ))}
 
-      {customers
+      {customers.customersList
         .filter(
           (customer) =>
             customer.category === props.category && customer.group !== ""
@@ -79,7 +81,9 @@ const CustomerList = (props: ICustomerListProps) => {
         .map((customer) => (
           <Tabs.Panel key={customer} value={customer}>
             <AgenceList
-              customers={customers.filter((c) => c.group === customer)}
+              customers={customers.customersList.filter(
+                (c) => c.group === customer
+              )}
             />
           </Tabs.Panel>
         ))}

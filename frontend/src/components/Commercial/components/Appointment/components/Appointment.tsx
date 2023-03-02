@@ -18,10 +18,6 @@ import { ICustomer } from "../../../../../data/interfaces/ICustomer";
 import SaveContent from "./SaveContent";
 import CustomerButton from "./CustomerButton";
 import InsertStarControl from "./InsertStarControl";
-import {
-  useCustomer,
-  useUpdateCustomer,
-} from "../../../../../context/CustomerContext";
 import { showNotification } from "@mantine/notifications";
 import EditModeToggle from "../../../../utils/EditModeToggle";
 import { TAppointmentTitle } from "../../../../../data/types/TApppointmentTitle";
@@ -37,6 +33,7 @@ import {
   useMantineTheme,
 } from "@mantine/core";
 import { useMediaQuery } from "@mantine/hooks";
+import { useCustomers } from "../../../../../context/CustomerContext";
 
 interface IAppointmentProps {
   _id: number;
@@ -63,8 +60,8 @@ const Appointment = (props: IAppointmentProps) => {
     props.appointment.contact
   );
 
-  const customers = useCustomer();
-  const setCustomers = useUpdateCustomer();
+  const { customers, updateCustomers } = useCustomers();
+
   const theme = useMantineTheme();
   const smallScreen = useMediaQuery(`(max-width: ${theme.breakpoints.xs}px)`);
 
@@ -90,26 +87,53 @@ const Appointment = (props: IAppointmentProps) => {
     window.open(url, "_blank");
   };
 
-  const handleContentChange = (newValue: string | undefined) => {
-    const newCustomer = [...customers];
-    const changedCustomer = newCustomer.filter(
+  const handleContentChange = async (newValue: string | undefined) => {
+    const changedCustomer = customers.customersList.filter(
       (customer) =>
         customer.category === props.customer.category &&
         customer.group === props.customer.group &&
         customer.name === props.customer.name
-    );
+    )[0];
     if (newValue !== undefined) {
-      changedCustomer[0].appointment[props._id].content = newValue;
+      changedCustomer.appointment[props._id].content = newValue;
     }
-    changedCustomer[0].appointment[props._id].title =
+    changedCustomer.appointment[props._id].title =
       props.appointmentTitle as TAppointmentTitle;
-    changedCustomer[0].appointment[props._id].date = props.appointmentDate;
-    changedCustomer[0].appointment[props._id].location.address = address;
-    changedCustomer[0].appointment[props._id].location.cp = cp;
-    changedCustomer[0].appointment[props._id].location.city = city;
-    changedCustomer[0].appointment[props._id].contact = appointmentContact;
+    changedCustomer.appointment[props._id].date = props.appointmentDate;
+    changedCustomer.appointment[props._id].location.address = address;
+    changedCustomer.appointment[props._id].location.cp = cp;
+    changedCustomer.appointment[props._id].location.city = city;
+    changedCustomer.appointment[props._id].contact = appointmentContact;
 
-    setCustomers(newCustomer);
+    const response = await fetch(
+      `${import.meta.env.VITE_API_URL}/api/customers/${
+        changedCustomer._id as string
+      }`,
+      {
+        method: "PATCH",
+        body: JSON.stringify({ appointment: changedCustomer.appointment }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    const data = await response.json();
+
+    if (!response.ok) {
+      showNotification({
+        title: `⛔ Erreur serveur`,
+        message: data.error,
+        color: "red",
+      });
+    }
+
+    updateCustomers({
+      type: "UPDATE_CUSTOMER",
+      payload: {
+        id: changedCustomer._id as string,
+        customer: changedCustomer,
+      },
+    });
   };
 
   const handleValideClick = () => {
@@ -122,9 +146,9 @@ const Appointment = (props: IAppointmentProps) => {
     );
     showNotification({
       title: `✅ Rendez-vous sauvegardé`,
-      message: `${props.customer.name} - ${
-        props.appointment.title
-      } (${props.appointment.date.toLocaleDateString("fr")}) mis à jour`,
+      message: `${props.customer.name} - ${props.appointment.title} (${new Date(
+        props.appointment.date
+      ).toLocaleDateString("fr")}) mis à jour`,
       color: "green",
     });
   };
@@ -142,7 +166,9 @@ const Appointment = (props: IAppointmentProps) => {
       title: `⛔ Rendez-vous non sauvegardé`,
       message: `Les modifications pour ${props.customer.name} - ${
         props.appointment.title
-      } (${props.appointment.date.toLocaleDateString("fr")}) sont annulées`,
+      } (${new Date(props.appointment.date).toLocaleDateString(
+        "fr"
+      )}) sont annulées`,
       color: "red",
     });
   };
@@ -241,7 +267,7 @@ const Appointment = (props: IAppointmentProps) => {
           <div className="contactContainer">
             {props.customer.contact
               .filter((contact) =>
-                props.appointment.contact.includes(contact._id)
+                props.appointment.contact.includes(contact._id as string)
               )
               .map((currentContact, index) => (
                 <Contact

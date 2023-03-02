@@ -14,21 +14,17 @@ import {
   IconPhone,
   IconUser,
 } from "@tabler/icons";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { IContact } from "../../../../data/interfaces/IContact";
 import "../../../../assets/style/Contact.css";
 import CustomTitle from "../../../utils/CustomTitle";
 import CustomerItem from "./CustomerItem";
-import CustomButton from "../../../utils/CustomButton";
 import { useMediaQuery } from "@mantine/hooks";
 import EditModeToggle from "../../../utils/EditModeToggle";
-import {
-  useCustomer,
-  useUpdateCustomer,
-} from "../../../../context/CustomerContext";
 import { ICustomer } from "../../../../data/interfaces/ICustomer";
 import { showNotification } from "@mantine/notifications";
 import { isEmailFormat, isPhoneFormat } from "../../../../utils/validateInput";
+import { useCustomers } from "../../../../context/CustomerContext";
 
 interface IContactProps {
   color?: string;
@@ -52,8 +48,7 @@ const Contact = (props: IContactProps) => {
 
   const theme = useMantineTheme();
   const smallScreen = useMediaQuery(`(max-width: ${theme.breakpoints.xs}px)`);
-  const customers = useCustomer();
-  const setCustomers = useUpdateCustomer();
+  const { customers, updateCustomers } = useCustomers();
 
   const sendEmailOrCallPhone = (id: string) => {
     const anchor = document.querySelector(id) as HTMLAnchorElement;
@@ -78,27 +73,57 @@ const Contact = (props: IContactProps) => {
     }
   };
 
-  const handleValideClick = () => {
-    const newCustomer = [...customers];
-    const changedContact = newCustomer
-      .filter((customer) => customer.name === props.customer.name)[0]
-      .contact.filter(
-        (contact) =>
-          contact.category === props.currentContact.category &&
-          contact.email === props.currentContact.email &&
-          contact.phone1 === props.currentContact.phone1 &&
-          contact.phone2 === props.currentContact.phone2
-      );
+  const handleValideClick = async () => {
+    const changedCustomer = customers.customersList.filter(
+      (customer) => customer.name === props.customer.name
+    )[0];
 
-    changedContact[0].firstName = firstName;
-    changedContact[0].lastName = lastName;
-    changedContact[0].gender = gender;
-    changedContact[0].category = category;
-    changedContact[0].email = email;
-    changedContact[0].phone1 = phone1;
-    changedContact[0].phone2 = phone2;
+    const changedContact = changedCustomer.contact.filter(
+      (contact) =>
+        contact.category === props.currentContact.category &&
+        contact.email === props.currentContact.email &&
+        contact.phone1 === props.currentContact.phone1 &&
+        contact.phone2 === props.currentContact.phone2
+    )[0];
 
-    setCustomers(newCustomer);
+    changedContact.firstName = firstName;
+    changedContact.lastName = lastName;
+    changedContact.gender = gender;
+    changedContact.category = category;
+    changedContact.email = email;
+    changedContact.phone1 = phone1;
+    changedContact.phone2 = phone2;
+
+    const response = await fetch(
+      `${import.meta.env.VITE_API_URL}/api/customers/${
+        changedCustomer._id as string
+      }`,
+      {
+        method: "PATCH",
+        body: JSON.stringify({ contact: changedCustomer.contact }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    const data = await response.json();
+
+    if (!response.ok) {
+      showNotification({
+        title: `⛔ Erreur serveur`,
+        message: data.error,
+        color: "red",
+      });
+    }
+
+    updateCustomers({
+      type: "UPDATE_CUSTOMER",
+      payload: {
+        id: changedCustomer._id as string,
+        customer: changedCustomer,
+      },
+    });
+
     showNotification({
       title: `✅ Fiche client sauvegardée`,
       message: `La fiche client ${props.customer.name} est mise à jour`,

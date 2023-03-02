@@ -2,16 +2,11 @@ import { ActionIcon, Card } from "@mantine/core";
 import { showNotification } from "@mantine/notifications";
 import {
   IconAddressBook,
-  IconCirclePlus,
   IconMail,
   IconMap2,
   IconPhone,
 } from "@tabler/icons";
-import React, { ChangeEvent, useState } from "react";
-import {
-  useCustomer,
-  useUpdateCustomer,
-} from "../../../../../context/CustomerContext";
+import { ChangeEvent, useState } from "react";
 import { ICustomer } from "../../../../../data/interfaces/ICustomer";
 import {
   isCPFormat,
@@ -24,6 +19,7 @@ import EditModeToggle from "../../../../utils/EditModeToggle";
 import CustomerItem from "../../utils/CustomerItem";
 import CustomerContact from "./CustomerContact";
 import House from "../../../../../assets/img/house.png";
+import { useCustomers } from "../../../../../context/CustomerContext";
 
 interface ICustomerIdentityProps {
   customer: ICustomer;
@@ -40,8 +36,7 @@ const CustomerIdentity = (props: ICustomerIdentityProps) => {
 
   const [logo, setLogo] = useState(props.customer.logo);
 
-  const customers = useCustomer();
-  const setCustomers = useUpdateCustomer();
+  const { customers, updateCustomers } = useCustomers();
 
   const openURL = (url: string) => {
     window.open(url, "_blank");
@@ -54,23 +49,62 @@ const CustomerIdentity = (props: ICustomerIdentityProps) => {
     }
   };
 
-  const handleValideClick = () => {
-    const newCustomer = [...customers];
-    const changedCustomer = newCustomer.filter(
+  const handleValideClick = async () => {
+    const changedCustomer = customers.customersList.filter(
       (customer) =>
         customer.category === props.customer.category &&
         customer.group === props.customer.group &&
         customer.name === props.customer.name
-    );
-    changedCustomer[0].location.address = address;
-    changedCustomer[0].location.cp = cp;
-    changedCustomer[0].location.city = city;
-    changedCustomer[0].email = email;
-    changedCustomer[0].phone = phone;
-    changedCustomer[0].contact = contact;
-    changedCustomer[0].logo = logo;
+    )[0];
+    changedCustomer.location.address = address;
+    changedCustomer.location.cp = cp;
+    changedCustomer.location.city = city;
+    changedCustomer.email = email;
+    changedCustomer.phone = phone;
+    changedCustomer.contact = contact;
+    changedCustomer.logo = logo;
 
-    setCustomers(newCustomer);
+    const response = await fetch(
+      `${import.meta.env.VITE_API_URL}/api/customers/${
+        changedCustomer._id as string
+      }`,
+      {
+        method: "PATCH",
+        body: JSON.stringify({
+          location: {
+            address: address,
+            cp: cp,
+            city: city,
+          },
+          email: email,
+          phone: phone,
+          contact: contact,
+          logo: logo,
+        }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      showNotification({
+        title: `⛔ Erreur serveur`,
+        message: data.error,
+        color: "red",
+      });
+    }
+
+    updateCustomers({
+      type: "UPDATE_CUSTOMER",
+      payload: {
+        id: changedCustomer._id as string,
+        customer: changedCustomer,
+      },
+    });
+
     showNotification({
       title: `✅ Fiche client sauvegardée`,
       message: `La fiche client ${props.customer.name} est mise à jour`,
@@ -99,8 +133,6 @@ const CustomerIdentity = (props: ICustomerIdentityProps) => {
     if (!e.target.files) {
       return;
     }
-
-    console.log(props.customer.name);
 
     const file = e.target.files[0];
 
@@ -156,7 +188,7 @@ const CustomerIdentity = (props: ICustomerIdentityProps) => {
         >
           <img
             className="customerLogo"
-            src={logo}
+            src={logo === "" ? House : logo}
             alt={`Logo ${props.customer.name}`}
           />
           <input

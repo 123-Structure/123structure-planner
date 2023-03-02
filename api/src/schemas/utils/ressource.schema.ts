@@ -15,7 +15,7 @@ export const ressourceSchema = new Schema<IRessource>({
     required: true,
   },
   role: {
-    type: String,
+    type: [String],
     required: true,
   },
   company: {

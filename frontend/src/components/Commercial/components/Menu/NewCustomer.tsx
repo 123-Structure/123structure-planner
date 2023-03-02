@@ -19,10 +19,6 @@ import {
   IconX,
 } from "@tabler/icons";
 import React, { useEffect, useState } from "react";
-import {
-  useCustomer,
-  useUpdateCustomer,
-} from "../../../../context/CustomerContext";
 import { CustomerCategoryList } from "../../../../data/constants/CustomerCategoryList";
 import CustomButton from "../../../utils/CustomButton";
 import CustomTitle from "../../../utils/CustomTitle";
@@ -38,6 +34,7 @@ import { ICustomer } from "../../../../data/interfaces/ICustomer";
 import { TCustomerCategory } from "../../../../data/types/TCustomerCategory";
 import { TPaymentType } from "../../../../data/types/TPaymentType";
 import { HandleUploadFile } from "../../../utils/HandleUploadFile";
+import { useCustomers } from "../../../../context/CustomerContext";
 
 const NewCustomer = () => {
   const [openNewCustomer, setOpenNewCustomer] = useState(false);
@@ -68,11 +65,10 @@ const NewCustomer = () => {
   const theme = useMantineTheme();
   const smallScreen = useMediaQuery(`(max-width: ${theme.breakpoints.xs}px)`);
   const ressources = useRessources();
-  const customers = useCustomer();
-  const setCustomers = useUpdateCustomer();
+  const { customers, updateCustomers } = useCustomers();
 
   const [groupList, setGroupList] = useState(
-    customers
+    customers.customersList
       .filter((customer) => customer.category === customerCategory)
       .reduce((acc, customer) => {
         const item = customer.group;
@@ -104,14 +100,14 @@ const NewCustomer = () => {
     setPhone("");
     setPaymentDeadline("");
     setPaymentType("");
-    setProjectGoal(0)
+    setProjectGoal(0);
     setLogoFile(null);
     setLogo("");
     setPriceListFile(null);
     setPriceList("");
     setPdfViewerURL("");
     setGroupList(
-      customers
+      customers.customersList
         .filter((customer) => customer.category === customerCategory)
         .reduce((acc, customer) => {
           const item = customer.group;
@@ -131,7 +127,7 @@ const NewCustomer = () => {
     setErrorCity("");
   };
 
-  const handleValideClick = () => {
+  const handleValideClick = async () => {
     if (
       commercial.length > 0 &&
       customerCategory !== "" &&
@@ -142,8 +138,7 @@ const NewCustomer = () => {
       (email.length > 0 ? isEmailFormat(email) : true) &&
       (phone.length > 0 ? isPhoneFormat(phone) : true)
     ) {
-      const newCustomer = [...customers];
-      const currentNewCustomer: ICustomer = {
+      const newCustomer: ICustomer = {
         category: customerCategory as TCustomerCategory,
         group: group,
         name: customerName,
@@ -173,12 +168,34 @@ const NewCustomer = () => {
             goal: projectGoal,
           },
         ],
-        paymentDeadline: paymentDeadline as "30" | "45",
-        paymentType: paymentType as TPaymentType,
+        paymentDeadline:
+          paymentDeadline === ""
+            ? "-"
+            : (paymentDeadline as "45" | "30 (Fin de mois)" | "30 (Net)" | "-"),
+        paymentType: paymentType === "" ? "-" : (paymentType as TPaymentType),
         paymentStatus: "A",
       };
-      newCustomer.push(currentNewCustomer);
-      setCustomers(newCustomer);
+
+      const response = await fetch(
+        `${import.meta.env.VITE_API_URL}/api/customers`,
+        {
+          method: "POST",
+          body: JSON.stringify(newCustomer),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      const data = await response.json();
+
+      if (!response.ok) {
+        showNotification({
+          title: `⛔ Erreur serveur`,
+          message: data.error,
+          color: "red",
+        });
+      }
+      updateCustomers({ type: "ADD_CUSTOMER", payload: data });
       showNotification({
         title: `✅ Nouvelle fiche client sauvegardé`,
         message: `${customerName} ajouté à l'annuaire de client`,
@@ -246,7 +263,7 @@ const NewCustomer = () => {
 
   useEffect(() => {
     setGroupList(
-      customers
+      customers.customersList
         .filter((customer) => customer.category === customerCategory)
         .reduce((acc, customer) => {
           const item = customer.group;

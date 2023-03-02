@@ -11,10 +11,7 @@ import {
   IconUsers,
 } from "@tabler/icons";
 import React, { useState } from "react";
-import {
-  useCustomer,
-  useUpdateCustomer,
-} from "../../../../../context/CustomerContext";
+import { useCustomers } from "../../../../../context/CustomerContext";
 import { useRessources } from "../../../../../context/RessourceContext";
 import { ICustomer } from "../../../../../data/interfaces/ICustomer";
 import CustomButton from "../../../../utils/CustomButton";
@@ -83,8 +80,8 @@ const CustomerRelationship = (props: ICustomerRelationshipProps) => {
   const previousYearProjectInvoiced = 100;
 
   const ressources = useRessources();
-  const customers = useCustomer();
-  const setCustomers = useUpdateCustomer();
+  const { customers, updateCustomers } = useCustomers();
+
   const theme = useMantineTheme();
   const smallScreen = useMediaQuery(`(max-width: ${theme.breakpoints.xs}px)`);
 
@@ -97,39 +94,74 @@ const CustomerRelationship = (props: ICustomerRelationshipProps) => {
       const appointment =
         props.customer.appointment[props.customer.appointment.length - 1];
 
-      return `${appointment.title} (${appointment.date.toLocaleDateString(
-        "fr"
-      )})`;
+      return `${appointment.title} (${new Date(
+        appointment.date
+      ).toLocaleDateString("fr")})`;
     } else {
       return "-";
     }
   };
 
-  const handleValideClick = () => {
-    const newCustomer = [...customers];
-    const changedCustomer = newCustomer.filter(
+  const handleValideClick = async () => {
+    const changedCustomer = customers.customersList.filter(
       (customer) =>
         customer.category === props.customer.category &&
         customer.group === props.customer.group &&
         customer.name === props.customer.name
-    );
+    )[0];
 
-    changedCustomer[0].commercial = ressources.filter((ressource) =>
+    changedCustomer.commercial = ressources.filter((ressource) =>
       commercial.includes(`${ressource.firstName} ${ressource.lastName}`)
     );
 
-    changedCustomer[0].projectGoal.filter(
+    changedCustomer.projectGoal.filter(
       (projectGoal) => projectGoal.year === new Date().getFullYear()
     )[0].goal = currentProjectGoal;
 
-    changedCustomer[0].projectGoal.filter(
+    changedCustomer.projectGoal.filter(
       (projectGoal) => projectGoal.year === new Date().getFullYear() - 1
     )[0].goal = previousYearGoal;
 
-    changedCustomer[0].priceList = priceList;
+    changedCustomer.priceList = priceList;
+
+    console.log(changedCustomer.commercial);
+
+    const response = await fetch(
+      `${import.meta.env.VITE_API_URL}/api/customers/${
+        changedCustomer._id as string
+      }`,
+      {
+        method: "PATCH",
+        body: JSON.stringify({
+          commercial: changedCustomer.commercial,
+          projectGoal: changedCustomer.projectGoal,
+          priceList: priceList,
+        }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    const data = await response.json();
+
+    if (!response.ok) {
+      showNotification({
+        title: `⛔ Erreur serveur`,
+        message: data.error,
+        color: "red",
+      });
+    }
+
+    updateCustomers({
+      type: "UPDATE_CUSTOMER",
+      payload: {
+        id: changedCustomer._id as string,
+        customer: changedCustomer,
+      },
+    });
+
     setPriceListFile(null);
 
-    setCustomers(newCustomer);
     showNotification({
       title: `✅ Fiche client sauvegardée`,
       message: `La fiche client ${props.customer.name} est mise à jour`,
@@ -377,6 +409,7 @@ const CustomerRelationship = (props: ICustomerRelationshipProps) => {
           extraStyle={{
             width: "fit-content",
           }}
+          disabled={priceList === ""}
         />
       )}
     </Card>

@@ -28,6 +28,7 @@ const AppointmentList = (props: IAppointmentList) => {
       "RDV Démarchage",
       "RDV Technique",
       "RDV Courtoisie",
+      "Autre",
     ];
 
     return appointmentTitle.reduce((acc, title: string | SelectItem) => {
@@ -40,8 +41,11 @@ const AppointmentList = (props: IAppointmentList) => {
     }, [] as (string | SelectItem)[]);
   };
 
-  const compareDates = (a: IAppointment, b: IAppointment) =>
-    b.date.getTime() - a.date.getTime();
+  const compareDates = (a: IAppointment, b: IAppointment) => {
+    new Date(b.date).getTime();
+
+    return new Date(b.date).getTime() - new Date(a.date).getTime();
+  };
 
   return (
     <Accordion
@@ -53,27 +57,26 @@ const AppointmentList = (props: IAppointmentList) => {
         .sort(compareDates)
         .map((appointment, index) => (
           <Accordion.Item
-            key={`${appointment.title} (${appointment.date.toLocaleDateString(
-              "fr"
-            )})`.replace(" ", "_")}
-            value={`${appointment.title} (${appointment.date.toLocaleDateString(
-              "fr"
-            )})`}
+            key={`${appointment.title} (${new Date(
+              appointment.date
+            ).toLocaleDateString("fr")})`.replace(" ", "_")}
+            value={`${appointment.title} (${new Date(
+              appointment.date
+            ).toLocaleDateString("fr")})`}
           >
             <Accordion.Control icon={<IconCalendarEvent size={24} />}>
               {editAppointment &&
-              `${appointment.title} (${appointment.date.toLocaleDateString(
-                "fr"
-              )})` === props.accordionValue ? (
+              `${appointment.title} (${new Date(
+                appointment.date
+              ).toLocaleDateString("fr")})` === props.accordionValue ? (
                 <div className="editAppointmentTitle">
                   <Select
                     className="editAppointmentTitleInput"
                     data={getData()}
                     value={
-                      `${
-                        appointment.title
-                      } (${appointment.date.toLocaleDateString("fr")})` ===
-                      props.accordionValue
+                      `${appointment.title} (${new Date(
+                        appointment.date
+                      ).toLocaleDateString("fr")})` === props.accordionValue
                         ? appointmentTitle
                         : appointment.title
                     }
@@ -90,7 +93,7 @@ const AppointmentList = (props: IAppointmentList) => {
                       date.getDay() === 0 || date.getDay() === 6
                     }
                     inputFormat="DD/MM/YYYY"
-                    defaultValue={appointment.date}
+                    defaultValue={new Date(appointment.date)}
                     onChange={(val: Date) => setAppointmentDate(val)}
                     renderDay={(date) => {
                       const day = date.toLocaleDateString("fr");
@@ -109,9 +112,9 @@ const AppointmentList = (props: IAppointmentList) => {
                   />
                 </div>
               ) : (
-                `${appointment.title} (${appointment.date.toLocaleDateString(
-                  "fr"
-                )})`.toUpperCase()
+                `${appointment.title} (${new Date(
+                  appointment.date
+                ).toLocaleDateString("fr")})`.toUpperCase()
               )}
             </Accordion.Control>
             <Accordion.Panel>
