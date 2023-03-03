@@ -5,6 +5,7 @@ import Login from "./components/Login";
 import "../../assets/style/Header.css";
 import animationData from "../../assets/lottie/loader-buildings.json";
 import Lottie from "react-lottie";
+import SearchBar from "./components/SearchBar/SearchBar";
 
 const Header = () => {
   const defaultOptions = {
@@ -25,6 +26,7 @@ const Header = () => {
         </div>
         <Login />
       </div>
+      <SearchBar />
       <div className="logoHeaderContainer">
         <Lottie
           options={defaultOptions}

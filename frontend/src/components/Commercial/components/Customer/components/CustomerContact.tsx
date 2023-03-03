@@ -216,8 +216,10 @@ const CustomerContact = (props: ICustomerContactProps) => {
       <Modal
         fullScreen={smallScreen}
         centered
-        overlayOpacity={0.55}
-        overlayBlur={3}
+        overlayProps={{
+          opacity: 0.55,
+          blur: 3,
+        }}
         opened={openNewContact}
         onClose={handleCancelClick}
         padding={"xl"}

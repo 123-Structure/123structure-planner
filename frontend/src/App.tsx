@@ -1,5 +1,5 @@
 import { MantineProvider } from "@mantine/core";
-import { NotificationsProvider } from "@mantine/notifications";
+import { Notifications } from "@mantine/notifications";
 import "./App.css";
 import Planner from "./components/Planner/Planner";
 import theme from "./assets/style/MantineTheme";
@@ -13,19 +13,18 @@ import CustomerProvider from "./context/CustomerContext";
 function App() {
   return (
     <MantineProvider withGlobalStyles withNormalizeCSS theme={theme}>
-      <NotificationsProvider>
-        <ProjectProvider>
-          <CustomerProvider>
-            <RessourceProvider>
-              <AuthProvider>
-                <Header />
-                {/* <Planner /> */}
-                <Commercial />
-              </AuthProvider>
-            </RessourceProvider>
-          </CustomerProvider>
-        </ProjectProvider>
-      </NotificationsProvider>
+      <ProjectProvider>
+        <CustomerProvider>
+          <RessourceProvider>
+            <AuthProvider>
+              <Notifications />
+              <Header />
+              {/* <Planner /> */}
+              <Commercial />
+            </AuthProvider>
+          </RessourceProvider>
+        </CustomerProvider>
+      </ProjectProvider>
     </MantineProvider>
   );
 }

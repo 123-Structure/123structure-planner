@@ -1,6 +1,7 @@
 import { Tabs, useMantineTheme } from "@mantine/core";
 import React, { useState } from "react";
 import { useCustomers } from "../../../../context/CustomerContext";
+import { changeFavicon, changeTabTitle } from "../../../../utils/tabsUtils";
 import Customer from "../Customer/Customer";
 import AgenceList from "./AgenceList";
 
@@ -14,7 +15,15 @@ const CustomerList = (props: ICustomerListProps) => {
   const { customers } = useCustomers();
 
   return (
-    <Tabs orientation="vertical" value={activeTab} onTabChange={setActiveTab}>
+    <Tabs
+      orientation="vertical"
+      value={activeTab}
+      onTabChange={(val) => {
+        setActiveTab(val);
+        changeFavicon("👷");
+        changeTabTitle(`123 Structure - ${val}`);
+      }}
+    >
       <Tabs.List>
         {customers.customersList
           .filter((customer) => customer.category === props.category)

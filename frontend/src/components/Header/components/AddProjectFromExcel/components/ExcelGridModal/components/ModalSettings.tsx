@@ -20,8 +20,10 @@ const ModalSettings = (props: IExcelDataGridSettingsProps) => {
     <>
       <Modal
         centered
-        overlayOpacity={0.55}
-        overlayBlur={3}
+        overlayProps={{
+          opacity: 0.55,
+          blur: 3,
+        }}
         opened={openSettings}
         onClose={() => setOpenSettings(false)}
         padding={"xl"}
@@ -33,15 +35,26 @@ const ModalSettings = (props: IExcelDataGridSettingsProps) => {
         }
       >
         <Checkbox.Group
-          orientation="vertical"
           label="Afficher / Masquer des colonnes"
           description="Décocher pour masquer la colonne"
           value={props.showParams}
           onChange={props.setShowParams}
         >
-          {ProjectParameters.map((param, index) => (
-            <Checkbox key={index} checked={true} value={param} label={param} />
-          ))}
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "row",
+            }}
+          >
+            {ProjectParameters.map((param, index) => (
+              <Checkbox
+                key={index}
+                checked={true}
+                value={param}
+                label={param}
+              />
+            ))}
+          </div>
         </Checkbox.Group>
       </Modal>
       <ActionIcon

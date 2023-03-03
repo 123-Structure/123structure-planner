@@ -8,6 +8,7 @@ import MobileCustomerMenu from "./components/Menu/MobileCustomerMenu";
 import NewCustomer from "./components/Menu/NewCustomer";
 import { useCustomers } from "../../context/CustomerContext";
 import LottieLoader from "../utils/LottieLoader";
+import { changeFavicon, changeTabTitle } from "../../utils/tabsUtils";
 
 const Commercial = () => {
   const [activeTab, setActiveTab] = useState<string | null>("");
@@ -30,14 +31,13 @@ const Commercial = () => {
       }
     };
     fetchCustomers();
+    changeFavicon("👷");
+    changeTabTitle("123 Structure - Client");
   }, []);
 
   return (
     <>
-      <LottieLoader
-        visible={customers.customersList.length === 0}
-        // visible
-      />
+      <LottieLoader visible={customers.customersList.length === 0} />
       <Tabs
         color="yellow"
         variant="pills"

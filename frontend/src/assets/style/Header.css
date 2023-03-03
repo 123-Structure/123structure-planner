@@ -40,6 +40,11 @@
   height: 150%;
 }
 
+.searchBar {
+  margin-top: auto;
+  width: 20%;
+}
+
 #LogoHeader {
   height: 75px;
 }

@@ -1,5 +1,5 @@
 import { Indicator, NumberInput, useMantineTheme } from "@mantine/core";
-import { DatePicker } from "@mantine/dates";
+import { DatePickerInput } from "@mantine/dates";
 import { IconCalendar, IconCurrencyEuro } from "@tabler/icons";
 import React from "react";
 import { IAvancement } from "../../../../../../../data/interfaces/IAvancement";
@@ -28,14 +28,12 @@ const AvancementsRows = (props: IAvancementsRowsProps) => {
             }`}
           >
             <td className="progress-table-data">
-              <DatePicker
-                allowFreeInput
-                dropdownPosition={undefined}
+              <DatePickerInput
                 locale="fr"
                 excludeDate={(date) =>
                   date.getDay() === 0 || date.getDay() === 6
                 }
-                inputFormat="DD/MM/YYYY"
+                valueFormat="DD/MM/YYYY"
                 defaultValue={avancement.date}
                 onChange={(val: Date) => (avancement.date = val)}
                 renderDay={(date) => {
@@ -45,7 +43,7 @@ const AvancementsRows = (props: IAvancementsRowsProps) => {
                     <Indicator
                       size={6}
                       color="red"
-                      offset={8}
+                      offset={-2}
                       disabled={day !== today}
                     >
                       <div>{date.getDate()}</div>

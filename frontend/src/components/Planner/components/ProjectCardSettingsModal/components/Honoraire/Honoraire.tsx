@@ -5,7 +5,7 @@ import {
   Switch,
   useMantineTheme,
 } from "@mantine/core";
-import { DatePicker } from "@mantine/dates";
+import { DatePickerInput } from "@mantine/dates";
 import {
   IconCalendar,
   IconCheck,
@@ -115,7 +115,7 @@ const Honoraire = (props: IHonoraireProps) => {
 
       <b>Avancement : </b>
       <div className="honoraireAddAvancement">
-        <DatePicker
+        <DatePickerInput
           className="avancementDatePicker"
           error={
             newProgressAmount < 0 ||
@@ -129,11 +129,10 @@ const Honoraire = (props: IHonoraireProps) => {
               ? "-"
               : ""
           }
-          allowFreeInput
           label={"Date"}
           locale="fr"
           excludeDate={(date) => date.getDay() === 0 || date.getDay() === 6}
-          inputFormat="DD/MM/YYYY"
+          valueFormat="DD/MM/YYYY"
           value={newProgressDate}
           onChange={(val: Date) => setNewProgressDate(val)}
           renderDay={(date) => {
@@ -143,7 +142,7 @@ const Honoraire = (props: IHonoraireProps) => {
               <Indicator
                 size={6}
                 color="red"
-                offset={8}
+                offset={-2}
                 disabled={day !== today}
               >
                 <div>{date.getDate()}</div>

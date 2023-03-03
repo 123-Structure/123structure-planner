@@ -1,6 +1,7 @@
 import { Tabs, useMantineTheme } from "@mantine/core";
 import React, { useState } from "react";
 import { ICustomer } from "../../../../data/interfaces/ICustomer";
+import { changeFavicon, changeTabTitle } from "../../../../utils/tabsUtils";
 import Customer from "../Customer/Customer";
 
 interface IAgenceListProps {
@@ -8,13 +9,19 @@ interface IAgenceListProps {
 }
 
 const AgenceList = (props: IAgenceListProps) => {
-  const [activeTab, setActiveTab] = useState<string | null>(
-    props.customers[0].name
-  );
+  const [activeTab, setActiveTab] = useState<string | null>("");
   const theme = useMantineTheme();
 
   return (
-    <Tabs orientation="vertical" value={activeTab} onTabChange={setActiveTab}>
+    <Tabs
+      orientation="vertical"
+      value={activeTab}
+      onTabChange={(val) => {
+        setActiveTab(val);
+        changeFavicon("👷");
+        changeTabTitle(`123 Structure - ${val}`);
+      }}
+    >
       <Tabs.List>
         {props.customers.map((customer) => (
           <Tabs.Tab

@@ -121,8 +121,10 @@ const ManageUsersModal = (props: IManageUsersModalProps) => {
     <Modal
       centered
       fullScreen={isSmallScreen}
-      overlayOpacity={0.55}
-      overlayBlur={3}
+      overlayProps={{
+        opacity: 0.55,
+        blur: 3,
+      }}
       opened={props.openManageUser}
       onClose={() => props.setOpenManageUser(false)}
       size="calc(window.screen.width-25%)"

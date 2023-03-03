@@ -4,7 +4,7 @@ import {
   NumberInput,
   useMantineTheme,
 } from "@mantine/core";
-import { DatePicker } from "@mantine/dates";
+import { DatePicker, DatePickerInput } from "@mantine/dates";
 import {
   IconCalculator,
   IconCalendar,
@@ -45,44 +45,44 @@ const Planification = (props: IPlanificationProps) => {
     const rendu = dayjs(date.toLocaleDateString("fr"), "DD-MM-YYYY");
     const today = dayjs(new Date().toLocaleDateString("fr"), "DD-MM-YYYY");
     const diff = rendu.diff(today, "day");
-    const bgColor =
+    const color =
       date.getTime() === props.renderingDate.getTime()
-        ? { backgroundColor: theme.colors.dark[2] }
+        ? theme.colors.dark[6]
         : diff > 9 && date.getDay() !== 0 && date.getDay() !== 6
-        ? { backgroundColor: theme.colors.green[2] }
+        ? theme.colors.green[6]
         : diff <= 9 && diff > 3 && date.getDay() !== 0 && date.getDay() !== 6
-        ? { backgroundColor: theme.colors.orange[2] }
+        ? theme.colors.orange[6]
         : diff <= 3 && diff > 0 && date.getDay() !== 0 && date.getDay() !== 6
-        ? { backgroundColor: theme.colors.red[2] }
-        : {};
+        ? theme.colors.red[6]
+        : "";
 
-    return bgColor;
+    return color;
   };
 
-  const addCaption = () => {
-    const dropDown = document.querySelector(".mantine-DatePicker-dropdown");
-    const container = document.createElement("div");
-    container.id = "captionContainer";
-    container.style.marginTop = "16px";
-    dropDown?.appendChild(container);
-    ReactDOM.render(
-      <>
-        <RemainingTimeCaption
-          color={theme.colors.red[5]}
-          label={"Moins de 3 jours"}
-        />
-        <RemainingTimeCaption
-          color={theme.colors.orange[5]}
-          label={"Entre 3 et 9 jours"}
-        />
-        <RemainingTimeCaption
-          color={theme.colors.green[5]}
-          label={"Plus de 9 jours"}
-        />
-      </>,
-      document.getElementById("captionContainer")
-    );
-  };
+  // const addCaption = () => {
+  //   const dropDown = document.querySelector("#mantine-fyk3l99li-dropdown");
+  //   const container = document.createElement("div");
+  //   container.id = "captionContainer";
+  //   container.style.marginTop = "16px";
+  //   dropDown?.appendChild(container);
+  //   ReactDOM.render(
+  //     <>
+  //       <RemainingTimeCaption
+  //         color={theme.colors.red[5]}
+  //         label={"Moins de 3 jours"}
+  //       />
+  //       <RemainingTimeCaption
+  //         color={theme.colors.orange[5]}
+  //         label={"Entre 3 et 9 jours"}
+  //       />
+  //       <RemainingTimeCaption
+  //         color={theme.colors.green[5]}
+  //         label={"Plus de 9 jours"}
+  //       />
+  //     </>,
+  //     document.getElementById("captionContainer")
+  //   );
+  // };
 
   const handleDateChange = (val: Date) => {
     props.setRenderingDate(val);
@@ -123,23 +123,23 @@ const Planification = (props: IPlanificationProps) => {
         {totalTime(props.drawTime, props.engineeringTime)}
       </p>
 
-      <div onClick={addCaption}>
-        <DatePicker
+      {/* <div onClick={addCaption}> */}
+      <div>
+        <DatePickerInput
           id="renderingDatePicker"
-          allowFreeInput
           label={"Date de rendu"}
           locale="fr"
           excludeDate={(date) => date.getDay() === 0 || date.getDay() === 6}
-          inputFormat="DD/MM/YYYY"
+          valueFormat="DD/MM/YYYY"
           // defaultValue={new Date()}
           value={props.renderingDate}
-          dayClassName={(date, modifiers) =>
-            cx({
-              [classes.outside]: modifiers.outside,
-            })
-          }
+          // dayClassName={(date, modifiers) =>
+          //   cx({
+          //     [classes.outside]: modifiers.outside,
+          //   })
+          // }
           onChange={(val: Date) => handleDateChange(val)}
-          dayStyle={(date) => getRemainingTimeBgColor(date)}
+          // dayStyle={(date: Date) => getRemainingTimeBgColor(date)}
           renderDay={(date) => {
             const day = date.toLocaleDateString("fr");
             const today = new Date().toLocaleDateString("fr");
@@ -148,10 +148,16 @@ const Planification = (props: IPlanificationProps) => {
               <Indicator
                 size={6}
                 color="red"
-                offset={8}
+                offset={-2}
                 disabled={day !== today}
               >
-                <div>{date.getDate()}</div>
+                <div
+                  style={{
+                    color: getRemainingTimeBgColor(date),
+                  }}
+                >
+                  {date.getDate()}
+                </div>
               </Indicator>
             );
           }}

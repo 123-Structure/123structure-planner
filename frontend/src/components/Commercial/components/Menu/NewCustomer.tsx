@@ -288,8 +288,10 @@ const NewCustomer = () => {
       <Modal
         fullScreen={smallScreen}
         centered
-        overlayOpacity={0.55}
-        overlayBlur={3}
+        overlayProps={{
+          opacity: 0.55,
+          blur: 3,
+        }}
         opened={openNewCustomer}
         onClose={handleCancelClick}
         padding={"xl"}

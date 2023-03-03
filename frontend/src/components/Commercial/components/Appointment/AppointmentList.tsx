@@ -1,5 +1,5 @@
 import { Accordion, Indicator, Select, SelectItem } from "@mantine/core";
-import { DatePicker } from "@mantine/dates";
+import { DatePickerInput } from "@mantine/dates";
 import { IconCalendarEvent } from "@tabler/icons";
 import React, { useState } from "react";
 import { ICustomer } from "../../../../data/interfaces/ICustomer";
@@ -84,15 +84,13 @@ const AppointmentList = (props: IAppointmentList) => {
                       setAppointmentTitle(val);
                     }}
                   />
-                  <DatePicker
+                  <DatePickerInput
                     className="editAppointmentTitleInput"
-                    allowFreeInput
-                    dropdownPosition={undefined}
                     locale="fr"
                     excludeDate={(date) =>
                       date.getDay() === 0 || date.getDay() === 6
                     }
-                    inputFormat="DD/MM/YYYY"
+                    valueFormat="DD/MM/YYYY"
                     defaultValue={new Date(appointment.date)}
                     onChange={(val: Date) => setAppointmentDate(val)}
                     renderDay={(date) => {
@@ -102,7 +100,7 @@ const AppointmentList = (props: IAppointmentList) => {
                         <Indicator
                           size={6}
                           color="red"
-                          offset={8}
+                          offset={-2}
                           disabled={day !== today}
                         >
                           <div>{date.getDate()}</div>

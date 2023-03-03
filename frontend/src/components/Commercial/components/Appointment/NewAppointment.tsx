@@ -22,7 +22,7 @@ import "../../../../assets/style/newCustomer.css";
 import { isCPFormat } from "../../../../utils/validateInput";
 import { showNotification } from "@mantine/notifications";
 import { ICustomer } from "../../../../data/interfaces/ICustomer";
-import { DatePicker } from "@mantine/dates";
+import { DatePickerInput } from "@mantine/dates";
 import { IAppointment } from "../../../../data/interfaces/IAppointment";
 import { TAppointmentTitle } from "../../../../data/types/TApppointmentTitle";
 import { useCustomers } from "../../../../context/CustomerContext";
@@ -201,8 +201,10 @@ const NewAppointment = (props: INewAppointmentProps) => {
       <Modal
         fullScreen={smallScreen}
         centered
-        overlayOpacity={0.55}
-        overlayBlur={3}
+        overlayProps={{
+          opacity: 0.55,
+          blur: 3,
+        }}
         opened={openNewAppointment}
         onClose={handleCancelClick}
         padding={"xl"}
@@ -229,14 +231,12 @@ const NewAppointment = (props: INewAppointmentProps) => {
             }}
             error={errorAppointmentTitle}
           />
-          <DatePicker
+          <DatePickerInput
             label="Date de rendez-vous"
             className="editAppointmentTitleInput"
-            allowFreeInput
-            dropdownPosition={undefined}
             locale="fr"
             excludeDate={(date) => date.getDay() === 0 || date.getDay() === 6}
-            inputFormat="DD/MM/YYYY"
+            valueFormat="DD/MM/YYYY"
             defaultValue={new Date()}
             onChange={(val: Date) => setAppointmentDate(val)}
             renderDay={(date) => {
@@ -246,7 +246,7 @@ const NewAppointment = (props: INewAppointmentProps) => {
                 <Indicator
                   size={6}
                   color="red"
-                  offset={8}
+                  offset={-2}
                   disabled={day !== today}
                 >
                   <div>{date.getDate()}</div>

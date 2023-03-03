@@ -151,8 +151,10 @@ const Contact = (props: IContactProps) => {
       <Modal
         fullScreen={smallScreen}
         centered
-        overlayOpacity={0.55}
-        overlayBlur={3}
+        overlayProps={{
+          opacity: 0.55,
+          blur: 3,
+        }}
         opened={openContact}
         onClose={() => {
           setOpenContact(false);
