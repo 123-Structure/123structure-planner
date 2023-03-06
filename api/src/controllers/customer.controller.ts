@@ -126,7 +126,7 @@ export const searchCustomer = async (req: Request, res: Response) => {
 
   const result = customersObject.map((customer) => {
     // console.log(findPropertiesWithValue(customer, searchValue));
-    return findPath(customer, searchValue);
+    return findPath(customer, searchValue, "customer");
   });
 
   res.status(200).json(result);

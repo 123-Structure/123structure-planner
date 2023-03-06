@@ -1,5 +1,6 @@
 export interface IDataFromAPI {
   id: string;
-  result: string[];
+  type: string;
+  results: string[];
   score: number;
 }

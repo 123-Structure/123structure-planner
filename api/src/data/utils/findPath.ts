@@ -1,6 +1,7 @@
 export function findPath(
   obj: any,
   searchTerm: string,
+  type: string,
   currentPath: string = "",
   results: string[] = []
 ) {
@@ -20,9 +21,9 @@ export function findPath(
     ) {
       results.push(path + ": " + value);
     } else if (typeof value === "object" && value !== null) {
-      findPath(value, searchTerm, path, results);
+      findPath(value, searchTerm, type, path, results);
     }
   }
 
-  return { id: obj._id, results, score: obj.score };
+  return { id: obj._id, type, results, score: obj.score };
 }

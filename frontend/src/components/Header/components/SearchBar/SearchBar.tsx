@@ -116,19 +116,26 @@ const SearchBar = () => {
               marginTop: "16px",
             }}
           >
-            <TextInput
-              data-autofocus
-              placeholder="Terme(s) recherché(s)..."
-              icon={<IconSearch size="0.8rem" />}
-              value={query}
-              onChange={(event) => handleQueryChange(event.currentTarget.value)}
-              style={{
-                margin: "16px 0 16px 0",
-              }}
-            />
-            {actions.map((action) => (
-              <SearchBarItem action={action} />
-            ))}
+            <>
+              <TextInput
+                data-autofocus
+                placeholder="Terme(s) recherché(s)..."
+                icon={<IconSearch size="1.1rem" />}
+                size={"md"}
+                value={query}
+                onChange={(event) =>
+                  handleQueryChange(event.currentTarget.value)
+                }
+                style={{
+                  margin: "16px 0 16px 0",
+                }}
+              />
+              {actions.map((action) =>
+                action.results.map((result, key) => (
+                  <SearchBarItem key={key} action={action} result={result} />
+                ))
+              )}
+            </>
           </Tabs.Panel>
           <Tabs.Panel
             value="advanceSearch"
