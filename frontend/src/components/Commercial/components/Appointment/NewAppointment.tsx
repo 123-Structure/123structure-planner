@@ -48,7 +48,7 @@ const NewAppointment = (props: INewAppointmentProps) => {
   const [errorCity, setErrorCity] = useState("");
 
   const theme = useMantineTheme();
-  const smallScreen = useMediaQuery(`(max-width: ${theme.breakpoints.xs}px)`);
+  const smallScreen = useMediaQuery(`(max-width: ${theme.breakpoints.xs})`);
 
   const { customers, updateCustomers } = useCustomers();
 

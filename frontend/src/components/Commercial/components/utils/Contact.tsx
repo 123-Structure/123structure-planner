@@ -48,7 +48,7 @@ const Contact = (props: IContactProps) => {
   const [phone2, setPhone2] = useState(props.currentContact.phone2);
 
   const theme = useMantineTheme();
-  const smallScreen = useMediaQuery(`(max-width: ${theme.breakpoints.xs}px)`);
+  const smallScreen = useMediaQuery(`(max-width: ${theme.breakpoints.xs})`);
   const { customers, updateCustomers } = useCustomers();
 
   const sendEmailOrCallPhone = (id: string) => {

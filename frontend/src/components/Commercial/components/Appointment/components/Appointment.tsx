@@ -63,7 +63,7 @@ const Appointment = (props: IAppointmentProps) => {
   const { customers, updateCustomers } = useCustomers();
 
   const theme = useMantineTheme();
-  const smallScreen = useMediaQuery(`(max-width: ${theme.breakpoints.xs}px)`);
+  const smallScreen = useMediaQuery(`(max-width: ${theme.breakpoints.xs})`);
 
   const editor = useEditor({
     extensions: [

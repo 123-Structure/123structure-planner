@@ -47,7 +47,7 @@ const CustomerContact = (props: ICustomerContactProps) => {
   const [categoryError, setCategoryError] = useState("");
 
   const theme = useMantineTheme();
-  const smallScreen = useMediaQuery(`(max-width: ${theme.breakpoints.xs}px)`);
+  const smallScreen = useMediaQuery(`(max-width: ${theme.breakpoints.xs})`);
 
   const { customers, updateCustomers } = useCustomers();
 

@@ -11,6 +11,7 @@ import React, { useEffect, useState } from "react";
 import { ICustomer } from "../../../../../data/interfaces/ICustomer";
 import { IDataFromAPI } from "../../../../../data/interfaces/IDataFromAPI";
 import { Card } from "@mantine/core";
+
 interface ISearchBarItemProps {
   action: IDataFromAPI;
   result: string;
@@ -143,6 +144,7 @@ const SearchBarItem = (props: ISearchBarItemProps) => {
 
   return (
     <Card
+      className="searchBarItem"
       shadow="sm"
       p="md"
       radius="md"

@@ -7,7 +7,6 @@ import { useMediaQuery } from "@mantine/hooks";
 import MobileCustomerMenu from "./components/Menu/MobileCustomerMenu";
 import NewCustomer from "./components/Menu/NewCustomer";
 import { useCustomers } from "../../context/CustomerContext";
-import LottieLoader from "../utils/LottieLoader";
 import { changeFavicon, changeTabTitle } from "../../utils/tabsUtils";
 
 const Commercial = () => {
@@ -16,7 +15,7 @@ const Commercial = () => {
   const ressources = useRessources();
   const { customers, updateCustomers } = useCustomers();
   const theme = useMantineTheme();
-  const smallScreen = useMediaQuery(`(max-width: ${theme.breakpoints.lg}px)`);
+  const smallScreen = useMediaQuery(`(max-width: ${theme.breakpoints.lg})`);
 
   useEffect(() => {
     const fetchCustomers = async () => {
@@ -37,7 +36,6 @@ const Commercial = () => {
 
   return (
     <>
-      <LottieLoader visible={customers.customersList.length === 0} />
       <Tabs
         color="yellow"
         variant="pills"

@@ -2,10 +2,6 @@
   display: flex;
 }
 
-.newCustomerInputContainerColumn {
-  width: 33%;
-}
-
 .newCustomerLogo {
   object-fit: contain;
   height: 150px;

@@ -83,7 +83,7 @@ const CustomerRelationship = (props: ICustomerRelationshipProps) => {
   const { customers, updateCustomers } = useCustomers();
 
   const theme = useMantineTheme();
-  const smallScreen = useMediaQuery(`(max-width: ${theme.breakpoints.xs}px)`);
+  const smallScreen = useMediaQuery(`(max-width: ${theme.breakpoints.xs})`);
 
   const openURL = (url: string) => {
     window.open(url, "_blank");

@@ -13,15 +13,19 @@ import { useEffect, useState } from "react";
 import { IDataFromAPI } from "../../../../data/interfaces/IDataFromAPI";
 import CustomTitle from "../../../utils/CustomTitle";
 import SearchBarItem from "./components/SearchBarItem";
+import ProfilingBro from "../../../../assets/img/Profiling-bro.svg";
+import BricklayerBro from "../../../../assets/img/Bricklayer-bro.svg";
+import "../../../../assets/style/SearchBar.css";
 
 const SearchBar = () => {
-  const [openSearchBarModal, setOpenSearchBarModal] = useState(true);
+  const [openSearchBarModal, setOpenSearchBarModal] = useState(false);
   const [activeTab, setActiveTab] = useState<string | null>("quickSearch");
-  const [query, setQuery] = useState("tes");
+  const [query, setQuery] = useState("");
   const [actions, setActions] = useState<IDataFromAPI[]>([]);
 
   const theme = useMantineTheme();
-  const smallScreen = useMediaQuery(`(max-width: ${theme.breakpoints.xs}px)`);
+  const smallScreen = useMediaQuery(`(max-width: ${theme.breakpoints.xs})`);
+  const mediumScreen = useMediaQuery(`(max-width: ${theme.breakpoints.md})`);
 
   document.body.addEventListener(
     "keydown",
@@ -65,16 +69,22 @@ const SearchBar = () => {
   return (
     <>
       <Input
-        className={"searchBar"}
+        className={`searchBar ${mediumScreen ? "searchBar-medium" : ""} ${
+          smallScreen ? "searchBar-mobile" : ""
+        }`}
         icon={<IconSearch size="1rem" />}
         placeholder="Rechercher ..."
         rightSectionWidth={95}
         rightSection={
-          <Flex align="center">
-            <Kbd mr={5}>Ctrl</Kbd>
-            <span>+</span>
-            <Kbd ml={5}>/</Kbd>
-          </Flex>
+          smallScreen ? (
+            ""
+          ) : (
+            <Flex align="center">
+              <Kbd mr={5}>Ctrl</Kbd>
+              <span>+</span>
+              <Kbd ml={5}>/</Kbd>
+            </Flex>
+          )
         }
         styles={(theme) => ({
           input: {
@@ -131,10 +141,17 @@ const SearchBar = () => {
                   margin: "16px 0 16px 0",
                 }}
               />
-              {actions.map((action) =>
-                action.results.map((result, key) => (
-                  <SearchBarItem key={key} action={action} result={result} />
-                ))
+              {actions.length === 0 ? (
+                <div id="searchImage">
+                  <img src={ProfilingBro} alt="profiling" />
+                  <p>Aucun résultat...</p>
+                </div>
+              ) : (
+                actions.map((action) =>
+                  action.results.map((result, key) => (
+                    <SearchBarItem key={key} action={action} result={result} />
+                  ))
+                )
               )}
             </>
           </Tabs.Panel>
@@ -144,7 +161,10 @@ const SearchBar = () => {
               marginTop: "16px",
             }}
           >
-            Recherche Avancée
+            <div id="searchImage">
+              <img src={BricklayerBro} alt="bricklayer" />
+              <p>En cours de construction...</p>
+            </div>
           </Tabs.Panel>
         </Tabs>
       </Modal>

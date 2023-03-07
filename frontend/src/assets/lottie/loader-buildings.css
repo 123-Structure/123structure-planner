@@ -12,3 +12,11 @@
   align-items: center;
   gap: 16px;
 }
+
+.logoLoader {
+  width: 25%;
+}
+
+.logoLoader-mobile {
+  width: 85%;
+}
