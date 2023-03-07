@@ -1,6 +1,7 @@
 import {
   Badge,
   Button,
+  Group,
   Menu,
   Modal,
   Radio,
@@ -201,12 +202,14 @@ const Contact = (props: IContactProps) => {
                 value={gender}
                 onChange={(val) => setGender(val as "M." | "Mme")}
               >
-                <Radio
-                  value="M."
-                  label="
+                <Group>
+                  <Radio
+                    value="M."
+                    label="
                     M."
-                />
-                <Radio value="Mme" label="Mme" />
+                  />
+                  <Radio value="Mme" label="Mme" />
+                </Group>
               </Radio.Group>
               <TextInput
                 label={"Prénom"}

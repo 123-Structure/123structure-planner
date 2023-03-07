@@ -5,25 +5,19 @@ import {
   Modal,
   Tabs,
   TextInput,
-  Tooltip,
   useMantineTheme,
 } from "@mantine/core";
-import {
-  getHotkeyHandler,
-  useFocusTrap,
-  useHotkeys,
-  useMediaQuery,
-} from "@mantine/hooks";
+import { getHotkeyHandler, useMediaQuery } from "@mantine/hooks";
 import { IconSearch } from "@tabler/icons";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { IDataFromAPI } from "../../../../data/interfaces/IDataFromAPI";
 import CustomTitle from "../../../utils/CustomTitle";
 import SearchBarItem from "./components/SearchBarItem";
 
 const SearchBar = () => {
-  const [openSearchBarModal, setOpenSearchBarModal] = useState(false);
+  const [openSearchBarModal, setOpenSearchBarModal] = useState(true);
   const [activeTab, setActiveTab] = useState<string | null>("quickSearch");
-  const [query, setQuery] = useState("");
+  const [query, setQuery] = useState("tes");
   const [actions, setActions] = useState<IDataFromAPI[]>([]);
 
   const theme = useMantineTheme();
@@ -37,8 +31,10 @@ const SearchBar = () => {
   );
 
   const handleCloseModal = () => {
-    setActiveTab("quickSearch");
     setOpenSearchBarModal(false);
+    setActiveTab("quickSearch");
+    setQuery("");
+    setActions([]);
   };
 
   const handleSearchQuery = async (query: string) => {
@@ -59,6 +55,12 @@ const SearchBar = () => {
       handleSearchQuery(query);
     }
   };
+
+  useEffect(() => {
+    if (query.length < 3) {
+      setActions([]);
+    }
+  }, [query]);
 
   return (
     <>
@@ -85,7 +87,6 @@ const SearchBar = () => {
       />
       <Modal
         fullScreen={smallScreen}
-        // centered
         overlayProps={{
           opacity: 0.55,
           blur: 3,

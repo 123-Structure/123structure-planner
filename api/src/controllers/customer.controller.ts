@@ -125,7 +125,6 @@ export const searchCustomer = async (req: Request, res: Response) => {
   const customersObject = JSON.parse(JSON.stringify(customers)) as ICustomer[];
 
   const result = customersObject.map((customer) => {
-    // console.log(findPropertiesWithValue(customer, searchValue));
     return findPath(customer, searchValue, "customer");
   });
 
