@@ -31,5 +31,11 @@ export function findPath(
     }
   }
 
-  return { id: obj._id, type, results, score: obj.score };
+  return {
+    id: obj._id,
+    type,
+    searchTerm,
+    results,
+    score: obj.score,
+  };
 }

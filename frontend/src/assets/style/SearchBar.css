@@ -23,3 +23,12 @@
   font-weight: bold;
   color: gray;
 }
+
+.searchBarItem {
+  display: flex !important;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  margin-bottom: 16px;
+  cursor: pointer;
+}

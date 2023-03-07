@@ -10,7 +10,7 @@ import {
 import React, { useEffect, useState } from "react";
 import { ICustomer } from "../../../../../data/interfaces/ICustomer";
 import { IDataFromAPI } from "../../../../../data/interfaces/IDataFromAPI";
-import { Card } from "@mantine/core";
+import { Card, Highlight, useMantineTheme } from "@mantine/core";
 
 interface ISearchBarItemProps {
   action: IDataFromAPI;
@@ -21,6 +21,8 @@ const SearchBarItem = (props: ISearchBarItemProps) => {
   const [customer, setCustomer] = useState<ICustomer>();
   const [resultType, setResultType] = useState("");
   const [title, setTitle] = useState("");
+
+  const theme = useMantineTheme();
 
   useEffect(() => {
     const handleGetCustomerById = async (id: string) => {
@@ -142,6 +144,10 @@ const SearchBarItem = (props: ISearchBarItemProps) => {
     return type;
   };
 
+  const handleSearchItemSearch = () => {
+    console.log("test");
+  };
+
   return (
     <Card
       className="searchBarItem"
@@ -149,13 +155,11 @@ const SearchBarItem = (props: ISearchBarItemProps) => {
       p="md"
       radius="md"
       withBorder
-      style={{
-        display: "flex",
-        flexDirection: "row",
-        alignItems: "center",
-        justifyContent: "flex-start",
-        marginBottom: "16px",
-        cursor: "pointer",
+      onClick={() => handleSearchItemSearch()}
+      sx={{
+        "&:hover": {
+          backgroundColor: theme.colors.yellow[1],
+        },
       }}
     >
       {handleIcon(resultType)}
@@ -171,7 +175,12 @@ const SearchBarItem = (props: ISearchBarItemProps) => {
             margin: 0,
           }}
         >
-          {title}
+          <Highlight
+            highlightColor={theme.colors.yellow[6]}
+            highlight={props.action.searchTerm}
+          >
+            {title}
+          </Highlight>
         </p>
         <p
           style={{
