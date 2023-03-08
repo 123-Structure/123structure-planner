@@ -9,20 +9,23 @@ import RessourceProvider from "./context/RessourceContext";
 import AuthProvider from "./context/AuthContext";
 import Commercial from "./components/Commercial/Commercial";
 import CustomerProvider from "./context/CustomerContext";
+import CustomerRoutesProvider from "./context/CustomerRoutes";
 
 function App() {
   return (
     <MantineProvider withGlobalStyles withNormalizeCSS theme={theme}>
       <ProjectProvider>
         <CustomerProvider>
-          <RessourceProvider>
-            <AuthProvider>
-              <Notifications />
-              <Header />
-              {/* <Planner /> */}
-              <Commercial />
-            </AuthProvider>
-          </RessourceProvider>
+          <CustomerRoutesProvider>
+            <RessourceProvider>
+              <AuthProvider>
+                <Notifications />
+                <Header />
+                {/* <Planner /> */}
+                <Commercial />
+              </AuthProvider>
+            </RessourceProvider>
+          </CustomerRoutesProvider>
         </CustomerProvider>
       </ProjectProvider>
     </MantineProvider>

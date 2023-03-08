@@ -1,16 +1,10 @@
-import {
-  IconAddressBook,
-  IconCalendarEvent,
-  IconMail,
-  IconMap2,
-  IconPhone,
-  IconSearch,
-  IconUser,
-} from "@tabler/icons";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { ICustomer } from "../../../../../data/interfaces/ICustomer";
 import { IDataFromAPI } from "../../../../../data/interfaces/IDataFromAPI";
 import { Card, Highlight, useMantineTheme } from "@mantine/core";
+import { handleIcon } from "../../../utils/handleIcon";
+import { handleSubtitle } from "../../../utils/handleSubtitle";
+import { useUpdateCustomerRoutes } from "../../../../../context/CustomerRoutes";
 
 interface ISearchBarItemProps {
   action: IDataFromAPI;
@@ -23,6 +17,107 @@ const SearchBarItem = (props: ISearchBarItemProps) => {
   const [title, setTitle] = useState("");
 
   const theme = useMantineTheme();
+
+  const setCustomerRoutes = useUpdateCustomerRoutes();
+
+  const handleSearchItemSearch = (type: string) => {
+    console.log(type);
+
+    if (customer !== undefined) {
+      switch (type) {
+        case "category":
+          setCustomerRoutes({
+            category: customer.category as string,
+            customer: "",
+            agency: "",
+          });
+          break;
+
+        case "name":
+        case "location.cp":
+        case "location.city":
+        case "email":
+        case "phone":
+          setCustomerRoutes({
+            category: customer.category as string,
+            customer: customer.group === "" ? customer.name : customer.group,
+            agency: customer.name,
+          });
+          break;
+
+        case "group":
+          setCustomerRoutes({
+            category: customer.category as string,
+            customer: customer.group,
+            agency: "",
+          });
+          break;
+
+        default:
+          break;
+      }
+
+      if (type.startsWith("contact")) {
+        setCustomerRoutes({
+          category: customer.category as string,
+          customer: customer.group === "" ? customer.name : customer.group,
+          agency: customer.name,
+        });
+        const contactIndex = parseInt(resultType.split(".")[1]);
+        const firstName = customer.contact[contactIndex].firstName;
+        const lastName = customer.contact[contactIndex].lastName;
+
+        console.log(
+          `#contact_${customer.name.replaceAll(
+            " ",
+            "_"
+          )}_${firstName}_${lastName}`
+        );
+
+        const contactButton = document.querySelector(
+          `.contact_${customer.name.replaceAll(
+            " ",
+            "_"
+          )}_${firstName}_${lastName}`
+        ) as HTMLElement;
+        if (contactButton !== null) {
+          contactButton.click();
+        }
+      }
+
+      // "commercial.firstName": "text",
+      // "commercial.lastName": "text",
+      // "commercial.role": "text",
+      // "commercial.company": "text",
+
+      // "appointment.location.cp": "text",
+      // "appointment.location.city": "text",
+      // "appointment.title": "text",
+      // "appointment.content": "text",
+
+      if (type.includes("location")) {
+        return "";
+      }
+
+      if (type.includes("email")) {
+        return "";
+      }
+
+      if (type.includes("phone")) {
+        return "";
+      }
+
+      if (type.includes("contact") || type.includes("commercial")) {
+        return "";
+      }
+
+      if (type.includes("appointment")) {
+        return "";
+      }
+
+      return "";
+    }
+  };
 
   useEffect(() => {
     const handleGetCustomerById = async (id: string) => {
@@ -52,102 +147,6 @@ const SearchBarItem = (props: ISearchBarItemProps) => {
     handleResultProperty(props.result);
   }, []);
 
-  const handleIcon = (type: string) => {
-    if (type === "category" || type === "group" || type === "name") {
-      return <IconAddressBook size={"1.8rem"} />;
-    }
-
-    if (type.includes("location")) {
-      return <IconMap2 size={"1.8rem"} />;
-    }
-
-    if (type.includes("email")) {
-      return <IconMail size={"1.8rem"} />;
-    }
-
-    if (type.includes("phone")) {
-      return <IconPhone size={"1.8rem"} />;
-    }
-
-    if (type.includes("contact") || type.includes("commercial")) {
-      return <IconUser size={"1.8rem"} />;
-    }
-
-    if (type.includes("appointment")) {
-      return <IconCalendarEvent size={"1.8rem"} />;
-    }
-
-    return <IconSearch size={"1.8rem"} />;
-  };
-
-  const handleSubtitle = (type: string) => {
-    if (type === "category") {
-      return `${customer?.name} - Catégorie de client`;
-    }
-    if (type === "group") {
-      return `${customer?.name} - Groupe de client`;
-    }
-    if (type === "category" || type === "group" || type === "name") {
-      return "Nom de client";
-    }
-
-    if (type.startsWith("location")) {
-      return `${customer?.name} - Localisation`;
-    }
-
-    if (type.includes("location") && type.includes("appointment")) {
-      return `${customer?.name} - Adresse d'un rendez-vous`;
-    }
-
-    if (type.startsWith("email")) {
-      return `${customer?.name} - Email principal`;
-    }
-
-    if (type.includes("email") && type.includes("contact")) {
-      const contactIndex = parseInt(type.split(".")[1]);
-      const contactName = customer
-        ? `${customer.contact[contactIndex].firstName} ${customer.contact[contactIndex].lastName}`
-        : "";
-      return `${customer?.name} - Email de ${contactName}`;
-    }
-
-    if (type.startsWith("phone")) {
-      return `${customer?.name} - N°de téléphone principal`;
-    }
-
-    if (type.includes("phone") && type.includes("contact")) {
-      const contactIndex = parseInt(type.split(".")[1]);
-      const contactName = customer
-        ? `${customer.contact[contactIndex].firstName} ${customer.contact[contactIndex].lastName}`
-        : "";
-      return `${customer?.name} - N° de téléphone de ${contactName}`;
-    }
-
-    if (type.includes("contact")) {
-      return `${customer?.name} - Fiche de contact`;
-    }
-
-    if (type.includes("commercial")) {
-      return `${customer?.name} - Commercial référent`;
-    }
-
-    if (type.includes("appointment") && type.includes("content")) {
-      const appointmentIndex = parseInt(type.split(".")[1]);
-      const appointmentName = customer
-        ? `${customer.appointment[appointmentIndex].title} (${new Date(
-            customer.appointment[appointmentIndex].date
-          ).toLocaleDateString("fr")})`
-        : "";
-      return `${customer?.name} - ${appointmentName}`;
-    }
-
-    return type;
-  };
-
-  const handleSearchItemSearch = () => {
-    console.log("test");
-  };
-
   return (
     <Card
       className="searchBarItem"
@@ -155,7 +154,7 @@ const SearchBarItem = (props: ISearchBarItemProps) => {
       p="md"
       radius="md"
       withBorder
-      onClick={() => handleSearchItemSearch()}
+      onClick={() => handleSearchItemSearch(resultType)}
       sx={{
         "&:hover": {
           backgroundColor: theme.colors.yellow[1],
@@ -189,7 +188,7 @@ const SearchBarItem = (props: ISearchBarItemProps) => {
             color: "gray",
           }}
         >
-          {handleSubtitle(resultType)}
+          {handleSubtitle(customer, resultType)}
         </p>
       </div>
     </Card>

@@ -1,27 +1,34 @@
 import { Tabs, useMantineTheme } from "@mantine/core";
-import React, { useState } from "react";
 import { useCustomers } from "../../../../context/CustomerContext";
+import {
+  useCustomerRoutes,
+  useUpdateCustomerRoutes,
+} from "../../../../context/CustomerRoutes";
 import { changeFavicon, changeTabTitle } from "../../../../utils/tabsUtils";
 import Customer from "../Customer/Customer";
-import AgenceList from "./AgenceList";
+import AgencyList from "./AgencyList";
 
 interface ICustomerListProps {
   category: string;
 }
 
 const CustomerList = (props: ICustomerListProps) => {
-  const [activeTab, setActiveTab] = useState<string | null>("");
   const theme = useMantineTheme();
   const { customers } = useCustomers();
+  const customerRoutes = useCustomerRoutes();
+  const setCustomerRoutes = useUpdateCustomerRoutes();
 
   return (
     <Tabs
       orientation="vertical"
-      value={activeTab}
-      onTabChange={(val) => {
-        setActiveTab(val);
+      value={customerRoutes.customer}
+      onTabChange={(val: string) => {
         changeFavicon("👷");
         changeTabTitle(`123 Structure - ${val}`);
+        setCustomerRoutes({
+          ...customerRoutes,
+          customer: val,
+        });
       }}
     >
       <Tabs.List>
@@ -41,8 +48,10 @@ const CustomerList = (props: ICustomerListProps) => {
               key={customer}
               style={{
                 backgroundColor:
-                  activeTab === customer ? theme.colors.yellow[1] : "",
-                fontWeight: activeTab === customer ? "bold" : "",
+                  customerRoutes.customer === customer
+                    ? theme.colors.yellow[1]
+                    : "",
+                fontWeight: customerRoutes.customer === customer ? "bold" : "",
               }}
               value={customer}
             >
@@ -89,7 +98,7 @@ const CustomerList = (props: ICustomerListProps) => {
         }, [] as string[])
         .map((customer) => (
           <Tabs.Panel key={customer} value={customer}>
-            <AgenceList
+            <AgencyList
               customers={customers.customersList.filter(
                 (c) => c.group === customer
               )}

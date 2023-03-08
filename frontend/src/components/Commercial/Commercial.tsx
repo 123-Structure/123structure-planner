@@ -10,10 +10,10 @@ import { useCustomers } from "../../context/CustomerContext";
 import { changeFavicon, changeTabTitle } from "../../utils/tabsUtils";
 
 const Commercial = () => {
-  const [activeTab, setActiveTab] = useState<string | null>("");
+  const [activeTab, setActiveTab] = useState<string | null>("g.barais");
 
   const ressources = useRessources();
-  const { customers, updateCustomers } = useCustomers();
+  const { updateCustomers } = useCustomers();
   const theme = useMantineTheme();
   const smallScreen = useMediaQuery(`(max-width: ${theme.breakpoints.lg})`);
 

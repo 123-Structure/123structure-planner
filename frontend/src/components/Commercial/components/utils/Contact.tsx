@@ -330,11 +330,15 @@ const Contact = (props: IContactProps) => {
           )}
         </div>
       </Modal>
-
       <Menu withArrow trigger="hover" openDelay={100} closeDelay={400}>
         <Menu.Target>
           <Button
-            className="contactContentMenu"
+            className={`contactContentMenu contact_${props.customer.name.replaceAll(
+              " ",
+              "_"
+            )}_${props.currentContact.firstName}_${
+              props.currentContact.lastName
+            }`}
             color={props.color}
             style={{
               ...props.extraStyle,

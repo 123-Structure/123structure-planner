@@ -1,10 +1,13 @@
 import { Tabs, useMantineTheme } from "@mantine/core";
-import { useMediaQuery } from "@mantine/hooks";
-import React, { useState } from "react";
+import {
+  useCustomerRoutes,
+  useUpdateCustomerRoutes,
+} from "../../../../context/CustomerRoutes";
 import CustomerList from "./CustomerList";
 
 const CustomerCategories = () => {
-  const [activeTab, setActiveTab] = useState<string | null>("Constructeur");
+  const customerRoutes = useCustomerRoutes();
+  const setCustomerRoutes = useUpdateCustomerRoutes();
 
   const theme = useMantineTheme();
 
@@ -29,15 +32,26 @@ const CustomerCategories = () => {
 
   return (
     <>
-      <Tabs orientation="vertical" value={activeTab} onTabChange={setActiveTab}>
+      <Tabs
+        orientation="vertical"
+        value={customerRoutes.category}
+        onTabChange={(val:string) => {
+          setCustomerRoutes({
+            ...customerRoutes,
+            category: val,
+          });
+        }}
+      >
         <Tabs.List>
           {categories.map((category) => (
             <Tabs.Tab
               key={category}
               style={{
                 backgroundColor:
-                  activeTab === category ? theme.colors.yellow[1] : "",
-                fontWeight: activeTab === category ? "bold" : "",
+                  customerRoutes.category === category
+                    ? theme.colors.yellow[1]
+                    : "",
+                fontWeight: customerRoutes.category === category ? "bold" : "",
               }}
               value={category}
             >

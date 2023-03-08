@@ -1,5 +1,9 @@
 import { Tabs, useMantineTheme } from "@mantine/core";
 import React, { useState } from "react";
+import {
+  useCustomerRoutes,
+  useUpdateCustomerRoutes,
+} from "../../../../context/CustomerRoutes";
 import { ICustomer } from "../../../../data/interfaces/ICustomer";
 import { changeFavicon, changeTabTitle } from "../../../../utils/tabsUtils";
 import Customer from "../Customer/Customer";
@@ -8,18 +12,22 @@ interface IAgenceListProps {
   customers: ICustomer[];
 }
 
-const AgenceList = (props: IAgenceListProps) => {
-  const [activeTab, setActiveTab] = useState<string | null>("");
+const AgencyList = (props: IAgenceListProps) => {
   const theme = useMantineTheme();
+  const customerRoutes = useCustomerRoutes();
+  const setCustomerRoutes = useUpdateCustomerRoutes();
 
   return (
     <Tabs
       orientation="vertical"
-      value={activeTab}
-      onTabChange={(val) => {
-        setActiveTab(val);
+      value={customerRoutes.agency}
+      onTabChange={(val: string) => {
         changeFavicon("👷");
         changeTabTitle(`123 Structure - ${val}`);
+        setCustomerRoutes({
+          ...customerRoutes,
+          agency: val,
+        });
       }}
     >
       <Tabs.List>
@@ -28,8 +36,10 @@ const AgenceList = (props: IAgenceListProps) => {
             key={customer.name}
             style={{
               backgroundColor:
-                activeTab === customer.name ? theme.colors.yellow[1] : "",
-              fontWeight: activeTab === customer.name ? "bold" : "",
+                customerRoutes.agency === customer.name
+                  ? theme.colors.yellow[1]
+                  : "",
+              fontWeight: customerRoutes.agency === customer.name ? "bold" : "",
             }}
             value={customer.name}
           >
@@ -47,4 +57,4 @@ const AgenceList = (props: IAgenceListProps) => {
   );
 };
 
-export default AgenceList;
+export default AgencyList;
