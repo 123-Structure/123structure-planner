@@ -1,4 +1,3 @@
-import React, { ReactNode, useState } from "react";
 import { ICustomer } from "../../../../data/interfaces/ICustomer";
 import "../../../../assets/style/Customer.css";
 import CustomerIdentity from "./components/CustomerIdentity";
@@ -14,7 +13,6 @@ interface ICustomerProps {
 }
 
 const Customer = (props: ICustomerProps) => {
-  const [accordionValue, setAccordionValue] = useState<string | null>(null);
   return (
     <>
       <div className="customer">
@@ -22,10 +20,7 @@ const Customer = (props: ICustomerProps) => {
         <CustomerRelationship customer={props.customer} />
         <CustomerPayment customer={props.customer} />
       </div>
-      <NewAppointment
-        customer={props.customer}
-        setAccordionValue={setAccordionValue}
-      />
+      <NewAppointment customer={props.customer} />
       <Accordion className={"customerAccordion"}>
         <CustomerIdentity customer={props.customer} />
 
@@ -47,11 +42,7 @@ const Customer = (props: ICustomerProps) => {
           </Accordion.Panel>
         </Accordion.Item>
       </Accordion>
-      <AppointmentList
-        customer={props.customer}
-        accordionValue={accordionValue}
-        setAccordionValue={setAccordionValue}
-      />
+      <AppointmentList customer={props.customer} />
     </>
   );
 };

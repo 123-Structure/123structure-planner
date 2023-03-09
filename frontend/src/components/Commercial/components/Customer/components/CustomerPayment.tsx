@@ -32,11 +32,11 @@ const CustomerPayment = (props: ICustomerPaymentProps) => {
     props.customer.paymentStatus
   );
 
-  const currentProjectInvoiced: number = 200;
-  const currentInvoiceAmount: number = 25000;
+  const currentProjectInvoiced: number = 0;
+  const currentInvoiceAmount: number = 0;
 
-  const previousYearProjectInvoiced: number = 10;
-  const previousYearInvoiceAmount: number = 10000;
+  const previousYearProjectInvoiced: number = 0;
+  const previousYearInvoiceAmount: number = 0;
 
   const { customers, updateCustomers } = useCustomers();
 
@@ -234,17 +234,30 @@ const CustomerPayment = (props: ICustomerPaymentProps) => {
           <div className="customerItemTitle">
             <CustomerItem
               value={[`Facturation ${new Date().getFullYear() - 1} :`]}
-              icon={<IconBusinessplan size={24} color="black" />}
-              color="yellow"
+              icon={
+                <IconBusinessplan
+                  size={24}
+                  color={previousYearProjectInvoiced === 0 ? "white" : "black"}
+                />
+              }
+              color={previousYearProjectInvoiced === 0 ? "gray" : "yellow"}
             />
             <p>{localeCurrencyString(previousYearInvoiceAmount)}</p>
           </div>
           <div className="customerItemTitle">
             <CustomerItem
               value={[`Facturation ${new Date().getFullYear()} :`]}
-              icon={<IconBusinessplan size={24} color="black" />}
+              icon={
+                <IconBusinessplan
+                  size={24}
+                  color={currentProjectInvoiced === 0 ? "white" : "black"}
+                />
+              }
               color={
-                (currentInvoiceAmount / previousYearInvoiceAmount) * 100 < 80
+                currentProjectInvoiced === 0
+                  ? "gray"
+                  : (currentInvoiceAmount / previousYearInvoiceAmount) * 100 <
+                    80
                   ? "red"
                   : (currentInvoiceAmount / previousYearInvoiceAmount) * 100 >=
                       80 &&
@@ -258,7 +271,10 @@ const CustomerPayment = (props: ICustomerPaymentProps) => {
               style={{
                 fontWeight: "bold",
                 color:
-                  (currentInvoiceAmount / previousYearInvoiceAmount) * 100 < 80
+                  currentProjectInvoiced === 0
+                    ? "gray"
+                    : (currentInvoiceAmount / previousYearInvoiceAmount) * 100 <
+                      80
                     ? theme.colors.red[6]
                     : (currentInvoiceAmount / previousYearInvoiceAmount) *
                         100 >=
@@ -277,8 +293,13 @@ const CustomerPayment = (props: ICustomerPaymentProps) => {
             <CustomerItem
               inputType={"number"}
               value={[`Moyenne ${new Date().getFullYear() - 1} :`]}
-              icon={<IconCalculator size={24} color="black" />}
-              color={"yellow"}
+              icon={
+                <IconCalculator
+                  size={24}
+                  color={previousYearProjectInvoiced === 0 ? "white" : "black"}
+                />
+              }
+              color={previousYearProjectInvoiced === 0 ? "gray" : "yellow"}
             />
             <p>
               {localeCurrencyString(
@@ -289,14 +310,22 @@ const CustomerPayment = (props: ICustomerPaymentProps) => {
           <div className="customerItemTitle">
             <CustomerItem
               inputType={"number"}
-              value={[`Moyenne ${new Date().getFullYear() - 1} :`]}
-              icon={<IconCalculator size={24} color="black" />}
+              value={[`Moyenne ${new Date().getFullYear()} :`]}
+              icon={
+                <IconCalculator
+                  size={24}
+                  color={currentProjectInvoiced === 0 ? "white" : "black"}
+                />
+              }
               color={
-                (currentInvoiceAmount /
-                  currentProjectInvoiced /
-                  (previousYearInvoiceAmount / previousYearProjectInvoiced)) *
-                  100 <
-                80
+                currentProjectInvoiced === 0
+                  ? "gray"
+                  : (currentInvoiceAmount /
+                      currentProjectInvoiced /
+                      (previousYearInvoiceAmount /
+                        previousYearProjectInvoiced)) *
+                      100 <
+                    80
                   ? "red"
                   : (currentInvoiceAmount /
                       currentProjectInvoiced /
@@ -318,11 +347,14 @@ const CustomerPayment = (props: ICustomerPaymentProps) => {
               style={{
                 fontWeight: "bold",
                 color:
-                  (currentInvoiceAmount /
-                    currentProjectInvoiced /
-                    (previousYearInvoiceAmount / previousYearProjectInvoiced)) *
-                    100 <
-                  80
+                  currentProjectInvoiced === 0
+                    ? "gray"
+                    : (currentInvoiceAmount /
+                        currentProjectInvoiced /
+                        (previousYearInvoiceAmount /
+                          previousYearProjectInvoiced)) *
+                        100 <
+                      80
                     ? theme.colors.red[6]
                     : (currentInvoiceAmount /
                         currentProjectInvoiced /

@@ -20,7 +20,7 @@ export interface ICustomer {
   logo: string;
   contact: IContact[];
   priceList: string;
-  commercial: IRessource[];
+  commercial: string[];
   appointment: IAppointment[];
   projectGoal: TProjectGoal[];
   paymentDeadline: "30 (Fin de mois)" | "30 (Net)" | "45" | "-";

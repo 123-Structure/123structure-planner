@@ -8,6 +8,7 @@ import MobileCustomerMenu from "./components/Menu/MobileCustomerMenu";
 import NewCustomer from "./components/Menu/NewCustomer";
 import { useCustomers } from "../../context/CustomerContext";
 import { changeFavicon, changeTabTitle } from "../../utils/tabsUtils";
+import { IconUser } from "@tabler/icons";
 
 const Commercial = () => {
   const [activeTab, setActiveTab] = useState<string | null>("g.barais");
@@ -54,6 +55,7 @@ const Commercial = () => {
                 style={{
                   color: activeTab === ressource._id ? "black" : "",
                 }}
+                icon={<IconUser size="1rem" />}
               >{`${ressource.firstName} ${ressource.lastName}`}</Tabs.Tab>
             ))}
           <NewCustomer />

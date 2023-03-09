@@ -2,7 +2,6 @@ import { Types } from "mongoose";
 import { IAppointment } from "./IAppointment";
 import { IContact } from "./IContact";
 import { IProjectGoal } from "./IProjectGoal";
-import { IRessource } from "./IRessource";
 
 export interface ICustomer {
   _id: Types.ObjectId;
@@ -19,7 +18,7 @@ export interface ICustomer {
   logo: string;
   contact: IContact[];
   priceList: string;
-  commercial: IRessource[];
+  commercial: string[];
   appointment: IAppointment[];
   projectGoal: IProjectGoal[];
   paymentDeadline: string;

@@ -65,6 +65,16 @@ export const handleSubtitle = (
       return `${customer?.name} - ${appointmentName}`;
     }
 
+    if (type.includes("appointment") && type.includes("title")) {
+      const appointmentIndex = parseInt(type.split(".")[1]);
+      const appointmentDate = customer
+        ? `${new Date(
+            customer.appointment[appointmentIndex].date
+          ).toLocaleDateString("fr")}`
+        : "";
+      return `${customer?.name} - ${appointmentDate}`;
+    }
+
     return type;
   }
 };

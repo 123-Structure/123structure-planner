@@ -21,8 +21,6 @@ const SearchBarItem = (props: ISearchBarItemProps) => {
   const setCustomerRoutes = useUpdateCustomerRoutes();
 
   const handleSearchItemSearch = (type: string) => {
-    console.log(type);
-
     if (customer !== undefined) {
       switch (type) {
         case "category":
@@ -30,6 +28,7 @@ const SearchBarItem = (props: ISearchBarItemProps) => {
             category: customer.category as string,
             customer: "",
             agency: "",
+            appointment: "",
           });
           break;
 
@@ -42,6 +41,7 @@ const SearchBarItem = (props: ISearchBarItemProps) => {
             category: customer.category as string,
             customer: customer.group === "" ? customer.name : customer.group,
             agency: customer.name,
+            appointment: "",
           });
           break;
 
@@ -50,6 +50,7 @@ const SearchBarItem = (props: ISearchBarItemProps) => {
             category: customer.category as string,
             customer: customer.group,
             agency: "",
+            appointment: "",
           });
           break;
 
@@ -62,17 +63,11 @@ const SearchBarItem = (props: ISearchBarItemProps) => {
           category: customer.category as string,
           customer: customer.group === "" ? customer.name : customer.group,
           agency: customer.name,
+          appointment: "",
         });
         const contactIndex = parseInt(resultType.split(".")[1]);
         const firstName = customer.contact[contactIndex].firstName;
         const lastName = customer.contact[contactIndex].lastName;
-
-        console.log(
-          `#contact_${customer.name.replaceAll(
-            " ",
-            "_"
-          )}_${firstName}_${lastName}`
-        );
 
         const contactButton = document.querySelector(
           `.contact_${customer.name.replaceAll(
@@ -85,34 +80,17 @@ const SearchBarItem = (props: ISearchBarItemProps) => {
         }
       }
 
-      // "commercial.firstName": "text",
-      // "commercial.lastName": "text",
-      // "commercial.role": "text",
-      // "commercial.company": "text",
+      if (type.startsWith("appointment")) {
+        const appointmentIndex = parseInt(resultType.split(".")[1]);
+        const title = customer.appointment[appointmentIndex].title;
+        const date = customer.appointment[appointmentIndex].date;
 
-      // "appointment.location.cp": "text",
-      // "appointment.location.city": "text",
-      // "appointment.title": "text",
-      // "appointment.content": "text",
-
-      if (type.includes("location")) {
-        return "";
-      }
-
-      if (type.includes("email")) {
-        return "";
-      }
-
-      if (type.includes("phone")) {
-        return "";
-      }
-
-      if (type.includes("contact") || type.includes("commercial")) {
-        return "";
-      }
-
-      if (type.includes("appointment")) {
-        return "";
+        setCustomerRoutes({
+          category: customer.category as string,
+          customer: customer.group === "" ? customer.name : customer.group,
+          agency: customer.name,
+          appointment: `${title} (${new Date(date).toLocaleDateString("fr")})`,
+        });
       }
 
       return "";

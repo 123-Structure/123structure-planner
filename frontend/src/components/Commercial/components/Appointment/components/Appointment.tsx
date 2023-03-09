@@ -34,6 +34,10 @@ import {
 } from "@mantine/core";
 import { useMediaQuery } from "@mantine/hooks";
 import { useCustomers } from "../../../../../context/CustomerContext";
+import {
+  useCustomerRoutes,
+  useUpdateCustomerRoutes,
+} from "../../../../../context/CustomerRoutes";
 
 interface IAppointmentProps {
   _id: number;
@@ -47,7 +51,6 @@ interface IAppointmentProps {
   >;
   appointmentDate: Date;
   setAppointmentDate: React.Dispatch<React.SetStateAction<Date>>;
-  setAccordionValue: React.Dispatch<React.SetStateAction<string | null>>;
 }
 
 const Appointment = (props: IAppointmentProps) => {
@@ -61,6 +64,8 @@ const Appointment = (props: IAppointmentProps) => {
   );
 
   const { customers, updateCustomers } = useCustomers();
+  const customerRoutes = useCustomerRoutes();
+  const setCustomerRoutes = useUpdateCustomerRoutes();
 
   const theme = useMantineTheme();
   const smallScreen = useMediaQuery(`(max-width: ${theme.breakpoints.xs})`);
@@ -139,11 +144,12 @@ const Appointment = (props: IAppointmentProps) => {
   const handleValideClick = () => {
     handleContentChange(editor?.getHTML());
     props.setEditAppointment(false);
-    props.setAccordionValue(
-      `${props.appointmentTitle} (${props.appointmentDate.toLocaleDateString(
-        "fr"
-      )})`
-    );
+    setCustomerRoutes({
+      ...customerRoutes,
+      appointment: `${props.appointmentTitle} (${new Date(
+        props.appointmentDate
+      ).toLocaleDateString("fr")})`,
+    });
     showNotification({
       title: `✅ Rendez-vous sauvegardé`,
       message: `${props.customer.name} - ${props.appointment.title} (${new Date(
@@ -212,6 +218,7 @@ const Appointment = (props: IAppointmentProps) => {
         cancelLabel="Annuler les modifications"
         handleEditClick={() => {
           props.setAppointmentTitle(props.appointment.title);
+          props.setAppointmentDate(props.appointment.date);
           props.setEditAppointment(true);
         }}
         handleValideClick={handleValideClick}

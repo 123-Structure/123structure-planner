@@ -26,10 +26,13 @@ import { DatePickerInput } from "@mantine/dates";
 import { IAppointment } from "../../../../data/interfaces/IAppointment";
 import { TAppointmentTitle } from "../../../../data/types/TApppointmentTitle";
 import { useCustomers } from "../../../../context/CustomerContext";
+import {
+  useCustomerRoutes,
+  useUpdateCustomerRoutes,
+} from "../../../../context/CustomerRoutes";
 
 interface INewAppointmentProps {
   customer: ICustomer;
-  setAccordionValue: React.Dispatch<React.SetStateAction<string | null>>;
 }
 
 const NewAppointment = (props: INewAppointmentProps) => {
@@ -51,6 +54,8 @@ const NewAppointment = (props: INewAppointmentProps) => {
   const smallScreen = useMediaQuery(`(max-width: ${theme.breakpoints.xs})`);
 
   const { customers, updateCustomers } = useCustomers();
+  const customerRoutes = useCustomerRoutes();
+  const setCustomerRoutes = useUpdateCustomerRoutes();
 
   const handleCloseModal = () => {
     setOpenNewAppointment(false);
@@ -131,9 +136,12 @@ const NewAppointment = (props: INewAppointmentProps) => {
         message: `Nouveau rendez-vous ajouté pour ${props.customer.name}`,
         color: "green",
       });
-      props.setAccordionValue(
-        `${appointmentTitle} (${appointmentDate.toLocaleDateString("fr")})`
-      );
+      setCustomerRoutes({
+        ...customerRoutes,
+        appointment: `${appointmentTitle} (${appointmentDate.toLocaleDateString(
+          "fr"
+        )})`,
+      });
       handleCloseModal();
     } else {
       appointmentTitle === ""

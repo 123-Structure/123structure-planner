@@ -10,12 +10,14 @@ interface ICustomerRoutes {
   category: string;
   customer: string;
   agency: string;
+  appointment: string;
 }
 
 const defaultCustomerRoutes = {
   category: "",
   customer: "",
   agency: "",
+  appointment: "",
 };
 
 const CustomerRoutesContext = createContext<ICustomerRoutes>(
