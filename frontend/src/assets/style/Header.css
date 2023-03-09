@@ -7,19 +7,28 @@
   margin-bottom: 16px;
 }
 
+.header-mobile {
+  flex-direction: column;
+}
+
 .admin {
   display: flex;
   flex-direction: column;
   gap: 8px;
   padding-right: 16px;
-  border-right: 1px solid black;
+  border-right: 1px solid #dfe2e6;
 }
 
 .menu {
   display: flex;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
   width: auto;
+}
+
+.menu-mobile {
+  flex-direction: column;
 }
 
 .login {

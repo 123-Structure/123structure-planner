@@ -63,7 +63,7 @@ const NewCustomer = () => {
   const [errorCity, setErrorCity] = useState("");
 
   const theme = useMantineTheme();
-  const smallScreen = useMediaQuery(`(max-width: ${theme.breakpoints.xs}px)`);
+  const smallScreen = useMediaQuery(`(max-width: ${theme.breakpoints.xs})`);
   const ressources = useRessources();
   const { customers, updateCustomers } = useCustomers();
 
@@ -288,8 +288,10 @@ const NewCustomer = () => {
       <Modal
         fullScreen={smallScreen}
         centered
-        overlayOpacity={0.55}
-        overlayBlur={3}
+        overlayProps={{
+          opacity: 0.55,
+          blur: 3,
+        }}
         opened={openNewCustomer}
         onClose={handleCancelClick}
         padding={"xl"}
@@ -311,7 +313,7 @@ const NewCustomer = () => {
             gap: smallScreen ? 0 : "16px",
           }}
         >
-          <div className={"newCustomerInputContainerColumn"}>
+          <div style={{ width: smallScreen ? "100%" : "33%" }}>
             <MultiSelect
               withAsterisk
               searchable={!smallScreen}
@@ -417,7 +419,7 @@ const NewCustomer = () => {
               }
             />
           </div>
-          <div className={"newCustomerInputContainerColumn"}>
+          <div style={{ width: smallScreen ? "100%" : "33%" }}>
             <FileInput
               label="Logo"
               placeholder="logo.png"
@@ -464,7 +466,7 @@ const NewCustomer = () => {
               <></>
             )}
           </div>
-          <div className={"newCustomerInputContainerColumn"}>
+          <div style={{ width: smallScreen ? "100%" : "33%" }}>
             <NumberInput
               label={`Objectif ${new Date().getFullYear()}`}
               defaultValue={0}

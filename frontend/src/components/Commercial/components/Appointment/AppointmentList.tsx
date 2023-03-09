@@ -1,5 +1,5 @@
 import { Accordion, Indicator, Select, SelectItem } from "@mantine/core";
-import { DatePicker } from "@mantine/dates";
+import { DatePickerInput } from "@mantine/dates";
 import { IconCalendarEvent } from "@tabler/icons";
 import React, { useState } from "react";
 import { ICustomer } from "../../../../data/interfaces/ICustomer";
@@ -8,11 +8,13 @@ import "dayjs/locale/fr";
 import "../../../../assets/style/Appointment.css";
 import Appointment from "./components/Appointment";
 import { IAppointment } from "../../../../data/interfaces/IAppointment";
+import {
+  useCustomerRoutes,
+  useUpdateCustomerRoutes,
+} from "../../../../context/CustomerRoutes";
 
 interface IAppointmentList {
   customer: ICustomer;
-  accordionValue: string | null;
-  setAccordionValue: React.Dispatch<React.SetStateAction<string | null>>;
 }
 
 const AppointmentList = (props: IAppointmentList) => {
@@ -22,6 +24,9 @@ const AppointmentList = (props: IAppointmentList) => {
     string | TAppointmentTitle | null
   >("");
   const [appointmentDate, setAppointmentDate] = useState(new Date());
+
+  const customerRoutes = useCustomerRoutes();
+  const setCustomerRoutes = useUpdateCustomerRoutes();
 
   const getData = () => {
     const appointmentTitle = [
@@ -50,8 +55,12 @@ const AppointmentList = (props: IAppointmentList) => {
   return (
     <Accordion
       className="customerAppointmentAccordion"
-      value={props.accordionValue}
-      onChange={editAppointment ? () => "" : props.setAccordionValue}
+      value={customerRoutes.appointment}
+      onChange={(val: string) =>
+        editAppointment
+          ? () => ""
+          : setCustomerRoutes({ ...customerRoutes, appointment: val })
+      }
     >
       {props.customer.appointment
         .sort(compareDates)
@@ -68,7 +77,7 @@ const AppointmentList = (props: IAppointmentList) => {
               {editAppointment &&
               `${appointment.title} (${new Date(
                 appointment.date
-              ).toLocaleDateString("fr")})` === props.accordionValue ? (
+              ).toLocaleDateString("fr")})` === customerRoutes.appointment ? (
                 <div className="editAppointmentTitle">
                   <Select
                     className="editAppointmentTitleInput"
@@ -76,7 +85,8 @@ const AppointmentList = (props: IAppointmentList) => {
                     value={
                       `${appointment.title} (${new Date(
                         appointment.date
-                      ).toLocaleDateString("fr")})` === props.accordionValue
+                      ).toLocaleDateString("fr")})` ===
+                      customerRoutes.appointment
                         ? appointmentTitle
                         : appointment.title
                     }
@@ -84,15 +94,13 @@ const AppointmentList = (props: IAppointmentList) => {
                       setAppointmentTitle(val);
                     }}
                   />
-                  <DatePicker
+                  <DatePickerInput
                     className="editAppointmentTitleInput"
-                    allowFreeInput
-                    dropdownPosition={undefined}
                     locale="fr"
                     excludeDate={(date) =>
                       date.getDay() === 0 || date.getDay() === 6
                     }
-                    inputFormat="DD/MM/YYYY"
+                    valueFormat="DD/MM/YYYY"
                     defaultValue={new Date(appointment.date)}
                     onChange={(val: Date) => setAppointmentDate(val)}
                     renderDay={(date) => {
@@ -102,7 +110,7 @@ const AppointmentList = (props: IAppointmentList) => {
                         <Indicator
                           size={6}
                           color="red"
-                          offset={8}
+                          offset={-2}
                           disabled={day !== today}
                         >
                           <div>{date.getDate()}</div>
@@ -128,7 +136,6 @@ const AppointmentList = (props: IAppointmentList) => {
                 setAppointmentTitle={setAppointmentTitle}
                 appointmentDate={appointmentDate}
                 setAppointmentDate={setAppointmentDate}
-                setAccordionValue={props.setAccordionValue}
               />
             </Accordion.Panel>
           </Accordion.Item>

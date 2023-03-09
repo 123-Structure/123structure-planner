@@ -57,7 +57,7 @@ export const customerSchema = new Schema<ICustomer>(
       default: "",
     },
     commercial: {
-      type: [ressourceSchema],
+      type: [String],
       required: true,
     },
     appointment: {
@@ -105,10 +105,7 @@ customerSchema.index(
     "contact.phone2": "text",
     "contact.category": "text",
 
-    "commercial.firstName": "text",
-    "commercial.lastName": "text",
-    "commercial.role": "text",
-    "commercial.company": "text",
+    commercial: "text",
 
     "appointment.location.cp": "text",
     "appointment.location.city": "text",

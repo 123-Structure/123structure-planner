@@ -6,7 +6,6 @@ import {
   IconCurrencyEuro,
   IconHomeCheck,
   IconTargetArrow,
-  IconUpload,
   IconUser,
   IconUsers,
 } from "@tabler/icons";
@@ -67,23 +66,24 @@ const CustomerRelationship = (props: ICustomerRelationshipProps) => {
   const [previousYearGoal, setPreviousYearGoal] = useState(
     getPreviousYearGoal()
   );
-  const [commercial, setCommercial] = useState(
-    props.customer.commercial.map(
-      (commercial) => `${commercial.firstName} ${commercial.lastName}`
-    )
-  );
 
   const [priceList, setPriceList] = useState(props.customer.priceList);
   const [priceListFile, setPriceListFile] = useState<File | null>(null);
 
-  const currentProjectInvoiced = 100;
-  const previousYearProjectInvoiced = 100;
+  const currentProjectInvoiced = 0;
+  const previousYearProjectInvoiced = 0;
 
   const ressources = useRessources();
   const { customers, updateCustomers } = useCustomers();
 
+  const [commercial, setCommercial] = useState(
+    ressources
+      .filter((ressource) => props.customer.commercial.includes(ressource._id))
+      .map((commercial) => `${commercial.firstName} ${commercial.lastName}`)
+  );
+
   const theme = useMantineTheme();
-  const smallScreen = useMediaQuery(`(max-width: ${theme.breakpoints.xs}px)`);
+  const smallScreen = useMediaQuery(`(max-width: ${theme.breakpoints.xs})`);
 
   const openURL = (url: string) => {
     window.open(url, "_blank");
@@ -110,9 +110,11 @@ const CustomerRelationship = (props: ICustomerRelationshipProps) => {
         customer.name === props.customer.name
     )[0];
 
-    changedCustomer.commercial = ressources.filter((ressource) =>
-      commercial.includes(`${ressource.firstName} ${ressource.lastName}`)
-    );
+    changedCustomer.commercial = ressources
+      .filter((ressource) =>
+        commercial.includes(`${ressource.firstName} ${ressource.lastName}`)
+      )
+      .map((commercial) => commercial._id);
 
     changedCustomer.projectGoal.filter(
       (projectGoal) => projectGoal.year === new Date().getFullYear()
@@ -123,8 +125,6 @@ const CustomerRelationship = (props: ICustomerRelationshipProps) => {
     )[0].goal = previousYearGoal;
 
     changedCustomer.priceList = priceList;
-
-    console.log(changedCustomer.commercial);
 
     const response = await fetch(
       `${import.meta.env.VITE_API_URL}/api/customers/${
@@ -172,9 +172,11 @@ const CustomerRelationship = (props: ICustomerRelationshipProps) => {
 
   const handleCancelClick = () => {
     setCommercial(
-      props.customer.commercial.map(
-        (commercial) => `${commercial.firstName} ${commercial.lastName}`
-      )
+      ressources
+        .filter((ressource) => {
+          props.customer.commercial.includes(ressource._id);
+        })
+        .map((commercial) => `${commercial.firstName} ${commercial.lastName}`)
     );
 
     setCurrentProjectGoal(
@@ -264,11 +266,9 @@ const CustomerRelationship = (props: ICustomerRelationshipProps) => {
           <p>
             {editCustomerRelationship
               ? ""
-              : props.customer.commercial.map(
+              : commercial.map(
                   (commercial, index) =>
-                    `${index > 0 ? " - " : ""}${commercial.firstName} ${
-                      commercial.lastName
-                    }`
+                    `${index > 0 ? " - " : ""}${commercial}`
                 )}
           </p>
         </div>
@@ -323,9 +323,16 @@ const CustomerRelationship = (props: ICustomerRelationshipProps) => {
             <CustomerItem
               inputType={"number"}
               value={[`Production ${new Date().getFullYear() - 1} :`]}
-              icon={<IconHomeCheck size={24} color="black" />}
+              icon={
+                <IconHomeCheck
+                  size={24}
+                  color={previousYearProjectInvoiced === 0 ? "white" : "black"}
+                />
+              }
               color={
-                (previousYearProjectInvoiced / previousYearGoal) * 100 < 80
+                previousYearProjectInvoiced === 0
+                  ? "gray"
+                  : (previousYearProjectInvoiced / previousYearGoal) * 100 < 80
                   ? "red"
                   : (previousYearProjectInvoiced / previousYearGoal) * 100 >=
                       80 &&
@@ -338,7 +345,10 @@ const CustomerRelationship = (props: ICustomerRelationshipProps) => {
               <span
                 style={{
                   color:
-                    (previousYearProjectInvoiced / previousYearGoal) * 100 < 80
+                    previousYearProjectInvoiced === 0
+                      ? "gray"
+                      : (previousYearProjectInvoiced / previousYearGoal) * 100 <
+                        80
                       ? theme.colors.red[6]
                       : (previousYearProjectInvoiced / previousYearGoal) *
                           100 >=
@@ -358,9 +368,16 @@ const CustomerRelationship = (props: ICustomerRelationshipProps) => {
             <CustomerItem
               inputType={"number"}
               value={[`Production ${new Date().getFullYear()} :`]}
-              icon={<IconHomeCheck size={24} color="black" />}
+              icon={
+                <IconHomeCheck
+                  size={24}
+                  color={currentProjectInvoiced === 0 ? "white" : "black"}
+                />
+              }
               color={
-                (currentProjectInvoiced / currentProjectGoal) * 100 < 80
+                currentProjectInvoiced === 0
+                  ? "gray"
+                  : (currentProjectInvoiced / currentProjectGoal) * 100 < 80
                   ? "red"
                   : (currentProjectInvoiced / currentProjectGoal) * 100 >= 80 &&
                     (currentProjectInvoiced / currentProjectGoal) * 100 < 100
@@ -372,7 +389,9 @@ const CustomerRelationship = (props: ICustomerRelationshipProps) => {
               <span
                 style={{
                   color:
-                    (currentProjectInvoiced / currentProjectGoal) * 100 < 80
+                    currentProjectInvoiced === 0
+                      ? "gray"
+                      : (currentProjectInvoiced / currentProjectGoal) * 100 < 80
                       ? theme.colors.red[6]
                       : (currentProjectInvoiced / currentProjectGoal) * 100 >=
                           80 &&

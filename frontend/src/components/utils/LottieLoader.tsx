@@ -2,6 +2,8 @@ import Lottie from "react-lottie";
 import logo from "../../assets/img/logo.png";
 import animationData from "../../assets/lottie/loader-buildings.json";
 import "../../assets/lottie/loader-buildings.css";
+import { useMantineTheme } from "@mantine/styles";
+import { useMediaQuery } from "@mantine/hooks";
 
 interface ILottieLoaderProps {
   visible: boolean;
@@ -17,6 +19,9 @@ const LottieLoader = (props: ILottieLoaderProps) => {
     },
   };
 
+  const theme = useMantineTheme();
+  const smallScreen = useMediaQuery(`(max-width: ${theme.breakpoints.xs})`);
+
   return (
     <div
       className="splashScreen"
@@ -24,8 +29,16 @@ const LottieLoader = (props: ILottieLoaderProps) => {
         display: props.visible ? "flex" : "none",
       }}
     >
-      <Lottie options={defaultOptions} height={400} width={400} />
-      <img id="logoHeader" src={logo} alt="logo" />
+      <Lottie
+        options={defaultOptions}
+        height={smallScreen ? 250 : 500}
+        width={smallScreen ? 250 : 500}
+      />
+      <img
+        className={`logoLoader ${smallScreen ? "logoLoader-mobile" : ""}`}
+        src={logo}
+        alt="logo"
+      />
     </div>
   );
 };

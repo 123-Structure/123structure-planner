@@ -1,6 +1,7 @@
 import {
   Badge,
   Button,
+  Group,
   Menu,
   Modal,
   Radio,
@@ -47,7 +48,7 @@ const Contact = (props: IContactProps) => {
   const [phone2, setPhone2] = useState(props.currentContact.phone2);
 
   const theme = useMantineTheme();
-  const smallScreen = useMediaQuery(`(max-width: ${theme.breakpoints.xs}px)`);
+  const smallScreen = useMediaQuery(`(max-width: ${theme.breakpoints.xs})`);
   const { customers, updateCustomers } = useCustomers();
 
   const sendEmailOrCallPhone = (id: string) => {
@@ -151,8 +152,10 @@ const Contact = (props: IContactProps) => {
       <Modal
         fullScreen={smallScreen}
         centered
-        overlayOpacity={0.55}
-        overlayBlur={3}
+        overlayProps={{
+          opacity: 0.55,
+          blur: 3,
+        }}
         opened={openContact}
         onClose={() => {
           setOpenContact(false);
@@ -199,12 +202,14 @@ const Contact = (props: IContactProps) => {
                 value={gender}
                 onChange={(val) => setGender(val as "M." | "Mme")}
               >
-                <Radio
-                  value="M."
-                  label="
+                <Group>
+                  <Radio
+                    value="M."
+                    label="
                     M."
-                />
-                <Radio value="Mme" label="Mme" />
+                  />
+                  <Radio value="Mme" label="Mme" />
+                </Group>
               </Radio.Group>
               <TextInput
                 label={"Prénom"}
@@ -325,11 +330,15 @@ const Contact = (props: IContactProps) => {
           )}
         </div>
       </Modal>
-
       <Menu withArrow trigger="hover" openDelay={100} closeDelay={400}>
         <Menu.Target>
           <Button
-            className="contactContentMenu"
+            className={`contactContentMenu contact_${props.customer.name.replaceAll(
+              " ",
+              "_"
+            )}_${props.currentContact.firstName}_${
+              props.currentContact.lastName
+            }`}
             color={props.color}
             style={{
               ...props.extraStyle,

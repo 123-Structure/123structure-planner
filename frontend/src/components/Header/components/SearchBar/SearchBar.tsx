@@ -1,0 +1,175 @@
+import {
+  Flex,
+  Input,
+  Kbd,
+  Modal,
+  Tabs,
+  TextInput,
+  useMantineTheme,
+} from "@mantine/core";
+import { getHotkeyHandler, useMediaQuery } from "@mantine/hooks";
+import { IconSearch } from "@tabler/icons";
+import { useEffect, useState } from "react";
+import { IDataFromAPI } from "../../../../data/interfaces/IDataFromAPI";
+import CustomTitle from "../../../utils/CustomTitle";
+import SearchBarItem from "./components/SearchBarItem";
+import ProfilingBro from "../../../../assets/img/Profiling-bro.svg";
+import BricklayerBro from "../../../../assets/img/Bricklayer-bro.svg";
+import "../../../../assets/style/SearchBar.css";
+
+const SearchBar = () => {
+  const [openSearchBarModal, setOpenSearchBarModal] = useState(false);
+  const [activeTab, setActiveTab] = useState<string | null>("quickSearch");
+  const [query, setQuery] = useState("");
+  const [actions, setActions] = useState<IDataFromAPI[]>([]);
+
+  const theme = useMantineTheme();
+  const smallScreen = useMediaQuery(`(max-width: ${theme.breakpoints.xs})`);
+  const mediumScreen = useMediaQuery(`(max-width: ${theme.breakpoints.md})`);
+
+  document.body.addEventListener(
+    "keydown",
+    getHotkeyHandler([
+      ["Ctrl+/", () => setOpenSearchBarModal(!openSearchBarModal)],
+    ])
+  );
+
+  const handleCloseModal = () => {
+    setOpenSearchBarModal(false);
+    setActiveTab("quickSearch");
+    setQuery("");
+    setActions([]);
+  };
+
+  const handleSearchQuery = async (query: string) => {
+    const APIBaseUrl = import.meta.env.VITE_API_URL;
+    const response = await fetch(
+      `${APIBaseUrl}/api/customers/search/${query}`,
+      {
+        method: "GET",
+      }
+    );
+    const data = (await response.json()) as IDataFromAPI[];
+    setActions(data);
+  };
+
+  const handleQueryChange = (query: string) => {
+    setQuery(query);
+    if (query.length >= 3) {
+      handleSearchQuery(query);
+    }
+  };
+
+  useEffect(() => {
+    if (query.length < 3) {
+      setActions([]);
+    }
+  }, [query]);
+
+  return (
+    <>
+      <Input
+        className={`searchBar ${mediumScreen ? "searchBar-medium" : ""} ${
+          smallScreen ? "searchBar-mobile" : ""
+        }`}
+        icon={<IconSearch size="1rem" />}
+        placeholder="Rechercher ..."
+        rightSectionWidth={95}
+        rightSection={
+          smallScreen ? (
+            ""
+          ) : (
+            <Flex align="center">
+              <Kbd mr={5}>Ctrl</Kbd>
+              <span>+</span>
+              <Kbd ml={5}>/</Kbd>
+            </Flex>
+          )
+        }
+        styles={(theme) => ({
+          input: {
+            "&:focus-within": {
+              borderColor: theme.colors.gray[4],
+            },
+          },
+        })}
+        onClick={() => setOpenSearchBarModal(true)}
+      />
+      <Modal
+        fullScreen={smallScreen}
+        overlayProps={{
+          opacity: 0.55,
+          blur: 3,
+        }}
+        opened={openSearchBarModal}
+        onClose={handleCloseModal}
+        padding={"xl"}
+        size="lg"
+        title={
+          <div className="contactModalTitle">
+            <CustomTitle
+              flexStart={true}
+              icon={<IconSearch size={24} />}
+              title={"Recherche"}
+            />
+          </div>
+        }
+      >
+        <Tabs value={activeTab} onTabChange={setActiveTab}>
+          <Tabs.List grow>
+            <Tabs.Tab value="quickSearch">Recherche Rapide</Tabs.Tab>
+            <Tabs.Tab value="advanceSearch">Recherche Avancée</Tabs.Tab>
+          </Tabs.List>
+
+          <Tabs.Panel
+            value="quickSearch"
+            style={{
+              marginTop: "16px",
+            }}
+          >
+            <>
+              <TextInput
+                data-autofocus
+                placeholder="Terme(s) recherché(s)..."
+                icon={<IconSearch size="1.1rem" />}
+                size={"md"}
+                value={query}
+                onChange={(event) =>
+                  handleQueryChange(event.currentTarget.value)
+                }
+                style={{
+                  margin: "16px 0 16px 0",
+                }}
+              />
+              {actions.length === 0 ? (
+                <div id="searchImage">
+                  <img src={ProfilingBro} alt="profiling" />
+                  <p>Aucun résultat...</p>
+                </div>
+              ) : (
+                actions.map((action) =>
+                  action.results.map((result, key) => (
+                    <SearchBarItem key={key} action={action} result={result} />
+                  ))
+                )
+              )}
+            </>
+          </Tabs.Panel>
+          <Tabs.Panel
+            value="advanceSearch"
+            style={{
+              marginTop: "16px",
+            }}
+          >
+            <div id="searchImage">
+              <img src={BricklayerBro} alt="bricklayer" />
+              <p>En cours de construction...</p>
+            </div>
+          </Tabs.Panel>
+        </Tabs>
+      </Modal>
+    </>
+  );
+};
+
+export default SearchBar;

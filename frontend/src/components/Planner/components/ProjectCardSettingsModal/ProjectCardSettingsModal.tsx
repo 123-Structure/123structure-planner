@@ -113,8 +113,10 @@ const ProjectCardSettingsModal = (props: IProjectCardProps) => {
   return (
     <Modal
       centered
-      overlayOpacity={0.55}
-      overlayBlur={3}
+      overlayProps={{
+        opacity: 0.55,
+        blur: 3,
+      }}
       opened={props.showMoreInfo}
       onClose={updateProject}
       size="auto"

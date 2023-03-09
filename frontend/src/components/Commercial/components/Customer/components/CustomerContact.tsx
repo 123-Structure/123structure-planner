@@ -1,6 +1,7 @@
 import {
   ActionIcon,
   Badge,
+  Group,
   Modal,
   Radio,
   Select,
@@ -46,7 +47,7 @@ const CustomerContact = (props: ICustomerContactProps) => {
   const [categoryError, setCategoryError] = useState("");
 
   const theme = useMantineTheme();
-  const smallScreen = useMediaQuery(`(max-width: ${theme.breakpoints.xs}px)`);
+  const smallScreen = useMediaQuery(`(max-width: ${theme.breakpoints.xs})`);
 
   const { customers, updateCustomers } = useCustomers();
 
@@ -216,8 +217,10 @@ const CustomerContact = (props: ICustomerContactProps) => {
       <Modal
         fullScreen={smallScreen}
         centered
-        overlayOpacity={0.55}
-        overlayBlur={3}
+        overlayProps={{
+          opacity: 0.55,
+          blur: 3,
+        }}
         opened={openNewContact}
         onClose={handleCancelClick}
         padding={"xl"}
@@ -245,13 +248,16 @@ const CustomerContact = (props: ICustomerContactProps) => {
             onChange={(val) => setGender(val as "M." | "Mme")}
             error={genderError}
           >
-            <Radio
-              value="M."
-              label="
+            <Group>
+              <Radio
+                value="M."
+                label="
                     M."
-            />
-            <Radio value="Mme" label="Mme" />
+              />
+              <Radio value="Mme" label="Mme" />
+            </Group>
           </Radio.Group>
+
           <TextInput
             withAsterisk
             label={"Prénom"}

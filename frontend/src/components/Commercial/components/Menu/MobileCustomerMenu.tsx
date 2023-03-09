@@ -16,7 +16,7 @@ const MobileCustomerMenu = () => {
 
   const { customers } = useCustomers();
   const theme = useMantineTheme();
-  const smallScreen = useMediaQuery(`(max-width: ${theme.breakpoints.lg}px)`);
+  const smallScreen = useMediaQuery(`(max-width: ${theme.breakpoints.lg})`);
 
   const groupList = [] as (string | null)[];
 

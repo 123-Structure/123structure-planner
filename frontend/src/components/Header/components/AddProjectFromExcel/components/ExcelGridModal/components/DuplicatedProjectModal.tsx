@@ -45,8 +45,10 @@ const DuplicatedProjectModal = (props: IDuplicatedProjectModalProps) => {
   return (
     <Modal
       centered
-      overlayOpacity={0.55}
-      overlayBlur={3}
+      overlayProps={{
+        opacity: 0.55,
+        blur: 3,
+      }}
       opened={props.showDuplicatedProjectModal}
       onClose={() => props.setShowDuplicatedProjectModal(false)}
       padding={"xl"}

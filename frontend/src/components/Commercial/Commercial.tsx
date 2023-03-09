@@ -7,15 +7,16 @@ import { useMediaQuery } from "@mantine/hooks";
 import MobileCustomerMenu from "./components/Menu/MobileCustomerMenu";
 import NewCustomer from "./components/Menu/NewCustomer";
 import { useCustomers } from "../../context/CustomerContext";
-import LottieLoader from "../utils/LottieLoader";
+import { changeFavicon, changeTabTitle } from "../../utils/tabsUtils";
+import { IconUser } from "@tabler/icons";
 
 const Commercial = () => {
-  const [activeTab, setActiveTab] = useState<string | null>("");
+  const [activeTab, setActiveTab] = useState<string | null>("g.barais");
 
   const ressources = useRessources();
-  const { customers, updateCustomers } = useCustomers();
+  const { updateCustomers } = useCustomers();
   const theme = useMantineTheme();
-  const smallScreen = useMediaQuery(`(max-width: ${theme.breakpoints.lg}px)`);
+  const smallScreen = useMediaQuery(`(max-width: ${theme.breakpoints.lg})`);
 
   useEffect(() => {
     const fetchCustomers = async () => {
@@ -30,14 +31,12 @@ const Commercial = () => {
       }
     };
     fetchCustomers();
+    changeFavicon("👷");
+    changeTabTitle("123 Structure - Client");
   }, []);
 
   return (
     <>
-      <LottieLoader
-        visible={customers.customersList.length === 0}
-        // visible
-      />
       <Tabs
         color="yellow"
         variant="pills"
@@ -56,6 +55,7 @@ const Commercial = () => {
                 style={{
                   color: activeTab === ressource._id ? "black" : "",
                 }}
+                icon={<IconUser size="1rem" />}
               >{`${ressource.firstName} ${ressource.lastName}`}</Tabs.Tab>
             ))}
           <NewCustomer />

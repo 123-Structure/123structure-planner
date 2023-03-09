@@ -1,11 +1,6 @@
 import { ActionIcon, Card } from "@mantine/core";
 import { showNotification } from "@mantine/notifications";
-import {
-  IconAddressBook,
-  IconMail,
-  IconMap2,
-  IconPhone,
-} from "@tabler/icons";
+import { IconAddressBook, IconMail, IconMap2, IconPhone } from "@tabler/icons";
 import { ChangeEvent, useState } from "react";
 import { ICustomer } from "../../../../../data/interfaces/ICustomer";
 import {
@@ -18,7 +13,7 @@ import CustomTitle from "../../../../utils/CustomTitle";
 import EditModeToggle from "../../../../utils/EditModeToggle";
 import CustomerItem from "../../utils/CustomerItem";
 import CustomerContact from "./CustomerContact";
-import House from "../../../../../assets/img/house.png";
+import CabinBro from "../../../../../assets/img/Cabin-bro.svg";
 import { useCustomers } from "../../../../../context/CustomerContext";
 
 interface ICustomerIdentityProps {
@@ -188,7 +183,7 @@ const CustomerIdentity = (props: ICustomerIdentityProps) => {
         >
           <img
             className="customerLogo"
-            src={logo === "" ? House : logo}
+            src={logo === "" ? CabinBro : logo}
             alt={`Logo ${props.customer.name}`}
           />
           <input
