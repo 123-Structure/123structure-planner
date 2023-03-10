@@ -1,41 +1,55 @@
 import { Tabs, useMantineTheme } from "@mantine/core";
+import { useState } from "react";
+import { useCustomers } from "../../../../context/CustomerContext";
 import {
   useCustomerRoutes,
   useUpdateCustomerRoutes,
 } from "../../../../context/CustomerRoutes";
+import { CustomerCategoryList } from "../../../../data/constants/CustomerCategoryList";
+import { ICustomer } from "../../../../data/interfaces/ICustomer";
 import CustomerList from "./CustomerList";
 
 const CustomerCategories = () => {
+  const { updateCustomers } = useCustomers();
   const customerRoutes = useCustomerRoutes();
   const setCustomerRoutes = useUpdateCustomerRoutes();
 
   const theme = useMantineTheme();
 
-  const categories = [
-    "Constructeur",
-    "Négoce",
-    "Maitre d'Oeuvre",
-    "Maçon",
-    "Charpentier",
-  ];
+  const [customers, setCustomers] = useState<ICustomer[]>([]);
 
-  const getDisplay = () => {
-    const element = document.querySelector(
-      ".customerCategories"
-    ) as HTMLDivElement;
-    if (element !== null) {
-      console.log(element.style.display);
+  // const getDisplay = () => {
+  //   const element = document.querySelector(
+  //     ".customerCategories"
+  //   ) as HTMLDivElement;
+  //   if (element !== null) {
+  //     console.log(element.style.display);
+  //   }
+  // };
+
+  const fetchCustomers = async (category: string) => {
+    const APIBaseUrl = import.meta.env.VITE_API_URL;
+    const response = await fetch(
+      `${APIBaseUrl}/api/customers/category/${category}`,
+      {
+        method: "GET",
+      }
+    );
+    const data = (await response.json()) as ICustomer[];
+
+    if (response.ok) {
+      updateCustomers({ type: "SET_CUSTOMER", payload: data });
+      setCustomers(data);
     }
   };
-
-  getDisplay();
 
   return (
     <>
       <Tabs
         orientation="vertical"
         value={customerRoutes.category}
-        onTabChange={(val:string) => {
+        onTabChange={(val: string) => {
+          fetchCustomers(val);
           setCustomerRoutes({
             ...customerRoutes,
             category: val,
@@ -43,7 +57,7 @@ const CustomerCategories = () => {
         }}
       >
         <Tabs.List>
-          {categories.map((category) => (
+          {CustomerCategoryList.map((category) => (
             <Tabs.Tab
               key={category}
               style={{
@@ -60,9 +74,9 @@ const CustomerCategories = () => {
           ))}
         </Tabs.List>
 
-        {categories.map((category) => (
+        {CustomerCategoryList.map((category) => (
           <Tabs.Panel key={category} value={category}>
-            <CustomerList category={category} />
+            <CustomerList category={category} customers={customers} />
           </Tabs.Panel>
         ))}
       </Tabs>

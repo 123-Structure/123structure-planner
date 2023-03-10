@@ -27,7 +27,7 @@ const Header = () => {
 
   return (
     <>
-      <LottieLoader visible={customers.customersList.length === 0} />
+      {/* <LottieLoader visible={customers.customersList.length === 0} /> */}
       <div className={`header ${smallScreen ? "header-mobile" : ""}`}>
         <div className={`menu ${smallScreen ? "menu-mobile" : ""}`}>
           {!smallScreen ? (

@@ -153,10 +153,10 @@ const NewCustomer = () => {
         contact: [],
         priceList: priceList,
         commercial: ressources
-          .filter((ressource) => ressource.role.includes("Commercial"))
           .filter((ressource) =>
             commercial.includes(`${ressource.firstName} ${ressource.lastName}`)
-          ),
+          )
+          .map((commercial) => commercial._id),
         appointment: [],
         projectGoal: [
           {
@@ -321,7 +321,7 @@ const NewCustomer = () => {
               clearable
               label="Commercial référent"
               data={ressources
-                .filter((ressource) => ressource.role.includes("Commercial"))
+                .filter((commercial) => commercial.role.includes("Commercial"))
                 .map(
                   (ressource) => `${ressource.firstName} ${ressource.lastName}`
                 )}

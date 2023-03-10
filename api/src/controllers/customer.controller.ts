@@ -10,6 +10,16 @@ export const getCustomers = async (req: Request, res: Response) => {
   res.status(200).json(customers);
 };
 
+// GET all customers by category
+export const getCustomerByCategory = async (req: Request, res: Response) => {
+  const { category } = req.params;
+
+  const customers = await Customer.find({
+    category: category,
+  }).sort({ createdAt: -1 });
+  res.status(200).json(customers);
+};
+
 // GET a single customer
 export const getCustomer = async (req: Request, res: Response) => {
   const { id } = req.params;

@@ -3,6 +3,7 @@ import {
   createCustomer,
   deleteCustomer,
   getCustomer,
+  getCustomerByCategory,
   getCustomers,
   searchCustomer,
   updateCustomer,
@@ -12,6 +13,9 @@ const customersRouter = express.Router();
 
 // GET all customers
 customersRouter.get("/", getCustomers);
+
+// GET all customers by category
+customersRouter.get("/category/:category", getCustomerByCategory);
 
 // GET a single customer
 customersRouter.get("/:id", getCustomer);

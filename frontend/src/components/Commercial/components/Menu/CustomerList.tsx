@@ -4,12 +4,14 @@ import {
   useCustomerRoutes,
   useUpdateCustomerRoutes,
 } from "../../../../context/CustomerRoutes";
+import { ICustomer } from "../../../../data/interfaces/ICustomer";
 import { changeFavicon, changeTabTitle } from "../../../../utils/tabsUtils";
 import Customer from "../Customer/Customer";
 import AgencyList from "./AgencyList";
 
 interface ICustomerListProps {
   category: string;
+  customers: ICustomer[];
 }
 
 const CustomerList = (props: ICustomerListProps) => {
@@ -32,7 +34,7 @@ const CustomerList = (props: ICustomerListProps) => {
       }}
     >
       <Tabs.List>
-        {customers.customersList
+        {props.customers
           .filter((customer) => customer.category === props.category)
           .reduce((acc, customer) => {
             const value =
@@ -60,7 +62,7 @@ const CustomerList = (props: ICustomerListProps) => {
           ))}
       </Tabs.List>
 
-      {customers.customersList
+      {props.customers
         .filter(
           (customer) =>
             customer.category === props.category && customer.group === ""
@@ -77,13 +79,13 @@ const CustomerList = (props: ICustomerListProps) => {
           <Tabs.Panel key={customer} value={customer}>
             <Customer
               customer={
-                customers.customersList.filter((c) => c.name === customer)[0]
+                props.customers.filter((c) => c.name === customer)[0]
               }
             />
           </Tabs.Panel>
         ))}
 
-      {customers.customersList
+      {props.customers
         .filter(
           (customer) =>
             customer.category === props.category && customer.group !== ""
@@ -99,7 +101,7 @@ const CustomerList = (props: ICustomerListProps) => {
         .map((customer) => (
           <Tabs.Panel key={customer} value={customer}>
             <AgencyList
-              customers={customers.customersList.filter(
+              customers={props.customers.filter(
                 (c) => c.group === customer
               )}
             />

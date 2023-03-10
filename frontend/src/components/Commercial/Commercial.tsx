@@ -1,39 +1,19 @@
-import { LoadingOverlay, Tabs, useMantineTheme } from "@mantine/core";
-import { useEffect, useState } from "react";
+import { Tabs, useMantineTheme } from "@mantine/core";
+import { useState } from "react";
 import { useRessources } from "../../context/RessourceContext";
 import CustomerCategories from "./components/Menu/CustomerCategories";
 import "../../assets/style/Commercial.css";
 import { useMediaQuery } from "@mantine/hooks";
 import MobileCustomerMenu from "./components/Menu/MobileCustomerMenu";
 import NewCustomer from "./components/Menu/NewCustomer";
-import { useCustomers } from "../../context/CustomerContext";
-import { changeFavicon, changeTabTitle } from "../../utils/tabsUtils";
 import { IconUser } from "@tabler/icons";
 
 const Commercial = () => {
   const [activeTab, setActiveTab] = useState<string | null>("g.barais");
 
   const ressources = useRessources();
-  const { updateCustomers } = useCustomers();
   const theme = useMantineTheme();
   const smallScreen = useMediaQuery(`(max-width: ${theme.breakpoints.lg})`);
-
-  useEffect(() => {
-    const fetchCustomers = async () => {
-      const APIBaseUrl = import.meta.env.VITE_API_URL;
-      const response = await fetch(`${APIBaseUrl}/api/customers`, {
-        method: "GET",
-      });
-      const data = await response.json();
-
-      if (response.ok) {
-        updateCustomers({ type: "SET_CUSTOMER", payload: data });
-      }
-    };
-    fetchCustomers();
-    changeFavicon("👷");
-    changeTabTitle("123 Structure - Client");
-  }, []);
 
   return (
     <>
