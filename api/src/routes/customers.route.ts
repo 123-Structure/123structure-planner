@@ -4,6 +4,7 @@ import {
   deleteCustomer,
   getCustomer,
   getCustomerByCategory,
+  getCustomerByGroup,
   getCustomers,
   searchCustomer,
   updateCustomer,
@@ -16,6 +17,9 @@ customersRouter.get("/", getCustomers);
 
 // GET all customers by category
 customersRouter.get("/category/:category", getCustomerByCategory);
+
+// GET all customers by category
+customersRouter.get("/group/:category/:group", getCustomerByGroup);
 
 // GET a single customer
 customersRouter.get("/:id", getCustomer);

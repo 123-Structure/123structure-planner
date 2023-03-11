@@ -10,7 +10,10 @@ import {
   IconUsers,
 } from "@tabler/icons";
 import React, { useState } from "react";
-import { useCustomers } from "../../../../../context/CustomerContext";
+import {
+  useCustomer,
+  useUpdateCustomer,
+} from "../../../../../context/CustomerContext";
 import { useRessources } from "../../../../../context/RessourceContext";
 import { ICustomer } from "../../../../../data/interfaces/ICustomer";
 import CustomButton from "../../../../utils/CustomButton";
@@ -74,7 +77,9 @@ const CustomerRelationship = (props: ICustomerRelationshipProps) => {
   const previousYearProjectInvoiced = 0;
 
   const ressources = useRessources();
-  const { customers, updateCustomers } = useCustomers();
+
+  const customer = useCustomer();
+  const setCustomer = useUpdateCustomer();
 
   const [commercial, setCommercial] = useState(
     ressources
@@ -103,71 +108,61 @@ const CustomerRelationship = (props: ICustomerRelationshipProps) => {
   };
 
   const handleValideClick = async () => {
-    const changedCustomer = customers.customersList.filter(
-      (customer) =>
-        customer.category === props.customer.category &&
-        customer.group === props.customer.group &&
-        customer.name === props.customer.name
-    )[0];
+    if (customer !== undefined) {
+      const changedCustomer = customer;
 
-    changedCustomer.commercial = ressources
-      .filter((ressource) =>
-        commercial.includes(`${ressource.firstName} ${ressource.lastName}`)
-      )
-      .map((commercial) => commercial._id);
+      changedCustomer.commercial = ressources
+        .filter((ressource) =>
+          commercial.includes(`${ressource.firstName} ${ressource.lastName}`)
+        )
+        .map((commercial) => commercial._id);
 
-    changedCustomer.projectGoal.filter(
-      (projectGoal) => projectGoal.year === new Date().getFullYear()
-    )[0].goal = currentProjectGoal;
+      changedCustomer.projectGoal.filter(
+        (projectGoal) => projectGoal.year === new Date().getFullYear()
+      )[0].goal = currentProjectGoal;
 
-    changedCustomer.projectGoal.filter(
-      (projectGoal) => projectGoal.year === new Date().getFullYear() - 1
-    )[0].goal = previousYearGoal;
+      changedCustomer.projectGoal.filter(
+        (projectGoal) => projectGoal.year === new Date().getFullYear() - 1
+      )[0].goal = previousYearGoal;
 
-    changedCustomer.priceList = priceList;
+      changedCustomer.priceList = priceList;
 
-    const response = await fetch(
-      `${import.meta.env.VITE_API_URL}/api/customers/${
-        changedCustomer._id as string
-      }`,
-      {
-        method: "PATCH",
-        body: JSON.stringify({
-          commercial: changedCustomer.commercial,
-          projectGoal: changedCustomer.projectGoal,
-          priceList: priceList,
-        }),
-        headers: {
-          "Content-Type": "application/json",
-        },
+      const response = await fetch(
+        `${import.meta.env.VITE_API_URL}/api/customers/${
+          changedCustomer._id as string
+        }`,
+        {
+          method: "PATCH",
+          body: JSON.stringify({
+            commercial: changedCustomer.commercial,
+            projectGoal: changedCustomer.projectGoal,
+            priceList: priceList,
+          }),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      const data = await response.json();
+
+      if (!response.ok) {
+        showNotification({
+          title: `⛔ Erreur serveur`,
+          message: data.error,
+          color: "red",
+        });
       }
-    );
-    const data = await response.json();
 
-    if (!response.ok) {
+      setCustomer(changedCustomer);
+      setPriceListFile(null);
+
       showNotification({
-        title: `⛔ Erreur serveur`,
-        message: data.error,
-        color: "red",
+        title: `✅ Fiche client sauvegardée`,
+        message: `La fiche client ${props.customer.name} est mise à jour`,
+        color: "green",
       });
+      setEditCustomerRelationship(false);
     }
-
-    updateCustomers({
-      type: "UPDATE_CUSTOMER",
-      payload: {
-        id: changedCustomer._id as string,
-        customer: changedCustomer,
-      },
-    });
-
-    setPriceListFile(null);
-
-    showNotification({
-      title: `✅ Fiche client sauvegardée`,
-      message: `La fiche client ${props.customer.name} est mise à jour`,
-      color: "green",
-    });
-    setEditCustomerRelationship(false);
   };
 
   const handleCancelClick = () => {

@@ -34,7 +34,7 @@ import { ICustomer } from "../../../../data/interfaces/ICustomer";
 import { TCustomerCategory } from "../../../../data/types/TCustomerCategory";
 import { TPaymentType } from "../../../../data/types/TPaymentType";
 import { HandleUploadFile } from "../../../utils/HandleUploadFile";
-import { useCustomers } from "../../../../context/CustomerContext";
+import { IDataAPICategory } from "../../../../data/interfaces/IDataAPICategory";
 
 const NewCustomer = () => {
   const [openNewCustomer, setOpenNewCustomer] = useState(false);
@@ -65,19 +65,9 @@ const NewCustomer = () => {
   const theme = useMantineTheme();
   const smallScreen = useMediaQuery(`(max-width: ${theme.breakpoints.xs})`);
   const ressources = useRessources();
-  const { customers, updateCustomers } = useCustomers();
 
-  const [groupList, setGroupList] = useState(
-    customers.customersList
-      .filter((customer) => customer.category === customerCategory)
-      .reduce((acc, customer) => {
-        const item = customer.group;
-        if (!acc.includes(item) && item !== "") {
-          acc.push(item);
-        }
-        return acc;
-      }, [] as (string | SelectItem)[])
-  );
+  const [groupList, setGroupList] = useState<(string | SelectItem)[]>([]);
+
   const [group, setGroup] = useState("");
 
   const getCategories = () => {
@@ -106,17 +96,7 @@ const NewCustomer = () => {
     setPriceListFile(null);
     setPriceList("");
     setPdfViewerURL("");
-    setGroupList(
-      customers.customersList
-        .filter((customer) => customer.category === customerCategory)
-        .reduce((acc, customer) => {
-          const item = customer.group;
-          if (!acc.includes(item) && item !== "") {
-            acc.push(item);
-          }
-          return acc;
-        }, [] as (string | SelectItem)[])
-    );
+    setGroupList([]);
     setGroup("");
 
     setErrorCommercial("");
@@ -195,7 +175,7 @@ const NewCustomer = () => {
           color: "red",
         });
       }
-      updateCustomers({ type: "ADD_CUSTOMER", payload: data });
+
       showNotification({
         title: `✅ Nouvelle fiche client sauvegardé`,
         message: `${customerName} ajouté à l'annuaire de client`,
@@ -261,18 +241,31 @@ const NewCustomer = () => {
     }
   }, [priceList]);
 
-  useEffect(() => {
-    setGroupList(
-      customers.customersList
-        .filter((customer) => customer.category === customerCategory)
-        .reduce((acc, customer) => {
-          const item = customer.group;
-          if (!acc.includes(item) && item !== "") {
-            acc.push(item);
-          }
-          return acc;
-        }, [] as (string | SelectItem)[])
+  const fetchCustomers = async (category: string) => {
+    const APIBaseUrl = import.meta.env.VITE_API_URL;
+    const response = await fetch(
+      `${APIBaseUrl}/api/customers/category/${category}`,
+      {
+        method: "GET",
+      }
     );
+    const data = (await response.json()) as IDataAPICategory[];
+
+    setGroupList(
+      data
+        .map((customer) => customer.group)
+        .filter((group) => group !== "")
+        .reduce((acc, curr) => {
+          if (!acc.includes(curr)) acc.push(curr);
+          return acc;
+        }, [] as string[])
+    );
+  };
+
+  useEffect(() => {
+    if (customerCategory !== "") {
+      fetchCustomers(customerCategory);
+    }
   }, [customerCategory]);
 
   return (

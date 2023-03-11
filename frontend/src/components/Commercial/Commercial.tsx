@@ -9,7 +9,7 @@ import NewCustomer from "./components/Menu/NewCustomer";
 import { IconUser } from "@tabler/icons";
 
 const Commercial = () => {
-  const [activeTab, setActiveTab] = useState<string | null>("g.barais");
+  const [activeTab, setActiveTab] = useState<string | null>("");
 
   const ressources = useRessources();
   const theme = useMantineTheme();
@@ -57,7 +57,7 @@ const Commercial = () => {
               <CustomerCategories />
             </Tabs.Panel>
           ))}
-        <MobileCustomerMenu />
+        {/* <MobileCustomerMenu /> */}
       </Tabs>
     </>
   );

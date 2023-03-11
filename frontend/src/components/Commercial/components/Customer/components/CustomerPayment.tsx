@@ -8,8 +8,11 @@ import {
   IconBusinessplan,
   IconCalculator,
 } from "@tabler/icons";
-import React, { useState } from "react";
-import { useCustomers } from "../../../../../context/CustomerContext";
+import { useState } from "react";
+import {
+  useCustomer,
+  useUpdateCustomer,
+} from "../../../../../context/CustomerContext";
 import { ICustomer } from "../../../../../data/interfaces/ICustomer";
 import { TPaymentType } from "../../../../../data/types/TPaymentType";
 import CustomTitle from "../../../../utils/CustomTitle";
@@ -38,7 +41,8 @@ const CustomerPayment = (props: ICustomerPaymentProps) => {
   const previousYearProjectInvoiced: number = 0;
   const previousYearInvoiceAmount: number = 0;
 
-  const { customers, updateCustomers } = useCustomers();
+  const customer = useCustomer();
+  const setCustomer = useUpdateCustomer();
 
   const theme = useMantineTheme();
 
@@ -68,57 +72,48 @@ const CustomerPayment = (props: ICustomerPaymentProps) => {
   };
 
   const handleValideClick = async () => {
-    const changedCustomer = customers.customersList.filter(
-      (customer) =>
-        customer.category === props.customer.category &&
-        customer.group === props.customer.group &&
-        customer.name === props.customer.name
-    )[0];
+    if (customer !== undefined) {
+      const changedCustomer = customer;
 
-    changedCustomer.paymentDeadline = paymentDeadline;
-    changedCustomer.paymentType = paymentType;
-    changedCustomer.paymentStatus = paymentStatus;
+      changedCustomer.paymentDeadline = paymentDeadline;
+      changedCustomer.paymentType = paymentType;
+      changedCustomer.paymentStatus = paymentStatus;
 
-    const response = await fetch(
-      `${import.meta.env.VITE_API_URL}/api/customers/${
-        changedCustomer._id as string
-      }`,
-      {
-        method: "PATCH",
-        body: JSON.stringify({
-          paymentDeadline: paymentDeadline,
-          paymentType: paymentType,
-          paymentStatus: paymentStatus,
-        }),
-        headers: {
-          "Content-Type": "application/json",
-        },
+      const response = await fetch(
+        `${import.meta.env.VITE_API_URL}/api/customers/${
+          changedCustomer._id as string
+        }`,
+        {
+          method: "PATCH",
+          body: JSON.stringify({
+            paymentDeadline: paymentDeadline,
+            paymentType: paymentType,
+            paymentStatus: paymentStatus,
+          }),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      const data = await response.json();
+
+      if (!response.ok) {
+        showNotification({
+          title: `⛔ Erreur serveur`,
+          message: data.error,
+          color: "red",
+        });
       }
-    );
-    const data = await response.json();
 
-    if (!response.ok) {
+      setCustomer(changedCustomer);
+
       showNotification({
-        title: `⛔ Erreur serveur`,
-        message: data.error,
-        color: "red",
+        title: `✅ Fiche client sauvegardée`,
+        message: `La fiche client ${props.customer.name} est mise à jour`,
+        color: "green",
       });
+      setEditCustomerPayment(false);
     }
-
-    updateCustomers({
-      type: "UPDATE_CUSTOMER",
-      payload: {
-        id: changedCustomer._id as string,
-        customer: changedCustomer,
-      },
-    });
-
-    showNotification({
-      title: `✅ Fiche client sauvegardée`,
-      message: `La fiche client ${props.customer.name} est mise à jour`,
-      color: "green",
-    });
-    setEditCustomerPayment(false);
   };
 
   const handleCancelClick = () => {

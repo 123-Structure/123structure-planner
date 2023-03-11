@@ -1,31 +1,21 @@
 import { Tabs, useMantineTheme } from "@mantine/core";
 import { useState } from "react";
-import { useCustomers } from "../../../../context/CustomerContext";
+import { useCustomer } from "../../../../context/CustomerContext";
 import {
   useCustomerRoutes,
   useUpdateCustomerRoutes,
 } from "../../../../context/CustomerRoutes";
 import { CustomerCategoryList } from "../../../../data/constants/CustomerCategoryList";
-import { ICustomer } from "../../../../data/interfaces/ICustomer";
+import { IDataAPICategory } from "../../../../data/interfaces/IDataAPICategory";
 import CustomerList from "./CustomerList";
 
 const CustomerCategories = () => {
-  const { updateCustomers } = useCustomers();
+  const [customersList, setCustomersList] = useState<IDataAPICategory[]>([]);
+
   const customerRoutes = useCustomerRoutes();
   const setCustomerRoutes = useUpdateCustomerRoutes();
 
   const theme = useMantineTheme();
-
-  const [customers, setCustomers] = useState<ICustomer[]>([]);
-
-  // const getDisplay = () => {
-  //   const element = document.querySelector(
-  //     ".customerCategories"
-  //   ) as HTMLDivElement;
-  //   if (element !== null) {
-  //     console.log(element.style.display);
-  //   }
-  // };
 
   const fetchCustomers = async (category: string) => {
     const APIBaseUrl = import.meta.env.VITE_API_URL;
@@ -35,12 +25,8 @@ const CustomerCategories = () => {
         method: "GET",
       }
     );
-    const data = (await response.json()) as ICustomer[];
-
-    if (response.ok) {
-      updateCustomers({ type: "SET_CUSTOMER", payload: data });
-      setCustomers(data);
-    }
+    const data = (await response.json()) as IDataAPICategory[];
+    setCustomersList(data);
   };
 
   return (
@@ -76,7 +62,7 @@ const CustomerCategories = () => {
 
         {CustomerCategoryList.map((category) => (
           <Tabs.Panel key={category} value={category}>
-            <CustomerList category={category} customers={customers} />
+            <CustomerList customersList={customersList} />
           </Tabs.Panel>
         ))}
       </Tabs>
