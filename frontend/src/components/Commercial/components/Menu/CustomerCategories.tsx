@@ -1,5 +1,5 @@
 import { Tabs, useMantineTheme } from "@mantine/core";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useCustomer } from "../../../../context/CustomerContext";
 import {
   useCustomerRoutes,
@@ -7,13 +7,10 @@ import {
 } from "../../../../context/CustomerRoutes";
 import { CustomerCategoryList } from "../../../../data/constants/CustomerCategoryList";
 import { IDataAPICategory } from "../../../../data/interfaces/IDataAPICategory";
+import { changeFavicon, changeTabTitle } from "../../../../utils/tabsUtils";
 import CustomerList from "./CustomerList";
 
-interface ICustomerCategoriesProps {
-  commercial: string | null;
-}
-
-const CustomerCategories = (props: ICustomerCategoriesProps) => {
+const CustomerCategories = () => {
   const [customersList, setCustomersList] = useState<IDataAPICategory[]>([]);
 
   const customerRoutes = useCustomerRoutes();
@@ -36,13 +33,20 @@ const CustomerCategories = (props: ICustomerCategoriesProps) => {
     setCustomersList(data);
   };
 
+  useEffect(() => {
+    if (customerRoutes.category !== "") {
+      changeFavicon("👷");
+      changeTabTitle(`123 Structure - ${customerRoutes.category}`);
+    }
+  }, [customerRoutes.category]);
+
   return (
     <>
       <Tabs
         orientation="vertical"
         value={customerRoutes.category}
         onTabChange={(val: string) => {
-          fetchCustomersList(props.commercial, val);
+          fetchCustomersList(customerRoutes.commercial, val);
           setCustomerRoutes({
             ...customerRoutes,
             category: val,
@@ -53,6 +57,7 @@ const CustomerCategories = (props: ICustomerCategoriesProps) => {
           {CustomerCategoryList.map((category) => (
             <Tabs.Tab
               key={category}
+              className={`${category}_${customerRoutes.commercial}`}
               style={{
                 backgroundColor:
                   customerRoutes.category === category

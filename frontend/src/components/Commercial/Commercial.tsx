@@ -1,5 +1,5 @@
 import { Tabs, useMantineTheme } from "@mantine/core";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRessources } from "../../context/RessourceContext";
 import CustomerCategories from "./components/Menu/CustomerCategories";
 import "../../assets/style/Commercial.css";
@@ -7,12 +7,17 @@ import { useMediaQuery } from "@mantine/hooks";
 import MobileCustomerMenu from "./components/Menu/MobileCustomerMenu";
 import NewCustomer from "./components/Menu/NewCustomer";
 import { IconUser } from "@tabler/icons";
-import { useUpdateCustomerRoutes } from "../../context/CustomerRoutes";
+import {
+  useCustomerRoutes,
+  useUpdateCustomerRoutes,
+} from "../../context/CustomerRoutes";
+import { changeFavicon, changeTabTitle } from "../../utils/tabsUtils";
 
 const Commercial = () => {
   const [activeTab, setActiveTab] = useState<string | null>("");
 
   const ressources = useRessources();
+  const customerRoutes = useCustomerRoutes();
   const setCustomerRoutes = useUpdateCustomerRoutes();
   const theme = useMantineTheme();
   const smallScreen = useMediaQuery(`(max-width: ${theme.breakpoints.lg})`);
@@ -20,12 +25,27 @@ const Commercial = () => {
   const handleCommercialChange = (commercial: string) => {
     setActiveTab(commercial);
     setCustomerRoutes({
+      commercial: commercial as string,
       category: "",
       customer: "",
       agency: "",
       appointment: "",
     });
   };
+
+  console.log(customerRoutes);
+
+  useEffect(() => {
+    if (activeTab !== "") {
+      const commercial = ressources.filter(
+        (ressource) => ressource._id === activeTab
+      )[0];
+      changeFavicon("👷");
+      changeTabTitle(
+        `123 Structure - ${commercial.firstName} ${commercial.lastName}`
+      );
+    }
+  }, [activeTab]);
 
   return (
     <>
@@ -41,7 +61,7 @@ const Commercial = () => {
             .filter((ressource) => ressource.role.includes("Commercial"))
             .map((ressource) => (
               <Tabs.Tab
-                className="commercialTab"
+                className={`commercialTab ${ressource._id}_Tab`}
                 key={ressource._id}
                 value={ressource._id}
                 style={{
@@ -66,14 +86,10 @@ const Commercial = () => {
                   : "",
               }}
             >
-              <CustomerCategories commercial={activeTab} />
+              <CustomerCategories />
             </Tabs.Panel>
           ))}
-        {activeTab !== "" ? (
-          <MobileCustomerMenu commercial={activeTab} />
-        ) : (
-          <></>
-        )}
+        {activeTab !== "" ? <MobileCustomerMenu /> : <></>}
       </Tabs>
     </>
   );

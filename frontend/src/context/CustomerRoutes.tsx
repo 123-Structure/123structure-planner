@@ -7,6 +7,7 @@ import {
 } from "react";
 
 interface ICustomerRoutes {
+  commercial: string;
   category: string;
   customer: string;
   agency: string;
@@ -14,6 +15,7 @@ interface ICustomerRoutes {
 }
 
 const defaultCustomerRoutes = {
+  commercial: "",
   category: "",
   customer: "",
   agency: "",

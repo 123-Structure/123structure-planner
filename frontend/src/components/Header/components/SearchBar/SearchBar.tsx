@@ -16,6 +16,7 @@ import SearchBarItem from "./components/SearchBarItem";
 import ProfilingBro from "../../../../assets/img/Profiling-bro.svg";
 import BricklayerBro from "../../../../assets/img/Bricklayer-bro.svg";
 import "../../../../assets/style/SearchBar.css";
+import { changeFavicon, changeTabTitle } from "../../../../utils/tabsUtils";
 
 const SearchBar = () => {
   const [openSearchBarModal, setOpenSearchBarModal] = useState(false);
@@ -30,7 +31,19 @@ const SearchBar = () => {
   document.body.addEventListener(
     "keydown",
     getHotkeyHandler([
-      ["Ctrl+/", () => setOpenSearchBarModal(!openSearchBarModal)],
+      [
+        "Ctrl+/",
+        () => {
+          setOpenSearchBarModal(!openSearchBarModal);
+          if (!openSearchBarModal === true) {
+            changeFavicon("🔎");
+            changeTabTitle(`123 Structure - Recherche`);
+          } else {
+            changeFavicon("🏡");
+            changeTabTitle(`123 Structure`);
+          }
+        },
+      ],
     ])
   );
 
@@ -93,7 +106,11 @@ const SearchBar = () => {
             },
           },
         })}
-        onClick={() => setOpenSearchBarModal(true)}
+        onClick={() => {
+          setOpenSearchBarModal(true);
+          changeFavicon("🔎");
+          changeTabTitle(`123 Structure - Recherche`);
+        }}
       />
       <Modal
         fullScreen={smallScreen}
@@ -149,7 +166,12 @@ const SearchBar = () => {
               ) : (
                 actions.map((action) =>
                   action.results.map((result, key) => (
-                    <SearchBarItem key={key} action={action} result={result} />
+                    <SearchBarItem
+                      key={key}
+                      action={action}
+                      result={result}
+                      setOpenSearchBarModal={setOpenSearchBarModal}
+                    />
                   ))
                 )
               )}

@@ -1,6 +1,8 @@
 import {
   IconAddressBook,
+  IconAffiliate,
   IconCalendarEvent,
+  IconHome,
   IconMail,
   IconMap2,
   IconPhone,
@@ -9,8 +11,16 @@ import {
 } from "@tabler/icons";
 
 export const handleIcon = (type: string) => {
-  if (type === "category" || type === "group" || type === "name") {
-    return (<IconAddressBook size={"1.8rem"} />);
+  if (type === "category") {
+    return <IconAddressBook size={"1.8rem"} />;
+  }
+
+  if (type === "group") {
+    return <IconAffiliate size={"1.8rem"} />;
+  }
+
+  if (type === "name") {
+    return <IconHome size={"1.8rem"} />;
   }
 
   if (type.includes("location")) {

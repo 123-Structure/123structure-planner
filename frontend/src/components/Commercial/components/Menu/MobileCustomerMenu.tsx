@@ -14,11 +14,7 @@ import { ICustomer } from "../../../../data/interfaces/ICustomer";
 import { IDataAPICategory } from "../../../../data/interfaces/IDataAPICategory";
 import Customer from "../Customer/Customer";
 
-interface IMobileCustomerMenuProps {
-  commercial: string | null;
-}
-
-const MobileCustomerMenu = (props: IMobileCustomerMenuProps) => {
+const MobileCustomerMenu = () => {
   const [customersList, setCustomersList] = useState<IDataAPICategory[]>([]);
   const [customerGroup, setCustomerGroup] = useState<IDataAPICategory[]>();
 
@@ -128,8 +124,9 @@ const MobileCustomerMenu = (props: IMobileCustomerMenuProps) => {
   };
 
   const handleCategoryChange = (val: string | null) => {
-    fetchCustomersList(props.commercial, val);
+    fetchCustomersList(customerRoutes.commercial, val);
     setCustomerRoutes({
+      ...customerRoutes,
       category: val as string,
       customer: "",
       agency: "",
@@ -198,7 +195,11 @@ const MobileCustomerMenu = (props: IMobileCustomerMenuProps) => {
           <></>
         )}
       </div>
-      {customer !== undefined ? <Customer customer={customer} /> : <></>}
+      {smallScreen && customer !== undefined ? (
+        <Customer customer={customer} />
+      ) : (
+        <></>
+      )}
     </div>
   );
 };

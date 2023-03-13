@@ -5,11 +5,12 @@ import {
   useContext,
   useState,
 } from "react";
+import { IRessource } from "../data/interfaces/IRessource";
 
-const AuthContext = createContext<boolean>(false);
-const AuthUpdateContext = createContext<Dispatch<SetStateAction<boolean>>>(
-  () => true
-);
+const AuthContext = createContext<IRessource | undefined>(undefined);
+const AuthUpdateContext = createContext<
+  Dispatch<SetStateAction<IRessource | undefined>>
+>(() => {});
 
 interface IProjectContextProps {
   children: React.ReactNode;
@@ -23,7 +24,7 @@ export const useUpdateAuth = () => {
 };
 
 const AuthProvider = (props: IProjectContextProps) => {
-  const [auth, setAuth] = useState<boolean>(false);
+  const [auth, setAuth] = useState<IRessource | undefined>(undefined);
 
   return (
     <AuthContext.Provider value={auth}>
