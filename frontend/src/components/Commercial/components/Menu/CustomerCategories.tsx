@@ -9,7 +9,11 @@ import { CustomerCategoryList } from "../../../../data/constants/CustomerCategor
 import { IDataAPICategory } from "../../../../data/interfaces/IDataAPICategory";
 import CustomerList from "./CustomerList";
 
-const CustomerCategories = () => {
+interface ICustomerCategoriesProps {
+  commercial: string | null;
+}
+
+const CustomerCategories = (props: ICustomerCategoriesProps) => {
   const [customersList, setCustomersList] = useState<IDataAPICategory[]>([]);
 
   const customerRoutes = useCustomerRoutes();
@@ -17,10 +21,13 @@ const CustomerCategories = () => {
 
   const theme = useMantineTheme();
 
-  const fetchCustomers = async (category: string) => {
+  const fetchCustomersList = async (
+    commercial: string | null,
+    category: string | null
+  ) => {
     const APIBaseUrl = import.meta.env.VITE_API_URL;
     const response = await fetch(
-      `${APIBaseUrl}/api/customers/category/${category}`,
+      `${APIBaseUrl}/api/customers/category/${commercial}/${category}`,
       {
         method: "GET",
       }
@@ -35,7 +42,7 @@ const CustomerCategories = () => {
         orientation="vertical"
         value={customerRoutes.category}
         onTabChange={(val: string) => {
-          fetchCustomers(val);
+          fetchCustomersList(props.commercial, val);
           setCustomerRoutes({
             ...customerRoutes,
             category: val,

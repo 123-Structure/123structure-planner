@@ -1,24 +1,106 @@
 import { Select, SelectItem, useMantineTheme } from "@mantine/core";
 import { useMediaQuery } from "@mantine/hooks";
 import React, { useState } from "react";
-import { useCustomers } from "../../../../context/CustomerContext";
+import {
+  useCustomer,
+  useUpdateCustomer,
+} from "../../../../context/CustomerContext";
+import {
+  useCustomerRoutes,
+  useUpdateCustomerRoutes,
+} from "../../../../context/CustomerRoutes";
 import { CustomerCategoryList } from "../../../../data/constants/CustomerCategoryList";
+import { ICustomer } from "../../../../data/interfaces/ICustomer";
+import { IDataAPICategory } from "../../../../data/interfaces/IDataAPICategory";
 import Customer from "../Customer/Customer";
 
-const MobileCustomerMenu = () => {
-  const [currentCategory, setCurrentCategory] = useState<string | null>(
-    "Constructeur"
-  );
-  const [currentCustomerList, setCurrentCustomerList] = useState<string | null>(
-    ""
-  );
-  const [currentAgence, setCurrentAgence] = useState<string | null>("");
+interface IMobileCustomerMenuProps {
+  commercial: string | null;
+}
 
-  const { customers } = useCustomers();
+const MobileCustomerMenu = (props: IMobileCustomerMenuProps) => {
+  const [customersList, setCustomersList] = useState<IDataAPICategory[]>([]);
+  const [customerGroup, setCustomerGroup] = useState<IDataAPICategory[]>();
+
+  const customerRoutes = useCustomerRoutes();
+  const setCustomerRoutes = useUpdateCustomerRoutes();
+  const customer = useCustomer();
+  const setCustomer = useUpdateCustomer();
   const theme = useMantineTheme();
   const smallScreen = useMediaQuery(`(max-width: ${theme.breakpoints.lg})`);
 
-  const groupList = [] as (string | null)[];
+  const fetchCustomersList = async (
+    commercial: string | null,
+    category: string | null
+  ) => {
+    const APIBaseUrl = import.meta.env.VITE_API_URL;
+    const response = await fetch(
+      `${APIBaseUrl}/api/customers/category/${commercial}/${category}`,
+      {
+        method: "GET",
+      }
+    );
+    const data = (await response.json()) as IDataAPICategory[];
+    setCustomersList(data);
+  };
+
+  const fetchCustomer = async (val: string | null) => {
+    const customer = customersList.filter(
+      (customer) => customer.name === val
+    )[0];
+
+    const APIBaseUrl = import.meta.env.VITE_API_URL;
+
+    if (customer !== undefined) {
+      const response = await fetch(
+        `${APIBaseUrl}/api/customers/${customer._id}`,
+        {
+          method: "GET",
+        }
+      );
+      const data = (await response.json()) as ICustomer;
+      setCustomer(data);
+      setCustomerGroup(undefined);
+      setCustomerRoutes({
+        ...customerRoutes,
+        customer: val as string,
+      });
+    } else {
+      const response = await fetch(
+        `${APIBaseUrl}/api/customers/group/${customerRoutes.category}/${val}`,
+        {
+          method: "GET",
+        }
+      );
+      const data = (await response.json()) as IDataAPICategory[];
+      setCustomer(undefined);
+      setCustomerGroup(data);
+      setCustomerRoutes({
+        ...customerRoutes,
+        customer: val as string,
+        agency: " ",
+      });
+    }
+  };
+
+  const fetchAgency = async (val: string | null) => {
+    const customer = customersList.filter(
+      (customer) => customer.name === val
+    )[0];
+
+    const APIBaseUrl = import.meta.env.VITE_API_URL;
+
+    if (customer !== undefined) {
+      const response = await fetch(
+        `${APIBaseUrl}/api/customers/${customer._id}`,
+        {
+          method: "GET",
+        }
+      );
+      const data = (await response.json()) as ICustomer;
+      setCustomer(data);
+    }
+  };
 
   const getCategories = () => {
     return CustomerCategoryList.reduce((acc, category: string | SelectItem) => {
@@ -29,61 +111,42 @@ const MobileCustomerMenu = () => {
   };
 
   const getCustomerList = () => {
-    return customers.customersList
-      .filter((customer) => customer.category === currentCategory)
-      .reduce((acc, customer) => {
-        const value = customer.group === "" ? customer.name : customer.group;
+    return customersList.reduce((acc, customer) => {
+      const value = customer.group === "" ? customer.name : customer.group;
 
-        if (customer.group !== "") {
-          groupList.push(customer.group);
-        }
-
-        if (!acc.includes(value)) {
-          acc.push(value);
-        }
-        return acc;
-      }, [] as string[]);
+      if (!acc.includes(value)) {
+        acc.push(value);
+      }
+      return acc;
+    }, [] as (string | SelectItem)[]);
   };
 
   const getAgenceList = () => {
-    return customers.customersList
-      .filter(
-        (customer) =>
-          customer.category === currentCategory &&
-          customer.group === currentCustomerList
-      )
+    return customersList
+      .filter((customer) => customer.group === customerRoutes.customer)
       .map((customer) => customer.name);
   };
 
   const handleCategoryChange = (val: string | null) => {
-    setCurrentCategory(val);
-    setCurrentCustomerList("");
+    fetchCustomersList(props.commercial, val);
+    setCustomerRoutes({
+      category: val as string,
+      customer: "",
+      agency: "",
+      appointment: "",
+    });
   };
 
   const handleCustomerListChange = (val: string | null) => {
-    setCurrentCustomerList(val);
-    setCurrentAgence("");
+    fetchCustomer(val);
   };
 
   const handleAgenceListChange = (val: string | null) => {
-    setCurrentAgence(val);
-  };
-
-  const getCustomer = () => {
-    if (currentAgence !== "") {
-      return customers.customersList.filter(
-        (customer) =>
-          currentCategory === currentCategory &&
-          customer.group === currentCustomerList &&
-          customer.name === currentAgence
-      )[0];
-    } else {
-      return customers.customersList.filter(
-        (customer) =>
-          currentCategory === currentCategory &&
-          customer.name === currentCustomerList
-      )[0];
-    }
+    fetchAgency(val);
+    setCustomerRoutes({
+      ...customerRoutes,
+      agency: val as string,
+    });
   };
 
   return (
@@ -97,48 +160,45 @@ const MobileCustomerMenu = () => {
           label="Catégorie"
           placeholder="Catégorie de client"
           data={getCategories()}
-          value={currentCategory}
+          value={customerRoutes.category}
           onChange={(val) => {
             handleCategoryChange(val);
           }}
         />
-        <Select
-          className="mobileCustomerMenuSelect"
-          label="Client"
-          placeholder="Client"
-          data={getCustomerList()}
-          value={currentCustomerList}
-          onChange={(val) => {
-            handleCustomerListChange(val);
-          }}
-        />
-        {groupList.includes(currentCustomerList) ? (
+        {customerRoutes.category !== "" ? (
           <Select
             className="mobileCustomerMenuSelect"
-            label="Agence"
-            placeholder="Agence"
-            data={getAgenceList()}
-            value={currentAgence}
-            onChange={(val) => handleAgenceListChange(val)}
+            label="Client"
+            placeholder="Client"
+            data={getCustomerList()}
+            value={customerRoutes.customer}
+            onChange={(val) => {
+              handleCustomerListChange(val);
+            }}
           />
         ) : (
           <></>
         )}
+        {customerRoutes.agency !== "" ? (
+          customerGroup
+            ?.map((customer) => customer.group)
+            .includes(customerRoutes.customer) ? (
+            <Select
+              className="mobileCustomerMenuSelect"
+              label="Agence"
+              placeholder="Agence"
+              data={getAgenceList()}
+              value={customerRoutes.agency}
+              onChange={(val) => handleAgenceListChange(val)}
+            />
+          ) : (
+            <></>
+          )
+        ) : (
+          <></>
+        )}
       </div>
-      {getCustomer() !== undefined ? (
-        <Customer
-          customer={
-            customers.customersList.filter(
-              (customer) =>
-                customer.category === currentCategory &&
-                (customer.name === currentCustomerList ||
-                  customer.name === currentAgence)
-            )[0]
-          }
-        />
-      ) : (
-        <></>
-      )}
+      {customer !== undefined ? <Customer customer={customer} /> : <></>}
     </div>
   );
 };

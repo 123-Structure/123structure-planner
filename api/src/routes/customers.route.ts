@@ -16,7 +16,7 @@ const customersRouter = express.Router();
 customersRouter.get("/", getCustomers);
 
 // GET all customers by category
-customersRouter.get("/category/:category", getCustomerByCategory);
+customersRouter.get("/category/:commercial/:category", getCustomerByCategory);
 
 // GET all customers by category
 customersRouter.get("/group/:category/:group", getCustomerByGroup);

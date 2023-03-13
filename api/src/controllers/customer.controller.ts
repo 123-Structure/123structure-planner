@@ -29,10 +29,11 @@ export const getCustomer = async (req: Request, res: Response) => {
 
 // GET all customers by category
 export const getCustomerByCategory = async (req: Request, res: Response) => {
-  const { category } = req.params;
+  const { commercial, category } = req.params;
 
   const customers = await Customer.find({
     category: category,
+    commercial: commercial,
   }).sort({ createdAt: -1 });
 
   const customersObject = JSON.parse(JSON.stringify(customers)) as ICustomer[];

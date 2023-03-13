@@ -15,6 +15,7 @@ import {
   useUpdateCustomer,
 } from "../../../../../context/CustomerContext";
 import { useRessources } from "../../../../../context/RessourceContext";
+import { IAppointment } from "../../../../../data/interfaces/IAppointment";
 import { ICustomer } from "../../../../../data/interfaces/ICustomer";
 import CustomButton from "../../../../utils/CustomButton";
 import CustomDivider from "../../../../utils/CustomDivider";
@@ -66,7 +67,7 @@ const CustomerRelationship = (props: ICustomerRelationshipProps) => {
   const [currentProjectGoal, setCurrentProjectGoal] = useState(
     getCurrentGoal()
   );
-  const [previousYearGoal, setPreviousYearGoal] = useState(
+  const [previousYearProjectGoal, setPreviousYearProjectGoal] = useState(
     getPreviousYearGoal()
   );
 
@@ -94,10 +95,15 @@ const CustomerRelationship = (props: ICustomerRelationshipProps) => {
     window.open(url, "_blank");
   };
 
+  const compareDates = (a: IAppointment, b: IAppointment) => {
+    new Date(b.date).getTime();
+
+    return new Date(b.date).getTime() - new Date(a.date).getTime();
+  };
+
   const getLastAppointment = () => {
     if (props.customer.appointment.length > 0) {
-      const appointment =
-        props.customer.appointment[props.customer.appointment.length - 1];
+      const appointment = props.customer.appointment.sort(compareDates)[0];
 
       return `${appointment.title} (${new Date(
         appointment.date
@@ -117,13 +123,38 @@ const CustomerRelationship = (props: ICustomerRelationshipProps) => {
         )
         .map((commercial) => commercial._id);
 
-      changedCustomer.projectGoal.filter(
-        (projectGoal) => projectGoal.year === new Date().getFullYear()
-      )[0].goal = currentProjectGoal;
+      if (
+        changedCustomer.projectGoal.filter(
+          (projectGoal) => projectGoal.year === new Date().getFullYear()
+        )[0] !== undefined
+      ) {
+        changedCustomer.projectGoal.filter(
+          (projectGoal) => projectGoal.year === new Date().getFullYear()
+        )[0].goal = currentProjectGoal;
+      }
 
-      changedCustomer.projectGoal.filter(
-        (projectGoal) => projectGoal.year === new Date().getFullYear() - 1
-      )[0].goal = previousYearGoal;
+      if (
+        changedCustomer.projectGoal.filter(
+          (projectGoal) => projectGoal.year === new Date().getFullYear() - 1
+        )[0] !== undefined
+      ) {
+        changedCustomer.projectGoal.filter(
+          (projectGoal) => projectGoal.year === new Date().getFullYear() - 1
+        )[0].goal = previousYearProjectGoal;
+      }
+
+      if (changedCustomer.projectGoal.length === 0) {
+        changedCustomer.projectGoal = [
+          {
+            year: new Date().getFullYear() - 1,
+            goal: previousYearProjectGoal,
+          },
+          {
+            year: new Date().getFullYear(),
+            goal: currentProjectGoal,
+          },
+        ];
+      }
 
       changedCustomer.priceList = priceList;
 
@@ -180,7 +211,7 @@ const CustomerRelationship = (props: ICustomerRelationshipProps) => {
       )[0].goal
     );
 
-    setPreviousYearGoal(
+    setPreviousYearProjectGoal(
       props.customer.projectGoal.filter(
         (projectGoal) => projectGoal.year === new Date().getFullYear() - 1
       )[0].goal
@@ -282,17 +313,17 @@ const CustomerRelationship = (props: ICustomerRelationshipProps) => {
               inputType={"number"}
               value={[
                 editCustomerRelationship
-                  ? previousYearGoal
+                  ? previousYearProjectGoal
                   : `Objectif ${new Date().getFullYear() - 1} :`,
               ]}
-              updateValue={[setPreviousYearGoal]}
+              updateValue={[setPreviousYearProjectGoal]}
               icon={<IconTargetArrow size={24} color="black" />}
               color="yellow"
             />
             <p>
               {editCustomerRelationship
                 ? `(${new Date().getFullYear() - 1})`
-                : previousYearGoal}
+                : previousYearProjectGoal}
             </p>
           </div>
           <div className="customerItemTitle">
@@ -327,11 +358,16 @@ const CustomerRelationship = (props: ICustomerRelationshipProps) => {
               color={
                 previousYearProjectInvoiced === 0
                   ? "gray"
-                  : (previousYearProjectInvoiced / previousYearGoal) * 100 < 80
+                  : (previousYearProjectInvoiced / previousYearProjectGoal) *
+                      100 <
+                    80
                   ? "red"
-                  : (previousYearProjectInvoiced / previousYearGoal) * 100 >=
+                  : (previousYearProjectInvoiced / previousYearProjectGoal) *
+                      100 >=
                       80 &&
-                    (previousYearProjectInvoiced / previousYearGoal) * 100 < 100
+                    (previousYearProjectInvoiced / previousYearProjectGoal) *
+                      100 <
+                      100
                   ? "orange"
                   : "green"
               }
@@ -342,13 +378,18 @@ const CustomerRelationship = (props: ICustomerRelationshipProps) => {
                   color:
                     previousYearProjectInvoiced === 0
                       ? "gray"
-                      : (previousYearProjectInvoiced / previousYearGoal) * 100 <
+                      : (previousYearProjectInvoiced /
+                          previousYearProjectGoal) *
+                          100 <
                         80
                       ? theme.colors.red[6]
-                      : (previousYearProjectInvoiced / previousYearGoal) *
+                      : (previousYearProjectInvoiced /
+                          previousYearProjectGoal) *
                           100 >=
                           80 &&
-                        (previousYearProjectInvoiced / previousYearGoal) * 100 <
+                        (previousYearProjectInvoiced /
+                          previousYearProjectGoal) *
+                          100 <
                           100
                       ? theme.colors.orange[6]
                       : theme.colors.green[6],
@@ -356,7 +397,7 @@ const CustomerRelationship = (props: ICustomerRelationshipProps) => {
               >
                 {previousYearProjectInvoiced}
               </span>
-              {`/${previousYearGoal}`}
+              {`/${previousYearProjectGoal}`}
             </p>
           </div>
           <div className="customerItemTitle">

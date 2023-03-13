@@ -19,9 +19,7 @@ interface ICustomerListProps {
 }
 
 const CustomerList = (props: ICustomerListProps) => {
-  const [customerGroup, setCustomerGroup] = useState<
-    IDataAPICategory[] | undefined
-  >(undefined);
+  const [customerGroup, setCustomerGroup] = useState<IDataAPICategory[]>();
 
   const theme = useMantineTheme();
   const customerRoutes = useCustomerRoutes();
@@ -29,7 +27,7 @@ const CustomerList = (props: ICustomerListProps) => {
   const customer = useCustomer();
   const setCustomer = useUpdateCustomer();
 
-  const fetchCustomer = async (val: string) => {
+  const fetchCustomer = async (val: string | null) => {
     const customer = props.customersList.filter(
       (customer) => customer.name === val
     )[0];
@@ -69,7 +67,7 @@ const CustomerList = (props: ICustomerListProps) => {
         changeTabTitle(`123 Structure - ${val}`);
         setCustomerRoutes({
           ...customerRoutes,
-          customer: val,
+          customer: val as string,
         });
       }}
     >

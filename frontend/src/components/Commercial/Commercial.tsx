@@ -7,13 +7,25 @@ import { useMediaQuery } from "@mantine/hooks";
 import MobileCustomerMenu from "./components/Menu/MobileCustomerMenu";
 import NewCustomer from "./components/Menu/NewCustomer";
 import { IconUser } from "@tabler/icons";
+import { useUpdateCustomerRoutes } from "../../context/CustomerRoutes";
 
 const Commercial = () => {
   const [activeTab, setActiveTab] = useState<string | null>("");
 
   const ressources = useRessources();
+  const setCustomerRoutes = useUpdateCustomerRoutes();
   const theme = useMantineTheme();
   const smallScreen = useMediaQuery(`(max-width: ${theme.breakpoints.lg})`);
+
+  const handleCommercialChange = (commercial: string) => {
+    setActiveTab(commercial);
+    setCustomerRoutes({
+      category: "",
+      customer: "",
+      agency: "",
+      appointment: "",
+    });
+  };
 
   return (
     <>
@@ -21,7 +33,7 @@ const Commercial = () => {
         color="yellow"
         variant="pills"
         value={activeTab}
-        onTabChange={setActiveTab}
+        onTabChange={(val: string) => handleCommercialChange(val)}
         className="commercialContainer"
       >
         <Tabs.List className="commercialList">
@@ -54,10 +66,14 @@ const Commercial = () => {
                   : "",
               }}
             >
-              <CustomerCategories />
+              <CustomerCategories commercial={activeTab} />
             </Tabs.Panel>
           ))}
-        {/* <MobileCustomerMenu /> */}
+        {activeTab !== "" ? (
+          <MobileCustomerMenu commercial={activeTab} />
+        ) : (
+          <></>
+        )}
       </Tabs>
     </>
   );
