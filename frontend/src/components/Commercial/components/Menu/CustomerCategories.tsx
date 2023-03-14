@@ -1,6 +1,5 @@
 import { Tabs, useMantineTheme } from "@mantine/core";
 import { useEffect, useState } from "react";
-import { useCustomer } from "../../../../context/CustomerContext";
 import {
   useCustomerRoutes,
   useUpdateCustomerRoutes,

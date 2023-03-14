@@ -13,6 +13,7 @@ import { IDataAPICategory } from "../../../../data/interfaces/IDataAPICategory";
 import { changeFavicon, changeTabTitle } from "../../../../utils/tabsUtils";
 import Customer from "../Customer/Customer";
 import AgencyList from "./AgencyList";
+import BuildingPermitBro from "../../../../assets/img/Building permit-bro.svg";
 
 interface ICustomerListProps {
   customersList: IDataAPICategory[];
@@ -65,7 +66,7 @@ const CustomerList = (props: ICustomerListProps) => {
     }
   }, [props.customersList]);
 
-  return (
+  return props.customersList.length > 0 ? (
     <Tabs
       orientation="vertical"
       value={customerRoutes.customer}
@@ -124,6 +125,11 @@ const CustomerList = (props: ICustomerListProps) => {
         <></>
       )}
     </Tabs>
+  ) : (
+    <div className="customerListEmptyResult">
+      <img src={BuildingPermitBro} alt="building permit" />
+      <p>Aucun client pour cette catégorie</p>
+    </div>
   );
 };
 
