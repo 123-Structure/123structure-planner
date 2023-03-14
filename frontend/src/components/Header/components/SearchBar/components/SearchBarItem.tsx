@@ -4,15 +4,13 @@ import { IDataFromAPI } from "../../../../../data/interfaces/IDataFromAPI";
 import { Card, Highlight, useMantineTheme } from "@mantine/core";
 import { handleIcon } from "../../../utils/handleIcon";
 import { handleSubtitle } from "../../../utils/handleSubtitle";
-import {
-  useCustomerRoutes,
-  useUpdateCustomerRoutes,
-} from "../../../../../context/CustomerRoutes";
+import { useUpdateCustomerRoutes } from "../../../../../context/CustomerRoutes";
 
 interface ISearchBarItemProps {
   action: IDataFromAPI;
   result: string;
   setOpenSearchBarModal: Dispatch<React.SetStateAction<boolean>>;
+  setQuery: Dispatch<React.SetStateAction<string>>;
 }
 
 const SearchBarItem = (props: ISearchBarItemProps) => {
@@ -22,61 +20,38 @@ const SearchBarItem = (props: ISearchBarItemProps) => {
 
   const theme = useMantineTheme();
 
-  const customerRoutes = useCustomerRoutes();
   const setCustomerRoutes = useUpdateCustomerRoutes();
 
   const handleSearchItemSearch = (type: string) => {
     if (customer !== undefined) {
       switch (type) {
         case "category":
-          setCustomerRoutes({
-            commercial: customer.commercial[0],
-            category: customer.category as string,
-            customer: "",
-            agency: "",
-            appointment: "",
-          });
-          const commercialButton: HTMLButtonElement[] = [];
-          const categoryButton: HTMLButtonElement[] = [];
-          const button = document.querySelectorAll("button");
-          button.forEach((btn) => {
-            btn.classList.contains(`${customer.commercial[0]}_Tab`)
-              ? commercialButton.push(btn)
-              : "";
-
-            btn.classList.contains(
-              `${customer.category}_${customerRoutes.commercial}`
-            )
-              ? categoryButton.push(btn)
-              : "";
-          });
-          commercialButton[0].click();
-          categoryButton[0].click();
-          // props.setOpenSearchBarModal(false);
-          break;
-
         case "name":
         case "location.cp":
         case "location.city":
         case "email":
         case "phone":
           setCustomerRoutes({
-            ...customerRoutes,
+            commercial: customer.commercial[0],
             category: customer.category as string,
             customer: customer.group === "" ? customer.name : customer.group,
-            agency: customer.name,
+            agency: customer.group === "" ? "" : customer.name,
             appointment: "",
           });
+          props.setOpenSearchBarModal(false);
+          props.setQuery("");
           break;
 
         case "group":
           setCustomerRoutes({
-            ...customerRoutes,
+            commercial: customer.commercial[0],
             category: customer.category as string,
             customer: customer.group,
             agency: "",
             appointment: "",
           });
+          props.setOpenSearchBarModal(false);
+          props.setQuery("");
           break;
 
         default:
@@ -85,25 +60,14 @@ const SearchBarItem = (props: ISearchBarItemProps) => {
 
       if (type.startsWith("contact")) {
         setCustomerRoutes({
-          ...customerRoutes,
+          commercial: customer.commercial[0],
           category: customer.category as string,
           customer: customer.group === "" ? customer.name : customer.group,
-          agency: customer.name,
+          agency: customer.group === "" ? "" : customer.name,
           appointment: "",
         });
-        const contactIndex = parseInt(resultType.split(".")[1]);
-        const firstName = customer.contact[contactIndex].firstName;
-        const lastName = customer.contact[contactIndex].lastName;
-
-        const contactButton = document.querySelector(
-          `.contact_${customer.name.replaceAll(
-            " ",
-            "_"
-          )}_${firstName}_${lastName}`
-        ) as HTMLElement;
-        if (contactButton !== null) {
-          contactButton.click();
-        }
+        props.setOpenSearchBarModal(false);
+        props.setQuery("");
       }
 
       if (type.startsWith("appointment")) {
@@ -112,12 +76,15 @@ const SearchBarItem = (props: ISearchBarItemProps) => {
         const date = customer.appointment[appointmentIndex].date;
 
         setCustomerRoutes({
-          ...customerRoutes,
+          commercial: customer.commercial[0],
           category: customer.category as string,
           customer: customer.group === "" ? customer.name : customer.group,
           agency: customer.name,
           appointment: `${title} (${new Date(date).toLocaleDateString("fr")})`,
         });
+
+        props.setOpenSearchBarModal(false);
+        props.setQuery("");
       }
 
       return "";

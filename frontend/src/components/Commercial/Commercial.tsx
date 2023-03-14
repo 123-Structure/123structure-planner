@@ -33,7 +33,11 @@ const Commercial = () => {
     });
   };
 
-  console.log(customerRoutes);
+  useEffect(() => {
+    if (customerRoutes.commercial !== "") {
+    }
+    setActiveTab(customerRoutes.commercial);
+  }, [customerRoutes.commercial]);
 
   useEffect(() => {
     if (activeTab !== "") {

@@ -1,5 +1,5 @@
 import { Tabs, useMantineTheme } from "@mantine/core";
-import React, { useState } from "react";
+import { useEffect } from "react";
 import {
   useCustomer,
   useUpdateCustomer,
@@ -42,6 +42,14 @@ const AgencyList = (props: IAgenceListProps) => {
       setCustomer(data);
     }
   };
+
+  useEffect(() => {
+    if (customerRoutes.agency !== "") {
+      fetchCustomer(customerRoutes.agency);
+      changeFavicon("👷");
+      changeTabTitle(`123 Structure - ${customerRoutes.agency}`);
+    }
+  }, [props.customersList]);
 
   return (
     <Tabs

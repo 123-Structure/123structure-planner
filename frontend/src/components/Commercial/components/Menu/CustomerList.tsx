@@ -1,5 +1,5 @@
 import { Tabs, useMantineTheme } from "@mantine/core";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   useCustomer,
   useUpdateCustomer,
@@ -57,6 +57,14 @@ const CustomerList = (props: ICustomerListProps) => {
     }
   };
 
+  useEffect(() => {
+    if (customerRoutes.customer !== "") {
+      fetchCustomer(customerRoutes.customer);
+      changeFavicon("👷");
+      changeTabTitle(`123 Structure - ${customerRoutes.customer}`);
+    }
+  }, [props.customersList]);
+
   return (
     <Tabs
       orientation="vertical"
@@ -68,6 +76,7 @@ const CustomerList = (props: ICustomerListProps) => {
         setCustomerRoutes({
           ...customerRoutes,
           customer: val as string,
+          agency: "",
         });
       }}
     >

@@ -35,6 +35,12 @@ const CustomerCategories = () => {
 
   useEffect(() => {
     if (customerRoutes.category !== "") {
+      fetchCustomersList(customerRoutes.commercial, customerRoutes.category);
+    }
+  }, [customerRoutes.category]);
+
+  useEffect(() => {
+    if (customerRoutes.category !== "") {
       changeFavicon("👷");
       changeTabTitle(`123 Structure - ${customerRoutes.category}`);
     }
@@ -50,6 +56,8 @@ const CustomerCategories = () => {
           setCustomerRoutes({
             ...customerRoutes,
             category: val,
+            customer: "",
+            agency: "",
           });
         }}
       >
