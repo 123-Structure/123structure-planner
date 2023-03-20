@@ -14,7 +14,10 @@ import EditModeToggle from "../../../../utils/EditModeToggle";
 import CustomerItem from "../../utils/CustomerItem";
 import CustomerContact from "./CustomerContact";
 import CabinBro from "../../../../../assets/img/Cabin-bro.svg";
-import { useCustomers } from "../../../../../context/CustomerContext";
+import {
+  useCustomer,
+  useUpdateCustomer,
+} from "../../../../../context/CustomerContext";
 
 interface ICustomerIdentityProps {
   customer: ICustomer;
@@ -31,7 +34,8 @@ const CustomerIdentity = (props: ICustomerIdentityProps) => {
 
   const [logo, setLogo] = useState(props.customer.logo);
 
-  const { customers, updateCustomers } = useCustomers();
+  const customer = useCustomer();
+  const setCustomer = useUpdateCustomer();
 
   const openURL = (url: string) => {
     window.open(url, "_blank");
@@ -45,67 +49,59 @@ const CustomerIdentity = (props: ICustomerIdentityProps) => {
   };
 
   const handleValideClick = async () => {
-    const changedCustomer = customers.customersList.filter(
-      (customer) =>
-        customer.category === props.customer.category &&
-        customer.group === props.customer.group &&
-        customer.name === props.customer.name
-    )[0];
-    changedCustomer.location.address = address;
-    changedCustomer.location.cp = cp;
-    changedCustomer.location.city = city;
-    changedCustomer.email = email;
-    changedCustomer.phone = phone;
-    changedCustomer.contact = contact;
-    changedCustomer.logo = logo;
+    if (customer !== undefined) {
+      const changedCustomer = customer;
 
-    const response = await fetch(
-      `${import.meta.env.VITE_API_URL}/api/customers/${
-        changedCustomer._id as string
-      }`,
-      {
-        method: "PATCH",
-        body: JSON.stringify({
-          location: {
-            address: address,
-            cp: cp,
-            city: city,
+      changedCustomer.location.address = address;
+      changedCustomer.location.cp = cp;
+      changedCustomer.location.city = city;
+      changedCustomer.email = email;
+      changedCustomer.phone = phone;
+      changedCustomer.contact = contact;
+      changedCustomer.logo = logo;
+
+      const response = await fetch(
+        `${import.meta.env.VITE_API_URL}/api/customers/${
+          changedCustomer._id as string
+        }`,
+        {
+          method: "PATCH",
+          body: JSON.stringify({
+            location: {
+              address: address,
+              cp: cp,
+              city: city,
+            },
+            email: email,
+            phone: phone,
+            contact: contact,
+            logo: logo,
+          }),
+          headers: {
+            "Content-Type": "application/json",
           },
-          email: email,
-          phone: phone,
-          contact: contact,
-          logo: logo,
-        }),
-        headers: {
-          "Content-Type": "application/json",
-        },
+        }
+      );
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        showNotification({
+          title: `⛔ Erreur serveur`,
+          message: data.error,
+          color: "red",
+        });
       }
-    );
 
-    const data = await response.json();
+      setCustomer(changedCustomer);
 
-    if (!response.ok) {
       showNotification({
-        title: `⛔ Erreur serveur`,
-        message: data.error,
-        color: "red",
+        title: `✅ Fiche client sauvegardée`,
+        message: `La fiche client ${props.customer.name} est mise à jour`,
+        color: "green",
       });
+      setEditCustomerIdentity(false);
     }
-
-    updateCustomers({
-      type: "UPDATE_CUSTOMER",
-      payload: {
-        id: changedCustomer._id as string,
-        customer: changedCustomer,
-      },
-    });
-
-    showNotification({
-      title: `✅ Fiche client sauvegardée`,
-      message: `La fiche client ${props.customer.name} est mise à jour`,
-      color: "green",
-    });
-    setEditCustomerIdentity(false);
   };
 
   const handleCancelClick = () => {
@@ -136,7 +132,7 @@ const CustomerIdentity = (props: ICustomerIdentityProps) => {
     fileReader.onload = () => {
       const base64String = fileReader.result as string;
       if (base64String !== null) {
-        setLogo(base64String);
+        setLogo(base64String.split("data:image/png;base64,")[1]);
       }
     };
   };
@@ -170,29 +166,30 @@ const CustomerIdentity = (props: ICustomerIdentityProps) => {
       </div>
       <div className="customerIdentityContainer">
         <div
-          className={`customerLogoContainer ${
-            editCustomerIdentity ? "editCustomerLogo" : ""
-          }`}
-          onClick={() =>
-            editCustomerIdentity
-              ? document
-                  .getElementById(`logoFileInput_${props.customer.name}`)
-                  ?.click()
-              : null
-          }
+          // className={`customerLogoContainer ${
+          //   editCustomerIdentity ? "editCustomerLogo" : ""
+          // }`}
+          // onClick={() =>
+          //   editCustomerIdentity
+          //     ? document
+          //         .getElementById(`logoFileInput_${props.customer._id}`)
+          //         ?.click()
+          //     : null
+          // }
+          className="customerLogoContainer"
         >
           <img
             className="customerLogo"
-            src={logo === "" ? CabinBro : logo}
+            src={logo === "" ? CabinBro : "data:image/png;base64," + logo}
             alt={`Logo ${props.customer.name}`}
           />
-          <input
+          {/* <input
             type="file"
             className="logoFileInput"
-            id={`logoFileInput_${props.customer.name}`}
+            id={`logoFileInput_${props.customer._id}`}
             onChange={(e) => handleUploadFile(e)}
-            accept="image/png,image/jpeg"
-          />
+            accept="image/png"
+          /> */}
         </div>
         <div
           className="customerItemContainer"

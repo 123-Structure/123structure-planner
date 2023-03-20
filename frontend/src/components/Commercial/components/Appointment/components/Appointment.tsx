@@ -1,8 +1,4 @@
-import {
-  RichTextEditor,
-  Link,
-  useRichTextEditorContext,
-} from "@mantine/tiptap";
+import { RichTextEditor, Link } from "@mantine/tiptap";
 import { BubbleMenu, FloatingMenu, useEditor } from "@tiptap/react";
 import Highlight from "@tiptap/extension-highlight";
 import StarterKit from "@tiptap/starter-kit";
@@ -33,7 +29,10 @@ import {
   useMantineTheme,
 } from "@mantine/core";
 import { useMediaQuery } from "@mantine/hooks";
-import { useCustomers } from "../../../../../context/CustomerContext";
+import {
+  useCustomer,
+  useUpdateCustomer,
+} from "../../../../../context/CustomerContext";
 import {
   useCustomerRoutes,
   useUpdateCustomerRoutes,
@@ -63,7 +62,8 @@ const Appointment = (props: IAppointmentProps) => {
     props.appointment.contact
   );
 
-  const { customers, updateCustomers } = useCustomers();
+  const customer = useCustomer();
+  const setCustomer = useUpdateCustomer();
   const customerRoutes = useCustomerRoutes();
   const setCustomerRoutes = useUpdateCustomerRoutes();
 
@@ -93,52 +93,44 @@ const Appointment = (props: IAppointmentProps) => {
   };
 
   const handleContentChange = async (newValue: string | undefined) => {
-    const changedCustomer = customers.customersList.filter(
-      (customer) =>
-        customer.category === props.customer.category &&
-        customer.group === props.customer.group &&
-        customer.name === props.customer.name
-    )[0];
-    if (newValue !== undefined) {
-      changedCustomer.appointment[props._id].content = newValue;
-    }
-    changedCustomer.appointment[props._id].title =
-      props.appointmentTitle as TAppointmentTitle;
-    changedCustomer.appointment[props._id].date = props.appointmentDate;
-    changedCustomer.appointment[props._id].location.address = address;
-    changedCustomer.appointment[props._id].location.cp = cp;
-    changedCustomer.appointment[props._id].location.city = city;
-    changedCustomer.appointment[props._id].contact = appointmentContact;
+    if (customer !== undefined) {
+      const changedCustomer = customer;
 
-    const response = await fetch(
-      `${import.meta.env.VITE_API_URL}/api/customers/${
-        changedCustomer._id as string
-      }`,
-      {
-        method: "PATCH",
-        body: JSON.stringify({ appointment: changedCustomer.appointment }),
-        headers: {
-          "Content-Type": "application/json",
-        },
+      if (newValue !== undefined) {
+        changedCustomer.appointment[props._id].content = newValue;
       }
-    );
-    const data = await response.json();
+      changedCustomer.appointment[props._id].title =
+        props.appointmentTitle as TAppointmentTitle;
+      changedCustomer.appointment[props._id].date = props.appointmentDate;
+      changedCustomer.appointment[props._id].location.address = address;
+      changedCustomer.appointment[props._id].location.cp = cp;
+      changedCustomer.appointment[props._id].location.city = city;
+      changedCustomer.appointment[props._id].contact = appointmentContact;
 
-    if (!response.ok) {
-      showNotification({
-        title: `⛔ Erreur serveur`,
-        message: data.error,
-        color: "red",
-      });
+      const response = await fetch(
+        `${import.meta.env.VITE_API_URL}/api/customers/${
+          changedCustomer._id as string
+        }`,
+        {
+          method: "PATCH",
+          body: JSON.stringify({ appointment: changedCustomer.appointment }),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      const data = await response.json();
+
+      if (!response.ok) {
+        showNotification({
+          title: `⛔ Erreur serveur`,
+          message: data.error,
+          color: "red",
+        });
+      }
+
+      setCustomer(changedCustomer);
     }
-
-    updateCustomers({
-      type: "UPDATE_CUSTOMER",
-      payload: {
-        id: changedCustomer._id as string,
-        customer: changedCustomer,
-      },
-    });
   };
 
   const handleValideClick = () => {

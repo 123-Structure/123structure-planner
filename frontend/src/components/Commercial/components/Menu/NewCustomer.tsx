@@ -34,7 +34,7 @@ import { ICustomer } from "../../../../data/interfaces/ICustomer";
 import { TCustomerCategory } from "../../../../data/types/TCustomerCategory";
 import { TPaymentType } from "../../../../data/types/TPaymentType";
 import { HandleUploadFile } from "../../../utils/HandleUploadFile";
-import { useCustomers } from "../../../../context/CustomerContext";
+import { IDataAPICategory } from "../../../../data/interfaces/IDataAPICategory";
 
 const NewCustomer = () => {
   const [openNewCustomer, setOpenNewCustomer] = useState(false);
@@ -65,19 +65,9 @@ const NewCustomer = () => {
   const theme = useMantineTheme();
   const smallScreen = useMediaQuery(`(max-width: ${theme.breakpoints.xs})`);
   const ressources = useRessources();
-  const { customers, updateCustomers } = useCustomers();
 
-  const [groupList, setGroupList] = useState(
-    customers.customersList
-      .filter((customer) => customer.category === customerCategory)
-      .reduce((acc, customer) => {
-        const item = customer.group;
-        if (!acc.includes(item) && item !== "") {
-          acc.push(item);
-        }
-        return acc;
-      }, [] as (string | SelectItem)[])
-  );
+  const [groupList, setGroupList] = useState<(string | SelectItem)[]>([]);
+
   const [group, setGroup] = useState("");
 
   const getCategories = () => {
@@ -106,17 +96,7 @@ const NewCustomer = () => {
     setPriceListFile(null);
     setPriceList("");
     setPdfViewerURL("");
-    setGroupList(
-      customers.customersList
-        .filter((customer) => customer.category === customerCategory)
-        .reduce((acc, customer) => {
-          const item = customer.group;
-          if (!acc.includes(item) && item !== "") {
-            acc.push(item);
-          }
-          return acc;
-        }, [] as (string | SelectItem)[])
-    );
+    setGroupList([]);
     setGroup("");
 
     setErrorCommercial("");
@@ -153,10 +133,10 @@ const NewCustomer = () => {
         contact: [],
         priceList: priceList,
         commercial: ressources
-          .filter((ressource) => ressource.role.includes("Commercial"))
           .filter((ressource) =>
             commercial.includes(`${ressource.firstName} ${ressource.lastName}`)
-          ),
+          )
+          .map((commercial) => commercial._id),
         appointment: [],
         projectGoal: [
           {
@@ -195,7 +175,7 @@ const NewCustomer = () => {
           color: "red",
         });
       }
-      updateCustomers({ type: "ADD_CUSTOMER", payload: data });
+
       showNotification({
         title: `✅ Nouvelle fiche client sauvegardé`,
         message: `${customerName} ajouté à l'annuaire de client`,
@@ -261,19 +241,51 @@ const NewCustomer = () => {
     }
   }, [priceList]);
 
-  useEffect(() => {
-    setGroupList(
-      customers.customersList
-        .filter((customer) => customer.category === customerCategory)
-        .reduce((acc, customer) => {
-          const item = customer.group;
-          if (!acc.includes(item) && item !== "") {
-            acc.push(item);
-          }
+  const fetchCustomers = async (commercial: string[], category: string) => {
+    const APIBaseUrl = import.meta.env.VITE_API_URL;
+
+    let res = [] as string[];
+
+    for (let i = 0; i < commercial.length; i++) {
+      const currentCommercial = commercial[i];
+
+      const commercialID = ressources
+        .filter((ressource) =>
+          currentCommercial.includes(
+            `${ressource.firstName} ${ressource.lastName}`
+          )
+        )
+        .map((commercial) => commercial._id);
+
+      const response = await fetch(
+        `${APIBaseUrl}/api/customers/category/${commercialID}/${category}`,
+        {
+          method: "GET",
+        }
+      );
+      const data = (await response.json()) as IDataAPICategory[];
+
+      const groups = data
+        .map((customer) => customer.group)
+        .filter((group) => group !== "")
+        .reduce((acc, curr) => {
+          if (!acc.includes(curr)) acc.push(curr);
           return acc;
-        }, [] as (string | SelectItem)[])
-    );
-  }, [customerCategory]);
+        }, [] as string[]);
+
+      groups.forEach((group) => {
+        res.push(group);
+      });
+    }
+
+    setGroupList(res);
+  };
+
+  useEffect(() => {
+    if (customerCategory !== "") {
+      fetchCustomers(commercial, customerCategory);
+    }
+  }, [customerCategory, commercial]);
 
   return (
     <>
@@ -321,7 +333,7 @@ const NewCustomer = () => {
               clearable
               label="Commercial référent"
               data={ressources
-                .filter((ressource) => ressource.role.includes("Commercial"))
+                .filter((commercial) => commercial.role.includes("Commercial"))
                 .map(
                   (ressource) => `${ressource.firstName} ${ressource.lastName}`
                 )}
@@ -429,7 +441,11 @@ const NewCustomer = () => {
               onChange={(file) => HandleUploadFile(file, setLogoFile, setLogo)}
             />
             {logo !== "" && !smallScreen ? (
-              <img className="newCustomerLogo" src={logo} alt={"logo"} />
+              <img
+                className="newCustomerLogo"
+                src={"data:image/png;base64," + logo}
+                alt={"logo"}
+              />
             ) : (
               <></>
             )}

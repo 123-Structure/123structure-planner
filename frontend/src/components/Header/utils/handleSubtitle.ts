@@ -11,7 +11,7 @@ export const handleSubtitle = (
     if (type === "group") {
       return `${customer?.name} - Groupe de client`;
     }
-    if (type === "category" || type === "group" || type === "name") {
+    if (type === "name") {
       return "Nom de client";
     }
 

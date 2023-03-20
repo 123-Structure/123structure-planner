@@ -213,7 +213,7 @@ export const RessourceData: IRessource[] = [
   {
     firstName: "Guillaume",
     lastName: "NESME",
-    role: ["Dessinateur", "Correcteur"],
+    role: ["Commercial", "Dessinateur", "Correcteur"],
     company: "Villefranche-sur-Saône",
     _id: "g.nesme",
     fixer: [

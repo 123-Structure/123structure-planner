@@ -1,39 +1,88 @@
 import { Tabs, useMantineTheme } from "@mantine/core";
-import { useCustomers } from "../../../../context/CustomerContext";
+import { useEffect, useState } from "react";
+import {
+  useCustomer,
+  useUpdateCustomer,
+} from "../../../../context/CustomerContext";
 import {
   useCustomerRoutes,
   useUpdateCustomerRoutes,
 } from "../../../../context/CustomerRoutes";
+import { ICustomer } from "../../../../data/interfaces/ICustomer";
+import { IDataAPICategory } from "../../../../data/interfaces/IDataAPICategory";
 import { changeFavicon, changeTabTitle } from "../../../../utils/tabsUtils";
 import Customer from "../Customer/Customer";
 import AgencyList from "./AgencyList";
+import BuildingPermitBro from "../../../../assets/img/Building permit-bro.svg";
 
 interface ICustomerListProps {
-  category: string;
+  customersList: IDataAPICategory[];
 }
 
 const CustomerList = (props: ICustomerListProps) => {
+  const [customerGroup, setCustomerGroup] = useState<IDataAPICategory[]>();
+
   const theme = useMantineTheme();
-  const { customers } = useCustomers();
   const customerRoutes = useCustomerRoutes();
   const setCustomerRoutes = useUpdateCustomerRoutes();
+  const customer = useCustomer();
+  const setCustomer = useUpdateCustomer();
 
-  return (
+  const fetchCustomer = async (val: string | null) => {
+    const customer = props.customersList.filter(
+      (customer) => customer.name === val
+    )[0];
+
+    const APIBaseUrl = import.meta.env.VITE_API_URL;
+
+    if (customer !== undefined) {
+      const response = await fetch(
+        `${APIBaseUrl}/api/customers/${customer._id}`,
+        {
+          method: "GET",
+        }
+      );
+      const data = (await response.json()) as ICustomer;
+      setCustomer(data);
+      setCustomerGroup(undefined);
+    } else {
+      const response = await fetch(
+        `${APIBaseUrl}/api/customers/group/${customerRoutes.commercial}/${customerRoutes.category}/${val}`,
+        {
+          method: "GET",
+        }
+      );
+      const data = (await response.json()) as IDataAPICategory[];
+      setCustomer(undefined);
+      setCustomerGroup(data);
+    }
+  };
+
+  useEffect(() => {
+    if (customerRoutes.customer !== "") {
+      fetchCustomer(customerRoutes.customer);
+      changeFavicon("👷");
+      changeTabTitle(`123 Structure - ${customerRoutes.customer}`);
+    }
+  }, [props.customersList]);
+
+  return props.customersList.length > 0 ? (
     <Tabs
       orientation="vertical"
       value={customerRoutes.customer}
       onTabChange={(val: string) => {
+        fetchCustomer(val);
         changeFavicon("👷");
         changeTabTitle(`123 Structure - ${val}`);
         setCustomerRoutes({
           ...customerRoutes,
-          customer: val,
+          customer: val as string,
+          agency: "",
         });
       }}
     >
       <Tabs.List>
-        {customers.customersList
-          .filter((customer) => customer.category === props.category)
+        {props.customersList
           .reduce((acc, customer) => {
             const value =
               customer.group === "" ? customer.name : customer.group;
@@ -60,52 +109,27 @@ const CustomerList = (props: ICustomerListProps) => {
           ))}
       </Tabs.List>
 
-      {customers.customersList
-        .filter(
-          (customer) =>
-            customer.category === props.category && customer.group === ""
-        )
-        .reduce((acc, customer) => {
-          const value = customer.group === "" ? customer.name : customer.group;
+      {customer !== undefined ? (
+        <Tabs.Panel key={customer._id} value={customer.name}>
+          <Customer customer={customer} />
+        </Tabs.Panel>
+      ) : (
+        <></>
+      )}
 
-          if (!acc.includes(value)) {
-            acc.push(value);
-          }
-          return acc;
-        }, [] as string[])
-        .map((customer) => (
-          <Tabs.Panel key={customer} value={customer}>
-            <Customer
-              customer={
-                customers.customersList.filter((c) => c.name === customer)[0]
-              }
-            />
-          </Tabs.Panel>
-        ))}
-
-      {customers.customersList
-        .filter(
-          (customer) =>
-            customer.category === props.category && customer.group !== ""
-        )
-        .reduce((acc, customer) => {
-          const value = customer.group === "" ? customer.name : customer.group;
-
-          if (!acc.includes(value)) {
-            acc.push(value);
-          }
-          return acc;
-        }, [] as string[])
-        .map((customer) => (
-          <Tabs.Panel key={customer} value={customer}>
-            <AgencyList
-              customers={customers.customersList.filter(
-                (c) => c.group === customer
-              )}
-            />
-          </Tabs.Panel>
-        ))}
+      {customerGroup !== undefined ? (
+        <Tabs.Panel key={customerGroup[0].group} value={customerGroup[0].group}>
+          <AgencyList customersList={customerGroup} />
+        </Tabs.Panel>
+      ) : (
+        <></>
+      )}
     </Tabs>
+  ) : (
+    <div className="customerListEmptyResult">
+      <img src={BuildingPermitBro} alt="building permit" />
+      <p>Aucun client pour cette catégorie</p>
+    </div>
   );
 };
 

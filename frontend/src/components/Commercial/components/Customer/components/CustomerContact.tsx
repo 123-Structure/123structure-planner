@@ -11,8 +11,11 @@ import {
 import { useMediaQuery } from "@mantine/hooks";
 import { showNotification } from "@mantine/notifications";
 import { IconCheck, IconCirclePlus, IconUser, IconX } from "@tabler/icons";
-import React, { useState } from "react";
-import { useCustomers } from "../../../../../context/CustomerContext";
+import { useState } from "react";
+import {
+  useCustomer,
+  useUpdateCustomer,
+} from "../../../../../context/CustomerContext";
 import { IContact } from "../../../../../data/interfaces/IContact";
 import { ICustomer } from "../../../../../data/interfaces/ICustomer";
 import { TContactCategories } from "../../../../../data/types/TContactCategories";
@@ -49,7 +52,8 @@ const CustomerContact = (props: ICustomerContactProps) => {
   const theme = useMantineTheme();
   const smallScreen = useMediaQuery(`(max-width: ${theme.breakpoints.xs})`);
 
-  const { customers, updateCustomers } = useCustomers();
+  const customer = useCustomer();
+  const setCustomer = useUpdateCustomer();
 
   //generates random id;
   const guid = () => {
@@ -98,63 +102,54 @@ const CustomerContact = (props: ICustomerContactProps) => {
       lastName !== "" &&
       category !== ""
     ) {
-      const changedCustomer = customers.customersList.filter(
-        (customer) =>
-          customer.category === props.customer.category &&
-          customer.group === props.customer.group &&
-          customer.name === props.customer.name
-      )[0];
+      if (customer !== undefined) {
+        const changedCustomer = customer;
 
-      const newContact: IContact = {
-        _id: guid(),
-        firstName: firstName,
-        lastName: lastName,
-        gender: gender as "M." | "Mme",
-        category: category as TContactCategories,
-        email: email === "-" || email === "" ? "-" : email,
-        phone1: phone1 === "-" || phone1 === "" ? "-" : phone1,
-        phone2: phone2 === "-" || phone2 === "" ? "-" : phone2,
-      };
+        const newContact: IContact = {
+          _id: guid(),
+          firstName: firstName,
+          lastName: lastName,
+          gender: gender as "M." | "Mme",
+          category: category as TContactCategories,
+          email: email === "-" || email === "" ? "-" : email,
+          phone1: phone1 === "-" || phone1 === "" ? "-" : phone1,
+          phone2: phone2 === "-" || phone2 === "" ? "-" : phone2,
+        };
 
-      changedCustomer.contact.push(newContact);
+        changedCustomer.contact.push(newContact);
 
-      const response = await fetch(
-        `${import.meta.env.VITE_API_URL}/api/customers/${
-          changedCustomer._id as string
-        }`,
-        {
-          method: "PATCH",
-          body: JSON.stringify({ contact: changedCustomer.contact }),
-          headers: {
-            "Content-Type": "application/json",
-          },
+        const response = await fetch(
+          `${import.meta.env.VITE_API_URL}/api/customers/${
+            changedCustomer._id as string
+          }`,
+          {
+            method: "PATCH",
+            body: JSON.stringify({ contact: changedCustomer.contact }),
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        );
+
+        const data = await response.json();
+
+        if (!response.ok) {
+          showNotification({
+            title: `⛔ Erreur serveur`,
+            message: data.error,
+            color: "red",
+          });
         }
-      );
 
-      const data = await response.json();
+        setCustomer(changedCustomer);
 
-      if (!response.ok) {
         showNotification({
-          title: `⛔ Erreur serveur`,
-          message: data.error,
-          color: "red",
+          title: `✅ Nouveau contact sauvegardé`,
+          message: `Nouveau contact ajouté à ${props.customer.name}`,
+          color: "green",
         });
+        handleCloseModal();
       }
-
-      updateCustomers({
-        type: "UPDATE_CUSTOMER",
-        payload: {
-          id: changedCustomer._id as string,
-          customer: changedCustomer,
-        },
-      });
-
-      showNotification({
-        title: `✅ Nouveau contact sauvegardé`,
-        message: `Nouveau contact ajouté à ${props.customer.name}`,
-        color: "green",
-      });
-      handleCloseModal();
     } else {
       gender === ""
         ? setGenderError("Information manquante")
@@ -198,21 +193,18 @@ const CustomerContact = (props: ICustomerContactProps) => {
         </ActionIcon>
       </div>
       <div className="contactContainer">
-        {customers.customersList
-          .filter(
-            (customer) =>
-              customer.category === props.customer.category &&
-              customer.group === props.customer.group &&
-              customer.name === props.customer.name
-          )[0]
-          .contact.map((currentContact, index) => (
+        {customer !== undefined ? (
+          customer.contact.map((currentContact, index) => (
             <Contact
               editMode={props.editMode}
               key={index}
               customer={props.customer}
               currentContact={currentContact}
             />
-          ))}
+          ))
+        ) : (
+          <></>
+        )}
       </div>
       <Modal
         fullScreen={smallScreen}

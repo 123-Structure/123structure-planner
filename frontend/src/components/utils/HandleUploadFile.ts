@@ -10,7 +10,7 @@ export const HandleUploadFile = (
     fileReader.onload = () => {
       const base64String = fileReader.result as string;
       if (base64String !== null) {
-        setBinary(base64String);
+        setBinary(base64String.split("data:image/png;base64,")[1]);
       }
     };
   }

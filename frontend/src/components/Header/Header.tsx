@@ -8,7 +8,6 @@ import Lottie from "react-lottie";
 import SearchBar from "./components/SearchBar/SearchBar";
 import { useMantineTheme } from "@mantine/core";
 import { useMediaQuery } from "@mantine/hooks";
-import { useCustomers } from "../../context/CustomerContext";
 import LottieLoader from "../utils/LottieLoader";
 
 const Header = () => {
@@ -21,13 +20,12 @@ const Header = () => {
     },
   };
 
-  const { customers } = useCustomers();
   const theme = useMantineTheme();
   const smallScreen = useMediaQuery(`(max-width: ${theme.breakpoints.xs})`);
 
   return (
     <>
-      <LottieLoader visible={customers.customersList.length === 0} />
+      {/* <LottieLoader visible={true} /> */}
       <div className={`header ${smallScreen ? "header-mobile" : ""}`}>
         <div className={`menu ${smallScreen ? "menu-mobile" : ""}`}>
           {!smallScreen ? (

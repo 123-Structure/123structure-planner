@@ -7,7 +7,7 @@ import {
   TextInput,
   useMantineTheme,
 } from "@mantine/core";
-import { getHotkeyHandler, useMediaQuery } from "@mantine/hooks";
+import { useMediaQuery } from "@mantine/hooks";
 import { IconSearch } from "@tabler/icons";
 import { useEffect, useState } from "react";
 import { IDataFromAPI } from "../../../../data/interfaces/IDataFromAPI";
@@ -16,6 +16,8 @@ import SearchBarItem from "./components/SearchBarItem";
 import ProfilingBro from "../../../../assets/img/Profiling-bro.svg";
 import BricklayerBro from "../../../../assets/img/Bricklayer-bro.svg";
 import "../../../../assets/style/SearchBar.css";
+import { changeFavicon, changeTabTitle } from "../../../../utils/tabsUtils";
+import { useUpdateCustomerRoutes } from "../../../../context/CustomerRoutes";
 
 const SearchBar = () => {
   const [openSearchBarModal, setOpenSearchBarModal] = useState(false);
@@ -26,13 +28,7 @@ const SearchBar = () => {
   const theme = useMantineTheme();
   const smallScreen = useMediaQuery(`(max-width: ${theme.breakpoints.xs})`);
   const mediumScreen = useMediaQuery(`(max-width: ${theme.breakpoints.md})`);
-
-  document.body.addEventListener(
-    "keydown",
-    getHotkeyHandler([
-      ["Ctrl+/", () => setOpenSearchBarModal(!openSearchBarModal)],
-    ])
-  );
+  const setCustomerRoutes = useUpdateCustomerRoutes();
 
   const handleCloseModal = () => {
     setOpenSearchBarModal(false);
@@ -72,20 +68,9 @@ const SearchBar = () => {
         className={`searchBar ${mediumScreen ? "searchBar-medium" : ""} ${
           smallScreen ? "searchBar-mobile" : ""
         }`}
+        value={""}
         icon={<IconSearch size="1rem" />}
         placeholder="Rechercher ..."
-        rightSectionWidth={95}
-        rightSection={
-          smallScreen ? (
-            ""
-          ) : (
-            <Flex align="center">
-              <Kbd mr={5}>Ctrl</Kbd>
-              <span>+</span>
-              <Kbd ml={5}>/</Kbd>
-            </Flex>
-          )
-        }
         styles={(theme) => ({
           input: {
             "&:focus-within": {
@@ -93,7 +78,18 @@ const SearchBar = () => {
             },
           },
         })}
-        onClick={() => setOpenSearchBarModal(true)}
+        onClick={() => {
+          setCustomerRoutes({
+            commercial: "",
+            category: "",
+            customer: "",
+            agency: "",
+            appointment: "",
+          });
+          setOpenSearchBarModal(true);
+          changeFavicon("🔎");
+          changeTabTitle(`123 Structure - Recherche`);
+        }}
       />
       <Modal
         fullScreen={smallScreen}
@@ -149,7 +145,13 @@ const SearchBar = () => {
               ) : (
                 actions.map((action) =>
                   action.results.map((result, key) => (
-                    <SearchBarItem key={key} action={action} result={result} />
+                    <SearchBarItem
+                      key={key}
+                      action={action}
+                      result={result}
+                      setOpenSearchBarModal={setOpenSearchBarModal}
+                      setQuery={setQuery}
+                    />
                   ))
                 )
               )}

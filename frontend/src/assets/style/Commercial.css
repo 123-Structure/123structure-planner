@@ -12,6 +12,22 @@
   font-weight: bold;
 }
 
+.customerListEmptyResult {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 450px;
+  margin-left: -4px;
+}
+
+
+.customerListEmptyResult > p {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: gray;
+}
+
 .mobileCustomerMenu {
   display: flex;
   flex-direction: column;

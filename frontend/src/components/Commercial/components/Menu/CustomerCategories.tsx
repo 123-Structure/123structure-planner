@@ -1,51 +1,70 @@
 import { Tabs, useMantineTheme } from "@mantine/core";
+import { useEffect, useState } from "react";
 import {
   useCustomerRoutes,
   useUpdateCustomerRoutes,
 } from "../../../../context/CustomerRoutes";
+import { CustomerCategoryList } from "../../../../data/constants/CustomerCategoryList";
+import { IDataAPICategory } from "../../../../data/interfaces/IDataAPICategory";
+import { changeFavicon, changeTabTitle } from "../../../../utils/tabsUtils";
 import CustomerList from "./CustomerList";
 
 const CustomerCategories = () => {
+  const [customersList, setCustomersList] = useState<IDataAPICategory[]>([]);
+
   const customerRoutes = useCustomerRoutes();
   const setCustomerRoutes = useUpdateCustomerRoutes();
 
   const theme = useMantineTheme();
 
-  const categories = [
-    "Constructeur",
-    "Négoce",
-    "Maitre d'Oeuvre",
-    "Maçon",
-    "Charpentier",
-  ];
-
-  const getDisplay = () => {
-    const element = document.querySelector(
-      ".customerCategories"
-    ) as HTMLDivElement;
-    if (element !== null) {
-      console.log(element.style.display);
-    }
+  const fetchCustomersList = async (
+    commercial: string | null,
+    category: string | null
+  ) => {
+    const APIBaseUrl = import.meta.env.VITE_API_URL;
+    const response = await fetch(
+      `${APIBaseUrl}/api/customers/category/${commercial}/${category}`,
+      {
+        method: "GET",
+      }
+    );
+    const data = (await response.json()) as IDataAPICategory[];
+    setCustomersList(data);
   };
 
-  getDisplay();
+  useEffect(() => {
+    if (customerRoutes.category !== "") {
+      fetchCustomersList(customerRoutes.commercial, customerRoutes.category);
+    }
+  }, [customerRoutes.category]);
+
+  useEffect(() => {
+    if (customerRoutes.category !== "") {
+      changeFavicon("👷");
+      changeTabTitle(`123 Structure - ${customerRoutes.category}`);
+    }
+  }, [customerRoutes.category]);
 
   return (
     <>
       <Tabs
         orientation="vertical"
         value={customerRoutes.category}
-        onTabChange={(val:string) => {
+        onTabChange={(val: string) => {
+          fetchCustomersList(customerRoutes.commercial, val);
           setCustomerRoutes({
             ...customerRoutes,
             category: val,
+            customer: "",
+            agency: "",
           });
         }}
       >
         <Tabs.List>
-          {categories.map((category) => (
+          {CustomerCategoryList.map((category) => (
             <Tabs.Tab
               key={category}
+              className={`${category}_${customerRoutes.commercial}`}
               style={{
                 backgroundColor:
                   customerRoutes.category === category
@@ -60,9 +79,9 @@ const CustomerCategories = () => {
           ))}
         </Tabs.List>
 
-        {categories.map((category) => (
+        {CustomerCategoryList.map((category) => (
           <Tabs.Panel key={category} value={category}>
-            <CustomerList category={category} />
+            <CustomerList customersList={customersList} />
           </Tabs.Panel>
         ))}
       </Tabs>

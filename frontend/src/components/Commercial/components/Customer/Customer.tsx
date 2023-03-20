@@ -7,12 +7,14 @@ import { Accordion } from "@mantine/core";
 import { IconCash, IconUsers } from "@tabler/icons";
 import NewAppointment from "../Appointment/NewAppointment";
 import AppointmentList from "../Appointment/AppointmentList";
+import { useEffect, useState } from "react";
 
 interface ICustomerProps {
   customer: ICustomer;
 }
 
 const Customer = (props: ICustomerProps) => {
+
   return (
     <>
       <div className="customer">

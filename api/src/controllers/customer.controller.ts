@@ -27,6 +27,51 @@ export const getCustomer = async (req: Request, res: Response) => {
   res.status(200).json(customer);
 };
 
+// GET all customers by category
+export const getCustomerByCategory = async (req: Request, res: Response) => {
+  const { commercial, category } = req.params;
+
+  const customers = await Customer.find({
+    category: category,
+    commercial: commercial,
+  }).sort({ createdAt: -1 });
+
+  const customersObject = JSON.parse(JSON.stringify(customers)) as ICustomer[];
+
+  const result = customersObject.map((customer) => {
+    return {
+      _id: customer._id,
+      name: customer.name,
+      group: customer.group,
+    };
+  });
+
+  res.status(200).json(result);
+};
+
+// GET all customers by group
+export const getCustomerByGroup = async (req: Request, res: Response) => {
+  const { commercial, category, group } = req.params;
+
+  const customers = await Customer.find({
+    category: category,
+    commercial: commercial,
+    group: group,
+  }).sort({ createdAt: -1 });
+
+  const customersObject = JSON.parse(JSON.stringify(customers)) as ICustomer[];
+
+  const result = customersObject.map((customer) => {
+    return {
+      _id: customer._id,
+      name: customer.name,
+      group: customer.group,
+    };
+  });
+
+  res.status(200).json(result);
+};
+
 // POST a new customer
 export const createCustomer = async (req: Request, res: Response) => {
   const {

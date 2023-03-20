@@ -15,7 +15,7 @@ import {
   IconMap2,
   IconX,
 } from "@tabler/icons";
-import React, { useState } from "react";
+import { useState } from "react";
 import CustomButton from "../../../utils/CustomButton";
 import CustomTitle from "../../../utils/CustomTitle";
 import "../../../../assets/style/newCustomer.css";
@@ -25,7 +25,10 @@ import { ICustomer } from "../../../../data/interfaces/ICustomer";
 import { DatePickerInput } from "@mantine/dates";
 import { IAppointment } from "../../../../data/interfaces/IAppointment";
 import { TAppointmentTitle } from "../../../../data/types/TApppointmentTitle";
-import { useCustomers } from "../../../../context/CustomerContext";
+import {
+  useCustomer,
+  useUpdateCustomer,
+} from "../../../../context/CustomerContext";
 import {
   useCustomerRoutes,
   useUpdateCustomerRoutes,
@@ -53,9 +56,11 @@ const NewAppointment = (props: INewAppointmentProps) => {
   const theme = useMantineTheme();
   const smallScreen = useMediaQuery(`(max-width: ${theme.breakpoints.xs})`);
 
-  const { customers, updateCustomers } = useCustomers();
   const customerRoutes = useCustomerRoutes();
   const setCustomerRoutes = useUpdateCustomerRoutes();
+
+  const customer = useCustomer();
+  const setCustomer = useUpdateCustomer();
 
   const handleCloseModal = () => {
     setOpenNewAppointment(false);
@@ -74,75 +79,65 @@ const NewAppointment = (props: INewAppointmentProps) => {
       isCPFormat(cp) &&
       city !== ""
     ) {
-      const changedCustomer = customers.customersList.filter(
-        (customer) =>
-          customer.category === props.customer.category &&
-          customer.group === props.customer.group &&
-          customer.name === props.customer.name
-      )[0];
-
-      const newAppointment: IAppointment = {
-        date: appointmentDate,
-        contact: changedCustomer.contact
-          .filter((contact) =>
-            appointmentContact.includes(
-              `${contact.firstName} ${contact.lastName}`
+      if (customer !== undefined) {
+        const changedCustomer = customer;
+        const newAppointment: IAppointment = {
+          date: appointmentDate,
+          contact: changedCustomer.contact
+            .filter((contact) =>
+              appointmentContact.includes(
+                `${contact.firstName} ${contact.lastName}`
+              )
             )
-          )
-          .map((contact) => contact._id) as string[],
-        location: {
-          address: address,
-          cp: cp,
-          city: city,
-        },
-        title: appointmentTitle as TAppointmentTitle,
-        content: "",
-      };
-
-      changedCustomer.appointment.push(newAppointment);
-
-      const response = await fetch(
-        `${import.meta.env.VITE_API_URL}/api/customers/${
-          changedCustomer._id as string
-        }`,
-        {
-          method: "PATCH",
-          body: JSON.stringify({ appointment: changedCustomer.appointment }),
-          headers: {
-            "Content-Type": "application/json",
+            .map((contact) => contact._id) as string[],
+          location: {
+            address: address,
+            cp: cp,
+            city: city,
           },
+          title: appointmentTitle as TAppointmentTitle,
+          content: "",
+        };
+
+        changedCustomer.appointment.push(newAppointment);
+
+        const response = await fetch(
+          `${import.meta.env.VITE_API_URL}/api/customers/${
+            changedCustomer._id as string
+          }`,
+          {
+            method: "PATCH",
+            body: JSON.stringify({ appointment: changedCustomer.appointment }),
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        );
+        const data = await response.json();
+
+        if (!response.ok) {
+          showNotification({
+            title: `⛔ Erreur serveur`,
+            message: data.error,
+            color: "red",
+          });
         }
-      );
-      const data = await response.json();
 
-      if (!response.ok) {
+        setCustomer(changedCustomer);
+
         showNotification({
-          title: `⛔ Erreur serveur`,
-          message: data.error,
-          color: "red",
+          title: `✅ Nouveau rendez-vous sauvegardé`,
+          message: `Nouveau rendez-vous ajouté pour ${props.customer.name}`,
+          color: "green",
         });
+        setCustomerRoutes({
+          ...customerRoutes,
+          appointment: `${appointmentTitle} (${appointmentDate.toLocaleDateString(
+            "fr"
+          )})`,
+        });
+        handleCloseModal();
       }
-
-      updateCustomers({
-        type: "UPDATE_CUSTOMER",
-        payload: {
-          id: changedCustomer._id as string,
-          customer: changedCustomer,
-        },
-      });
-
-      showNotification({
-        title: `✅ Nouveau rendez-vous sauvegardé`,
-        message: `Nouveau rendez-vous ajouté pour ${props.customer.name}`,
-        color: "green",
-      });
-      setCustomerRoutes({
-        ...customerRoutes,
-        appointment: `${appointmentTitle} (${appointmentDate.toLocaleDateString(
-          "fr"
-        )})`,
-      });
-      handleCloseModal();
     } else {
       appointmentTitle === ""
         ? setErrorAppointmentTitle("Information manquante")

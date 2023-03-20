@@ -25,7 +25,10 @@ import EditModeToggle from "../../../utils/EditModeToggle";
 import { ICustomer } from "../../../../data/interfaces/ICustomer";
 import { showNotification } from "@mantine/notifications";
 import { isEmailFormat, isPhoneFormat } from "../../../../utils/validateInput";
-import { useCustomers } from "../../../../context/CustomerContext";
+import {
+  useCustomer,
+  useUpdateCustomer,
+} from "../../../../context/CustomerContext";
 
 interface IContactProps {
   color?: string;
@@ -49,7 +52,9 @@ const Contact = (props: IContactProps) => {
 
   const theme = useMantineTheme();
   const smallScreen = useMediaQuery(`(max-width: ${theme.breakpoints.xs})`);
-  const { customers, updateCustomers } = useCustomers();
+
+  const customer = useCustomer();
+  const setCustomer = useUpdateCustomer();
 
   const sendEmailOrCallPhone = (id: string) => {
     const anchor = document.querySelector(id) as HTMLAnchorElement;
@@ -75,62 +80,56 @@ const Contact = (props: IContactProps) => {
   };
 
   const handleValideClick = async () => {
-    const changedCustomer = customers.customersList.filter(
-      (customer) => customer.name === props.customer.name
-    )[0];
+    if (customer !== undefined) {
+      const changedCustomer = customer;
 
-    const changedContact = changedCustomer.contact.filter(
-      (contact) =>
-        contact.category === props.currentContact.category &&
-        contact.email === props.currentContact.email &&
-        contact.phone1 === props.currentContact.phone1 &&
-        contact.phone2 === props.currentContact.phone2
-    )[0];
+      const changedContact = changedCustomer.contact.filter(
+        (contact) =>
+          contact.category === props.currentContact.category &&
+          contact.email === props.currentContact.email &&
+          contact.phone1 === props.currentContact.phone1 &&
+          contact.phone2 === props.currentContact.phone2
+      )[0];
 
-    changedContact.firstName = firstName;
-    changedContact.lastName = lastName;
-    changedContact.gender = gender;
-    changedContact.category = category;
-    changedContact.email = email;
-    changedContact.phone1 = phone1;
-    changedContact.phone2 = phone2;
+      changedContact.firstName = firstName;
+      changedContact.lastName = lastName;
+      changedContact.gender = gender;
+      changedContact.category = category;
+      changedContact.email = email;
+      changedContact.phone1 = phone1;
+      changedContact.phone2 = phone2;
 
-    const response = await fetch(
-      `${import.meta.env.VITE_API_URL}/api/customers/${
-        changedCustomer._id as string
-      }`,
-      {
-        method: "PATCH",
-        body: JSON.stringify({ contact: changedCustomer.contact }),
-        headers: {
-          "Content-Type": "application/json",
-        },
+      const response = await fetch(
+        `${import.meta.env.VITE_API_URL}/api/customers/${
+          changedCustomer._id as string
+        }`,
+        {
+          method: "PATCH",
+          body: JSON.stringify({ contact: changedCustomer.contact }),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      const data = await response.json();
+
+      if (!response.ok) {
+        showNotification({
+          title: `⛔ Erreur serveur`,
+          message: data.error,
+          color: "red",
+        });
       }
-    );
-    const data = await response.json();
 
-    if (!response.ok) {
+      setCustomer(changedCustomer);
+
       showNotification({
-        title: `⛔ Erreur serveur`,
-        message: data.error,
-        color: "red",
+        title: `✅ Fiche client sauvegardée`,
+        message: `La fiche client ${props.customer.name} est mise à jour`,
+        color: "green",
       });
+      setEditContact(false);
     }
-
-    updateCustomers({
-      type: "UPDATE_CUSTOMER",
-      payload: {
-        id: changedCustomer._id as string,
-        customer: changedCustomer,
-      },
-    });
-
-    showNotification({
-      title: `✅ Fiche client sauvegardée`,
-      message: `La fiche client ${props.customer.name} est mise à jour`,
-      color: "green",
-    });
-    setEditContact(false);
   };
 
   const handleCancelClick = () => {
