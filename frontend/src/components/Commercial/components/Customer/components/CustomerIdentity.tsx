@@ -3,11 +3,6 @@ import { showNotification } from "@mantine/notifications";
 import { IconAddressBook, IconMail, IconMap2, IconPhone } from "@tabler/icons";
 import { ChangeEvent, useState } from "react";
 import { ICustomer } from "../../../../../data/interfaces/ICustomer";
-import {
-  isCPFormat,
-  isEmailFormat,
-  isPhoneFormat,
-} from "../../../../../utils/validateInput";
 import CustomDivider from "../../../../utils/CustomDivider";
 import CustomTitle from "../../../../utils/CustomTitle";
 import EditModeToggle from "../../../../utils/EditModeToggle";
@@ -18,6 +13,8 @@ import {
   useCustomer,
   useUpdateCustomer,
 } from "../../../../../context/CustomerContext";
+import validator from "validator";
+import { isPhoneFormat } from "../../../../../utils/validateInput";
 
 interface ICustomerIdentityProps {
   customer: ICustomer;
@@ -153,7 +150,9 @@ const CustomerIdentity = (props: ICustomerIdentityProps) => {
         />
         <EditModeToggle
           disabled={
-            !isCPFormat(cp) || !isEmailFormat(email) || !isPhoneFormat(phone)
+            !validator.isPostalCode(cp, "FR") ||
+            !validator.isEmail(email) ||
+            !isPhoneFormat(phone)
           }
           editMode={editCustomerIdentity}
           editLabel=""
@@ -211,9 +210,11 @@ const CustomerIdentity = (props: ICustomerIdentityProps) => {
               )
             }
             errorMessage={[
-              isCPFormat(cp) ? "" : ".",
-              isCPFormat(cp) ? "" : "Code postale de 5 chiffres",
-              isCPFormat(cp) ? "" : ".",
+              validator.isPostalCode(cp, "FR") ? "" : ".",
+              validator.isPostalCode(cp, "FR")
+                ? ""
+                : "Code postale de 5 chiffres",
+              validator.isPostalCode(cp, "FR") ? "" : ".",
             ]}
           />
           <CustomerItem
@@ -231,7 +232,7 @@ const CustomerIdentity = (props: ICustomerIdentityProps) => {
               )
             }
             errorMessage={[
-              isEmailFormat(email) ? "" : "Format d'email invalide",
+              validator.isEmail(email) ? "" : "Format d'email invalide",
             ]}
           />
           <a

@@ -49,17 +49,17 @@ const Week = (props: IWeekProps) => {
       changedProject[0].ETAT = newValue;
 
       const ressource = ressources.filter(
-        (ressource) => ressource._id === props.rowId
+        (ressource) => ressource.shortName === props.rowId
       )[0];
 
       changedProject[0].DESSINATEUR.filter(
-        (dessinateur) => dessinateur._id === ressource._id
+        (dessinateur) => dessinateur.shortName === ressource.shortName
       ).length === 0 && ressource.role.includes("Dessinateur")
         ? changedProject[0].DESSINATEUR.push(ressource)
         : "";
 
       changedProject[0].INGENIEUR.filter(
-        (ingenieur) => ingenieur._id === ressource._id
+        (ingenieur) => ingenieur.shortName === ressource.shortName
       ).length === 0 && ressource.role.includes("Ingénieur")
         ? changedProject[0].INGENIEUR.push(ressource)
         : "";

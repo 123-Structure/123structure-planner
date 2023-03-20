@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 import { Types } from "mongoose";
 import { ICustomer } from "../data/interfaces/ICustomer";
 import { findPath } from "../data/utils/findPath";
-import Customer from "../models/customer.model";
+import Customer from "../models/customer.models";
 
 // GET all customers
 export const getCustomers = async (req: Request, res: Response) => {

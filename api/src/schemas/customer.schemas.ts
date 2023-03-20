@@ -1,8 +1,8 @@
 import { Schema } from "mongoose";
 import { ICustomer } from "../data/interfaces/ICustomer";
-import { appointmentSchema } from "./utils/appointment.schema";
-import { contactSchema } from "./utils/contact.schema";
-import { projectGoalSchema } from "./utils/projectGoal.schema";
+import { appointmentSchema } from "./utils/appointment.schemas";
+import { contactSchema } from "./utils/contact.schemas";
+import { projectGoalSchema } from "./utils/projectGoal.schemas";
 
 export const customerSchema = new Schema<ICustomer>(
   {

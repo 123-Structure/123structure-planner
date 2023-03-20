@@ -21,7 +21,7 @@ const LoadRate = (props: ILoadRateProps) => {
 
   const totalHours = () => {
     const currentRessourceRole = ressources.filter(
-      (r) => r._id === props.rowId
+      (r) => r.shortName === props.rowId
     )[0].role;
 
     if (currentRessourceRole.includes("Ingénieur")) {

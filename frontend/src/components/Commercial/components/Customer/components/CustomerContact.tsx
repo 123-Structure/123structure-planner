@@ -19,13 +19,11 @@ import {
 import { IContact } from "../../../../../data/interfaces/IContact";
 import { ICustomer } from "../../../../../data/interfaces/ICustomer";
 import { TContactCategories } from "../../../../../data/types/TContactCategories";
-import {
-  isEmailFormat,
-  isPhoneFormat,
-} from "../../../../../utils/validateInput";
 import CustomButton from "../../../../utils/CustomButton";
 import CustomTitle from "../../../../utils/CustomTitle";
 import Contact from "../../utils/Contact";
+import validator from "validator";
+import { isPhoneFormat } from "../../../../../utils/validateInput";
 
 interface ICustomerContactProps {
   contact: IContact[];
@@ -290,7 +288,7 @@ const CustomerContact = (props: ICustomerContactProps) => {
               setEmail(event.currentTarget.value);
             }}
             error={
-              isEmailFormat(email) || email.length <= 5
+              validator.isEmail(email) || email.length <= 5
                 ? ""
                 : "Format d'email invalide"
             }

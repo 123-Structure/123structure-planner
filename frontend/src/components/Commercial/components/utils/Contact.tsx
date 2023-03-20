@@ -24,11 +24,12 @@ import { useMediaQuery } from "@mantine/hooks";
 import EditModeToggle from "../../../utils/EditModeToggle";
 import { ICustomer } from "../../../../data/interfaces/ICustomer";
 import { showNotification } from "@mantine/notifications";
-import { isEmailFormat, isPhoneFormat } from "../../../../utils/validateInput";
 import {
   useCustomer,
   useUpdateCustomer,
 } from "../../../../context/CustomerContext";
+import validator from "validator";
+import { isPhoneFormat } from "../../../../utils/validateInput";
 
 interface IContactProps {
   color?: string;
@@ -170,7 +171,7 @@ const Contact = (props: IContactProps) => {
             />
             <EditModeToggle
               disabled={
-                !isEmailFormat(email) ||
+                !validator.isEmail(email) ||
                 !isPhoneFormat(phone1) ||
                 (!isPhoneFormat(phone2) && phone2 !== "") ||
                 firstName.length < 1 ||
@@ -269,7 +270,7 @@ const Contact = (props: IContactProps) => {
                 )
               }
               errorMessage={[
-                isEmailFormat(email) ? "" : "Format d'email invalide",
+                validator.isEmail(email) ? "" : "Format d'email invalide",
               ]}
             />
           ) : (

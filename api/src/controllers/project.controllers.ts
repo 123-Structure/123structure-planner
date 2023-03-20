@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { Types } from "mongoose";
-import Project from "../models/project.model";
+import Project from "../models/project.models";
 
 // GET all projects
 export const getProjects = async (req: Request, res: Response) => {

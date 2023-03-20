@@ -80,7 +80,7 @@ const ManageUsersModal = (props: IManageUsersModalProps) => {
               {`${user.firstName} ${user.lastName}`}
             </Text>
             <Text size="xs" color="dimmed">
-              {`${user.firstName[0].toLowerCase()}.${user.lastName.toLowerCase()}@123structure.fr`}
+              {user.email}
             </Text>
           </div>
         </Group>

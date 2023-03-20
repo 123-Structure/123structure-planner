@@ -24,17 +24,14 @@ import CustomButton from "../../../utils/CustomButton";
 import CustomTitle from "../../../utils/CustomTitle";
 import "../../../../assets/style/newCustomer.css";
 import { useRessources } from "../../../../context/RessourceContext";
-import {
-  isCPFormat,
-  isEmailFormat,
-  isPhoneFormat,
-} from "../../../../utils/validateInput";
 import { showNotification } from "@mantine/notifications";
 import { ICustomer } from "../../../../data/interfaces/ICustomer";
 import { TCustomerCategory } from "../../../../data/types/TCustomerCategory";
 import { TPaymentType } from "../../../../data/types/TPaymentType";
 import { HandleUploadFile } from "../../../utils/HandleUploadFile";
 import { IDataAPICategory } from "../../../../data/interfaces/IDataAPICategory";
+import validator from "validator";
+import { isPhoneFormat } from "../../../../utils/validateInput";
 
 const NewCustomer = () => {
   const [openNewCustomer, setOpenNewCustomer] = useState(false);
@@ -113,9 +110,9 @@ const NewCustomer = () => {
       customerCategory !== "" &&
       customerName !== "" &&
       address !== "" &&
-      isCPFormat(cp) &&
+      validator.isPostalCode(cp, "FR") &&
       city !== "" &&
-      (email.length > 0 ? isEmailFormat(email) : true) &&
+      (email.length > 0 ? validator.isEmail(email) : true) &&
       (phone.length > 0 ? isPhoneFormat(phone) : true)
     ) {
       const newCustomer: ICustomer = {
@@ -195,7 +192,7 @@ const NewCustomer = () => {
       address === ""
         ? setErrorAddress("Information manquante")
         : setErrorAddress("");
-      !isCPFormat(cp)
+      !validator.isPostalCode(cp, "FR")
         ? setErrorCp("Code postale de 5 chiffres")
         : setErrorCp("");
       city === "" ? setErrorCity("Information manquante") : setErrorCity("");
@@ -413,7 +410,7 @@ const NewCustomer = () => {
                 setEmail(event.currentTarget.value);
               }}
               error={
-                isEmailFormat(email) || email.length < 1
+                validator.isEmail(email) || email.length < 1
                   ? ""
                   : "Format d'email invalide"
               }

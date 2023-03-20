@@ -49,7 +49,11 @@ const Planner = () => {
                 !ressource.role.includes("Commercial")
             )
             .map((ressource, index) => (
-              <Row key={index} id={`${ressource._id}`} ressource={ressource} />
+              <Row
+                key={index}
+                id={ressource.email.split("@")[0]}
+                ressource={ressource}
+              />
             ))}
         </div>
       </DndProvider>
