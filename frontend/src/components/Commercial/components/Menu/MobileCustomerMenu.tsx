@@ -63,7 +63,7 @@ const MobileCustomerMenu = () => {
       });
     } else {
       const response = await fetch(
-        `${APIBaseUrl}/api/customers/group/${customerRoutes.category}/${val}`,
+        `${APIBaseUrl}/api/customers/group/${customerRoutes.commercial}/${customerRoutes.category}/${val}`,
         {
           method: "GET",
         }

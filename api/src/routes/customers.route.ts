@@ -18,8 +18,8 @@ customersRouter.get("/", getCustomers);
 // GET all customers by category
 customersRouter.get("/category/:commercial/:category", getCustomerByCategory);
 
-// GET all customers by category
-customersRouter.get("/group/:category/:group", getCustomerByGroup);
+// GET all customers by group
+customersRouter.get("/group/:commercial/:category/:group", getCustomerByGroup);
 
 // GET a single customer
 customersRouter.get("/:id", getCustomer);

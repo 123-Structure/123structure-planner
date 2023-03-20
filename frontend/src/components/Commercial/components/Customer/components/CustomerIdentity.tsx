@@ -132,7 +132,7 @@ const CustomerIdentity = (props: ICustomerIdentityProps) => {
     fileReader.onload = () => {
       const base64String = fileReader.result as string;
       if (base64String !== null) {
-        setLogo(base64String);
+        setLogo(base64String.split("data:image/png;base64,")[1]);
       }
     };
   };
@@ -166,29 +166,30 @@ const CustomerIdentity = (props: ICustomerIdentityProps) => {
       </div>
       <div className="customerIdentityContainer">
         <div
-          className={`customerLogoContainer ${
-            editCustomerIdentity ? "editCustomerLogo" : ""
-          }`}
-          onClick={() =>
-            editCustomerIdentity
-              ? document
-                  .getElementById(`logoFileInput_${props.customer.name}`)
-                  ?.click()
-              : null
-          }
+          // className={`customerLogoContainer ${
+          //   editCustomerIdentity ? "editCustomerLogo" : ""
+          // }`}
+          // onClick={() =>
+          //   editCustomerIdentity
+          //     ? document
+          //         .getElementById(`logoFileInput_${props.customer._id}`)
+          //         ?.click()
+          //     : null
+          // }
+          className="customerLogoContainer"
         >
           <img
             className="customerLogo"
-            src={logo === "" ? CabinBro : logo}
+            src={logo === "" ? CabinBro : "data:image/png;base64," + logo}
             alt={`Logo ${props.customer.name}`}
           />
-          <input
+          {/* <input
             type="file"
             className="logoFileInput"
-            id={`logoFileInput_${props.customer.name}`}
+            id={`logoFileInput_${props.customer._id}`}
             onChange={(e) => handleUploadFile(e)}
-            accept="image/png,image/jpeg"
-          />
+            accept="image/png"
+          /> */}
         </div>
         <div
           className="customerItemContainer"

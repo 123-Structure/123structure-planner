@@ -51,10 +51,11 @@ export const getCustomerByCategory = async (req: Request, res: Response) => {
 
 // GET all customers by group
 export const getCustomerByGroup = async (req: Request, res: Response) => {
-  const { category, group } = req.params;
+  const { commercial, category, group } = req.params;
 
   const customers = await Customer.find({
     category: category,
+    commercial: commercial,
     group: group,
   }).sort({ createdAt: -1 });
 

@@ -241,32 +241,51 @@ const NewCustomer = () => {
     }
   }, [priceList]);
 
-  const fetchCustomers = async (category: string) => {
+  const fetchCustomers = async (commercial: string[], category: string) => {
     const APIBaseUrl = import.meta.env.VITE_API_URL;
-    const response = await fetch(
-      `${APIBaseUrl}/api/customers/category/${category}`,
-      {
-        method: "GET",
-      }
-    );
-    const data = (await response.json()) as IDataAPICategory[];
 
-    setGroupList(
-      data
+    let res = [] as string[];
+
+    for (let i = 0; i < commercial.length; i++) {
+      const currentCommercial = commercial[i];
+
+      const commercialID = ressources
+        .filter((ressource) =>
+          currentCommercial.includes(
+            `${ressource.firstName} ${ressource.lastName}`
+          )
+        )
+        .map((commercial) => commercial._id);
+
+      const response = await fetch(
+        `${APIBaseUrl}/api/customers/category/${commercialID}/${category}`,
+        {
+          method: "GET",
+        }
+      );
+      const data = (await response.json()) as IDataAPICategory[];
+
+      const groups = data
         .map((customer) => customer.group)
         .filter((group) => group !== "")
         .reduce((acc, curr) => {
           if (!acc.includes(curr)) acc.push(curr);
           return acc;
-        }, [] as string[])
-    );
+        }, [] as string[]);
+
+      groups.forEach((group) => {
+        res.push(group);
+      });
+    }
+
+    setGroupList(res);
   };
 
   useEffect(() => {
     if (customerCategory !== "") {
-      fetchCustomers(customerCategory);
+      fetchCustomers(commercial, customerCategory);
     }
-  }, [customerCategory]);
+  }, [customerCategory, commercial]);
 
   return (
     <>
@@ -422,7 +441,11 @@ const NewCustomer = () => {
               onChange={(file) => HandleUploadFile(file, setLogoFile, setLogo)}
             />
             {logo !== "" && !smallScreen ? (
-              <img className="newCustomerLogo" src={logo} alt={"logo"} />
+              <img
+                className="newCustomerLogo"
+                src={"data:image/png;base64," + logo}
+                alt={"logo"}
+              />
             ) : (
               <></>
             )}
