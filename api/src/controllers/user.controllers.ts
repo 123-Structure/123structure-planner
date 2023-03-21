@@ -22,13 +22,13 @@ export const loginUser = async (req: Request, res: Response) => {
     const user = await User.findOne({ email });
 
     if (!user) {
-      return res.status(400).json({ error: "⛔ Incorrect email" });
+      return res.status(400).json({ error: "Utilisateur inconnu" });
     }
 
     const match = await bcrypt.compare(password, user.password);
 
     if (!match) {
-      return res.status(400).json({ error: "⛔ Incorrect password" });
+      return res.status(400).json({ error: "Mot de passe erronée" });
     }
 
     // Generate new token
@@ -36,7 +36,6 @@ export const loginUser = async (req: Request, res: Response) => {
 
     res.status(200).json({
       email,
-      password: user.password,
       token,
       firstName: user.firstName,
       lastName: user.lastName,
@@ -87,7 +86,6 @@ export const signUpUser = async (req: Request, res: Response) => {
 
     res.status(200).json({
       email,
-      password: hash,
       token,
       firstName,
       lastName,

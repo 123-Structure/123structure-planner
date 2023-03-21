@@ -20,12 +20,16 @@
   width: 450px;
   margin-left: -4px;
 }
-
-
-.customerListEmptyResult > p {
+.customerListEmptyResult > p,
+.mobileCustomerListEmptyResult > p {
+  text-align: center;
   font-size: 1.25rem;
   font-weight: bold;
   color: gray;
+}
+
+.mobileCustomerListEmptyResult {
+  width: 100%;
 }
 
 .mobileCustomerMenu {

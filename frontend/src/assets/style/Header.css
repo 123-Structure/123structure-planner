@@ -5,6 +5,7 @@
   padding: 1rem;
   border-bottom: 1px solid #dfe2e6;
   margin-bottom: 16px;
+  gap: 16px;
 }
 
 .header-mobile {
@@ -29,13 +30,6 @@
 
 .menu-mobile {
   flex-direction: column;
-}
-
-.login {
-  display: flex;
-  align-items: flex-end;
-  gap: 16px;
-  padding-left: 16px;
 }
 
 .logoHeaderContainer {

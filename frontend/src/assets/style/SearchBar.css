@@ -1,6 +1,5 @@
 .searchBar {
   margin-top: auto;
-  margin-left: 16px;
   width: 20%;
 }
 
@@ -8,7 +7,7 @@
   width: 100%;
 }
 .searchBar-mobile {
-  margin-top: 8px;
+  margin-top: 8px 0 0 0;
 }
 
 #searchImage {

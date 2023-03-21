@@ -8,6 +8,7 @@ import { useCustomer } from "../../../../hooks/Customer/useCustomer";
 import { useUpdateCustomer } from "../../../../hooks/Customer/useUpdateCustomer";
 import { useCustomerRoutes } from "../../../../hooks/CustomerRoutes/useCustomerRoutes";
 import { useUpdateCustomerRoutes } from "../../../../hooks/CustomerRoutes/useUpdateCustomerRoutes";
+import BuildingPermitBro from "../../../../assets/img/Building permit-bro.svg";
 import Customer from "../Customer/Customer";
 
 const MobileCustomerMenu = () => {
@@ -120,6 +121,7 @@ const MobileCustomerMenu = () => {
   };
 
   const handleCategoryChange = (val: string | null) => {
+    setCustomer(undefined);
     fetchCustomersList(customerRoutes.commercial, val);
     setCustomerRoutes({
       ...customerRoutes,
@@ -158,7 +160,7 @@ const MobileCustomerMenu = () => {
             handleCategoryChange(val);
           }}
         />
-        {customerRoutes.category !== "" ? (
+        {customerRoutes.category !== "" && getCustomerList().length > 0 ? (
           <Select
             className="mobileCustomerMenuSelect"
             label="Client"
@@ -169,6 +171,15 @@ const MobileCustomerMenu = () => {
               handleCustomerListChange(val);
             }}
           />
+        ) : customerRoutes.category !== "" && getCustomerList().length === 0 ? (
+          <div
+            className={`customerListEmptyResult ${
+              smallScreen ? "mobileCustomerListEmptyResult" : ""
+            }`}
+          >
+            <img src={BuildingPermitBro} alt="building permit" />
+            <p>Aucun client pour cette catégorie</p>
+          </div>
         ) : (
           <></>
         )}

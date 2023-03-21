@@ -10,6 +10,7 @@ import { changeFavicon, changeTabTitle } from "../../utils/tabsUtils";
 import { useRessources } from "../../hooks/Ressources/useRessources";
 import { useCustomerRoutes } from "../../hooks/CustomerRoutes/useCustomerRoutes";
 import { useUpdateCustomerRoutes } from "../../hooks/CustomerRoutes/useUpdateCustomerRoutes";
+import { useUpdateCustomer } from "../../hooks/Customer/useUpdateCustomer";
 
 const Commercial = () => {
   const [activeTab, setActiveTab] = useState<string | null>("");
@@ -17,6 +18,7 @@ const Commercial = () => {
   const ressources = useRessources();
   const customerRoutes = useCustomerRoutes();
   const setCustomerRoutes = useUpdateCustomerRoutes();
+  const setCustomer = useUpdateCustomer();
   const theme = useMantineTheme();
   const smallScreen = useMediaQuery(`(max-width: ${theme.breakpoints.lg})`);
 
@@ -42,6 +44,7 @@ const Commercial = () => {
       const commercial = ressources.filter(
         (ressource) => ressource._id === activeTab
       )[0];
+      setCustomer(undefined);
       changeFavicon("👷");
       changeTabTitle(
         `123 Structure - ${commercial.firstName} ${commercial.lastName}`

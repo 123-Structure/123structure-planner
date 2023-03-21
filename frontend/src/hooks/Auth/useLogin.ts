@@ -1,16 +1,16 @@
+import { showNotification } from "@mantine/notifications";
 import { useState } from "react";
+import { IRessource } from "../../data/interfaces/IRessource";
 import { useAuth } from "./useAuth";
 
-export const useSignUp = () => {
-  const [error, setError] = useState<string>("");
+export const useLogin = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const { updateAuth } = useAuth();
 
-  const signUp = async (email: string, password: string) => {
+  const login = async (email: string, password: string) => {
     setIsLoading(true);
-    setError("");
     const response = await fetch(
-      `${import.meta.env.VITE_API_URL}/api/users/signUp`,
+      `${import.meta.env.VITE_API_URL}/api/users/login`,
       {
         method: "POST",
         body: JSON.stringify({ email, password }),
@@ -19,11 +19,16 @@ export const useSignUp = () => {
         },
       }
     );
-    const data = await response.json();
+    const data = (await response.json()) as IRessource | any;
 
     if (!response.ok) {
       setIsLoading(false);
-      setError(data.error);
+      showNotification({
+        title: "⛔ Une erreur est survenue",
+        message: data.error,
+        color: "red",
+      });
+      return data.error;
     }
 
     if (response.ok) {
@@ -32,12 +37,16 @@ export const useSignUp = () => {
       // Update AuthContext
       updateAuth({ type: "LOGIN", payload: data });
       setIsLoading(false);
+      showNotification({
+        title: "🎉 Connexion réussi",
+        message: `Bonjour, ${data.firstName} ${data.lastName}`,
+        color: "green",
+      });
     }
   };
 
   return {
-    signUp,
+    login,
     isLoading,
-    error,
   };
 };

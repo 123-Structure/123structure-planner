@@ -1,4 +1,4 @@
-import { createContext,  useReducer } from "react";
+import { createContext, useEffect, useReducer } from "react";
 import { IRessource } from "../data/interfaces/IRessource";
 
 interface IAuthContextProps {
@@ -34,6 +34,16 @@ export const authReducer = (state: IState, action: Action) => {
 
 const AuthProvider = (props: IAuthContextProps) => {
   const [auth, updateAuth] = useReducer(authReducer, initialState);
+
+  useEffect(() => {
+    const localStorageItem = localStorage.getItem("user");
+    if (localStorageItem !== null) {
+      const user = JSON.parse(localStorageItem);
+      if (user) {
+        updateAuth({ type: "LOGIN", payload: user });
+      }
+    }
+  }, []);
 
   // console.log("🔒 AuthContext state : ", auth);
 

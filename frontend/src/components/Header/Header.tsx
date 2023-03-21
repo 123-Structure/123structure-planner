@@ -1,7 +1,7 @@
 import AddProjectFromExcel from "./components/AddProjectFromExcel/AddProjectFromExcel";
 import logo from "../../assets/img/logo.png";
 import ManageUsers from "./components/ManageUsers/ManageUsers";
-import Login from "./components/Login";
+import Auth from "./components/Auth";
 import "../../assets/style/Header.css";
 import animationData from "../../assets/lottie/loader-buildings.json";
 import Lottie from "react-lottie";
@@ -36,7 +36,7 @@ const Header = () => {
           ) : (
             <></>
           )}
-          <Login />
+          <Auth />
         </div>
         <SearchBar />
         <div className="logoHeaderContainer">
