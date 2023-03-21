@@ -12,12 +12,10 @@ import {
   IconUserExclamation,
 } from "@tabler/icons";
 import React, { forwardRef } from "react";
-import {
-  useRessources,
-  useUpdateRessources,
-} from "../../../../../../context/RessourceContext";
 import { IRessource } from "../../../../../../data/interfaces/IRessource";
 import { TRole } from "../../../../../../data/types/TRole";
+import { useRessources } from "../../../../../../hooks/Ressources/useRessources";
+import { useUpdateRessources } from "../../../../../../hooks/Ressources/useUpdateRessources";
 import { companyColor } from "../../../../../../utils/companyColor";
 
 interface IMultiRoleSelectProps {

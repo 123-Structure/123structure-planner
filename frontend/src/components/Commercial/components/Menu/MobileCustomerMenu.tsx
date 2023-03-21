@@ -1,17 +1,13 @@
 import { Select, SelectItem, useMantineTheme } from "@mantine/core";
 import { useMediaQuery } from "@mantine/hooks";
-import React, { useState } from "react";
-import {
-  useCustomer,
-  useUpdateCustomer,
-} from "../../../../context/CustomerContext";
-import {
-  useCustomerRoutes,
-  useUpdateCustomerRoutes,
-} from "../../../../context/CustomerRoutes";
+import { useState } from "react";
 import { CustomerCategoryList } from "../../../../data/constants/CustomerCategoryList";
 import { ICustomer } from "../../../../data/interfaces/ICustomer";
 import { IDataAPICategory } from "../../../../data/interfaces/IDataAPICategory";
+import { useCustomer } from "../../../../hooks/Customer/useCustomer";
+import { useUpdateCustomer } from "../../../../hooks/Customer/useUpdateCustomer";
+import { useCustomerRoutes } from "../../../../hooks/CustomerRoutes/useCustomerRoutes";
+import { useUpdateCustomerRoutes } from "../../../../hooks/CustomerRoutes/useUpdateCustomerRoutes";
 import Customer from "../Customer/Customer";
 
 const MobileCustomerMenu = () => {

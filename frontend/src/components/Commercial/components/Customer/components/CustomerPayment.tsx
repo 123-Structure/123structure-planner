@@ -9,12 +9,10 @@ import {
   IconCalculator,
 } from "@tabler/icons";
 import { useState } from "react";
-import {
-  useCustomer,
-  useUpdateCustomer,
-} from "../../../../../context/CustomerContext";
 import { ICustomer } from "../../../../../data/interfaces/ICustomer";
 import { TPaymentType } from "../../../../../data/types/TPaymentType";
+import { useCustomer } from "../../../../../hooks/Customer/useCustomer";
+import { useUpdateCustomer } from "../../../../../hooks/Customer/useUpdateCustomer";
 import CustomTitle from "../../../../utils/CustomTitle";
 import EditModeToggle from "../../../../utils/EditModeToggle";
 import CustomerItem from "../../utils/CustomerItem";

@@ -12,10 +12,6 @@ import { useMediaQuery } from "@mantine/hooks";
 import { showNotification } from "@mantine/notifications";
 import { IconCheck, IconCirclePlus, IconUser, IconX } from "@tabler/icons";
 import { useState } from "react";
-import {
-  useCustomer,
-  useUpdateCustomer,
-} from "../../../../../context/CustomerContext";
 import { IContact } from "../../../../../data/interfaces/IContact";
 import { ICustomer } from "../../../../../data/interfaces/ICustomer";
 import { TContactCategories } from "../../../../../data/types/TContactCategories";
@@ -24,6 +20,8 @@ import CustomTitle from "../../../../utils/CustomTitle";
 import Contact from "../../utils/Contact";
 import validator from "validator";
 import { isPhoneFormat } from "../../../../../utils/validateInput";
+import { useCustomer } from "../../../../../hooks/Customer/useCustomer";
+import { useUpdateCustomer } from "../../../../../hooks/Customer/useUpdateCustomer";
 
 interface ICustomerContactProps {
   contact: IContact[];

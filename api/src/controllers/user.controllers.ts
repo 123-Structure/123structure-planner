@@ -2,11 +2,50 @@ import { Request, Response } from "express";
 import User from "../models/user.models";
 import bcrypt from "bcrypt";
 import validator from "validator";
+import { sign } from "jsonwebtoken";
+
+// Generate JWT
+const generateToken = (_id: string) => {
+  const jwtSecret = process.env.JWT_SECRET as string;
+  return sign({ _id }, jwtSecret, { expiresIn: "3d" });
+};
 
 // Login user
 export const loginUser = async (req: Request, res: Response) => {
   const { email, password } = req.body;
-  res.status(200).json({ msg: "Login User" });
+
+  try {
+    if (!email || !password) {
+      return res.status(400).json({ error: "⛔ All fields must be filled" });
+    }
+
+    const user = await User.findOne({ email });
+
+    if (!user) {
+      return res.status(400).json({ error: "⛔ Incorrect email" });
+    }
+
+    const match = await bcrypt.compare(password, user.password);
+
+    if (!match) {
+      return res.status(400).json({ error: "⛔ Incorrect password" });
+    }
+
+    // Generate new token
+    const token = generateToken(user._id);
+
+    res.status(200).json({
+      email,
+      password: user.password,
+      token,
+      firstName: user.firstName,
+      lastName: user.lastName,
+      role: user.role,
+      company: user.company,
+    });
+  } catch (error: any) {
+    res.status(400).json({ error: "⛔ " + error.message });
+  }
 };
 
 // SignIn User
@@ -34,7 +73,7 @@ export const signUpUser = async (req: Request, res: Response) => {
     const salt = await bcrypt.genSalt(10);
     const hash = await bcrypt.hash(password, salt);
 
-    await User.create({
+    const user = await User.create({
       email,
       password: hash,
       firstName,
@@ -42,9 +81,14 @@ export const signUpUser = async (req: Request, res: Response) => {
       role,
       company,
     });
+
+    // Generate new token
+    const token = generateToken(user._id);
+
     res.status(200).json({
       email,
       password: hash,
+      token,
       firstName,
       lastName,
       role,

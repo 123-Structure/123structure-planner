@@ -17,7 +17,7 @@ import ProfilingBro from "../../../../assets/img/Profiling-bro.svg";
 import BricklayerBro from "../../../../assets/img/Bricklayer-bro.svg";
 import "../../../../assets/style/SearchBar.css";
 import { changeFavicon, changeTabTitle } from "../../../../utils/tabsUtils";
-import { useUpdateCustomerRoutes } from "../../../../context/CustomerRoutes";
+import { useUpdateCustomerRoutes } from "../../../../hooks/CustomerRoutes/useUpdateCustomerRoutes";
 
 const SearchBar = () => {
   const [openSearchBarModal, setOpenSearchBarModal] = useState(false);

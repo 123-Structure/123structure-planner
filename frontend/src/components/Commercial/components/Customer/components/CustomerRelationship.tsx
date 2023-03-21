@@ -9,14 +9,12 @@ import {
   IconUser,
   IconUsers,
 } from "@tabler/icons";
-import React, { useState } from "react";
-import {
-  useCustomer,
-  useUpdateCustomer,
-} from "../../../../../context/CustomerContext";
-import { useRessources } from "../../../../../context/RessourceContext";
+import { useState } from "react";
 import { IAppointment } from "../../../../../data/interfaces/IAppointment";
 import { ICustomer } from "../../../../../data/interfaces/ICustomer";
+import { useCustomer } from "../../../../../hooks/Customer/useCustomer";
+import { useUpdateCustomer } from "../../../../../hooks/Customer/useUpdateCustomer";
+import { useRessources } from "../../../../../hooks/Ressources/useRessources";
 import CustomButton from "../../../../utils/CustomButton";
 import CustomDivider from "../../../../utils/CustomDivider";
 import CustomTitle from "../../../../utils/CustomTitle";

@@ -1,19 +1,15 @@
 import { Tabs, useMantineTheme } from "@mantine/core";
 import { useEffect, useState } from "react";
-import {
-  useCustomer,
-  useUpdateCustomer,
-} from "../../../../context/CustomerContext";
-import {
-  useCustomerRoutes,
-  useUpdateCustomerRoutes,
-} from "../../../../context/CustomerRoutes";
 import { ICustomer } from "../../../../data/interfaces/ICustomer";
 import { IDataAPICategory } from "../../../../data/interfaces/IDataAPICategory";
 import { changeFavicon, changeTabTitle } from "../../../../utils/tabsUtils";
 import Customer from "../Customer/Customer";
 import AgencyList from "./AgencyList";
 import BuildingPermitBro from "../../../../assets/img/Building permit-bro.svg";
+import { useCustomerRoutes } from "../../../../hooks/CustomerRoutes/useCustomerRoutes";
+import { useUpdateCustomerRoutes } from "../../../../hooks/CustomerRoutes/useUpdateCustomerRoutes";
+import { useCustomer } from "../../../../hooks/Customer/useCustomer";
+import { useUpdateCustomer } from "../../../../hooks/Customer/useUpdateCustomer";
 
 interface ICustomerListProps {
   customersList: IDataAPICategory[];

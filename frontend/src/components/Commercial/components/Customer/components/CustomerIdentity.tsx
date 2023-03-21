@@ -9,12 +9,10 @@ import EditModeToggle from "../../../../utils/EditModeToggle";
 import CustomerItem from "../../utils/CustomerItem";
 import CustomerContact from "./CustomerContact";
 import CabinBro from "../../../../../assets/img/Cabin-bro.svg";
-import {
-  useCustomer,
-  useUpdateCustomer,
-} from "../../../../../context/CustomerContext";
 import validator from "validator";
 import { isPhoneFormat } from "../../../../../utils/validateInput";
+import { useCustomer } from "../../../../../hooks/Customer/useCustomer";
+import { useUpdateCustomer } from "../../../../../hooks/Customer/useUpdateCustomer";
 
 interface ICustomerIdentityProps {
   customer: ICustomer;

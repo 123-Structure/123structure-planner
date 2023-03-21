@@ -1,12 +1,10 @@
 import { Avatar, Group, MultiSelect, Text } from "@mantine/core";
 import { IconCalculator } from "@tabler/icons";
 import { forwardRef } from "react";
-import {
-  useProject,
-  useUpdateProject,
-} from "../../../../../../../context/ProjectContext";
-import { useRessources } from "../../../../../../../context/RessourceContext";
 import { IProject } from "../../../../../../../data/interfaces/IProject";
+import { useProject } from "../../../../../../../hooks/Project/useProject";
+import { useUpdateProject } from "../../../../../../../hooks/Project/useUpdateProject";
+import { useRessources } from "../../../../../../../hooks/Ressources/useRessources";
 import { companyColor } from "../../../../../../../utils/companyColor";
 
 interface IMultiIngenieurSelectProps {

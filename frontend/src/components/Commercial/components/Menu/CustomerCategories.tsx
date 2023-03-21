@@ -1,11 +1,9 @@
 import { Tabs, useMantineTheme } from "@mantine/core";
 import { useEffect, useState } from "react";
-import {
-  useCustomerRoutes,
-  useUpdateCustomerRoutes,
-} from "../../../../context/CustomerRoutes";
 import { CustomerCategoryList } from "../../../../data/constants/CustomerCategoryList";
 import { IDataAPICategory } from "../../../../data/interfaces/IDataAPICategory";
+import { useCustomerRoutes } from "../../../../hooks/CustomerRoutes/useCustomerRoutes";
+import { useUpdateCustomerRoutes } from "../../../../hooks/CustomerRoutes/useUpdateCustomerRoutes";
 import { changeFavicon, changeTabTitle } from "../../../../utils/tabsUtils";
 import CustomerList from "./CustomerList";
 

@@ -23,7 +23,6 @@ import { CustomerCategoryList } from "../../../../data/constants/CustomerCategor
 import CustomButton from "../../../utils/CustomButton";
 import CustomTitle from "../../../utils/CustomTitle";
 import "../../../../assets/style/newCustomer.css";
-import { useRessources } from "../../../../context/RessourceContext";
 import { showNotification } from "@mantine/notifications";
 import { ICustomer } from "../../../../data/interfaces/ICustomer";
 import { TCustomerCategory } from "../../../../data/types/TCustomerCategory";
@@ -32,6 +31,7 @@ import { HandleUploadFile } from "../../../utils/HandleUploadFile";
 import { IDataAPICategory } from "../../../../data/interfaces/IDataAPICategory";
 import validator from "validator";
 import { isPhoneFormat } from "../../../../utils/validateInput";
+import { useRessources } from "../../../../hooks/Ressources/useRessources";
 
 const NewCustomer = () => {
   const [openNewCustomer, setOpenNewCustomer] = useState(false);

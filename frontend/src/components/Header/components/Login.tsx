@@ -2,9 +2,9 @@ import { useState } from "react";
 import { PasswordInput, TextInput, useMantineTheme } from "@mantine/core";
 import { IconAt, IconLock, IconLogin } from "@tabler/icons";
 import { showNotification } from "@mantine/notifications";
-import { useAuth, useUpdateAuth } from "../../../context/AuthContext";
 import CustomButton from "../../utils/CustomButton";
 import { useMediaQuery } from "@mantine/hooks";
+import validator from "validator";
 
 interface ILogin {
   email: string;
@@ -18,29 +18,13 @@ const Login = () => {
   const [errorEmail, setErrorEmail] = useState("");
   const [errorPassword, setErrorPassword] = useState("");
 
-  const setAuth = useUpdateAuth();
   const theme = useMantineTheme();
   const smallScreen = useMediaQuery(`(max-width: ${theme.breakpoints.xs})`);
 
   const { email, password } = login;
 
-  const validateEmail = (email: string) => {
-    const split = email.split("@");
-    if (split.length === 2) {
-      if (split[1] === "123structure.fr") {
-        return true;
-      }
-    }
-    return false;
-  };
-
-  const validatePassword = (password: string) => {
-    return password.length >= 5;
-  };
-
   const handleSubmit = () => {
-    if (validateEmail(email) && validatePassword(password)) {
-      setAuth(true);
+    if (validator.isEmail(email) && validator.isStrongPassword(password)) {
       setLogin(initialState);
       setErrorEmail("");
       setErrorPassword("");
@@ -50,10 +34,10 @@ const Login = () => {
         color: "green",
       });
     } else {
-      validateEmail(email)
+      validator.isEmail(email)
         ? setErrorEmail("")
         : setErrorEmail("Email invalide");
-      validatePassword(password)
+      validator.isStrongPassword(password)
         ? setErrorPassword("")
         : setErrorPassword("Mot de passe invalide");
     }
@@ -70,7 +54,7 @@ const Login = () => {
         <TextInput
           withAsterisk
           label="Email"
-          placeholder="contact@123structure.fr"
+          placeholder="example@domain.com"
           value={email}
           onChange={(e) => setLogin({ email: e.currentTarget.value, password })}
           icon={<IconAt size={14} />}

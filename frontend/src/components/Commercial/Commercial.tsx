@@ -1,17 +1,15 @@
 import { Tabs, useMantineTheme } from "@mantine/core";
 import { useEffect, useState } from "react";
-import { useRessources } from "../../context/RessourceContext";
 import CustomerCategories from "./components/Menu/CustomerCategories";
 import "../../assets/style/Commercial.css";
 import { useMediaQuery } from "@mantine/hooks";
 import MobileCustomerMenu from "./components/Menu/MobileCustomerMenu";
 import NewCustomer from "./components/Menu/NewCustomer";
 import { IconUser } from "@tabler/icons";
-import {
-  useCustomerRoutes,
-  useUpdateCustomerRoutes,
-} from "../../context/CustomerRoutes";
 import { changeFavicon, changeTabTitle } from "../../utils/tabsUtils";
+import { useRessources } from "../../hooks/Ressources/useRessources";
+import { useCustomerRoutes } from "../../hooks/CustomerRoutes/useCustomerRoutes";
+import { useUpdateCustomerRoutes } from "../../hooks/CustomerRoutes/useUpdateCustomerRoutes";
 
 const Commercial = () => {
   const [activeTab, setActiveTab] = useState<string | null>("");

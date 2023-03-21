@@ -5,8 +5,8 @@ import { read, utils } from "xlsx";
 import { IProject } from "../../../../data/interfaces/IProject";
 import { ProjectParameters } from "../../../../data/constants/ProjectParameters";
 import ExcelGridModal from "./components/ExcelGridModal/ExcelGridModal";
-import { useProject } from "../../../../context/ProjectContext";
 import "../../../../assets/style/AddProjectFromExcel.css";
+import { useProject } from "../../../../hooks/Project/useProject";
 
 const AddProjectFromExcel = () => {
   const [file, setFile] = useState<File | null>(null);

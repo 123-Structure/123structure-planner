@@ -19,11 +19,9 @@ import InvoicingStateSwitch from "../../../utils/InvoicingStateSwitch";
 import AgenceBadge from "../../../utils/AgenceBadge";
 import { getMonthColor } from "../../../../utils/getMonthColor";
 import "../../../../assets/style/ProjectCardSettingsModal.css";
-import {
-  useProject,
-  useUpdateProject,
-} from "../../../../context/ProjectContext";
 import { showNotification } from "@mantine/notifications";
+import { useProject } from "../../../../hooks/Project/useProject";
+import { useUpdateProject } from "../../../../hooks/Project/useUpdateProject";
 
 interface IProjectCardProps {
   showMoreInfo: boolean;

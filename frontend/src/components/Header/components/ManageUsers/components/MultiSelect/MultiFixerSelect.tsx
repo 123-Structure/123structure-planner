@@ -1,12 +1,10 @@
 import { Avatar, Group, MultiSelect, Text } from "@mantine/core";
 import { IconStar } from "@tabler/icons";
 import { forwardRef } from "react";
-import {
-  useRessources,
-  useUpdateRessources,
-} from "../../../../../../context/RessourceContext";
 import { IRessource } from "../../../../../../data/interfaces/IRessource";
 import { companyColor } from "../../../../../../utils/companyColor";
+import { useRessources } from "../../../../../../hooks/Ressources/useRessources";
+import { useUpdateRessources } from "../../../../../../hooks/Ressources/useUpdateRessources";
 
 interface IMultiFixerSelectProps {
   user: IRessource;

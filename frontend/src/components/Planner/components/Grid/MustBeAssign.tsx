@@ -1,12 +1,9 @@
 import { useMantineTheme } from "@mantine/core";
 import { showNotification } from "@mantine/notifications";
 import { useDrop } from "react-dnd";
-import {
-  useProject,
-  useUpdateProject,
-} from "../../../../context/ProjectContext";
-import { useRessources } from "../../../../context/RessourceContext";
 import { ItemTypes } from "../../../../data/constants/ItemTypes";
+import { useProject } from "../../../../hooks/Project/useProject";
+import { useUpdateProject } from "../../../../hooks/Project/useUpdateProject";
 import { sortProjects } from "../../../../utils/sortProjects";
 import CustomTooltip from "../../../utils/CustomTooltip";
 import ProjectCard from "../ProjectCard/ProjectCard";

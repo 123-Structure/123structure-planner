@@ -6,10 +6,10 @@ import { TouchBackend } from "react-dnd-touch-backend";
 import MustBeAssign from "./components/Grid/MustBeAssign";
 import Title from "./components/Grid/Title";
 import NewEntry from "./components/Grid/NewEntry";
-import { useAuth } from "../../context/AuthContext";
-import { useRessources } from "../../context/RessourceContext";
 import { isTouchDevice } from "../../utils/isTouchDevice";
 import { useMantineTheme } from "@mantine/core";
+import { useRessources } from "../../hooks/Ressources/useRessources";
+import { useAuth } from "../../hooks/Auth/useAuth";
 
 const Planner = () => {
   const theme = useMantineTheme();

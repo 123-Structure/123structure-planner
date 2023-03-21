@@ -4,7 +4,7 @@ import { IDataFromAPI } from "../../../../../data/interfaces/IDataFromAPI";
 import { Card, Highlight, useMantineTheme } from "@mantine/core";
 import { handleIcon } from "../../../utils/handleIcon";
 import { handleSubtitle } from "../../../utils/handleSubtitle";
-import { useUpdateCustomerRoutes } from "../../../../../context/CustomerRoutes";
+import { useUpdateCustomerRoutes } from "../../../../../hooks/CustomerRoutes/useUpdateCustomerRoutes";
 
 interface ISearchBarItemProps {
   action: IDataFromAPI;

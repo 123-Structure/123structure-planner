@@ -1,15 +1,10 @@
-import { Card, MultiSelect, TextInput, useMantineTheme } from "@mantine/core";
+import { TextInput, useMantineTheme } from "@mantine/core";
 import {
-  IconCalculator,
   IconFileDescription,
   IconId,
-  IconPencil,
 } from "@tabler/icons";
-import { useRessources } from "../../../../../../context/RessourceContext";
 import { IProject } from "../../../../../../data/interfaces/IProject";
-import { TRole } from "../../../../../../data/types/TRole";
 import CustomTitle from "../../../../../utils/CustomTitle";
-import Ressource from "../../../Grid/Ressource";
 import MultiDessinateurSelect from "./components/MultiDessinateurSelect";
 import MultiIngenieurSelect from "./components/MultiIngenieurSelect";
 

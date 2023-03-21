@@ -25,14 +25,10 @@ import { ICustomer } from "../../../../data/interfaces/ICustomer";
 import { DatePickerInput } from "@mantine/dates";
 import { IAppointment } from "../../../../data/interfaces/IAppointment";
 import { TAppointmentTitle } from "../../../../data/types/TApppointmentTitle";
-import {
-  useCustomer,
-  useUpdateCustomer,
-} from "../../../../context/CustomerContext";
-import {
-  useCustomerRoutes,
-  useUpdateCustomerRoutes,
-} from "../../../../context/CustomerRoutes";
+import { useCustomerRoutes } from "../../../../hooks/CustomerRoutes/useCustomerRoutes";
+import { useUpdateCustomerRoutes } from "../../../../hooks/CustomerRoutes/useUpdateCustomerRoutes";
+import { useCustomer } from "../../../../hooks/Customer/useCustomer";
+import { useUpdateCustomer } from "../../../../hooks/Customer/useUpdateCustomer";
 
 interface INewAppointmentProps {
   customer: ICustomer;

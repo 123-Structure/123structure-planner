@@ -24,12 +24,10 @@ import { useMediaQuery } from "@mantine/hooks";
 import EditModeToggle from "../../../utils/EditModeToggle";
 import { ICustomer } from "../../../../data/interfaces/ICustomer";
 import { showNotification } from "@mantine/notifications";
-import {
-  useCustomer,
-  useUpdateCustomer,
-} from "../../../../context/CustomerContext";
 import validator from "validator";
 import { isPhoneFormat } from "../../../../utils/validateInput";
+import { useCustomer } from "../../../../hooks/Customer/useCustomer";
+import { useUpdateCustomer } from "../../../../hooks/Customer/useUpdateCustomer";
 
 interface IContactProps {
   color?: string;
