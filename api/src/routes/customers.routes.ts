@@ -1,4 +1,4 @@
-import express from "express";
+import express, { Router } from "express";
 import {
   createCustomer,
   deleteCustomer,
@@ -9,8 +9,12 @@ import {
   searchCustomer,
   updateCustomer,
 } from "../controllers/customer.controllers";
+import { requireAuth } from "../middleware/requireAuth";
 
 const customersRouter = express.Router();
+
+// Require auth for all routes
+customersRouter.use(requireAuth);
 
 // GET all customers
 customersRouter.get("/", getCustomers);

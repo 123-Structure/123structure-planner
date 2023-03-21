@@ -6,8 +6,12 @@ import {
   getProjects,
   updateProject,
 } from "../controllers/project.controllers";
+import { requireAuth } from "../middleware/requireAuth";
 
 const projectsRouter = express.Router();
+
+// Require auth for all routes
+projectsRouter.use(requireAuth);
 
 // GET all projects
 projectsRouter.get("/", getProjects);
