@@ -7,19 +7,20 @@ import MobileCustomerMenu from "./components/Menu/MobileCustomerMenu";
 import NewCustomer from "./components/Menu/NewCustomer";
 import { IconUser } from "@tabler/icons";
 import { changeFavicon, changeTabTitle } from "../../utils/tabsUtils";
-import { useRessources } from "../../hooks/Ressources/useRessources";
 import { useCustomerRoutes } from "../../hooks/CustomerRoutes/useCustomerRoutes";
 import { useUpdateCustomerRoutes } from "../../hooks/CustomerRoutes/useUpdateCustomerRoutes";
 import { useUpdateCustomer } from "../../hooks/Customer/useUpdateCustomer";
 import { useAuth } from "../../hooks/Auth/useAuth";
 import { decodeJwt } from "../../utils/decodeJwt";
 import { IJwtPayload } from "../../data/interfaces/IJwtPayload";
+import WebsiteCreatorBro from "../../assets/img/Website Creator-bro.svg";
+import { IApiUserList } from "../../data/interfaces/IApiUserList";
 
 const Commercial = () => {
+  const [commercialList, setCommercialList] = useState<IApiUserList[]>();
   const [activeTab, setActiveTab] = useState<string | null>("");
   const [userData, setUserData] = useState<IJwtPayload>();
 
-  const ressources = useRessources();
   const customerRoutes = useCustomerRoutes();
   const setCustomerRoutes = useUpdateCustomerRoutes();
   const setCustomer = useUpdateCustomer();
@@ -40,15 +41,33 @@ const Commercial = () => {
   };
 
   useEffect(() => {
+    const getUsersList = async () => {
+      if (auth.user) {
+        const APIBaseUrl = import.meta.env.VITE_API_URL;
+
+        const response = await fetch(`${APIBaseUrl}/api/users/Commercial`, {
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${auth.user.token}`,
+          },
+        });
+        const data = await response.json();
+        setCommercialList(data);
+      }
+    };
+    getUsersList();
+  }, [auth.user]);
+
+  useEffect(() => {
     if (customerRoutes.commercial !== "") {
     }
     setActiveTab(customerRoutes.commercial);
   }, [customerRoutes.commercial]);
 
   useEffect(() => {
-    if (activeTab !== "") {
-      const commercial = ressources.filter(
-        (ressource) => ressource._id === activeTab
+    if (activeTab !== "" && commercialList !== undefined) {
+      const commercial = commercialList.filter(
+        (commercial) => commercial.email.split("@")[0] === activeTab
       )[0];
       setCustomer(undefined);
       changeFavicon("👷");
@@ -76,42 +95,55 @@ const Commercial = () => {
       className="commercialContainer"
     >
       <Tabs.List className="commercialList">
-        {ressources
-          .filter((ressource) => ressource.role.includes("Commercial"))
-          .map((ressource) => (
+        {commercialList
+          ?.sort((a, b) => {
+            if (a.firstName < b.firstName) {
+              return -1;
+            }
+            if (a.firstName > b.firstName) {
+              return 1;
+            }
+            return 0;
+          })
+          .map((commercial) => (
             <Tabs.Tab
-              className={`commercialTab ${ressource._id}_Tab`}
-              key={ressource._id}
-              value={ressource._id}
+              className={`commercialTab ${commercial.email.split("@")[0]}_Tab`}
+              key={commercial.email.split("@")[0]}
+              value={commercial.email.split("@")[0]}
               style={{
-                color: activeTab === ressource._id ? "black" : "",
+                color:
+                  activeTab === commercial.email.split("@")[0] ? "black" : "",
               }}
               icon={<IconUser size="1rem" />}
-            >{`${ressource.firstName} ${ressource.lastName}`}</Tabs.Tab>
+            >{`${commercial.firstName} ${commercial.lastName}`}</Tabs.Tab>
           ))}
         <NewCustomer />
       </Tabs.List>
-      {ressources
-        .filter((ressource) => ressource.role.includes("Commercial"))
-        .map((ressource) => (
-          <Tabs.Panel
-            key={ressource._id}
-            value={ressource._id}
-            style={{
-              display: smallScreen
-                ? "none"
-                : activeTab === ressource._id
-                ? "block"
-                : "",
-            }}
-          >
-            <CustomerCategories />
-          </Tabs.Panel>
-        ))}
+      {commercialList?.map((commercial) => (
+        <Tabs.Panel
+          key={commercial.email.split("@")[0]}
+          value={commercial.email.split("@")[0]}
+          style={{
+            display: smallScreen
+              ? "none"
+              : activeTab === commercial.email.split("@")[0]
+              ? "block"
+              : "",
+          }}
+        >
+          <CustomerCategories />
+        </Tabs.Panel>
+      ))}
       {activeTab !== "" ? <MobileCustomerMenu /> : <></>}
     </Tabs>
   ) : (
-    <></>
+    <img
+      style={{
+        width: smallScreen ? "100%" : "450px",
+      }}
+      src={WebsiteCreatorBro}
+      alt="login"
+    ></img>
   );
 };
 

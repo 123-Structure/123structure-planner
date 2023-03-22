@@ -10,7 +10,7 @@ import {
 import { useMediaQuery } from "@mantine/hooks";
 import { IconSearch } from "@tabler/icons";
 import { useEffect, useState } from "react";
-import { IDataFromAPI } from "../../../../data/interfaces/IDataFromAPI";
+import { ISearchDataFromAPI } from "../../../../data/interfaces/ISearchDataFromAPI";
 import CustomTitle from "../../../utils/CustomTitle";
 import SearchBarItem from "./components/SearchBarItem";
 import ProfilingBro from "../../../../assets/img/Profiling-bro.svg";
@@ -25,7 +25,7 @@ const SearchBar = () => {
   const [openSearchBarModal, setOpenSearchBarModal] = useState(false);
   const [activeTab, setActiveTab] = useState<string | null>("quickSearch");
   const [query, setQuery] = useState("");
-  const [actions, setActions] = useState<IDataFromAPI[]>([]);
+  const [actions, setActions] = useState<ISearchDataFromAPI[]>([]);
 
   const theme = useMantineTheme();
   const smallScreen = useMediaQuery(`(max-width: ${theme.breakpoints.xs})`);
@@ -53,7 +53,7 @@ const SearchBar = () => {
           },
         }
       );
-      const data = (await response.json()) as IDataFromAPI[];
+      const data = (await response.json()) as ISearchDataFromAPI[];
       setActions(data);
     } else {
       showNotification({

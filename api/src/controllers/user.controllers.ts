@@ -4,6 +4,7 @@ import bcrypt from "bcrypt";
 import validator from "validator";
 import { sign } from "jsonwebtoken";
 import { IJwtPayload } from "../data/interfaces/IJwtPayload";
+import { IRessource } from "../data/interfaces/IRessource";
 
 // Generate JWT
 const generateToken = (payload: IJwtPayload) => {
@@ -102,4 +103,24 @@ export const signUpUser = async (req: Request, res: Response) => {
   } catch (error: any) {
     res.status(400).json({ error: "⛔ " + error.message });
   }
+};
+
+// Get All user by role
+export const getUsersByRole = async (req: Request, res: Response) => {
+  const { role } = req.params;
+
+  const users = await User.find({ role: role }).sort({ createdAt: -1 });
+
+  const usersObject = JSON.parse(JSON.stringify(users)) as IRessource[];
+
+  const result = usersObject.map((user) => {
+    return {
+      _id: user._id,
+      email: user.email,
+      firstName: user.firstName,
+      lastName:user.lastName
+    };
+  });
+
+  res.status(200).json(result);
 };

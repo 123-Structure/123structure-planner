@@ -9,13 +9,13 @@ import {
   IconUser,
   IconUsers,
 } from "@tabler/icons";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { IApiUserList } from "../../../../../data/interfaces/IApiUserList";
 import { IAppointment } from "../../../../../data/interfaces/IAppointment";
 import { ICustomer } from "../../../../../data/interfaces/ICustomer";
 import { useAuth } from "../../../../../hooks/Auth/useAuth";
 import { useCustomer } from "../../../../../hooks/Customer/useCustomer";
 import { useUpdateCustomer } from "../../../../../hooks/Customer/useUpdateCustomer";
-import { useRessources } from "../../../../../hooks/Ressources/useRessources";
 import CustomButton from "../../../../utils/CustomButton";
 import CustomDivider from "../../../../utils/CustomDivider";
 import CustomTitle from "../../../../utils/CustomTitle";
@@ -76,16 +76,20 @@ const CustomerRelationship = (props: ICustomerRelationshipProps) => {
   const currentProjectInvoiced = 0;
   const previousYearProjectInvoiced = 0;
 
-  const ressources = useRessources();
-
   const customer = useCustomer();
   const setCustomer = useUpdateCustomer();
   const { auth } = useAuth();
 
+  const [commercialList, setCommercialList] = useState<IApiUserList[]>();
+
   const [commercial, setCommercial] = useState(
-    ressources
-      .filter((ressource) => props.customer.commercial.includes(ressource._id))
-      .map((commercial) => `${commercial.firstName} ${commercial.lastName}`)
+    commercialList !== undefined
+      ? commercialList
+          .filter((commercial) =>
+            props.customer.commercial.includes(commercial.email.split("@")[0])
+          )
+          .map((commercial) => `${commercial.firstName} ${commercial.lastName}`)
+      : []
   );
 
   const theme = useMantineTheme();
@@ -118,11 +122,16 @@ const CustomerRelationship = (props: ICustomerRelationshipProps) => {
       if (customer !== undefined) {
         const changedCustomer = customer;
 
-        changedCustomer.commercial = ressources
-          .filter((ressource) =>
-            commercial.includes(`${ressource.firstName} ${ressource.lastName}`)
-          )
-          .map((commercial) => commercial._id);
+        changedCustomer.commercial =
+          commercialList !== undefined
+            ? commercialList
+                .filter((ressource) =>
+                  commercial.includes(
+                    `${ressource.firstName} ${ressource.lastName}`
+                  )
+                )
+                .map((commercial) => commercial.email.split("@")[0])
+            : [];
 
         if (
           changedCustomer.projectGoal.filter(
@@ -207,11 +216,15 @@ const CustomerRelationship = (props: ICustomerRelationshipProps) => {
 
   const handleCancelClick = () => {
     setCommercial(
-      ressources
-        .filter((ressource) => {
-          props.customer.commercial.includes(ressource._id);
-        })
-        .map((commercial) => `${commercial.firstName} ${commercial.lastName}`)
+      commercialList !== undefined
+        ? commercialList
+            .filter((commercial) =>
+              props.customer.commercial.includes(commercial.email.split("@")[0])
+            )
+            .map(
+              (commercial) => `${commercial.firstName} ${commercial.lastName}`
+            )
+        : []
     );
 
     setCurrentProjectGoal(
@@ -254,6 +267,33 @@ const CustomerRelationship = (props: ICustomerRelationshipProps) => {
     }
   };
 
+  useEffect(() => {
+    const getUsersList = async () => {
+      if (auth.user) {
+        const APIBaseUrl = import.meta.env.VITE_API_URL;
+
+        const response = await fetch(`${APIBaseUrl}/api/users/Commercial`, {
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${auth.user.token}`,
+          },
+        });
+        const data = (await response.json()) as IApiUserList[];
+        setCommercialList(data);
+        setCommercial(
+          data
+            .filter((commercial) =>
+              props.customer.commercial.includes(commercial.email.split("@")[0])
+            )
+            .map(
+              (commercial) => `${commercial.firstName} ${commercial.lastName}`
+            )
+        );
+      }
+    };
+    getUsersList();
+  }, [auth.user]);
+
   return (
     <Card
       shadow="sm"
@@ -287,11 +327,12 @@ const CustomerRelationship = (props: ICustomerRelationshipProps) => {
             value={selectValue(
               editCustomerRelationship,
               commercial,
-              ressources
-                .filter((commercial) => commercial.role.includes("Commercial"))
-                .map(
-                  (ressource) => `${ressource.firstName} ${ressource.lastName}`
-                ),
+              commercialList !== undefined
+                ? commercialList.map(
+                    (commercial) =>
+                      `${commercial.firstName} ${commercial.lastName}`
+                  )
+                : [],
               ["Commercial référent :"]
             )}
             updateValue={[setCommercial]}

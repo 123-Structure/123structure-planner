@@ -47,7 +47,7 @@ const AuthProvider = (props: IAuthContextProps) => {
     }
   }, []);
 
-  console.log("🔒 AuthContext state : ", auth);
+  // console.log("🔒 AuthContext state : ", auth);
 
   return (
     <AuthContext.Provider value={{ auth, updateAuth }}>

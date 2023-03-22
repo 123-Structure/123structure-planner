@@ -18,7 +18,7 @@ import {
   IconUpload,
   IconX,
 } from "@tabler/icons";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { CustomerCategoryList } from "../../../../data/constants/CustomerCategoryList";
 import CustomButton from "../../../utils/CustomButton";
 import CustomTitle from "../../../utils/CustomTitle";
@@ -31,10 +31,12 @@ import { HandleUploadFile } from "../../../utils/HandleUploadFile";
 import { IDataAPICategory } from "../../../../data/interfaces/IDataAPICategory";
 import validator from "validator";
 import { isPhoneFormat } from "../../../../utils/validateInput";
-import { useRessources } from "../../../../hooks/Ressources/useRessources";
 import { useAuth } from "../../../../hooks/Auth/useAuth";
+import { IApiUserList } from "../../../../data/interfaces/IApiUserList";
 
 const NewCustomer = () => {
+  const [commercialList, setCommercialList] = useState<IApiUserList[]>();
+
   const [openNewCustomer, setOpenNewCustomer] = useState(false);
   const [commercial, setCommercial] = useState<string[]>([]);
   const [customerCategory, setCustomerCategory] = useState("");
@@ -63,7 +65,6 @@ const NewCustomer = () => {
   const theme = useMantineTheme();
   const smallScreen = useMediaQuery(`(max-width: ${theme.breakpoints.xs})`);
 
-  const ressources = useRessources();
   const { auth } = useAuth();
 
   const [groupList, setGroupList] = useState<(string | SelectItem)[]>([]);
@@ -133,13 +134,14 @@ const NewCustomer = () => {
           logo: logo,
           contact: [],
           priceList: priceList,
-          commercial: ressources
-            .filter((ressource) =>
-              commercial.includes(
-                `${ressource.firstName} ${ressource.lastName}`
-              )
-            )
-            .map((commercial) => commercial._id),
+          commercial:
+            commercialList !== undefined
+              ? commercialList
+                  .filter((c) =>
+                    commercial.includes(`${c.firstName} ${c.lastName}`)
+                  )
+                  .map((commercial) => commercial.email.split("@")[0])
+              : [],
           appointment: [],
           projectGoal: [
             {
@@ -265,36 +267,38 @@ const NewCustomer = () => {
       for (let i = 0; i < commercial.length; i++) {
         const currentCommercial = commercial[i];
 
-        const commercialID = ressources
-          .filter((ressource) =>
-            currentCommercial.includes(
-              `${ressource.firstName} ${ressource.lastName}`
+        if (commercialList !== undefined) {
+          const commercialID = commercialList
+            .filter((commercial) =>
+              currentCommercial.includes(
+                `${commercial.firstName} ${commercial.lastName}`
+              )
             )
-          )
-          .map((commercial) => commercial._id);
+            .map((commercial) => commercial.email.split("@")[0]);
 
-        const response = await fetch(
-          `${APIBaseUrl}/api/customers/category/${commercialID}/${category}`,
-          {
-            method: "GET",
-            headers: {
-              Authorization: `Bearer ${auth.user.token}`,
-            },
-          }
-        );
-        const data = (await response.json()) as IDataAPICategory[];
+          const response = await fetch(
+            `${APIBaseUrl}/api/customers/category/${commercialID}/${category}`,
+            {
+              method: "GET",
+              headers: {
+                Authorization: `Bearer ${auth.user.token}`,
+              },
+            }
+          );
+          const data = (await response.json()) as IDataAPICategory[];
 
-        const groups = data
-          .map((customer) => customer.group)
-          .filter((group) => group !== "")
-          .reduce((acc, curr) => {
-            if (!acc.includes(curr)) acc.push(curr);
-            return acc;
-          }, [] as string[]);
+          const groups = data
+            .map((customer) => customer.group)
+            .filter((group) => group !== "")
+            .reduce((acc, curr) => {
+              if (!acc.includes(curr)) acc.push(curr);
+              return acc;
+            }, [] as string[]);
 
-        groups.forEach((group) => {
-          res.push(group);
-        });
+          groups.forEach((group) => {
+            res.push(group);
+          });
+        }
       }
 
       setGroupList(res);
@@ -312,6 +316,24 @@ const NewCustomer = () => {
       fetchCustomers(commercial, customerCategory);
     }
   }, [customerCategory, commercial]);
+
+  useEffect(() => {
+    const getUsersList = async () => {
+      if (auth.user) {
+        const APIBaseUrl = import.meta.env.VITE_API_URL;
+
+        const response = await fetch(`${APIBaseUrl}/api/users/Commercial`, {
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${auth.user.token}`,
+          },
+        });
+        const data = await response.json();
+        setCommercialList(data);
+      }
+    };
+    getUsersList();
+  }, [auth.user]);
 
   return (
     <>
@@ -358,11 +380,14 @@ const NewCustomer = () => {
               nothingFound="Aucun résultat"
               clearable
               label="Commercial référent"
-              data={ressources
-                .filter((commercial) => commercial.role.includes("Commercial"))
-                .map(
-                  (ressource) => `${ressource.firstName} ${ressource.lastName}`
-                )}
+              data={
+                commercialList !== undefined
+                  ? commercialList.map(
+                      (commercial) =>
+                        `${commercial.firstName} ${commercial.lastName}`
+                    )
+                  : []
+              }
               value={commercial}
               onChange={(val) => {
                 setCommercial(val);

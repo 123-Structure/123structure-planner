@@ -1,6 +1,6 @@
 import { Dispatch, useEffect, useState } from "react";
 import { ICustomer } from "../../../../../data/interfaces/ICustomer";
-import { IDataFromAPI } from "../../../../../data/interfaces/IDataFromAPI";
+import { ISearchDataFromAPI } from "../../../../../data/interfaces/ISearchDataFromAPI";
 import { Card, Highlight, useMantineTheme } from "@mantine/core";
 import { handleIcon } from "../../../utils/handleIcon";
 import { handleSubtitle } from "../../../utils/handleSubtitle";
@@ -9,7 +9,7 @@ import { useAuth } from "../../../../../hooks/Auth/useAuth";
 import { showNotification } from "@mantine/notifications";
 
 interface ISearchBarItemProps {
-  action: IDataFromAPI;
+  action: ISearchDataFromAPI;
   result: string;
   setOpenSearchBarModal: Dispatch<React.SetStateAction<boolean>>;
   setQuery: Dispatch<React.SetStateAction<string>>;

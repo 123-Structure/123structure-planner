@@ -69,7 +69,6 @@ const Auth = () => {
 
   useEffect(() => {
     if (auth.user) {
-      console.log("pass");
       const payload = decodeJwt(auth.user.token);
       setUserData(payload);
     } else {
@@ -128,7 +127,12 @@ const Auth = () => {
         </>
       ) : userData ? (
         <div>
-          <div id="userInfoContainer">
+          <div
+            id="userInfoContainer"
+            style={{
+              alignItems: smallScreen ? "center" : "flex-start",
+            }}
+          >
             <div id="userInfo">
               {userData.role.includes("Dessinateur") ? (
                 <IconPencil />

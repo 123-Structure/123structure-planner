@@ -1,4 +1,4 @@
-export interface IDataFromAPI {
+export interface ISearchDataFromAPI {
   id: string;
   type: string;
   searchTerm: string;
