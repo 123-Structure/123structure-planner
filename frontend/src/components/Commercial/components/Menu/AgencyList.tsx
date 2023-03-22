@@ -1,7 +1,9 @@
 import { Tabs, useMantineTheme } from "@mantine/core";
+import { showNotification } from "@mantine/notifications";
 import { useEffect } from "react";
 import { ICustomer } from "../../../../data/interfaces/ICustomer";
 import { IDataAPICategory } from "../../../../data/interfaces/IDataAPICategory";
+import { useAuth } from "../../../../hooks/Auth/useAuth";
 import { useCustomer } from "../../../../hooks/Customer/useCustomer";
 import { useUpdateCustomer } from "../../../../hooks/Customer/useUpdateCustomer";
 import { useCustomerRoutes } from "../../../../hooks/CustomerRoutes/useCustomerRoutes";
@@ -20,23 +22,35 @@ const AgencyList = (props: IAgenceListProps) => {
   const setCustomerRoutes = useUpdateCustomerRoutes();
   const customer = useCustomer();
   const setCustomer = useUpdateCustomer();
+  const { auth } = useAuth();
 
   const fetchCustomer = async (val: string) => {
-    const customer = props.customersList.filter(
-      (customer) => customer.name === val
-    )[0];
+    if (auth.user) {
+      const customer = props.customersList.filter(
+        (customer) => customer.name === val
+      )[0];
 
-    const APIBaseUrl = import.meta.env.VITE_API_URL;
+      const APIBaseUrl = import.meta.env.VITE_API_URL;
 
-    if (customer !== undefined) {
-      const response = await fetch(
-        `${APIBaseUrl}/api/customers/${customer._id}`,
-        {
-          method: "GET",
-        }
-      );
-      const data = (await response.json()) as ICustomer;
-      setCustomer(data);
+      if (customer !== undefined) {
+        const response = await fetch(
+          `${APIBaseUrl}/api/customers/${customer._id}`,
+          {
+            method: "GET",
+            headers: {
+              Authorization: `Bearer ${auth.user.token}`,
+            },
+          }
+        );
+        const data = (await response.json()) as ICustomer;
+        setCustomer(data);
+      }
+    } else {
+      showNotification({
+        title: "🔒 Authentification requise",
+        message: "L'utilisateur n'est pas connecté",
+        color: "red",
+      });
     }
   };
 

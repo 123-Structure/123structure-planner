@@ -11,6 +11,7 @@ import {
 import { useState } from "react";
 import { ICustomer } from "../../../../../data/interfaces/ICustomer";
 import { TPaymentType } from "../../../../../data/types/TPaymentType";
+import { useAuth } from "../../../../../hooks/Auth/useAuth";
 import { useCustomer } from "../../../../../hooks/Customer/useCustomer";
 import { useUpdateCustomer } from "../../../../../hooks/Customer/useUpdateCustomer";
 import CustomTitle from "../../../../utils/CustomTitle";
@@ -41,6 +42,7 @@ const CustomerPayment = (props: ICustomerPaymentProps) => {
 
   const customer = useCustomer();
   const setCustomer = useUpdateCustomer();
+  const { auth } = useAuth();
 
   const theme = useMantineTheme();
 
@@ -70,47 +72,56 @@ const CustomerPayment = (props: ICustomerPaymentProps) => {
   };
 
   const handleValideClick = async () => {
-    if (customer !== undefined) {
-      const changedCustomer = customer;
+    if (auth.user) {
+      if (customer !== undefined) {
+        const changedCustomer = customer;
 
-      changedCustomer.paymentDeadline = paymentDeadline;
-      changedCustomer.paymentType = paymentType;
-      changedCustomer.paymentStatus = paymentStatus;
+        changedCustomer.paymentDeadline = paymentDeadline;
+        changedCustomer.paymentType = paymentType;
+        changedCustomer.paymentStatus = paymentStatus;
 
-      const response = await fetch(
-        `${import.meta.env.VITE_API_URL}/api/customers/${
-          changedCustomer._id as string
-        }`,
-        {
-          method: "PATCH",
-          body: JSON.stringify({
-            paymentDeadline: paymentDeadline,
-            paymentType: paymentType,
-            paymentStatus: paymentStatus,
-          }),
-          headers: {
-            "Content-Type": "application/json",
-          },
+        const response = await fetch(
+          `${import.meta.env.VITE_API_URL}/api/customers/${
+            changedCustomer._id as string
+          }`,
+          {
+            method: "PATCH",
+            body: JSON.stringify({
+              paymentDeadline: paymentDeadline,
+              paymentType: paymentType,
+              paymentStatus: paymentStatus,
+            }),
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${auth.user.token}`,
+            },
+          }
+        );
+        const data = await response.json();
+
+        if (!response.ok) {
+          showNotification({
+            title: "⛔ Une erreur est survenue",
+            message: data.error,
+            color: "red",
+          });
         }
-      );
-      const data = await response.json();
 
-      if (!response.ok) {
+        setCustomer(changedCustomer);
+
         showNotification({
-          title: `⛔ Erreur serveur`,
-          message: data.error,
-          color: "red",
+          title: `✅ Fiche client sauvegardée`,
+          message: `La fiche client ${props.customer.name} est mise à jour`,
+          color: "green",
         });
+        setEditCustomerPayment(false);
       }
-
-      setCustomer(changedCustomer);
-
+    } else {
       showNotification({
-        title: `✅ Fiche client sauvegardée`,
-        message: `La fiche client ${props.customer.name} est mise à jour`,
-        color: "green",
+        title: "🔒 Authentification requise",
+        message: "L'utilisateur n'est pas connecté",
+        color: "red",
       });
-      setEditCustomerPayment(false);
     }
   };
 

@@ -3,11 +3,12 @@ import User from "../models/user.models";
 import bcrypt from "bcrypt";
 import validator from "validator";
 import { sign } from "jsonwebtoken";
+import { IJwtPayload } from "../data/interfaces/IJwtPayload";
 
 // Generate JWT
-const generateToken = (_id: string) => {
+const generateToken = (payload: IJwtPayload) => {
   const jwtSecret = process.env.JWT_SECRET as string;
-  return sign({ _id }, jwtSecret, { expiresIn: "3d" });
+  return sign(payload, jwtSecret, { expiresIn: "3d" });
 };
 
 // Login user
@@ -32,15 +33,18 @@ export const loginUser = async (req: Request, res: Response) => {
     }
 
     // Generate new token
-    const token = generateToken(user._id);
-
-    res.status(200).json({
-      email,
-      token,
+    const token = generateToken({
+      _id: user._id,
+      email: user.email,
       firstName: user.firstName,
       lastName: user.lastName,
       role: user.role,
       company: user.company,
+    });
+
+    res.status(200).json({
+      email,
+      token,
     });
   } catch (error: any) {
     res.status(400).json({ error: "⛔ " + error.message });
@@ -82,15 +86,18 @@ export const signUpUser = async (req: Request, res: Response) => {
     });
 
     // Generate new token
-    const token = generateToken(user._id);
+    const token = generateToken({
+      _id: user._id,
+      email: user.email,
+      firstName: user.firstName,
+      lastName: user.lastName,
+      role: user.role,
+      company: user.company,
+    });
 
     res.status(200).json({
       email,
       token,
-      firstName,
-      lastName,
-      role,
-      company,
     });
   } catch (error: any) {
     res.status(400).json({ error: "⛔ " + error.message });

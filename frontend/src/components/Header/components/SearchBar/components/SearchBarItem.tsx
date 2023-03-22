@@ -5,6 +5,8 @@ import { Card, Highlight, useMantineTheme } from "@mantine/core";
 import { handleIcon } from "../../../utils/handleIcon";
 import { handleSubtitle } from "../../../utils/handleSubtitle";
 import { useUpdateCustomerRoutes } from "../../../../../hooks/CustomerRoutes/useUpdateCustomerRoutes";
+import { useAuth } from "../../../../../hooks/Auth/useAuth";
+import { showNotification } from "@mantine/notifications";
 
 interface ISearchBarItemProps {
   action: IDataFromAPI;
@@ -21,6 +23,7 @@ const SearchBarItem = (props: ISearchBarItemProps) => {
   const theme = useMantineTheme();
 
   const setCustomerRoutes = useUpdateCustomerRoutes();
+  const { auth } = useAuth();
 
   const handleSearchItemSearch = (type: string) => {
     if (customer !== undefined) {
@@ -91,28 +94,39 @@ const SearchBarItem = (props: ISearchBarItemProps) => {
     }
   };
 
-  useEffect(() => {
-    const handleGetCustomerById = async (id: string) => {
+  const handleGetCustomerById = async (id: string) => {
+    if (auth.user) {
       const APIBaseUrl = import.meta.env.VITE_API_URL;
       const response = await fetch(`${APIBaseUrl}/api/customers/${id}`, {
         method: "GET",
+        headers: {
+          Authorization: `Bearer ${auth.user.token}`,
+        },
       });
       const customer = (await response.json()) as ICustomer;
       setCustomer(customer);
-    };
+    } else {
+      showNotification({
+        title: "🔒 Authentification requise",
+        message: "L'utilisateur n'est pas connecté",
+        color: "red",
+      });
+    }
+  };
 
-    const handleResultProperty = (result: string) => {
-      const splitArray = result.split(": ");
-      const property = splitArray[0];
-      const value = splitArray.slice(1).join("");
-      setResultType(property);
-      setTitle(
-        property.includes("appointment") && property.includes("content")
-          ? "Compte-rendu de RDV"
-          : value
-      );
-    };
+  const handleResultProperty = (result: string) => {
+    const splitArray = result.split(": ");
+    const property = splitArray[0];
+    const value = splitArray.slice(1).join("");
+    setResultType(property);
+    setTitle(
+      property.includes("appointment") && property.includes("content")
+        ? "Compte-rendu de RDV"
+        : value
+    );
+  };
 
+  useEffect(() => {
     if (props.action.type === "customer") {
       handleGetCustomerById(props.action.id);
     }

@@ -12,6 +12,7 @@ import {
 import { useState } from "react";
 import { IAppointment } from "../../../../../data/interfaces/IAppointment";
 import { ICustomer } from "../../../../../data/interfaces/ICustomer";
+import { useAuth } from "../../../../../hooks/Auth/useAuth";
 import { useCustomer } from "../../../../../hooks/Customer/useCustomer";
 import { useUpdateCustomer } from "../../../../../hooks/Customer/useUpdateCustomer";
 import { useRessources } from "../../../../../hooks/Ressources/useRessources";
@@ -79,6 +80,7 @@ const CustomerRelationship = (props: ICustomerRelationshipProps) => {
 
   const customer = useCustomer();
   const setCustomer = useUpdateCustomer();
+  const { auth } = useAuth();
 
   const [commercial, setCommercial] = useState(
     ressources
@@ -112,85 +114,94 @@ const CustomerRelationship = (props: ICustomerRelationshipProps) => {
   };
 
   const handleValideClick = async () => {
-    if (customer !== undefined) {
-      const changedCustomer = customer;
+    if (auth.user) {
+      if (customer !== undefined) {
+        const changedCustomer = customer;
 
-      changedCustomer.commercial = ressources
-        .filter((ressource) =>
-          commercial.includes(`${ressource.firstName} ${ressource.lastName}`)
-        )
-        .map((commercial) => commercial._id);
+        changedCustomer.commercial = ressources
+          .filter((ressource) =>
+            commercial.includes(`${ressource.firstName} ${ressource.lastName}`)
+          )
+          .map((commercial) => commercial._id);
 
-      if (
-        changedCustomer.projectGoal.filter(
-          (projectGoal) => projectGoal.year === new Date().getFullYear()
-        )[0] !== undefined
-      ) {
-        changedCustomer.projectGoal.filter(
-          (projectGoal) => projectGoal.year === new Date().getFullYear()
-        )[0].goal = currentProjectGoal;
-      }
-
-      if (
-        changedCustomer.projectGoal.filter(
-          (projectGoal) => projectGoal.year === new Date().getFullYear() - 1
-        )[0] !== undefined
-      ) {
-        changedCustomer.projectGoal.filter(
-          (projectGoal) => projectGoal.year === new Date().getFullYear() - 1
-        )[0].goal = previousYearProjectGoal;
-      }
-
-      if (changedCustomer.projectGoal.length === 0) {
-        changedCustomer.projectGoal = [
-          {
-            year: new Date().getFullYear() - 1,
-            goal: previousYearProjectGoal,
-          },
-          {
-            year: new Date().getFullYear(),
-            goal: currentProjectGoal,
-          },
-        ];
-      }
-
-      changedCustomer.priceList = priceList;
-
-      const response = await fetch(
-        `${import.meta.env.VITE_API_URL}/api/customers/${
-          changedCustomer._id as string
-        }`,
-        {
-          method: "PATCH",
-          body: JSON.stringify({
-            commercial: changedCustomer.commercial,
-            projectGoal: changedCustomer.projectGoal,
-            priceList: priceList,
-          }),
-          headers: {
-            "Content-Type": "application/json",
-          },
+        if (
+          changedCustomer.projectGoal.filter(
+            (projectGoal) => projectGoal.year === new Date().getFullYear()
+          )[0] !== undefined
+        ) {
+          changedCustomer.projectGoal.filter(
+            (projectGoal) => projectGoal.year === new Date().getFullYear()
+          )[0].goal = currentProjectGoal;
         }
-      );
-      const data = await response.json();
 
-      if (!response.ok) {
+        if (
+          changedCustomer.projectGoal.filter(
+            (projectGoal) => projectGoal.year === new Date().getFullYear() - 1
+          )[0] !== undefined
+        ) {
+          changedCustomer.projectGoal.filter(
+            (projectGoal) => projectGoal.year === new Date().getFullYear() - 1
+          )[0].goal = previousYearProjectGoal;
+        }
+
+        if (changedCustomer.projectGoal.length === 0) {
+          changedCustomer.projectGoal = [
+            {
+              year: new Date().getFullYear() - 1,
+              goal: previousYearProjectGoal,
+            },
+            {
+              year: new Date().getFullYear(),
+              goal: currentProjectGoal,
+            },
+          ];
+        }
+
+        changedCustomer.priceList = priceList;
+
+        const response = await fetch(
+          `${import.meta.env.VITE_API_URL}/api/customers/${
+            changedCustomer._id as string
+          }`,
+          {
+            method: "PATCH",
+            body: JSON.stringify({
+              commercial: changedCustomer.commercial,
+              projectGoal: changedCustomer.projectGoal,
+              priceList: priceList,
+            }),
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${auth.user.token}`,
+            },
+          }
+        );
+        const data = await response.json();
+
+        if (!response.ok) {
+          showNotification({
+            title: "⛔ Une erreur est survenue",
+            message: data.error,
+            color: "red",
+          });
+        }
+
+        setCustomer(changedCustomer);
+        setPriceListFile(null);
+
         showNotification({
-          title: `⛔ Erreur serveur`,
-          message: data.error,
-          color: "red",
+          title: `✅ Fiche client sauvegardée`,
+          message: `La fiche client ${props.customer.name} est mise à jour`,
+          color: "green",
         });
+        setEditCustomerRelationship(false);
       }
-
-      setCustomer(changedCustomer);
-      setPriceListFile(null);
-
+    } else {
       showNotification({
-        title: `✅ Fiche client sauvegardée`,
-        message: `La fiche client ${props.customer.name} est mise à jour`,
-        color: "green",
+        title: "🔒 Authentification requise",
+        message: "L'utilisateur n'est pas connecté",
+        color: "red",
       });
-      setEditCustomerRelationship(false);
     }
   };
 

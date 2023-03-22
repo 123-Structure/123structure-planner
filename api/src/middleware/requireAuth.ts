@@ -1,10 +1,7 @@
 import { NextFunction, Request, Response } from "express";
 import { verify } from "jsonwebtoken";
+import { IJwtPayload } from "../data/interfaces/IJwtPayload";
 import User from "../models/user.models";
-
-interface JwtPayload {
-  _id: string;
-}
 
 interface AuthenticatedRequest extends Request {
   user?: {
@@ -27,7 +24,7 @@ export const requireAuth = async (
   const token = authorization.split(" ")[1];
   try {
     const jwtSecret = process.env.JWT_SECRET as string;
-    const { _id } = verify(token, jwtSecret) as JwtPayload;
+    const { _id } = verify(token, jwtSecret) as IJwtPayload;
 
     const user = await User.findOne({ _id }).select("_id");
 

@@ -1,18 +1,13 @@
-import { TRole } from "../types/TRole";
-
-export interface IRessource {
+export interface IJwtPayload {
   _id: string;
   email: string;
-  password: string;
-  token: string;
   firstName: string;
   lastName: string;
-  role: TRole[];
+  role: string[];
   company:
     | "Clisson"
     | "Anglet"
     | "Villefranche-sur-Saône"
     | "Global"
     | undefined;
-  fixer?: string[] | undefined;
 }

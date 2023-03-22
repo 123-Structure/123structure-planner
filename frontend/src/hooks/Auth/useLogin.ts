@@ -1,6 +1,7 @@
 import { showNotification } from "@mantine/notifications";
 import { useState } from "react";
 import { IRessource } from "../../data/interfaces/IRessource";
+import { decodeJwt } from "../../utils/decodeJwt";
 import { useAuth } from "./useAuth";
 
 export const useLogin = () => {
@@ -37,11 +38,14 @@ export const useLogin = () => {
       // Update AuthContext
       updateAuth({ type: "LOGIN", payload: data });
       setIsLoading(false);
-      showNotification({
-        title: "🎉 Connexion réussi",
-        message: `Bonjour, ${data.firstName} ${data.lastName}`,
-        color: "green",
-      });
+      const userData = decodeJwt(data.token);
+      if (userData) {
+        showNotification({
+          title: "🎉 Connexion réussi",
+          message: `Bonjour, ${userData.firstName} ${userData.lastName} (${userData.role})`,
+          color: "green",
+        });
+      }
     }
   };
 

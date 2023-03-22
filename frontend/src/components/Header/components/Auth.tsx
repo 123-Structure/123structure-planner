@@ -1,10 +1,14 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { PasswordInput, TextInput, useMantineTheme } from "@mantine/core";
 import {
   IconAt,
+  IconBriefcase,
+  IconCalculator,
+  IconCrown,
   IconLock,
   IconLogin,
   IconLogout,
+  IconPencil,
   IconUser,
 } from "@tabler/icons";
 import CustomButton from "../../utils/CustomButton";
@@ -14,6 +18,8 @@ import { useLogin } from "../../../hooks/Auth/useLogin";
 import { useLogout } from "../../../hooks/Auth/useLogout";
 import { useAuth } from "../../../hooks/Auth/useAuth";
 import "../../../assets/style/Auth.css";
+import { decodeJwt } from "../../../utils/decodeJwt";
+import { IJwtPayload } from "../../../data/interfaces/IJwtPayload";
 
 interface ILogin {
   email: string;
@@ -23,11 +29,13 @@ interface ILogin {
 const Auth = () => {
   const initialState: ILogin = { email: "", password: "" };
 
+  const [userData, setUserData] = useState<IJwtPayload>();
   const [loginFormData, setLoginFormData] = useState(initialState);
   const [errorEmail, setErrorEmail] = useState("");
   const [errorPassword, setErrorPassword] = useState("");
 
   const { auth } = useAuth();
+
   const { login, isLoading } = useLogin();
   const { logout } = useLogout();
 
@@ -59,12 +67,21 @@ const Auth = () => {
     }
   };
 
+  useEffect(() => {
+    if (auth.user) {
+      console.log("pass");
+      const payload = decodeJwt(auth.user.token);
+      setUserData(payload);
+    } else {
+      setUserData(undefined);
+    }
+  }, [auth.user]);
+
   return (
     <div
       className="auth"
       style={{
         flexDirection: smallScreen ? "column" : "row",
-        paddingLeft: smallScreen ? 0 : '16px'
       }}
     >
       {localStorage.getItem("user") === null ? (
@@ -109,11 +126,24 @@ const Auth = () => {
             disabled={isLoading}
           />
         </>
-      ) : (
+      ) : userData ? (
         <div>
           <div id="userInfoContainer">
-            <IconUser />
-            <p id="userInfo">{`${auth.user?.firstName} ${auth.user?.lastName}`}</p>
+            <div id="userInfo">
+              {userData.role.includes("Dessinateur") ? (
+                <IconPencil />
+              ) : userData.role.includes("Ingénieur") ? (
+                <IconCalculator />
+              ) : userData.role.includes("Administrateur") ? (
+                <IconCrown />
+              ) : userData.role.includes("Commercial") ? (
+                <IconBriefcase />
+              ) : (
+                <IconUser />
+              )}
+              <p>{`${userData.firstName} ${userData.lastName}`}</p>
+            </div>
+            <p id="userRole">{`${userData.role} - ${userData.company}`}</p>
           </div>
           <CustomButton
             handleClick={() => logout()}
@@ -129,6 +159,8 @@ const Auth = () => {
             }
           />
         </div>
+      ) : (
+        <></>
       )}
     </div>
   );

@@ -32,6 +32,7 @@ import { IDataAPICategory } from "../../../../data/interfaces/IDataAPICategory";
 import validator from "validator";
 import { isPhoneFormat } from "../../../../utils/validateInput";
 import { useRessources } from "../../../../hooks/Ressources/useRessources";
+import { useAuth } from "../../../../hooks/Auth/useAuth";
 
 const NewCustomer = () => {
   const [openNewCustomer, setOpenNewCustomer] = useState(false);
@@ -61,7 +62,9 @@ const NewCustomer = () => {
 
   const theme = useMantineTheme();
   const smallScreen = useMediaQuery(`(max-width: ${theme.breakpoints.xs})`);
+
   const ressources = useRessources();
+  const { auth } = useAuth();
 
   const [groupList, setGroupList] = useState<(string | SelectItem)[]>([]);
 
@@ -105,100 +108,115 @@ const NewCustomer = () => {
   };
 
   const handleValideClick = async () => {
-    if (
-      commercial.length > 0 &&
-      customerCategory !== "" &&
-      customerName !== "" &&
-      address !== "" &&
-      validator.isPostalCode(cp, "FR") &&
-      city !== "" &&
-      (email.length > 0 ? validator.isEmail(email) : true) &&
-      (phone.length > 0 ? isPhoneFormat(phone) : true)
-    ) {
-      const newCustomer: ICustomer = {
-        category: customerCategory as TCustomerCategory,
-        group: group,
-        name: customerName,
-        location: {
-          address: address,
-          cp: cp,
-          city: city,
-        },
-        email: email === "" ? "-" : email,
-        phone: phone === "" ? "-" : phone,
-        logo: logo,
-        contact: [],
-        priceList: priceList,
-        commercial: ressources
-          .filter((ressource) =>
-            commercial.includes(`${ressource.firstName} ${ressource.lastName}`)
-          )
-          .map((commercial) => commercial._id),
-        appointment: [],
-        projectGoal: [
-          {
-            year: new Date().getFullYear() - 1,
-            goal: 0,
+    if (auth.user) {
+      if (
+        commercial.length > 0 &&
+        customerCategory !== "" &&
+        customerName !== "" &&
+        address !== "" &&
+        validator.isPostalCode(cp, "FR") &&
+        city !== "" &&
+        (email.length > 0 ? validator.isEmail(email) : true) &&
+        (phone.length > 0 ? isPhoneFormat(phone) : true)
+      ) {
+        const newCustomer: ICustomer = {
+          category: customerCategory as TCustomerCategory,
+          group: group,
+          name: customerName,
+          location: {
+            address: address,
+            cp: cp,
+            city: city,
           },
-          {
-            year: new Date().getFullYear(),
-            goal: projectGoal,
-          },
-        ],
-        paymentDeadline:
-          paymentDeadline === ""
-            ? "-"
-            : (paymentDeadline as "45" | "30 (Fin de mois)" | "30 (Net)" | "-"),
-        paymentType: paymentType === "" ? "-" : (paymentType as TPaymentType),
-        paymentStatus: "A",
-      };
+          email: email === "" ? "-" : email,
+          phone: phone === "" ? "-" : phone,
+          logo: logo,
+          contact: [],
+          priceList: priceList,
+          commercial: ressources
+            .filter((ressource) =>
+              commercial.includes(
+                `${ressource.firstName} ${ressource.lastName}`
+              )
+            )
+            .map((commercial) => commercial._id),
+          appointment: [],
+          projectGoal: [
+            {
+              year: new Date().getFullYear() - 1,
+              goal: 0,
+            },
+            {
+              year: new Date().getFullYear(),
+              goal: projectGoal,
+            },
+          ],
+          paymentDeadline:
+            paymentDeadline === ""
+              ? "-"
+              : (paymentDeadline as
+                  | "45"
+                  | "30 (Fin de mois)"
+                  | "30 (Net)"
+                  | "-"),
+          paymentType: paymentType === "" ? "-" : (paymentType as TPaymentType),
+          paymentStatus: "A",
+        };
 
-      const response = await fetch(
-        `${import.meta.env.VITE_API_URL}/api/customers`,
-        {
-          method: "POST",
-          body: JSON.stringify(newCustomer),
-          headers: {
-            "Content-Type": "application/json",
-          },
+        const response = await fetch(
+          `${import.meta.env.VITE_API_URL}/api/customers`,
+          {
+            method: "POST",
+            body: JSON.stringify(newCustomer),
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${auth.user.token}`,
+            },
+          }
+        );
+        const data = await response.json();
+
+        if (!response.ok) {
+          showNotification({
+            title: `⛔ Erreur serveur`,
+            message: data.error,
+            color: "red",
+          });
         }
-      );
-      const data = await response.json();
 
-      if (!response.ok) {
         showNotification({
-          title: `⛔ Erreur serveur`,
-          message: data.error,
+          title: `✅ Nouvelle fiche client sauvegardé`,
+          message: `${customerName} ajouté à l'annuaire de client`,
+          color: "green",
+        });
+        handleCloseModal();
+      } else {
+        commercial.length <= 0
+          ? setErrorCommercial("Information manquante")
+          : setErrorCommercial("");
+        customerCategory === ""
+          ? setErrorCustomerCategory("Information manquante")
+          : setErrorCustomerCategory("");
+        customerName === ""
+          ? setErrorCustomerName("Information manquante")
+          : setErrorCustomerName("");
+        address === ""
+          ? setErrorAddress("Information manquante")
+          : setErrorAddress("");
+        !validator.isPostalCode(cp, "FR")
+          ? setErrorCp("Code postale de 5 chiffres")
+          : setErrorCp("");
+        city === "" ? setErrorCity("Information manquante") : setErrorCity("");
+        showNotification({
+          title: `⛔ Erreur à corriger`,
+          message: `Un ou plusieurs champs de saisie requiert votre attention`,
           color: "red",
         });
       }
-
-      showNotification({
-        title: `✅ Nouvelle fiche client sauvegardé`,
-        message: `${customerName} ajouté à l'annuaire de client`,
-        color: "green",
-      });
-      handleCloseModal();
     } else {
-      commercial.length <= 0
-        ? setErrorCommercial("Information manquante")
-        : setErrorCommercial("");
-      customerCategory === ""
-        ? setErrorCustomerCategory("Information manquante")
-        : setErrorCustomerCategory("");
-      customerName === ""
-        ? setErrorCustomerName("Information manquante")
-        : setErrorCustomerName("");
-      address === ""
-        ? setErrorAddress("Information manquante")
-        : setErrorAddress("");
-      !validator.isPostalCode(cp, "FR")
-        ? setErrorCp("Code postale de 5 chiffres")
-        : setErrorCp("");
-      city === "" ? setErrorCity("Information manquante") : setErrorCity("");
       showNotification({
-        title: `⛔ Erreur à corriger`,
-        message: `Un ou plusieurs champs de saisie requiert votre attention`,
+        title: "🔒 Authentification requise",
+        message: "L'utilisateur n'est pas connecté",
         color: "red",
       });
     }
@@ -239,43 +257,54 @@ const NewCustomer = () => {
   }, [priceList]);
 
   const fetchCustomers = async (commercial: string[], category: string) => {
-    const APIBaseUrl = import.meta.env.VITE_API_URL;
+    if (auth.user) {
+      const APIBaseUrl = import.meta.env.VITE_API_URL;
 
-    let res = [] as string[];
+      let res = [] as string[];
 
-    for (let i = 0; i < commercial.length; i++) {
-      const currentCommercial = commercial[i];
+      for (let i = 0; i < commercial.length; i++) {
+        const currentCommercial = commercial[i];
 
-      const commercialID = ressources
-        .filter((ressource) =>
-          currentCommercial.includes(
-            `${ressource.firstName} ${ressource.lastName}`
+        const commercialID = ressources
+          .filter((ressource) =>
+            currentCommercial.includes(
+              `${ressource.firstName} ${ressource.lastName}`
+            )
           )
-        )
-        .map((commercial) => commercial._id);
+          .map((commercial) => commercial._id);
 
-      const response = await fetch(
-        `${APIBaseUrl}/api/customers/category/${commercialID}/${category}`,
-        {
-          method: "GET",
-        }
-      );
-      const data = (await response.json()) as IDataAPICategory[];
+        const response = await fetch(
+          `${APIBaseUrl}/api/customers/category/${commercialID}/${category}`,
+          {
+            method: "GET",
+            headers: {
+              Authorization: `Bearer ${auth.user.token}`,
+            },
+          }
+        );
+        const data = (await response.json()) as IDataAPICategory[];
 
-      const groups = data
-        .map((customer) => customer.group)
-        .filter((group) => group !== "")
-        .reduce((acc, curr) => {
-          if (!acc.includes(curr)) acc.push(curr);
-          return acc;
-        }, [] as string[]);
+        const groups = data
+          .map((customer) => customer.group)
+          .filter((group) => group !== "")
+          .reduce((acc, curr) => {
+            if (!acc.includes(curr)) acc.push(curr);
+            return acc;
+          }, [] as string[]);
 
-      groups.forEach((group) => {
-        res.push(group);
+        groups.forEach((group) => {
+          res.push(group);
+        });
+      }
+
+      setGroupList(res);
+    } else {
+      showNotification({
+        title: "🔒 Authentification requise",
+        message: "L'utilisateur n'est pas connecté",
+        color: "red",
       });
     }
-
-    setGroupList(res);
   };
 
   useEffect(() => {

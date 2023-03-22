@@ -22,6 +22,7 @@ import validator from "validator";
 import { isPhoneFormat } from "../../../../../utils/validateInput";
 import { useCustomer } from "../../../../../hooks/Customer/useCustomer";
 import { useUpdateCustomer } from "../../../../../hooks/Customer/useUpdateCustomer";
+import { useAuth } from "../../../../../hooks/Auth/useAuth";
 
 interface ICustomerContactProps {
   contact: IContact[];
@@ -50,6 +51,7 @@ const CustomerContact = (props: ICustomerContactProps) => {
 
   const customer = useCustomer();
   const setCustomer = useUpdateCustomer();
+  const { auth } = useAuth();
 
   //generates random id;
   const guid = () => {
@@ -92,76 +94,85 @@ const CustomerContact = (props: ICustomerContactProps) => {
   };
 
   const handleValideClick = async () => {
-    if (
-      gender !== "" &&
-      firstName !== "" &&
-      lastName !== "" &&
-      category !== ""
-    ) {
-      if (customer !== undefined) {
-        const changedCustomer = customer;
+    if (auth.user) {
+      if (
+        gender !== "" &&
+        firstName !== "" &&
+        lastName !== "" &&
+        category !== ""
+      ) {
+        if (customer !== undefined) {
+          const changedCustomer = customer;
 
-        const newContact: IContact = {
-          _id: guid(),
-          firstName: firstName,
-          lastName: lastName,
-          gender: gender as "M." | "Mme",
-          category: category as TContactCategories,
-          email: email === "-" || email === "" ? "-" : email,
-          phone1: phone1 === "-" || phone1 === "" ? "-" : phone1,
-          phone2: phone2 === "-" || phone2 === "" ? "-" : phone2,
-        };
+          const newContact: IContact = {
+            _id: guid(),
+            firstName: firstName,
+            lastName: lastName,
+            gender: gender as "M." | "Mme",
+            category: category as TContactCategories,
+            email: email === "-" || email === "" ? "-" : email,
+            phone1: phone1 === "-" || phone1 === "" ? "-" : phone1,
+            phone2: phone2 === "-" || phone2 === "" ? "-" : phone2,
+          };
 
-        changedCustomer.contact.push(newContact);
+          changedCustomer.contact.push(newContact);
 
-        const response = await fetch(
-          `${import.meta.env.VITE_API_URL}/api/customers/${
-            changedCustomer._id as string
-          }`,
-          {
-            method: "PATCH",
-            body: JSON.stringify({ contact: changedCustomer.contact }),
-            headers: {
-              "Content-Type": "application/json",
-            },
+          const response = await fetch(
+            `${import.meta.env.VITE_API_URL}/api/customers/${
+              changedCustomer._id as string
+            }`,
+            {
+              method: "PATCH",
+              body: JSON.stringify({ contact: changedCustomer.contact }),
+              headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${auth.user.token}`,
+              },
+            }
+          );
+
+          const data = await response.json();
+
+          if (!response.ok) {
+            showNotification({
+              title: "⛔ Une erreur est survenue",
+              message: data.error,
+              color: "red",
+            });
           }
-        );
 
-        const data = await response.json();
+          setCustomer(changedCustomer);
 
-        if (!response.ok) {
           showNotification({
-            title: `⛔ Erreur serveur`,
-            message: data.error,
-            color: "red",
+            title: `✅ Nouveau contact sauvegardé`,
+            message: `Nouveau contact ajouté à ${props.customer.name}`,
+            color: "green",
           });
+          handleCloseModal();
         }
-
-        setCustomer(changedCustomer);
-
+      } else {
+        gender === ""
+          ? setGenderError("Information manquante")
+          : setGenderError("");
+        firstName === ""
+          ? setFirstNameError("Information manquante")
+          : setFirstNameError("");
+        lastName === ""
+          ? setLastNameError("Information manquante")
+          : setLastNameError("");
+        category === ""
+          ? setCategoryError("Information manquante")
+          : setCategoryError("");
         showNotification({
-          title: `✅ Nouveau contact sauvegardé`,
-          message: `Nouveau contact ajouté à ${props.customer.name}`,
-          color: "green",
+          title: `⛔ Erreur à corriger`,
+          message: `Un ou plusieurs champs de saisie requiert votre attention`,
+          color: "red",
         });
-        handleCloseModal();
       }
     } else {
-      gender === ""
-        ? setGenderError("Information manquante")
-        : setGenderError("");
-      firstName === ""
-        ? setFirstNameError("Information manquante")
-        : setFirstNameError("");
-      lastName === ""
-        ? setLastNameError("Information manquante")
-        : setLastNameError("");
-      category === ""
-        ? setCategoryError("Information manquante")
-        : setCategoryError("");
       showNotification({
-        title: `⛔ Erreur à corriger`,
-        message: `Un ou plusieurs champs de saisie requiert votre attention`,
+        title: "🔒 Authentification requise",
+        message: "L'utilisateur n'est pas connecté",
         color: "red",
       });
     }

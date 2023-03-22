@@ -29,6 +29,7 @@ import { useCustomerRoutes } from "../../../../hooks/CustomerRoutes/useCustomerR
 import { useUpdateCustomerRoutes } from "../../../../hooks/CustomerRoutes/useUpdateCustomerRoutes";
 import { useCustomer } from "../../../../hooks/Customer/useCustomer";
 import { useUpdateCustomer } from "../../../../hooks/Customer/useUpdateCustomer";
+import { useAuth } from "../../../../hooks/Auth/useAuth";
 
 interface INewAppointmentProps {
   customer: ICustomer;
@@ -57,6 +58,7 @@ const NewAppointment = (props: INewAppointmentProps) => {
 
   const customer = useCustomer();
   const setCustomer = useUpdateCustomer();
+  const { auth } = useAuth();
 
   const handleCloseModal = () => {
     setOpenNewAppointment(false);
@@ -69,85 +71,96 @@ const NewAppointment = (props: INewAppointmentProps) => {
   };
 
   const handleValideClick = async () => {
-    if (
-      appointmentTitle !== "" &&
-      address !== "" &&
-      isCPFormat(cp) &&
-      city !== ""
-    ) {
-      if (customer !== undefined) {
-        const changedCustomer = customer;
-        const newAppointment: IAppointment = {
-          date: appointmentDate,
-          contact: changedCustomer.contact
-            .filter((contact) =>
-              appointmentContact.includes(
-                `${contact.firstName} ${contact.lastName}`
+    if (auth.user) {
+      if (
+        appointmentTitle !== "" &&
+        address !== "" &&
+        isCPFormat(cp) &&
+        city !== ""
+      ) {
+        if (customer !== undefined) {
+          const changedCustomer = customer;
+          const newAppointment: IAppointment = {
+            date: appointmentDate,
+            contact: changedCustomer.contact
+              .filter((contact) =>
+                appointmentContact.includes(
+                  `${contact.firstName} ${contact.lastName}`
+                )
               )
-            )
-            .map((contact) => contact._id) as string[],
-          location: {
-            address: address,
-            cp: cp,
-            city: city,
-          },
-          title: appointmentTitle as TAppointmentTitle,
-          content: "",
-        };
-
-        changedCustomer.appointment.push(newAppointment);
-
-        const response = await fetch(
-          `${import.meta.env.VITE_API_URL}/api/customers/${
-            changedCustomer._id as string
-          }`,
-          {
-            method: "PATCH",
-            body: JSON.stringify({ appointment: changedCustomer.appointment }),
-            headers: {
-              "Content-Type": "application/json",
+              .map((contact) => contact._id) as string[],
+            location: {
+              address: address,
+              cp: cp,
+              city: city,
             },
+            title: appointmentTitle as TAppointmentTitle,
+            content: "",
+          };
+
+          changedCustomer.appointment.push(newAppointment);
+
+          const response = await fetch(
+            `${import.meta.env.VITE_API_URL}/api/customers/${
+              changedCustomer._id as string
+            }`,
+            {
+              method: "PATCH",
+              body: JSON.stringify({
+                appointment: changedCustomer.appointment,
+              }),
+              headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${auth.user.token}`,
+              },
+            }
+          );
+          const data = await response.json();
+
+          if (!response.ok) {
+            showNotification({
+              title: "⛔ Une erreur est survenue",
+              message: data.error,
+              color: "red",
+            });
           }
-        );
-        const data = await response.json();
 
-        if (!response.ok) {
+          setCustomer(changedCustomer);
+
           showNotification({
-            title: `⛔ Erreur serveur`,
-            message: data.error,
-            color: "red",
+            title: `✅ Nouveau rendez-vous sauvegardé`,
+            message: `Nouveau rendez-vous ajouté pour ${props.customer.name}`,
+            color: "green",
           });
+          setCustomerRoutes({
+            ...customerRoutes,
+            appointment: `${appointmentTitle} (${appointmentDate.toLocaleDateString(
+              "fr"
+            )})`,
+          });
+          handleCloseModal();
         }
-
-        setCustomer(changedCustomer);
-
+      } else {
+        appointmentTitle === ""
+          ? setErrorAppointmentTitle("Information manquante")
+          : setErrorAppointmentTitle("");
+        address === ""
+          ? setErrorAddress("Information manquante")
+          : setErrorAddress("");
+        !isCPFormat(cp)
+          ? setErrorCp("Code postale de 5 chiffres")
+          : setErrorCp("");
+        city === "" ? setErrorCity("Information manquante") : setErrorCity("");
         showNotification({
-          title: `✅ Nouveau rendez-vous sauvegardé`,
-          message: `Nouveau rendez-vous ajouté pour ${props.customer.name}`,
-          color: "green",
+          title: `⛔ Erreur à corriger`,
+          message: `Un ou plusieurs champs de saisie requiert votre attention`,
+          color: "red",
         });
-        setCustomerRoutes({
-          ...customerRoutes,
-          appointment: `${appointmentTitle} (${appointmentDate.toLocaleDateString(
-            "fr"
-          )})`,
-        });
-        handleCloseModal();
       }
     } else {
-      appointmentTitle === ""
-        ? setErrorAppointmentTitle("Information manquante")
-        : setErrorAppointmentTitle("");
-      address === ""
-        ? setErrorAddress("Information manquante")
-        : setErrorAddress("");
-      !isCPFormat(cp)
-        ? setErrorCp("Code postale de 5 chiffres")
-        : setErrorCp("");
-      city === "" ? setErrorCity("Information manquante") : setErrorCity("");
       showNotification({
-        title: `⛔ Erreur à corriger`,
-        message: `Un ou plusieurs champs de saisie requiert votre attention`,
+        title: "🔒 Authentification requise",
+        message: "L'utilisateur n'est pas connecté",
         color: "red",
       });
     }

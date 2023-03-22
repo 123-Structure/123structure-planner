@@ -9,8 +9,14 @@ import SearchBar from "./components/SearchBar/SearchBar";
 import { useMantineTheme } from "@mantine/core";
 import { useMediaQuery } from "@mantine/hooks";
 import LottieLoader from "../utils/LottieLoader";
+import { useAuth } from "../../hooks/Auth/useAuth";
+import { IJwtPayload } from "../../data/interfaces/IJwtPayload";
+import { useEffect, useState } from "react";
+import { decodeJwt } from "../../utils/decodeJwt";
 
 const Header = () => {
+  const [userData, setUserData] = useState<IJwtPayload>();
+
   const defaultOptions = {
     loop: true,
     autoplay: true,
@@ -20,15 +26,26 @@ const Header = () => {
     },
   };
 
+  const { auth } = useAuth();
+
   const theme = useMantineTheme();
   const smallScreen = useMediaQuery(`(max-width: ${theme.breakpoints.xs})`);
+
+  useEffect(() => {
+    if (auth.user) {
+      const payload = decodeJwt(auth.user.token);
+      setUserData(payload);
+    } else {
+      setUserData(undefined);
+    }
+  }, [auth.user]);
 
   return (
     <>
       {/* <LottieLoader visible={true} /> */}
       <div className={`header ${smallScreen ? "header-mobile" : ""}`}>
         <div className={`menu ${smallScreen ? "menu-mobile" : ""}`}>
-          {!smallScreen ? (
+          {!smallScreen && userData?.role.includes("Administrateur") ? (
             <div className="admin">
               <ManageUsers />
               <AddProjectFromExcel />
@@ -38,7 +55,7 @@ const Header = () => {
           )}
           <Auth />
         </div>
-        <SearchBar />
+        {auth.user ? <SearchBar /> : <></>}
         <div className="logoHeaderContainer">
           <Lottie
             options={defaultOptions}

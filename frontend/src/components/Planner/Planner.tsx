@@ -13,10 +13,10 @@ import { useAuth } from "../../hooks/Auth/useAuth";
 
 const Planner = () => {
   const theme = useMantineTheme();
-  const auth = useAuth();
+  const { auth } = useAuth();
   const ressources = useRessources();
 
-  if (!auth) {
+  if (!auth.user) {
     return (
       <DndProvider backend={isTouchDevice() ? TouchBackend : HTML5Backend}>
         <div

@@ -13,6 +13,7 @@ import validator from "validator";
 import { isPhoneFormat } from "../../../../../utils/validateInput";
 import { useCustomer } from "../../../../../hooks/Customer/useCustomer";
 import { useUpdateCustomer } from "../../../../../hooks/Customer/useUpdateCustomer";
+import { useAuth } from "../../../../../hooks/Auth/useAuth";
 
 interface ICustomerIdentityProps {
   customer: ICustomer;
@@ -31,6 +32,7 @@ const CustomerIdentity = (props: ICustomerIdentityProps) => {
 
   const customer = useCustomer();
   const setCustomer = useUpdateCustomer();
+  const { auth } = useAuth();
 
   const openURL = (url: string) => {
     window.open(url, "_blank");
@@ -44,58 +46,67 @@ const CustomerIdentity = (props: ICustomerIdentityProps) => {
   };
 
   const handleValideClick = async () => {
-    if (customer !== undefined) {
-      const changedCustomer = customer;
+    if (auth.user) {
+      if (customer !== undefined) {
+        const changedCustomer = customer;
 
-      changedCustomer.location.address = address;
-      changedCustomer.location.cp = cp;
-      changedCustomer.location.city = city;
-      changedCustomer.email = email;
-      changedCustomer.phone = phone;
-      changedCustomer.contact = contact;
-      changedCustomer.logo = logo;
+        changedCustomer.location.address = address;
+        changedCustomer.location.cp = cp;
+        changedCustomer.location.city = city;
+        changedCustomer.email = email;
+        changedCustomer.phone = phone;
+        changedCustomer.contact = contact;
+        changedCustomer.logo = logo;
 
-      const response = await fetch(
-        `${import.meta.env.VITE_API_URL}/api/customers/${
-          changedCustomer._id as string
-        }`,
-        {
-          method: "PATCH",
-          body: JSON.stringify({
-            location: {
-              address: address,
-              cp: cp,
-              city: city,
+        const response = await fetch(
+          `${import.meta.env.VITE_API_URL}/api/customers/${
+            changedCustomer._id as string
+          }`,
+          {
+            method: "PATCH",
+            body: JSON.stringify({
+              location: {
+                address: address,
+                cp: cp,
+                city: city,
+              },
+              email: email,
+              phone: phone,
+              contact: contact,
+              logo: logo,
+            }),
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${auth.user.token}`,
             },
-            email: email,
-            phone: phone,
-            contact: contact,
-            logo: logo,
-          }),
-          headers: {
-            "Content-Type": "application/json",
-          },
+          }
+        );
+
+        const data = await response.json();
+
+        if (!response.ok) {
+          showNotification({
+            title: "⛔ Une erreur est survenue",
+            message: data.error,
+            color: "red",
+          });
         }
-      );
 
-      const data = await response.json();
+        setCustomer(changedCustomer);
 
-      if (!response.ok) {
         showNotification({
-          title: `⛔ Erreur serveur`,
-          message: data.error,
-          color: "red",
+          title: `✅ Fiche client sauvegardée`,
+          message: `La fiche client ${props.customer.name} est mise à jour`,
+          color: "green",
         });
+        setEditCustomerIdentity(false);
       }
-
-      setCustomer(changedCustomer);
-
+    } else {
       showNotification({
-        title: `✅ Fiche client sauvegardée`,
-        message: `La fiche client ${props.customer.name} est mise à jour`,
-        color: "green",
+        title: "🔒 Authentification requise",
+        message: "L'utilisateur n'est pas connecté",
+        color: "red",
       });
-      setEditCustomerIdentity(false);
     }
   };
 
@@ -149,7 +160,7 @@ const CustomerIdentity = (props: ICustomerIdentityProps) => {
         <EditModeToggle
           disabled={
             !validator.isPostalCode(cp, "FR") ||
-            !validator.isEmail(email) ||
+            (!validator.isEmail(email) && email !== "-") ||
             !isPhoneFormat(phone)
           }
           editMode={editCustomerIdentity}
@@ -230,7 +241,9 @@ const CustomerIdentity = (props: ICustomerIdentityProps) => {
               )
             }
             errorMessage={[
-              validator.isEmail(email) ? "" : "Format d'email invalide",
+              validator.isEmail(email) || email === "-"
+                ? ""
+                : "Format d'email invalide",
             ]}
           />
           <a

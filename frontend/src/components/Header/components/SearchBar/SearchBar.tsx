@@ -18,6 +18,8 @@ import BricklayerBro from "../../../../assets/img/Bricklayer-bro.svg";
 import "../../../../assets/style/SearchBar.css";
 import { changeFavicon, changeTabTitle } from "../../../../utils/tabsUtils";
 import { useUpdateCustomerRoutes } from "../../../../hooks/CustomerRoutes/useUpdateCustomerRoutes";
+import { useAuth } from "../../../../hooks/Auth/useAuth";
+import { showNotification } from "@mantine/notifications";
 
 const SearchBar = () => {
   const [openSearchBarModal, setOpenSearchBarModal] = useState(false);
@@ -28,7 +30,9 @@ const SearchBar = () => {
   const theme = useMantineTheme();
   const smallScreen = useMediaQuery(`(max-width: ${theme.breakpoints.xs})`);
   const mediumScreen = useMediaQuery(`(max-width: ${theme.breakpoints.md})`);
+
   const setCustomerRoutes = useUpdateCustomerRoutes();
+  const { auth } = useAuth();
 
   const handleCloseModal = () => {
     setOpenSearchBarModal(false);
@@ -38,15 +42,26 @@ const SearchBar = () => {
   };
 
   const handleSearchQuery = async (query: string) => {
-    const APIBaseUrl = import.meta.env.VITE_API_URL;
-    const response = await fetch(
-      `${APIBaseUrl}/api/customers/search/${query}`,
-      {
-        method: "GET",
-      }
-    );
-    const data = (await response.json()) as IDataFromAPI[];
-    setActions(data);
+    if (auth.user) {
+      const APIBaseUrl = import.meta.env.VITE_API_URL;
+      const response = await fetch(
+        `${APIBaseUrl}/api/customers/search/${query}`,
+        {
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${auth.user.token}`,
+          },
+        }
+      );
+      const data = (await response.json()) as IDataFromAPI[];
+      setActions(data);
+    } else {
+      showNotification({
+        title: "🔒 Authentification requise",
+        message: "L'utilisateur n'est pas connecté",
+        color: "red",
+      });
+    }
   };
 
   const handleQueryChange = (query: string) => {

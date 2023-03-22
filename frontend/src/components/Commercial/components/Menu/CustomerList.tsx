@@ -10,6 +10,8 @@ import { useCustomerRoutes } from "../../../../hooks/CustomerRoutes/useCustomerR
 import { useUpdateCustomerRoutes } from "../../../../hooks/CustomerRoutes/useUpdateCustomerRoutes";
 import { useCustomer } from "../../../../hooks/Customer/useCustomer";
 import { useUpdateCustomer } from "../../../../hooks/Customer/useUpdateCustomer";
+import { useAuth } from "../../../../hooks/Auth/useAuth";
+import { showNotification } from "@mantine/notifications";
 
 interface ICustomerListProps {
   customersList: IDataAPICategory[];
@@ -19,38 +21,54 @@ const CustomerList = (props: ICustomerListProps) => {
   const [customerGroup, setCustomerGroup] = useState<IDataAPICategory[]>();
 
   const theme = useMantineTheme();
+
   const customerRoutes = useCustomerRoutes();
   const setCustomerRoutes = useUpdateCustomerRoutes();
   const customer = useCustomer();
   const setCustomer = useUpdateCustomer();
+  const { auth } = useAuth();
 
   const fetchCustomer = async (val: string | null) => {
-    const customer = props.customersList.filter(
-      (customer) => customer.name === val
-    )[0];
+    if (auth.user) {
+      const customer = props.customersList.filter(
+        (customer) => customer.name === val
+      )[0];
 
-    const APIBaseUrl = import.meta.env.VITE_API_URL;
+      const APIBaseUrl = import.meta.env.VITE_API_URL;
 
-    if (customer !== undefined) {
-      const response = await fetch(
-        `${APIBaseUrl}/api/customers/${customer._id}`,
-        {
-          method: "GET",
-        }
-      );
-      const data = (await response.json()) as ICustomer;
-      setCustomer(data);
-      setCustomerGroup(undefined);
+      if (customer !== undefined) {
+        const response = await fetch(
+          `${APIBaseUrl}/api/customers/${customer._id}`,
+          {
+            method: "GET",
+            headers: {
+              Authorization: `Bearer ${auth.user.token}`,
+            },
+          }
+        );
+        const data = (await response.json()) as ICustomer;
+        setCustomer(data);
+        setCustomerGroup(undefined);
+      } else {
+        const response = await fetch(
+          `${APIBaseUrl}/api/customers/group/${customerRoutes.commercial}/${customerRoutes.category}/${val}`,
+          {
+            method: "GET",
+            headers: {
+              Authorization: `Bearer ${auth.user.token}`,
+            },
+          }
+        );
+        const data = (await response.json()) as IDataAPICategory[];
+        setCustomer(undefined);
+        setCustomerGroup(data);
+      }
     } else {
-      const response = await fetch(
-        `${APIBaseUrl}/api/customers/group/${customerRoutes.commercial}/${customerRoutes.category}/${val}`,
-        {
-          method: "GET",
-        }
-      );
-      const data = (await response.json()) as IDataAPICategory[];
-      setCustomer(undefined);
-      setCustomerGroup(data);
+      showNotification({
+        title: "🔒 Authentification requise",
+        message: "L'utilisateur n'est pas connecté",
+        color: "red",
+      });
     }
   };
 

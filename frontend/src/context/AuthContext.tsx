@@ -6,10 +6,12 @@ interface IAuthContextProps {
 }
 
 export interface IState {
-  user: IRessource | null;
+  user: { email: string; token: string } | null;
 }
 
-type Action = { type: "LOGIN"; payload: IRessource } | { type: "LOGOUT" };
+type Action =
+  | { type: "LOGIN"; payload: { email: string; token: string } }
+  | { type: "LOGOUT" };
 
 const initialState: IState = {
   user: null,
@@ -45,7 +47,7 @@ const AuthProvider = (props: IAuthContextProps) => {
     }
   }, []);
 
-  // console.log("🔒 AuthContext state : ", auth);
+  console.log("🔒 AuthContext state : ", auth);
 
   return (
     <AuthContext.Provider value={{ auth, updateAuth }}>
