@@ -12,13 +12,17 @@
   flex-direction: column;
 }
 
+.router,
 .admin {
   display: flex;
   flex-direction: column;
   gap: 8px;
-  padding-right: 16px;
+  padding-right: 8px;
+}
+
+.admin {
+  margin-right: 8px;
   border-right: 1px solid #dfe2e6;
-  margin-right: 16px;
 }
 
 .menu {

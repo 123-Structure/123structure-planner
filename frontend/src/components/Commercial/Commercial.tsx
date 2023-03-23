@@ -11,9 +11,7 @@ import { useCustomerRoutes } from "../../hooks/CustomerRoutes/useCustomerRoutes"
 import { useUpdateCustomerRoutes } from "../../hooks/CustomerRoutes/useUpdateCustomerRoutes";
 import { useUpdateCustomer } from "../../hooks/Customer/useUpdateCustomer";
 import { useAuth } from "../../hooks/Auth/useAuth";
-import WebsiteCreatorBro from "../../assets/img/Website Creator-bro.svg";
 import { IApiUserList } from "../../data/interfaces/IApiUserList";
-import { useUserData } from "../../hooks/Auth/useUserData";
 
 const Commercial = () => {
   const [commercialList, setCommercialList] = useState<IApiUserList[]>();
@@ -23,7 +21,6 @@ const Commercial = () => {
   const setCustomerRoutes = useUpdateCustomerRoutes();
   const setCustomer = useUpdateCustomer();
   const { auth } = useAuth();
-  const userData = useUserData();
 
   const theme = useMantineTheme();
   const smallScreen = useMediaQuery(`(max-width: ${theme.breakpoints.lg})`);
@@ -76,7 +73,7 @@ const Commercial = () => {
     }
   }, [activeTab]);
 
-  return userData?.role.includes("Commercial") ? (
+  return (
     <Tabs
       color="yellow"
       variant="pills"
@@ -126,14 +123,6 @@ const Commercial = () => {
       ))}
       {activeTab !== "" ? <MobileCustomerMenu /> : <></>}
     </Tabs>
-  ) : (
-    <img
-      style={{
-        width: smallScreen ? "100%" : "450px",
-      }}
-      src={WebsiteCreatorBro}
-      alt="login"
-    ></img>
   );
 };
 

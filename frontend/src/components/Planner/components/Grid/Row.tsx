@@ -20,14 +20,14 @@ const Row = (props: IRowProps) => {
       <Invoicing rowId={props.id} />
       <Correction rowId={props.id} />
       <MustBeFix rowId={props.id} />
-      <div className="loadRate">
+      {/* <div className="loadRate">
         <LoadRate rowId={props.id} id={"loadRate1"} />
         <LoadRate rowId={props.id} id={"loadRate2"} />
         <LoadRate rowId={props.id} id={"loadRate3"} />
         <LoadRate rowId={props.id} id={"loadRate4"} />
         <LoadRate rowId={props.id} id={"loadRate5"} />
         <LoadRate rowId={props.id} id={"loadRate6"} />
-      </div>
+      </div> */}
       <Week rowId={props.id} id={"w1"} />
       <Week rowId={props.id} id={"w2"} />
       <Week rowId={props.id} id={"w3"} />

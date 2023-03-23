@@ -118,7 +118,8 @@ export const getUsersByRole = async (req: Request, res: Response) => {
       _id: user._id,
       email: user.email,
       firstName: user.firstName,
-      lastName:user.lastName
+      lastName: user.lastName,
+      role: user.role,
     };
   });
 

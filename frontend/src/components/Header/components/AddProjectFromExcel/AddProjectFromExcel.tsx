@@ -7,6 +7,7 @@ import { ProjectParameters } from "../../../../data/constants/ProjectParameters"
 import ExcelGridModal from "./components/ExcelGridModal/ExcelGridModal";
 import "../../../../assets/style/AddProjectFromExcel.css";
 import { useProject } from "../../../../hooks/Project/useProject";
+import { useUserData } from "../../../../hooks/Auth/useUserData";
 
 const AddProjectFromExcel = () => {
   const [file, setFile] = useState<File | null>(null);
@@ -17,6 +18,7 @@ const AddProjectFromExcel = () => {
   const [duplicatedProjectID, setDuplicatedProjectID] = useState<string[]>([]);
 
   const projects = useProject();
+  const userData = useUserData();
 
   const resetRef = useRef<() => void>(null);
 

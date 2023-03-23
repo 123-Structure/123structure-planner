@@ -6,11 +6,11 @@ import "../../assets/style/Header.css";
 import animationData from "../../assets/lottie/loader-buildings.json";
 import Lottie from "react-lottie";
 import SearchBar from "./components/SearchBar/SearchBar";
-import { useMantineTheme } from "@mantine/core";
+import { ActionIcon, useMantineTheme } from "@mantine/core";
 import { useMediaQuery } from "@mantine/hooks";
 import { useAuth } from "../../hooks/Auth/useAuth";
-import { IJwtPayload } from "../../data/interfaces/IJwtPayload";
 import { useUserData } from "../../hooks/Auth/useUserData";
+import { IconBriefcase, IconCalendarEvent } from "@tabler/icons";
 
 const Header = () => {
   const defaultOptions = {
@@ -33,11 +33,54 @@ const Header = () => {
       {/* <LottieLoader visible={true} /> */}
       <div className={`header ${smallScreen ? "header-mobile" : ""}`}>
         <div className={`menu ${smallScreen ? "menu-mobile" : ""}`}>
-          {!smallScreen && userData?.role.includes("Administrateur") ? (
-            <div className="admin">
-              <ManageUsers />
-              <AddProjectFromExcel />
-            </div>
+          {!smallScreen ? (
+            <>
+              <div
+                className="router"
+                style={{
+                  marginRight: userData?.role.includes("Administrateur")
+                    ? 0
+                    : "8px",
+                  borderRight: userData?.role.includes("Administrateur")
+                    ? ""
+                    : "1px solid #dfe2e6",
+                }}
+              >
+                <ActionIcon
+                  size="xl"
+                  variant="filled"
+                  color={"yellow"}
+                  onClick={() => ""}
+                  disabled={
+                    !userData?.role.includes("Dessinateur") &&
+                    !userData?.role.includes("Ingénieur") &&
+                    !userData?.role.includes("Administrateur")
+                  }
+                >
+                  <IconCalendarEvent size={24} color="black" />
+                </ActionIcon>
+                <ActionIcon
+                  size="xl"
+                  variant="filled"
+                  color={"yellow"}
+                  onClick={() => ""}
+                  disabled={
+                    !userData?.role.includes("Commercial") &&
+                    !userData?.role.includes("Administrateur")
+                  }
+                >
+                  <IconBriefcase size={24} color="black" />
+                </ActionIcon>
+              </div>
+              {userData?.role.includes("Administrateur") ? (
+                <div className="admin">
+                  <ManageUsers />
+                  <AddProjectFromExcel />
+                </div>
+              ) : (
+                <></>
+              )}
+            </>
           ) : (
             <></>
           )}
