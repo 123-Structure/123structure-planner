@@ -18,8 +18,7 @@ import { useLogin } from "../../../hooks/Auth/useLogin";
 import { useLogout } from "../../../hooks/Auth/useLogout";
 import { useAuth } from "../../../hooks/Auth/useAuth";
 import "../../../assets/style/Auth.css";
-import { decodeJwt } from "../../../utils/decodeJwt";
-import { IJwtPayload } from "../../../data/interfaces/IJwtPayload";
+import { useUserData } from "../../../hooks/Auth/useUserData";
 
 interface ILogin {
   email: string;
@@ -29,15 +28,13 @@ interface ILogin {
 const Auth = () => {
   const initialState: ILogin = { email: "", password: "" };
 
-  const [userData, setUserData] = useState<IJwtPayload>();
   const [loginFormData, setLoginFormData] = useState(initialState);
   const [errorEmail, setErrorEmail] = useState("");
   const [errorPassword, setErrorPassword] = useState("");
 
-  const { auth } = useAuth();
-
   const { login, isLoading } = useLogin();
   const { logout } = useLogout();
+  const userData = useUserData();
 
   const theme = useMantineTheme();
   const smallScreen = useMediaQuery(`(max-width: ${theme.breakpoints.xs})`);
@@ -66,15 +63,6 @@ const Auth = () => {
         : setErrorPassword("Mot de passe invalide");
     }
   };
-
-  useEffect(() => {
-    if (auth.user) {
-      const payload = decodeJwt(auth.user.token);
-      setUserData(payload);
-    } else {
-      setUserData(undefined);
-    }
-  }, [auth.user]);
 
   return (
     <div

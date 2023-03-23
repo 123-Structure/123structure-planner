@@ -14,6 +14,7 @@ import { IApiUserList } from "../../../../../data/interfaces/IApiUserList";
 import { IAppointment } from "../../../../../data/interfaces/IAppointment";
 import { ICustomer } from "../../../../../data/interfaces/ICustomer";
 import { useAuth } from "../../../../../hooks/Auth/useAuth";
+import { useUserData } from "../../../../../hooks/Auth/useUserData";
 import { useCustomer } from "../../../../../hooks/Customer/useCustomer";
 import { useUpdateCustomer } from "../../../../../hooks/Customer/useUpdateCustomer";
 import CustomButton from "../../../../utils/CustomButton";
@@ -73,13 +74,6 @@ const CustomerRelationship = (props: ICustomerRelationshipProps) => {
   const [priceList, setPriceList] = useState(props.customer.priceList);
   const [priceListFile, setPriceListFile] = useState<File | null>(null);
 
-  const currentProjectInvoiced = 0;
-  const previousYearProjectInvoiced = 0;
-
-  const customer = useCustomer();
-  const setCustomer = useUpdateCustomer();
-  const { auth } = useAuth();
-
   const [commercialList, setCommercialList] = useState<IApiUserList[]>();
 
   const [commercial, setCommercial] = useState(
@@ -91,6 +85,14 @@ const CustomerRelationship = (props: ICustomerRelationshipProps) => {
           .map((commercial) => `${commercial.firstName} ${commercial.lastName}`)
       : []
   );
+
+  const currentProjectInvoiced = 0;
+  const previousYearProjectInvoiced = 0;
+
+  const customer = useCustomer();
+  const setCustomer = useUpdateCustomer();
+  const { auth } = useAuth();
+  const userData = useUserData();
 
   const theme = useMantineTheme();
   const smallScreen = useMediaQuery(`(max-width: ${theme.breakpoints.xs})`);
@@ -308,16 +310,22 @@ const CustomerRelationship = (props: ICustomerRelationshipProps) => {
           icon={<IconUsers size={24} />}
           title="Relation commerciale"
         />
-        <EditModeToggle
-          disabled={false}
-          editMode={editCustomerRelationship}
-          editLabel=""
-          validateLabel=""
-          cancelLabel=""
-          handleEditClick={() => setEditCustomerRelationship(true)}
-          handleValideClick={handleValideClick}
-          handleCancelClick={handleCancelClick}
-        />
+        {customer?.commercial.includes(
+          userData?.email.split("@")[0] as string
+        ) ? (
+          <EditModeToggle
+            disabled={false}
+            editMode={editCustomerRelationship}
+            editLabel=""
+            validateLabel=""
+            cancelLabel=""
+            handleEditClick={() => setEditCustomerRelationship(true)}
+            handleValideClick={handleValideClick}
+            handleCancelClick={handleCancelClick}
+          />
+        ) : (
+          <></>
+        )}
       </div>
       <div className="customerItemContainer">
         <div className="customerItemTitle">

@@ -11,20 +11,19 @@ import { useCustomerRoutes } from "../../hooks/CustomerRoutes/useCustomerRoutes"
 import { useUpdateCustomerRoutes } from "../../hooks/CustomerRoutes/useUpdateCustomerRoutes";
 import { useUpdateCustomer } from "../../hooks/Customer/useUpdateCustomer";
 import { useAuth } from "../../hooks/Auth/useAuth";
-import { decodeJwt } from "../../utils/decodeJwt";
-import { IJwtPayload } from "../../data/interfaces/IJwtPayload";
 import WebsiteCreatorBro from "../../assets/img/Website Creator-bro.svg";
 import { IApiUserList } from "../../data/interfaces/IApiUserList";
+import { useUserData } from "../../hooks/Auth/useUserData";
 
 const Commercial = () => {
   const [commercialList, setCommercialList] = useState<IApiUserList[]>();
   const [activeTab, setActiveTab] = useState<string | null>("");
-  const [userData, setUserData] = useState<IJwtPayload>();
 
   const customerRoutes = useCustomerRoutes();
   const setCustomerRoutes = useUpdateCustomerRoutes();
   const setCustomer = useUpdateCustomer();
   const { auth } = useAuth();
+  const userData = useUserData();
 
   const theme = useMantineTheme();
   const smallScreen = useMediaQuery(`(max-width: ${theme.breakpoints.lg})`);
@@ -76,15 +75,6 @@ const Commercial = () => {
       );
     }
   }, [activeTab]);
-
-  useEffect(() => {
-    if (auth.user) {
-      const payload = decodeJwt(auth.user.token);
-      setUserData(payload);
-    } else {
-      setUserData(undefined);
-    }
-  }, [auth.user]);
 
   return userData?.role.includes("Commercial") ? (
     <Tabs

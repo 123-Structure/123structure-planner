@@ -8,15 +8,11 @@ import Lottie from "react-lottie";
 import SearchBar from "./components/SearchBar/SearchBar";
 import { useMantineTheme } from "@mantine/core";
 import { useMediaQuery } from "@mantine/hooks";
-import LottieLoader from "../utils/LottieLoader";
 import { useAuth } from "../../hooks/Auth/useAuth";
 import { IJwtPayload } from "../../data/interfaces/IJwtPayload";
-import { useEffect, useState } from "react";
-import { decodeJwt } from "../../utils/decodeJwt";
+import { useUserData } from "../../hooks/Auth/useUserData";
 
 const Header = () => {
-  const [userData, setUserData] = useState<IJwtPayload>();
-
   const defaultOptions = {
     loop: true,
     autoplay: true,
@@ -30,15 +26,7 @@ const Header = () => {
 
   const theme = useMantineTheme();
   const smallScreen = useMediaQuery(`(max-width: ${theme.breakpoints.xs})`);
-
-  useEffect(() => {
-    if (auth.user) {
-      const payload = decodeJwt(auth.user.token);
-      setUserData(payload);
-    } else {
-      setUserData(undefined);
-    }
-  }, [auth.user]);
+  const userData = useUserData();
 
   return (
     <>

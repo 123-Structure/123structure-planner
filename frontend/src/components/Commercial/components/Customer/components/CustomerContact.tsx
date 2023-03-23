@@ -23,6 +23,7 @@ import { isPhoneFormat } from "../../../../../utils/validateInput";
 import { useCustomer } from "../../../../../hooks/Customer/useCustomer";
 import { useUpdateCustomer } from "../../../../../hooks/Customer/useUpdateCustomer";
 import { useAuth } from "../../../../../hooks/Auth/useAuth";
+import { useUserData } from "../../../../../hooks/Auth/useUserData";
 
 interface ICustomerContactProps {
   contact: IContact[];
@@ -52,6 +53,7 @@ const CustomerContact = (props: ICustomerContactProps) => {
   const customer = useCustomer();
   const setCustomer = useUpdateCustomer();
   const { auth } = useAuth();
+  const userData = useUserData();
 
   //generates random id;
   const guid = () => {
@@ -195,9 +197,15 @@ const CustomerContact = (props: ICustomerContactProps) => {
           icon={<IconUser size={24} />}
           title={"Interlocuteurs :"}
         />
-        <ActionIcon color={"yellow"} onClick={() => setOpenNewContact(true)}>
-          <IconCirclePlus size={20} color="black" />
-        </ActionIcon>
+        {customer?.commercial.includes(
+          userData?.email.split("@")[0] as string
+        ) ? (
+          <ActionIcon color={"yellow"} onClick={() => setOpenNewContact(true)}>
+            <IconCirclePlus size={20} color="black" />
+          </ActionIcon>
+        ) : (
+          <></>
+        )}
       </div>
       <div className="contactContainer">
         {customer !== undefined ? (

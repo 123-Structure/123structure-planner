@@ -30,6 +30,7 @@ import { useUpdateCustomerRoutes } from "../../../../hooks/CustomerRoutes/useUpd
 import { useCustomer } from "../../../../hooks/Customer/useCustomer";
 import { useUpdateCustomer } from "../../../../hooks/Customer/useUpdateCustomer";
 import { useAuth } from "../../../../hooks/Auth/useAuth";
+import { useUserData } from "../../../../hooks/Auth/useUserData";
 
 interface INewAppointmentProps {
   customer: ICustomer;
@@ -59,6 +60,7 @@ const NewAppointment = (props: INewAppointmentProps) => {
   const customer = useCustomer();
   const setCustomer = useUpdateCustomer();
   const { auth } = useAuth();
+  const userData = useUserData();
 
   const handleCloseModal = () => {
     setOpenNewAppointment(false);
@@ -209,6 +211,11 @@ const NewAppointment = (props: INewAppointmentProps) => {
           color: "black",
           margin: "16px",
         }}
+        disabled={
+          !customer?.commercial.includes(
+            userData?.email.split("@")[0] as string
+          )
+        }
       />
       <Modal
         fullScreen={smallScreen}

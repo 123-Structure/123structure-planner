@@ -12,6 +12,7 @@ import { useState } from "react";
 import { ICustomer } from "../../../../../data/interfaces/ICustomer";
 import { TPaymentType } from "../../../../../data/types/TPaymentType";
 import { useAuth } from "../../../../../hooks/Auth/useAuth";
+import { useUserData } from "../../../../../hooks/Auth/useUserData";
 import { useCustomer } from "../../../../../hooks/Customer/useCustomer";
 import { useUpdateCustomer } from "../../../../../hooks/Customer/useUpdateCustomer";
 import CustomTitle from "../../../../utils/CustomTitle";
@@ -43,6 +44,7 @@ const CustomerPayment = (props: ICustomerPaymentProps) => {
   const customer = useCustomer();
   const setCustomer = useUpdateCustomer();
   const { auth } = useAuth();
+  const userData = useUserData();
 
   const theme = useMantineTheme();
 
@@ -146,15 +148,21 @@ const CustomerPayment = (props: ICustomerPaymentProps) => {
           icon={<IconCalendarTime size={24} />}
           title="Comptabilité"
         />
-        <EditModeToggle
-          editMode={editCustomerPayment}
-          editLabel=""
-          validateLabel=""
-          cancelLabel=""
-          handleEditClick={() => setEditCustomerPayment(true)}
-          handleValideClick={handleValideClick}
-          handleCancelClick={handleCancelClick}
-        />
+        {customer?.commercial.includes(
+          userData?.email.split("@")[0] as string
+        ) ? (
+          <EditModeToggle
+            editMode={editCustomerPayment}
+            editLabel=""
+            validateLabel=""
+            cancelLabel=""
+            handleEditClick={() => setEditCustomerPayment(true)}
+            handleValideClick={handleValideClick}
+            handleCancelClick={handleCancelClick}
+          />
+        ) : (
+          <></>
+        )}
       </div>
       <div className="customerItemContainer">
         <div className="customerItemTitle">

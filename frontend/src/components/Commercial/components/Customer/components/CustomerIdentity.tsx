@@ -1,7 +1,7 @@
-import { ActionIcon, Card } from "@mantine/core";
+import { Card } from "@mantine/core";
 import { showNotification } from "@mantine/notifications";
 import { IconAddressBook, IconMail, IconMap2, IconPhone } from "@tabler/icons";
-import { ChangeEvent, useState } from "react";
+import { useState } from "react";
 import { ICustomer } from "../../../../../data/interfaces/ICustomer";
 import CustomDivider from "../../../../utils/CustomDivider";
 import CustomTitle from "../../../../utils/CustomTitle";
@@ -14,6 +14,7 @@ import { isPhoneFormat } from "../../../../../utils/validateInput";
 import { useCustomer } from "../../../../../hooks/Customer/useCustomer";
 import { useUpdateCustomer } from "../../../../../hooks/Customer/useUpdateCustomer";
 import { useAuth } from "../../../../../hooks/Auth/useAuth";
+import { useUserData } from "../../../../../hooks/Auth/useUserData";
 
 interface ICustomerIdentityProps {
   customer: ICustomer;
@@ -33,6 +34,7 @@ const CustomerIdentity = (props: ICustomerIdentityProps) => {
   const customer = useCustomer();
   const setCustomer = useUpdateCustomer();
   const { auth } = useAuth();
+  const userData = useUserData();
 
   const openURL = (url: string) => {
     window.open(url, "_blank");
@@ -126,22 +128,22 @@ const CustomerIdentity = (props: ICustomerIdentityProps) => {
     setEditCustomerIdentity(false);
   };
 
-  const handleUploadFile = (e: ChangeEvent<HTMLInputElement>) => {
-    if (!e.target.files) {
-      return;
-    }
+  // const handleUploadFile = (e: ChangeEvent<HTMLInputElement>) => {
+  //   if (!e.target.files) {
+  //     return;
+  //   }
 
-    const file = e.target.files[0];
+  //   const file = e.target.files[0];
 
-    const fileReader = new FileReader();
-    fileReader.readAsDataURL(file);
-    fileReader.onload = () => {
-      const base64String = fileReader.result as string;
-      if (base64String !== null) {
-        setLogo(base64String.split("data:image/png;base64,")[1]);
-      }
-    };
-  };
+  //   const fileReader = new FileReader();
+  //   fileReader.readAsDataURL(file);
+  //   fileReader.onload = () => {
+  //     const base64String = fileReader.result as string;
+  //     if (base64String !== null) {
+  //       setLogo(base64String.split("data:image/png;base64,")[1]);
+  //     }
+  //   };
+  // };
 
   return (
     <Card
@@ -157,20 +159,26 @@ const CustomerIdentity = (props: ICustomerIdentityProps) => {
           icon={<IconAddressBook size={24} />}
           title={props.customer.name}
         />
-        <EditModeToggle
-          disabled={
-            !validator.isPostalCode(cp, "FR") ||
-            (!validator.isEmail(email) && email !== "-") ||
-            !isPhoneFormat(phone)
-          }
-          editMode={editCustomerIdentity}
-          editLabel=""
-          validateLabel=""
-          cancelLabel=""
-          handleEditClick={() => setEditCustomerIdentity(true)}
-          handleValideClick={handleValideClick}
-          handleCancelClick={handleCancelClick}
-        />
+        {customer?.commercial.includes(
+          userData?.email.split("@")[0] as string
+        ) ? (
+          <EditModeToggle
+            disabled={
+              !validator.isPostalCode(cp, "FR") ||
+              (!validator.isEmail(email) && email !== "-") ||
+              !isPhoneFormat(phone)
+            }
+            editMode={editCustomerIdentity}
+            editLabel=""
+            validateLabel=""
+            cancelLabel=""
+            handleEditClick={() => setEditCustomerIdentity(true)}
+            handleValideClick={handleValideClick}
+            handleCancelClick={handleCancelClick}
+          />
+        ) : (
+          <></>
+        )}
       </div>
       <div className="customerIdentityContainer">
         <div
