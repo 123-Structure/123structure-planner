@@ -10,17 +10,25 @@
   margin-top: 8px 0 0 0;
 }
 
-#searchImage {
+.searchImage {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
 
-#searchImage > p {
+.searchImage > p {
   font-size: 1.25rem;
   font-weight: bold;
   color: gray;
+}
+
+.searchImageFullTextSearch > p {
+  margin-top: -48px;
+}
+
+.searchImageInConstruction > p {
+  margin-top: -24px;
 }
 
 .searchBarItem {

@@ -14,7 +14,7 @@ import { ISearchDataFromAPI } from "../../../../data/interfaces/ISearchDataFromA
 import CustomTitle from "../../../utils/CustomTitle";
 import SearchBarItem from "./components/SearchBarItem";
 import ProfilingBro from "../../../../assets/img/Profiling-bro.svg";
-import BricklayerBro from "../../../../assets/img/Bricklayer-bro.svg";
+import BrickLayerBro from "../../../../assets/img/Bricklayer-bro.svg";
 import "../../../../assets/style/SearchBar.css";
 import { changeFavicon, changeTabTitle } from "../../../../utils/tabsUtils";
 import { useUpdateCustomerRoutes } from "../../../../hooks/CustomerRoutes/useUpdateCustomerRoutes";
@@ -153,7 +153,7 @@ const SearchBar = () => {
                 }}
               />
               {actions.length === 0 ? (
-                <div id="searchImage">
+                <div className="searchImage searchImageFullTextSearch">
                   <img src={ProfilingBro} alt="profiling" />
                   <p>Aucun résultat...</p>
                 </div>
@@ -178,8 +178,8 @@ const SearchBar = () => {
               marginTop: "16px",
             }}
           >
-            <div id="searchImage">
-              <img src={BricklayerBro} alt="bricklayer" />
+            <div className="searchImage searchImageInConstruction">
+              <img src={BrickLayerBro} alt="bricklayer" />
               <p>En cours de construction...</p>
             </div>
           </Tabs.Panel>

@@ -1,9 +1,13 @@
-import { Tooltip } from "@mantine/core";
+import { MantineTransition, Tooltip } from "@mantine/core";
 import React from "react";
 
 interface ICustomTooltipProps {
   label: string;
   children: React.ReactNode;
+  withArrow?: boolean;
+  transition?: MantineTransition;
+  duration?: number;
+  delay?: number;
 }
 
 const CustomTooltip = (props: ICustomTooltipProps) => {
@@ -13,10 +17,12 @@ const CustomTooltip = (props: ICustomTooltipProps) => {
       label={props.label}
       position="bottom-end"
       color="gray"
-      transition="slide-up"
-      transitionDuration={300}
-      openDelay={1000}
-      withArrow
+      transitionProps={{
+        transition: props.transition ? props.transition : "slide-up",
+        duration: props.duration ? props.duration : 300,
+      }}
+      openDelay={props.delay ? props.delay : 1000}
+      withArrow={props.withArrow}
       arrowSize={8}
     >
       {props.children}

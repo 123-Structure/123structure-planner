@@ -11,6 +11,8 @@ import { useMediaQuery } from "@mantine/hooks";
 import { useAuth } from "../../hooks/Auth/useAuth";
 import { useUserData } from "../../hooks/Auth/useUserData";
 import { IconBriefcase, IconCalendarEvent } from "@tabler/icons";
+import { useUpdateRouter } from "../../hooks/Router/useUpdateRouter";
+import CustomTooltip from "../utils/CustomTooltip";
 
 const Header = () => {
   const defaultOptions = {
@@ -27,6 +29,7 @@ const Header = () => {
   const theme = useMantineTheme();
   const smallScreen = useMediaQuery(`(max-width: ${theme.breakpoints.xs})`);
   const userData = useUserData();
+  const setRouter = useUpdateRouter();
 
   return (
     <>
@@ -46,31 +49,45 @@ const Header = () => {
                     : "1px solid #dfe2e6",
                 }}
               >
-                <ActionIcon
-                  size="xl"
-                  variant="filled"
-                  color={"yellow"}
-                  onClick={() => ""}
-                  disabled={
-                    !userData?.role.includes("Dessinateur") &&
-                    !userData?.role.includes("Ingénieur") &&
-                    !userData?.role.includes("Administrateur")
-                  }
+                <CustomTooltip
+                  label="Planning"
+                  withArrow={false}
+                  transition="slide-down"
+                  delay={500}
                 >
-                  <IconCalendarEvent size={24} color="black" />
-                </ActionIcon>
-                <ActionIcon
-                  size="xl"
-                  variant="filled"
-                  color={"yellow"}
-                  onClick={() => ""}
-                  disabled={
-                    !userData?.role.includes("Commercial") &&
-                    !userData?.role.includes("Administrateur")
-                  }
+                  <ActionIcon
+                    size="xl"
+                    variant="filled"
+                    color={"yellow"}
+                    onClick={() => setRouter("Planning")}
+                    disabled={
+                      !userData?.role.includes("Dessinateur") &&
+                      !userData?.role.includes("Ingénieur") &&
+                      !userData?.role.includes("Administrateur")
+                    }
+                  >
+                    <IconCalendarEvent size={24} color="black" />
+                  </ActionIcon>
+                </CustomTooltip>
+                <CustomTooltip
+                  label="Commercial"
+                  withArrow={false}
+                  transition="slide-down"
+                  delay={500}
                 >
-                  <IconBriefcase size={24} color="black" />
-                </ActionIcon>
+                  <ActionIcon
+                    size="xl"
+                    variant="filled"
+                    color={"yellow"}
+                    onClick={() => setRouter("Commercial")}
+                    disabled={
+                      !userData?.role.includes("Commercial") &&
+                      !userData?.role.includes("Administrateur")
+                    }
+                  >
+                    <IconBriefcase size={24} color="black" />
+                  </ActionIcon>
+                </CustomTooltip>
               </div>
               {userData?.role.includes("Administrateur") ? (
                 <div className="admin">

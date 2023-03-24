@@ -1,11 +1,4 @@
-import {
-  createContext,
-  Dispatch,
-  SetStateAction,
-  useEffect,
-  useState,
-} from "react";
-import { useUserData } from "../hooks/Auth/useUserData";
+import { createContext, Dispatch, SetStateAction, useState } from "react";
 
 type TRouter = "Planning" | "Commercial" | "Administrateur" | "";
 
@@ -19,32 +12,10 @@ interface IRouterContextProps {
 }
 
 const RouterProvider = (props: IRouterContextProps) => {
-  const [Router, setRouter] = useState<TRouter>("");
-
-  const userData = useUserData();
-
-  useEffect(() => {
-    const getRoute = () => {
-      if (userData) {
-        const role = userData.role;
-
-        if (role.includes("Administrateur")) {
-          setRouter("Administrateur");
-        }
-        if (role.includes("Dessinateur") || role.includes("Dessinateur")) {
-          setRouter("Planning");
-        }
-        if (role.includes("Commercial")) {
-          setRouter("Commercial");
-        }
-        setRouter("");
-      }
-    };
-    getRoute();
-  }, []);
+  const [router, setRouter] = useState<TRouter>("");
 
   return (
-    <RouterContext.Provider value={Router}>
+    <RouterContext.Provider value={router}>
       <RouterUpdateContext.Provider value={setRouter}>
         {props.children}
       </RouterUpdateContext.Provider>
