@@ -1,10 +1,4 @@
-import {
-  createContext,
-  Dispatch,
-  SetStateAction,
-  useContext,
-  useState,
-} from "react";
+import { createContext, Dispatch, SetStateAction, useState } from "react";
 
 interface ICustomerRoutes {
   commercial: string;
@@ -22,23 +16,17 @@ const defaultCustomerRoutes = {
   appointment: "",
 };
 
-const CustomerRoutesContext = createContext<ICustomerRoutes>(
+export const CustomerRoutesContext = createContext<ICustomerRoutes>(
   defaultCustomerRoutes
 );
-const CustomerRoutesUpdateContext = createContext<
+
+export const CustomerRoutesUpdateContext = createContext<
   Dispatch<SetStateAction<ICustomerRoutes>>
 >(() => {});
 
 interface IProjectContextProps {
   children: React.ReactNode;
 }
-
-export const useCustomerRoutes = () => {
-  return useContext(CustomerRoutesContext);
-};
-export const useUpdateCustomerRoutes = () => {
-  return useContext(CustomerRoutesUpdateContext);
-};
 
 const CustomerRoutesProvider = (props: IProjectContextProps) => {
   const [customerRoutes, setCustomerRoutes] = useState<ICustomerRoutes>(

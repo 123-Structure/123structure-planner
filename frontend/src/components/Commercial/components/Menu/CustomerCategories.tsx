@@ -1,11 +1,11 @@
 import { Tabs, useMantineTheme } from "@mantine/core";
+import { showNotification } from "@mantine/notifications";
 import { useEffect, useState } from "react";
-import {
-  useCustomerRoutes,
-  useUpdateCustomerRoutes,
-} from "../../../../context/CustomerRoutes";
 import { CustomerCategoryList } from "../../../../data/constants/CustomerCategoryList";
 import { IDataAPICategory } from "../../../../data/interfaces/IDataAPICategory";
+import { useAuth } from "../../../../hooks/Auth/useAuth";
+import { useCustomerRoutes } from "../../../../hooks/CustomerRoutes/useCustomerRoutes";
+import { useUpdateCustomerRoutes } from "../../../../hooks/CustomerRoutes/useUpdateCustomerRoutes";
 import { changeFavicon, changeTabTitle } from "../../../../utils/tabsUtils";
 import CustomerList from "./CustomerList";
 
@@ -14,6 +14,7 @@ const CustomerCategories = () => {
 
   const customerRoutes = useCustomerRoutes();
   const setCustomerRoutes = useUpdateCustomerRoutes();
+  const { auth } = useAuth();
 
   const theme = useMantineTheme();
 
@@ -21,25 +22,31 @@ const CustomerCategories = () => {
     commercial: string | null,
     category: string | null
   ) => {
-    const APIBaseUrl = import.meta.env.VITE_API_URL;
-    const response = await fetch(
-      `${APIBaseUrl}/api/customers/category/${commercial}/${category}`,
-      {
-        method: "GET",
-      }
-    );
-    const data = (await response.json()) as IDataAPICategory[];
-    setCustomersList(data);
+    if (auth.user) {
+      const APIBaseUrl = import.meta.env.VITE_API_URL;
+      const response = await fetch(
+        `${APIBaseUrl}/api/customers/category/${commercial}/${category}`,
+        {
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${auth.user.token}`,
+          },
+        }
+      );
+      const data = (await response.json()) as IDataAPICategory[];
+      setCustomersList(data);
+    } else {
+      showNotification({
+        title: "🔒 Authentification requise",
+        message: "L'utilisateur n'est pas connecté",
+        color: "red",
+      });
+    }
   };
 
   useEffect(() => {
     if (customerRoutes.category !== "") {
       fetchCustomersList(customerRoutes.commercial, customerRoutes.category);
-    }
-  }, [customerRoutes.category]);
-
-  useEffect(() => {
-    if (customerRoutes.category !== "") {
       changeFavicon("👷");
       changeTabTitle(`123 Structure - ${customerRoutes.category}`);
     }

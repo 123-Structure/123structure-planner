@@ -5,8 +5,10 @@ import { read, utils } from "xlsx";
 import { IProject } from "../../../../data/interfaces/IProject";
 import { ProjectParameters } from "../../../../data/constants/ProjectParameters";
 import ExcelGridModal from "./components/ExcelGridModal/ExcelGridModal";
-import { useProject } from "../../../../context/ProjectContext";
 import "../../../../assets/style/AddProjectFromExcel.css";
+import { useProject } from "../../../../hooks/Project/useProject";
+import { useRouter } from "../../../../hooks/Router/useRouter";
+import CustomTooltip from "../../../utils/CustomTooltip";
 
 const AddProjectFromExcel = () => {
   const [file, setFile] = useState<File | null>(null);
@@ -17,6 +19,7 @@ const AddProjectFromExcel = () => {
   const [duplicatedProjectID, setDuplicatedProjectID] = useState<string[]>([]);
 
   const projects = useProject();
+  const router = useRouter();
 
   const resetRef = useRef<() => void>(null);
 
@@ -105,9 +108,22 @@ const AddProjectFromExcel = () => {
         accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"
       >
         {(props) => (
-          <ActionIcon size="xl" variant="filled" color={"yellow"} {...props}>
-            <IconFilePlus size={24} color="black" />
-          </ActionIcon>
+          <CustomTooltip
+            label="Import Intranet"
+            withArrow={false}
+            transition="slide-down"
+            delay={500}
+          >
+            <ActionIcon
+              size="xl"
+              variant="filled"
+              color={"yellow"}
+              disabled={router !== "Planning"}
+              {...props}
+            >
+              <IconFilePlus size={24} color="black" />
+            </ActionIcon>
+          </CustomTooltip>
         )}
       </FileButton>
       <ExcelGridModal

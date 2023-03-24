@@ -8,8 +8,8 @@ import {
 import { IProject } from "../../../../../../../data/interfaces/IProject";
 import { ColumnDef } from "@tanstack/react-table";
 import { ProjectParameters } from "../../../../../../../data/constants/ProjectParameters";
-import { useProject } from "../../../../../../../context/ProjectContext";
 import DuplicatedProjectModal from "./DuplicatedProjectModal";
+import { useProject } from '../../../../../../../hooks/Project/useProject';
 
 interface IExcelTableProps {
   importProject: IProject[];

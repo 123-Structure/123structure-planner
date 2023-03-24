@@ -5,9 +5,8 @@ import {
   IconClock,
   IconPencil,
 } from "@tabler/icons";
-import React from "react";
-import { useProject } from "../../../../context/ProjectContext";
-import { useRessources } from "../../../../context/RessourceContext";
+import { useProject } from "../../../../hooks/Project/useProject";
+import { useRessources } from "../../../../hooks/Ressources/useRessources";
 
 interface ILoadRateProps {
   id: string;
@@ -21,7 +20,7 @@ const LoadRate = (props: ILoadRateProps) => {
 
   const totalHours = () => {
     const currentRessourceRole = ressources.filter(
-      (r) => r._id === props.rowId
+      (r) => r.email.split("@")[0] === props.rowId
     )[0].role;
 
     if (currentRessourceRole.includes("Ingénieur")) {

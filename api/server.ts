@@ -1,10 +1,11 @@
 import express, { Express, NextFunction, Request, Response } from "express";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
-import projectsRouter from "./src/routes/projects.route";
-import customersRouter from "./src/routes/customers.route";
+import projectsRouter from "./src/routes/projects.routes";
+import customersRouter from "./src/routes/customers.routes";
 import chalk from "chalk";
 import cors from "cors";
+import usersRouter from "./src/routes/users.routes";
 
 dotenv.config();
 
@@ -55,6 +56,7 @@ app.get("/", (req: Request, res: Response) => {
 
 app.use("/api/projects", projectsRouter);
 app.use("/api/customers", customersRouter);
+app.use("/api/users", usersRouter);
 
 // Connect to database
 mongoose

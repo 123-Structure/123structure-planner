@@ -3,15 +3,13 @@ import { ItemTypes } from "../../../../data/constants/ItemTypes";
 import ProjectCard from "../ProjectCard/ProjectCard";
 import { useMantineTheme } from "@mantine/core";
 import { showNotification } from "@mantine/notifications";
-import {
-  useProject,
-  useUpdateProject,
-} from "../../../../context/ProjectContext";
 import { sortProjects } from "../../../../utils/sortProjects";
 import dayjs from "dayjs";
 import IsoWeek from "dayjs/plugin/isoWeek.js";
 import CustomTooltip from "../../../utils/CustomTooltip";
-import { useRessources } from "../../../../context/RessourceContext";
+import { useProject } from "../../../../hooks/Project/useProject";
+import { useUpdateProject } from "../../../../hooks/Project/useUpdateProject";
+import { useRessources } from "../../../../hooks/Ressources/useRessources";
 
 interface IWeekProps {
   id: string;
@@ -49,17 +47,19 @@ const Week = (props: IWeekProps) => {
       changedProject[0].ETAT = newValue;
 
       const ressource = ressources.filter(
-        (ressource) => ressource._id === props.rowId
+        (ressource) => ressource.email.split("@")[0] === props.rowId
       )[0];
 
       changedProject[0].DESSINATEUR.filter(
-        (dessinateur) => dessinateur._id === ressource._id
+        (dessinateur) =>
+          dessinateur.email.split("@")[0] === ressource.email.split("@")[0]
       ).length === 0 && ressource.role.includes("Dessinateur")
         ? changedProject[0].DESSINATEUR.push(ressource)
         : "";
 
       changedProject[0].INGENIEUR.filter(
-        (ingenieur) => ingenieur._id === ressource._id
+        (ingenieur) =>
+          ingenieur.email.split("@")[0] === ressource.email.split("@")[0]
       ).length === 0 && ressource.role.includes("Ingénieur")
         ? changedProject[0].INGENIEUR.push(ressource)
         : "";

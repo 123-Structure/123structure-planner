@@ -1,23 +1,20 @@
-import { ActionIcon, Card } from "@mantine/core";
+import { Card } from "@mantine/core";
 import { showNotification } from "@mantine/notifications";
 import { IconAddressBook, IconMail, IconMap2, IconPhone } from "@tabler/icons";
-import { ChangeEvent, useState } from "react";
+import { useState } from "react";
 import { ICustomer } from "../../../../../data/interfaces/ICustomer";
-import {
-  isCPFormat,
-  isEmailFormat,
-  isPhoneFormat,
-} from "../../../../../utils/validateInput";
 import CustomDivider from "../../../../utils/CustomDivider";
 import CustomTitle from "../../../../utils/CustomTitle";
 import EditModeToggle from "../../../../utils/EditModeToggle";
 import CustomerItem from "../../utils/CustomerItem";
 import CustomerContact from "./CustomerContact";
 import CabinBro from "../../../../../assets/img/Cabin-bro.svg";
-import {
-  useCustomer,
-  useUpdateCustomer,
-} from "../../../../../context/CustomerContext";
+import validator from "validator";
+import { isPhoneFormat } from "../../../../../utils/validateInput";
+import { useCustomer } from "../../../../../hooks/Customer/useCustomer";
+import { useUpdateCustomer } from "../../../../../hooks/Customer/useUpdateCustomer";
+import { useAuth } from "../../../../../hooks/Auth/useAuth";
+import { useUserData } from "../../../../../hooks/Auth/useUserData";
 
 interface ICustomerIdentityProps {
   customer: ICustomer;
@@ -36,6 +33,8 @@ const CustomerIdentity = (props: ICustomerIdentityProps) => {
 
   const customer = useCustomer();
   const setCustomer = useUpdateCustomer();
+  const { auth } = useAuth();
+  const userData = useUserData();
 
   const openURL = (url: string) => {
     window.open(url, "_blank");
@@ -49,58 +48,67 @@ const CustomerIdentity = (props: ICustomerIdentityProps) => {
   };
 
   const handleValideClick = async () => {
-    if (customer !== undefined) {
-      const changedCustomer = customer;
+    if (auth.user) {
+      if (customer !== undefined) {
+        const changedCustomer = customer;
 
-      changedCustomer.location.address = address;
-      changedCustomer.location.cp = cp;
-      changedCustomer.location.city = city;
-      changedCustomer.email = email;
-      changedCustomer.phone = phone;
-      changedCustomer.contact = contact;
-      changedCustomer.logo = logo;
+        changedCustomer.location.address = address;
+        changedCustomer.location.cp = cp;
+        changedCustomer.location.city = city;
+        changedCustomer.email = email;
+        changedCustomer.phone = phone;
+        changedCustomer.contact = contact;
+        changedCustomer.logo = logo;
 
-      const response = await fetch(
-        `${import.meta.env.VITE_API_URL}/api/customers/${
-          changedCustomer._id as string
-        }`,
-        {
-          method: "PATCH",
-          body: JSON.stringify({
-            location: {
-              address: address,
-              cp: cp,
-              city: city,
+        const response = await fetch(
+          `${import.meta.env.VITE_API_URL}/api/customers/${
+            changedCustomer._id as string
+          }`,
+          {
+            method: "PATCH",
+            body: JSON.stringify({
+              location: {
+                address: address,
+                cp: cp,
+                city: city,
+              },
+              email: email,
+              phone: phone,
+              contact: contact,
+              logo: logo,
+            }),
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${auth.user.token}`,
             },
-            email: email,
-            phone: phone,
-            contact: contact,
-            logo: logo,
-          }),
-          headers: {
-            "Content-Type": "application/json",
-          },
+          }
+        );
+
+        const data = await response.json();
+
+        if (!response.ok) {
+          showNotification({
+            title: "⛔ Une erreur est survenue",
+            message: data.error,
+            color: "red",
+          });
         }
-      );
 
-      const data = await response.json();
+        setCustomer(changedCustomer);
 
-      if (!response.ok) {
         showNotification({
-          title: `⛔ Erreur serveur`,
-          message: data.error,
-          color: "red",
+          title: `✅ Fiche client sauvegardée`,
+          message: `La fiche client ${props.customer.name} est mise à jour`,
+          color: "green",
         });
+        setEditCustomerIdentity(false);
       }
-
-      setCustomer(changedCustomer);
-
+    } else {
       showNotification({
-        title: `✅ Fiche client sauvegardée`,
-        message: `La fiche client ${props.customer.name} est mise à jour`,
-        color: "green",
+        title: "🔒 Authentification requise",
+        message: "L'utilisateur n'est pas connecté",
+        color: "red",
       });
-      setEditCustomerIdentity(false);
     }
   };
 
@@ -120,22 +128,22 @@ const CustomerIdentity = (props: ICustomerIdentityProps) => {
     setEditCustomerIdentity(false);
   };
 
-  const handleUploadFile = (e: ChangeEvent<HTMLInputElement>) => {
-    if (!e.target.files) {
-      return;
-    }
+  // const handleUploadFile = (e: ChangeEvent<HTMLInputElement>) => {
+  //   if (!e.target.files) {
+  //     return;
+  //   }
 
-    const file = e.target.files[0];
+  //   const file = e.target.files[0];
 
-    const fileReader = new FileReader();
-    fileReader.readAsDataURL(file);
-    fileReader.onload = () => {
-      const base64String = fileReader.result as string;
-      if (base64String !== null) {
-        setLogo(base64String.split("data:image/png;base64,")[1]);
-      }
-    };
-  };
+  //   const fileReader = new FileReader();
+  //   fileReader.readAsDataURL(file);
+  //   fileReader.onload = () => {
+  //     const base64String = fileReader.result as string;
+  //     if (base64String !== null) {
+  //       setLogo(base64String.split("data:image/png;base64,")[1]);
+  //     }
+  //   };
+  // };
 
   return (
     <Card
@@ -151,18 +159,26 @@ const CustomerIdentity = (props: ICustomerIdentityProps) => {
           icon={<IconAddressBook size={24} />}
           title={props.customer.name}
         />
-        <EditModeToggle
-          disabled={
-            !isCPFormat(cp) || !isEmailFormat(email) || !isPhoneFormat(phone)
-          }
-          editMode={editCustomerIdentity}
-          editLabel=""
-          validateLabel=""
-          cancelLabel=""
-          handleEditClick={() => setEditCustomerIdentity(true)}
-          handleValideClick={handleValideClick}
-          handleCancelClick={handleCancelClick}
-        />
+        {customer?.commercial.includes(
+          userData?.email.split("@")[0] as string
+        ) ? (
+          <EditModeToggle
+            disabled={
+              !validator.isPostalCode(cp, "FR") ||
+              (!validator.isEmail(email) && email !== "-") ||
+              !isPhoneFormat(phone)
+            }
+            editMode={editCustomerIdentity}
+            editLabel=""
+            validateLabel=""
+            cancelLabel=""
+            handleEditClick={() => setEditCustomerIdentity(true)}
+            handleValideClick={handleValideClick}
+            handleCancelClick={handleCancelClick}
+          />
+        ) : (
+          <></>
+        )}
       </div>
       <div className="customerIdentityContainer">
         <div
@@ -211,9 +227,11 @@ const CustomerIdentity = (props: ICustomerIdentityProps) => {
               )
             }
             errorMessage={[
-              isCPFormat(cp) ? "" : ".",
-              isCPFormat(cp) ? "" : "Code postale de 5 chiffres",
-              isCPFormat(cp) ? "" : ".",
+              validator.isPostalCode(cp, "FR") ? "" : ".",
+              validator.isPostalCode(cp, "FR")
+                ? ""
+                : "Code postale de 5 chiffres",
+              validator.isPostalCode(cp, "FR") ? "" : ".",
             ]}
           />
           <CustomerItem
@@ -231,7 +249,9 @@ const CustomerIdentity = (props: ICustomerIdentityProps) => {
               )
             }
             errorMessage={[
-              isEmailFormat(email) ? "" : "Format d'email invalide",
+              validator.isEmail(email) || email === "-"
+                ? ""
+                : "Format d'email invalide",
             ]}
           />
           <a

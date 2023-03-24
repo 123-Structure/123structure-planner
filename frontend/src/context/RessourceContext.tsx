@@ -1,28 +1,15 @@
-import {
-  createContext,
-  Dispatch,
-  SetStateAction,
-  useContext,
-  useState,
-} from "react";
+import { createContext, Dispatch, SetStateAction, useState } from "react";
 import { RessourceData } from "../data/constants/RessourceData";
 import { IRessource } from "../data/interfaces/IRessource";
 
-const RessourcesContext = createContext<IRessource[]>([]);
-const RessourcesUpdateContext = createContext<
+export const RessourcesContext = createContext<IRessource[]>([]);
+export const RessourcesUpdateContext = createContext<
   Dispatch<SetStateAction<IRessource[]>>
 >(() => []);
 
 interface IProjectContextProps {
   children: React.ReactNode;
 }
-
-export const useRessources = () => {
-  return useContext(RessourcesContext);
-};
-export const useUpdateRessources = () => {
-  return useContext(RessourcesUpdateContext);
-};
 
 const RessourceProvider = (props: IProjectContextProps) => {
   const [ressources, setRessources] = useState<IRessource[]>(RessourceData);

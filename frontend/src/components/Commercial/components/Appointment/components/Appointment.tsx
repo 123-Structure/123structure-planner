@@ -29,14 +29,11 @@ import {
   useMantineTheme,
 } from "@mantine/core";
 import { useMediaQuery } from "@mantine/hooks";
-import {
-  useCustomer,
-  useUpdateCustomer,
-} from "../../../../../context/CustomerContext";
-import {
-  useCustomerRoutes,
-  useUpdateCustomerRoutes,
-} from "../../../../../context/CustomerRoutes";
+import { useCustomer } from "../../../../../hooks/Customer/useCustomer";
+import { useUpdateCustomer } from "../../../../../hooks/Customer/useUpdateCustomer";
+import { useCustomerRoutes } from "../../../../../hooks/CustomerRoutes/useCustomerRoutes";
+import { useUpdateCustomerRoutes } from "../../../../../hooks/CustomerRoutes/useUpdateCustomerRoutes";
+import { useAuth } from "../../../../../hooks/Auth/useAuth";
 
 interface IAppointmentProps {
   _id: number;
@@ -66,6 +63,7 @@ const Appointment = (props: IAppointmentProps) => {
   const setCustomer = useUpdateCustomer();
   const customerRoutes = useCustomerRoutes();
   const setCustomerRoutes = useUpdateCustomerRoutes();
+  const { auth } = useAuth();
 
   const theme = useMantineTheme();
   const smallScreen = useMediaQuery(`(max-width: ${theme.breakpoints.xs})`);
@@ -93,43 +91,52 @@ const Appointment = (props: IAppointmentProps) => {
   };
 
   const handleContentChange = async (newValue: string | undefined) => {
-    if (customer !== undefined) {
-      const changedCustomer = customer;
+    if (auth.user) {
+      if (customer !== undefined) {
+        const changedCustomer = customer;
 
-      if (newValue !== undefined) {
-        changedCustomer.appointment[props._id].content = newValue;
-      }
-      changedCustomer.appointment[props._id].title =
-        props.appointmentTitle as TAppointmentTitle;
-      changedCustomer.appointment[props._id].date = props.appointmentDate;
-      changedCustomer.appointment[props._id].location.address = address;
-      changedCustomer.appointment[props._id].location.cp = cp;
-      changedCustomer.appointment[props._id].location.city = city;
-      changedCustomer.appointment[props._id].contact = appointmentContact;
-
-      const response = await fetch(
-        `${import.meta.env.VITE_API_URL}/api/customers/${
-          changedCustomer._id as string
-        }`,
-        {
-          method: "PATCH",
-          body: JSON.stringify({ appointment: changedCustomer.appointment }),
-          headers: {
-            "Content-Type": "application/json",
-          },
+        if (newValue !== undefined) {
+          changedCustomer.appointment[props._id].content = newValue;
         }
-      );
-      const data = await response.json();
+        changedCustomer.appointment[props._id].title =
+          props.appointmentTitle as TAppointmentTitle;
+        changedCustomer.appointment[props._id].date = props.appointmentDate;
+        changedCustomer.appointment[props._id].location.address = address;
+        changedCustomer.appointment[props._id].location.cp = cp;
+        changedCustomer.appointment[props._id].location.city = city;
+        changedCustomer.appointment[props._id].contact = appointmentContact;
 
-      if (!response.ok) {
-        showNotification({
-          title: `⛔ Erreur serveur`,
-          message: data.error,
-          color: "red",
-        });
+        const response = await fetch(
+          `${import.meta.env.VITE_API_URL}/api/customers/${
+            changedCustomer._id as string
+          }`,
+          {
+            method: "PATCH",
+            body: JSON.stringify({ appointment: changedCustomer.appointment }),
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${auth.user.token}`,
+            },
+          }
+        );
+        const data = await response.json();
+
+        if (!response.ok) {
+          showNotification({
+            title: "⛔ Une erreur est survenue",
+            message: data.error,
+            color: "red",
+          });
+        }
+
+        setCustomer(changedCustomer);
       }
-
-      setCustomer(changedCustomer);
+    } else {
+      showNotification({
+        title: "🔒 Authentification requise",
+        message: "L'utilisateur n'est pas connecté",
+        color: "red",
+      });
     }
   };
 

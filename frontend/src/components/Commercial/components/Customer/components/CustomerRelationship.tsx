@@ -9,14 +9,14 @@ import {
   IconUser,
   IconUsers,
 } from "@tabler/icons";
-import React, { useState } from "react";
-import {
-  useCustomer,
-  useUpdateCustomer,
-} from "../../../../../context/CustomerContext";
-import { useRessources } from "../../../../../context/RessourceContext";
+import { useEffect, useState } from "react";
+import { IApiUserList } from "../../../../../data/interfaces/IApiUserList";
 import { IAppointment } from "../../../../../data/interfaces/IAppointment";
 import { ICustomer } from "../../../../../data/interfaces/ICustomer";
+import { useAuth } from "../../../../../hooks/Auth/useAuth";
+import { useUserData } from "../../../../../hooks/Auth/useUserData";
+import { useCustomer } from "../../../../../hooks/Customer/useCustomer";
+import { useUpdateCustomer } from "../../../../../hooks/Customer/useUpdateCustomer";
 import CustomButton from "../../../../utils/CustomButton";
 import CustomDivider from "../../../../utils/CustomDivider";
 import CustomTitle from "../../../../utils/CustomTitle";
@@ -74,19 +74,25 @@ const CustomerRelationship = (props: ICustomerRelationshipProps) => {
   const [priceList, setPriceList] = useState(props.customer.priceList);
   const [priceListFile, setPriceListFile] = useState<File | null>(null);
 
+  const [commercialList, setCommercialList] = useState<IApiUserList[]>();
+
+  const [commercial, setCommercial] = useState(
+    commercialList !== undefined
+      ? commercialList
+          .filter((commercial) =>
+            props.customer.commercial.includes(commercial.email.split("@")[0])
+          )
+          .map((commercial) => `${commercial.firstName} ${commercial.lastName}`)
+      : []
+  );
+
   const currentProjectInvoiced = 0;
   const previousYearProjectInvoiced = 0;
 
-  const ressources = useRessources();
-
   const customer = useCustomer();
   const setCustomer = useUpdateCustomer();
-
-  const [commercial, setCommercial] = useState(
-    ressources
-      .filter((ressource) => props.customer.commercial.includes(ressource._id))
-      .map((commercial) => `${commercial.firstName} ${commercial.lastName}`)
-  );
+  const { auth } = useAuth();
+  const userData = useUserData();
 
   const theme = useMantineTheme();
   const smallScreen = useMediaQuery(`(max-width: ${theme.breakpoints.xs})`);
@@ -114,95 +120,113 @@ const CustomerRelationship = (props: ICustomerRelationshipProps) => {
   };
 
   const handleValideClick = async () => {
-    if (customer !== undefined) {
-      const changedCustomer = customer;
+    if (auth.user) {
+      if (customer !== undefined) {
+        const changedCustomer = customer;
 
-      changedCustomer.commercial = ressources
-        .filter((ressource) =>
-          commercial.includes(`${ressource.firstName} ${ressource.lastName}`)
-        )
-        .map((commercial) => commercial._id);
+        changedCustomer.commercial =
+          commercialList !== undefined
+            ? commercialList
+                .filter((ressource) =>
+                  commercial.includes(
+                    `${ressource.firstName} ${ressource.lastName}`
+                  )
+                )
+                .map((commercial) => commercial.email.split("@")[0])
+            : [];
 
-      if (
-        changedCustomer.projectGoal.filter(
-          (projectGoal) => projectGoal.year === new Date().getFullYear()
-        )[0] !== undefined
-      ) {
-        changedCustomer.projectGoal.filter(
-          (projectGoal) => projectGoal.year === new Date().getFullYear()
-        )[0].goal = currentProjectGoal;
-      }
-
-      if (
-        changedCustomer.projectGoal.filter(
-          (projectGoal) => projectGoal.year === new Date().getFullYear() - 1
-        )[0] !== undefined
-      ) {
-        changedCustomer.projectGoal.filter(
-          (projectGoal) => projectGoal.year === new Date().getFullYear() - 1
-        )[0].goal = previousYearProjectGoal;
-      }
-
-      if (changedCustomer.projectGoal.length === 0) {
-        changedCustomer.projectGoal = [
-          {
-            year: new Date().getFullYear() - 1,
-            goal: previousYearProjectGoal,
-          },
-          {
-            year: new Date().getFullYear(),
-            goal: currentProjectGoal,
-          },
-        ];
-      }
-
-      changedCustomer.priceList = priceList;
-
-      const response = await fetch(
-        `${import.meta.env.VITE_API_URL}/api/customers/${
-          changedCustomer._id as string
-        }`,
-        {
-          method: "PATCH",
-          body: JSON.stringify({
-            commercial: changedCustomer.commercial,
-            projectGoal: changedCustomer.projectGoal,
-            priceList: priceList,
-          }),
-          headers: {
-            "Content-Type": "application/json",
-          },
+        if (
+          changedCustomer.projectGoal.filter(
+            (projectGoal) => projectGoal.year === new Date().getFullYear()
+          )[0] !== undefined
+        ) {
+          changedCustomer.projectGoal.filter(
+            (projectGoal) => projectGoal.year === new Date().getFullYear()
+          )[0].goal = currentProjectGoal;
         }
-      );
-      const data = await response.json();
 
-      if (!response.ok) {
+        if (
+          changedCustomer.projectGoal.filter(
+            (projectGoal) => projectGoal.year === new Date().getFullYear() - 1
+          )[0] !== undefined
+        ) {
+          changedCustomer.projectGoal.filter(
+            (projectGoal) => projectGoal.year === new Date().getFullYear() - 1
+          )[0].goal = previousYearProjectGoal;
+        }
+
+        if (changedCustomer.projectGoal.length === 0) {
+          changedCustomer.projectGoal = [
+            {
+              year: new Date().getFullYear() - 1,
+              goal: previousYearProjectGoal,
+            },
+            {
+              year: new Date().getFullYear(),
+              goal: currentProjectGoal,
+            },
+          ];
+        }
+
+        changedCustomer.priceList = priceList;
+
+        const response = await fetch(
+          `${import.meta.env.VITE_API_URL}/api/customers/${
+            changedCustomer._id as string
+          }`,
+          {
+            method: "PATCH",
+            body: JSON.stringify({
+              commercial: changedCustomer.commercial,
+              projectGoal: changedCustomer.projectGoal,
+              priceList: priceList,
+            }),
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${auth.user.token}`,
+            },
+          }
+        );
+        const data = await response.json();
+
+        if (!response.ok) {
+          showNotification({
+            title: "⛔ Une erreur est survenue",
+            message: data.error,
+            color: "red",
+          });
+        }
+
+        setCustomer(changedCustomer);
+        setPriceListFile(null);
+
         showNotification({
-          title: `⛔ Erreur serveur`,
-          message: data.error,
-          color: "red",
+          title: `✅ Fiche client sauvegardée`,
+          message: `La fiche client ${props.customer.name} est mise à jour`,
+          color: "green",
         });
+        setEditCustomerRelationship(false);
       }
-
-      setCustomer(changedCustomer);
-      setPriceListFile(null);
-
+    } else {
       showNotification({
-        title: `✅ Fiche client sauvegardée`,
-        message: `La fiche client ${props.customer.name} est mise à jour`,
-        color: "green",
+        title: "🔒 Authentification requise",
+        message: "L'utilisateur n'est pas connecté",
+        color: "red",
       });
-      setEditCustomerRelationship(false);
     }
   };
 
   const handleCancelClick = () => {
     setCommercial(
-      ressources
-        .filter((ressource) => {
-          props.customer.commercial.includes(ressource._id);
-        })
-        .map((commercial) => `${commercial.firstName} ${commercial.lastName}`)
+      commercialList !== undefined
+        ? commercialList
+            .filter((commercial) =>
+              props.customer.commercial.includes(commercial.email.split("@")[0])
+            )
+            .map(
+              (commercial) => `${commercial.firstName} ${commercial.lastName}`
+            )
+        : []
     );
 
     setCurrentProjectGoal(
@@ -245,6 +269,33 @@ const CustomerRelationship = (props: ICustomerRelationshipProps) => {
     }
   };
 
+  useEffect(() => {
+    const getUsersList = async () => {
+      if (auth.user) {
+        const APIBaseUrl = import.meta.env.VITE_API_URL;
+
+        const response = await fetch(`${APIBaseUrl}/api/users/Commercial`, {
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${auth.user.token}`,
+          },
+        });
+        const data = (await response.json()) as IApiUserList[];
+        setCommercialList(data);
+        setCommercial(
+          data
+            .filter((commercial) =>
+              props.customer.commercial.includes(commercial.email.split("@")[0])
+            )
+            .map(
+              (commercial) => `${commercial.firstName} ${commercial.lastName}`
+            )
+        );
+      }
+    };
+    getUsersList();
+  }, [auth.user]);
+
   return (
     <Card
       shadow="sm"
@@ -259,16 +310,22 @@ const CustomerRelationship = (props: ICustomerRelationshipProps) => {
           icon={<IconUsers size={24} />}
           title="Relation commerciale"
         />
-        <EditModeToggle
-          disabled={false}
-          editMode={editCustomerRelationship}
-          editLabel=""
-          validateLabel=""
-          cancelLabel=""
-          handleEditClick={() => setEditCustomerRelationship(true)}
-          handleValideClick={handleValideClick}
-          handleCancelClick={handleCancelClick}
-        />
+        {customer?.commercial.includes(
+          userData?.email.split("@")[0] as string
+        ) ? (
+          <EditModeToggle
+            disabled={false}
+            editMode={editCustomerRelationship}
+            editLabel=""
+            validateLabel=""
+            cancelLabel=""
+            handleEditClick={() => setEditCustomerRelationship(true)}
+            handleValideClick={handleValideClick}
+            handleCancelClick={handleCancelClick}
+          />
+        ) : (
+          <></>
+        )}
       </div>
       <div className="customerItemContainer">
         <div className="customerItemTitle">
@@ -278,11 +335,12 @@ const CustomerRelationship = (props: ICustomerRelationshipProps) => {
             value={selectValue(
               editCustomerRelationship,
               commercial,
-              ressources
-                .filter((commercial) => commercial.role.includes("Commercial"))
-                .map(
-                  (ressource) => `${ressource.firstName} ${ressource.lastName}`
-                ),
+              commercialList !== undefined
+                ? commercialList.map(
+                    (commercial) =>
+                      `${commercial.firstName} ${commercial.lastName}`
+                  )
+                : [],
               ["Commercial référent :"]
             )}
             updateValue={[setCommercial]}

@@ -5,17 +5,23 @@
   padding: 1rem;
   border-bottom: 1px solid #dfe2e6;
   margin-bottom: 16px;
+  gap: 16px;
 }
 
 .header-mobile {
   flex-direction: column;
 }
 
+.router,
 .admin {
   display: flex;
   flex-direction: column;
   gap: 8px;
-  padding-right: 16px;
+  padding-right: 8px;
+}
+
+.admin {
+  margin-right: 8px;
   border-right: 1px solid #dfe2e6;
 }
 
@@ -29,13 +35,6 @@
 
 .menu-mobile {
   flex-direction: column;
-}
-
-.login {
-  display: flex;
-  align-items: flex-end;
-  gap: 16px;
-  padding-left: 16px;
 }
 
 .logoHeaderContainer {

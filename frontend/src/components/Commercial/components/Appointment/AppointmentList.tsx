@@ -8,10 +8,8 @@ import "dayjs/locale/fr";
 import "../../../../assets/style/Appointment.css";
 import Appointment from "./components/Appointment";
 import { IAppointment } from "../../../../data/interfaces/IAppointment";
-import {
-  useCustomerRoutes,
-  useUpdateCustomerRoutes,
-} from "../../../../context/CustomerRoutes";
+import { useCustomerRoutes } from "../../../../hooks/CustomerRoutes/useCustomerRoutes";
+import { useUpdateCustomerRoutes } from "../../../../hooks/CustomerRoutes/useUpdateCustomerRoutes";
 
 interface IAppointmentList {
   customer: ICustomer;

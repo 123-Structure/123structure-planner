@@ -1,7 +1,7 @@
 import { Checkbox, useMantineTheme } from "@mantine/core";
-import { useEffect, useState } from "react";
-import { useProject, useUpdateProject } from "../../context/ProjectContext";
 import { IProject } from "../../data/interfaces/IProject";
+import { useProject } from "../../hooks/Project/useProject";
+import { useUpdateProject } from "../../hooks/Project/useUpdateProject";
 
 interface IInvoicingStateSwitchProps {
   project: IProject;

@@ -42,6 +42,7 @@
     "@tiptap/react": "^2.0.0-beta.209",
     "@tiptap/starter-kit": "^2.0.0-beta.209",
     "@types/react-lottie": "^1.2.6",
+    "@types/validator": "^13.7.14",
     "dayjs": "^1.11.5",
     "electron-squirrel-startup": "^1.0.0",
     "mantine-data-grid": "^0.0.17",
@@ -61,6 +62,7 @@
     "react-dnd-touch-backend": "^16.0.1",
     "react-dom": "^18.2.0",
     "react-lottie": "^1.2.3",
+    "validator": "^13.9.0",
     "xlsx": "https://cdn.sheetjs.com/xlsx-0.18.10/xlsx-0.18.10.tgz"
   },
   "devDependencies": {

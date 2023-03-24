@@ -12,20 +12,18 @@ import { useMediaQuery } from "@mantine/hooks";
 import { showNotification } from "@mantine/notifications";
 import { IconCheck, IconCirclePlus, IconUser, IconX } from "@tabler/icons";
 import { useState } from "react";
-import {
-  useCustomer,
-  useUpdateCustomer,
-} from "../../../../../context/CustomerContext";
 import { IContact } from "../../../../../data/interfaces/IContact";
 import { ICustomer } from "../../../../../data/interfaces/ICustomer";
 import { TContactCategories } from "../../../../../data/types/TContactCategories";
-import {
-  isEmailFormat,
-  isPhoneFormat,
-} from "../../../../../utils/validateInput";
 import CustomButton from "../../../../utils/CustomButton";
 import CustomTitle from "../../../../utils/CustomTitle";
 import Contact from "../../utils/Contact";
+import validator from "validator";
+import { isPhoneFormat } from "../../../../../utils/validateInput";
+import { useCustomer } from "../../../../../hooks/Customer/useCustomer";
+import { useUpdateCustomer } from "../../../../../hooks/Customer/useUpdateCustomer";
+import { useAuth } from "../../../../../hooks/Auth/useAuth";
+import { useUserData } from "../../../../../hooks/Auth/useUserData";
 
 interface ICustomerContactProps {
   contact: IContact[];
@@ -54,6 +52,8 @@ const CustomerContact = (props: ICustomerContactProps) => {
 
   const customer = useCustomer();
   const setCustomer = useUpdateCustomer();
+  const { auth } = useAuth();
+  const userData = useUserData();
 
   //generates random id;
   const guid = () => {
@@ -96,76 +96,85 @@ const CustomerContact = (props: ICustomerContactProps) => {
   };
 
   const handleValideClick = async () => {
-    if (
-      gender !== "" &&
-      firstName !== "" &&
-      lastName !== "" &&
-      category !== ""
-    ) {
-      if (customer !== undefined) {
-        const changedCustomer = customer;
+    if (auth.user) {
+      if (
+        gender !== "" &&
+        firstName !== "" &&
+        lastName !== "" &&
+        category !== ""
+      ) {
+        if (customer !== undefined) {
+          const changedCustomer = customer;
 
-        const newContact: IContact = {
-          _id: guid(),
-          firstName: firstName,
-          lastName: lastName,
-          gender: gender as "M." | "Mme",
-          category: category as TContactCategories,
-          email: email === "-" || email === "" ? "-" : email,
-          phone1: phone1 === "-" || phone1 === "" ? "-" : phone1,
-          phone2: phone2 === "-" || phone2 === "" ? "-" : phone2,
-        };
+          const newContact: IContact = {
+            _id: guid(),
+            firstName: firstName,
+            lastName: lastName,
+            gender: gender as "M." | "Mme",
+            category: category as TContactCategories,
+            email: email === "-" || email === "" ? "-" : email,
+            phone1: phone1 === "-" || phone1 === "" ? "-" : phone1,
+            phone2: phone2 === "-" || phone2 === "" ? "-" : phone2,
+          };
 
-        changedCustomer.contact.push(newContact);
+          changedCustomer.contact.push(newContact);
 
-        const response = await fetch(
-          `${import.meta.env.VITE_API_URL}/api/customers/${
-            changedCustomer._id as string
-          }`,
-          {
-            method: "PATCH",
-            body: JSON.stringify({ contact: changedCustomer.contact }),
-            headers: {
-              "Content-Type": "application/json",
-            },
+          const response = await fetch(
+            `${import.meta.env.VITE_API_URL}/api/customers/${
+              changedCustomer._id as string
+            }`,
+            {
+              method: "PATCH",
+              body: JSON.stringify({ contact: changedCustomer.contact }),
+              headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${auth.user.token}`,
+              },
+            }
+          );
+
+          const data = await response.json();
+
+          if (!response.ok) {
+            showNotification({
+              title: "⛔ Une erreur est survenue",
+              message: data.error,
+              color: "red",
+            });
           }
-        );
 
-        const data = await response.json();
+          setCustomer(changedCustomer);
 
-        if (!response.ok) {
           showNotification({
-            title: `⛔ Erreur serveur`,
-            message: data.error,
-            color: "red",
+            title: `✅ Nouveau contact sauvegardé`,
+            message: `Nouveau contact ajouté à ${props.customer.name}`,
+            color: "green",
           });
+          handleCloseModal();
         }
-
-        setCustomer(changedCustomer);
-
+      } else {
+        gender === ""
+          ? setGenderError("Information manquante")
+          : setGenderError("");
+        firstName === ""
+          ? setFirstNameError("Information manquante")
+          : setFirstNameError("");
+        lastName === ""
+          ? setLastNameError("Information manquante")
+          : setLastNameError("");
+        category === ""
+          ? setCategoryError("Information manquante")
+          : setCategoryError("");
         showNotification({
-          title: `✅ Nouveau contact sauvegardé`,
-          message: `Nouveau contact ajouté à ${props.customer.name}`,
-          color: "green",
+          title: `⛔ Erreur à corriger`,
+          message: `Un ou plusieurs champs de saisie requiert votre attention`,
+          color: "red",
         });
-        handleCloseModal();
       }
     } else {
-      gender === ""
-        ? setGenderError("Information manquante")
-        : setGenderError("");
-      firstName === ""
-        ? setFirstNameError("Information manquante")
-        : setFirstNameError("");
-      lastName === ""
-        ? setLastNameError("Information manquante")
-        : setLastNameError("");
-      category === ""
-        ? setCategoryError("Information manquante")
-        : setCategoryError("");
       showNotification({
-        title: `⛔ Erreur à corriger`,
-        message: `Un ou plusieurs champs de saisie requiert votre attention`,
+        title: "🔒 Authentification requise",
+        message: "L'utilisateur n'est pas connecté",
         color: "red",
       });
     }
@@ -188,9 +197,15 @@ const CustomerContact = (props: ICustomerContactProps) => {
           icon={<IconUser size={24} />}
           title={"Interlocuteurs :"}
         />
-        <ActionIcon color={"yellow"} onClick={() => setOpenNewContact(true)}>
-          <IconCirclePlus size={20} color="black" />
-        </ActionIcon>
+        {customer?.commercial.includes(
+          userData?.email.split("@")[0] as string
+        ) ? (
+          <ActionIcon color={"yellow"} onClick={() => setOpenNewContact(true)}>
+            <IconCirclePlus size={20} color="black" />
+          </ActionIcon>
+        ) : (
+          <></>
+        )}
       </div>
       <div className="contactContainer">
         {customer !== undefined ? (
@@ -290,7 +305,7 @@ const CustomerContact = (props: ICustomerContactProps) => {
               setEmail(event.currentTarget.value);
             }}
             error={
-              isEmailFormat(email) || email.length <= 5
+              validator.isEmail(email) || email.length <= 5
                 ? ""
                 : "Format d'email invalide"
             }

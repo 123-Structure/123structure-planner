@@ -1,0 +1,29 @@
+.auth {
+  display: flex;
+  align-items: flex-end;
+  gap: 16px;
+}
+
+#userInfoContainer {
+  display: flex;
+  flex-direction: column;
+  margin: 0 0 8px 0;
+}
+
+#userInfo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+}
+
+#userInfo > p {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+#userRole {
+  margin: 0;
+  font-style: italic;
+}

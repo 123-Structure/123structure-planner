@@ -2,9 +2,9 @@ import { ScrollArea, useMantineTheme } from "@mantine/core";
 import { showNotification } from "@mantine/notifications";
 import React, { useEffect, useState } from "react";
 import { useDrop } from "react-dnd";
-import { useProject } from "../../../../context/ProjectContext";
-import { useRessources } from "../../../../context/RessourceContext";
 import { ItemTypes } from "../../../../data/constants/ItemTypes";
+import { useProject } from "../../../../hooks/Project/useProject";
+import { useRessources } from "../../../../hooks/Ressources/useRessources";
 import { sortProjects } from "../../../../utils/sortProjects";
 import ProjectCard from "../ProjectCard/ProjectCard";
 

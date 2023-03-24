@@ -18,25 +18,25 @@ import {
   IconUpload,
   IconX,
 } from "@tabler/icons";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { CustomerCategoryList } from "../../../../data/constants/CustomerCategoryList";
 import CustomButton from "../../../utils/CustomButton";
 import CustomTitle from "../../../utils/CustomTitle";
 import "../../../../assets/style/newCustomer.css";
-import { useRessources } from "../../../../context/RessourceContext";
-import {
-  isCPFormat,
-  isEmailFormat,
-  isPhoneFormat,
-} from "../../../../utils/validateInput";
 import { showNotification } from "@mantine/notifications";
 import { ICustomer } from "../../../../data/interfaces/ICustomer";
 import { TCustomerCategory } from "../../../../data/types/TCustomerCategory";
 import { TPaymentType } from "../../../../data/types/TPaymentType";
 import { HandleUploadFile } from "../../../utils/HandleUploadFile";
 import { IDataAPICategory } from "../../../../data/interfaces/IDataAPICategory";
+import validator from "validator";
+import { isPhoneFormat } from "../../../../utils/validateInput";
+import { useAuth } from "../../../../hooks/Auth/useAuth";
+import { IApiUserList } from "../../../../data/interfaces/IApiUserList";
 
 const NewCustomer = () => {
+  const [commercialList, setCommercialList] = useState<IApiUserList[]>();
+
   const [openNewCustomer, setOpenNewCustomer] = useState(false);
   const [commercial, setCommercial] = useState<string[]>([]);
   const [customerCategory, setCustomerCategory] = useState("");
@@ -64,7 +64,8 @@ const NewCustomer = () => {
 
   const theme = useMantineTheme();
   const smallScreen = useMediaQuery(`(max-width: ${theme.breakpoints.xs})`);
-  const ressources = useRessources();
+
+  const { auth } = useAuth();
 
   const [groupList, setGroupList] = useState<(string | SelectItem)[]>([]);
 
@@ -108,100 +109,116 @@ const NewCustomer = () => {
   };
 
   const handleValideClick = async () => {
-    if (
-      commercial.length > 0 &&
-      customerCategory !== "" &&
-      customerName !== "" &&
-      address !== "" &&
-      isCPFormat(cp) &&
-      city !== "" &&
-      (email.length > 0 ? isEmailFormat(email) : true) &&
-      (phone.length > 0 ? isPhoneFormat(phone) : true)
-    ) {
-      const newCustomer: ICustomer = {
-        category: customerCategory as TCustomerCategory,
-        group: group,
-        name: customerName,
-        location: {
-          address: address,
-          cp: cp,
-          city: city,
-        },
-        email: email === "" ? "-" : email,
-        phone: phone === "" ? "-" : phone,
-        logo: logo,
-        contact: [],
-        priceList: priceList,
-        commercial: ressources
-          .filter((ressource) =>
-            commercial.includes(`${ressource.firstName} ${ressource.lastName}`)
-          )
-          .map((commercial) => commercial._id),
-        appointment: [],
-        projectGoal: [
-          {
-            year: new Date().getFullYear() - 1,
-            goal: 0,
+    if (auth.user) {
+      if (
+        commercial.length > 0 &&
+        customerCategory !== "" &&
+        customerName !== "" &&
+        address !== "" &&
+        validator.isPostalCode(cp, "FR") &&
+        city !== "" &&
+        (email.length > 0 ? validator.isEmail(email) : true) &&
+        (phone.length > 0 ? isPhoneFormat(phone) : true)
+      ) {
+        const newCustomer: ICustomer = {
+          category: customerCategory as TCustomerCategory,
+          group: group,
+          name: customerName,
+          location: {
+            address: address,
+            cp: cp,
+            city: city,
           },
-          {
-            year: new Date().getFullYear(),
-            goal: projectGoal,
-          },
-        ],
-        paymentDeadline:
-          paymentDeadline === ""
-            ? "-"
-            : (paymentDeadline as "45" | "30 (Fin de mois)" | "30 (Net)" | "-"),
-        paymentType: paymentType === "" ? "-" : (paymentType as TPaymentType),
-        paymentStatus: "A",
-      };
+          email: email === "" ? "-" : email,
+          phone: phone === "" ? "-" : phone,
+          logo: logo,
+          contact: [],
+          priceList: priceList,
+          commercial:
+            commercialList !== undefined
+              ? commercialList
+                  .filter((c) =>
+                    commercial.includes(`${c.firstName} ${c.lastName}`)
+                  )
+                  .map((commercial) => commercial.email.split("@")[0])
+              : [],
+          appointment: [],
+          projectGoal: [
+            {
+              year: new Date().getFullYear() - 1,
+              goal: 0,
+            },
+            {
+              year: new Date().getFullYear(),
+              goal: projectGoal,
+            },
+          ],
+          paymentDeadline:
+            paymentDeadline === ""
+              ? "-"
+              : (paymentDeadline as
+                  | "45"
+                  | "30 (Fin de mois)"
+                  | "30 (Net)"
+                  | "-"),
+          paymentType: paymentType === "" ? "-" : (paymentType as TPaymentType),
+          paymentStatus: "A",
+        };
 
-      const response = await fetch(
-        `${import.meta.env.VITE_API_URL}/api/customers`,
-        {
-          method: "POST",
-          body: JSON.stringify(newCustomer),
-          headers: {
-            "Content-Type": "application/json",
-          },
+        const response = await fetch(
+          `${import.meta.env.VITE_API_URL}/api/customers`,
+          {
+            method: "POST",
+            body: JSON.stringify(newCustomer),
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${auth.user.token}`,
+            },
+          }
+        );
+        const data = await response.json();
+
+        if (!response.ok) {
+          showNotification({
+            title: `⛔ Erreur serveur`,
+            message: data.error,
+            color: "red",
+          });
         }
-      );
-      const data = await response.json();
 
-      if (!response.ok) {
         showNotification({
-          title: `⛔ Erreur serveur`,
-          message: data.error,
+          title: `✅ Nouvelle fiche client sauvegardé`,
+          message: `${customerName} ajouté à l'annuaire de client`,
+          color: "green",
+        });
+        handleCloseModal();
+      } else {
+        commercial.length <= 0
+          ? setErrorCommercial("Information manquante")
+          : setErrorCommercial("");
+        customerCategory === ""
+          ? setErrorCustomerCategory("Information manquante")
+          : setErrorCustomerCategory("");
+        customerName === ""
+          ? setErrorCustomerName("Information manquante")
+          : setErrorCustomerName("");
+        address === ""
+          ? setErrorAddress("Information manquante")
+          : setErrorAddress("");
+        !validator.isPostalCode(cp, "FR")
+          ? setErrorCp("Code postale de 5 chiffres")
+          : setErrorCp("");
+        city === "" ? setErrorCity("Information manquante") : setErrorCity("");
+        showNotification({
+          title: `⛔ Erreur à corriger`,
+          message: `Un ou plusieurs champs de saisie requiert votre attention`,
           color: "red",
         });
       }
-
-      showNotification({
-        title: `✅ Nouvelle fiche client sauvegardé`,
-        message: `${customerName} ajouté à l'annuaire de client`,
-        color: "green",
-      });
-      handleCloseModal();
     } else {
-      commercial.length <= 0
-        ? setErrorCommercial("Information manquante")
-        : setErrorCommercial("");
-      customerCategory === ""
-        ? setErrorCustomerCategory("Information manquante")
-        : setErrorCustomerCategory("");
-      customerName === ""
-        ? setErrorCustomerName("Information manquante")
-        : setErrorCustomerName("");
-      address === ""
-        ? setErrorAddress("Information manquante")
-        : setErrorAddress("");
-      !isCPFormat(cp)
-        ? setErrorCp("Code postale de 5 chiffres")
-        : setErrorCp("");
-      city === "" ? setErrorCity("Information manquante") : setErrorCity("");
       showNotification({
-        title: `⛔ Erreur à corriger`,
-        message: `Un ou plusieurs champs de saisie requiert votre attention`,
+        title: "🔒 Authentification requise",
+        message: "L'utilisateur n'est pas connecté",
         color: "red",
       });
     }
@@ -242,43 +259,56 @@ const NewCustomer = () => {
   }, [priceList]);
 
   const fetchCustomers = async (commercial: string[], category: string) => {
-    const APIBaseUrl = import.meta.env.VITE_API_URL;
+    if (auth.user) {
+      const APIBaseUrl = import.meta.env.VITE_API_URL;
 
-    let res = [] as string[];
+      let res = [] as string[];
 
-    for (let i = 0; i < commercial.length; i++) {
-      const currentCommercial = commercial[i];
+      for (let i = 0; i < commercial.length; i++) {
+        const currentCommercial = commercial[i];
 
-      const commercialID = ressources
-        .filter((ressource) =>
-          currentCommercial.includes(
-            `${ressource.firstName} ${ressource.lastName}`
-          )
-        )
-        .map((commercial) => commercial._id);
+        if (commercialList !== undefined) {
+          const commercialID = commercialList
+            .filter((commercial) =>
+              currentCommercial.includes(
+                `${commercial.firstName} ${commercial.lastName}`
+              )
+            )
+            .map((commercial) => commercial.email.split("@")[0]);
 
-      const response = await fetch(
-        `${APIBaseUrl}/api/customers/category/${commercialID}/${category}`,
-        {
-          method: "GET",
+          const response = await fetch(
+            `${APIBaseUrl}/api/customers/category/${commercialID}/${category}`,
+            {
+              method: "GET",
+              headers: {
+                Authorization: `Bearer ${auth.user.token}`,
+              },
+            }
+          );
+          const data = (await response.json()) as IDataAPICategory[];
+
+          const groups = data
+            .map((customer) => customer.group)
+            .filter((group) => group !== "")
+            .reduce((acc, curr) => {
+              if (!acc.includes(curr)) acc.push(curr);
+              return acc;
+            }, [] as string[]);
+
+          groups.forEach((group) => {
+            res.push(group);
+          });
         }
-      );
-      const data = (await response.json()) as IDataAPICategory[];
+      }
 
-      const groups = data
-        .map((customer) => customer.group)
-        .filter((group) => group !== "")
-        .reduce((acc, curr) => {
-          if (!acc.includes(curr)) acc.push(curr);
-          return acc;
-        }, [] as string[]);
-
-      groups.forEach((group) => {
-        res.push(group);
+      setGroupList(res);
+    } else {
+      showNotification({
+        title: "🔒 Authentification requise",
+        message: "L'utilisateur n'est pas connecté",
+        color: "red",
       });
     }
-
-    setGroupList(res);
   };
 
   useEffect(() => {
@@ -286,6 +316,24 @@ const NewCustomer = () => {
       fetchCustomers(commercial, customerCategory);
     }
   }, [customerCategory, commercial]);
+
+  useEffect(() => {
+    const getUsersList = async () => {
+      if (auth.user) {
+        const APIBaseUrl = import.meta.env.VITE_API_URL;
+
+        const response = await fetch(`${APIBaseUrl}/api/users/Commercial`, {
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${auth.user.token}`,
+          },
+        });
+        const data = await response.json();
+        setCommercialList(data);
+      }
+    };
+    getUsersList();
+  }, [auth.user]);
 
   return (
     <>
@@ -332,11 +380,14 @@ const NewCustomer = () => {
               nothingFound="Aucun résultat"
               clearable
               label="Commercial référent"
-              data={ressources
-                .filter((commercial) => commercial.role.includes("Commercial"))
-                .map(
-                  (ressource) => `${ressource.firstName} ${ressource.lastName}`
-                )}
+              data={
+                commercialList !== undefined
+                  ? commercialList.map(
+                      (commercial) =>
+                        `${commercial.firstName} ${commercial.lastName}`
+                    )
+                  : []
+              }
               value={commercial}
               onChange={(val) => {
                 setCommercial(val);
@@ -413,7 +464,7 @@ const NewCustomer = () => {
                 setEmail(event.currentTarget.value);
               }}
               error={
-                isEmailFormat(email) || email.length < 1
+                validator.isEmail(email) || email.length < 1
                   ? ""
                   : "Format d'email invalide"
               }

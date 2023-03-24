@@ -24,11 +24,11 @@ import { useMediaQuery } from "@mantine/hooks";
 import EditModeToggle from "../../../utils/EditModeToggle";
 import { ICustomer } from "../../../../data/interfaces/ICustomer";
 import { showNotification } from "@mantine/notifications";
-import { isEmailFormat, isPhoneFormat } from "../../../../utils/validateInput";
-import {
-  useCustomer,
-  useUpdateCustomer,
-} from "../../../../context/CustomerContext";
+import validator from "validator";
+import { isPhoneFormat } from "../../../../utils/validateInput";
+import { useCustomer } from "../../../../hooks/Customer/useCustomer";
+import { useUpdateCustomer } from "../../../../hooks/Customer/useUpdateCustomer";
+import { useAuth } from "../../../../hooks/Auth/useAuth";
 
 interface IContactProps {
   color?: string;
@@ -55,6 +55,7 @@ const Contact = (props: IContactProps) => {
 
   const customer = useCustomer();
   const setCustomer = useUpdateCustomer();
+  const { auth } = useAuth();
 
   const sendEmailOrCallPhone = (id: string) => {
     const anchor = document.querySelector(id) as HTMLAnchorElement;
@@ -80,55 +81,63 @@ const Contact = (props: IContactProps) => {
   };
 
   const handleValideClick = async () => {
-    if (customer !== undefined) {
-      const changedCustomer = customer;
+    if (auth.user) {
+      if (customer !== undefined) {
+        const changedCustomer = customer;
 
-      const changedContact = changedCustomer.contact.filter(
-        (contact) =>
-          contact.category === props.currentContact.category &&
-          contact.email === props.currentContact.email &&
-          contact.phone1 === props.currentContact.phone1 &&
-          contact.phone2 === props.currentContact.phone2
-      )[0];
+        const changedContact = changedCustomer.contact.filter(
+          (contact) =>
+            contact.category === props.currentContact.category &&
+            contact.email === props.currentContact.email &&
+            contact.phone1 === props.currentContact.phone1 &&
+            contact.phone2 === props.currentContact.phone2
+        )[0];
 
-      changedContact.firstName = firstName;
-      changedContact.lastName = lastName;
-      changedContact.gender = gender;
-      changedContact.category = category;
-      changedContact.email = email;
-      changedContact.phone1 = phone1;
-      changedContact.phone2 = phone2;
+        changedContact.firstName = firstName;
+        changedContact.lastName = lastName;
+        changedContact.gender = gender;
+        changedContact.category = category;
+        changedContact.email = email;
+        changedContact.phone1 = phone1;
+        changedContact.phone2 = phone2;
 
-      const response = await fetch(
-        `${import.meta.env.VITE_API_URL}/api/customers/${
-          changedCustomer._id as string
-        }`,
-        {
-          method: "PATCH",
-          body: JSON.stringify({ contact: changedCustomer.contact }),
-          headers: {
-            "Content-Type": "application/json",
-          },
+        const response = await fetch(
+          `${import.meta.env.VITE_API_URL}/api/customers/${
+            changedCustomer._id as string
+          }`,
+          {
+            method: "PATCH",
+            body: JSON.stringify({ contact: changedCustomer.contact }),
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        );
+        const data = await response.json();
+
+        if (!response.ok) {
+          showNotification({
+            title: `⛔ Erreur serveur`,
+            message: data.error,
+            color: "red",
+          });
         }
-      );
-      const data = await response.json();
 
-      if (!response.ok) {
+        setCustomer(changedCustomer);
+
         showNotification({
-          title: `⛔ Erreur serveur`,
-          message: data.error,
-          color: "red",
+          title: `✅ Fiche client sauvegardée`,
+          message: `La fiche client ${props.customer.name} est mise à jour`,
+          color: "green",
         });
+        setEditContact(false);
       }
-
-      setCustomer(changedCustomer);
-
+    } else {
       showNotification({
-        title: `✅ Fiche client sauvegardée`,
-        message: `La fiche client ${props.customer.name} est mise à jour`,
-        color: "green",
+        title: "🔒 Authentification requise",
+        message: "L'utilisateur n'est pas connecté",
+        color: "red",
       });
-      setEditContact(false);
     }
   };
 
@@ -170,7 +179,7 @@ const Contact = (props: IContactProps) => {
             />
             <EditModeToggle
               disabled={
-                !isEmailFormat(email) ||
+                !validator.isEmail(email) ||
                 !isPhoneFormat(phone1) ||
                 (!isPhoneFormat(phone2) && phone2 !== "") ||
                 firstName.length < 1 ||
@@ -269,7 +278,7 @@ const Contact = (props: IContactProps) => {
                 )
               }
               errorMessage={[
-                isEmailFormat(email) ? "" : "Format d'email invalide",
+                validator.isEmail(email) ? "" : "Format d'email invalide",
               ]}
             />
           ) : (

@@ -10,25 +10,29 @@ import {
 import { useMediaQuery } from "@mantine/hooks";
 import { IconSearch } from "@tabler/icons";
 import { useEffect, useState } from "react";
-import { IDataFromAPI } from "../../../../data/interfaces/IDataFromAPI";
+import { ISearchDataFromAPI } from "../../../../data/interfaces/ISearchDataFromAPI";
 import CustomTitle from "../../../utils/CustomTitle";
 import SearchBarItem from "./components/SearchBarItem";
 import ProfilingBro from "../../../../assets/img/Profiling-bro.svg";
-import BricklayerBro from "../../../../assets/img/Bricklayer-bro.svg";
+import BrickLayerBro from "../../../../assets/img/Bricklayer-bro.svg";
 import "../../../../assets/style/SearchBar.css";
 import { changeFavicon, changeTabTitle } from "../../../../utils/tabsUtils";
-import { useUpdateCustomerRoutes } from "../../../../context/CustomerRoutes";
+import { useUpdateCustomerRoutes } from "../../../../hooks/CustomerRoutes/useUpdateCustomerRoutes";
+import { useAuth } from "../../../../hooks/Auth/useAuth";
+import { showNotification } from "@mantine/notifications";
 
 const SearchBar = () => {
   const [openSearchBarModal, setOpenSearchBarModal] = useState(false);
   const [activeTab, setActiveTab] = useState<string | null>("quickSearch");
   const [query, setQuery] = useState("");
-  const [actions, setActions] = useState<IDataFromAPI[]>([]);
+  const [actions, setActions] = useState<ISearchDataFromAPI[]>([]);
 
   const theme = useMantineTheme();
   const smallScreen = useMediaQuery(`(max-width: ${theme.breakpoints.xs})`);
   const mediumScreen = useMediaQuery(`(max-width: ${theme.breakpoints.md})`);
+
   const setCustomerRoutes = useUpdateCustomerRoutes();
+  const { auth } = useAuth();
 
   const handleCloseModal = () => {
     setOpenSearchBarModal(false);
@@ -38,15 +42,26 @@ const SearchBar = () => {
   };
 
   const handleSearchQuery = async (query: string) => {
-    const APIBaseUrl = import.meta.env.VITE_API_URL;
-    const response = await fetch(
-      `${APIBaseUrl}/api/customers/search/${query}`,
-      {
-        method: "GET",
-      }
-    );
-    const data = (await response.json()) as IDataFromAPI[];
-    setActions(data);
+    if (auth.user) {
+      const APIBaseUrl = import.meta.env.VITE_API_URL;
+      const response = await fetch(
+        `${APIBaseUrl}/api/customers/search/${query}`,
+        {
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${auth.user.token}`,
+          },
+        }
+      );
+      const data = (await response.json()) as ISearchDataFromAPI[];
+      setActions(data);
+    } else {
+      showNotification({
+        title: "🔒 Authentification requise",
+        message: "L'utilisateur n'est pas connecté",
+        color: "red",
+      });
+    }
   };
 
   const handleQueryChange = (query: string) => {
@@ -138,7 +153,7 @@ const SearchBar = () => {
                 }}
               />
               {actions.length === 0 ? (
-                <div id="searchImage">
+                <div className="searchImage searchImageFullTextSearch">
                   <img src={ProfilingBro} alt="profiling" />
                   <p>Aucun résultat...</p>
                 </div>
@@ -163,8 +178,8 @@ const SearchBar = () => {
               marginTop: "16px",
             }}
           >
-            <div id="searchImage">
-              <img src={BricklayerBro} alt="bricklayer" />
+            <div className="searchImage searchImageInConstruction">
+              <img src={BrickLayerBro} alt="bricklayer" />
               <p>En cours de construction...</p>
             </div>
           </Tabs.Panel>

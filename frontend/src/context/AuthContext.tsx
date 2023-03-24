@@ -1,36 +1,57 @@
-import {
-  createContext,
-  Dispatch,
-  SetStateAction,
-  useContext,
-  useState,
-} from "react";
+import { createContext, useEffect, useReducer } from "react";
 import { IRessource } from "../data/interfaces/IRessource";
 
-const AuthContext = createContext<IRessource | undefined>(undefined);
-const AuthUpdateContext = createContext<
-  Dispatch<SetStateAction<IRessource | undefined>>
->(() => {});
-
-interface IProjectContextProps {
+interface IAuthContextProps {
   children: React.ReactNode;
 }
 
-export const useAuth = () => {
-  return useContext(AuthContext);
-};
-export const useUpdateAuth = () => {
-  return useContext(AuthUpdateContext);
+export interface IState {
+  user: { email: string; token: string } | null;
+}
+
+type Action =
+  | { type: "LOGIN"; payload: { email: string; token: string } }
+  | { type: "LOGOUT" };
+
+const initialState: IState = {
+  user: null,
 };
 
-const AuthProvider = (props: IProjectContextProps) => {
-  const [auth, setAuth] = useState<IRessource | undefined>(undefined);
+export const AuthContext = createContext<{
+  auth: IState;
+  updateAuth: React.Dispatch<Action>;
+}>({ auth: initialState, updateAuth: () => null });
+
+export const authReducer = (state: IState, action: Action) => {
+  switch (action.type) {
+    case "LOGIN":
+      return { user: action.payload };
+    case "LOGOUT":
+      return { user: null };
+
+    default:
+      return state;
+  }
+};
+
+const AuthProvider = (props: IAuthContextProps) => {
+  const [auth, updateAuth] = useReducer(authReducer, initialState);
+
+  useEffect(() => {
+    const localStorageItem = localStorage.getItem("user");
+    if (localStorageItem !== null) {
+      const user = JSON.parse(localStorageItem);
+      if (user) {
+        updateAuth({ type: "LOGIN", payload: user });
+      }
+    }
+  }, []);
+
+  // console.log("🔒 AuthContext state : ", auth);
 
   return (
-    <AuthContext.Provider value={auth}>
-      <AuthUpdateContext.Provider value={setAuth}>
-        {props.children}
-      </AuthUpdateContext.Provider>
+    <AuthContext.Provider value={{ auth, updateAuth }}>
+      {props.children}
     </AuthContext.Provider>
   );
 };

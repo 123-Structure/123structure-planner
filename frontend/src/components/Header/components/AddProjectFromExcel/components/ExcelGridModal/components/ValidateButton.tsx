@@ -1,10 +1,8 @@
 import { showNotification } from "@mantine/notifications";
 import { IconCheck, IconX } from "@tabler/icons";
-import {
-  useProject,
-  useUpdateProject,
-} from "../../../../../../../context/ProjectContext";
 import { IProject } from "../../../../../../../data/interfaces/IProject";
+import { useProject } from "../../../../../../../hooks/Project/useProject";
+import { useUpdateProject } from "../../../../../../../hooks/Project/useUpdateProject";
 import CustomButton from "../../../../../../utils/CustomButton";
 
 interface IValidateButtonProps {

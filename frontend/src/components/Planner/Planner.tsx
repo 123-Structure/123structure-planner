@@ -6,57 +6,74 @@ import { TouchBackend } from "react-dnd-touch-backend";
 import MustBeAssign from "./components/Grid/MustBeAssign";
 import Title from "./components/Grid/Title";
 import NewEntry from "./components/Grid/NewEntry";
-import { useAuth } from "../../context/AuthContext";
-import { useRessources } from "../../context/RessourceContext";
 import { isTouchDevice } from "../../utils/isTouchDevice";
 import { useMantineTheme } from "@mantine/core";
+import { useAuth } from "../../hooks/Auth/useAuth";
+import { useEffect, useState } from "react";
+import { IRessource } from "../../data/interfaces/IRessource";
+import { TRole } from "../../data/types/TRole";
 
 const Planner = () => {
-  const theme = useMantineTheme();
-  const auth = useAuth();
-  const ressources = useRessources();
+  const [ressources, setRessources] = useState<IRessource[]>();
 
-  if (!auth) {
-    return (
-      <DndProvider backend={isTouchDevice() ? TouchBackend : HTML5Backend}>
+  const theme = useMantineTheme();
+  const { auth } = useAuth();
+
+  useEffect(() => {
+    const getUsersList = async () => {
+      const roles: TRole[] = ["Dessinateur", "Ingénieur", "Administrateur"];
+      const users = [] as IRessource[];
+      const APIBaseUrl = import.meta.env.VITE_API_URL;
+
+      for (const role of roles) {
+        if (auth.user) {
+          const response = await fetch(`${APIBaseUrl}/api/users/${role}`, {
+            method: "GET",
+            headers: {
+              Authorization: `Bearer ${auth.user.token}`,
+            },
+          });
+          const data = await response.json();
+          users.push(...data);
+        }
+      }
+
+      setRessources(users);
+    };
+    getUsersList();
+  }, [auth.user]);
+
+  return ressources ? (
+    <DndProvider backend={isTouchDevice() ? TouchBackend : HTML5Backend}>
+      <div
+        className="grid"
+        style={{
+          gridTemplateRows: `50px 328px 50px repeat(${ressources.length}, minmax(66px, auto))`,
+        }}
+      >
         <div
-          className="grid"
+          className="mustBeAssignTitle"
           style={{
-            gridTemplateRows: `50px 328px 50px repeat(${
-              ressources.filter(
-                (ressource) =>
-                  ressource.role.sort()[0] !== "Administrateur" ||
-                  ressource.role.length > 1
-              ).length
-            }, minmax(66px, auto))`,
+            backgroundColor: theme.colors.yellow[5],
           }}
         >
-          <div
-            className="mustBeAssignTitle"
-            style={{
-              backgroundColor: theme.colors.yellow[5],
-            }}
-          >
-            <p>Dossier à attribuer</p>
-          </div>
-          <MustBeAssign />
-          <Title />
-          <NewEntry />
-          {ressources
-            .filter(
-              (ressource) =>
-                !ressource.role.includes("Administrateur") &&
-                !ressource.role.includes("Commercial")
-            )
-            .map((ressource, index) => (
-              <Row key={index} id={`${ressource._id}`} ressource={ressource} />
-            ))}
+          <p>Dossier à attribuer</p>
         </div>
-      </DndProvider>
-    );
-  } else {
-    return <></>;
-  }
+        <MustBeAssign />
+        <Title />
+        <NewEntry />
+        {ressources.map((ressource, index) => (
+          <Row
+            key={index}
+            id={ressource.email.split("@")[0]}
+            ressource={ressource}
+          />
+        ))}
+      </div>
+    </DndProvider>
+  ) : (
+    <></>
+  );
 };
 
 export default Planner;

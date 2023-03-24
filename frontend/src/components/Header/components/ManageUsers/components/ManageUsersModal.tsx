@@ -18,7 +18,6 @@ import {
   IconUserExclamation,
 } from "@tabler/icons";
 import { Dispatch, SetStateAction } from "react";
-import { useRessources } from "../../../../../context/RessourceContext";
 import { companyColor } from "../../../../../utils/companyColor";
 import { defaultAccessRight } from "../../../../../utils/defaultAccessRight";
 import CustomTitle from "../../../../utils/CustomTitle";
@@ -26,6 +25,7 @@ import AddUser from "./AddUser";
 import MultiFixerSelect from "./MultiSelect/MultiFixerSelect";
 import MultiRoleSelect from "./MultiSelect/MultiRoleSelect";
 import "../../../../../assets/style/ManageUsers.css";
+import { useRessources } from "../../../../../hooks/Ressources/useRessources";
 
 interface IManageUsersModalProps {
   openManageUser: boolean;
@@ -80,7 +80,7 @@ const ManageUsersModal = (props: IManageUsersModalProps) => {
               {`${user.firstName} ${user.lastName}`}
             </Text>
             <Text size="xs" color="dimmed">
-              {`${user.firstName[0].toLowerCase()}.${user.lastName.toLowerCase()}@123structure.fr`}
+              {user.email}
             </Text>
           </div>
         </Group>
