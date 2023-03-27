@@ -68,7 +68,9 @@ const Commercial = () => {
       setCustomer(undefined);
       changeFavicon("👷");
       changeTabTitle(
-        `123 Structure - ${commercial.firstName} ${commercial.lastName}`
+        activeTab === "*"
+          ? `123 Structure - Commercial`
+          : `123 Structure - ${commercial.firstName} ${commercial.lastName}`
       );
     }
   }, [activeTab]);
@@ -82,6 +84,16 @@ const Commercial = () => {
       className="commercialContainer"
     >
       <Tabs.List className="commercialList">
+        <Tabs.Tab
+          className="commercialTab"
+          value="*"
+          icon={<IconUser size="1rem" />}
+          style={{
+            color: activeTab === "*" ? "black" : "",
+          }}
+        >
+          Tous les commerciaux
+        </Tabs.Tab>
         {commercialList
           ?.sort((a, b) => {
             if (a.firstName < b.firstName) {
@@ -106,6 +118,14 @@ const Commercial = () => {
           ))}
         <NewCustomer />
       </Tabs.List>
+      <Tabs.Panel
+        value="*"
+        style={{
+          display: smallScreen ? "none" : activeTab === "*" ? "block" : "",
+        }}
+      >
+        <CustomerCategories />
+      </Tabs.Panel>
       {commercialList?.map((commercial) => (
         <Tabs.Panel
           key={commercial.email.split("@")[0]}

@@ -1,35 +1,45 @@
+import { useEffect } from "react";
+import { useCustomerRoutes } from "../hooks/CustomerRoutes/useCustomerRoutes";
+import { useUpdateCustomerRoutes } from "../hooks/CustomerRoutes/useUpdateCustomerRoutes";
 import { useRouter } from "../hooks/Router/useRouter";
+import { changeFavicon, changeTabTitle } from "../utils/tabsUtils";
 import Commercial from "./Commercial/Commercial";
 import Planner from "./Planner/Planner";
-import BrickLayerBro from "../assets/img/Bricklayer-bro.svg";
-import "../assets/style/Router.css";
-import { useMediaQuery } from "@mantine/hooks";
-import { useMantineTheme } from "@mantine/core";
 
 const Router = () => {
   const router = useRouter();
+  const customerRoutes = useCustomerRoutes();
+  const setCustomerRoutes = useUpdateCustomerRoutes();
 
-  const theme = useMantineTheme();
-  const smallScreen = useMediaQuery(`(max-width: ${theme.breakpoints.sm})`);
-  const mediumScreen = useMediaQuery(`(max-width: ${theme.breakpoints.md})`);
+  useEffect(() => {
+    if (router === "Commercial") {
+      changeFavicon("👷");
+      changeTabTitle("123 Structure - Commercial");
+    } else {
+      changeFavicon("📆");
+      changeTabTitle("123 Structure - Planning");
+    }
+    if (router === "Planning") {
+      setCustomerRoutes({
+        ...customerRoutes,
+        customer: "",
+        agency: "",
+        appointment: "",
+      });
+    }
+  }, [router]);
 
-  return router === "Planning" ? (
-    <Planner />
-  ) : router === "Commercial" ? (
-    <Commercial />
-  ) : router === "Administrateur" ? (
-    <div
-      id="adminImage"
-      style={{
-        width: smallScreen ? "100%" : mediumScreen ? "75%" : "30%",
-      }}
-    >
-      <img src={BrickLayerBro} alt="bricklayer" />
-      <p>Interface "Administrateur"</p>
-    </div>
-  ) : (
-    <></>
-  );
+  switch (router) {
+    case "Planning":
+      return <Planner />;
+    case "Commercial":
+      return <Commercial />;
+    case "Administrateur":
+      return <Planner />;
+
+    default:
+      return <></>;
+  }
 };
 
 export default Router;

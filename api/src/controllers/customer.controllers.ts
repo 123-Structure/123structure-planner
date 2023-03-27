@@ -31,10 +31,15 @@ export const getCustomer = async (req: Request, res: Response) => {
 export const getCustomerByCategory = async (req: Request, res: Response) => {
   const { commercial, category } = req.params;
 
-  const customers = await Customer.find({
-    category: category,
-    commercial: commercial,
-  }).sort({ createdAt: -1 });
+  const customers =
+    commercial === "*"
+      ? await Customer.find({
+          category: category,
+        }).sort({ createdAt: -1 })
+      : await Customer.find({
+          category: category,
+          commercial: commercial,
+        }).sort({ createdAt: -1 });
 
   const customersObject = JSON.parse(JSON.stringify(customers)) as ICustomer[];
 
@@ -53,11 +58,17 @@ export const getCustomerByCategory = async (req: Request, res: Response) => {
 export const getCustomerByGroup = async (req: Request, res: Response) => {
   const { commercial, category, group } = req.params;
 
-  const customers = await Customer.find({
-    category: category,
-    commercial: commercial,
-    group: group,
-  }).sort({ createdAt: -1 });
+  const customers =
+    commercial === "*"
+      ? await Customer.find({
+          category: category,
+          group: group,
+        }).sort({ createdAt: -1 })
+      : await Customer.find({
+          category: category,
+          commercial: commercial,
+          group: group,
+        }).sort({ createdAt: -1 });
 
   const customersObject = JSON.parse(JSON.stringify(customers)) as ICustomer[];
 

@@ -135,7 +135,9 @@ const Auth = () => {
               )}
               <p>{`${userData.firstName} ${userData.lastName}`}</p>
             </div>
-            <p id="userRole">{`${userData.role} - ${userData.company}`}</p>
+            <p id="userRole">{`${userData.role.map((role, index) =>
+              index > 0 ? ` ${role}` : role
+            )} - ${userData.company}`}</p>
           </div>
           <CustomButton
             handleClick={() => logout()}

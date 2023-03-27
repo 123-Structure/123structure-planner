@@ -118,7 +118,7 @@ const AddProjectFromExcel = () => {
               size="xl"
               variant="filled"
               color={"yellow"}
-              disabled={router !== "Planning"}
+              disabled={router === "Commercial"}
               {...props}
             >
               <IconFilePlus size={24} color="black" />
