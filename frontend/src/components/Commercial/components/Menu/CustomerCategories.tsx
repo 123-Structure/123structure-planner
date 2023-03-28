@@ -1,6 +1,7 @@
 import { Tabs, useMantineTheme } from "@mantine/core";
 import { showNotification } from "@mantine/notifications";
 import { useEffect, useState } from "react";
+import { APIBaseUrl } from "../../../../data/constants/APIBaseUrl";
 import { CustomerCategoryList } from "../../../../data/constants/CustomerCategoryList";
 import { IDataAPICategory } from "../../../../data/interfaces/IDataAPICategory";
 import { useAuth } from "../../../../hooks/Auth/useAuth";
@@ -23,7 +24,6 @@ const CustomerCategories = () => {
     category: string | null
   ) => {
     if (auth.user) {
-      const APIBaseUrl = import.meta.env.VITE_API_URL;
       const response = await fetch(
         `${APIBaseUrl}/api/customers/category/${commercial}/${category}`,
         {

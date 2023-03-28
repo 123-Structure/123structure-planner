@@ -20,6 +20,7 @@ import { changeFavicon, changeTabTitle } from "../../../../utils/tabsUtils";
 import { useUpdateCustomerRoutes } from "../../../../hooks/CustomerRoutes/useUpdateCustomerRoutes";
 import { useAuth } from "../../../../hooks/Auth/useAuth";
 import { showNotification } from "@mantine/notifications";
+import { APIBaseUrl } from "../../../../data/constants/APIBaseUrl";
 
 const SearchBar = () => {
   const [openSearchBarModal, setOpenSearchBarModal] = useState(false);
@@ -43,7 +44,6 @@ const SearchBar = () => {
 
   const handleSearchQuery = async (query: string) => {
     if (auth.user) {
-      const APIBaseUrl = import.meta.env.VITE_API_URL;
       const response = await fetch(
         `${APIBaseUrl}/api/customers/search/${query}`,
         {

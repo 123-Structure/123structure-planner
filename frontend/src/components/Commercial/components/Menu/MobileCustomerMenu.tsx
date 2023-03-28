@@ -12,6 +12,7 @@ import BuildingPermitBro from "../../../../assets/img/Building permit-bro.svg";
 import Customer from "../Customer/Customer";
 import { showNotification } from "@mantine/notifications";
 import { useAuth } from "../../../../hooks/Auth/useAuth";
+import { APIBaseUrl } from "../../../../data/constants/APIBaseUrl";
 
 const MobileCustomerMenu = () => {
   const [customersList, setCustomersList] = useState<IDataAPICategory[]>([]);
@@ -31,7 +32,6 @@ const MobileCustomerMenu = () => {
     category: string | null
   ) => {
     if (auth.user) {
-      const APIBaseUrl = import.meta.env.VITE_API_URL;
       const response = await fetch(
         `${APIBaseUrl}/api/customers/category/${commercial}/${category}`,
         {
@@ -57,8 +57,6 @@ const MobileCustomerMenu = () => {
       const customer = customersList.filter(
         (customer) => customer.name === val
       )[0];
-
-      const APIBaseUrl = import.meta.env.VITE_API_URL;
 
       if (customer !== undefined) {
         const response = await fetch(
@@ -110,8 +108,6 @@ const MobileCustomerMenu = () => {
       const customer = customersList.filter(
         (customer) => customer.name === val
       )[0];
-
-      const APIBaseUrl = import.meta.env.VITE_API_URL;
 
       if (customer !== undefined) {
         const response = await fetch(

@@ -33,6 +33,7 @@ import validator from "validator";
 import { isPhoneFormat } from "../../../../utils/validateInput";
 import { useAuth } from "../../../../hooks/Auth/useAuth";
 import { IApiUserList } from "../../../../data/interfaces/IApiUserList";
+import { APIBaseUrl } from "../../../../data/constants/APIBaseUrl";
 
 const NewCustomer = () => {
   const [commercialList, setCommercialList] = useState<IApiUserList[]>();
@@ -165,17 +166,14 @@ const NewCustomer = () => {
           paymentStatus: "A",
         };
 
-        const response = await fetch(
-          `${import.meta.env.VITE_API_URL}/api/customers`,
-          {
-            method: "POST",
-            body: JSON.stringify(newCustomer),
-            headers: {
-              "Content-Type": "application/json",
-              Authorization: `Bearer ${auth.user.token}`,
-            },
-          }
-        );
+        const response = await fetch(`${APIBaseUrl}/api/customers`, {
+          method: "POST",
+          body: JSON.stringify(newCustomer),
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${auth.user.token}`,
+          },
+        });
         const data = await response.json();
 
         if (!response.ok) {
@@ -260,8 +258,6 @@ const NewCustomer = () => {
 
   const fetchCustomers = async (commercial: string[], category: string) => {
     if (auth.user) {
-      const APIBaseUrl = import.meta.env.VITE_API_URL;
-
       let res = [] as string[];
 
       for (let i = 0; i < commercial.length; i++) {
@@ -320,8 +316,6 @@ const NewCustomer = () => {
   useEffect(() => {
     const getUsersList = async () => {
       if (auth.user) {
-        const APIBaseUrl = import.meta.env.VITE_API_URL;
-
         const response = await fetch(`${APIBaseUrl}/api/users/Commercial`, {
           method: "GET",
           headers: {

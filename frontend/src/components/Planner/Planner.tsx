@@ -12,6 +12,7 @@ import { useAuth } from "../../hooks/Auth/useAuth";
 import { useEffect, useState } from "react";
 import { IRessource } from "../../data/interfaces/IRessource";
 import { TRole } from "../../data/types/TRole";
+import { APIBaseUrl } from "../../data/constants/APIBaseUrl";
 
 const Planner = () => {
   const [ressources, setRessources] = useState<IRessource[]>();
@@ -23,7 +24,6 @@ const Planner = () => {
     const getUsersList = async () => {
       const roles: TRole[] = ["Dessinateur", "Ingénieur", "Administrateur"];
       const users = [] as IRessource[];
-      const APIBaseUrl = import.meta.env.VITE_API_URL;
 
       for (const role of roles) {
         if (auth.user) {

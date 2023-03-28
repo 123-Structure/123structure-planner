@@ -1,6 +1,7 @@
 import { Tabs, useMantineTheme } from "@mantine/core";
 import { showNotification } from "@mantine/notifications";
 import { useEffect } from "react";
+import { APIBaseUrl } from "../../../../data/constants/APIBaseUrl";
 import { ICustomer } from "../../../../data/interfaces/ICustomer";
 import { IDataAPICategory } from "../../../../data/interfaces/IDataAPICategory";
 import { useAuth } from "../../../../hooks/Auth/useAuth";
@@ -29,8 +30,6 @@ const AgencyList = (props: IAgenceListProps) => {
       const customer = props.customersList.filter(
         (customer) => customer.name === val
       )[0];
-
-      const APIBaseUrl = import.meta.env.VITE_API_URL;
 
       if (customer !== undefined) {
         const response = await fetch(

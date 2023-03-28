@@ -1,5 +1,6 @@
 import { showNotification } from "@mantine/notifications";
 import { useState } from "react";
+import { APIBaseUrl } from "../../data/constants/APIBaseUrl";
 import { IRessource } from "../../data/interfaces/IRessource";
 import { decodeJwt } from "../../utils/decodeJwt";
 import { useAuth } from "./useAuth";
@@ -10,16 +11,14 @@ export const useLogin = () => {
 
   const login = async (email: string, password: string) => {
     setIsLoading(true);
-    const response = await fetch(
-      `${import.meta.env.VITE_API_URL}/api/users/login`,
-      {
-        method: "POST",
-        body: JSON.stringify({ email, password }),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    );
+
+    const response = await fetch(`${APIBaseUrl}/api/users/login`, {
+      method: "POST",
+      body: JSON.stringify({ email, password }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
     const data = (await response.json()) as IRessource | any;
 
     if (!response.ok) {

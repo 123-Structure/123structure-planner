@@ -10,6 +10,7 @@ import {
   IconUsers,
 } from "@tabler/icons";
 import { useEffect, useState } from "react";
+import { APIBaseUrl } from "../../../../../data/constants/APIBaseUrl";
 import { IApiUserList } from "../../../../../data/interfaces/IApiUserList";
 import { IAppointment } from "../../../../../data/interfaces/IAppointment";
 import { ICustomer } from "../../../../../data/interfaces/ICustomer";
@@ -171,9 +172,7 @@ const CustomerRelationship = (props: ICustomerRelationshipProps) => {
         changedCustomer.priceList = priceList;
 
         const response = await fetch(
-          `${import.meta.env.VITE_API_URL}/api/customers/${
-            changedCustomer._id as string
-          }`,
+          `${APIBaseUrl}/api/customers/${changedCustomer._id as string}`,
           {
             method: "PATCH",
             body: JSON.stringify({
@@ -272,8 +271,6 @@ const CustomerRelationship = (props: ICustomerRelationshipProps) => {
   useEffect(() => {
     const getUsersList = async () => {
       if (auth.user) {
-        const APIBaseUrl = import.meta.env.VITE_API_URL;
-
         const response = await fetch(`${APIBaseUrl}/api/users/Commercial`, {
           method: "GET",
           headers: {

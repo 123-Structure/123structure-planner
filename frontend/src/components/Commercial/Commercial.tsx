@@ -12,6 +12,7 @@ import { useUpdateCustomerRoutes } from "../../hooks/CustomerRoutes/useUpdateCus
 import { useUpdateCustomer } from "../../hooks/Customer/useUpdateCustomer";
 import { useAuth } from "../../hooks/Auth/useAuth";
 import { IApiUserList } from "../../data/interfaces/IApiUserList";
+import { APIBaseUrl } from "../../data/constants/APIBaseUrl";
 
 const Commercial = () => {
   const [commercialList, setCommercialList] = useState<IApiUserList[]>();
@@ -39,8 +40,6 @@ const Commercial = () => {
   useEffect(() => {
     const getUsersList = async () => {
       if (auth.user) {
-        const APIBaseUrl = import.meta.env.VITE_API_URL;
-
         const response = await fetch(`${APIBaseUrl}/api/users/Commercial`, {
           method: "GET",
           headers: {

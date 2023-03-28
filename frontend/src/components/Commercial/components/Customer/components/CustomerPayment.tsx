@@ -9,6 +9,7 @@ import {
   IconCalculator,
 } from "@tabler/icons";
 import { useState } from "react";
+import { APIBaseUrl } from "../../../../../data/constants/APIBaseUrl";
 import { ICustomer } from "../../../../../data/interfaces/ICustomer";
 import { TPaymentType } from "../../../../../data/types/TPaymentType";
 import { useAuth } from "../../../../../hooks/Auth/useAuth";
@@ -83,9 +84,7 @@ const CustomerPayment = (props: ICustomerPaymentProps) => {
         changedCustomer.paymentStatus = paymentStatus;
 
         const response = await fetch(
-          `${import.meta.env.VITE_API_URL}/api/customers/${
-            changedCustomer._id as string
-          }`,
+          `${APIBaseUrl}/api/customers/${changedCustomer._id as string}`,
           {
             method: "PATCH",
             body: JSON.stringify({

@@ -12,6 +12,7 @@ import { useCustomer } from "../../../../hooks/Customer/useCustomer";
 import { useUpdateCustomer } from "../../../../hooks/Customer/useUpdateCustomer";
 import { useAuth } from "../../../../hooks/Auth/useAuth";
 import { showNotification } from "@mantine/notifications";
+import { APIBaseUrl } from "../../../../data/constants/APIBaseUrl";
 
 interface ICustomerListProps {
   customersList: IDataAPICategory[];
@@ -33,8 +34,6 @@ const CustomerList = (props: ICustomerListProps) => {
       const customer = props.customersList.filter(
         (customer) => customer.name === val
       )[0];
-
-      const APIBaseUrl = import.meta.env.VITE_API_URL;
 
       if (customer !== undefined) {
         const response = await fetch(

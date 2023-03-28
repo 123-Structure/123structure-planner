@@ -7,6 +7,7 @@ import { handleSubtitle } from "../../../utils/handleSubtitle";
 import { useUpdateCustomerRoutes } from "../../../../../hooks/CustomerRoutes/useUpdateCustomerRoutes";
 import { useAuth } from "../../../../../hooks/Auth/useAuth";
 import { showNotification } from "@mantine/notifications";
+import { APIBaseUrl } from "../../../../../data/constants/APIBaseUrl";
 
 interface ISearchBarItemProps {
   action: ISearchDataFromAPI;
@@ -96,7 +97,6 @@ const SearchBarItem = (props: ISearchBarItemProps) => {
 
   const handleGetCustomerById = async (id: string) => {
     if (auth.user) {
-      const APIBaseUrl = import.meta.env.VITE_API_URL;
       const response = await fetch(`${APIBaseUrl}/api/customers/${id}`, {
         method: "GET",
         headers: {

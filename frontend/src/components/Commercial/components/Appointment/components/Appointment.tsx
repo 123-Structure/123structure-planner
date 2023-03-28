@@ -34,6 +34,7 @@ import { useUpdateCustomer } from "../../../../../hooks/Customer/useUpdateCustom
 import { useCustomerRoutes } from "../../../../../hooks/CustomerRoutes/useCustomerRoutes";
 import { useUpdateCustomerRoutes } from "../../../../../hooks/CustomerRoutes/useUpdateCustomerRoutes";
 import { useAuth } from "../../../../../hooks/Auth/useAuth";
+import { APIBaseUrl } from "../../../../../data/constants/APIBaseUrl";
 
 interface IAppointmentProps {
   _id: number;
@@ -107,9 +108,7 @@ const Appointment = (props: IAppointmentProps) => {
         changedCustomer.appointment[props._id].contact = appointmentContact;
 
         const response = await fetch(
-          `${import.meta.env.VITE_API_URL}/api/customers/${
-            changedCustomer._id as string
-          }`,
+          `${APIBaseUrl}/api/customers/${changedCustomer._id as string}`,
           {
             method: "PATCH",
             body: JSON.stringify({ appointment: changedCustomer.appointment }),

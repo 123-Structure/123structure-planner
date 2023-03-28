@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { APIBaseUrl } from "../../data/constants/APIBaseUrl";
 import { useAuth } from "./useAuth";
 
 export const useSignUp = () => {
@@ -9,16 +10,14 @@ export const useSignUp = () => {
   const signUp = async (email: string, password: string) => {
     setIsLoading(true);
     setError("");
-    const response = await fetch(
-      `${import.meta.env.VITE_API_URL}/api/users/signUp`,
-      {
-        method: "POST",
-        body: JSON.stringify({ email, password }),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    );
+
+    const response = await fetch(`${APIBaseUrl}/api/users/signUp`, {
+      method: "POST",
+      body: JSON.stringify({ email, password }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
     const data = await response.json();
 
     if (!response.ok) {
