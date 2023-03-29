@@ -5,7 +5,7 @@ import "../../assets/style/Commercial.css";
 import { useMediaQuery } from "@mantine/hooks";
 import MobileCustomerMenu from "./components/Menu/MobileCustomerMenu";
 import NewCustomer from "./components/Menu/NewCustomer";
-import { IconUser } from "@tabler/icons";
+import { IconUser, IconUsers } from "@tabler/icons";
 import { changeFavicon, changeTabTitle } from "../../utils/tabsUtils";
 import { useCustomerRoutes } from "../../hooks/CustomerRoutes/useCustomerRoutes";
 import { useUpdateCustomerRoutes } from "../../hooks/CustomerRoutes/useUpdateCustomerRoutes";
@@ -86,7 +86,7 @@ const Commercial = () => {
         <Tabs.Tab
           className="commercialTab"
           value="*"
-          icon={<IconUser size="1rem" />}
+          icon={<IconUsers size="1rem" />}
           style={{
             color: activeTab === "*" ? "black" : "",
           }}

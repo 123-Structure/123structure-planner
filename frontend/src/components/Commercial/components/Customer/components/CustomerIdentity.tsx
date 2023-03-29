@@ -160,7 +160,7 @@ const CustomerIdentity = (props: ICustomerIdentityProps) => {
         />
         {customer?.commercial.includes(
           userData?.email.split("@")[0] as string
-        ) ? (
+        ) || userData?.role.includes("Administrateur") ? (
           <EditModeToggle
             disabled={
               !validator.isPostalCode(cp, "FR") ||

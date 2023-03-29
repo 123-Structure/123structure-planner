@@ -149,7 +149,7 @@ const CustomerPayment = (props: ICustomerPaymentProps) => {
         />
         {customer?.commercial.includes(
           userData?.email.split("@")[0] as string
-        ) ? (
+        ) || userData?.role.includes("Administrateur") ? (
           <EditModeToggle
             editMode={editCustomerPayment}
             editLabel=""

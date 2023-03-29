@@ -33,10 +33,6 @@
   width: auto;
 }
 
-.menu-mobile {
-  flex-direction: column;
-}
-
 .logoHeaderContainer {
   height: 100%;
   display: flex;

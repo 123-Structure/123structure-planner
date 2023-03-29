@@ -36,68 +36,62 @@ const Header = () => {
       {/* <LottieLoader visible={true} /> */}
       <div className={`header ${smallScreen ? "header-mobile" : ""}`}>
         <div className={`menu ${smallScreen ? "menu-mobile" : ""}`}>
-          {!smallScreen ? (
-            <>
-              <div
-                className="router"
-                style={{
-                  marginRight: userData?.role.includes("Administrateur")
-                    ? 0
-                    : "8px",
-                  borderRight: userData?.role.includes("Administrateur")
-                    ? ""
-                    : "1px solid #dfe2e6",
-                }}
+          <div
+            className="router"
+            style={{
+              marginRight: userData?.role.includes("Administrateur")
+                ? 0
+                : "8px",
+              borderRight: userData?.role.includes("Administrateur")
+                ? ""
+                : "1px solid #dfe2e6",
+            }}
+          >
+            <CustomTooltip
+              label="Planning"
+              withArrow={false}
+              transition="slide-down"
+              delay={500}
+            >
+              <ActionIcon
+                size="xl"
+                variant="filled"
+                color={"yellow"}
+                onClick={() => setRouter("Planning")}
+                disabled={
+                  !userData?.role.includes("Dessinateur") &&
+                  !userData?.role.includes("Ingénieur") &&
+                  !userData?.role.includes("Administrateur")
+                }
               >
-                <CustomTooltip
-                  label="Planning"
-                  withArrow={false}
-                  transition="slide-down"
-                  delay={500}
-                >
-                  <ActionIcon
-                    size="xl"
-                    variant="filled"
-                    color={"yellow"}
-                    onClick={() => setRouter("Planning")}
-                    disabled={
-                      !userData?.role.includes("Dessinateur") &&
-                      !userData?.role.includes("Ingénieur") &&
-                      !userData?.role.includes("Administrateur")
-                    }
-                  >
-                    <IconCalendarEvent size={24} color="black" />
-                  </ActionIcon>
-                </CustomTooltip>
-                <CustomTooltip
-                  label="Commercial"
-                  withArrow={false}
-                  transition="slide-down"
-                  delay={500}
-                >
-                  <ActionIcon
-                    size="xl"
-                    variant="filled"
-                    color={"yellow"}
-                    onClick={() => setRouter("Commercial")}
-                    disabled={
-                      !userData?.role.includes("Commercial") &&
-                      !userData?.role.includes("Administrateur")
-                    }
-                  >
-                    <IconBriefcase size={24} color="black" />
-                  </ActionIcon>
-                </CustomTooltip>
-              </div>
-              {userData?.role.includes("Administrateur") ? (
-                <div className="admin">
-                  <ManageUsers />
-                  <AddProjectFromExcel />
-                </div>
-              ) : (
-                <></>
-              )}
-            </>
+                <IconCalendarEvent size={24} color="black" />
+              </ActionIcon>
+            </CustomTooltip>
+            <CustomTooltip
+              label="Commercial"
+              withArrow={false}
+              transition="slide-down"
+              delay={500}
+            >
+              <ActionIcon
+                size="xl"
+                variant="filled"
+                color={"yellow"}
+                onClick={() => setRouter("Commercial")}
+                disabled={
+                  !userData?.role.includes("Commercial") &&
+                  !userData?.role.includes("Administrateur")
+                }
+              >
+                <IconBriefcase size={24} color="black" />
+              </ActionIcon>
+            </CustomTooltip>
+          </div>
+          {userData?.role.includes("Administrateur") ? (
+            <div className="admin">
+              <ManageUsers />
+              <AddProjectFromExcel />
+            </div>
           ) : (
             <></>
           )}

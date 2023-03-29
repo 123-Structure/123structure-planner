@@ -309,7 +309,7 @@ const CustomerRelationship = (props: ICustomerRelationshipProps) => {
         />
         {customer?.commercial.includes(
           userData?.email.split("@")[0] as string
-        ) ? (
+        ) || userData?.role.includes("Administrateur") ? (
           <EditModeToggle
             disabled={false}
             editMode={editCustomerRelationship}
