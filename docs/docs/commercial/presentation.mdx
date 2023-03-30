@@ -1,24 +1,19 @@
 ---
 sidebar_position: 1
+custom_edit_url: null
 ---
+
+import CustomCard from "../../src/components/utils/CustomCard.tsx";
 
 # Présentation du module
 
-Le module "Commercial" se compose de deux parties principales :
+Le module **"Commercial"** se compose de deux parties principales :
 
-<div class="card-demo">
-  <div class="card__body shadow--md">
-    <img src="/img/commercial/app.png" alt="Commercial" />
-  </div>
-</div>
+<CustomCard img={"/img/commercial/app.png"} />
 
 ## En-tête
 
-<div class="card-demo" style={{ marginBottom: "2rem" }}>
-  <div class="card__body shadow--md">
-    <img src="/img/commercial/header.png" alt="Commercial" />
-  </div>
-</div>
+<CustomCard img={"/img/commercial/header.png"} />
 
 Cette zone permet de naviguer entre les modules et de réaliser une recherche dans la base de données.
 
@@ -30,15 +25,11 @@ Pour plus d'informations :
 
 ## Application
 
-<div class="card-demo" style={{ marginBottom: "2rem" }}>
-  <div class="card__body shadow--md">
-    <img src="/img/commercial/commercial.png" alt="Commercial" />
-  </div>
-</div>
+<CustomCard img={"/img/commercial/commercial.png"} />
 
-C'est le corps du module "Commercial". C'est ici que vous retrouvez le carnet d'adresses vers les clients enregistrés dans l'application avec nottament :
+C'est le corps du module **"Commercial"**. C'est ici que vous retrouvez **les menus de filtrage** menant vers les clients enregistrés dans l'application avec nottamment :
 
-- Les coordonées d'un client (adresse postale, numéro de téléphone, ...),
+- Les coordonnées d'un client (adresse postale, numéro de téléphone, ...),
 - Les interlocuteurs,
 - Le commercial référent,
 - Le nombre de dossiers produits et la facturation,

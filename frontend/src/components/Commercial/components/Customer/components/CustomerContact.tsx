@@ -198,7 +198,7 @@ const CustomerContact = (props: ICustomerContactProps) => {
         />
         {customer?.commercial.includes(
           userData?.email.split("@")[0] as string
-        ) ? (
+        ) || userData?.role.includes("Administrateur") ? (
           <ActionIcon color={"yellow"} onClick={() => setOpenNewContact(true)}>
             <IconCirclePlus size={20} color="black" />
           </ActionIcon>
