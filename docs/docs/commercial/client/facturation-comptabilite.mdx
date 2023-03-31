@@ -3,8 +3,84 @@ sidebar_position: 3
 custom_edit_url: null
 ---
 
+import CustomCard from "../../../src/components/utils/CustomCard.tsx";
+
 # Facturation / Comptabilité
 
-**🚧 En cours de construction**
+<CustomCard img={"/img/commercial/customer_payment.png"} />
 
-![alt text]("/../../../../static/img/illustration/Bricklayer-bro.svg)
+## Informations générales
+
+### Mode lecture
+
+La carte **Facturation / Comptabilité** affiche plusieurs informations :
+
+- Le délai de paiement enregistrés pour le client :
+  - 30 jours (fin de mois),
+  - 30 jours (net),
+  - 45 jours
+- Le mode de paiement :
+  - Chèque,
+  - Virement,
+  - Lettre de change relevé (LCR),
+  - Contrat cadre
+- Le statut de paiement :
+  - <p style={{ margin: 0, paddindLeft: "8px", backgroundColor: "#8CE99A" }}>
+      A : Etat par défaut - Aucun défaut de paiement,
+    </p>
+  - <p style={{ margin: 0, paddindLeft: "8px", backgroundColor: "#FFE066" }}>
+      B : Avertissement - Client ayant déjà eu des retards de paiment,
+    </p>
+  - <p style={{ margin: 0, paddindLeft: "8px", backgroundColor: "#FFA8A8" }}>
+      C : Alerte - Client qualifié de "Mauvais payeur"
+    </p>
+- La facturation de l'année n-1 pour le client séléctionné,
+- La facturation moyenne par dossier pour l'année n-1,
+- La facturation de l'année l'année en cours pour le client séléctionné,
+- La facturation moyenne par dossier pour l'année en cours,
+
+:::info
+
+La facturation de l'année passée et de l'année en cours sera récupérée depuis le module **[Planning](/docs/category/planning)** une fois mis en place.
+
+:::
+
+### Mode édition
+
+<div style={{ display: "flex", gap: "8px", marginBottom: "32px" }}>
+  <img src={"/img/illustration/pencil.svg"} alt="Commercial" />
+  <p style={{ margin: 0 }}>
+    Le mode édition peut se lancer en cliquant sur <b>le crayon</b> en haut à
+    droite de la carte.
+  </p>
+</div>
+
+<CustomCard img={"/img/commercial/customer_payment_edit.png"} />
+
+Dans ce mode vous pouvez modifier :
+
+- Le délai de paiement enregistrés pour le client :
+  - 30 jours (fin de mois),
+  - 30 jours (net),
+  - 45 jours
+- Le mode de paiement :
+  - Chèque,
+  - Virement,
+  - Lettre de change relevé (LCR),
+  - Contrat cadre
+- Le statut de paiement :
+  - <p style={{ margin: 0, paddindLeft: "8px", backgroundColor: "#8CE99A" }}>
+      A : Etat par défaut - Aucun défaut de paiement,
+    </p>
+  - <p style={{ margin: 0, paddindLeft: "8px", backgroundColor: "#FFE066" }}>
+      B : Avertissement - Client ayant déjà eu des retards de paiment,
+    </p>
+  - <p style={{ margin: 0, paddindLeft: "8px", backgroundColor: "#FFA8A8" }}>
+      C : Alerte - Client qualifié de "Mauvais payeur"
+    </p>
+
+:::caution
+
+Un commercial doit être assigné comme **"Commercial référent"** pour pouvoir éditer la carte.
+
+:::

@@ -17,12 +17,13 @@ La carte **Coordonnées de contact** affiche plusieurs informations :
 
 - Le nom du client,
 - Le logo du client,
-- L'adresse postale
+- L'adresse postale,
 - L'adresse mail principale de contact,
 - Le numéro de téléphone de contact
 
 :::tip
 
+- Un clic sur l'adresse ouvre Google Maps dans un nouvelle onglet,
 - Un clic sur l'adresse mail déclenchera l'ouverture d'Outlook,
 - Un clic sur le numéro de téléphone enverra le numéro vers votre smartphone. **(Varie suivant les réglages de votre navigateur internet)**
 
@@ -30,7 +31,7 @@ La carte **Coordonnées de contact** affiche plusieurs informations :
 
 :::info
 
-Il arrive que certains logod ne se chargent pas correctement. Ce problème sera réglé dans les prochaines mises à jour.
+Il arrive que certains logos ne se chargent pas correctement. Ce problème sera réglé dans les prochaines mises à jour.
 
 :::
 
@@ -38,7 +39,10 @@ Il arrive que certains logod ne se chargent pas correctement. Ce problème sera 
 
 <div style={{ display: "flex", gap: "8px", marginBottom: "32px" }}>
   <img src={"/img/illustration/pencil.svg"} alt="Commercial" />
-  Le mode édition peut se lancer en cliquant sur <b>le crayon</b> en haut de la carte.
+  <p style={{ margin: 0 }}>
+    Le mode édition peut se lancer en cliquant sur <b>le crayon</b> en haut à
+    droite de la carte.
+  </p>
 </div>
 
 <CustomCard img={"/img/commercial/customer_identity_edit.png"} />
@@ -56,14 +60,17 @@ Dans ce mode vous pouvez modifier :
 Renseigner un "-" si vous souhaitez laisser le numéro de téléphone ou l'adresse mail non renseignés.
 
 :::
+
 :::caution
+
+Un commercial doit être assigné comme **"Commercial référent"** pour pouvoir éditer la carte.
 
 - Obligation de saisir 5 chiffres pour le code postale
 - Obligation de saisir un format d'adresse mail valide → exemple@domaine.fr
 - Obligation de saisir un format de numéro de téléphone valide :
   - 0000000000,
   - 00 00 00 00 00,
-  - 00-00-00-00-00
+  - 00-00-00-00-00,
   - +33600000000
 
 :::
@@ -74,7 +81,7 @@ Renseigner un "-" si vous souhaitez laisser le numéro de téléphone ou l'adres
 
 <CustomCard img={"/img/commercial/customer_contact_hover.png"} />
 
-Les interlocuteurs sont listés sous les informations générales d'un client, un clic sur le bouton déclenche l'ouverture d'une fenêtre contextuelle :
+Les interlocuteurs sont listés sous les informations générales d'un client. Un clic sur le bouton déclenche l'ouverture d'une fenêtre contextuelle :
 
 <CustomCard img={"/img/commercial/customer_contact_modal.png"} />
 
@@ -88,15 +95,20 @@ Plusieurs informations sont alors affichées :
   - Conduite de travaux,
   - Assistance technique,
   - Secrétariat,
-  - Autre
+  - Autre,
 - Adresse mail personnelle de contact,
-- Numéro de téléphone _**(Possibilité de renseigner 2 numéros de téléphone)**_
+- Numéro de téléphone **(Possibilité de renseigner 2 numéros de téléphone)**
 
 :::tip
 
-- Un survol sur un bouton **"Interlocuteurs"** permet d'afficher des informations rapides sur celui-ci,
+- Un survol sur un bouton **"Interlocuteur"** permet d'afficher des informations rapides sur celui-ci,
 - Un clic sur l'adresse mail déclenchera l'ouverture d'Outlook,
 - Un clic sur le numéro de téléphone enverra le numéro vers votre smartphone. **(Varie suivant les réglages de votre navigateur internet)**
+
+:::
+:::info
+
+Les interlocuteurs enregistrées seront disponibles pour la création de **["Nouveau rendez-vous"](/docs/commercial/client/visites-reunion#nouveau-rendez-vous)**
 
 :::
 
@@ -104,8 +116,10 @@ Plusieurs informations sont alors affichées :
 
 <div style={{ display: "flex", gap: "8px", marginBottom: "32px" }}>
   <img src={"/img/illustration/pencil.svg"} alt="Commercial" />
-  Le mode édition peut se lancer en cliquant sur <b>le crayon</b> en haut de la fenêtre
-  contextuelle.
+  <p style={{ margin: 0 }}>
+    Le mode édition peut se lancer en cliquant sur <b>le crayon</b> en haut à
+    droite de la fenêtre contextuelle.
+  </p>
 </div>
 
 <CustomCard img={"/img/commercial/customer_contact_modal_edit.png"} />
@@ -121,9 +135,9 @@ Dans ce mode, vous pouvez modifier ou ajouter :
   - Conduite de travaux,
   - Assistance technique,
   - Secrétariat,
-  - Autre
+  - Autre,
 - Adresse mail,
-- Téléphone n°1
+- Téléphone n°1,
 - Téléphone n°2
 
 :::info
@@ -132,19 +146,27 @@ Renseigner un "-" si vous souhaitez laisser un numéro de téléphone ou l'adres
 
 :::
 
-## Nouvel interlocuteur
+:::caution
+
+Un commercial doit être assigné comme **"Commercial référent"** pour pouvoir éditer un interlocuteur.
+
+:::
+
+## Nouvel contact
 
 <div style={{ display: "flex", gap: "8px", marginBottom: "32px" }}>
   <img src={"/img/illustration/circle-plus.svg"} alt="Commercial" />
-  Un nouvel interlocuteur peut être créé en cliquant sur <b>le "+"</b> à droite du
-  titre "Interlocuteurs"
+  <p style={{ margin: 0 }}>
+    Un nouvel interlocuteur peut être créé en cliquant sur <b>le "+"</b> à
+    droite du titre "Interlocuteurs".
+  </p>
 </div>
 
 Un clic sur le bouton déclenche l'ouverture d'une fenêtre contextuelle :
 
 <CustomCard img={"/img/commercial/customer_contact_new.png"} />
 
-**4 champs** de saisie sont obligatoires <span style={{color:"red", fontWeight:"bold"}}>(\*)</span> pour valider la création :
+Dans ce mode, vous pouvez saisir :
 
 - M. ou Mme <span style={{color:"red", fontWeight:"bold"}}> \*</span>,
 - Prénom<span style={{color:"red", fontWeight:"bold"}}> \*</span>,
@@ -155,13 +177,25 @@ Un clic sur le bouton déclenche l'ouverture d'une fenêtre contextuelle :
   - Conduite de travaux,
   - Assistance technique,
   - Secrétariat,
-  - Autre
+  - Autre,
 - Adresse mail,
-- Téléphone n°1
+- Téléphone n°1,
 - Téléphone n°2
 
 :::info
 
 Le nouvel interlocuteur est automatiquement attribué au client actuellement consulté.
+
+:::
+:::caution
+
+Un commercial doit être assigné comme **"Commercial référent"** pour pouvoir ajouter un nouvel interlocuteur.
+
+**4 champs** de saisie sont obligatoires <span style={{color:"red", fontWeight:"bold"}}>(\*)</span> pour valider la création :
+
+- M. ou Mme <span style={{color:"red", fontWeight:"bold"}}> \*</span>,
+- Prénom<span style={{color:"red", fontWeight:"bold"}}> \*</span>,
+- Nom<span style={{color:"red", fontWeight:"bold"}}> \*</span>,
+- Poste occupé<span style={{color:"red", fontWeight:"bold"}}> \*</span>
 
 :::

@@ -1,0 +1,76 @@
+---
+sidebar_position: 2
+custom_edit_url: null
+---
+
+import CustomCard from "../../../src/components/utils/CustomCard.tsx";
+
+# Relation Commerciale
+
+<CustomCard img={"/img/commercial/customer_relationship.png"} />
+
+## Informations générales
+
+### Mode lecture
+
+La carte **Relation commercial** affiche plusieurs informations :
+
+- Le / Les commerciaux référent(s),
+- Date et objet de la dernière visite / réunion,
+- Objectif de production pour l'année n-1 avec le client séléctionné,
+- Production de l'année n-1 avec le client séléctionné,
+- Objectif de production pour l'année cours avec le client séléctionné,
+- Production de l'année en cours avec le client séléctionné,
+- Grille tarifaire au format PDF
+
+:::info
+
+La production de l'année passée et de l'année en cours sera récupérée depuis le module **[Planning](/docs/category/planning)** une fois mis en place.
+
+:::
+
+### Mode édition
+
+<div style={{ display: "flex", gap: "8px", marginBottom: "32px" }}>
+  <img src={"/img/illustration/pencil.svg"} alt="Commercial" />
+  <p style={{ margin: 0 }}>
+    Le mode édition peut se lancer en cliquant sur <b>le crayon</b> en haut à
+    droite de la carte.
+  </p>
+</div>
+
+<CustomCard img={"/img/commercial/customer_relationship_edit.png"} />
+
+Dans ce mode vous pouvez modifier :
+
+- Le / Les commerciaux référent(s),
+- Objectif de production pour l'année n-1 avec le client séléctionné,
+- Objectif de production pour l'année an cours avec le client séléctionné,
+- Le ficher "Grille tarifaire" **au format PDF**
+
+:::info
+
+<div style={{ display: "flex", gap: "8px", marginBottom: "32px" }}>
+  <img src={"/img/illustration/chevron-up.svg"} alt="Commercial" />
+  <p style={{ margin: 0 }}>
+    Un clic sur <b>les chevrons hauts</b> permet une incrémentation de 10
+    projets.
+  </p>
+</div>
+
+<div style={{ display: "flex", gap: "8px", marginBottom: "32px" }}>
+  <img src={"/img/illustration/chevron-down.svg"} alt="Commercial" />
+  <p style={{ margin: 0 }}>
+    Un clic sur <b>les chevrons bas</b> permet une décrémentation de 10 projets.
+  </p>
+</div>
+
+Une saisie manuel est toujours possible.
+
+:::
+
+:::caution
+
+Un commercial doit être assigné comme **"Commercial référent"** pour pouvoir éditer la carte.
+
+:::
