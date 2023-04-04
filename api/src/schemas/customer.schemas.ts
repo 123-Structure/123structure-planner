@@ -81,6 +81,10 @@ export const customerSchema = new Schema<ICustomer>(
       type: String,
       required: true,
     },
+    contratCadre: {
+      type: Boolean,
+      required: false,
+    },
   },
   {
     timestamps: true,

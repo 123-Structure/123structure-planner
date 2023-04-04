@@ -24,4 +24,5 @@ export interface ICustomer {
   paymentDeadline: string;
   paymentType: string;
   paymentStatus: string;
+  contratCadre: boolean;
 }

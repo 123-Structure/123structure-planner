@@ -187,12 +187,7 @@ const CustomerPayment = (props: ICustomerPaymentProps) => {
             value={selectValue(
               editCustomerPayment,
               paymentType,
-              [
-                "Chèque",
-                "Virement",
-                "Lettre de change relevé (LCR)",
-                "Contrat cadre",
-              ],
+              ["Chèque", "Virement", "Lettre de change relevé (LCR)", "Autre"],
               ["Mode de paiement :"]
             )}
             updateValue={[setPaymentType]}

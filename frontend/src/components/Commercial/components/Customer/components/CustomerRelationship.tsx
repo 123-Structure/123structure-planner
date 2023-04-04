@@ -1,4 +1,4 @@
-import { Card, FileInput, MultiSelect, useMantineTheme } from "@mantine/core";
+import { Card, FileInput, useMantineTheme, Switch, Badge } from "@mantine/core";
 import { useMediaQuery } from "@mantine/hooks";
 import { showNotification } from "@mantine/notifications";
 import {
@@ -87,6 +87,8 @@ const CustomerRelationship = (props: ICustomerRelationshipProps) => {
       : []
   );
 
+  const [contratCadre, setContratCadre] = useState(props.customer.contratCadre);
+
   const currentProjectInvoiced = 0;
   const previousYearProjectInvoiced = 0;
 
@@ -171,6 +173,8 @@ const CustomerRelationship = (props: ICustomerRelationshipProps) => {
 
         changedCustomer.priceList = priceList;
 
+        changedCustomer.contratCadre = contratCadre;
+
         const response = await fetch(
           `${APIBaseUrl}/api/customers/${changedCustomer._id as string}`,
           {
@@ -179,6 +183,7 @@ const CustomerRelationship = (props: ICustomerRelationshipProps) => {
               commercial: changedCustomer.commercial,
               projectGoal: changedCustomer.projectGoal,
               priceList: priceList,
+              contratCadre: contratCadre,
             }),
             headers: {
               "Content-Type": "application/json",
@@ -499,6 +504,26 @@ const CustomerRelationship = (props: ICustomerRelationshipProps) => {
           </div>
         </div>
       </div>
+      {editCustomerRelationship ? (
+        <Switch
+          checked={contratCadre}
+          onChange={(event) => setContratCadre(event.currentTarget.checked)}
+          label={"Contrat cadre ?"}
+          mt={"16px"}
+        />
+      ) : props.customer.contratCadre ? (
+        <Badge
+          color={contratCadre ? "dark" : "gray"}
+          variant="filled"
+          style={{
+            marginTop: "16px",
+          }}
+        >
+          Contrat Cadre
+        </Badge>
+      ) : (
+        <></>
+      )}
       <CustomDivider />
       {editCustomerRelationship ? (
         <FileInput
