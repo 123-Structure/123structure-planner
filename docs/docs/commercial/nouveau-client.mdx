@@ -1,0 +1,61 @@
+---
+sidebar_position: 4
+---
+
+import CustomCard from "../../src/components/utils/CustomCard.tsx";
+
+# Nouveau client
+
+<div style={{ display: "flex", gap: "8px", marginBottom: "32px" }}>
+  <img src={"/img/illustration/circle-plus.svg"} alt="Commercial" />
+  <p style={{ margin: 0 }}>
+    N'importe quelle commercial peut créer une nouvelle fiche client dans la
+    base de donnée. Pour cela il suffit de cliquer sur le <b>le "+"</b> ou le
+    bouton <b>"Nouvelle fiche client"</b> à droite des filtres "Commerciaux".
+  </p>
+</div>
+
+Un clic sur le bouton déclenche l'ouverture d'une fenêtre contextuelle :
+
+<CustomCard img={"/img/commercial/customer_new.png"} />
+
+Dans ce mode, vous pouvez saisir :
+
+- Le commercial référent du nouveau client <span style={{color:"red", fontWeight:"bold"}}> \*</span>,
+- La catégorie associé au nouveau client <span style={{color:"red", fontWeight:"bold"}}> \*</span>,
+- Le rattachement à un groupe existant ou bien à un nouveau,
+- La dénomination du nouveau client <span style={{color:"red", fontWeight:"bold"}}> \*</span>,
+- L'adresse postal du nouveau client <span style={{color:"red", fontWeight:"bold"}}> \*</span>,
+- L'email principal de contact du nouvea client,
+- Le numéro de téléphone principal du nouveau client,
+
+Vous pouvez également :
+
+- Ajouter un logo,
+- Ajouter la grille tarifaire associé au nouveau client,
+- Choisir un objectif de dossier produit pour l'année en cours,
+- Renseigner les délais de paiement :
+  - 30 jours (fin de mois),
+  - 30 jours (net),
+  - 45 jours
+- Renseigner le mode de paiement choisis par le nouveau client :
+
+  - Chèque,
+  - Virement,
+  - Lettre de change relevé (LCR),
+
+:::tip
+
+La liste des groupements de client est automatiquement mise à jour en fonction de la catégorie de client selectionné précédement.
+
+:::
+:::caution
+
+**4 champs** de saisie sont obligatoires <span style={{color:"red", fontWeight:"bold"}}>(\*)</span> pour valider la création :
+
+- Le commercial référent du nouveau client <span style={{color:"red", fontWeight:"bold"}}> \*</span>,
+- La catégorie associé au nouveau client <span style={{color:"red", fontWeight:"bold"}}> \*</span>,
+- La dénomination du nouveau client <span style={{color:"red", fontWeight:"bold"}}> \*</span>,
+- L'adresse postal du nouveau client <span style={{color:"red", fontWeight:"bold"}}> \*</span>,
+
+:::

@@ -10,9 +10,15 @@ import { ActionIcon, useMantineTheme } from "@mantine/core";
 import { useMediaQuery } from "@mantine/hooks";
 import { useAuth } from "../../hooks/Auth/useAuth";
 import { useUserData } from "../../hooks/Auth/useUserData";
-import { IconBriefcase, IconCalendarEvent } from "@tabler/icons";
+import {
+  IconBriefcase,
+  IconBulb,
+  IconCalendarEvent,
+  IconHelp,
+} from "@tabler/icons";
 import { useUpdateRouter } from "../../hooks/Router/useUpdateRouter";
 import CustomTooltip from "../utils/CustomTooltip";
+import { HelpUrl } from "../../data/constants/HelpUrl";
 
 const Header = () => {
   const defaultOptions = {
@@ -31,6 +37,10 @@ const Header = () => {
   const userData = useUserData();
   const setRouter = useUpdateRouter();
 
+  const openURL = (url: string) => {
+    window.open(url, "_blank");
+  };
+
   return (
     <>
       {/* <LottieLoader visible={true} /> */}
@@ -38,14 +48,6 @@ const Header = () => {
         <div className={`menu ${smallScreen ? "menu-mobile" : ""}`}>
           <div
             className="router"
-            style={{
-              marginRight: userData?.role.includes("Administrateur")
-                ? 0
-                : "8px",
-              borderRight: userData?.role.includes("Administrateur")
-                ? ""
-                : "1px solid #dfe2e6",
-            }}
           >
             <CustomTooltip
               label="Planning"
@@ -84,6 +86,52 @@ const Header = () => {
                 }
               >
                 <IconBriefcase size={24} color="black" />
+              </ActionIcon>
+            </CustomTooltip>
+          </div>
+          <div
+            className="router"
+            style={{
+              marginRight: userData?.role.includes("Administrateur")
+                ? 0
+                : "8px",
+              borderRight: userData?.role.includes("Administrateur")
+                ? ""
+                : "1px solid #dfe2e6",
+            }}
+          >
+            <CustomTooltip
+              label="Aide en ligne"
+              withArrow={false}
+              transition="slide-down"
+              delay={500}
+            >
+              <ActionIcon
+                size="xl"
+                variant="filled"
+                color={"yellow"}
+                onClick={() => openURL(HelpUrl)}
+                disabled={!userData}
+              >
+                <IconHelp size={24} color="black" />
+              </ActionIcon>
+            </CustomTooltip>
+            <CustomTooltip
+              label="Boîte à idées"
+              withArrow={false}
+              transition="slide-down"
+              delay={500}
+            >
+              <ActionIcon
+                size="xl"
+                variant="filled"
+                color={"yellow"}
+                onClick={() =>
+                  openURL(import.meta.env.VITE_SUGGESTION_MSTEAM_URL)
+                }
+                disabled={!userData}
+              >
+                <IconBulb size={24} color="black" />
               </ActionIcon>
             </CustomTooltip>
           </div>
