@@ -32,6 +32,17 @@ import { useUpdateCustomer } from "../../../../hooks/Customer/useUpdateCustomer"
 import { useAuth } from "../../../../hooks/Auth/useAuth";
 import { useUserData } from "../../../../hooks/Auth/useUserData";
 import { APIBaseUrl } from "../../../../data/constants/APIBaseUrl";
+import { RichTextEditor, Link } from "@mantine/tiptap";
+import { BubbleMenu, FloatingMenu, useEditor } from "@tiptap/react";
+import Highlight from "@tiptap/extension-highlight";
+import StarterKit from "@tiptap/starter-kit";
+import Underline from "@tiptap/extension-underline";
+import TextAlign from "@tiptap/extension-text-align";
+import Superscript from "@tiptap/extension-superscript";
+import SubScript from "@tiptap/extension-subscript";
+import Placeholder from "@tiptap/extension-placeholder";
+import { Color } from "@tiptap/extension-color";
+import TextStyle from "@tiptap/extension-text-style";
 
 interface INewAppointmentProps {
   customer: ICustomer;
@@ -98,7 +109,7 @@ const NewAppointment = (props: INewAppointmentProps) => {
               city: city,
             },
             title: appointmentTitle as TAppointmentTitle,
-            content: "",
+            content: editor?.getHTML() as string,
           };
 
           changedCustomer.appointment.push(newAppointment);
@@ -127,6 +138,8 @@ const NewAppointment = (props: INewAppointmentProps) => {
           }
 
           setCustomer(changedCustomer);
+
+          editor?.commands.clearContent(true);
 
           showNotification({
             title: `✅ Nouveau rendez-vous sauvegardé`,
@@ -199,6 +212,54 @@ const NewAppointment = (props: INewAppointmentProps) => {
     setCp(props.customer.location.cp);
     setCity(props.customer.location.city);
   };
+
+  const editor = useEditor({
+    extensions: [
+      StarterKit,
+      Underline,
+      Link,
+      Superscript,
+      SubScript,
+      Highlight,
+      TextStyle,
+      Color,
+      TextAlign.configure({ types: ["heading", "paragraph"] }),
+      Placeholder.configure({
+        placeholder: "Saisir ici votre compte-rendu de visite",
+      }),
+    ],
+    content: "",
+  });
+
+  const colorPicker = (
+    <RichTextEditor.ColorPicker
+      colors={[
+        "#25262b",
+        "#868e96",
+        "#fa5252",
+        "#e64980",
+        "#be4bdb",
+        "#7950f2",
+        "#4c6ef5",
+        "#228be6",
+        "#15aabf",
+        "#12b886",
+        "#40c057",
+        "#82c91e",
+        "#fab005",
+        "#fd7e14",
+      ]}
+    />
+  );
+
+  const alignText = (
+    <RichTextEditor.ControlsGroup>
+      <RichTextEditor.AlignLeft />
+      <RichTextEditor.AlignCenter />
+      <RichTextEditor.AlignJustify />
+      <RichTextEditor.AlignRight />
+    </RichTextEditor.ControlsGroup>
+  );
 
   return (
     <>
@@ -323,6 +384,64 @@ const NewAppointment = (props: INewAppointmentProps) => {
             }}
             error={errorCity}
           />
+
+          <RichTextEditor className="textEditor" editor={editor}>
+            <RichTextEditor.Toolbar sticky>
+              {editor && (
+                <BubbleMenu editor={editor}>
+                  <RichTextEditor.ControlsGroup>
+                    {colorPicker}
+                    <RichTextEditor.Bold />
+                    <RichTextEditor.Italic />
+                    <RichTextEditor.Underline />
+                    <RichTextEditor.Link />
+                    <RichTextEditor.Unlink />
+                  </RichTextEditor.ControlsGroup>
+                  {alignText}
+                </BubbleMenu>
+              )}
+              {editor && (
+                <FloatingMenu editor={editor}>
+                  <RichTextEditor.ControlsGroup>
+                    <RichTextEditor.H1 />
+                    <RichTextEditor.H2 />
+                    <RichTextEditor.BulletList />
+                    {colorPicker}
+                  </RichTextEditor.ControlsGroup>
+                </FloatingMenu>
+              )}
+              {colorPicker}
+              <RichTextEditor.ControlsGroup>
+                <RichTextEditor.Bold />
+                <RichTextEditor.Italic />
+                <RichTextEditor.Underline />
+                <RichTextEditor.Strikethrough />
+                <RichTextEditor.ClearFormatting />
+                <RichTextEditor.Highlight />
+              </RichTextEditor.ControlsGroup>
+              <RichTextEditor.ControlsGroup>
+                <RichTextEditor.H1 />
+                <RichTextEditor.H2 />
+                <RichTextEditor.H3 />
+                <RichTextEditor.H4 />
+              </RichTextEditor.ControlsGroup>
+              <RichTextEditor.ControlsGroup>
+                <RichTextEditor.Blockquote />
+                <RichTextEditor.Hr />
+                <RichTextEditor.BulletList />
+                <RichTextEditor.OrderedList />
+                <RichTextEditor.Subscript />
+                <RichTextEditor.Superscript />
+              </RichTextEditor.ControlsGroup>
+              <RichTextEditor.ControlsGroup>
+                <RichTextEditor.Link />
+                <RichTextEditor.Unlink />
+              </RichTextEditor.ControlsGroup>
+              {alignText}
+            </RichTextEditor.Toolbar>
+
+            <RichTextEditor.Content />
+          </RichTextEditor>
         </div>
         <div className="newContactButtonContainer">
           <CustomButton

@@ -7,6 +7,7 @@ import {
   SelectItem,
   TextInput,
   useMantineTheme,
+  Switch,
 } from "@mantine/core";
 import { useMediaQuery } from "@mantine/hooks";
 import {
@@ -34,6 +35,8 @@ import { isPhoneFormat } from "../../../../utils/validateInput";
 import { useAuth } from "../../../../hooks/Auth/useAuth";
 import { IApiUserList } from "../../../../data/interfaces/IApiUserList";
 import { APIBaseUrl } from "../../../../data/constants/APIBaseUrl";
+import { useCustomerRoutes } from "../../../../hooks/CustomerRoutes/useCustomerRoutes";
+import { useUpdateCustomerRoutes } from "../../../../hooks/CustomerRoutes/useUpdateCustomerRoutes";
 
 const NewCustomer = () => {
   const [commercialList, setCommercialList] = useState<IApiUserList[]>();
@@ -55,6 +58,7 @@ const NewCustomer = () => {
   const [priceListFile, setPriceListFile] = useState<File | null>(null);
   const [pdfViewerURL, setPdfViewerURL] = useState("");
   const [priceList, setPriceList] = useState("");
+  const [contratCadre, setContratCadre] = useState(false);
 
   const [errorCommercial, setErrorCommercial] = useState("");
   const [errorCustomerCategory, setErrorCustomerCategory] = useState("");
@@ -67,6 +71,8 @@ const NewCustomer = () => {
   const smallScreen = useMediaQuery(`(max-width: ${theme.breakpoints.xs})`);
 
   const { auth } = useAuth();
+  const customerRoutes = useCustomerRoutes();
+  const setCustomerRoutes = useUpdateCustomerRoutes();
 
   const [groupList, setGroupList] = useState<(string | SelectItem)[]>([]);
 
@@ -164,6 +170,7 @@ const NewCustomer = () => {
                   | "-"),
           paymentType: paymentType === "" ? "-" : (paymentType as TPaymentType),
           paymentStatus: "A",
+          contratCadre: contratCadre,
         };
 
         const response = await fetch(`${APIBaseUrl}/api/customers`, {
@@ -174,6 +181,7 @@ const NewCustomer = () => {
             Authorization: `Bearer ${auth.user.token}`,
           },
         });
+
         const data = await response.json();
 
         if (!response.ok) {
@@ -184,11 +192,19 @@ const NewCustomer = () => {
           });
         }
 
+        setCustomerRoutes({
+          ...customerRoutes,
+          category: customerCategory,
+          customer: customerName,
+          agency: group,
+        });
+
         showNotification({
           title: `✅ Nouvelle fiche client sauvegardé`,
           message: `${customerName} ajouté à l'annuaire de client`,
           color: "green",
         });
+
         handleCloseModal();
       } else {
         commercial.length <= 0
@@ -526,6 +542,12 @@ const NewCustomer = () => {
             ) : (
               <></>
             )}
+            <Switch
+              checked={contratCadre}
+              onChange={(event) => setContratCadre(event.currentTarget.checked)}
+              label={"Contrat cadre ?"}
+              mt={"16px"}
+            />
           </div>
           <div style={{ width: smallScreen ? "100%" : "33%" }}>
             <NumberInput
@@ -540,8 +562,8 @@ const NewCustomer = () => {
               }}
             />
             <Select
-              label={"Délai de paiement"}
-              data={["30", "45"]}
+              label={"Délai de paiement (en jours)"}
+              data={["30 (Fin de mois)", "30 (Net)", "45"]}
               value={paymentDeadline}
               onChange={(val) => {
                 setPaymentDeadline(val as string);
