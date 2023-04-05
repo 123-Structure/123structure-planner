@@ -2,8 +2,48 @@
 sidebar_position: 2
 ---
 
+import CustomCard from "../../src/components/utils/CustomCard.tsx";
+import CustomItem from "../../src/components/utils/CustomItem.tsx";
+
 # Choix des modules
 
-**🚧 En cours de construction**
+<CustomCard img={"/img/header/logout.png"} />
 
-![alt text]("/../../../static/img/illustration/Bricklayer-bro.svg)
+**6 modules** sont actuellement proposés :
+
+- <a style={{ fontWeight: "bold" }} href="/docs/planning">
+    <CustomItem
+      logoType={"calendar"}
+      content={"Planning"}
+      disableMarginBottom
+    />
+  </a>
+- <a style={{ fontWeight: "bold" }} href="/docs/commercial">
+    <CustomItem
+      logoType={"briefcase"}
+      content={"Commercial"}
+      disableMarginBottom
+    />
+  </a>
+- <CustomItem logoType={"help"} content={"Aide en ligne"} disableMarginBottom />
+- <CustomItem logoType={"idea"} content={"Boîte à idées"} disableMarginBottom />
+- <a style={{ fontWeight: "bold" }} href="/docs/planning">
+    <CustomItem
+      logoType={"settings"}
+      content={"Gestion des utilisateurs"}
+      disableMarginBottom
+    />
+  </a>
+- <a style={{ fontWeight: "bold" }} href="/docs/planning">
+    <CustomItem
+      logoType={"file-plus"}
+      content={"Import Intranet"}
+      disableMarginBottom
+    />
+  </a>
+
+:::tip
+
+Un clic sur **"Boîte à idées"** permet d'être redirigé vers le canal de discussion **[MS Teams](https://teams.microsoft.com/l/entity/com.microsoft.teamspace.tab.planner/_djb2_msteams_prefix_2648630200?context=%7B%22subEntityId%22%3Anull%2C%22channelId%22%3A%2219%3A0f8f47058ee7406cb4b4e8832b99bbd5%40thread.tacv2%22%7D&groupId=dca97689-01ae-48ab-b7bf-6b92ebb99d05&tenantId=7d0e14de-436b-42c4-a7a6-64b38179ae2f&allowXTenantAccess=false)**.
+
+:::

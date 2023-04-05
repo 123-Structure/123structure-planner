@@ -4,6 +4,7 @@ custom_edit_url: null
 ---
 
 import CustomCard from "../../../src/components/utils/CustomCard.tsx";
+import CustomItem from "../../../src/components/utils/CustomItem.tsx";
 
 # Comptes-rendus de visite / réunion
 
@@ -36,20 +37,12 @@ Cette partie liste l'ensemble des **Comptes-rendus de visite / réunion** enregi
 
 ### Mode édition
 
-<div
-  style={{
-    display: "flex",
-    gap: "8px",
-    marginBottom: "32px",
-  }}
->
-  <img src={"/img/illustration/pencil.svg"} alt="Commercial" />
-  <p style={{ margin: 0 }}>
-    Le mode édition peut se lancer en cliquant sur <b>le crayon</b> en dessous
-    du type de rendez-vous ou bien en cliquant sur{" "}
-    <b>Modifier le rendez-vous</b>.
-  </p>
-</div>
+<CustomItem
+  logoType={"pencil"}
+  content={
+    "Le mode édition peut se lancer en cliquant sur <b>le crayon</b> en dessous du type de rendez-vous ou bien en cliquant sur <b>Modifier le rendez-vous</b>."
+  }
+/>
 
 <CustomCard img={"/img/commercial/customer_appointment_edit.png"} />
 
@@ -206,13 +199,11 @@ Pour chaque nouvelle ligne un menu propose de :
 
 ## Nouveau rendez-vous
 
-<div style={{ display: "flex", gap: "8px", marginBottom: "32px" }}>
-  <img src={"/img/illustration/circle-plus.svg"} alt="Commercial" />
-  <p style={{ margin: 0 }}>
-    Un nouveau rendez-vous peut être créé en cliquant sur <b>le "+"</b> ou le
-    bouton <b>"Nouveau rendez-vous"</b>.
-  </p>
-</div>
+<CustomItem
+  logoType={"circle-plus"}
+  content={`Un nouveau rendez-vous peut être créé en cliquant sur <b>le "+"</b> ou le
+    bouton <b>"Nouveau rendez-vous"</b>.`}
+/>
 
 Un clic sur le bouton déclenche l'ouverture d'une fenêtre contextuelle :
 

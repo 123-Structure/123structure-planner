@@ -1,0 +1,66 @@
+---
+sidebar_position: 3
+---
+
+import CustomCard from "../../src/components/utils/CustomCard.tsx";
+import CustomItem from "../../src/components/utils/CustomItem.tsx";
+
+# Moteur de recherche
+
+L'application est munis d'une barre de recherche permettant de naviguer rapidement à travers le module **"Commercial"** et **"Planning"**.
+
+<CustomItem
+  logoType={"search"}
+  content={
+    "Un clic sur <b>la barre de recherche</b> déclenche l'ouverture d'une fenêtre contextuelle."
+  }
+/>
+
+<CustomCard img={"/img/header/searchbar.png"} />
+
+## Recherche rapide
+
+La recherche rapide fonctionne comme une **recherche Google**. En saisissant un ou plusieurs termes des résults sont affichés. Un clic sur l'un des items vous mène vers l'élément selectionné.
+
+Le logo au début de chaque carte indique le type d'élément ciblé :
+
+- <CustomItem
+    logoType={"address-book"}
+    content={"Catégorie de client"}
+    disableMarginBottom
+  />
+- <CustomItem
+    logoType={"affiliate"}
+    content={"Groupe de client"}
+    disableMarginBottom
+  />
+- <CustomItem logoType={"home"} content={"Nom de client"} disableMarginBottom />
+- <CustomItem
+    logoType={"map"}
+    content={"Adresse principale d'un client"}
+    disableMarginBottom
+  />
+- <CustomItem
+    logoType={"mail"}
+    content={"Addresse mail principale d'un client ou d'un interlocuteur"}
+    disableMarginBottom
+  />
+- <CustomItem
+    logoType={"phone"}
+    content={"Numéro de téléphone principale d'un client ou d'un interlocuteur"}
+    disableMarginBottom
+  />
+- <CustomItem logoType={"user"} content={"Interlocuteur"} disableMarginBottom />
+- <CustomItem
+    logoType={"calendar"}
+    content={"Rendez-vous / Compte rendus de visite"}
+    disableMarginBottom
+  />
+
+<CustomCard img={"/img/header/searchbar_result.png"} />
+
+## Recherche Avancée
+
+**🚧 En cours de construction**
+
+![alt text]("/../../../static/img/illustration/Bricklayer-bro.svg)

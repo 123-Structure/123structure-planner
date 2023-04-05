@@ -3,6 +3,7 @@ sidebar_position: 1
 ---
 
 import CustomCard from "../../../src/components/utils/CustomCard.tsx";
+import CustomItem from "../../../src/components/utils/CustomItem.tsx";
 
 # Coordonnées de contact
 
@@ -15,6 +16,16 @@ import CustomCard from "../../../src/components/utils/CustomCard.tsx";
 La carte **Coordonnées de contact** affiche plusieurs informations :
 
 - Le nom du client,
+- La catégorie de client attribué :
+  - Constructeur,
+  - Négoce,
+  - Maitre d'œuvre,
+  - Architecte,
+  - Maçon,
+  - Promoteur,
+  - Charpentier,
+  - Serrurerie,
+  - Autre → Correspondant aux clients n'étant pas catalogués dans les catégories précédentes.
 - Le logo du client,
 - L'adresse postale,
 - L'adresse mail principale de contact,
@@ -36,13 +47,12 @@ Il arrive que certains logos ne se chargent pas correctement. Ce problème sera 
 
 ### Mode édition
 
-<div style={{ display: "flex", gap: "8px", marginBottom: "32px" }}>
-  <img src={"/img/illustration/pencil.svg"} alt="Commercial" />
-  <p style={{ margin: 0 }}>
-    Le mode édition peut se lancer en cliquant sur <b>le crayon</b> en haut à
-    droite de la carte.
-  </p>
-</div>
+<CustomItem
+  logoType={"pencil"}
+  content={
+    "Le mode édition peut se lancer en cliquant sur <b>le crayon</b> en haut à droite de la carte."
+  }
+/>
 
 <CustomCard img={"/img/commercial/customer_identity_edit.png"} />
 
@@ -113,13 +123,12 @@ Les interlocuteurs enregistrées seront disponibles pour la création de **["Nou
 
 ### Mode édition
 
-<div style={{ display: "flex", gap: "8px", marginBottom: "32px" }}>
-  <img src={"/img/illustration/pencil.svg"} alt="Commercial" />
-  <p style={{ margin: 0 }}>
-    Le mode édition peut se lancer en cliquant sur <b>le crayon</b> en haut à
-    droite de la fenêtre contextuelle.
-  </p>
-</div>
+<CustomItem
+  logoType={"pencil"}
+  content={
+    "Le mode édition peut se lancer en cliquant sur <b>le crayon</b> en haut à droite de la fenêtre contextuelle."
+  }
+/>
 
 <CustomCard img={"/img/commercial/customer_contact_modal_edit.png"} />
 
@@ -153,13 +162,10 @@ Un commercial doit être assigné comme **"Commercial référent"** pour pouvoir
 
 ## Nouveau contact
 
-<div style={{ display: "flex", gap: "8px", marginBottom: "32px" }}>
-  <img src={"/img/illustration/circle-plus.svg"} alt="Commercial" />
-  <p style={{ margin: 0 }}>
-    Un nouvel interlocuteur peut être créé en cliquant sur <b>le "+"</b> à
-    droite du titre "Interlocuteurs".
-  </p>
-</div>
+<CustomItem
+  logoType={"circle-plus"}
+  content={`Un nouvel interlocuteur peut être créé en cliquant sur <b>le "+"</b> à droite du titre "Interlocuteurs".`}
+/>
 
 Un clic sur le bouton déclenche l'ouverture d'une fenêtre contextuelle :
 

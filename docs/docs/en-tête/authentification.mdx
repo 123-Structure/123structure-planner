@@ -2,8 +2,64 @@
 sidebar_position: 1
 ---
 
+import CustomCard from "../../src/components/utils/CustomCard.tsx";
+import CustomItem from "../../src/components/utils/CustomItem.tsx";
+
 # Authentication
 
-**🚧 En cours de construction**
+## Identification
 
-![alt text]("/../../../static/img/illustration/Bricklayer-bro.svg)
+<CustomCard img={"/img/header/login.png"} />
+
+Vous serez invité à vous identifier lors de la première connexion ou après un délai sans accéder à l'application.
+
+Pour se connecter vous devez saisir :
+
+- Votre adresse mail
+- Le mot de passe fournis par mail
+
+Si vous ne possédez pas encore vos informations de connexion : <a style={{fontWeight:"bold"}} href="mailto:b.lechat@123structure.fr?subject=Demande%20d'identifiant%20de%20connexion%20-%20123%20Structure%20Intranet&body=Bonjour%20Baptiste%2C%0D%0A%0D%0APourrais-tu%20m'envoyer%20mes%20identifiants%20de%20connexion%20%C3%A0%20l'Intranet%20123%20Structure%20%3F%0D%0A%0D%0APr%C3%A9nom%20%3A%20XXX%0D%0ANom%20%3A%20XXX%0D%0A%0D%0AMerci%20%F0%9F%8F%A1">Demande de contact</a>
+
+## Informations utilisateur
+
+Une fois connecté les informations suivante de l'utilisateur sont affichées :
+
+- Rôle principal :
+  - <CustomItem
+      logoType={"pencil"}
+      content={"Dessinateur"}
+      disableMarginBottom
+    />
+  - <CustomItem
+      logoType={"calculator"}
+      content={"Ingénieur"}
+      disableMarginBottom
+    />
+  - <CustomItem
+      logoType={"crown"}
+      content={"Administrateur"}
+      disableMarginBottom
+    />
+  - <CustomItem
+      logoType={"briefcase"}
+      content={"Commercial"}
+      disableMarginBottom
+    />
+- Nom,
+- Prénom,
+- Rôle attribués,
+- Agence de rattachement :
+  - Clisson,
+  - Anglet,
+  - Villefranche-sur-Saône,
+  - Global
+
+## Déconnexion
+
+<CustomCard img={"/img/header/logout.png"} />
+
+<CustomItem
+  logoType={"logout"}
+  content={`Un clic que le bouton <b>"Se Déconnecter"</b> sous les informations
+    utilisateur permet de se déconnecter et de changer d'utilisateur.`}
+/>
