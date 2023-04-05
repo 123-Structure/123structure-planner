@@ -7,7 +7,7 @@ const darkCodeTheme = require("prism-react-renderer/themes/dracula");
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: "123 Structure",
-  tagline: "Documentation",
+  tagline: "Aide en ligne et Actualités du développement",
   favicon:
     "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📙</text></svg>",
 
@@ -20,7 +20,7 @@ const config = {
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
   organizationName: "123 Structure", // Usually your GitHub org/user name.
-  projectName: "Documentation", // Usually your repo name.
+  projectName: "Aide en ligne et Actualités du développement", // Usually your repo name.
 
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "warn",
@@ -137,7 +137,7 @@ const config = {
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} - 123 Structure - Documentation`,
+        copyright: `Copyright © ${new Date().getFullYear()} - 123 Structure - Aide en ligne et Actualités du développement`,
       },
       prism: {
         theme: lightCodeTheme,

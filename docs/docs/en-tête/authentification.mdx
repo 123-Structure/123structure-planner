@@ -11,14 +11,24 @@ import CustomItem from "../../src/components/utils/CustomItem.tsx";
 
 <CustomCard img={"/img/header/login.png"} />
 
-Vous serez invité à vous identifier lors de la première connexion ou après un délai sans accéder à l'application.
+Le **formulaire de connexion** est l'un des éléments clés de l'en-tête de l'intranet. Il vous permet d'accéder à l'ensemble des fonctionnalités de l'application en toute sécurité. Lors de votre première connexion ou après un certain délai sans accéder à l'application, vous serez invité à vous identifier en utilisant ce formulaire.
 
-Pour se connecter vous devez saisir :
+Pour vous connecter, vous devrez saisir :
 
-- Votre adresse mail
-- Le mot de passe fournis par mail
+- <CustomItem
+    logoType={"at"}
+    content={"Votre adresse e-mail"}
+    disableMarginBottom
+  />
+- <CustomItem
+    logoType={"lock"}
+    content={"Le mot de passe qui vous aura été fourni par e-mail"}
+    disableMarginBottom
+  />
 
-Si vous ne possédez pas encore vos informations de connexion : <a style={{fontWeight:"bold"}} href="mailto:b.lechat@123structure.fr?subject=Demande%20d'identifiant%20de%20connexion%20-%20123%20Structure%20Intranet&body=Bonjour%20Baptiste%2C%0D%0A%0D%0APourrais-tu%20m'envoyer%20mes%20identifiants%20de%20connexion%20%C3%A0%20l'Intranet%20123%20Structure%20%3F%0D%0A%0D%0APr%C3%A9nom%20%3A%20XXX%0D%0ANom%20%3A%20XXX%0D%0A%0D%0AMerci%20%F0%9F%8F%A1">Demande de contact</a>
+Ces informations vous garantissent l'accès à votre compte utilisateur et vous attribue des droits d'accès aux différents modules.
+
+Si vous ne disposez pas encore de vos informations de connexion, vous pouvez cliquer sur le lien <a style={{fontWeight:"bold"}} href="mailto:b.lechat@123structure.fr?subject=Demande%20d'identifiant%20de%20connexion%20-%20123%20Structure%20Intranet&body=Bonjour%20Baptiste%2C%0D%0A%0D%0APourrais-tu%20m'envoyer%20mes%20identifiants%20de%20connexion%20%C3%A0%20l'Intranet%20123%20Structure%20%3F%0D%0A%0D%0APr%C3%A9nom%20%3A%20XXX%0D%0ANom%20%3A%20XXX%0D%0A%0D%0AMerci%20%F0%9F%8F%A1">"Demande de contact"</a> pour obtenir de l'aide et des conseils pour vous connecter à l'application.
 
 ## Informations utilisateur
 

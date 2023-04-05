@@ -53,6 +53,10 @@ const CustomItem = (props: ICustomItemProps) => {
         return "/img/illustration/phone.svg";
       case "user":
         return "/img/illustration/user.svg";
+      case "at":
+        return "/img/illustration/at.svg";
+      case "lock":
+        return "/img/illustration/lock.svg";
 
       default:
         break;
