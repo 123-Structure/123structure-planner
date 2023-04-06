@@ -20,7 +20,7 @@ services:
       - 123str_planner
 
   123str_planner_docs:
-    build: ./frontend
+    build: ./docs
     container_name: 123str_planner_docs
     stdin_open: true
     ports:
