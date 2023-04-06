@@ -47,6 +47,8 @@ const config = {
         },
         blog: {
           showReadingTime: true,
+          blogSidebarTitle: "Articles récents",
+          blogSidebarCount: "ALL",
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           // editUrl:
@@ -77,7 +79,7 @@ const config = {
             position: "left",
             label: "Documentation",
           },
-          { to: "/blog", label: "Mise à jour", position: "left" },
+          { to: "/blog", label: "Actualités", position: "left" },
           {
             href: "https://github.com/123-Structure/123structure-planner",
             label: "GitHub",
