@@ -12,20 +12,32 @@ function HomepageHeader() {
   return (
     <header className={clsx("hero hero--primary", styles.heroBanner)}>
       <div className="container">
-        <h1 className="hero__title">{siteConfig.title}</h1>
-        <p className="hero__subtitle">{siteConfig.tagline}</p>
+        {/* <h1 className="hero__title">{siteConfig.title}</h1> */}
+        <img
+          src={"/img/123STR/logo-white.png"}
+          alt="logo"
+          style={{ width: "50%" }}
+        />
+        <p className="hero__subtitle" style={{ color: "black" }}>
+          {siteConfig.tagline}
+        </p>
         <div className={styles.buttonsContainer}>
           <div className={styles.buttons}>
             <Link
-              className="button button--secondary button--lg"
+              className="button button--primary button--lg"
               to="/docs/introduction"
+              style={{ color: "white", backgroundColor: "#1d1d1b" }}
             >
-              Accéder à la documentation
+              📖 Accéder à la documentation
             </Link>
           </div>
           <div className={styles.buttons}>
-            <Link className="button button--secondary button--lg" to="/blog">
-              Accéder aux dernières actualités
+            <Link
+              className="button button--primary button--lg"
+              to="/blog"
+              style={{ color: "white", backgroundColor: "#1d1d1b" }}
+            >
+              📰 Accéder aux dernières actualités
             </Link>
           </div>
         </div>

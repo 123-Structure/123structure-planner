@@ -12,7 +12,7 @@ type FeatureItem = {
 const FeatureList: FeatureItem[] = [
   {
     title: "Planning",
-    Svg: require("@site/static/img/illustration/Website-Creator-bro.svg")
+    Svg: require("@site/static/img/illustration/Online-calendar-bro.svg")
       .default,
     description: (
       <>
@@ -23,7 +23,7 @@ const FeatureList: FeatureItem[] = [
   },
   {
     title: "Commercial",
-    Svg: require("@site/static/img/illustration/Writing-room-bro.svg").default,
+    Svg: require("@site/static/img/illustration/Partnership-bro.svg").default,
     description: (
       <>
         Organisation efficace des informations de contact et de relation avec
@@ -34,7 +34,8 @@ const FeatureList: FeatureItem[] = [
   },
   {
     title: "Actualités",
-    Svg: require("@site/static/img/illustration/Writing-room-bro.svg").default,
+    Svg: require("@site/static/img/illustration/Website-Creator-bro.svg")
+      .default,
     description: (
       <>
         Les dernières avancées dans le développement de notre application{" "}
