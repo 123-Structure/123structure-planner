@@ -1,3 +1,29 @@
+import {
+  IconPencil,
+  IconCalculator,
+  IconCrown,
+  IconBriefcase,
+  IconCirclePlus,
+  IconChevronUp,
+  IconChevronDown,
+  IconUpload,
+  IconLogout,
+  IconCalendarEvent,
+  IconHelp,
+  IconBulb,
+  IconSettings,
+  IconFilePlus,
+  IconSearch,
+  IconAddressBook,
+  IconAffiliate,
+  IconHome,
+  IconMap2,
+  IconMail,
+  IconPhone,
+  IconUser,
+  IconAt,
+  IconLock,
+} from "@tabler/icons-react";
 import React from "react";
 
 interface ICustomItemProps {
@@ -10,53 +36,53 @@ const CustomItem = (props: ICustomItemProps) => {
   const logo = (logoType: string) => {
     switch (logoType) {
       case "pencil":
-        return "/img/illustration/pencil.svg";
+        return <IconPencil />;
       case "calculator":
-        return "/img/illustration/calculator.svg";
+        return <IconCalculator />;
       case "crown":
-        return "/img/illustration/crown.svg";
+        return <IconCrown />;
       case "briefcase":
-        return "/img/illustration/briefcase.svg";
+        return <IconBriefcase />;
       case "circle-plus":
-        return "/img/illustration/circle-plus.svg";
+        return <IconCirclePlus />;
       case "chevron-up":
-        return "/img/illustration/chevron-up.svg";
+        return <IconChevronUp />;
       case "chevron-down":
-        return "/img/illustration/chevron-down.svg";
+        return <IconChevronDown />;
       case "upload":
-        return "/img/illustration/upload.svg";
+        return <IconUpload />;
       case "logout":
-        return "/img/illustration/logout.svg";
+        return <IconLogout />;
       case "calendar":
-        return "/img/illustration/calendar.svg";
+        return <IconCalendarEvent />;
       case "help":
-        return "/img/illustration/help.svg";
+        return <IconHelp />;
       case "idea":
-        return "/img/illustration/idea.svg";
+        return <IconBulb />;
       case "settings":
-        return "/img/illustration/settings.svg";
+        return <IconSettings />;
       case "file-plus":
-        return "/img/illustration/file-plus.svg";
+        return <IconFilePlus />;
       case "search":
-        return "/img/illustration/search.svg";
+        return <IconSearch />;
       case "address-book":
-        return "/img/illustration/address-book.svg";
+        return <IconAddressBook />;
       case "affiliate":
-        return "/img/illustration/affiliate.svg";
+        return <IconAffiliate />;
       case "home":
-        return "/img/illustration/home.svg";
+        return <IconHome />;
       case "map":
-        return "/img/illustration/map.svg";
+        return <IconMap2 />;
       case "mail":
-        return "/img/illustration/mail.svg";
+        return <IconMail />;
       case "phone":
-        return "/img/illustration/phone.svg";
+        return <IconPhone />;
       case "user":
-        return "/img/illustration/user.svg";
+        return <IconUser />;
       case "at":
-        return "/img/illustration/at.svg";
+        return <IconAt />;
       case "lock":
-        return "/img/illustration/lock.svg";
+        return <IconLock />;
 
       default:
         break;
@@ -71,7 +97,8 @@ const CustomItem = (props: ICustomItemProps) => {
         marginBottom: props.disableMarginBottom ? "8px" : "32px",
       }}
     >
-      <img src={logo(props.logoType)} alt="Commercial" />
+      {/* <img src={logo(props.logoType)} alt="Commercial" /> */}
+      <div>{logo(props.logoType)}</div>
       <div dangerouslySetInnerHTML={{ __html: props.content }} />
     </div>
   );

@@ -7,22 +7,26 @@ import CustomItem from "../../src/components/utils/CustomItem.tsx";
 
 # Moteur de recherche
 
-L'application est munis d'une barre de recherche permettant de naviguer rapidement à travers le module **"Commercial"** et **"Planning"**.
+Notre application est équipée d'un moteur de recherche efficace qui vous permet de trouver rapidement des informations spécifiques dans les modules disponibles, tels que **"Commercial"** et **"Planning"**. La barre de recherche est facilement accessible dans l'en-tête de l'application, vous permettant de naviguer facilement entre les modules.
 
 <CustomItem
   logoType={"search"}
   content={
-    "Un clic sur <b>la barre de recherche</b> déclenche l'ouverture d'une fenêtre contextuelle."
+    "Lorsque vous cliquez sur la <b>Barre de recherche</b>, une fenêtre contextuelle s'ouvre pour vous permettre de saisir vos termes de recherche."
   }
 />
+
+Une fois votre recherche effectuée, vous pouvez accéder aux résultats **pertinents** directement depuis la fenêtre contextuelle ou être redirigé vers la page correspondante.
+
+Le moteur de recherche est un outil précieux pour vous aider à trouver rapidement les informations dont vous avez besoin, vous faisant gagner du temps et améliorant votre expérience utilisateur globale.
 
 <CustomCard img={"/img/header/searchbar.png"} />
 
 ## Recherche rapide
 
-La recherche rapide fonctionne comme une **recherche Google**. En saisissant un ou plusieurs termes des résults sont affichés. Un clic sur l'un des items vous mène vers l'élément selectionné.
+La fonctionnalité de recherche rapide est conçue pour vous permettre de trouver rapidement l'information dont vous avez besoin. Elle fonctionne comme une **recherche Google** : en saisissant un ou plusieurs termes, les résultats correspondants sont affichés. En cliquant sur l'un des éléments, vous serez dirigé vers la page correspondante.
 
-Le logo au début de chaque carte indique le type d'élément ciblé :
+Pour vous aider à identifier rapidement le type d'élément ciblé, chaque carte de résultat est accompagnée d'un logo indiquant la catégorie :
 
 - <CustomItem
     logoType={"address-book"}
@@ -42,7 +46,7 @@ Le logo au début de chaque carte indique le type d'élément ciblé :
   />
 - <CustomItem
     logoType={"mail"}
-    content={"Addresse mail principale d'un client ou d'un interlocuteur"}
+    content={"Adresse mail principale d'un client ou d'un interlocuteur"}
     disableMarginBottom
   />
 - <CustomItem
@@ -62,5 +66,11 @@ Le logo au début de chaque carte indique le type d'élément ciblé :
 ## Recherche Avancée
 
 **🚧 En cours de construction**
+
+La **Recherche avancée** est en cours de développement pour permettre une recherche plus précise et plus complète dans l'ensemble des modules de l'application. Cette fonctionnalité permettra à l'utilisateur de rechercher des informations en utilisant différents champs de saisie tels que le nom, l'adresse, la catégorie de client, le statut d'avancement d'un projet,...
+
+La **Recherche avancée nécessite plus de temps que la recherche rapide** car l'utilisateur doit remplir les champs pertinents pour obtenir des résultats précis. Cependant, elle offre une meilleure flexibilité pour trouver des informations spécifiques dans l'application.
+
+Nous sommes en train de travailler sur cette fonctionnalité pour la rendre aussi intuitive et efficace que possible, afin de répondre aux besoins de nos utilisateurs.
 
 ![alt text]("/../../../static/img/illustration/Bricklayer-bro.svg)
