@@ -1,0 +1,75 @@
+---
+sidebar_position: 2
+---
+
+import CustomCard from "../../../src/components/utils/CustomCard.tsx";
+import CustomItem from "../../../src/components/utils/CustomItem.tsx";
+
+# Relation Commerciale
+
+<CustomCard img={"/img/commercial/customer_relationship.png"} />
+
+## Informations générales
+
+### Mode lecture
+
+La carte **Relation commerciale** affiche plusieurs informations :
+
+- Le / Les commerciaux référent(s),
+- Date et objet de la dernière visite / réunion,
+- Objectif de production pour l'année n-1 avec le client sélectionné,
+- Production de l'année n-1 avec le client sélectionné,
+- Objectif de production pour l'année cours avec le client sélectionné,
+- La mise en place d'un contrat cadre si visible,
+- Grille tarifaire au format PDF
+
+:::info
+
+La production de l'année passée et de l'année en cours sera récupérée depuis le module **[Planning](/docs/category/planning)** une fois mis en place.
+
+:::
+
+### Mode édition
+
+<CustomItem
+  logoType={"pencil"}
+  content={
+    "Le mode édition peut se lancer en cliquant sur <b>le crayon</b> en haut à droite de la carte."
+  }
+/>
+
+<CustomCard img={"/img/commercial/customer_relationship_edit.png"} />
+
+Dans ce mode, vous pouvez modifier les informations suivantes :
+
+- Le / Les commerciaux référent(s),
+- L'objectif de production pour l'année n-1 avec le client sélectionné,
+- L'objectif de production pour l'année an cours avec le client sélectionné,
+- La mise en place d'un contrat-cadre,
+- Le ficher "Grille tarifaire" **au format PDF**
+
+:::info
+
+<CustomItem
+  logoType={"chevron-up"}
+  content={
+    "Un clic sur <b>les chevrons hauts</b> permet une incrémentation de 10 projets."
+  }
+/>
+
+<CustomItem
+  logoType={"chevron-down"}
+  content={
+    "Un clic sur <b>les chevrons bas</b> permet une décrémentation de 10 projets."
+  }
+/>
+
+Une saisie manuelle est toujours possible.
+
+:::
+
+:::caution
+
+Un commercial doit être assigné comme **"Commercial référent"** pour pouvoir éditer la carte.
+
+:::

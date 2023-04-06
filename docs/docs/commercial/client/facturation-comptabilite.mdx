@@ -1,0 +1,84 @@
+---
+sidebar_position: 3
+---
+
+import CustomCard from "../../../src/components/utils/CustomCard.tsx";
+import CustomItem from "../../../src/components/utils/CustomItem.tsx";
+
+# Facturation / Comptabilité
+
+<CustomCard img={"/img/commercial/customer_payment.png"} />
+
+## Informations générales
+
+### Mode lecture
+
+La carte **Facturation / Comptabilité** affiche plusieurs informations :
+
+- Le délai de paiement enregistré pour le client :
+  - 30 jours (fin de mois),
+  - 30 jours (net),
+  - 45 jours
+- Le mode de paiement :
+  - Chèque,
+  - Virement,
+  - Lettre de change relevé (LCR),
+- Le statut de paiement :
+  - <p style={{ margin: 0, paddindLeft: "8px", backgroundColor: "#8CE99A" }}>
+      A : Etat par défaut - Aucun défaut de paiement,
+    </p>
+  - <p style={{ margin: 0, paddindLeft: "8px", backgroundColor: "#FFE066" }}>
+      B : Avertissement - Client ayant déjà eu des retards de paiement,
+    </p>
+  - <p style={{ margin: 0, paddindLeft: "8px", backgroundColor: "#FFA8A8" }}>
+      C : Alerte - Client qualifié de "Mauvais payeur"
+    </p>
+- La facturation de l'année n-1 pour le client sélectionné,
+- La facturation moyenne par dossier pour l'année n-1,
+- La facturation de l'année l'année en cours pour le client sélectionné,
+- La facturation moyenne par dossier pour l'année en cours,
+
+:::info
+
+La facturation de l'année passée et de l'année en cours sera récupérée depuis le module **[Planning](/docs/category/planning)** une fois mis en place.
+
+:::
+
+### Mode édition
+
+<CustomItem
+  logoType={"pencil"}
+  content={
+    "Le mode édition peut se lancer en cliquant sur <b>le crayon</b> en haut à droite de la carte."
+  }
+/>
+
+<CustomCard img={"/img/commercial/customer_payment_edit.png"} />
+
+Dans ce mode, vous pouvez modifier les informations suivantes :
+
+- Le délai de paiement enregistré pour le client :
+  - 30 jours (fin de mois),
+  - 30 jours (net),
+  - 45 jours
+- Le mode de paiement :
+  - Chèque,
+  - Virement,
+  - Lettre de change relevé (LCR),
+  - Contrat cadre
+- Le statut de paiement :
+  - <p style={{ margin: 0, paddindLeft: "8px", backgroundColor: "#8CE99A" }}>
+      A : Etat par défaut - Aucun défaut de paiement,
+    </p>
+  - <p style={{ margin: 0, paddindLeft: "8px", backgroundColor: "#FFE066" }}>
+      B : Avertissement - Client ayant déjà eu des retards de paiement,
+    </p>
+  - <p style={{ margin: 0, paddindLeft: "8px", backgroundColor: "#FFA8A8" }}>
+      C : Alerte - Client qualifié de "Mauvais payeur"
+    </p>
+
+:::caution
+
+Un commercial doit être assigné comme **"Commercial référent"** pour pouvoir éditer la carte.
+
+:::

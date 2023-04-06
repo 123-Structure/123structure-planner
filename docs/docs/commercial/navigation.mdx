@@ -1,0 +1,56 @@
+---
+sidebar_position: 2
+---
+
+import CustomCard from "../../src/components/utils/CustomCard.tsx";
+
+# Navigation
+
+Le module **"Commercial"** est équipé d'un système de navigation par onglet permettant de filtrer le carnet d'adresses selon différents critères :
+
+## Commerciaux
+
+<CustomCard img={"/img/commercial/commercial_menu.png"} />
+
+Cette partie permet :
+
+- Soit de filtrer le carnet d'adresses par utilisateur possédant le rôle de **"Commercial"**,
+- Soit de naviguer dans l'ensemble du carnet de client **sans filtrage** particulier.
+
+## Catégories
+
+<CustomCard img={"/img/commercial/category_menu.png"} />
+
+Chaque client est classé dans **une seule catégorie** parmis les suivantes :
+
+- Constructeur,
+- Négoce,
+- Maitre d'œuvre,
+- Architecte,
+- Maçon,
+- Promoteur,
+- Charpentier,
+- Serrurerie,
+- Autre (Correspondant aux clients n'étant pas catalogués dans les catégories précédentes)
+
+## Clients / Groupes
+
+<CustomCard img={"/img/commercial/customer_menu.png"} />
+
+Une fois une catégorie de client sélectionnée, une liste regroupant les clients et les groupements de clients est affichée :
+
+- **Client ** : Client indépendant n'appartenant pas à un groupe ou un réseau d'entreprise,
+- ** Groupes** : Regroupement de client sous une entité de groupe ou de réseau d'entreprise (exemple : Maisons Alysia, Procivis, ORCAB, ...)
+
+## Client
+
+<CustomCard img={"/img/commercial/customer.png"} />
+
+En fin de parcours, **la fiche client** est affichée, regroupant
+
+- Les coordonnées d'un client (adresse postale, numéro de téléphone, ...),
+- Les interlocuteurs,
+- Le commercial référent,
+- Le nombre de dossiers produits et la facturation,
+- Les comptes-rendus de visite,
+- ...

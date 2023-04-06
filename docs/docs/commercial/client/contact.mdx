@@ -1,0 +1,206 @@
+---
+sidebar_position: 1
+---
+
+import CustomCard from "../../../src/components/utils/CustomCard.tsx";
+import CustomItem from "../../../src/components/utils/CustomItem.tsx";
+
+# Coordonnées de contact
+
+<CustomCard img={"/img/commercial/customer_identity.png"} />
+
+## Informations générales
+
+### Mode lecture
+
+La carte **Coordonnées de contact** affiche plusieurs informations :
+
+- Le nom du client,
+- La catégorie de client attribué :
+  - Constructeur,
+  - Négoce,
+  - Maitre d'œuvre,
+  - Architecte,
+  - Maçon,
+  - Promoteur,
+  - Charpentier,
+  - Serrurerie,
+  - Autre → Correspondant aux clients n'étant pas catalogués dans les catégories précédentes.
+- Le logo du client,
+- L'adresse postale,
+- L'adresse mail principale de contact,
+- Le numéro de téléphone de contact
+
+:::tip
+
+- Un clic sur l'adresse ouvre Google Maps dans un nouvelle onglet,
+- Un clic sur l'adresse mail déclenchera l'ouverture d'Outlook,
+- Un clic sur le numéro de téléphone enverra le numéro vers votre smartphone. **(Varie suivant les réglages de votre navigateur internet)**
+
+:::
+
+:::info
+
+Il arrive que certains logos ne se chargent pas correctement. Ce problème sera réglé dans les prochaines mises à jour.
+
+:::
+
+### Mode édition
+
+<CustomItem
+  logoType={"pencil"}
+  content={
+    "Le mode édition peut être lancé en cliquant sur <b>le crayon</b> en haut à droite de la carte."
+  }
+/>
+
+<CustomCard img={"/img/commercial/customer_identity_edit.png"} />
+
+Dans ce mode, vous pouvez modifier les informations suivantes :
+
+- L'adresse,
+- Le code postal,
+- La ville,
+- L'adresse mail principale de contact,
+- Le numéro de téléphone de contact
+
+:::info
+
+Renseigner un "-" si vous souhaitez laisser le numéro de téléphone ou l'adresse mail non renseignés.
+
+:::
+
+:::caution
+
+Un commercial doit être assigné comme **"Commercial référent"** pour pouvoir éditer la carte.
+
+- Obligation de saisir 5 chiffres pour le code postal
+- Obligation de saisir un format d'adresse mail valide → exemple@domaine.fr
+- Obligation de saisir un format de numéro de téléphone valide :
+  - 0000000000,
+  - 00 00 00 00 00,
+  - 00-00-00-00-00,
+  - +33600000000
+
+:::
+
+## Interlocuteurs
+
+### Mode lecture
+
+<CustomCard img={"/img/commercial/customer_contact_hover.png"} />
+
+Les interlocuteurs sont listés sous les informations générales d'un client. Un clic sur le bouton déclenche l'ouverture d'une fenêtre contextuelle :
+
+<CustomCard img={"/img/commercial/customer_contact_modal.png"} />
+
+Plusieurs informations sont alors affichées :
+
+- Prénom et nom,
+- Client dont dépend l'interlocuteur,
+- Poste occupé :
+  - Direction,
+  - Commerce,
+  - Conduite de travaux,
+  - Assistance technique,
+  - Secrétariat,
+  - Autre,
+- Adresse mail personnelle de contact,
+- Numéro de téléphone **(Possibilité de renseigner 2 numéros de téléphone)**
+
+:::tip
+
+- Un survol sur un bouton **"Interlocuteur"** permet d'afficher des informations rapides sur celui-ci,
+- Un clic sur l'adresse mail déclenchera l'ouverture d'Outlook,
+- Un clic sur le numéro de téléphone enverra le numéro vers votre smartphone. **(Varie suivant les réglages de votre navigateur internet)**
+
+:::
+:::info
+
+Les interlocuteurs enregistrés seront disponibles pour la création de **["Nouveau rendez-vous"](/docs/commercial/client/visites-reunion#nouveau-rendez-vous)**
+
+:::
+
+### Mode édition
+
+<CustomItem
+  logoType={"pencil"}
+  content={
+    "Le mode édition peut se lancer en cliquant sur <b>le crayon</b> en haut à droite de la fenêtre contextuelle."
+  }
+/>
+
+<CustomCard img={"/img/commercial/customer_contact_modal_edit.png"} />
+
+Dans ce mode, vous pouvez modifier ou ajouter :
+
+- M. ou Mme,
+- Prénom,
+- Nom,
+- Poste occupé :
+  - Direction,
+  - Commerce,
+  - Conduite de travaux,
+  - Assistance technique,
+  - Secrétariat,
+  - Autre,
+- Adresse mail,
+- Téléphone n°1,
+- Téléphone n°2
+
+:::info
+
+Renseigner un "-" si vous souhaitez laisser un numéro de téléphone ou l'adresse mail non renseignés
+
+:::
+
+:::caution
+
+Un commercial doit être assigné comme **"Commercial référent"** pour pouvoir éditer un interlocuteur.
+
+:::
+
+## Nouveau contact
+
+<CustomItem
+  logoType={"circle-plus"}
+  content={`Un nouvel interlocuteur peut être créé en cliquant sur <b>le "+"</b> à droite du titre "Interlocuteurs".`}
+/>
+
+Un clic sur le bouton déclenche l'ouverture d'une fenêtre contextuelle :
+
+<CustomCard img={"/img/commercial/customer_contact_new.png"} />
+
+Dans ce mode, vous pouvez saisir :
+
+- M. ou Mme <span style={{color:"red", fontWeight:"bold"}}> \*</span>,
+- Prénom<span style={{color:"red", fontWeight:"bold"}}> \*</span>,
+- Nom<span style={{color:"red", fontWeight:"bold"}}> \*</span>,
+- Poste occupé<span style={{color:"red", fontWeight:"bold"}}> \*</span> :
+  - Direction,
+  - Commerce,
+  - Conduite de travaux,
+  - Assistance technique,
+  - Secrétariat,
+  - Autre,
+- Adresse mail,
+- Téléphone n°1,
+- Téléphone n°2
+
+:::info
+
+Le nouvel interlocuteur est automatiquement attribué au client actuellement consulté.
+
+:::
+:::caution
+
+Un commercial doit être assigné comme **"Commercial référent"** pour pouvoir ajouter un nouvel interlocuteur.
+
+**4 champs** de saisie sont obligatoires <span style={{color:"red", fontWeight:"bold"}}>(\*)</span> pour valider la création :
+
+- M. ou Mme <span style={{color:"red", fontWeight:"bold"}}> \*</span>,
+- Prénom<span style={{color:"red", fontWeight:"bold"}}> \*</span>,
+- Nom<span style={{color:"red", fontWeight:"bold"}}> \*</span>,
+- Poste occupé<span style={{color:"red", fontWeight:"bold"}}> \*</span>
+
+:::

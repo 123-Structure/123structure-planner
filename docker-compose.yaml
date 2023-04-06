@@ -19,6 +19,15 @@ services:
     networks:
       - 123str_planner
 
+  123str_planner_docs:
+    build: ./frontend
+    container_name: 123str_planner_docs
+    stdin_open: true
+    ports:
+      - "3000:3000"
+    networks:
+      - 123str_planner
+
   123str_planner_mongodb:
     image: mongo:4.4.18
     container_name: 123str_planner_mongodb

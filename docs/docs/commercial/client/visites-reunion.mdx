@@ -1,0 +1,238 @@
+---
+sidebar_position: 4
+custom_edit_url: null
+---
+
+import CustomCard from "../../../src/components/utils/CustomCard.tsx";
+import CustomItem from "../../../src/components/utils/CustomItem.tsx";
+
+# Comptes-rendus de visite / réunion
+
+<CustomCard img={"/img/commercial/customer_appointment.png"} />
+
+## Informations générales
+
+### Mode lecture
+
+<CustomCard img={"/img/commercial/customer_appointment_preview.png"} />
+
+Cette partie liste l'ensemble des **Comptes-rendus de visite / réunion** enregistré pour un client. Une fiche **"Rendez-vous (RDV)"** affiche plusieurs Informations :
+
+- Le type de rendez-vous :
+  - RDV de démarchage,
+  - RDV de courtoisie,
+  - RDV technique,
+  - Autre
+- L'adresse où s'est déroulé le rendez-vous,
+- Le / Les interlocuteur(s) présent(s) aux rendez-vous,
+- Le compte-rendu de visite / réunion
+
+:::tip
+
+- Un clic sur l'adresse du rendez-vous ouvre Google Maps dans un nouvel onglet,
+- Un survol sur un bouton **"Interlocuteur"** permet d'afficher des informations rapides sur celui-ci,
+- Un clic sur un interlocuteur ouvre sa fenêtre contextuelle **[(Voir la partie "Interlocuteurs" pour plus d'informations)](/docs/commercial/client/contact#interlocuteurs)**
+
+:::
+
+### Mode édition
+
+<CustomItem
+  logoType={"pencil"}
+  content={
+    "Le mode édition peut se lancer en cliquant sur <b>le crayon</b> en dessous du type de rendez-vous ou bien en cliquant sur <b>Modifier le rendez-vous</b>."
+  }
+/>
+
+<CustomCard img={"/img/commercial/customer_appointment_edit.png"} />
+
+Dans ce mode, vous pouvez modifier les informations suivantes :
+
+- Le type de rendez-vous :
+  - RDV de démarchage,
+  - RDV de courtoisie,
+  - RDV technique,
+  - Autre
+- L'adresse où s'est déroulé le rendez-vous,
+- Le / Les interlocuteur(s) présent(s) aux rendez-vous,
+- Le compte-rendu de visite / réunion
+
+:::caution
+
+Un commercial doit être assigné comme **"Commercial référent"** pour pouvoir éditer la un rendez-vous et rédiger un compte-rendu de rendez-vous.
+
+:::
+
+## Editeur de texte
+
+L'éditeur de texte vous permet de rédiger un compte-rendus de rendez-vous. Les outils seront similaires avec ce que vous pouvez déjà connaître avec le logiciel **[Microsoft Word](https://www.microsoft.com/fr-fr/microsoft-365/word?activetab=tabs%3afaqheaderregion3)**.
+
+### Barre d'outils principale
+
+<CustomCard
+  img={"/img/commercial/textEditor/customer_appointment_topMenu.png"}
+/>
+
+#### Couleur de texte
+
+<CustomCard
+  img={"/img/commercial/textEditor/customer_appointment_topMenu_fontColor.png"}
+/>
+
+Cet outil vous permet de changer la couleur d'un texte préalablement selectionné. **14 couleurs sont prédéfinies.**
+
+:::info
+
+- Cliquez sur la pipette pour choisir une couleur personnalisée,
+- Cliquez sur le cercle barré pour annuler la mise en page et revenir à la couleur par défaut : Noir
+
+:::
+
+#### Style de texte
+
+<CustomCard
+  img={"/img/commercial/textEditor/customer_appointment_topMenu_fontStyle.png"}
+/>
+
+Cet outil vous permet de changer le style d'un texte préalablement selectionné. Vous pouvez :
+
+- **mettre un texte en gras,**
+- _mettre un texte en italique,_
+- <u>souligner un texte,</u>
+- ~~Barré un texte,~~
+- Effacer la mise en forme,
+- <span style={{ margin: 0, backgroundColor: "#FCC419" }}>
+    Surligner un texte
+  </span>
+
+#### Taille des titres
+
+<CustomCard
+  img={"/img/commercial/textEditor/customer_appointment_topMenu_fontSize.png"}
+/>
+
+Cet outil vous permet de changer la taille d'un texte préalablement selectionné et de le transformer en titre. **4 mises en forme sont prédéfinis,** si aucun n'est selectionné vous rédigez alors un paragraphe.
+
+<CustomCard
+  img={"/img/commercial/textEditor/customer_appointment_LoremIpsum.png"}
+/>
+
+#### Outils divers
+
+<CustomCard
+  img={"/img/commercial/textEditor/customer_appointment_topMenu_tools.png"}
+/>
+Cet outil vous permet, pour un texte préalablement selectionné de :
+
+- Créer une citation,
+- Ajouter un séparateur
+- Créer une liste non-ordonnée,
+- Créer une liste ordonnée,
+- Mettre le texte en exposant,
+- Mettre le texte en indice,
+
+#### Lien hypertexte
+
+<CustomCard
+  img={"/img/commercial/textEditor/customer_appointment_topMenu_link.png"}
+/>
+
+Cet outil vous permet d'ajouter un **lien hypertexte vers un site internet** ou bien de le supprimer.
+
+#### Alignement de texte
+
+<CustomCard
+  img={"/img/commercial/textEditor/customer_appointment_topMenu_textAlign.png"}
+/>
+
+Cet outil vous permet de changer **l'alignement** d'un texte préalablement selectionné. Vous pouvez :
+
+- Aligner à gauche,
+- Centrer,
+- Justifier,
+- Aligner à droite
+
+#### Raccourcis
+
+<CustomCard
+  img={"/img/commercial/textEditor/customer_appointment_topMenu_shortcut.png"}
+/>
+
+Cet outil vous permet d'accéder à des **raccourcis en lien avec le client** selectionné. Vous pouvez :
+
+- Ajouter le nom du client,
+- Ajouter l'adresse postale du client,
+- Ajouter l'adresse mail de contact du client,
+- Ajouter le numéro de téléphone principal du client,
+- Noter un rendez-vous en fonction d'un nombre d'étoile ⭐⭐⭐
+
+### Edition rapide
+
+<CustomCard
+  img={"/img/commercial/textEditor/customer_appointment_quickMenu.png"}
+/>
+
+Lorsqu'un texte est selectionné, une bulle de modification rapide s'ouvre pour procéder à des changements rapides. Vous pouvez :
+
+- Changer la couleur du texte,
+- Mettre en gras,
+- Mettre en italique,
+- Souligner le texte,
+- Ajouter / supprimer un lien,
+- Modifier l'alignement du texte :
+  - Aligner à gauche,
+  - Centrer,
+  - Justifier,
+  - Aligner à droite
+
+### Nouvelle ligne de texte
+
+<CustomCard
+  img={"/img/commercial/textEditor/customer_appointment_newLine.png"}
+/>
+
+Pour chaque nouvelle ligne un menu propose de :
+
+- Créer un titre de niveau 1 ou 2,
+- Créer une liste,
+- Changer la couleur d'écriture
+
+## Nouveau rendez-vous
+
+<CustomItem
+  logoType={"circle-plus"}
+  content={`Un nouveau rendez-vous peut être créé en cliquant sur <b>le "+"</b> ou le
+    bouton <b>"Nouveau rendez-vous"</b>.`}
+/>
+
+Un clic sur le bouton déclenche l'ouverture d'une fenêtre contextuelle :
+
+<CustomCard img={"/img/commercial/customer_appointment_new.png"} />
+
+Dans ce mode, vous pouvez saisir :
+
+- Le type de rendez-vous <span style={{color:"red", fontWeight:"bold"}}> \*</span> :
+  - RDV de démarchage,
+  - RDV de courtoisie,
+  - RDV technique,
+  - Autre
+- La date de rendez-vous **(régler sur la date actuelle par défaut)**,
+- Le / Les interlocuteur(s) présent(s) aux rendez-vous,
+- L'adresse où c'est déroulé le rendez-vous <span style={{color:"red", fontWeight:"bold"}}> \*</span>,
+- Le compte-rendus de visite / réunion
+
+:::tip
+
+Un clic sur le bouton **"Adresse de XXX"** remplis automatiquement les champs Adresse, Code postal et Ville.
+
+:::
+:::caution
+
+Un commercial doit être assigné comme **"Commercial référent"** pour pouvoir ajouter un nouvel rendez-vous.
+
+**2 champs** de saisie sont obligatoires <span style={{color:"red", fontWeight:"bold"}}>(\*)</span> pour valider la création :
+
+- Le type de rendez-vous <span style={{color:"red", fontWeight:"bold"}}> \*</span>
+- L'adresse où c'est déroulé le rendez-vous <span style={{color:"red", fontWeight:"bold"}}> \*</span>,
+
+:::
