@@ -26,4 +26,5 @@ export interface ICustomer {
   paymentDeadline: "30 (Fin de mois)" | "30 (Net)" | "45" | "-";
   paymentType: TPaymentType;
   paymentStatus: "A" | "B" | "C";
+  contratCadre: boolean;
 }

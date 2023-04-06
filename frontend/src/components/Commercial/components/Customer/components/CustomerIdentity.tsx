@@ -1,7 +1,7 @@
-import { Card } from "@mantine/core";
+import { Badge, Card, Select } from "@mantine/core";
 import { showNotification } from "@mantine/notifications";
 import { IconAddressBook, IconMail, IconMap2, IconPhone } from "@tabler/icons";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ICustomer } from "../../../../../data/interfaces/ICustomer";
 import CustomDivider from "../../../../utils/CustomDivider";
 import CustomTitle from "../../../../utils/CustomTitle";
@@ -16,6 +16,9 @@ import { useUpdateCustomer } from "../../../../../hooks/Customer/useUpdateCustom
 import { useAuth } from "../../../../../hooks/Auth/useAuth";
 import { useUserData } from "../../../../../hooks/Auth/useUserData";
 import { APIBaseUrl } from "../../../../../data/constants/APIBaseUrl";
+import { CustomerCategoryList } from "../../../../../data/constants/CustomerCategoryList";
+import { useUpdateCustomerRoutes } from "../../../../../hooks/CustomerRoutes/useUpdateCustomerRoutes";
+import { useCustomerRoutes } from "../../../../../hooks/CustomerRoutes/useCustomerRoutes";
 
 interface ICustomerIdentityProps {
   customer: ICustomer;
@@ -23,6 +26,7 @@ interface ICustomerIdentityProps {
 
 const CustomerIdentity = (props: ICustomerIdentityProps) => {
   const [editCustomerIdentity, setEditCustomerIdentity] = useState(false);
+  const [category, setCategory] = useState(props.customer.category);
   const [address, setAddress] = useState(props.customer.location.address);
   const [cp, setCp] = useState(props.customer.location.cp);
   const [city, setCity] = useState(props.customer.location.city);
@@ -36,6 +40,8 @@ const CustomerIdentity = (props: ICustomerIdentityProps) => {
   const setCustomer = useUpdateCustomer();
   const { auth } = useAuth();
   const userData = useUserData();
+  const customerRoutes = useCustomerRoutes();
+  const setCustomerRoutes = useUpdateCustomerRoutes();
 
   const openURL = (url: string) => {
     window.open(url, "_blank");
@@ -60,6 +66,7 @@ const CustomerIdentity = (props: ICustomerIdentityProps) => {
         changedCustomer.phone = phone;
         changedCustomer.contact = contact;
         changedCustomer.logo = logo;
+        changedCustomer.category = category;
 
         const response = await fetch(
           `${APIBaseUrl}/api/customers/${changedCustomer._id as string}`,
@@ -75,6 +82,7 @@ const CustomerIdentity = (props: ICustomerIdentityProps) => {
               phone: phone,
               contact: contact,
               logo: logo,
+              category: category,
             }),
             headers: {
               "Content-Type": "application/json",
@@ -92,6 +100,11 @@ const CustomerIdentity = (props: ICustomerIdentityProps) => {
             color: "red",
           });
         }
+
+        setCustomerRoutes({
+          ...customerRoutes,
+          category: category as string,
+        });
 
         setCustomer(changedCustomer);
 
@@ -144,6 +157,10 @@ const CustomerIdentity = (props: ICustomerIdentityProps) => {
   //   };
   // };
 
+  useEffect(() => {
+    setCategory(props.customer.category);
+  }, [props.customer.category]);
+
   return (
     <Card
       shadow="sm"
@@ -158,6 +175,7 @@ const CustomerIdentity = (props: ICustomerIdentityProps) => {
           icon={<IconAddressBook size={24} />}
           title={props.customer.name}
         />
+
         {customer?.commercial.includes(
           userData?.email.split("@")[0] as string
         ) || userData?.role.includes("Administrateur") ? (
@@ -179,6 +197,20 @@ const CustomerIdentity = (props: ICustomerIdentityProps) => {
           <></>
         )}
       </div>
+      {!editCustomerIdentity ? (
+        <Badge color="dark" variant="filled">
+          {props.customer.category}
+        </Badge>
+      ) : (
+        <Select
+          label={"Catégorie de client"}
+          data={CustomerCategoryList}
+          value={category}
+          onChange={(val) => {
+            setCategory(val as any);
+          }}
+        />
+      )}
       <div className="customerIdentityContainer">
         <div
           // className={`customerLogoContainer ${

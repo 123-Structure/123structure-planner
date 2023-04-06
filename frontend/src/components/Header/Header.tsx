@@ -6,8 +6,15 @@ import "../../assets/style/Header.css";
 import animationData from "../../assets/lottie/loader-buildings.json";
 import Lottie from "react-lottie";
 import SearchBar from "./components/SearchBar/SearchBar";
-import { ActionIcon, useMantineTheme } from "@mantine/core";
-import { useMediaQuery } from "@mantine/hooks";
+import {
+  ActionIcon,
+  Affix,
+  Button,
+  Transition,
+  useMantineTheme,
+  rem,
+} from "@mantine/core";
+import { useMediaQuery, useWindowScroll } from "@mantine/hooks";
 import { useAuth } from "../../hooks/Auth/useAuth";
 import { useUserData } from "../../hooks/Auth/useUserData";
 import {
@@ -40,6 +47,8 @@ const Header = () => {
   const openURL = (url: string) => {
     window.open(url, "_blank");
   };
+
+  const [scroll, scrollTo] = useWindowScroll();
 
   return (
     <>
@@ -157,6 +166,24 @@ const Header = () => {
           <img id="LogoHeader" src={logo} alt="logo" />
         </div>
       </div>
+      <Affix position={{ bottom: rem(20), right: rem(20) }}>
+        <Transition transition="slide-up" mounted={scroll.y > 0}>
+          {(transitionStyles) => (
+            <ActionIcon
+              color="yellow"
+              size="xl"
+              radius="md"
+              variant="filled"
+              style={{
+                ...transitionStyles,
+              }}
+              onClick={() => scrollTo({ y: 0 })}
+            >
+              <IconArrowUp size="2.125rem" />
+            </ActionIcon>
+          )}
+        </Transition>
+      </Affix>
     </>
   );
 };

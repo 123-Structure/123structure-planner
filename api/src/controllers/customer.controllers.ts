@@ -6,7 +6,9 @@ import Customer from "../models/customer.models";
 
 // GET all customers
 export const getCustomers = async (req: Request, res: Response) => {
-  const customers = await Customer.find({}).sort({ createdAt: -1 });
+  const customers = await Customer.find({})
+    .sort({ createdAt: -1 })
+    .sort({ name: 1 });
   res.status(200).json(customers);
 };
 
@@ -35,11 +37,15 @@ export const getCustomerByCategory = async (req: Request, res: Response) => {
     commercial === "*"
       ? await Customer.find({
           category: category,
-        }).sort({ createdAt: -1 })
+        })
+          .sort({ createdAt: -1 })
+          .sort({ name: 1 })
       : await Customer.find({
           category: category,
           commercial: commercial,
-        }).sort({ createdAt: -1 });
+        })
+          .sort({ createdAt: -1 })
+          .sort({ name: 1 });
 
   const customersObject = JSON.parse(JSON.stringify(customers)) as ICustomer[];
 
@@ -68,7 +74,9 @@ export const getCustomerByGroup = async (req: Request, res: Response) => {
           category: category,
           commercial: commercial,
           group: group,
-        }).sort({ createdAt: -1 });
+        })
+          .sort({ createdAt: -1 })
+          .sort({ name: 1 });
 
   const customersObject = JSON.parse(JSON.stringify(customers)) as ICustomer[];
 
@@ -101,6 +109,7 @@ export const createCustomer = async (req: Request, res: Response) => {
     paymentDeadline,
     paymentType,
     paymentStatus,
+    contratCadre,
   } = req.body;
 
   try {
@@ -120,6 +129,7 @@ export const createCustomer = async (req: Request, res: Response) => {
       paymentDeadline,
       paymentType,
       paymentStatus,
+      contratCadre,
     });
 
     res.status(200).json(newCustomer);
