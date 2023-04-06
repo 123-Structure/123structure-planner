@@ -9,7 +9,6 @@ import SearchBar from "./components/SearchBar/SearchBar";
 import {
   ActionIcon,
   Affix,
-  Button,
   Transition,
   useMantineTheme,
   rem,
@@ -18,6 +17,7 @@ import { useMediaQuery, useWindowScroll } from "@mantine/hooks";
 import { useAuth } from "../../hooks/Auth/useAuth";
 import { useUserData } from "../../hooks/Auth/useUserData";
 import {
+  IconArrowUp,
   IconBriefcase,
   IconBulb,
   IconCalendarEvent,
@@ -55,9 +55,7 @@ const Header = () => {
       {/* <LottieLoader visible={true} /> */}
       <div className={`header ${smallScreen ? "header-mobile" : ""}`}>
         <div className={`menu ${smallScreen ? "menu-mobile" : ""}`}>
-          <div
-            className="router"
-          >
+          <div className="router">
             <CustomTooltip
               label="Planning"
               withArrow={false}
