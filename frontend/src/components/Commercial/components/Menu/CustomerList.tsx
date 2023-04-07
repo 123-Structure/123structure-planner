@@ -13,6 +13,7 @@ import { useUpdateCustomer } from "../../../../hooks/Customer/useUpdateCustomer"
 import { useAuth } from "../../../../hooks/Auth/useAuth";
 import { showNotification } from "@mantine/notifications";
 import { APIBaseUrl } from "../../../../data/constants/APIBaseUrl";
+import { useLogout } from "../../../../hooks/Auth/useLogout";
 
 interface ICustomerListProps {
   customersList: IDataAPICategory[];
@@ -28,6 +29,7 @@ const CustomerList = (props: ICustomerListProps) => {
   const customer = useCustomer();
   const setCustomer = useUpdateCustomer();
   const { auth } = useAuth();
+  const { logout } = useLogout();
 
   const fetchCustomer = async (val: string | null) => {
     if (auth.user) {
@@ -45,9 +47,19 @@ const CustomerList = (props: ICustomerListProps) => {
             },
           }
         );
-        const data = (await response.json()) as ICustomer;
-        setCustomer(data);
-        setCustomerGroup(undefined);
+
+        if (response.status === 401) {
+          logout();
+          showNotification({
+            title: "🔒 Authentification requise",
+            message: "Session expirée",
+            color: "red",
+          });
+        } else {
+          const data = (await response.json()) as ICustomer;
+          setCustomer(data);
+          setCustomerGroup(undefined);
+        }
       } else {
         const response = await fetch(
           `${APIBaseUrl}/api/customers/group/${customerRoutes.commercial}/${customerRoutes.category}/${val}`,
@@ -58,16 +70,20 @@ const CustomerList = (props: ICustomerListProps) => {
             },
           }
         );
-        const data = (await response.json()) as IDataAPICategory[];
-        setCustomer(undefined);
-        setCustomerGroup(data);
+
+        if (response.status === 401) {
+          logout();
+          showNotification({
+            title: "🔒 Authentification requise",
+            message: "Session expirée",
+            color: "red",
+          });
+        } else {
+          const data = (await response.json()) as IDataAPICategory[];
+          setCustomer(undefined);
+          setCustomerGroup(data);
+        }
       }
-    } else {
-      showNotification({
-        title: "🔒 Authentification requise",
-        message: "L'utilisateur n'est pas connecté",
-        color: "red",
-      });
     }
   };
 

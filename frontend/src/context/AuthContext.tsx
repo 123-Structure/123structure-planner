@@ -1,5 +1,6 @@
 import { createContext, useEffect, useReducer } from "react";
 import { IRessource } from "../data/interfaces/IRessource";
+import { decodeJwt } from "../utils/decodeJwt";
 
 interface IAuthContextProps {
   children: React.ReactNode;
@@ -41,6 +42,18 @@ const AuthProvider = (props: IAuthContextProps) => {
     const localStorageItem = localStorage.getItem("user");
     if (localStorageItem !== null) {
       const user = JSON.parse(localStorageItem);
+
+      // const decode = decodeJwt(user.token);
+
+      // if (decode) {
+      //   console.log(decode.iat, decode?.exp);
+
+      //   console.log(
+      //     new Date((decode?.iat * 1000) as number).toUTCString(),
+      //     new Date((decode?.exp * 1000) as number).toUTCString()
+      //   );
+      // }
+
       if (user) {
         updateAuth({ type: "LOGIN", payload: user });
       }

@@ -9,7 +9,8 @@ import { IRessource } from "../data/interfaces/IRessource";
 // Generate JWT
 const generateToken = (payload: IJwtPayload) => {
   const jwtSecret = process.env.JWT_SECRET as string;
-  return sign(payload, jwtSecret, { expiresIn: "3d" });
+  // return sign(payload, jwtSecret, { expiresIn: 10 });
+  return sign(payload, jwtSecret, { expiresIn: 60 * 60 * 24 }); // 24 heures
 };
 
 // Login user

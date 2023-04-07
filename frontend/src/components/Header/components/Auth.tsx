@@ -16,7 +16,6 @@ import { useMediaQuery } from "@mantine/hooks";
 import validator from "validator";
 import { useLogin } from "../../../hooks/Auth/useLogin";
 import { useLogout } from "../../../hooks/Auth/useLogout";
-import { useAuth } from "../../../hooks/Auth/useAuth";
 import "../../../assets/style/Auth.css";
 import { useUserData } from "../../../hooks/Auth/useUserData";
 

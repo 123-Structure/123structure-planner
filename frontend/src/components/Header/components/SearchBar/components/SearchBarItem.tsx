@@ -8,6 +8,7 @@ import { useUpdateCustomerRoutes } from "../../../../../hooks/CustomerRoutes/use
 import { useAuth } from "../../../../../hooks/Auth/useAuth";
 import { showNotification } from "@mantine/notifications";
 import { APIBaseUrl } from "../../../../../data/constants/APIBaseUrl";
+import { useLogout } from "../../../../../hooks/Auth/useLogout";
 
 interface ISearchBarItemProps {
   action: ISearchDataFromAPI;
@@ -25,6 +26,7 @@ const SearchBarItem = (props: ISearchBarItemProps) => {
 
   const setCustomerRoutes = useUpdateCustomerRoutes();
   const { auth } = useAuth();
+  const { logout } = useLogout();
 
   const handleSearchItemSearch = (type: string) => {
     if (customer !== undefined) {
@@ -103,14 +105,18 @@ const SearchBarItem = (props: ISearchBarItemProps) => {
           Authorization: `Bearer ${auth.user.token}`,
         },
       });
-      const customer = (await response.json()) as ICustomer;
-      setCustomer(customer);
-    } else {
-      showNotification({
-        title: "🔒 Authentification requise",
-        message: "L'utilisateur n'est pas connecté",
-        color: "red",
-      });
+
+      if (response.status === 401) {
+        logout();
+        showNotification({
+          title: "🔒 Authentification requise",
+          message: "Session expirée",
+          color: "red",
+        });
+      } else {
+        const customer = (await response.json()) as ICustomer;
+        setCustomer(customer);
+      }
     }
   };
 

@@ -13,12 +13,15 @@ import { useEffect, useState } from "react";
 import { IRessource } from "../../data/interfaces/IRessource";
 import { TRole } from "../../data/types/TRole";
 import { APIBaseUrl } from "../../data/constants/APIBaseUrl";
+import { useLogout } from "../../hooks/Auth/useLogout";
+import { showNotification } from "@mantine/notifications";
 
 const Planner = () => {
   const [ressources, setRessources] = useState<IRessource[]>();
 
   const theme = useMantineTheme();
   const { auth } = useAuth();
+  const { logout } = useLogout();
 
   useEffect(() => {
     const getUsersList = async () => {
@@ -33,8 +36,18 @@ const Planner = () => {
               Authorization: `Bearer ${auth.user.token}`,
             },
           });
-          const data = await response.json();
-          users.push(...data);
+
+          if (response.status === 401) {
+            logout();
+            showNotification({
+              title: "🔒 Authentification requise",
+              message: "Session expirée",
+              color: "red",
+            });
+          } else {
+            const data = await response.json();
+            users.push(...data);
+          }
         }
       }
 

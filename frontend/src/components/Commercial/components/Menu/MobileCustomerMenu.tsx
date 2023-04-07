@@ -13,6 +13,7 @@ import Customer from "../Customer/Customer";
 import { showNotification } from "@mantine/notifications";
 import { useAuth } from "../../../../hooks/Auth/useAuth";
 import { APIBaseUrl } from "../../../../data/constants/APIBaseUrl";
+import { useLogout } from "../../../../hooks/Auth/useLogout";
 
 const MobileCustomerMenu = () => {
   const [customersList, setCustomersList] = useState<IDataAPICategory[]>([]);
@@ -23,6 +24,7 @@ const MobileCustomerMenu = () => {
   const customer = useCustomer();
   const setCustomer = useUpdateCustomer();
   const { auth } = useAuth();
+  const { logout } = useLogout();
 
   const theme = useMantineTheme();
   const smallScreen = useMediaQuery(`(max-width: ${theme.breakpoints.lg})`);
@@ -41,14 +43,18 @@ const MobileCustomerMenu = () => {
           },
         }
       );
-      const data = (await response.json()) as IDataAPICategory[];
-      setCustomersList(data);
-    } else {
-      showNotification({
-        title: "🔒 Authentification requise",
-        message: "L'utilisateur n'est pas connecté",
-        color: "red",
-      });
+
+      if (response.status === 401) {
+        logout();
+        showNotification({
+          title: "🔒 Authentification requise",
+          message: "Session expirée",
+          color: "red",
+        });
+      } else {
+        const data = (await response.json()) as IDataAPICategory[];
+        setCustomersList(data);
+      }
     }
   };
 
@@ -68,13 +74,23 @@ const MobileCustomerMenu = () => {
             },
           }
         );
-        const data = (await response.json()) as ICustomer;
-        setCustomer(data);
-        setCustomerGroup(undefined);
-        setCustomerRoutes({
-          ...customerRoutes,
-          customer: val as string,
-        });
+
+        if (response.status === 401) {
+          logout();
+          showNotification({
+            title: "🔒 Authentification requise",
+            message: "Session expirée",
+            color: "red",
+          });
+        } else {
+          const data = (await response.json()) as ICustomer;
+          setCustomer(data);
+          setCustomerGroup(undefined);
+          setCustomerRoutes({
+            ...customerRoutes,
+            customer: val as string,
+          });
+        }
       } else {
         const response = await fetch(
           `${APIBaseUrl}/api/customers/group/${customerRoutes.commercial}/${customerRoutes.category}/${val}`,
@@ -85,21 +101,25 @@ const MobileCustomerMenu = () => {
             },
           }
         );
-        const data = (await response.json()) as IDataAPICategory[];
-        setCustomer(undefined);
-        setCustomerGroup(data);
-        setCustomerRoutes({
-          ...customerRoutes,
-          customer: val as string,
-          agency: " ",
-        });
+
+        if (response.status === 401) {
+          logout();
+          showNotification({
+            title: "🔒 Authentification requise",
+            message: "Session expirée",
+            color: "red",
+          });
+        } else {
+          const data = (await response.json()) as IDataAPICategory[];
+          setCustomer(undefined);
+          setCustomerGroup(data);
+          setCustomerRoutes({
+            ...customerRoutes,
+            customer: val as string,
+            agency: " ",
+          });
+        }
       }
-    } else {
-      showNotification({
-        title: "🔒 Authentification requise",
-        message: "L'utilisateur n'est pas connecté",
-        color: "red",
-      });
     }
   };
 
@@ -119,15 +139,19 @@ const MobileCustomerMenu = () => {
             },
           }
         );
-        const data = (await response.json()) as ICustomer;
-        setCustomer(data);
+
+        if (response.status === 401) {
+          logout();
+          showNotification({
+            title: "🔒 Authentification requise",
+            message: "Session expirée",
+            color: "red",
+          });
+        } else {
+          const data = (await response.json()) as ICustomer;
+          setCustomer(data);
+        }
       }
-    } else {
-      showNotification({
-        title: "🔒 Authentification requise",
-        message: "L'utilisateur n'est pas connecté",
-        color: "red",
-      });
     }
   };
 

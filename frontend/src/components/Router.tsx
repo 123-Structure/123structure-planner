@@ -5,27 +5,31 @@ import { useRouter } from "../hooks/Router/useRouter";
 import { changeFavicon, changeTabTitle } from "../utils/tabsUtils";
 import Commercial from "./Commercial/Commercial";
 import Planner from "./Planner/Planner";
+import { useAuth } from "../hooks/Auth/useAuth";
 
 const Router = () => {
   const router = useRouter();
   const customerRoutes = useCustomerRoutes();
   const setCustomerRoutes = useUpdateCustomerRoutes();
+  const { auth } = useAuth();
 
   useEffect(() => {
-    if (router === "Commercial") {
-      changeFavicon("👷");
-      changeTabTitle("123 Structure - Commercial");
-    } else {
-      changeFavicon("📆");
-      changeTabTitle("123 Structure - Planning");
-    }
-    if (router === "Planning") {
-      setCustomerRoutes({
-        ...customerRoutes,
-        customer: "",
-        agency: "",
-        appointment: "",
-      });
+    if (auth.user) {
+      if (router === "Commercial") {
+        changeFavicon("👷");
+        changeTabTitle("123 Structure - Commercial");
+      } else {
+        changeFavicon("📆");
+        changeTabTitle("123 Structure - Planning");
+      }
+      if (router === "Planning") {
+        setCustomerRoutes({
+          ...customerRoutes,
+          customer: "",
+          agency: "",
+          appointment: "",
+        });
+      }
     }
   }, [router]);
 

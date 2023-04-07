@@ -10,4 +10,6 @@ export interface IJwtPayload {
     | "Villefranche-sur-Saône"
     | "Global"
     | undefined;
+  exp: number;
+  iat: number;
 }
