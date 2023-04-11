@@ -28,7 +28,7 @@ const CustomButton = (props: ICustomButtonProps) => {
       <div style={{ marginRight: "8px" }}>{props.icon}</div>
       {props.label}
     </Button>
-  )
-}; 
+  );
+};
 
 export default CustomButton;

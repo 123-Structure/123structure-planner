@@ -21,6 +21,7 @@ import { useUpdateCustomerRoutes } from "../../../../hooks/CustomerRoutes/useUpd
 import { useAuth } from "../../../../hooks/Auth/useAuth";
 import { showNotification } from "@mantine/notifications";
 import { APIBaseUrl } from "../../../../data/constants/APIBaseUrl";
+import { useLogout } from "../../../../hooks/Auth/useLogout";
 
 const SearchBar = () => {
   const [openSearchBarModal, setOpenSearchBarModal] = useState(false);
@@ -34,6 +35,7 @@ const SearchBar = () => {
 
   const setCustomerRoutes = useUpdateCustomerRoutes();
   const { auth } = useAuth();
+  const { logout } = useLogout();
 
   const handleCloseModal = () => {
     setOpenSearchBarModal(false);
@@ -53,14 +55,18 @@ const SearchBar = () => {
           },
         }
       );
-      const data = (await response.json()) as ISearchDataFromAPI[];
-      setActions(data);
-    } else {
-      showNotification({
-        title: "🔒 Authentification requise",
-        message: "L'utilisateur n'est pas connecté",
-        color: "red",
-      });
+
+      if (response.status === 401) {
+        logout();
+        showNotification({
+          title: "🔒 Authentification requise",
+          message: "Session expirée",
+          color: "red",
+        });
+      } else {
+        const data = (await response.json()) as ISearchDataFromAPI[];
+        setActions(data);
+      }
     }
   };
 

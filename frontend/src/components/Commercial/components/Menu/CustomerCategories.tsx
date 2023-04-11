@@ -9,6 +9,7 @@ import { useCustomerRoutes } from "../../../../hooks/CustomerRoutes/useCustomerR
 import { useUpdateCustomerRoutes } from "../../../../hooks/CustomerRoutes/useUpdateCustomerRoutes";
 import { changeFavicon, changeTabTitle } from "../../../../utils/tabsUtils";
 import CustomerList from "./CustomerList";
+import { useLogout } from "../../../../hooks/Auth/useLogout";
 
 const CustomerCategories = () => {
   const [customersList, setCustomersList] = useState<IDataAPICategory[]>([]);
@@ -16,6 +17,7 @@ const CustomerCategories = () => {
   const customerRoutes = useCustomerRoutes();
   const setCustomerRoutes = useUpdateCustomerRoutes();
   const { auth } = useAuth();
+  const { logout } = useLogout();
 
   const theme = useMantineTheme();
 
@@ -33,14 +35,18 @@ const CustomerCategories = () => {
           },
         }
       );
-      const data = (await response.json()) as IDataAPICategory[];
-      setCustomersList(data);
-    } else {
-      showNotification({
-        title: "🔒 Authentification requise",
-        message: "L'utilisateur n'est pas connecté",
-        color: "red",
-      });
+
+      if (response.status === 401) {
+        logout();
+        showNotification({
+          title: "🔒 Authentification requise",
+          message: "Session expirée",
+          color: "red",
+        });
+      } else {
+        const data = (await response.json()) as IDataAPICategory[];
+        setCustomersList(data);
+      }
     }
   };
 

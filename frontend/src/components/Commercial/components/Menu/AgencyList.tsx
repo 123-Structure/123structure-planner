@@ -11,6 +11,7 @@ import { useCustomerRoutes } from "../../../../hooks/CustomerRoutes/useCustomerR
 import { useUpdateCustomerRoutes } from "../../../../hooks/CustomerRoutes/useUpdateCustomerRoutes";
 import { changeFavicon, changeTabTitle } from "../../../../utils/tabsUtils";
 import Customer from "../Customer/Customer";
+import { useLogout } from "../../../../hooks/Auth/useLogout";
 
 interface IAgenceListProps {
   customersList: IDataAPICategory[];
@@ -24,6 +25,7 @@ const AgencyList = (props: IAgenceListProps) => {
   const customer = useCustomer();
   const setCustomer = useUpdateCustomer();
   const { auth } = useAuth();
+  const { logout } = useLogout();
 
   const fetchCustomer = async (val: string) => {
     if (auth.user) {
@@ -41,15 +43,19 @@ const AgencyList = (props: IAgenceListProps) => {
             },
           }
         );
-        const data = (await response.json()) as ICustomer;
-        setCustomer(data);
+
+        if (response.status === 401) {
+          logout();
+          showNotification({
+            title: "🔒 Authentification requise",
+            message: "Session expirée",
+            color: "red",
+          });
+        } else {
+          const data = (await response.json()) as ICustomer;
+          setCustomer(data);
+        }
       }
-    } else {
-      showNotification({
-        title: "🔒 Authentification requise",
-        message: "L'utilisateur n'est pas connecté",
-        color: "red",
-      });
     }
   };
 

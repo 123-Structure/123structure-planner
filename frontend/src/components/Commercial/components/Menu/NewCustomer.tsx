@@ -37,6 +37,7 @@ import { IApiUserList } from "../../../../data/interfaces/IApiUserList";
 import { APIBaseUrl } from "../../../../data/constants/APIBaseUrl";
 import { useCustomerRoutes } from "../../../../hooks/CustomerRoutes/useCustomerRoutes";
 import { useUpdateCustomerRoutes } from "../../../../hooks/CustomerRoutes/useUpdateCustomerRoutes";
+import { useLogout } from "../../../../hooks/Auth/useLogout";
 
 const NewCustomer = () => {
   const [commercialList, setCommercialList] = useState<IApiUserList[]>();
@@ -71,6 +72,7 @@ const NewCustomer = () => {
   const smallScreen = useMediaQuery(`(max-width: ${theme.breakpoints.xs})`);
 
   const { auth } = useAuth();
+  const { logout } = useLogout();
   const customerRoutes = useCustomerRoutes();
   const setCustomerRoutes = useUpdateCustomerRoutes();
 
@@ -297,29 +299,33 @@ const NewCustomer = () => {
               },
             }
           );
-          const data = (await response.json()) as IDataAPICategory[];
 
-          const groups = data
-            .map((customer) => customer.group)
-            .filter((group) => group !== "")
-            .reduce((acc, curr) => {
-              if (!acc.includes(curr)) acc.push(curr);
-              return acc;
-            }, [] as string[]);
+          if (response.status === 401) {
+            logout();
+            showNotification({
+              title: "🔒 Authentification requise",
+              message: "Session expirée",
+              color: "red",
+            });
+          } else {
+            const data = (await response.json()) as IDataAPICategory[];
 
-          groups.forEach((group) => {
-            res.push(group);
-          });
+            const groups = data
+              .map((customer) => customer.group)
+              .filter((group) => group !== "")
+              .reduce((acc, curr) => {
+                if (!acc.includes(curr)) acc.push(curr);
+                return acc;
+              }, [] as string[]);
+
+            groups.forEach((group) => {
+              res.push(group);
+            });
+          }
         }
       }
 
       setGroupList(res);
-    } else {
-      showNotification({
-        title: "🔒 Authentification requise",
-        message: "L'utilisateur n'est pas connecté",
-        color: "red",
-      });
     }
   };
 
@@ -338,8 +344,18 @@ const NewCustomer = () => {
             Authorization: `Bearer ${auth.user.token}`,
           },
         });
-        const data = await response.json();
-        setCommercialList(data);
+
+        if (response.status === 401) {
+          logout();
+          showNotification({
+            title: "🔒 Authentification requise",
+            message: "Session expirée",
+            color: "red",
+          });
+        } else {
+          const data = await response.json();
+          setCommercialList(data);
+        }
       }
     };
     getUsersList();

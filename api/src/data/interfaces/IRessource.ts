@@ -7,4 +7,8 @@ export interface IRessource {
   role: [string];
   company: string;
   fixer?: string[] | undefined;
+  lockout: {
+    count: number;
+    until: number;
+  };
 }

@@ -24,6 +24,7 @@ import CustomTitle from "../../../../utils/CustomTitle";
 import EditModeToggle from "../../../../utils/EditModeToggle";
 import { HandleUploadFile } from "../../../../utils/HandleUploadFile";
 import CustomerItem from "../../utils/CustomerItem";
+import { useLogout } from "../../../../../hooks/Auth/useLogout";
 
 interface ICustomerRelationshipProps {
   customer: ICustomer;
@@ -95,6 +96,7 @@ const CustomerRelationship = (props: ICustomerRelationshipProps) => {
   const customer = useCustomer();
   const setCustomer = useUpdateCustomer();
   const { auth } = useAuth();
+  const { logout } = useLogout();
   const userData = useUserData();
 
   const theme = useMantineTheme();
@@ -282,17 +284,29 @@ const CustomerRelationship = (props: ICustomerRelationshipProps) => {
             Authorization: `Bearer ${auth.user.token}`,
           },
         });
-        const data = (await response.json()) as IApiUserList[];
-        setCommercialList(data);
-        setCommercial(
-          data
-            .filter((commercial) =>
-              props.customer.commercial.includes(commercial.email.split("@")[0])
-            )
-            .map(
-              (commercial) => `${commercial.firstName} ${commercial.lastName}`
-            )
-        );
+
+        if (response.status === 401) {
+          logout();
+          showNotification({
+            title: "🔒 Authentification requise",
+            message: "Session expirée",
+            color: "red",
+          });
+        } else {
+          const data = (await response.json()) as IApiUserList[];
+          setCommercialList(data);
+          setCommercial(
+            data
+              .filter((commercial) =>
+                props.customer.commercial.includes(
+                  commercial.email.split("@")[0]
+                )
+              )
+              .map(
+                (commercial) => `${commercial.firstName} ${commercial.lastName}`
+              )
+          );
+        }
       }
     };
     getUsersList();

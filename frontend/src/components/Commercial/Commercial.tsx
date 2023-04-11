@@ -13,6 +13,8 @@ import { useUpdateCustomer } from "../../hooks/Customer/useUpdateCustomer";
 import { useAuth } from "../../hooks/Auth/useAuth";
 import { IApiUserList } from "../../data/interfaces/IApiUserList";
 import { APIBaseUrl } from "../../data/constants/APIBaseUrl";
+import { useLogout } from "../../hooks/Auth/useLogout";
+import { showNotification } from "@mantine/notifications";
 
 const Commercial = () => {
   const [commercialList, setCommercialList] = useState<IApiUserList[]>();
@@ -22,6 +24,7 @@ const Commercial = () => {
   const setCustomerRoutes = useUpdateCustomerRoutes();
   const setCustomer = useUpdateCustomer();
   const { auth } = useAuth();
+  const { logout } = useLogout();
 
   const theme = useMantineTheme();
   const smallScreen = useMediaQuery(`(max-width: ${theme.breakpoints.lg})`);
@@ -46,8 +49,18 @@ const Commercial = () => {
             Authorization: `Bearer ${auth.user.token}`,
           },
         });
-        const data = await response.json();
-        setCommercialList(data);
+
+        if (response.status === 401) {
+          logout();
+          showNotification({
+            title: "🔒 Authentification requise",
+            message: "Session expirée",
+            color: "red",
+          });
+        } else {
+          const data = await response.json();
+          setCommercialList(data);
+        }
       }
     };
     getUsersList();
