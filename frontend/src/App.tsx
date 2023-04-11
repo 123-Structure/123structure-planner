@@ -13,6 +13,7 @@ import Router from "./components/Router";
 import RouterProvider from "./context/RouterContext";
 import { useEffect } from "react";
 import { useLogout } from "./hooks/Auth/useLogout";
+import { useAuth } from "./hooks/Auth/useAuth";
 
 function App() {
   const { logout } = useLogout();
@@ -21,7 +22,7 @@ function App() {
   useEffect(() => {
     const handleBeforeUnload = (event: BeforeUnloadEvent) => {
       event.preventDefault();
-      event.returnValue = "test";
+      event.returnValue = "";
       logout();
     };
 
@@ -38,8 +39,13 @@ function App() {
     function resetTimer() {
       clearTimeout(timeoutId);
       timeoutId = setTimeout(() => {
-        logout();
-      }, 5000);
+        const btnList = document.querySelectorAll("button");
+        btnList.forEach((btn) => {
+          if (btn.innerHTML.includes("Se Déconnecter")) {
+            btn.click();
+          }
+        });
+      }, 30 * 60 * 1000);
     }
 
     function handleUserAction() {
@@ -48,16 +54,24 @@ function App() {
     }
 
     // ajoutez des écouteurs d'événements pour les actions de l'utilisateur
-    document.addEventListener("click", handleUserAction);
+    document.addEventListener("mousemove", handleUserAction);
+    document.addEventListener("mousedown", handleUserAction);
     document.addEventListener("keydown", handleUserAction);
+    document.addEventListener("touchmove", handleUserAction);
+
+    window.onscroll = () => {
+      resetTimer();
+    };
 
     // initialise le minuteur
     resetTimer();
 
     // nettoyage des écouteurs d'événements lors du démontage du composant
     return () => {
-      document.removeEventListener("click", handleUserAction);
+      document.removeEventListener("mousemove", handleUserAction);
+      document.removeEventListener("mousedown", handleUserAction);
       document.removeEventListener("keydown", handleUserAction);
+      document.removeEventListener("touchmove", handleUserAction);
       clearTimeout(timeoutId);
     };
   }, []);

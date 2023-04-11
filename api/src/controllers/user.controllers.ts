@@ -6,6 +6,9 @@ import { sign } from "jsonwebtoken";
 import { IJwtPayload } from "../data/interfaces/IJwtPayload";
 import { IRessource } from "../data/interfaces/IRessource";
 
+const MAX_FAILED_LOGIN_ATTEMPTS = 3;
+const LOCK_TIME = 5 * 60 * 1000; // 5 minutes
+
 // Generate JWT
 const generateToken = (payload: IJwtPayload) => {
   const jwtSecret = process.env.JWT_SECRET as string;
@@ -28,11 +31,44 @@ export const loginUser = async (req: Request, res: Response) => {
       return res.status(400).json({ error: "Utilisateur inconnu" });
     }
 
+    if (
+      user.lockout.count >= MAX_FAILED_LOGIN_ATTEMPTS &&
+      user.lockout.until > Date.now()
+    ) {
+      return res.status(400).json({
+        error:
+          "Utilisateur bloqué temporairement suite à trop grand nombre d’essai (5 minutes d'attente)",
+      });
+    }
+
     const match = await bcrypt.compare(password, user.password);
 
     if (!match) {
-      return res.status(400).json({ error: "Mot de passe erronée" });
+      await User.updateOne({ email: email }, { $inc: { "lockout.count": 1 } });
+
+      if (user.lockout.count >= MAX_FAILED_LOGIN_ATTEMPTS) {
+        const unlockTime = Date.now() + LOCK_TIME;
+        await User.updateOne(
+          { email: email },
+          { $set: { "lockout.until": unlockTime } }
+        );
+        return res.status(400).json({
+          error:
+            "Utilisateur bloqué temporairement suite à trop grand nombre d’essai",
+        });
+      }
+
+      return res.status(400).json({
+        error: `Mot de passe erronée - Tentative(s) restante(s) : ${
+          MAX_FAILED_LOGIN_ATTEMPTS - user.lockout.count
+        }`,
+      });
     }
+
+    await User.updateOne(
+      { email: email },
+      { "lockout.count": 0, "lockout.until": null }
+    );
 
     // Generate new token
     const token = generateToken({
@@ -85,6 +121,10 @@ export const signUpUser = async (req: Request, res: Response) => {
       lastName,
       role,
       company,
+      lockout: {
+        count: 0,
+        until: null,
+      },
     });
 
     // Generate new token

@@ -28,6 +28,16 @@ export const userSchema = new Schema<IRessource>(
       type: String,
       required: true,
     },
+    lockout: {
+      count: {
+        type: Number,
+        required: false,
+      },
+      until: {
+        type: Number,
+        required: false,
+      },
+    },
   },
   {
     timestamps: true,
